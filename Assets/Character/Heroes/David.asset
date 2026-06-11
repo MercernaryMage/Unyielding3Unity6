@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
+  m_Name: David
+  m_EditorClassIdentifier: 
+  displayName: David
+  model: {fileID: 498972774399169908, guid: 7efb3ade84bff0240ad81375efaf6e24, type: 3}
+  size: 1
+  movement: 6
+  armor: 0
+  toughness: 0
+  maxHP: 7
+  maxEnergy: 10
+  maxThreshold: 10
+  evasion: 0
+  isMinion: 0
+  maxDetermination: 3
+  isScannable: 1
+  slots: 000000000100000001000000
+  weapons:
+  - item: {fileID: 0}
+  - item: {fileID: 0}
+  - item: {fileID: 0}
+  advantages: []
+  cunning: 1
+  prowess: 0
+  cards: []
+  reactions: []
+  bigPortrait: {fileID: 21300000, guid: d766b1d082f00ac42a6367365f5f1c6f, type: 3}
+  battlePortrait: {fileID: 21300000, guid: e12cdff733b5f3944b93ffd03bab0805, type: 3}
+  traits:
+  - {fileID: 11400000, guid: 0e190a343c3236148a3f63d05d52308b, type: 2}
+  subclasses:
+  - subclassName: Lightning Lord
+    lie1: Locked/Kill 10 units with lightning magic
+    lie2: Locked/Hit 2 targets with lightning magic 10 times
+    lie3: Locked/Be attacked with a reaction 3 times

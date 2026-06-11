@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b56082e77d2370409b82981ddeee984, type: 3}
+  m_Name: Healing Spell
+  m_EditorClassIdentifier: 
+  displayName: Healing Spell
+  itemImage: {fileID: 0}
+  weight: 0
+  weapon: 1
+  slotType: 1
+  description: 
+  charges: 0
+  armor: 0
+  actions:
+  - displayName: Heal
+    cost:
+      movement: 0
+      actions: 2
+      energy: 0
+    attack: 0
+    physical: 0
+    ranged: 1
+    range: 4
+    threatRange: 0
+    accuracy: 0
+    damageString: 1d6
+    aoeType: 0
+    aoeRange: 0
+    chargesTaken: 0
+    disqualifierFunc: 
+    intParam: 0
+    stringParam: 
+    keywords:
+    - Ranged
+    postActionCommands: []
+    postDamageFunctionName: 
+    useInstantAction: 0
+    instantAction:
+      actionName: 
+      disqualiferFunction: 
+    useTargetedAction: 1
+    targetedAction:
+      targetType: 0
+      actionName: Heal
+      disqualiferFunction: AllowedToHealTarget
+    actionDescription: Reveals the targets next action card.
+    actionDescriptionFunction: 
+    uniqueName: 
+    forcedTarget: {fileID: 0}
+    cannotBeUsedOnOthers: 0
+  keywords: Ranged
+  displayable: 1

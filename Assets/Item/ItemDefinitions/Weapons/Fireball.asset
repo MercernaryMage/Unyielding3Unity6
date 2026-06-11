@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b56082e77d2370409b82981ddeee984, type: 3}
+  m_Name: Fireball
+  m_EditorClassIdentifier: 
+  displayName: Fireball
+  itemImage: {fileID: 0}
+  weight: 0
+  weapon: 1
+  slotType: 1
+  description: 
+  charges: 0
+  armor: 0
+  actions:
+  - displayName: Fireball
+    cost:
+      movement: 0
+      actions: 2
+      energy: 2
+    attack: 1
+    physical: 0
+    ranged: 1
+    range: 1
+    threatRange: 0
+    accuracy: 0
+    damageString: 2d6M
+    aoeType: 2
+    aoeRange: 2
+    chargesTaken: 0
+    disqualifierFunc: 
+    intParam: 0
+    stringParam: 
+    keywords:
+    - Ranged
+    postActionCommands: []
+    postDamageFunctionName: 
+    useInstantAction: 0
+    instantAction:
+      actionName: 
+      disqualiferFunction: 
+    useTargetedAction: 0
+    targetedAction:
+      targetType: 0
+      actionName: 
+      disqualiferFunction: 
+    actionDescription: 
+    actionDescriptionFunction: 
+    uniqueName: 
+    forcedTarget: {fileID: 0}
+    cannotBeUsedOnOthers: 0
+  keywords: Ranged
+  displayable: 1

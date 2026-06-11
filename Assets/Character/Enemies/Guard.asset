@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
+  m_Name: Guard
+  m_EditorClassIdentifier: 
+  displayName: Guard
+  model: {fileID: 2741613361274902432, guid: cdb8fcc3533c2c9408cfbaf0893fa94c, type: 3}
+  size: 2
+  movement: 2
+  armor: 7
+  toughness: 0
+  maxHP: 15
+  maxThreshold: 7
+  maxDetermination: 0
+  equipment: []
+  cunning: 0
+  prowess: 0
+  cards:
+  - {fileID: 11400000, guid: 20a3579853aa3f44d82973c96f32a5c2, type: 2}
+  - {fileID: 11400000, guid: a8e01dea3d395ba41912ba619d72ff96, type: 2}
+  - {fileID: 11400000, guid: 1d51be56e26134044905fbb76adfaeb7, type: 2}
+  reactions:
+  - {fileID: 11400000, guid: 04351f384bf60b44b8f6e759b7fc3ffa, type: 2}
+  - {fileID: 11400000, guid: 4b63893ff5718314da0923ef3f8a87eb, type: 2}

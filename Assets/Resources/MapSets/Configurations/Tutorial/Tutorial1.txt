@@ -1,0 +1,60 @@
+{
+  "player": [
+    {
+      "x": 1,
+      "y": 1,
+      "direction": 1
+    },
+    {
+      "x": 1,
+      "y": 3,
+      "direction": 1
+    },
+    {
+      "x": 1,
+      "y": 5,
+      "direction": 1
+    },
+    {
+      "x": 1,
+      "y": 7,
+      "direction": 1
+    }
+  ],
+  "enemies": [
+    {
+      "location": {
+        "x": 5,
+        "y": 1,
+        "direction": 3
+      },
+      "name": "Tutorial Bandit"
+    },
+    {
+      "location": {
+        "x": 5,
+        "y": 3,
+        "direction": 3
+      },
+      "name": "Tutorial Bandit"
+    },
+    {
+      "location": {
+        "x": 5,
+        "y": 5,
+        "direction": 3
+      },
+      "name": "Tutorial Bandit"
+    },
+    {
+      "location": {
+        "x": 5,
+        "y": 7,
+        "direction": 3
+      },
+      "name": "Tutorial Bandit"
+    }
+  ],
+  "mapMessageTitle": "",
+  "mapMessageBody": ""
+}

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
+  m_Name: Witch
+  m_EditorClassIdentifier: 
+  displayName: Witch
+  model: {fileID: 851267340090767508, guid: b3b0d7b73e25aa54cb6e47f00b171a0b, type: 3}
+  size: 1
+  movement: 4
+  armor: 0
+  toughness: 0
+  maxHP: 13
+  maxEnergy: 0
+  maxThreshold: -1
+  evasion: 0
+  isMinion: 0
+  maxDetermination: 0
+  isScannable: 0
+  slots: 
+  weapons:
+  - item: {fileID: 0}
+  - item: {fileID: 0}
+  - item: {fileID: 0}
+  advantages: []
+  cunning: 0
+  prowess: 0
+  cards:
+  - {fileID: 11400000, guid: ce0904a29adffa942a5d81fd0add5cbe, type: 2}
+  - {fileID: 11400000, guid: ce0904a29adffa942a5d81fd0add5cbe, type: 2}
+  - {fileID: 11400000, guid: ce0904a29adffa942a5d81fd0add5cbe, type: 2}
+  - {fileID: 11400000, guid: cbe49390844c07b4b8c0c71f15f87aaf, type: 2}
+  - {fileID: 11400000, guid: cbe49390844c07b4b8c0c71f15f87aaf, type: 2}
+  - {fileID: 11400000, guid: cbe49390844c07b4b8c0c71f15f87aaf, type: 2}
+  - {fileID: 11400000, guid: b2e5e33cca6ddaf4ab7b9b260fb8383e, type: 2}
+  reactions: []
+  bigPortrait: {fileID: 0}
+  battlePortrait: {fileID: 0}
+  traits:
+  - {fileID: 11400000, guid: 470c8364d302c5e45ad6dccc0fad2f45, type: 2}
+  subclasses: []

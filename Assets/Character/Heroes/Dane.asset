@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
+  m_Name: Dane
+  m_EditorClassIdentifier: 
+  displayName: Dane
+  model: {fileID: 6054517980136450167, guid: 4d4bce6813381e647a12a18d985ee469, type: 3}
+  size: 1
+  movement: 6
+  armor: 0
+  toughness: 0
+  maxHP: 7
+  maxEnergy: 10
+  maxThreshold: 10
+  evasion: 0
+  isMinion: 0
+  maxDetermination: 3
+  isScannable: 1
+  slots: 0100000000000000
+  weapons:
+  - item: {fileID: 0}
+  - item: {fileID: 0}
+  - item: {fileID: 0}
+  advantages: []
+  cunning: 1
+  prowess: 0
+  cards: []
+  reactions: []
+  bigPortrait: {fileID: 21300000, guid: ebed04e3c6e292947bb5f527fcbc3eb9, type: 3}
+  battlePortrait: {fileID: 21300000, guid: e02a415dec116c448a0f66d4ce1d01ab, type: 3}
+  traits:
+  - {fileID: 11400000, guid: 5e162aff9c8b38a489c726d02995a7eb, type: 2}
+  subclasses:
+  - subclassName: Ally
+    lie1: Locked/Heal 3 allies
+    lie2: Locked/Use a support weapon for 10 hits
+    lie3: Locked/Use Courage on 3 allies in a row

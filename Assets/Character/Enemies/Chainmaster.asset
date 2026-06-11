@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
+  m_Name: Chainmaster
+  m_EditorClassIdentifier: 
+  displayName: Chainmaster
+  model: {fileID: 2370772967260149315, guid: 685ee9dfd6affd442bed7a1fd029d948, type: 3}
+  size: 1
+  movement: 4
+  armor: 0
+  toughness: 0
+  maxHP: 13
+  maxEnergy: 0
+  maxThreshold: -1
+  evasion: 0
+  maxDetermination: 0
+  isScannable: 0
+  slots: 
+  weapons:
+  - item: {fileID: 0}
+  - item: {fileID: 0}
+  - item: {fileID: 0}
+  advantages: []
+  cunning: 0
+  prowess: 0
+  cards:
+  - {fileID: 11400000, guid: 46fdc46175187f3439a84b4ca8044583, type: 2}
+  - {fileID: 11400000, guid: 97125a0d244db434dba6449d6521f1ee, type: 2}
+  - {fileID: 11400000, guid: a98b6be989329294d9eb32dc82e69fd7, type: 2}
+  - {fileID: 11400000, guid: a98b6be989329294d9eb32dc82e69fd7, type: 2}
+  - {fileID: 11400000, guid: a98b6be989329294d9eb32dc82e69fd7, type: 2}
+  - {fileID: 11400000, guid: a98b6be989329294d9eb32dc82e69fd7, type: 2}
+  - {fileID: 11400000, guid: 5e17014c8fed75a4e9b475027ace66fa, type: 2}
+  reactions: []
+  bigPortrait: {fileID: 0}
+  battlePortrait: {fileID: 0}
+  traits:
+  - {fileID: 11400000, guid: 0e4370d8d86dae04b9194996872b3491, type: 2}
+  subclasses: []

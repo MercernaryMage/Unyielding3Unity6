@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
+  m_Name: Cotton
+  m_EditorClassIdentifier: 
+  displayName: Cotton
+  model: {fileID: 4365393165730042595, guid: 4bca56fcd4a4e334b9cf919ca5b9c13e, type: 3}
+  size: 1
+  movement: 6
+  armor: 0
+  toughness: 0
+  maxHP: 10
+  maxEnergy: 6
+  maxThreshold: 10
+  evasion: 0
+  isMinion: 0
+  maxDetermination: 3
+  isScannable: 1
+  slots: 000000000000000002000000
+  weapons:
+  - item: {fileID: 11400000, guid: 281cb2b815677c047b146eb99a12fb4e, type: 2}
+  - item: {fileID: 11400000, guid: 672bb29615584dd47a4672d8a0923e66, type: 2}
+  - item: {fileID: 0}
+  advantages: []
+  cunning: 0
+  prowess: 1
+  cards: []
+  reactions: []
+  bigPortrait: {fileID: 21300000, guid: 24c431af34ad5524e8c8d310053cfdcf, type: 3}
+  battlePortrait: {fileID: 21300000, guid: 973461640167aae4fa9d29aea55c175a, type: 3}
+  traits:
+  - {fileID: 11400000, guid: 51fd50e606c9c4b4984bde2c16999127, type: 2}
+  - {fileID: 11400000, guid: 9ae8e5ed97ba2264486b706f25385021, type: 2}
+  subclasses:
+  - subclassName: Arbalist
+    lie1: Locked/Kill 3 enemies with a crossbow
+    lie2: Locked/Consume Marked 3 times with a crossbow
+    lie3: Locked/Crit 3 times with a crossbow

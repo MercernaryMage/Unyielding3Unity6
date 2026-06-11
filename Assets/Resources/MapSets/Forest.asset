@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf114831b4562b4ea9a4ba133889e98, type: 3}
+  m_Name: Forest
+  m_EditorClassIdentifier: 
+  setName: Forest Fracas
+  setDescription: Battle forest monsters
+  maps:
+  - 
+  configurations:
+  - Forest/Forest1
+  - Forest/Forest2
+  - Forest/Forest3
+  rewardText: Unlock weapons and weapon equipping
+  lockedText: 
+  levelCompletedFunction: 
+  lockedFunction: 
+  onComplete: CompleteForest
+  isComplete: ForestIsComplete

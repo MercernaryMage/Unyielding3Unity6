@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
+  m_Name: Lizard
+  m_EditorClassIdentifier: 
+  displayName: Lizard
+  model: {fileID: 4660459814036959514, guid: 40f7c199d9782834a93ae02cb2291dbe, type: 3}
+  size: 2
+  movement: 6
+  armor: 5
+  toughness: 1
+  maxHP: 90
+  maxThreshold: 3
+  maxDetermination: 0
+  equipment: []
+  cunning: 0
+  prowess: 0
+  cards:
+  - {fileID: 11400000, guid: 915ef86dbcbed5642a70d1190fd24010, type: 2}
+  - {fileID: 11400000, guid: 6a1cd3f03e87e00409db1f427cb57935, type: 2}
+  - {fileID: 11400000, guid: 4b0aa238c4b11d5468eadd115da37044, type: 2}
+  - {fileID: 11400000, guid: 501e46e28413514459421da68869813f, type: 2}
+  - {fileID: 11400000, guid: 8a21b87e548957a4b81510ba558244be, type: 2}
+  reactions:
+  - {fileID: 11400000, guid: 04351f384bf60b44b8f6e759b7fc3ffa, type: 2}
+  - {fileID: 11400000, guid: 260bd2c62ae58c94197326be3e1fcf2c, type: 2}
+  - {fileID: 11400000, guid: 012f80ac0ab16ce4c8377da3ebadb237, type: 2}
+  - {fileID: 11400000, guid: 625cf6e68c5e0e04e8b7f95aead5e856, type: 2}

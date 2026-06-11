@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b56082e77d2370409b82981ddeee984, type: 3}
+  m_Name: Longsword
+  m_EditorClassIdentifier: 
+  displayName: Longsword
+  itemImage: {fileID: 21300000, guid: 80b1676d6765ce142ba7ee0e7ccdc66d, type: 3}
+  weight: 0
+  weapon: 1
+  slotType: 1
+  description: 
+  charges: 0
+  armor: 0
+  actions:
+  - displayName: Swing
+    cost:
+      movement: 0
+      actions: 2
+      energy: 0
+    attack: 1
+    physical: 1
+    ranged: 0
+    range: 1
+    threatRange: 1
+    accuracy: 0
+    damageString: 1d6+2P
+    aoeType: 0
+    aoeRange: 0
+    chargesTaken: 0
+    disqualifierFunc: 
+    intParam: 0
+    stringParam: 
+    keywords: []
+    postActionCommands: []
+    postDamageFunctionName: 
+    useInstantAction: 0
+    instantAction:
+      actionName: 
+      disqualiferFunction: 
+    useTargetedAction: 0
+    targetedAction:
+      targetType: 0
+      actionName: 
+      disqualiferFunction: 
+    actionDescription: 
+    actionDescriptionFunction: 
+    uniqueName: 
+    forcedTarget: {fileID: 0}
+    cannotBeUsedOnOthers: 0
+  keywords: Melee, Sword
+  displayable: 1

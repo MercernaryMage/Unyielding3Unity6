@@ -1,0 +1,214 @@
+
+Big creatures should be able to walk through themselves, even if we disable team movement
+
+frothing has a bug
+    If a character has a slobbered effect and is out of range, the AI will not go
+    Util.RemoveOutOfRangeRoutes(routes, range); fixes it.  Apply to all
+
+Enemies are very polite and obey body blocking.  Is this what we want?
+    Some enemies should 1x1
+    Large enemies should probably not
+
+
+Don't spawn a player if they don't have determination 
+
+2x2 player movement is certainly broken
+
+
+
+ ///////////TECH DEBT///////////////
+Look into claude skills:
+    C# code formatting
+
+Need ability to determine if an item is a shield
+
+AttackFairyStarter -> AttackFairyTrait
+    We don't want the AttackFairyStarter class to exist.  We need a way to add generic traits to the owner character
+Burst targeting doesn't show the marked tiles!
+    Remember!  marked = possible, targeted = will hit
+
+///////////TECH DEBT///////////////
+    Ready needs to be universal
+        Restore all lost energy
+        &&&&
+        Reload all weapons
+    
+    sparks needs to be loading
+        And not deal 1d6
+            2 fire
+    We don't have a way of ending AoE attacks
+        Line, sparks, burst
+    
+    The special attack code should set backstab correctly
+    backstab deals 1 flat damage
+        It should deal +1d6
+
+    Content
+        UI
+            Combat
+                Enemy display
+                    Name
+                    stats
+                !!Card display!!
+                
+            Town
+                Character select
+                Character Display
+                    Stats
+                        Are we locked in here?????
+                    Traits
+                    Subclasses
+                        We need more lies here
+                    Advantages
+                    Add advantage pane
+            Overland
+                Locked UI
+                BG art
+                    Who is going to make this????
+                        Thanh
+                ????
+
+        Effects
+            All attacks?
+            Status effects?
+        Sound
+            BG
+            Sound effects for attacks
+
+        Story
+
+        PLAY THE TUTORIAL MORE
+
+        Icons
+            weapons
+            Advantage
+
+        We need to auto remove the AI card better 
+        player movement always provokes.  Should it?
+        Check all trait descriptions
+        Move david to the top right of the little forest:
+            The first tree doesn't duck until you rotate the camera
+
+Do do our characters advance
+    Premise: UY2 leveling is horrid
+        We want like 50% upward growth
+    Items
+        KDM style
+            crafted - monster bits
+        Lancer LL style
+            You get from LLs
+    Actual levels???
+        Just straight stat gain???
+    Knowledge system
+        A knowledge is a set of traits/abilities/upgrades
+        As you complete tasks of that knowledge, you unlock the rewards
+        All knowledge is shared
+        Are knowledges locked?
+            Maybe a little bit
+            Maybe a lot?
+                Generic + class/race?
+    Path system (lancer LLs)
+        Each character has a path: 1-3
+            Each step unlocks stuff:
+                Weapons
+                Advantages
+        As the game advances, character paths unlock
+        charcters can use other characters path
+!!!MARCHING ORDERS!!!
+    Add land mine?
+    You can't click off of the sparks
+
+    1) Finish enemies
+        DRAGON
+    2) Create the content for the other levels
+        Forest
+            Make geo
+            Make enemies
+        Woods
+            Make geo
+            Make enemies
+        Meadow
+            Make geo
+            Make enemies
+        Boss fight
+            Make geo
+            Make enemies
+
+        Keep tutorial boss as is
+            Is he too long?  Too hard/easy?
+
+       Do move variants
+        Do we need them for the demo?
+        How many?
+       
+       DRAGON BOSS
+            Moves
+                fire breath
+                Tail swipe
+                wing buffet
+                Crimson claw
+                Swoop
+                Fly
+                Prepare
+                Burn Aura
+                4 MORE!!!!!!
+                    Winners
+                        Inhale
+                            Move fire breath up
+                        Roar
+                            Status effects
+                                Lower damage?
+                                Lower accuracy?
+                                Can't spend energy?
+                        Bite
+                            Auto crit, but low accuracy
+                        Hypnotic eyes
+                            Force the player to run
+                            Causing AoO                    
+            Reactions
+                Wound
+                    -toughness down
+                Kick
+                    -Punt
+                    deal damage based on far you had left to go
+                        Record tile before knock runs.  total - diff is damage
+                Recover
+                    toughess reset
+                    Restore armor
+                        + do it as a plus, not a full restore
+                Flare Up
+                    Burn all adjacents
+                Intimidate
+                    Move up to and knockdown
+
+
+
+                
+                
+        
+        Do stuff
+            Better display of cards and reactions happening?
+            
+
+        
+        Why did the lizard get aggravted stuff?
+
+        Test trample on players right next to trees
+            Does trample just go straight into trees?
+
+Knowledge system for demo    
+        Show a path for each character
+            Cotton
+                Potion bag
+                    first 3 potions cost weight
+                Quiver
+                    First 3 ammos have no weight
+            Lenette
+                Better shield
+                Cool sword
+            Dane
+                Healing spell
+                Courage
+            David
+                Recharge as a quick action
+                simple lightning line

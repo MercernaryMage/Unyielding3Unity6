@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06eaa49177edb3d40a1dd01db6fece0a, type: 3}
+  m_Name: Holy Lasso
+  m_EditorClassIdentifier: 
+  displayName: Holy Lasso
+  description: Gives an action to move an ally or enemy up to five tiles in a direction.
+  className: AddItemToInventoryTrait
+  intParams: 
+  stringParams:
+  - Holy Lasso
