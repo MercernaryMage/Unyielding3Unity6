@@ -97,6 +97,7 @@ public class PreDamageDealtMessage : Message
 	public int damage;
 	public bool ranged;
 	public bool hasResistance;
+	public ActionController.AttackResults results;
 
 	public PreDamageDealtMessage()
 	{

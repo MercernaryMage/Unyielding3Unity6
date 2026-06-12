@@ -37,6 +37,11 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 	}
 #endif
 
+	public virtual void EffectBeingRemoved()
+	{
+
+	}
+
 	public void OnDestroy()
 	{
 		if (exiting)
@@ -46,6 +51,7 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 		//this stupid line is to prevent the unity singleton shutdown errors
 		if (MessagePump.Instance)
 		{
+			EffectBeingRemoved();
 			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, $"-{GetDisplayName()}");
 			MessagePump.Instance.RemoveListener(this);
 			this.enabled = false;

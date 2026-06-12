@@ -2,29 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Roar : Card
+public class DreadGaze : Card
 {
 	List<Tile> targetTiles;
 
 	public override void Execute()
 	{
 		List<Tile> characterTiles = TileGrid.Instance.FindCharacter(owningCharacter);
-
-		switch (owningCharacter.facing)
-		{
-			case Direction.North:
-				targetTiles = TemplateLibrary.Instance.GetNorthFacingTiles(characterTiles);
-				break;
-			case Direction.East:
-				targetTiles = TemplateLibrary.Instance.GetEastFacingTiles(characterTiles);
-				break;
-			case Direction.South:
-				targetTiles = TemplateLibrary.Instance.GetSouthFacingTiles(characterTiles);
-				break;
-			default:
-				targetTiles = TemplateLibrary.Instance.GetWestFacingTiles(characterTiles);
-				break;
-		}
+		targetTiles = TemplateLibrary.Instance.GetFacingTiles(characterTiles, owningCharacter.facing);
 
 		AnimationController.Instance.ShowTiles(targetTiles, Tile.OverlayType.PossibleAttck, ReturnFromShowingAttackTiles);
 	}

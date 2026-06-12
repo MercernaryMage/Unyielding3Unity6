@@ -520,6 +520,7 @@ public class ActionController : SceneSingleton<ActionController>
 		preDamageDealtMessage.attacker = attacker;
 		preDamageDealtMessage.damage = damage;
 		preDamageDealtMessage.ranged = profile.ranged;
+		preDamageDealtMessage.results = results;
 		MessagePump.Instance.SendMessage(preDamageDealtMessage);
 		damage = preDamageDealtMessage.damage;
 		if (profile.isBackstab)
@@ -547,7 +548,7 @@ public class ActionController : SceneSingleton<ActionController>
 		bool doReaction = false;
 		if (!defender.hero && !profile.trigger)
 		{
-			if (defender.gameObject.GetComponent<KnockedDown>() != null)
+			if (defender.gameObject.GetComponent<KnockedDown>() == null)
 			{
 				defender.threshold += damage;
 				if (defender.characterDefinition.maxThreshold != -1 && defender.threshold >= defender.characterDefinition.maxThreshold)

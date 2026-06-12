@@ -3878,7 +3878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overrideRand: 1
-  seed: 177144149
+  seed: 752927869
 --- !u!114 &567337325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6262,6 +6262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 898251911}
   - component: {fileID: 898251910}
+  - component: {fileID: 898251912}
   m_Layer: 0
   m_Name: Debug Code
   m_TagString: Untagged
@@ -6298,6 +6299,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &898251912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898251909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 400200efbf2304345813bd062e52586e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
+  useExplicitOrder: 1
+  turnOrder:
+  - David
+  - Lenette
+  - enemy
+  - Dane
+  - Cotton
 --- !u!1 &916006794
 GameObject:
   m_ObjectHideFlags: 0

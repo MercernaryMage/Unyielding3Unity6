@@ -50,7 +50,7 @@ public class CardScriptableObject : ScriptableObject
 			}
 		}
 
-		Debug.LogWarning("Tag not found!");
+		Debug.LogWarning($"Tag {tagName} not found!");
 		return false;
 	}
 }

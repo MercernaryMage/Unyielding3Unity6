@@ -116,7 +116,9 @@ Do do our characters advance
         charcters can use other characters path
 !!!MARCHING ORDERS!!!
     Add land mine?
-
+    Intimdate when the dragon dies during it leaves the game soft locked
+        We need to restore the character control
+    How strong should the characters be?
     1) Finish enemies
         DRAGON
     2) Create the content for the other levels
@@ -150,34 +152,24 @@ Do do our characters advance
                 Fly
                 Prepare
                 Burn Aura
-                4 MORE!!!!!!
-                    Winners
-                        Inhale
-                        Bite
-                        Roar
-                            Status effects
-                                Lower damage?
-                                Lower accuracy?
-                                Can't spend energy?
-                        Dread Aura
-                            Force the player to run
+                Inhale
+                Bite
+                Roar
+                Dread Aura
                             
             Reactions
-                Wound
-                    -toughness down
-                Kick
-                    -Punt
-                    deal damage based on far you had left to go
-                        Record tile before knock runs.  total - diff is damage
-                Recover
-                    toughess reset
-                    Restore armor
-                        + do it as a plus, not a full restore
-                Flare Up
-                    Burn all adjacents
-                Intimidate
-                    Move up to and knockdown
-
+                WoundN
+                WoundA               
+                RecoverN
+                RecoverA
+                ScreechN
+                ScreechA
+                KickN
+                KickA
+                Flare UpN
+                Flare UpA
+                IntimidateN
+                IntimidateA
 
 
                 

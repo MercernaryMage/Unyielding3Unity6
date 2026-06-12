@@ -20,7 +20,7 @@ MonoBehaviour:
   toughness: 0
   maxHP: 13
   maxEnergy: 0
-  maxThreshold: -1
+  maxThreshold: 2
   evasion: 0
   isMinion: 0
   maxDetermination: 0
@@ -36,7 +36,8 @@ MonoBehaviour:
   cards:
   - {fileID: 11400000, guid: b7e9c578b91ca144dad3721722b84294, type: 2}
   - {fileID: 11400000, guid: eac3a4a2a86ae9947adf594865152d32, type: 2}
-  reactions: []
+  reactions:
+  - {fileID: 11400000, guid: 13bd1061427d52944b6bcd7debabeb23, type: 2}
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}
   traits:

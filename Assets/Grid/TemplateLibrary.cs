@@ -91,60 +91,43 @@ public class TemplateLibrary : SceneSingleton<TemplateLibrary>
 		}
 	}
 
-	public List<Tile> GetNorthFacingTiles(List<Tile> characterTiles)
+	public List<Tile> GetFacingTiles(List<Tile> characterTiles, Direction direction)
 	{
-		List<Tile> northTiles = new List<Tile>();
-		int maxY = characterTiles.Max(t => t.y);
-		foreach (Tile t in TileGrid.Instance.tiles)
-		{
-			if (t.y > maxY + 1)
-			{
-				northTiles.Add(t);
-			}
-		}
-		return northTiles;
-	}
+		List<Tile> outTiles = new List<Tile>();
 
-	public List<Tile> GetEastFacingTiles(List<Tile> characterTiles)
-	{
-		List<Tile> eastTiles = new List<Tile>();
-		int maxX = characterTiles.Max(t => t.x);
-		foreach (Tile t in TileGrid.Instance.tiles)
-		{
-			if (t.x > maxX + 1)
-			{
-				eastTiles.Add(t);
-			}
-		}
-		return eastTiles;
-	}
+		int maxX = characterTiles.Max(ct => ct.x);
+		int minX = characterTiles.Min(ct => ct.x);
+		int maxY = characterTiles.Max(ct => ct.y);
+		int minY = characterTiles.Min(ct => ct.y);
 
-	public List<Tile> GetSouthFacingTiles(List<Tile> characterTiles)
-	{
-		List<Tile> southTiles = new List<Tile>();
-		int minY = characterTiles.Min(t => t.y);
 		foreach (Tile t in TileGrid.Instance.tiles)
 		{
-			if (t.y < minY - 1)
+			bool inFacing;
+			switch (direction)
 			{
-				southTiles.Add(t);
+				case Direction.North:
+					inFacing = t.y > maxY + 1;
+					break;
+				case Direction.East:
+					inFacing = t.x > maxX + 1;
+					break;
+				case Direction.South:
+					inFacing = t.y < minY - 1;
+					break;
+				case Direction.West:
+					inFacing = t.x < minX - 1;
+					break;
+				default:
+					inFacing = false;
+					break;
+			}
+			if (inFacing)
+			{
+				outTiles.Add(t);
 			}
 		}
-		return southTiles;
-	}
 
-	public List<Tile> GetWestFacingTiles(List<Tile> characterTiles)
-	{
-		List<Tile> westTiles = new List<Tile>();
-		int minX = characterTiles.Min(t => t.x);
-		foreach (Tile t in TileGrid.Instance.tiles)
-		{
-			if (t.x < minX - 1)
-			{
-				westTiles.Add(t);
-			}
-		}
-		return westTiles;
+		return outTiles;
 	}
 
 	public TilesAndDirection GetMostFacingDirection(Character c)
@@ -153,10 +136,10 @@ public class TemplateLibrary : SceneSingleton<TemplateLibrary>
 
 		List<Tile>[] groups = new List<Tile>[]
 		{
-			GetNorthFacingTiles(tiles),
-			GetEastFacingTiles(tiles),
-			GetSouthFacingTiles(tiles),
-			GetWestFacingTiles(tiles),
+			GetFacingTiles(tiles, Direction.North),
+			GetFacingTiles(tiles, Direction.East),
+			GetFacingTiles(tiles, Direction.South),
+			GetFacingTiles(tiles, Direction.West),
 		};
 		int bestIndex = 0;
 		int bestCount = -1;

@@ -37,7 +37,7 @@ public class TileGrid : SceneSingleton<TileGrid>
 	}
 
 	//AI moving
-	public void RouteAICharacterToTile(Character character, List<Tile> tiles, Action callback, bool moveCharacter = true, bool provokeReactions = true)
+	public void RouteAICharacterToTile(Character character, List<Tile> tiles, Action callback, bool moveCharacter = true, bool provokeReactions = true, bool isReaction = false)
 	{
 		CharacterStartMovementMessage characterStartMovementMessage = new CharacterStartMovementMessage();
 		characterStartMovementMessage.movingCharacter = character;
@@ -60,7 +60,10 @@ public class TileGrid : SceneSingleton<TileGrid>
 			}
 			else
 			{
-				Card.Finish();
+				if (!isReaction)
+				{
+					Card.Finish();
+				}
 			}
 		};
 		if (characterStartMovementMessage.raisedTriggers.Count == 0)
