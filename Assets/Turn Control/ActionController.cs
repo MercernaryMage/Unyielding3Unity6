@@ -66,15 +66,27 @@ public class ActionController : SceneSingleton<ActionController>
 		{
 			tile.HideOverlay(Tile.OverlayType.PossibleAttck);
 		}
+		foreach (Tile tile in targetedTiles)
+		{
+			tile.HideOverlay(Tile.OverlayType.Selected);
+		}
+		
 		currentPossibleTiles.Clear();
-		running = false;
+		SetRunning(false);
+
 		attackingCharacter = null;
+	}
+
+	void SetRunning(bool newRunning)
+	{
+		running = newRunning;
+		SelectionManager.Instance.ShowCancelButton(newRunning);
 	}
 
 	public void ShowAttackableTiles(Character c, Item i, ActionPattern actionPattern)
 	{
 		MovementController.Instance.HideMovement();
-		running = true;
+		SetRunning(true);
 		currentAction = actionPattern;
 		currentItem = i;
 		attackingCharacter = c;
@@ -145,6 +157,11 @@ public class ActionController : SceneSingleton<ActionController>
 		}
 	}
 
+	public void HandleRightClick()
+	{
+		CancelAttack(attackingCharacter);
+	}
+
 	public bool HandleClick()
 	{
 		if (!internalRunning)
@@ -152,11 +169,20 @@ public class ActionController : SceneSingleton<ActionController>
 			bool isGeoTarget = currentAction != null && currentAction.useTargetedAction &&
 				(currentAction.targetedAction.targetType == ActionPattern.TargetType.Geo ||
 				currentAction.targetedAction.targetType == ActionPattern.TargetType.Directions);
+
+			if (aoeType != AoEType.None && !targetedTiles.Contains(lastMousedOverTile))
+			{
+				CancelAttack(attackingCharacter);
+				return true;
+			}
+
+
 			if (!isGeoTarget)
 			{
 				targetedTiles.RemoveAll(o => o.character == null);
 			}
 
+			
 			if (targetedTiles.Count != 0)
 			{
 				HandleActionStart();
@@ -637,7 +663,7 @@ public class ActionController : SceneSingleton<ActionController>
 
 	public void DoSimpleAction(Character c, Item i, ActionPattern actionPattern)
 	{
-		running = true;
+		SetRunning(true);
 		currentAction = actionPattern;
 		currentItem = i;
 		attackingCharacter = c;

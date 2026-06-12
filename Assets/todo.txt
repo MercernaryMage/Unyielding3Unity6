@@ -116,7 +116,6 @@ Do do our characters advance
         charcters can use other characters path
 !!!MARCHING ORDERS!!!
     Add land mine?
-    You can't click off of the sparks
 
     1) Finish enemies
         DRAGON
@@ -154,17 +153,17 @@ Do do our characters advance
                 4 MORE!!!!!!
                     Winners
                         Inhale
-                            Move fire breath up
+                        Bite
                         Roar
                             Status effects
                                 Lower damage?
                                 Lower accuracy?
                                 Can't spend energy?
-                        Bite
-                            Auto crit, but low accuracy
-                        Hypnotic eyes
+                        Dread Aura
                             Force the player to run
-                            Causing AoO                    
+                            Causing AoO
+                                RouteCharacterToTile is only for AI!!!!
+                                    We need a player version!
             Reactions
                 Wound
                     -toughness down

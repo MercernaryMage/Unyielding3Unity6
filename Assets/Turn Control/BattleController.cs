@@ -159,6 +159,11 @@ public class BattleController : SceneSingleton<BattleController>
 		return c.hero ? heroes : enemies;
 	}
 
+	public List<Character> GetEnemies(Character c)
+	{
+		return c.hero ? enemies : heroes;
+	}
+
 	public void CardFinished()
 	{
 		Invoke("CardFinishedActual", .5f);

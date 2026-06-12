@@ -260,7 +260,7 @@ public class MapBuilder : MonoBehaviour
 			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 0, 2));
 
 			//levelConfiguration.enemies.Add(new EnemyConfiguration("BigTestEnemy", Direction.West, 6, 5));
-			levelConfiguration.enemies.Add(new EnemyConfiguration("Dragon", Direction.West, 6, 2));
+			levelConfiguration.enemies.Add(new EnemyConfiguration("Dragon", Direction.West, 3, 2));
 			return levelConfiguration;
 		}
 

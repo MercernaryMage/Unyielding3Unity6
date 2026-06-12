@@ -16,7 +16,11 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 	Vector3 lastMousePos;
 	Vector3 clickVec;
 	bool panAllowed;
+	bool clickedUI = false;
 	bool cameraMoving = false;
+	bool cancelClicked = false;
+
+	public GameObject cancelButton;
 
 	public void TileClicked(Tile t)
 	{
@@ -54,6 +58,11 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 
 	public void Update()
 	{
+		if (cancelClicked)
+		{
+			cancelClicked = false;
+			return;
+		}
 		if (Input.GetMouseButtonDown(0))
 		{
 			clickVec = Input.mousePosition;
@@ -229,6 +238,27 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 			{
 				UIController.Instance.NothingClicked();
 			}
+		}
+		else if (Input.GetMouseButtonUp(1))
+		{
+			if (ActionController.Instance.running)
+			{
+				ActionController.Instance.HandleRightClick();
+			}
+		}
+	}
+
+	public void ShowCancelButton(bool active)
+	{
+		cancelButton.SetActive(active);
+	}
+
+	public void CancelClicked()
+	{
+		if (ActionController.Instance.running)
+		{
+			cancelClicked = true;
+			ActionController.Instance.HandleRightClick();
 		}
 	}
 
