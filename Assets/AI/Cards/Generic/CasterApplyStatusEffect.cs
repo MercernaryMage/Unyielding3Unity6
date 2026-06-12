@@ -53,7 +53,7 @@ public class CasterApplyStatusEffect : Card
 
     void ReturnFromShowingTiles()
     {
-        TileGrid.Instance.RouteCharacterToTile(owningCharacter, new List<Tile>(route.Item1), ReturnFromMove);
+        TileGrid.Instance.RouteAICharacterToTile(owningCharacter, new List<Tile>(route.Item1), ReturnFromMove);
     }
 
     void ReturnFromMove()

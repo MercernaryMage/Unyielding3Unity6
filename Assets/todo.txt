@@ -161,9 +161,7 @@ Do do our characters advance
                                 Can't spend energy?
                         Dread Aura
                             Force the player to run
-                            Causing AoO
-                                RouteCharacterToTile is only for AI!!!!
-                                    We need a player version!
+                            
             Reactions
                 Wound
                     -toughness down

@@ -40,7 +40,7 @@ public class CrimsonClaw : Card
 
 	void ReturnFromShowingTiles()
 	{
-		TileGrid.Instance.RouteCharacterToTile(owningCharacter, new List<Tile>(route.Item1), ReturnFromRoute);
+		TileGrid.Instance.RouteAICharacterToTile(owningCharacter, new List<Tile>(route.Item1), ReturnFromRoute);
 	}
 
 	void ReturnFromRoute()

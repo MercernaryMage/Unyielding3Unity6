@@ -82,7 +82,7 @@ public class FightItOut : Card
 
     void ReturnFromShowingMoveTiles()
     {
-        TileGrid.Instance.RouteCharacterToTile(owningCharacter, new List<Tile>(moveRoute.Item1), ReturnFromMove);
+        TileGrid.Instance.RouteAICharacterToTile(owningCharacter, new List<Tile>(moveRoute.Item1), ReturnFromMove);
     }
 
     void ReturnFromMove()

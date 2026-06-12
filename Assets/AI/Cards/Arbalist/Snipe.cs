@@ -106,7 +106,7 @@ public class Snipe : Card
 
     void Route()
     {
-        TileGrid.Instance.RouteCharacterToTile(owningCharacter, new List<Tile>(movePath), ShowAttack);
+        TileGrid.Instance.RouteAICharacterToTile(owningCharacter, new List<Tile>(movePath), ShowAttack);
     }
 
     void ShowAttack()

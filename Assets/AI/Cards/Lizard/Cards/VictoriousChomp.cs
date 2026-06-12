@@ -34,7 +34,7 @@ public class VictoriousChomp : Card
 
 	public void Route()
 	{
-		TileGrid.Instance.RouteCharacterToTile(owningCharacter, new List<Tile>(route.Item1), ReturnFromRoute);
+		TileGrid.Instance.RouteAICharacterToTile(owningCharacter, new List<Tile>(route.Item1), ReturnFromRoute);
 	}
 
 	public void ReturnFromRoute()

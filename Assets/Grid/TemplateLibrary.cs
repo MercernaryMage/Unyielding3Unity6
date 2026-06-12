@@ -91,60 +91,73 @@ public class TemplateLibrary : SceneSingleton<TemplateLibrary>
 		}
 	}
 
+	public List<Tile> GetNorthFacingTiles(List<Tile> characterTiles)
+	{
+		List<Tile> northTiles = new List<Tile>();
+		int maxY = characterTiles.Max(t => t.y);
+		foreach (Tile t in TileGrid.Instance.tiles)
+		{
+			if (t.y > maxY + 1)
+			{
+				northTiles.Add(t);
+			}
+		}
+		return northTiles;
+	}
+
+	public List<Tile> GetEastFacingTiles(List<Tile> characterTiles)
+	{
+		List<Tile> eastTiles = new List<Tile>();
+		int maxX = characterTiles.Max(t => t.x);
+		foreach (Tile t in TileGrid.Instance.tiles)
+		{
+			if (t.x > maxX + 1)
+			{
+				eastTiles.Add(t);
+			}
+		}
+		return eastTiles;
+	}
+
+	public List<Tile> GetSouthFacingTiles(List<Tile> characterTiles)
+	{
+		List<Tile> southTiles = new List<Tile>();
+		int minY = characterTiles.Min(t => t.y);
+		foreach (Tile t in TileGrid.Instance.tiles)
+		{
+			if (t.y < minY - 1)
+			{
+				southTiles.Add(t);
+			}
+		}
+		return southTiles;
+	}
+
+	public List<Tile> GetWestFacingTiles(List<Tile> characterTiles)
+	{
+		List<Tile> westTiles = new List<Tile>();
+		int minX = characterTiles.Min(t => t.x);
+		foreach (Tile t in TileGrid.Instance.tiles)
+		{
+			if (t.x < minX - 1)
+			{
+				westTiles.Add(t);
+			}
+		}
+		return westTiles;
+	}
+
 	public TilesAndDirection GetMostFacingDirection(Character c)
 	{
 		List<Tile> tiles = TileGrid.Instance.FindCharacter(c);
 
-
-		//WEST!!!
-		List<Tile> westTiles = new List<Tile>();
-		int minX = tiles.Min(t => t.x);
-
-		for (int i = 0; i < TileGrid.Instance.tiles.Count; ++i)
+		List<Tile>[] groups = new List<Tile>[]
 		{
-			if (tiles[i].x < minX - 1)
-			{
-				westTiles.Add(tiles[i]);
-			}
-		}
-
-		//EAST!!!
-		List<Tile> eastTiles = new List<Tile>();
-		int maxX = tiles.Max(t => t.x);
-
-		for (int i = 0; i < TileGrid.Instance.tiles.Count; ++i)
-		{
-			if (tiles[i].x > maxX + 1)
-			{
-				eastTiles.Add(tiles[i]);
-			}
-		}
-
-		//NORTH!!!
-		List<Tile> northTiles = new List<Tile>();
-		int maxY = tiles.Max(t => t.y);
-
-		for (int i = 0; i < TileGrid.Instance.tiles.Count; ++i)
-		{
-			if (tiles[i].y > maxY + 1)
-			{
-				northTiles.Add(tiles[i]);
-			}
-		}
-
-		//SOUTH!!!
-		List<Tile> southTiles = new List<Tile>();
-		int minY = tiles.Min(t => t.y);
-
-		for (int i = 0; i < TileGrid.Instance.tiles.Count; ++i)
-		{
-			if (tiles[i].y < minY - 1)
-			{
-				southTiles.Add(tiles[i]);
-			}
-		}
-
-		List<Tile>[] groups = new List<Tile>[] { northTiles, eastTiles, southTiles, westTiles };
+			GetNorthFacingTiles(tiles),
+			GetEastFacingTiles(tiles),
+			GetSouthFacingTiles(tiles),
+			GetWestFacingTiles(tiles),
+		};
 		int bestIndex = 0;
 		int bestCount = -1;
 		for (int i = 0; i < groups.Length; ++i)

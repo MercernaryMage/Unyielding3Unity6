@@ -39,7 +39,7 @@ public class Trample : Card
 		{
 			trail.RemoveAt(1);
 		}
-		TileGrid.Instance.RouteCharacterToTile(owningCharacter, trail, ReturnFromRoute, false, false);
+		TileGrid.Instance.RouteAICharacterToTile(owningCharacter, trail, ReturnFromRoute, false, false);
 	}
 
 	public void ReturnFromRoute()

@@ -72,7 +72,7 @@ public class Freightened : StatusEffect
 		message.turnStartLocks.Add(this);
 		BattleController.playerHasControl = false;
 
-		TileGrid.Instance.RouteCharacterToTile(character, bestRoute, () =>
+		MovementController.Instance.MoveCharacterLikeAI(character, bestRoute[^1], () =>
 		{
 			BattleController.playerHasControl = true;
 			TurnControl.Instance.RemoveLock(this);

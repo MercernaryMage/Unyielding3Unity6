@@ -26,7 +26,7 @@ public class Swoop : Card
 		Tuple<int, int> dir = TileGrid.directions[(int)tilesAndDirection.direction];
 		Tile startTile = TileGrid.Instance.FindCharacter(owningCharacter)[0];
 		List<Tile> trail = Trample.GetTramplePath(owningCharacter, startTile, dir, size);
-		TileGrid.Instance.RouteCharacterToTile(owningCharacter, trail, ReturnFromRoute, false, false);
+		TileGrid.Instance.RouteAICharacterToTile(owningCharacter, trail, ReturnFromRoute, false, false);
 	}
 
 	void ReturnFromRoute()

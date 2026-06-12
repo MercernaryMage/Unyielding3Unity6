@@ -123,8 +123,14 @@ public class MovementController : SceneSingleton<MovementController>
 		return false;
 	}
 
+	public void MoveCharacterLikeAI(Character c, Tile t, Action movementCompleteCallback = null)
+	{
+		movingCharacter = c;
+		MoveCharacter(t, movementCompleteCallback);
+	}
+
 	//player moving
-	public void MoveCharacter(Tile t)
+	public void MoveCharacter(Tile t, Action movementCompleteCallback = null)
 	{
 		CharacterStartMovementMessage characterStartMovementMessage = new CharacterStartMovementMessage();
 		characterStartMovementMessage.movingCharacter = movingCharacter;
@@ -166,6 +172,10 @@ public class MovementController : SceneSingleton<MovementController>
 			if (message.waitingObjects.Count > 0)
 			{
 				return;
+			}
+			if (movementCompleteCallback != null)
+			{
+				movementCompleteCallback();
 			}
 			FinishMovement(stepCallback);
 		}, true);

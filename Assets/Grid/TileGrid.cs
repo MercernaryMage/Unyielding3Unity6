@@ -37,7 +37,43 @@ public class TileGrid : SceneSingleton<TileGrid>
 	}
 
 	//AI moving
-	public void RouteCharacterToTile(Character character, List<Tile> tiles, Action callback, bool moveCharacter = true, bool provokeReactions = true)
+	public void RouteAICharacterToTile(Character character, List<Tile> tiles, Action callback, bool moveCharacter = true, bool provokeReactions = true)
+	{
+		CharacterStartMovementMessage characterStartMovementMessage = new CharacterStartMovementMessage();
+		characterStartMovementMessage.movingCharacter = character;
+		characterStartMovementMessage.provokeTriggers = provokeReactions;
+		MessagePump.Instance.SendMessage(characterStartMovementMessage);
+		Action continueAction = () =>
+		{
+			PathFollower pathFollower = character.token.gameObject.AddComponent<PathFollower>();
+			pathFollower.Set(character, tiles, callback, moveCharacter);
+		};
+		Action abandonAction = () =>
+		{
+			foreach (Tile t in TileGrid.Instance.tiles)
+			{
+				t.HideOverlay(Tile.OverlayType.PossibleMovement);
+			}
+			if (character.hero)
+			{
+				HeroDisplayRouter.Instance.mainDisplay.Hide(true);
+			}
+			else
+			{
+				Card.Finish();
+			}
+		};
+		if (characterStartMovementMessage.raisedTriggers.Count == 0)
+		{
+			continueAction();
+		}
+		else
+		{
+			TriggerDisplay.Instance.ShowTriggerMenu(characterStartMovementMessage.raisedTriggers, continueAction, abandonAction);
+		}
+	}
+
+	public void RouteHeroCharacterToTile(Character character, List<Tile> tiles, Action callback, bool moveCharacter = true, bool provokeReactions = true)
 	{
 		CharacterStartMovementMessage characterStartMovementMessage = new CharacterStartMovementMessage();
 		characterStartMovementMessage.movingCharacter = character;

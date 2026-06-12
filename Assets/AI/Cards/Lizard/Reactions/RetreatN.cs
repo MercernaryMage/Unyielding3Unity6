@@ -32,7 +32,7 @@ public class RetreatN : ReactionBase
 					tiles[0],
 					newTile
 				};
-				TileGrid.Instance.RouteCharacterToTile(owningCharacter, new List<Tile>(route), BattleController.ReturnControlToPlayer, true, false);
+				TileGrid.Instance.RouteAICharacterToTile(owningCharacter, new List<Tile>(route), BattleController.ReturnControlToPlayer, true, false);
 				
 				return;
 			}
