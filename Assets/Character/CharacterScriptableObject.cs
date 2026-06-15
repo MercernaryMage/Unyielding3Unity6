@@ -31,6 +31,7 @@ public class CharacterScriptableObject : ScriptableObject
     public int maxEnergy;
     public int maxThreshold = 10;
     public int evasion;
+    public int weight;
     public bool isMinion;
 
     public int maxDetermination;

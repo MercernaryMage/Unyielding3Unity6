@@ -11,10 +11,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b56082e77d2370409b82981ddeee984, type: 3}
   m_Name: Energy Potion
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   displayName: Energy Potion
   itemImage: {fileID: 0}
-  weight: 0
+  weight: 1
   weapon: 0
   slotType: 1
   description: Gain 2 action points.
@@ -27,28 +27,34 @@ MonoBehaviour:
       actions: 0
       energy: 0
     attack: 0
+    physical: 0
+    ranged: 0
     range: 0
     threatRange: 0
+    accuracy: 0
+    damageString: 
     aoeType: 0
     aoeRange: 0
-    number: 0
-    face: 0
-    flatValue: 0
     chargesTaken: 1
-    disqualifierFunc:
+    disqualifierFunc: 
     intParam: 2
-    stringParam:
+    stringParam: 
     keywords: []
     postActionCommands: []
+    postDamageFunctionName: 
     useInstantAction: 1
     instantAction:
       actionName: GiveActionPoints
-      disqualiferFunction:
+      disqualiferFunction: 
     useTargetedAction: 0
     targetedAction:
       targetType: 0
-      actionName:
-      disqualiferFunction:
+      actionName: 
+      disqualiferFunction: 
     actionDescription: Gain 2 action points.
-    uniqueName:
-  keywords:
+    actionDescriptionFunction: 
+    uniqueName: 
+    forcedTarget: {fileID: 0}
+    cannotBeUsedOnOthers: 0
+  keywords: 
+  displayable: 1

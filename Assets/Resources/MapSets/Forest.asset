@@ -15,11 +15,13 @@ MonoBehaviour:
   setName: Forest Fracas
   setDescription: Battle forest monsters
   maps:
-  - 
+  - TestMap.txt
+  - TestMap.txt
+  - TestMap.txt
   configurations:
-  - Forest/Forest1
-  - Forest/Forest2
-  - Forest/Forest3
+  - Tutorial/Tutorial1
+  - Tutorial/Tutorial1
+  - Tutorial/Tutorial1
   rewardText: Unlock weapons and weapon equipping
   lockedText: 
   levelCompletedFunction: 

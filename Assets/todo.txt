@@ -115,10 +115,11 @@ Do do our characters advance
         As the game advances, character paths unlock
         charcters can use other characters path
 !!!MARCHING ORDERS!!!
-    Add land mine?
-    Intimdate when the dragon dies during it leaves the game soft locked
-        We need to restore the character control
-    How strong should the characters be?
+    small item display is totally wrong
+    !!!Charges are missing!!!
+    Move the weapon "SlotDisplay" into the weapon picker thing!!
+
+
     1) Finish enemies
         DRAGON
     2) Create the content for the other levels
@@ -139,8 +140,8 @@ Do do our characters advance
             Is he too long?  Too hard/easy?
 
        Do move variants
-        Do we need them for the demo?
-        How many?
+           Do we need them for the demo?
+           How many?
        
        DRAGON BOSS
             Moves
@@ -171,15 +172,9 @@ Do do our characters advance
                 IntimidateN
                 IntimidateA
 
-
-                
-                
-        
         Do stuff
             Better display of cards and reactions happening?
             
-
-        
         Why did the lizard get aggravted stuff?
 
         Test trample on players right next to trees

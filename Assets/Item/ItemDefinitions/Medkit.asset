@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Medkit
   itemImage: {fileID: 0}
-  weight: 0
+  weight: 2
   weapon: 0
   slotType: 0
-  description: 
+  description: Heals a target for half of their max hp.
   charges: 2
   armor: 0
   actions:
@@ -27,19 +27,21 @@ MonoBehaviour:
       actions: 2
       energy: 0
     attack: 0
+    physical: 0
+    ranged: 0
     range: 1
     threatRange: 0
+    accuracy: 0
+    damageString: 
     aoeType: 0
     aoeRange: 0
-    number: 0
-    face: 0
-    flatValue: 0
     chargesTaken: 1
     disqualifierFunc: 
     intParam: 0
     stringParam: 
     keywords: []
     postActionCommands: []
+    postDamageFunctionName: 
     useInstantAction: 0
     instantAction:
       actionName: 
@@ -49,6 +51,10 @@ MonoBehaviour:
       targetType: 0
       actionName: HalfHeal
       disqualiferFunction: AllowedToHealTarget
-    actionDescription: Reveals the targets next action card.
+    actionDescription: Heals a target for half of their max hp.
+    actionDescriptionFunction: 
     uniqueName: 
+    forcedTarget: {fileID: 0}
+    cannotBeUsedOnOthers: 0
   keywords: 
+  displayable: 1

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Protect
   itemImage: {fileID: 0}
-  weight: 0
+  weight: 1
   weapon: 1
   slotType: 1
   description: 
@@ -27,19 +27,21 @@ MonoBehaviour:
       actions: 2
       energy: 2
     attack: 0
+    physical: 0
+    ranged: 0
     range: 5
     threatRange: 0
+    accuracy: 0
+    damageString: 
     aoeType: 0
     aoeRange: 0
-    number: 0
-    face: 0
-    flatValue: 0
     chargesTaken: 0
     disqualifierFunc: 
     intParam: 3
     stringParam: 
     keywords: []
     postActionCommands: []
+    postDamageFunctionName: 
     useInstantAction: 0
     instantAction:
       actionName: 
@@ -50,5 +52,9 @@ MonoBehaviour:
       actionName: BlockOther
       disqualiferFunction: CanBlockOther
     actionDescription: Gives 3 armor.
+    actionDescriptionFunction: 
     uniqueName: 
+    forcedTarget: {fileID: 0}
+    cannotBeUsedOnOthers: 0
   keywords: 
+  displayable: 1

@@ -29,10 +29,17 @@ public class WeaponDisplay : MonoBehaviour
 		{
 			weaponRange.text = "";
 		}
-		List<(int, int, int, ActionPattern.DamageType)> damages = Util.ParseDiceString(itemScriptableObject.actions[0].damageString);
-		if (damages[0].Item1 > 0)
+		if (!string.IsNullOrEmpty(itemScriptableObject.actions[0].damageString))
 		{
-			weaponDamage.text = $"{damages[0].Item1}D{damages[0].Item2} + {damages[0].Item3}";
+			List<(int, int, int, ActionPattern.DamageType)> damages = Util.ParseDiceString(itemScriptableObject.actions[0].damageString);
+			if (damages[0].Item1 > 0)
+			{
+				weaponDamage.text = $"{damages[0].Item1}D{damages[0].Item2} + {damages[0].Item3}";
+			}
+			else
+			{
+				weaponDamage.text = "";
+			}
 		}
 		else
 		{

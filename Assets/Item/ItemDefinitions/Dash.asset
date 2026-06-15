@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Dash
   itemImage: {fileID: 21300000, guid: 29cf718e50740f7408832c41dd9ffdda, type: 3}
-  weight: 0
+  weight: 1
   weapon: 0
   slotType: 1
   description: 
@@ -28,14 +28,13 @@ MonoBehaviour:
       energy: 0
     attack: 0
     physical: 0
+    ranged: 0
     range: 0
     threatRange: 0
+    accuracy: 0
     damageString: 
     aoeType: 0
     aoeRange: 0
-    number: 0
-    face: 0
-    flatValue: 0
     chargesTaken: 0
     disqualifierFunc: 
     intParam: 0
@@ -56,5 +55,6 @@ MonoBehaviour:
     actionDescriptionFunction: 
     uniqueName: 
     forcedTarget: {fileID: 0}
+    cannotBeUsedOnOthers: 0
   keywords: Versatile
   displayable: 1

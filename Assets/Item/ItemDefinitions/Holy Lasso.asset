@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Holy Lasso
   itemImage: {fileID: 0}
-  weight: 0
+  weight: 1
   weapon: 0
   slotType: 0
   description: 
@@ -35,9 +35,6 @@ MonoBehaviour:
     damageString: 
     aoeType: 0
     aoeRange: 0
-    number: 0
-    face: 0
-    flatValue: 0
     chargesTaken: 0
     disqualifierFunc: 
     intParam: 0

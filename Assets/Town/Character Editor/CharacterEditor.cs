@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -26,6 +27,7 @@ public class CharacterEditor : SceneSingleton<CharacterEditor>
 	public GameObject advantagePrefab;
 	public List<Transform> advantageTargets;
 	List<GameObject> createdAdvantages = new List<GameObject>();
+	public TextMeshProUGUI weightValue;
 	public StorageCharacter currentCharacter;
 	public GameObject subclassDispaly;
 
@@ -81,6 +83,8 @@ public class CharacterEditor : SceneSingleton<CharacterEditor>
 		}
 		createdAdvantages.Clear();
 
+		int currentWeight = 0;
+
 		foreach (ItemScriptableObject item in storageCharacter.advantages)
 		{
 			GameObject obj = Instantiate(advantagePrefab);
@@ -88,6 +92,7 @@ public class CharacterEditor : SceneSingleton<CharacterEditor>
 			ShuffleItemDisplay();
 			InventoryItemDisplay inventoryItemDisplay = obj.GetComponent<InventoryItemDisplay>();
 			inventoryItemDisplay.Set(item);
+			currentWeight += item.weight;
 		}
 
 		foreach (GameObject obj in createdTraits)
@@ -109,6 +114,8 @@ public class CharacterEditor : SceneSingleton<CharacterEditor>
 			LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)traitTarget.transform);
 			LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)advantageTargets[0].parent.transform);
 		}
+
+		weightValue.text = $"{currentWeight}/{storageCharacter.characterDefintion.weight}";
 	}
 
 	public void ResetToBase()

@@ -15,11 +15,13 @@ MonoBehaviour:
   setName: Meadow Massacre
   setDescription: 
   maps:
-  - 
+  - TestMap.txt
+  - TestMap.txt
+  - TestMap.txt
   configurations:
-  - Meadow/Meadow1
-  - Meadow/Meadow1
-  - Meadow/Meadow1
+  - Tutorial/Tutorial1
+  - Tutorial/Tutorial1
+  - Tutorial/Tutorial1
   rewardText: Unlock Energy
   lockedText: 
   levelCompletedFunction: 

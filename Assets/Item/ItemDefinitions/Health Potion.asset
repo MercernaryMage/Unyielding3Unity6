@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Health Potion
   itemImage: {fileID: 21300000, guid: bbffded6dd6084d4991a0c4fda4699e4, type: 3}
-  weight: 0
+  weight: 1
   weapon: 0
   slotType: 1
   description: Restore all HP.
@@ -28,14 +28,13 @@ MonoBehaviour:
       energy: 0
     attack: 0
     physical: 0
+    ranged: 0
     range: 0
     threatRange: 0
+    accuracy: 0
     damageString: 
     aoeType: 0
     aoeRange: 0
-    number: 0
-    face: 0
-    flatValue: 0
     chargesTaken: 1
     disqualifierFunc: 
     intParam: 0
@@ -53,7 +52,9 @@ MonoBehaviour:
       actionName: 
       disqualiferFunction: 
     actionDescription: Restore all HP.
+    actionDescriptionFunction: 
     uniqueName: 
     forcedTarget: {fileID: 0}
+    cannotBeUsedOnOthers: 0
   keywords: 
   displayable: 1

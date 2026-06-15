@@ -34,7 +34,7 @@ MonoBehaviour:
     accuracy: 0
     damageString: 1d6+3M
     aoeType: 3
-    aoeRange: 2
+    aoeRange: 10
     chargesTaken: 0
     disqualifierFunc: 
     intParam: 0

@@ -8,13 +8,25 @@ public class OverlandSetButton : MonoBehaviour
 {
 	public MapSetScriptableObject mapSetScriptableObject;
 	float time = 0;
+	bool locked;
 
 	public void Start()
 	{
-		if (FlowControl.Instance.SetIsLocked(mapSetScriptableObject.lockedFunction) || FlowControl.Instance.SetIsComplete(mapSetScriptableObject.isComplete))
+		locked = FlowControl.Instance.SetIsLocked(mapSetScriptableObject.lockedFunction) || FlowControl.Instance.SetIsComplete(mapSetScriptableObject.isComplete);
+		if (locked)
 		{
 			enabled = false;
 		}
+	}
+
+	private void OnMouseEnter()
+	{
+		OverlandInspector.Instance.Set(mapSetScriptableObject, locked);
+	}
+
+	private void OnMouseExit()
+	{
+		OverlandInspector.Instance.Set(null, false);
 	}
 
 	private void OnMouseDown()

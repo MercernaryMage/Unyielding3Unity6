@@ -42,6 +42,10 @@ public class MapParser
 
 	static public Map ParseMap(string file)
 	{
+		if (file == "")
+		{
+			Debug.LogError("File param is empty string");
+		}
 		string str = File.ReadAllText($"Assets/Resources/Maps/{file}");
 		Map map =  JsonUtility.FromJson<Map>(str);
 		return map;

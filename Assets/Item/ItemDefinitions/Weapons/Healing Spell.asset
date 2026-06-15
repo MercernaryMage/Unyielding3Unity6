@@ -32,7 +32,7 @@ MonoBehaviour:
     range: 4
     threatRange: 0
     accuracy: 0
-    damageString: 1d6
+    damageString: 
     aoeType: 0
     aoeRange: 0
     chargesTaken: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
       targetType: 0
       actionName: Heal
       disqualiferFunction: AllowedToHealTarget
-    actionDescription: Reveals the targets next action card.
+    actionDescription: Heals a target for 1d6 HP
     actionDescriptionFunction: 
     uniqueName: 
     forcedTarget: {fileID: 0}

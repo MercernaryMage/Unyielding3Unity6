@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Ready
   itemImage: {fileID: 21300000, guid: 2150d152d8b33d44bbb45379b5826e00, type: 3}
-  weight: 0
+  weight: 1
   weapon: 0
   slotType: 1
   description: 
@@ -35,9 +35,6 @@ MonoBehaviour:
     damageString: 
     aoeType: 0
     aoeRange: 0
-    number: 0
-    face: 0
-    flatValue: 0
     chargesTaken: 0
     disqualifierFunc: 
     intParam: 0

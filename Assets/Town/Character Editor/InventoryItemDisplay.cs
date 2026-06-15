@@ -30,7 +30,7 @@ public class InventoryItemDisplay : MonoBehaviour, IPointerClickHandler
 		}
 		itemIcon.sprite = item.itemImage;
 		itemName.text = item.displayName;
-		itemDescription.text = $"{item.weight}\n{item.actions[0].actionDescription}";
+		itemDescription.text = $"Weight:{item.weight}\n{item.actions[0].actionDescription}";
 	}
 
 	public void Remove()

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Causality Gem
   itemImage: {fileID: 0}
-  weight: 0
+  weight: 2
   weapon: 0
   slotType: 0
   description: 
@@ -35,9 +35,6 @@ MonoBehaviour:
     damageString: 
     aoeType: 0
     aoeRange: 0
-    number: 0
-    face: 0
-    flatValue: 0
     chargesTaken: 0
     disqualifierFunc: 
     intParam: 0
@@ -59,5 +56,6 @@ MonoBehaviour:
     actionDescriptionFunction: 
     uniqueName: 
     forcedTarget: {fileID: 0}
+    cannotBeUsedOnOthers: 0
   keywords: 
   displayable: 1

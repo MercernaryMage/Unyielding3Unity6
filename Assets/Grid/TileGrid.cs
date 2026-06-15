@@ -64,6 +64,10 @@ public class TileGrid : SceneSingleton<TileGrid>
 				{
 					Card.Finish();
 				}
+				else
+				{
+					BattleController.ReturnControlToPlayer();
+				}
 			}
 		};
 		if (characterStartMovementMessage.raisedTriggers.Count == 0)

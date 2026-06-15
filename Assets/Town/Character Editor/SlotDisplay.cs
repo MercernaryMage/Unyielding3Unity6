@@ -17,6 +17,7 @@ public class SlotDisplay : MonoBehaviour
 		public TextMeshProUGUI keywords;
 		public TextMeshProUGUI stats;
 		public TextMeshProUGUI rules;
+		public TextMeshProUGUI cost;
 		public Image itemIcon;
 	}
 
@@ -33,7 +34,7 @@ public class SlotDisplay : MonoBehaviour
 		item = i;
 		slotType = s;
 
-		string slotTypeName = ""; 
+		string slotTypeName = "";
 
 		if (s == WeaponSlotType.Support)
 		{
@@ -57,6 +58,7 @@ public class SlotDisplay : MonoBehaviour
 			normal.keywords.text = "";
 			normal.stats.text = "";
 			normal.rules.text = "";
+			normal.cost.text = "";
 		}
 		else
 		{
@@ -67,6 +69,7 @@ public class SlotDisplay : MonoBehaviour
 			//range, AOE, damage
 			if (item.itemDefinition.actions[0].attack)
 			{
+				normal.stats.gameObject.SetActive(true);
 				string range = GetRangeString(item.itemDefinition);
 				string AoE = GetAoEString(item.itemDefinition);
 				string damage = GetDamageString(item.itemDefinition);
@@ -79,7 +82,13 @@ public class SlotDisplay : MonoBehaviour
 					normal.stats.text = $"{range}, {damage}";
 				}
 			}
+			else
+			{
+				normal.stats.text = "";
+				normal.stats.gameObject.SetActive(false);
+			}
 			normal.rules.text = item.itemDefinition.actions[0].actionDescription;
+			normal.cost.text = $"Cost: {Util.GetCostString(item.itemDefinition.actions[0].cost)}";
 			Canvas.ForceUpdateCanvases();
 			LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)normal.stats.transform.parent);
 		}

@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setName: Woods Whammy
   setDescription: 
-  maps: []
+  maps:
+  - TestMap.txt
+  - TestMap.txt
+  - TestMap.txt
   configurations:
-  - Woods/Woods1
-  - Woods/Woods2
-  - Woods/Woods3
+  - Tutorial/Tutorial1
+  - Tutorial/Tutorial1
+  - Tutorial/Tutorial1
   rewardText: Unlock Advantages
   lockedText: 
   levelCompletedFunction: 

@@ -11,10 +11,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b56082e77d2370409b82981ddeee984, type: 3}
   m_Name: Attack Fairy
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   displayName: Attack Fairy
   itemImage: {fileID: 0}
-  weight: 0
+  weight: 1
   weapon: 0
   slotType: 1
   description: Summon an attack fairy on any empty tile within range 5.
@@ -27,28 +27,34 @@ MonoBehaviour:
       actions: 1
       energy: 0
     attack: 0
+    physical: 0
+    ranged: 0
     range: 5
     threatRange: 0
+    accuracy: 0
+    damageString: 
     aoeType: 0
     aoeRange: 0
-    number: 0
-    face: 0
-    flatValue: 0
     chargesTaken: 1
-    disqualifierFunc:
+    disqualifierFunc: 
     intParam: 0
     stringParam: AttackFairy
     keywords: []
     postActionCommands: []
+    postDamageFunctionName: 
     useInstantAction: 0
     instantAction:
-      actionName:
-      disqualiferFunction:
+      actionName: 
+      disqualiferFunction: 
     useTargetedAction: 1
     targetedAction:
       targetType: 2
       actionName: SpawnGuest
-      disqualiferFunction:
+      disqualiferFunction: 
     actionDescription: Place an attack fairy on an empty tile within range 5.
-    uniqueName:
-  keywords:
+    actionDescriptionFunction: 
+    uniqueName: 
+    forcedTarget: {fileID: 0}
+    cannotBeUsedOnOthers: 0
+  keywords: 
+  displayable: 1

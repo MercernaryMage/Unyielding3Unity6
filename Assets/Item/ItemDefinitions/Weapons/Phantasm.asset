@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b56082e77d2370409b82981ddeee984, type: 3}
   m_Name: Phantasm
   m_EditorClassIdentifier: 
-  displayName: Spear
+  displayName: Phantasm
   itemImage: {fileID: 0}
   weight: 0
   weapon: 1

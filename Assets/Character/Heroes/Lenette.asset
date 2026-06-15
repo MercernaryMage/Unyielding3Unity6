@@ -22,6 +22,7 @@ MonoBehaviour:
   maxEnergy: 6
   maxThreshold: -1
   evasion: -1
+  weight: 1
   isMinion: 0
   maxDetermination: 3
   isScannable: 1

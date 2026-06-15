@@ -13,6 +13,32 @@ public static class Util
 {
 	public delegate bool CharacterEvaluation(Character c);
 
+	public static string GetCostString(ActionPattern.ActionCost cost)
+	{
+		string outString = "";
+		if (cost.actions > 0)
+		{
+			outString += $"{cost.actions} action points";
+		}
+		if (cost.movement > 0)
+		{
+			if (outString != "")
+			{
+				outString += " ";
+			}
+			outString += $"{cost.movement} movement points";
+		}
+		if (cost.energy > 0)
+		{
+			if (outString != "")
+			{
+				outString += " ";
+			}
+			outString += $"{cost.energy} energy";
+		}
+		return outString;
+	}
+
 	public static Tuple<List<Tile>, Tile>? FindSmallestRoute(Dictionary<Character, Tuple<List<Tile>, Tile>> data, CharacterEvaluation evaluationFunction)
 	{
 		Tuple<List<Tile>, Tile> shortestRoute = null;
