@@ -82,6 +82,10 @@ public class Character : MonoBehaviour
 
 			{
 				Type t = Type.GetType(reactionScriptableObject.normalReaction.className);
+				if (t == null)
+				{
+					Debug.Log($"failed to find class name: {reactionScriptableObject.normalReaction.className}");
+				}
 				ReactionBase c = (ReactionBase)Activator.CreateInstance(t);
 				c.Set(reactionScriptableObject.normalReaction);
 				c.owningCharacter = this;

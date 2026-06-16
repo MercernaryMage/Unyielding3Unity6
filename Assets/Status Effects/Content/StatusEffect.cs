@@ -15,13 +15,17 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 
 	bool exiting = false;
 
+	void Awake()
+	{
+		character = GetComponent<Character>();
+	}
+
 	virtual public void Start()
 	{
 #if UNITY_EDITOR
 		EditorApplication.playModeStateChanged += OnEditorChangeState;
 #endif
 
-		character = GetComponent<Character>();
 		MessagePump.Instance.AddListener(this);
 
 		FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, GetDisplayName());

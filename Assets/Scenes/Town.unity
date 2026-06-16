@@ -7227,14 +7227,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugForceCharacterSetup
   loadouts:
-  - weapons: []
-    advantages: []
-  - weapons: []
-    advantages: []
-  - weapons: []
-    advantages: []
-  - weapons: []
-    advantages: []
+  - weapons:
+    - {fileID: 11400000, guid: 18e996dcff016ab40846a53947512ce3, type: 2}
+    - {fileID: 11400000, guid: 49081a8cde1b91d44ab8190148ffc79b, type: 2}
+    - {fileID: 11400000, guid: a9dc2b9b57e2f1d4abc31b2b5f7aeab2, type: 2}
+    advantages:
+    - {fileID: 11400000, guid: 672bb29615584dd47a4672d8a0923e66, type: 2}
+  - weapons:
+    - {fileID: 11400000, guid: a5a2533f851526740be2478c77cd5922, type: 2}
+    - {fileID: 11400000, guid: 9252c87ffdfebf84fa726570c164cd41, type: 2}
+    - {fileID: 11400000, guid: b25d6a113c1d0ab49a25bdc2457ef8e8, type: 2}
+    advantages:
+    - {fileID: 11400000, guid: f3b5e80942e2cc54b8d3303a723c1720, type: 2}
+    - {fileID: 11400000, guid: f166313abcac4504f92f06970aceb4ea, type: 2}
+  - weapons:
+    - {fileID: 11400000, guid: 18e996dcff016ab40846a53947512ce3, type: 2}
+    - {fileID: 11400000, guid: 57038a76312a12b4f96e0ab8af33a7da, type: 2}
+    advantages:
+    - {fileID: 11400000, guid: 6dfa86ebcc99d1246879a6583da68ca8, type: 2}
+    - {fileID: 11400000, guid: 9b3744b74e99ca34d9a8f78aa0ed2451, type: 2}
+  - weapons:
+    - {fileID: 11400000, guid: 464c71a2aba5b364bafb3b9117a72e70, type: 2}
+    - {fileID: 11400000, guid: 57038a76312a12b4f96e0ab8af33a7da, type: 2}
+    - {fileID: 11400000, guid: 281cb2b815677c047b146eb99a12fb4e, type: 2}
+    advantages:
+    - {fileID: 11400000, guid: 4598fec9b1ee47044b6933adde96fe70, type: 2}
+    - {fileID: 11400000, guid: 9932673fca360f64ba73e9a06b7a80c3, type: 2}
+    - {fileID: 11400000, guid: f166313abcac4504f92f06970aceb4ea, type: 2}
 --- !u!1 &1701854167
 GameObject:
   m_ObjectHideFlags: 0

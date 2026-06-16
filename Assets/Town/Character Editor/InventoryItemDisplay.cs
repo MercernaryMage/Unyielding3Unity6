@@ -30,7 +30,12 @@ public class InventoryItemDisplay : MonoBehaviour, IPointerClickHandler
 		}
 		itemIcon.sprite = item.itemImage;
 		itemName.text = item.displayName;
-		itemDescription.text = $"Weight:{item.weight}\n{item.actions[0].actionDescription}";
+		string charges = "";
+		if (item.charges > 0)
+		{
+			charges = $" {item.charges} {Util.Pluralize(item.charges, "charge")}";	
+		}
+		itemDescription.text = $"{item.weight} weight{charges}\n{item.actions[0].actionDescription}";
 	}
 
 	public void Remove()

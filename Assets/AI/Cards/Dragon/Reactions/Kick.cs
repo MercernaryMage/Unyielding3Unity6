@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class KickN : ReactionBase
+public class Kick : ReactionBase
 {
 
 	public override void Execute()

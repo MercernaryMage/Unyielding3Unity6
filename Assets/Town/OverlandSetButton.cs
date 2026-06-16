@@ -13,6 +13,10 @@ public class OverlandSetButton : MonoBehaviour
 	public void Start()
 	{
 		locked = FlowControl.Instance.SetIsLocked(mapSetScriptableObject.lockedFunction) || FlowControl.Instance.SetIsComplete(mapSetScriptableObject.isComplete);
+		if (OverlandManager.Instance.overrideUnlockedAll)
+		{
+			locked = false;
+		}
 		if (locked)
 		{
 			enabled = false;
@@ -31,7 +35,7 @@ public class OverlandSetButton : MonoBehaviour
 
 	private void OnMouseDown()
 	{
-		if (mapSetScriptableObject.lockedFunction != "" && FlowControl.Instance.SetIsLocked(mapSetScriptableObject.lockedFunction))
+		if (locked)
 		{
 			return;
 		}

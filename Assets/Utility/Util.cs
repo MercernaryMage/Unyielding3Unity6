@@ -11,7 +11,18 @@ using UnityEngine.Profiling;
 
 public static class Util
 {
-	public delegate bool CharacterEvaluation(Character c);
+	public static string Pluralize(int value, string str, string aberration = "")
+	{
+		if (value != 1)
+		{
+			if (aberration != "")
+			{
+				return aberration;
+			}
+			return $"{str}s";
+		}
+		return str;
+	}
 
 	public static string GetCostString(ActionPattern.ActionCost cost)
 	{
@@ -38,6 +49,8 @@ public static class Util
 		}
 		return outString;
 	}
+
+	public delegate bool CharacterEvaluation(Character c);
 
 	public static Tuple<List<Tile>, Tile>? FindSmallestRoute(Dictionary<Character, Tuple<List<Tile>, Tile>> data, CharacterEvaluation evaluationFunction)
 	{

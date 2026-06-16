@@ -116,7 +116,7 @@ Do do our characters advance
         charcters can use other characters path
 !!!MARCHING ORDERS!!!
     small item display is totally wrong
-    !!!Charges are missing!!!
+    Dragon ended up at 5/3 armor
     1) Finish enemies
         DRAGON
     2) Create the content for the other levels

@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setName: The Boss
   setDescription: 
-  maps: []
-  configurations: []
+  maps:
+  - TestMap.txt
+  configurations:
+  - Dragon/Dragon Boss
   rewardText: ????
   lockedText: Defeat all other events
   levelCompletedFunction: 
   lockedFunction: BossIsLocked
-  completedFunction: 
+  onComplete: 
+  isComplete: 
