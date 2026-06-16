@@ -74,7 +74,7 @@ public class CharacterEditor : SceneSingleton<CharacterEditor>
 				continue;
 			}
 			slots[i].gameObject.SetActive(true);
-			slots[i].Set(storageCharacter.characterDefintion.slots[i], storageCharacter.slots[i], storageCharacter.slots[i].weapon);
+			slots[i].Set(storageCharacter.characterDefintion.slots[i], storageCharacter.slots[i], storageCharacter.slots[i].weapon?.itemDefinition);
 		}
 
 		foreach (GameObject obj in createdAdvantages)

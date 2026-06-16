@@ -117,9 +117,6 @@ Do do our characters advance
 !!!MARCHING ORDERS!!!
     small item display is totally wrong
     !!!Charges are missing!!!
-    Move the weapon "SlotDisplay" into the weapon picker thing!!
-
-
     1) Finish enemies
         DRAGON
     2) Create the content for the other levels

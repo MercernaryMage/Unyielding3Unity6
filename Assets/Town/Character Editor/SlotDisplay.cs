@@ -27,9 +27,9 @@ public class SlotDisplay : MonoBehaviour
 
 	WeaponSlotType slotType;
 	WeaponSlot slot;
-	Item item;
+	ItemScriptableObject item;
 
-	public void Set(WeaponSlotType s, WeaponSlot slotParam, Item i)
+	public void Set(WeaponSlotType s, WeaponSlot slotParam, ItemScriptableObject i)
 	{
 		item = i;
 		slotType = s;
@@ -62,17 +62,17 @@ public class SlotDisplay : MonoBehaviour
 		}
 		else
 		{
-			normal.weaponName.text = item.itemDefinition.displayName;
-			normal.keywords.text = $"{slotTypeName}, {GetActionKeywords(item.itemDefinition, item.itemDefinition.actions[0])}";
+			normal.weaponName.text = item.displayName;
+			normal.keywords.text = $"{slotTypeName}, {GetActionKeywords(item, item.actions[0])}";
 			//"Range 5, 1d6 + 2";
 			//"Range 20, Blast 1, 2d6"
 			//range, AOE, damage
-			if (item.itemDefinition.actions[0].attack)
+			if (item.actions[0].attack)
 			{
 				normal.stats.gameObject.SetActive(true);
-				string range = GetRangeString(item.itemDefinition);
-				string AoE = GetAoEString(item.itemDefinition);
-				string damage = GetDamageString(item.itemDefinition);
+				string range = GetRangeString(item);
+				string AoE = GetAoEString(item);
+				string damage = GetDamageString(item);
 				if (AoE != "")
 				{
 					normal.stats.text = $"{range}, {AoE}, {damage}";
@@ -87,8 +87,8 @@ public class SlotDisplay : MonoBehaviour
 				normal.stats.text = "";
 				normal.stats.gameObject.SetActive(false);
 			}
-			normal.rules.text = item.itemDefinition.actions[0].actionDescription;
-			normal.cost.text = $"Cost: {Util.GetCostString(item.itemDefinition.actions[0].cost)}";
+			normal.rules.text = item.actions[0].actionDescription;
+			normal.cost.text = $"Cost: {Util.GetCostString(item.actions[0].cost)}";
 			Canvas.ForceUpdateCanvases();
 			LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)normal.stats.transform.parent);
 		}

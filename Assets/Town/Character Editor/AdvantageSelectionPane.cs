@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
@@ -10,12 +11,13 @@ public class AdvantageSelectionPane : SceneSingleton<AdvantageSelectionPane>
 	public GameObject WeaponSlotDisplayPrefab;
 	public GameObject AdvantageSlotDisplayPrefab;
 	public GameObject content;
-	public Transform target;
+	public Transform targetWeapon;
+	public Transform targetAdvantage;
 
 	List<GameObject> createdObjects = new List<GameObject>();
 
 	WeaponSlot slot;
-	Item passedItem;
+	ItemScriptableObject passedItem;
 
 	void SetDisplay()
 	{
@@ -28,7 +30,7 @@ public class AdvantageSelectionPane : SceneSingleton<AdvantageSelectionPane>
 		createdObjects.Clear();
 	}
 
-	public void Set(WeaponSlotType weaponSlotType, WeaponSlot s, Item i)
+	public void Set(WeaponSlotType weaponSlotType, WeaponSlot s, ItemScriptableObject i)
 	{
 		passedItem = i;
 		slot = s;
@@ -53,13 +55,11 @@ public class AdvantageSelectionPane : SceneSingleton<AdvantageSelectionPane>
 				continue;
 			}
 			GameObject obj = Instantiate(WeaponSlotDisplayPrefab);
-			WeaponDisplay weaponDisplay = obj.GetComponent<WeaponDisplay>();
-			weaponDisplay.Set(item, passedItem);
-			obj.transform.SetParent(target);
+			SlotDisplay weaponDisplay = obj.GetComponent<SlotDisplay>();
+			weaponDisplay.Set(weaponSlotType, s, item);
+			obj.transform.SetParent(targetWeapon);
 			createdObjects.Add(obj);
 		}
-
-		
 	}
 
 	public void Set()
@@ -82,7 +82,7 @@ public class AdvantageSelectionPane : SceneSingleton<AdvantageSelectionPane>
 			DisplayItem(item);
 		}
 		Canvas.ForceUpdateCanvases();
-		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)target.transform);
+		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)targetAdvantage.transform);
 	}
 
 	bool IsWeaponEqipped(StorageCharacter c, ItemScriptableObject item)
@@ -102,7 +102,7 @@ public class AdvantageSelectionPane : SceneSingleton<AdvantageSelectionPane>
 		GameObject obj = Instantiate(AdvantageSlotDisplayPrefab);
 		InventoryItemDisplay itemDisplay = obj.GetComponent<InventoryItemDisplay>();
 		itemDisplay.Set(item, false);
-		obj.transform.SetParent(target);
+		obj.transform.SetParent(targetAdvantage);
 		createdObjects.Add(obj);
 	}
 
