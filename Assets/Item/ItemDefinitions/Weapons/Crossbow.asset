@@ -42,7 +42,7 @@ MonoBehaviour:
     keywords:
     - Loading
     - Ranged
-    - Crushing
+    - Breach
     postActionCommands: []
     postDamageFunctionName: 
     useInstantAction: 0

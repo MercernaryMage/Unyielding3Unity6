@@ -60,6 +60,8 @@ public class BattleController : SceneSingleton<BattleController>
 		}
 
 		c.SpendEnergy(cost);
+		c.actionCount += 2;
+		c.ResetActions();
 	}
 
 	public void HandleDash(Character c)

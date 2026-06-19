@@ -18,6 +18,8 @@ public class EnemyDisplay : SceneSingleton<EnemyDisplay>
 
 	bool shouldCloseCard;
 
+	public StatusEffectDisplayGroup statusEffectDisplayGroup;
+
 	public void Hide()
 	{
 		if (shouldCloseCard)
@@ -63,6 +65,6 @@ public class EnemyDisplay : SceneSingleton<EnemyDisplay>
 	{
 		currentCharacter = c;
 		characterName.text = c.displayName;
-		
+		statusEffectDisplayGroup.Set(currentCharacter);
 	}
 }

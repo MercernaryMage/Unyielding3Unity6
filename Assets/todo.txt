@@ -115,10 +115,10 @@ Do do our characters advance
         As the game advances, character paths unlock
         charcters can use other characters path
 !!!MARCHING ORDERS!!!
-    small item display is totally wrong
-    Dragon ended up at 5/3 armor
-    1) Finish enemies
-        DRAGON
+    3 cards in a row was very fucky
+    intimidate lets you do weird highlighting on the enemy
+        You can mouse over the tiles and get them to turn red
+    Inhale -> tail swipe double played!
     2) Create the content for the other levels
         Forest
             Make geo

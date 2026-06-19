@@ -13,6 +13,10 @@ public class Ready : StatusEffect
 		{
 			return;
 		}
+		if (message.movingCharacter.gameObject.GetComponent<Downed>() != null)
+		{
+			return;
+		}
 		if (!TileGrid.Instance.CharactersAreAdjacent(character, message.movingCharacter))
 		{
 			return;

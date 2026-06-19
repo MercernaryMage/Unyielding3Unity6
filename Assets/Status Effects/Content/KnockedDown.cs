@@ -7,6 +7,16 @@ public class KnockedDown : StatusEffect
 		return "Knocked Down";
 	}
 
+	public override void Start()
+	{
+		base.Start();
+		character.currentMovement = 0;
+		if (MovementController.Instance.running && MovementController.Instance.movingCharacter == character)
+		{
+			MovementController.Instance.ShowMovement(character);
+		}
+	}
+
 	public override void CharacterStartTurn(CharacterStartTurnMessage characterStartTurnMessage)
 	{
 		if (characterStartTurnMessage.character != character)
@@ -21,8 +31,14 @@ public class KnockedDown : StatusEffect
 		}
 	}
 
-	//Evasion is capped at 5?
-	//No can't gain reaction points???
+	public override void OnCharacterAttacking(CharacterAttackingMessage characterAttackingMessage)
+	{
+		if (characterAttackingMessage.attacker == character)
+		{
+			characterAttackingMessage.accuracy -= 1;
+			characterAttackingMessage.AddToAccuracyString($"-1 ({GetDisplayName()})");
+		}
+	}
 
 	public override string GetEffectText()
 	{

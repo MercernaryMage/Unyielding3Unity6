@@ -42,6 +42,6 @@ public class Downed : StatusEffect
 
 	public override string GetEffectText()
 	{
-		return "Cannot take actions or move.  Will be removed at the start of the next turn.";
+		return "Cannot take actions.  Immune to attacks of opportunity.  Will be removed at the start of the next turn.";
 	}
 }

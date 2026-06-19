@@ -25,7 +25,8 @@ public class Roar : Card
 
 		if (targets.Count == 0)
 		{
-			Finish();
+			AIController.Instance.Reshuffle(owningCharacter);
+			AIController.Instance.TakeTurn(owningCharacter);
 			return;
 		}
 
@@ -56,7 +57,8 @@ public class Roar : Card
 			{
 				t.HideOverlay(Tile.OverlayType.PossibleAttck);
 			}
-			Finish();
+			AIController.Instance.Reshuffle(owningCharacter);
+			AIController.Instance.TakeTurn(owningCharacter);
 		});
 	}
 

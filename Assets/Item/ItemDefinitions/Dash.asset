@@ -55,6 +55,6 @@ MonoBehaviour:
     actionDescriptionFunction: 
     uniqueName: 
     forcedTarget: {fileID: 0}
-    cannotBeUsedOnOthers: 0
+    cannotBeUsedOnOthers: 1
   keywords: Versatile
   displayable: 1

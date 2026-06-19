@@ -10,6 +10,8 @@ public class AICardDisplay : SceneSingleton<AICardDisplay>, IPointerEnterHandler
 	float time = -1;
 	public bool isShowing;
 
+	CardScriptableObject lastShownCard;
+
 	public CardScriptableObject cardForDebug;
 
 	public void ShowFakeCard(string title, string body)
@@ -20,6 +22,13 @@ public class AICardDisplay : SceneSingleton<AICardDisplay>, IPointerEnterHandler
 
 	public void ShowCard(CardScriptableObject cardScriptableObject)
 	{
+		if (time > 0 && cardScriptableObject == lastShownCard && isShowing)
+		{
+			time = -1;
+			return;
+		}
+		time = -1;
+		lastShownCard = cardScriptableObject;
 		isShowing = true;
 		cardDisplay.ShowCard(cardScriptableObject, true);
 	}

@@ -35,13 +35,14 @@ public class Bite : Card
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
 		}
 
-		if (!TileGrid.AreCharactersAdjacent(target, owningCharacter))
+		List<Tile> targetTiles = TemplateLibrary.GetAdjacentCharacterTarget(owningCharacter, null);
+		if (targetTiles == null)
 		{
 			Finish();
 			return;
 		}
 
-		List<Tile> targetTiles = TileGrid.Instance.FindCharacter(target);
+		target = targetTiles[0].character;
 		AnimationController.Instance.ShowTiles(targetTiles, Tile.OverlayType.PossibleAttck, ReturnFromShowingAttackTiles);
 	}
 

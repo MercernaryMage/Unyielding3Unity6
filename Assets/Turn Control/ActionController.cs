@@ -545,6 +545,12 @@ public class ActionController : SceneSingleton<ActionController>
 			profile.preDamageAction();
 		}
 
+		if (damage <= 0)
+		{
+			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, "0");
+			return;
+		}
+
 		bool doReaction = false;
 		if (!defender.hero && !profile.trigger)
 		{
@@ -558,7 +564,7 @@ public class ActionController : SceneSingleton<ActionController>
 			}
 		}
 
-		if (!profile.breach)
+		if (!profile.breach && profile.damageType != DamageType.Burning)
 		{
 			int originalArmor = defender.armor;
 			defender.armor = Mathf.Max(defender.armor - damage, 0);
@@ -580,20 +586,28 @@ public class ActionController : SceneSingleton<ActionController>
 
 			if (defender.toughness != 0)
 			{
-				results.outString += $" - {defender.toughness} (toughness)";
+				if (defender.toughness > 0)
+				{
+					results.outString += $" - {defender.toughness} (toughness)";
+				}
+				else
+				{
+					results.outString += $" - {-defender.toughness} (toughness)";
+				}
 			}
 
 
 			damage -= defender.toughness;
-			if (damage <= 0)
+		}
+
+		if (damage <= 0)
+		{
+			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, "0");
+			if (doReaction)
 			{
-				FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, "0");
-				if (doReaction)
-				{
-					HandleReaction(defender, results);
-				}
-				return;
+				HandleReaction(defender, results);
 			}
+			return;
 		}
 
 		results.damageDealt = damage;

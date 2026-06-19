@@ -20,7 +20,7 @@ public class RecoverA : ReactionBase
 		}
 
 		owningCharacter.armor = Mathf.Min(owningCharacter.armor + GetIntValue("Value"), owningCharacter.characterDefinition.armor);
-
+		owningCharacter.maxArmor = Mathf.Max(owningCharacter.maxArmor, owningCharacter.armor);
 		BattleController.ReturnControlToPlayer();
 	}
 

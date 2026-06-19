@@ -6,6 +6,7 @@ public class CrimsonClaw : Card
 {
 	TemplateLibrary.TilesAndDirection tilesAndDirection;
 	Tuple<List<Tile>, Tile> route;
+	Character target;
 
 	public override void Execute()
 	{
@@ -16,17 +17,21 @@ public class CrimsonClaw : Card
 		Util.RemoveOutOfRangeRoutes(reachableRoutes, maxRange);
 
 		route = null;
+		target = null;
 		foreach (KeyValuePair<Character, Tuple<List<Tile>, Tile>> pair in reachableRoutes)
 		{
 			if (route == null || pair.Value.Item1.Count > route.Item1.Count)
 			{
 				route = pair.Value;
+				target = pair.Key;
 			}
 		}
 
 		if (route == null)
 		{
-			route = Util.FindSmallestRoute(routes, null);
+			KeyValuePair<Character, Tuple<List<Tile>, Tile>> closest = Util.FindSmallestRoutePair(routes, null);
+			target = closest.Key;
+			route = closest.Value;
 			if (route == null)
 			{
 				Finish();
@@ -49,7 +54,16 @@ public class CrimsonClaw : Card
 		{
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
 		}
-		tilesAndDirection = TemplateLibrary.Instance.ChopTargeting(owningCharacter);
+		tilesAndDirection = null;
+		if (target != null && target.alive && !target.IsDowned())
+		{
+			tilesAndDirection = TemplateLibrary.Instance.ChopTargetingTowardCharacter(owningCharacter, target);
+		}
+		//If we couldn't line up a chop on the main target, attack whoever we can reach instead.
+		if (tilesAndDirection == null)
+		{
+			tilesAndDirection = TemplateLibrary.Instance.ChopTargeting(owningCharacter);
+		}
 		if (tilesAndDirection == null)
 		{
 			Finish();

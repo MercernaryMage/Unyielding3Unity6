@@ -254,14 +254,13 @@ public class MapBuilder : MonoBehaviour
 
 		if (i == -1)
 		{
-			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 2, 2));
+			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 2, 3));
 			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 1, 5));
-			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 2, 5));
+			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 3, 5));
 			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 0, 2));
 
 			//levelConfiguration.enemies.Add(new EnemyConfiguration("BigTestEnemy", Direction.West, 6, 5));
-			levelConfiguration.enemies.Add(new EnemyConfiguration("Dragon", Direction.West, 3, 2));
-			levelConfiguration.enemies.Add(new EnemyConfiguration("Bandit", Direction.West, 8, 8));
+			levelConfiguration.enemies.Add(new EnemyConfiguration("Dragon", Direction.West, 3, 3));
 			return levelConfiguration;
 		}
 

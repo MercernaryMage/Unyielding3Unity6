@@ -6,6 +6,11 @@ public class Inhale : Card
 {
 	public override void Execute()
 	{
+		AnimationController.Instance.ShowTiles(null, Tile.OverlayType.PossibleMovement, Delay, null, 3);
+	}
+
+	public void Delay()
+	{
 		List<Card> deck = owningCharacter.cards;
 		int fireBreathIndex = -1;
 		for (int i = 1; i < deck.Count; i++)
@@ -24,7 +29,8 @@ public class Inhale : Card
 			deck.Insert(Math.Max(1, fireBreathIndex - 4), fireBreath);
 		}
 
-		Finish();
+		AIController.Instance.Reshuffle(owningCharacter);
+		AIController.Instance.TakeTurn(owningCharacter);
 	}
 
 	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)

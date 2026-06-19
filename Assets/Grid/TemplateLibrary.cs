@@ -70,8 +70,13 @@ public class TemplateLibrary : SceneSingleton<TemplateLibrary>
 			}
 		}
 
+		return BuildDirectionResult(tilesGroups[largestIndex], (Direction)largestIndex);
+	}
+
+	TilesAndDirection BuildDirectionResult(List<Tile> tiles, Direction direction)
+	{
 		bool validTarget = false;
-		foreach (Tile t in tilesGroups[largestIndex])
+		foreach (Tile t in tiles)
 		{
 			if (t.character && t.character.hero == true)
 			{
@@ -81,9 +86,9 @@ public class TemplateLibrary : SceneSingleton<TemplateLibrary>
 		}
 		if (validTarget)
 		{
-			List<Tile> filteredTiles = new List<Tile>(tilesGroups[largestIndex]);
+			List<Tile> filteredTiles = new List<Tile>(tiles);
 			filteredTiles.RemoveAll(t => t.character != null && t.character.GetComponent<Stasis>() != null);
-			return new TilesAndDirection(filteredTiles, (Direction)largestIndex);
+			return new TilesAndDirection(filteredTiles, direction);
 		}
 		else
 		{
@@ -195,6 +200,45 @@ public class TemplateLibrary : SceneSingleton<TemplateLibrary>
 		return GetLargestDirection(characterAndDirectionGroupings);
 	}
 
+	List<Tile> GetChopTilesForDirection(Character originCharacter, int i)
+	{
+		List<Tile> edgeTiles = new List<Tile>();
+		Tuple<int, int> directionOffset0 = TileGrid.directions[i];
+		Tuple<int, int> directionOffset1 = TileGrid.directions[(i + 1) % 4];
+		Tuple<int, int> directionOffset2 = TileGrid.directions[(i + 3) % 4];
+
+		List<Tile> characterEdgeTiles = GetCharacterEdges(originCharacter, (Direction)i);
+
+		foreach (Tile t in characterEdgeTiles)
+		{
+			Tile newT = TileGrid.Instance.GetTile(t.x + directionOffset0.Item1, t.y + directionOffset0.Item2);
+			if (newT)
+			{
+				edgeTiles.Add(newT);
+			}
+		}
+		if (i == 3)
+		{
+			//The west case has the up and down flipped, thus needs to be reversed
+			edgeTiles.Reverse();
+		}
+		if (edgeTiles.Count > 0)
+		{
+			Tile first = TileGrid.Instance.GetTile(edgeTiles[0].x + directionOffset1.Item1, edgeTiles[0].y + directionOffset1.Item2);
+			Tile last = TileGrid.Instance.GetTile(edgeTiles.Last().x + directionOffset2.Item1, edgeTiles.Last().y + directionOffset2.Item2);
+			if (first != null)
+			{
+				edgeTiles.Add(first);
+			}
+			if (last != null)
+			{
+				edgeTiles.Add(last);
+			}
+		}
+
+		return edgeTiles;
+	}
+
 	public TilesAndDirection ChopTargeting(Character originCharacter)
 	{
 		List<Tile>[] characterAndDirectionGroupings = new List<Tile>[]
@@ -207,45 +251,20 @@ public class TemplateLibrary : SceneSingleton<TemplateLibrary>
 
 		for (int i = 0; i < 4; ++i)
 		{
-			List<Tile> edgeTiles = new List<Tile>();
-			Tuple<int, int> directionOffset0 = TileGrid.directions[i];
-			Tuple<int, int> directionOffset1 = TileGrid.directions[(i + 1) % 4];
-			Tuple<int, int> directionOffset2 = TileGrid.directions[(i + 3) % 4];
-
-			List<Tile> characterEdgeTiles = GetCharacterEdges(originCharacter, (Direction)i);
-
-			foreach (Tile t in characterEdgeTiles)
-			{
-				Tile newT = TileGrid.Instance.GetTile(t.x + directionOffset0.Item1, t.y + directionOffset0.Item2);
-				if (newT)
-				{
-					edgeTiles.Add(newT);
-				}
-			}
-			if (i == 3)
-			{
-				//The west case has the up and down flipped, thus needs to be reversed
-				edgeTiles.Reverse();
-			}
-			if (edgeTiles.Count > 0)
-			{
-				Tile first = TileGrid.Instance.GetTile(edgeTiles[0].x + directionOffset1.Item1, edgeTiles[0].y + directionOffset1.Item2);
-				Tile last = TileGrid.Instance.GetTile(edgeTiles.Last().x + directionOffset2.Item1, edgeTiles.Last().y + directionOffset2.Item2);
-				if (first != null)
-				{
-					edgeTiles.Add(first);
-				}
-				if (last != null)
-				{
-					edgeTiles.Add(last);
-				}
-			}
-
-			characterAndDirectionGroupings[i] = new List<Tile>(edgeTiles);
+			characterAndDirectionGroupings[i] = GetChopTilesForDirection(originCharacter, i);
 		}
 
 
 		return GetLargestDirection(characterAndDirectionGroupings);
+	}
+
+	//Chop oriented toward a specific target so the chosen direction always hits it,
+	//rather than whichever direction happens to contain the most enemies.
+	public TilesAndDirection ChopTargetingTowardCharacter(Character originCharacter, Character target)
+	{
+		Direction direction = TileGrid.Instance.GetFacingDirection(originCharacter, target);
+		List<Tile> tiles = GetChopTilesForDirection(originCharacter, (int)direction);
+		return BuildDirectionResult(tiles, direction);
 	}
 
 	public TilesAndDirection ConeTargeting(Character originCharacter, int range)

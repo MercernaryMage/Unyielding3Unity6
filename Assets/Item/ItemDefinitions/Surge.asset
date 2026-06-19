@@ -37,7 +37,7 @@ MonoBehaviour:
     aoeRange: 0
     chargesTaken: 0
     disqualifierFunc: 
-    intParam: 0
+    intParam: 2
     stringParam: 
     keywords: []
     postActionCommands: []

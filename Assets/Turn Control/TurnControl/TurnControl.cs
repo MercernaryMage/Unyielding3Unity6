@@ -6,6 +6,7 @@ using UnityEngine.TextCore.Text;
 using System.Linq.Expressions;
 using UnityEditor.Experimental.GraphView;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
+using Unity.VisualScripting;
 
 public class TurnControl : SceneSingleton<TurnControl>
 {
@@ -98,10 +99,11 @@ public class TurnControl : SceneSingleton<TurnControl>
 
 	public void EndTurnClicked()
 	{
-		if (!BattleController.playerHasControl)
+		if (!BattleController.playerHasControl || processStarted)
 		{
 			return;
 		}
+		processStarted = true;
 		if (ActionController.Instance.running)
 		{
 			ActionController.Instance.CancelAttackFromEndTurn();
@@ -164,6 +166,7 @@ public class TurnControl : SceneSingleton<TurnControl>
 
 	public void TakeTurn()
 	{
+		processStarted = false;
 		currentCharacter.StartTurn();
 		if (currentCharacter.hero && currentCharacter.gameObject.GetComponent<Exhausted>() != null)
 		{
@@ -183,6 +186,8 @@ public class TurnControl : SceneSingleton<TurnControl>
 			TakeTurnActual();
 		}
 	}
+
+	bool processStarted = false;
 
 	public void PreTakeTurn(Character c)
 	{

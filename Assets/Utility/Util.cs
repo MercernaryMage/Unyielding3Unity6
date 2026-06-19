@@ -54,7 +54,12 @@ public static class Util
 
 	public static Tuple<List<Tile>, Tile>? FindSmallestRoute(Dictionary<Character, Tuple<List<Tile>, Tile>> data, CharacterEvaluation evaluationFunction)
 	{
-		Tuple<List<Tile>, Tile> shortestRoute = null;
+		return FindSmallestRoutePair(data, evaluationFunction).Value;
+	}
+
+	public static KeyValuePair<Character, Tuple<List<Tile>, Tile>> FindSmallestRoutePair(Dictionary<Character, Tuple<List<Tile>, Tile>> data, CharacterEvaluation evaluationFunction)
+	{
+		KeyValuePair<Character, Tuple<List<Tile>, Tile>> shortest = new KeyValuePair<Character, Tuple<List<Tile>, Tile>>(null, null);
 		foreach (KeyValuePair<Character, Tuple<List<Tile>, Tile>> pair in data)
 		{
 			if (pair.Key.alive == false)
@@ -68,19 +73,19 @@ public static class Util
 					continue;
 				}
 			}
-			if (shortestRoute == null)
+			if (shortest.Value == null)
 			{
-				shortestRoute = pair.Value;
+				shortest = pair;
 			}
 			else
 			{
-				if (shortestRoute.Item1.Count > pair.Value.Item1.Count)
+				if (shortest.Value.Item1.Count > pair.Value.Item1.Count)
 				{
-					shortestRoute = pair.Value;
+					shortest = pair;
 				}
 			}
 		}
-		return shortestRoute;
+		return shortest;
 	}
 
 	public static void ShortenPathToMaxRange(Tuple<List<Tile>, Tile> data, int range)

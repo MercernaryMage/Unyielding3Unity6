@@ -21,7 +21,7 @@ public class StatusEffectDisplayGroup : MonoBehaviour
 			obj.transform.SetParent(null);
 		}
 		objectsToDestroy = new List<GameObject>(createdObjects);
-		awaitingDestroy = true;
+		Invoke("DestroyGarbage", .3f);
 		createdObjects.Clear();
 
 		StatusEffect[] effects = c.gameObject.GetComponents<StatusEffect>();
@@ -39,16 +39,13 @@ public class StatusEffectDisplayGroup : MonoBehaviour
 		}
 	}
 
-	private void Update()
+	private void DestroyGarbage()
 	{
-		if (awaitingDestroy)
+		foreach (GameObject obj in objectsToDestroy)
 		{
-			foreach (GameObject obj in objectsToDestroy)
-			{
-				Destroy(obj);
-			}
-			awaitingDestroy = false;
-			objectsToDestroy.Clear();
+			Destroy(obj);
 		}
+		awaitingDestroy = false;
+		objectsToDestroy.Clear();
 	}
 }

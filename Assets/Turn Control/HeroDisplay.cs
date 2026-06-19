@@ -38,6 +38,8 @@ public class HeroDisplay : MonoBehaviour
 
 	public Transform traitTarget;
 	public GameObject traitPrefab;
+
+	public StatusEffectDisplayGroup statusEffectDisplayGroup;
 	List<GameObject> createdTraits = new List<GameObject>();
 
 	public void Hide(bool hideMovement)
@@ -79,6 +81,7 @@ public class HeroDisplay : MonoBehaviour
 		{
 			Destroy(obj.gameObject);
 		}
+		statusEffectDisplayGroup.Set(character);
 		createdObjects.Clear();
 		characterName.text = character.displayName;
 		hp.text = $"{character.currentHP}/{character.maxHP}";
@@ -142,7 +145,7 @@ public class HeroDisplay : MonoBehaviour
 					createdObjects.Add(display);
 				}
 			}
-		}		
+		}
 	}
 
 	public static bool CanAffordAction(Character c, ActionPattern a)

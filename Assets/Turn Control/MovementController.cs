@@ -10,7 +10,7 @@ public class MovementController : SceneSingleton<MovementController>
 	public List<Tile> currentPossibleTiles = new List<Tile>();
 	public bool running = false;
 
-	Character movingCharacter;
+	public Character movingCharacter;
 
 	public Tile previousMousedTile;
 
