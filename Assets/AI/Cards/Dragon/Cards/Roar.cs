@@ -42,7 +42,7 @@ public class Roar : Card
 			}
 		}
 
-		AnimationController.Instance.ShowTiles(targetTiles, Tile.OverlayType.PossibleAttck, ReturnFromShowingAttackTiles);
+		AnimationController.Instance.ShowTiles(targetTiles, Tile.OverlayType.PossibleAttck, ReturnFromShowingAttackTiles, null, 3.0f);
 	}
 
 	void ReturnFromShowingAttackTiles()

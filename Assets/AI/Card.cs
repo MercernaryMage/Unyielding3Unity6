@@ -119,6 +119,36 @@ public class Card
 		return routes;
 	}
 
+	public Character GetFarthestReachableTarget(Character attackingCharacter)
+	{
+		Dictionary<Character, Tuple<List<Tile>, Tile>> routes = RouteToAllClosestCharacters(true);
+		int maxRange = owningCharacter.characterDefinition.movement + 1;
+
+		Character farthest = null;
+		int farthestLength = -1;
+		foreach (KeyValuePair<Character, Tuple<List<Tile>, Tile>> pair in routes)
+		{
+			if (pair.Key == attackingCharacter || pair.Value == null || pair.Value.Item1 == null)
+			{
+				continue;
+			}
+
+			int length = pair.Value.Item1.Count;
+			if (length > maxRange)
+			{
+				continue;
+			}
+
+			if (length > farthestLength)
+			{
+				farthestLength = length;
+				farthest = pair.Key;
+			}
+		}
+
+		return farthest;
+	}
+
 	public Tuple<List<Tile>, Tile> FindRouteAdjacentToBoth()
 	{
 		Tuple<List<Tile>, Tile> bestRoute = null;

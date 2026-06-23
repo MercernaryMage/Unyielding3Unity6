@@ -6345,7 +6345,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7dd976f5053a4b9428958f7c44f9a7be, type: 3}
   m_Name: 
@@ -6374,7 +6374,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9574144c87cbea74c9316baacb10b4fc, type: 3}
   m_Name: 
@@ -6382,6 +6382,7 @@ MonoBehaviour:
   characterName: Dragon 1
   cardNames:
   - Inhale
+  - Roar
   - Tail Swipe
 --- !u!1 &916006794
 GameObject:

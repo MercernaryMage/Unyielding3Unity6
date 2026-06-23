@@ -71,7 +71,7 @@ public class Intimidate : ReactionBase
 		if (!didAggravatedPass && owningCharacter.alive && GetBoolValue("Aggravated"))
 		{
 			didAggravatedPass = true;
-			Character farthest = GetFarthestReachableTarget();
+			Character farthest = GetFarthestReachableTarget(attackingCharacter);
 			if (farthest != null)
 			{
 				MoveToTarget(farthest);
@@ -82,35 +82,7 @@ public class Intimidate : ReactionBase
 		BattleController.ReturnControlToPlayer();
 	}
 
-	Character GetFarthestReachableTarget()
-	{
-		Dictionary<Character, Tuple<List<Tile>, Tile>> routes = RouteToAllClosestCharacters(true);
-		int maxRange = owningCharacter.characterDefinition.movement + 1;
-
-		Character farthest = null;
-		int farthestLength = -1;
-		foreach (KeyValuePair<Character, Tuple<List<Tile>, Tile>> pair in routes)
-		{
-			if (pair.Key == attackingCharacter || pair.Value == null || pair.Value.Item1 == null)
-			{
-				continue;
-			}
-
-			int length = pair.Value.Item1.Count;
-			if (length > maxRange)
-			{
-				continue;
-			}
-
-			if (length > farthestLength)
-			{
-				farthestLength = length;
-				farthest = pair.Key;
-			}
-		}
-
-		return farthest;
-	}
+	
 
 	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
 	{

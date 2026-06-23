@@ -115,10 +115,23 @@ Do do our characters advance
         As the game advances, character paths unlock
         charcters can use other characters path
 !!!MARCHING ORDERS!!!
-    3 cards in a row was very fucky
-    intimidate lets you do weird highlighting on the enemy
-        You can mouse over the tiles and get them to turn red
-    Inhale -> tail swipe double played!
+    Backstabbed dragon from the side
+    3 card problem is still problem
+    kick does not pay attention to range!!
+
+    Thoughts on fight:
+        What are the mechanics of this fight?
+            Fire breath
+                Firey should only work from behind
+                Melee from behind should put fire breath 5 down?
+            In and out
+                Most characters need to attack from melee and then leave
+                What if singed aura is perma?
+                    What if singed aura made burn always dissapte if not adjacent?
+                Melee attacks cause burn 2?
+            Move attack move should be removed????
+
+
     2) Create the content for the other levels
         Forest
             Make geo

@@ -66,12 +66,18 @@ public class ActionController : SceneSingleton<ActionController>
 		{
 			tile.HideOverlay(Tile.OverlayType.PossibleAttck);
 		}
+		foreach (Tile tile in markedTiles)
+		{
+			tile.HideOverlay(Tile.OverlayType.PossibleAttck);
+		}
 		foreach (Tile tile in targetedTiles)
 		{
 			tile.HideOverlay(Tile.OverlayType.Selected);
 		}
-		
+
 		currentPossibleTiles.Clear();
+		markedTiles.Clear();
+		targetedTiles.Clear();
 		SetRunning(false);
 
 		attackingCharacter = null;
@@ -320,7 +326,10 @@ public class ActionController : SceneSingleton<ActionController>
 			{
 				HandleEndOfAction();
 			};
-			TriggerDisplay.Instance.ShowTriggerMenu(attackCompleteMessage.raisedTriggers, complete, abort);
+			List<Tile> targetTiles = TileGrid.Instance.FindCharacter(target);
+			TriggerDisplay.Instance.ShowTriggerMenu(
+				attackCompleteMessage.raisedTriggers,complete, abort, 
+				targetTiles);
 		}
 		else
 		{

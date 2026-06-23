@@ -45,8 +45,13 @@ public class TileGrid : SceneSingleton<TileGrid>
 		MessagePump.Instance.SendMessage(characterStartMovementMessage);
 		Action continueAction = () =>
 		{
+			ActionController.Instance.running = false;
 			PathFollower pathFollower = character.token.gameObject.AddComponent<PathFollower>();
-			pathFollower.Set(character, tiles, callback, moveCharacter);
+			Action encasingFunction = () => {
+				ActionController.Instance.running = true;
+				callback();
+			};
+			pathFollower.Set(character, tiles, encasingFunction, moveCharacter);
 		};
 		Action abandonAction = () =>
 		{
@@ -76,43 +81,8 @@ public class TileGrid : SceneSingleton<TileGrid>
 		}
 		else
 		{
-			TriggerDisplay.Instance.ShowTriggerMenu(characterStartMovementMessage.raisedTriggers, continueAction, abandonAction);
-		}
-	}
-
-	public void RouteHeroCharacterToTile(Character character, List<Tile> tiles, Action callback, bool moveCharacter = true, bool provokeReactions = true)
-	{
-		CharacterStartMovementMessage characterStartMovementMessage = new CharacterStartMovementMessage();
-		characterStartMovementMessage.movingCharacter = character;
-		characterStartMovementMessage.provokeTriggers = provokeReactions;
-		MessagePump.Instance.SendMessage(characterStartMovementMessage);
-		Action continueAction = () =>
-		{
-			PathFollower pathFollower = character.token.gameObject.AddComponent<PathFollower>();
-			pathFollower.Set(character, tiles, callback, moveCharacter);
-		};
-		Action abandonAction = () =>
-		{
-			foreach (Tile t in TileGrid.Instance.tiles)
-			{
-				t.HideOverlay(Tile.OverlayType.PossibleMovement);
-			}
-			if (character.hero)
-			{
-				HeroDisplayRouter.Instance.mainDisplay.Hide(true);
-			}
-			else
-			{
-				Card.Finish();
-			}
-		};
-		if (characterStartMovementMessage.raisedTriggers.Count == 0)
-		{
-			continueAction();
-		}
-		else
-		{
-			TriggerDisplay.Instance.ShowTriggerMenu(characterStartMovementMessage.raisedTriggers, continueAction, abandonAction);
+			List<Tile> targetTiles = FindCharacter(character);
+			TriggerDisplay.Instance.ShowTriggerMenu(characterStartMovementMessage.raisedTriggers, continueAction, abandonAction, targetTiles);
 		}
 	}
 

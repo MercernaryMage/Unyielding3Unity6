@@ -19,6 +19,12 @@ public class CardDisplay : MonoBehaviour
 
 	public void ShowCard(CardScriptableObject cardScriptableObject, bool showDismiss)
 	{
+		FadeLerp fadeOutLerp = content.GetComponent<FadeLerp>();
+		if (fadeOutLerp)
+		{
+			Destroy(fadeOutLerp);
+		}
+
 		FadeLerp lerp = content.AddComponent<FadeLerp>();
 		lerp.BasicFadeIn();
 		lerp.Init();

@@ -42,6 +42,6 @@ public class KnockedDown : StatusEffect
 
 	public override string GetEffectText()
 	{
-		return "";
+		return "Loses all movement now and at turn start.  Attacks have -1 accuracy.  Will be removed at the start of the units turn.";
 	}
 }

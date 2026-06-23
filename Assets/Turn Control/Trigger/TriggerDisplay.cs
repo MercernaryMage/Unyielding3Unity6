@@ -16,13 +16,22 @@ public class TriggerDisplay : SceneSingleton<TriggerDisplay>
 	List<Tuple<GameObject, Trigger>> createdObjects = new List<Tuple<GameObject, Trigger>>();
 	bool abandonded = false;
 	bool showing = false;
+	List<Tile> showingTiles = new List<Tile>();
 
 	private void Start()
 	{
 	}
 
-	public void ShowTriggerMenu(List<Trigger> triggers, Action c, Action a)
+	public void ShowTriggerMenu(List<Trigger> triggers, Action c, Action a, 
+		List<Tile> tiles)
 	{
+		showingTiles = tiles;
+		foreach (Tile t in showingTiles)
+		{
+			t.HideAllOverlays();
+			t.ShowOverlay(Tile.OverlayType.Selected);
+		}
+		ActionController.Instance.running = false;
 		showing = true;
 		abandonded = false;
 		content.SetActive(true);
@@ -73,10 +82,20 @@ public class TriggerDisplay : SceneSingleton<TriggerDisplay>
 		}
 	}
 
-	public void Continue()
+	public void Hide()
 	{
+		foreach (Tile t in showingTiles)
+		{
+			t.HideOverlay(Tile.OverlayType.Selected);
+		}
 		showing = false;
 		content.SetActive(false);
+		ActionController.Instance.running = true;
+	}
+
+	public void Continue()
+	{
+		Hide();
 		storedContinue.Invoke();
 	}
 
@@ -86,8 +105,7 @@ public class TriggerDisplay : SceneSingleton<TriggerDisplay>
 		{
 			return;
 		}
-		showing = false;
-		content.SetActive(false);
+		Hide();
 		storedAbandon.Invoke();
 		abandonded = true;
 	}
