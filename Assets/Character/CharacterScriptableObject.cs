@@ -33,8 +33,10 @@ public class CharacterScriptableObject : ScriptableObject
     public int evasion;
     public int weight;
     public bool isMinion;
+    public bool allowAoO = true;
 
-    public int maxDetermination;
+
+	public int maxDetermination;
 
     public bool isScannable = true;
 

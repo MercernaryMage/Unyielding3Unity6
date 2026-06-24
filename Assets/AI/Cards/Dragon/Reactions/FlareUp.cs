@@ -36,6 +36,7 @@ public class FlareUp : ReactionBase
 			ActionController.AttackProfile profile = new ActionController.AttackProfile(0, 0, 2);
 			profile.damageType = ActionPattern.DamageType.Burning;
 			ActionController.Instance.DamageCharacter(c, owningCharacter, profile, results);
+			CombatLogControl.Instance.AddEntry($"Flare Up deals {results.damageDealt} to {c.displayName}");
 		}
 
 		BattleController.ReturnControlToPlayer();

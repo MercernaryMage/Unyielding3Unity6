@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Windows.WebCam;
 
 public class Burning : StatusEffect
 {
@@ -16,7 +17,7 @@ public class Burning : StatusEffect
 		MessagePump.Instance.SendMessage(burnMessage);
 
 		int roll = Util.RollDice(1, 20);
-		if (roll > 10 && !burnMessage.autoFail)
+		if ((roll > 10 || burnMessage.autoPass) && !burnMessage.autoFail)
 		{
 			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, "Burning removed");
 			Destroy(this);
@@ -26,6 +27,7 @@ public class Burning : StatusEffect
 		ActionController.AttackResults results = new ActionController.AttackResults();
 		ActionController.AttackProfile profile = new ActionController.AttackProfile(0, 0, magnitude);
 		profile.breach = true;
+		results.fakeHit = true;
 		ActionController.Instance.DamageCharacter(character, character, profile, results);
 	}
 

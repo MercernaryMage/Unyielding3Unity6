@@ -155,7 +155,11 @@ public class MapBuilder : MonoBehaviour
 		character.displayNumber = enemyNameCounts[baseName];
 		character.gameObject.name = character.displayName;
 
-		characterObj.AddComponent<AttackOfOpportunityTrait>();
+		if (characterScriptableObject.allowAoO)
+		{
+			characterObj.AddComponent<AttackOfOpportunityTrait>();
+		}
+		
 
 		character.SetFacing(facing);
 		TileGrid.Instance.PlaceCharacter(x, y, character);
@@ -254,13 +258,13 @@ public class MapBuilder : MonoBehaviour
 
 		if (i == -1)
 		{
-			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 2, 3));
+			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 5, 3));
 			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 1, 5));
 			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 3, 5));
 			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 0, 2));
 
 			//levelConfiguration.enemies.Add(new EnemyConfiguration("BigTestEnemy", Direction.West, 6, 5));
-			levelConfiguration.enemies.Add(new EnemyConfiguration("Dragon", Direction.West, 3, 3));
+			levelConfiguration.enemies.Add(new EnemyConfiguration("Dragon", Direction.West, 1, 3));
 			return levelConfiguration;
 		}
 

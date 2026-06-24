@@ -63,6 +63,7 @@ public class CharacterAttackingMessage : Message
 	public bool autoCrit = false;
 	public ActionPattern pattern;
 	public string accuracyString;
+	public bool backstab;
 
 	public CharacterAttackingMessage()
 	{
@@ -224,6 +225,7 @@ public class CharacterTakingBurnDamageMessage : Message
 {
 	public Character character;
 	public bool autoFail = false;
+	public bool autoPass = false;
 
 	public CharacterTakingBurnDamageMessage()
 	{

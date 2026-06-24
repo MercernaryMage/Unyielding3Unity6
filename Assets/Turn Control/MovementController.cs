@@ -148,7 +148,8 @@ public class MovementController : SceneSingleton<MovementController>
 		PathfindingRules pathfindingRules = new PathfindingRules();
 		pathfindingRules.allowedToPathThroughAllies = true;
 		List<Tile> route = FindRoute(movingCharacter, t, 0, pathfindingRules);
-		movingCharacter.currentMovement -= (route.Count - 1);
+		//movingCharacter.currentMovement -= (route.Count - 1);
+		movingCharacter.currentMovement = 0;
 		PathFollower pathFollower = movingCharacter.token.gameObject.AddComponent<PathFollower>();
 		Character oldMovingCharacter = movingCharacter;
 		Action stepCallback = onMoveComplete;

@@ -3879,7 +3879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overrideRand: 0
-  seed: 752927869
+  seed: 566794362
 --- !u!114 &567337325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6316,13 +6316,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 400200efbf2304345813bd062e52586e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
-  useExplicitOrder: 1
   turnOrder:
   - David
-  - Cotton
   - Lenette
-  - enemy
+  - Cotton
   - Dane
+  - enemy
 --- !u!114 &898251913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6338,6 +6337,8 @@ MonoBehaviour:
   healthEntries:
   - characterName: Dragon 1
     health: 7
+  - characterName: David
+    health: 1
 --- !u!114 &898251914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6359,14 +6360,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb9a1733fc5c4b44eb86864f5b96f159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugSetReactionOrder
   characterName: Dragon 1
   reactionNames:
-  - Intimidate
+  - Flare Up
 --- !u!114 &898251916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6381,9 +6382,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DebugSetCardOrder
   characterName: Dragon 1
   cardNames:
-  - Inhale
-  - Roar
-  - Tail Swipe
+  - Swoop
+  - Bite
 --- !u!1 &916006794
 GameObject:
   m_ObjectHideFlags: 0

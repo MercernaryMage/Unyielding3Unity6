@@ -21,9 +21,10 @@ MonoBehaviour:
   maxHP: 100
   maxEnergy: 0
   maxThreshold: 2
-  evasion: 0
+  evasion: 8
   weight: 0
   isMinion: 0
+  allowAoO: 0
   maxDetermination: 0
   isScannable: 0
   slots: 
@@ -48,9 +49,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 71f253d2129f74e458ff91e5f302aec1, type: 2}
   - {fileID: 11400000, guid: b64a1bfeaf14e4645b169668885af97a, type: 2}
   reactions:
-  - {fileID: 11400000, guid: 103889571d5352847acdd54ca41b3b63, type: 2}
-  - {fileID: 11400000, guid: 103889571d5352847acdd54ca41b3b63, type: 2}
-  - {fileID: 11400000, guid: 103889571d5352847acdd54ca41b3b63, type: 2}
   - {fileID: 11400000, guid: 103889571d5352847acdd54ca41b3b63, type: 2}
   - {fileID: 11400000, guid: a51109327e9f6d747b32c0c9f5b5994e, type: 2}
   - {fileID: 11400000, guid: 432ba06a0557b874f9954216ffd405b7, type: 2}

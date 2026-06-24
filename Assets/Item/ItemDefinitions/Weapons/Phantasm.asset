@@ -32,7 +32,7 @@ MonoBehaviour:
     range: 3
     threatRange: 3
     accuracy: 0
-    damageString: 1d3M
+    damageString: 1M
     aoeType: 0
     aoeRange: 0
     chargesTaken: 0
@@ -41,6 +41,7 @@ MonoBehaviour:
     stringParam: 
     keywords:
     - Ranged
+    - Wreck 4
     postActionCommands: []
     postDamageFunctionName: 
     useInstantAction: 0
@@ -57,5 +58,5 @@ MonoBehaviour:
     uniqueName: 
     forcedTarget: {fileID: 0}
     cannotBeUsedOnOthers: 0
-  keywords: penetrate,Ranged
+  keywords: Ranged
   displayable: 1

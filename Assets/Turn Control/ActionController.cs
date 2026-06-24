@@ -9,7 +9,6 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static ActionController;
 using static ActionPattern;
-using static UnityEngine.GraphicsBuffer;
 
 public class ActionController : SceneSingleton<ActionController>
 {
@@ -280,25 +279,9 @@ public class ActionController : SceneSingleton<ActionController>
 	{
 		Character target = currentTargetsForAttack[0];
 		AttackProfile attackProfile = Util.GetAttackProfile(currentAction);
-		if (!TileGrid.Instance.IsFacing(target, attackingCharacter))
+		if (TileGrid.Instance.IsFacing(target, attackingCharacter))
 		{
 			attackProfile.isBackstab = true;
-		}
-
-		if (currentItem != null)
-		{
-			string[] tokens = currentItem.itemDefinition.keywords.Split(',');
-			foreach (string token in tokens)
-			{
-				if (token.ContainsIgnoreCase("Breach"))
-				{
-					attackProfile.breach = true;
-				}
-				if (token.ContainsIgnoreCase("guaranteed"))
-				{
-					attackProfile.guaranteed = Util.ExtractValueFromString(token);
-				}
-			}
 		}
 
 		AttackCharacter(target, attackingCharacter, attackProfile);
@@ -411,6 +394,7 @@ public class ActionController : SceneSingleton<ActionController>
 		characterAttackingMessage.defender = defender;
 		characterAttackingMessage.attacker = attacker;
 		characterAttackingMessage.pattern = currentAction;
+		characterAttackingMessage.backstab = profile.isBackstab;
 		characterAttackingMessage.AddToAccuracyString(GenerateAccurarcyString(profile.accuracy));
 		MessagePump.Instance.SendMessage(characterAttackingMessage);
 
@@ -575,6 +559,13 @@ public class ActionController : SceneSingleton<ActionController>
 
 		if (!profile.breach && profile.damageType != DamageType.Burning)
 		{
+			int wreck = profile.wreck;
+			if (wreck > 0)
+			{
+				defender.armor = Mathf.Max(0, defender.armor - wreck);
+			}
+			
+			
 			int originalArmor = defender.armor;
 			defender.armor = Mathf.Max(defender.armor - damage, 0);
 			if (originalArmor > 0)
@@ -624,10 +615,7 @@ public class ActionController : SceneSingleton<ActionController>
 		FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, damage.ToString());
 		if (profile.damageType == DamageType.Burning)
 		{
-			StatusEffect.StatusEffectInitData statusEffectInitData = new StatusEffect.StatusEffectInitData();
-			statusEffectInitData.magnitude = damage;
-			Burning effect = (Burning)defender.AddStatusEffect(Type.GetType("Burning"), statusEffectInitData);
-			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, $"{effect.magnitude} burning");
+			AddBurning(defender, damage);
 		}
 
 		if (defender.currentHP <= 0)
@@ -638,7 +626,7 @@ public class ActionController : SceneSingleton<ActionController>
 			{
 				TriggerDisplay.Instance.Abandon();
 			}
-			if (defender.storageCharacter != null && defender.storageCharacter.currentDetermination > 0)
+			if (defender.storageCharacter != null && defender.storageCharacter.currentDetermination > 1)
 			{
 				defender.Downed(overflow);
 				return;
@@ -805,6 +793,7 @@ public class ActionController : SceneSingleton<ActionController>
 		public bool trigger;
 		public int guaranteed;
 		public bool autoCrit;
+		public int wreck;
 		public bool ranged = false;
 		public Action preDamageAction;
 	}
@@ -1282,5 +1271,13 @@ public class ActionController : SceneSingleton<ActionController>
 		}
 
 		return outTiles;
+	}
+
+	public static void AddBurning(Character c, int amount)
+	{
+		StatusEffect.StatusEffectInitData statusEffectInitData = new StatusEffect.StatusEffectInitData();
+		statusEffectInitData.magnitude = amount;
+		Burning effect = (Burning)c.AddStatusEffect(Type.GetType("Burning"), statusEffectInitData);
+		FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(c, $"{effect.magnitude} burning");
 	}
 }

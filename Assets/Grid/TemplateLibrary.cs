@@ -111,16 +111,16 @@ public class TemplateLibrary : SceneSingleton<TemplateLibrary>
 			switch (direction)
 			{
 				case Direction.North:
-					inFacing = t.y > maxY + 1;
+					inFacing = t.y > maxY;
 					break;
 				case Direction.East:
-					inFacing = t.x > maxX + 1;
+					inFacing = t.x > maxX;
 					break;
 				case Direction.South:
-					inFacing = t.y < minY - 1;
+					inFacing = t.y < minY;
 					break;
 				case Direction.West:
-					inFacing = t.x < minX - 1;
+					inFacing = t.x < minX;
 					break;
 				default:
 					inFacing = false;

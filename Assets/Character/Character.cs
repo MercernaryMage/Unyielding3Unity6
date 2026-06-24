@@ -159,6 +159,8 @@ public class Character : MonoBehaviour
 		MessagePump.Instance.SendMessage(heroDownedMessage);
 		Downed downed = (Downed)AddStatusEffect(typeof(Downed), null);
 		downed.overflow += overflow;
+		currentMovement = 0;
+		actionCount = 0;
 	}
 
 	public int GetInitiative()
@@ -223,7 +225,6 @@ public class Character : MonoBehaviour
 		FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(this, $"-{cost} energy");
 
 		currentEnergy -= cost;
-		++storageCharacter.surgeIndex;
 
 		if (currentEnergy <= 0)
 		{

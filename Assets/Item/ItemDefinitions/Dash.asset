@@ -45,7 +45,7 @@ MonoBehaviour:
     useInstantAction: 1
     instantAction:
       actionName: Dash
-      disqualiferFunction: 
+      disqualiferFunction: HasMovement
     useTargetedAction: 0
     targetedAction:
       targetType: 0

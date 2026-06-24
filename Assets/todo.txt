@@ -115,23 +115,13 @@ Do do our characters advance
         As the game advances, character paths unlock
         charcters can use other characters path
 !!!MARCHING ORDERS!!!
-    Backstabbed dragon from the side
-    3 card problem is still problem
-    kick does not pay attention to range!!
-
-    Thoughts on fight:
-        What are the mechanics of this fight?
-            Fire breath
-                Firey should only work from behind
-                Melee from behind should put fire breath 5 down?
-            In and out
-                Most characters need to attack from melee and then leave
-                What if singed aura is perma?
-                    What if singed aura made burn always dissapte if not adjacent?
-                Melee attacks cause burn 2?
-            Move attack move should be removed????
-
-
+    knocked down should prevent dash
+    aggravated reaction should have a special background box
+    
+    --Burn damage is not recorded in the log
+    --Burn damage happened twice
+    --When david was the against the wall, the dragon played fly and didn't move
+        THE MODEL IS IN THE WRONG POSITION!!!!!!!!!!!
     2) Create the content for the other levels
         Forest
             Make geo

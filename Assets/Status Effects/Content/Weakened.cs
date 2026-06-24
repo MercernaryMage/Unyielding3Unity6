@@ -6,7 +6,7 @@ public class Weakened : StatusEffect
 
 	public override void OnPreDamageDealt(PreDamageDealtMessage preDamageDealtMessage)
 	{
-		if (preDamageDealtMessage.attacker != character)
+		if (preDamageDealtMessage.attacker != character || preDamageDealtMessage.attacker == preDamageDealtMessage.defender)
 		{
 			return;
 		}

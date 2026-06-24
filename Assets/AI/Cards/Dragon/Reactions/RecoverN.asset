@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757b336c629bb2b4cb86518c2f2a5957, type: 3}
   m_Name: RecoverN
   m_EditorClassIdentifier: 
-  className: RecoverN
+  className: Recover
   cardDisplayName: Recover
   tags:
   - tagName: Value
     stringData: 
     floatData: 0
-    intData: 3
+    intData: 2
     boolData: 0

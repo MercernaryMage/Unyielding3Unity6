@@ -231,7 +231,7 @@ public class ActionTypes : MonoBehaviour
 			return;
 		}
 
-		if (!TileGrid.Instance.IsFacing(defender, attacker))
+		if (TileGrid.Instance.IsFacing(defender, attacker))
 		{
 			defender.AddStatusEffect(typeof(WeakPoint), null);
 		}
@@ -252,7 +252,7 @@ public class ActionTypes : MonoBehaviour
 
 	static public Tuple<bool, string> IsBehindEnemy(Character c1, Character c2, ActionPattern pattern)
 	{
-		return new Tuple<bool, string>(!TileGrid.Instance.IsFacing(c2, c1), $"{c1.displayName} is not behind {c2.displayName}");
+		return new Tuple<bool, string>(TileGrid.Instance.IsFacing(c2, c1), $"{c1.displayName} is not behind {c2.displayName}");
 	}
 
 	static public Tuple<bool, string> CanBlockOther(Character c, Character c2, ActionPattern pattern)
@@ -383,6 +383,15 @@ public class ActionTypes : MonoBehaviour
 		if (c.currentHP >= c.maxHP)
 		{
 			return new Tuple<bool, string>(false, $"{c.displayName} is full hp");
+		}
+		return new Tuple<bool, string>(true, "");
+	}
+
+	static public Tuple<bool, string> HasMovement(Character c, ActionPattern pattern)
+	{
+		if (c.currentMovement > 0)
+		{
+			return new Tuple<bool, string>(false, $"{c.displayName} has movement already");
 		}
 		return new Tuple<bool, string>(true, "");
 	}

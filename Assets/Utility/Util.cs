@@ -282,6 +282,20 @@ public static class Util
 		attackProfile.damageType = damages[0].type;
 		attackProfile.ranged = pattern.ranged;
 		attackProfile.accuracy = pattern.accuracy;
+		string wreckString = pattern.keywords.Find(o => o.Contains("Wreck"));
+		if (!String.IsNullOrEmpty(wreckString))
+		{
+			attackProfile.wreck = int.Parse(new string(wreckString.Where(char.IsDigit).ToArray()));
+		}
+		string guaranteedString = pattern.keywords.Find(o => o.Contains("Guaranteed"));
+		if (!String.IsNullOrEmpty(guaranteedString))
+		{
+			attackProfile.guaranteed = int.Parse(new string(guaranteedString.Where(char.IsDigit).ToArray()));
+		}
+		if (pattern.keywords.Contains("Accurate"))
+		{
+			attackProfile.accuracy += 1;
+		}
 		attackProfile.breach = pattern.keywords.Contains("Breach") 
 							   || attackProfile.damageType == ActionPattern.DamageType.Burning;
 		return attackProfile;

@@ -16,12 +16,12 @@ public class TurnControl : SceneSingleton<TurnControl>
 
 	public void AddCharacters(List<Character> characters)
 	{
-		DebugCharacterTurnOrder explicitOrder = FindFirstObjectByType<DebugCharacterTurnOrder>();
-		if (explicitOrder != null && explicitOrder.useExplicitOrder)
+		DebugCharacterTurnOrder debugCharacterTurnOrder = FindFirstObjectByType<DebugCharacterTurnOrder>();
+		if (debugCharacterTurnOrder != null && debugCharacterTurnOrder.enabled)
 		{
 			// Assign descending values from the configured order so the sort below
 			// preserves it (highest value goes first) instead of using initiative.
-			List<Character> ordered = explicitOrder.GetOrderedCharacters();
+			List<Character> ordered = debugCharacterTurnOrder.GetOrderedCharacters();
 			int value = ordered.Count;
 			foreach (Character character in ordered)
 			{

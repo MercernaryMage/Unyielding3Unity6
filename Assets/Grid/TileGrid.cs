@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using UnityEditor.VersionControl;
 using UnityEngine.TextCore.Text;
+using UnityEditor;
 
 public enum Direction
 {
@@ -47,8 +48,12 @@ public class TileGrid : SceneSingleton<TileGrid>
 		{
 			ActionController.Instance.running = false;
 			PathFollower pathFollower = character.token.gameObject.AddComponent<PathFollower>();
-			Action encasingFunction = () => {
-				ActionController.Instance.running = true;
+			Action encasingFunction = () =>
+			{
+				if (isReaction)
+				{
+					ActionController.Instance.running = true;
+				}
 				callback();
 			};
 			pathFollower.Set(character, tiles, encasingFunction, moveCharacter);
@@ -560,40 +565,33 @@ public class TileGrid : SceneSingleton<TileGrid>
 		List<Tile> tiles1 = FindCharacter(c0);
 		List<Tile> tiles2 = FindCharacter(c1);
 
-		foreach (Tile t1 in tiles1)
+		List<Tile> validTiles;
+
+		if (c0.facing == Direction.North)
 		{
-			foreach (Tile t2 in tiles2)
+			validTiles = TemplateLibrary.Instance.GetFacingTiles(tiles1, Direction.South);
+		}
+		else if (c0.facing == Direction.South)
+		{
+			validTiles = TemplateLibrary.Instance.GetFacingTiles(tiles1, Direction.North);
+		}
+		else if (c0.facing == Direction.West)
+		{
+			validTiles = TemplateLibrary.Instance.GetFacingTiles(tiles1, Direction.East);
+		}
+		else
+		{
+			validTiles = TemplateLibrary.Instance.GetFacingTiles(tiles1, Direction.West);
+		}
+
+		foreach (Tile t in tiles2)
+		{
+			if (!validTiles.Contains(t))
 			{
-				if (c0.facing == Direction.South)
-				{
-					if (t1.y < t2.y)
-					{
-						return false;
-					}
-				}
-				else if (c0.facing == Direction.North)
-				{
-					if (t1.y > t2.y)
-					{
-						return false;
-					}
-				}
-				else if (c0.facing == Direction.West)
-				{
-					if (t1.x < t2.x)
-					{
-						return false;
-					}
-				}
-				else
-				{
-					if (t1.x > t2.x)
-					{
-						return false;
-					}
-				}
+				return false;
 			}
 		}
+
 		return true;
 	}
 

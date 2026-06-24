@@ -60,6 +60,7 @@ public class BattleController : SceneSingleton<BattleController>
 		}
 
 		c.SpendEnergy(cost);
+		++c.storageCharacter.surgeIndex;
 		c.actionCount += 2;
 		c.ResetActions();
 	}

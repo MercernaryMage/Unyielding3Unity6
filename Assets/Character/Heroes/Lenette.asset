@@ -24,6 +24,7 @@ MonoBehaviour:
   evasion: -1
   weight: 1
   isMinion: 0
+  allowAoO: 1
   maxDetermination: 3
   isScannable: 1
   slots: 010000000100000002000000

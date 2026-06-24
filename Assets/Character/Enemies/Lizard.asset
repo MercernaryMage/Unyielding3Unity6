@@ -19,9 +19,20 @@ MonoBehaviour:
   armor: 5
   toughness: 1
   maxHP: 90
+  maxEnergy: 0
   maxThreshold: 3
+  evasion: 0
+  weight: 0
+  isMinion: 0
+  allowAoO: 1
   maxDetermination: 0
-  equipment: []
+  isScannable: 1
+  slots: 
+  weapons:
+  - item: {fileID: 0}
+  - item: {fileID: 0}
+  - item: {fileID: 0}
+  advantages: []
   cunning: 0
   prowess: 0
   cards:
@@ -35,3 +46,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 260bd2c62ae58c94197326be3e1fcf2c, type: 2}
   - {fileID: 11400000, guid: 012f80ac0ab16ce4c8377da3ebadb237, type: 2}
   - {fileID: 11400000, guid: 625cf6e68c5e0e04e8b7f95aead5e856, type: 2}
+  bigPortrait: {fileID: 0}
+  battlePortrait: {fileID: 0}
+  traits: []
+  subclasses: []

@@ -43,6 +43,7 @@ MonoBehaviour:
     - Loading
     - Ranged
     - Breach
+    - Accurate
     postActionCommands: []
     postDamageFunctionName: 
     useInstantAction: 0

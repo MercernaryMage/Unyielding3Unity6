@@ -39,7 +39,8 @@ MonoBehaviour:
     disqualifierFunc: 
     intParam: 0
     stringParam: 
-    keywords: []
+    keywords:
+    - Guaranteed 3
     postActionCommands: []
     postDamageFunctionName: 
     useInstantAction: 0

@@ -16,9 +16,6 @@ public class DebugCharacterTurnOrder : MonoBehaviour
 {
 	public const string EnemyToken = "enemy";
 
-	[Tooltip("When true, the battle uses this explicit order. When false, the game falls back to rolling GetInitiative() for each character.")]
-	public bool useExplicitOrder = true;
-
 	[Tooltip("Ordered character names. Use a character's name, or \"enemy\" to consume the next enemy from BattleController's enemies list.")]
 	public List<string> turnOrder = new List<string>();
 
