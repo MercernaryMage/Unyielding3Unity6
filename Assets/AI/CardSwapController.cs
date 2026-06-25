@@ -24,8 +24,8 @@ public class CardSwapController : SceneSingleton<CardSwapController>
 
 	void Display()
 	{
-		cardDisplay1.ShowCard(reaction1.GetCurrentCard().cardScriptableObject, false);
-		cardDisplay2.ShowCard(reaction2.GetCurrentCard().cardScriptableObject, false);
+		cardDisplay1.ShowCard(reaction1.GetCurrentCard().cardScriptableObject, false, reaction1.isAggravatged ? CardDisplay.CardType.AggravatedReaction : CardDisplay.CardType.Reaction);
+		cardDisplay2.ShowCard(reaction2.GetCurrentCard().cardScriptableObject, false, reaction2.isAggravatged ? CardDisplay.CardType.AggravatedReaction : CardDisplay.CardType.Reaction);
 		FadeLerp fadeLerp = content.AddComponent<FadeLerp>();
 		fadeLerp.BasicFadeIn();
 	}

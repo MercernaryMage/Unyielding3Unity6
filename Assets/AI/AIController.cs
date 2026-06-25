@@ -17,7 +17,7 @@ public class AIController : SceneSingleton<AIController>
 		if (character.alive && (character.cards.Count > 0 || character.cardDiscard.Count > 0))
 		{
 			AICardDisplay.Instance.Dismiss();
-			AICardDisplay.Instance.ShowCard(character.cards[0].cardScriptableObject);
+			AICardDisplay.Instance.ShowCard(character.cards[0].cardScriptableObject, CardDisplay.CardType.Card);
 			CardStartMessage cardStartMessage = new CardStartMessage();
 			cardStartMessage.character = character;
 			cardStartMessage.card = character.cards[0];
@@ -66,6 +66,6 @@ public class AIController : SceneSingleton<AIController>
 			ReshuffleReactions(reactingCharacter);
 		}
 		CombatLogControl.Instance.AddCard($"{reactingCharacter} reacts with {reaction.GetCurrentCard()}", reaction.GetCurrentCard());
-		AICardDisplay.Instance.ShowCard(reaction.GetCurrentCard().cardScriptableObject);
+		AICardDisplay.Instance.ShowCard(reaction.GetCurrentCard().cardScriptableObject, reaction.isAggravatged? CardDisplay.CardType.AggravatedReaction : CardDisplay.CardType.Reaction);
 	}
 }

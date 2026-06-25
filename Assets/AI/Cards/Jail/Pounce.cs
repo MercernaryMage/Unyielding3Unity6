@@ -91,6 +91,7 @@ public class Pounce
 		{
 			ActionController.AttackResults results = new ActionController.AttackResults();
 			ActionController.Instance.DamageCharacter(c, owningCharacter, new ActionController.AttackProfile(damageDiceCount, damageDiceFace, 0), results);
+			CombatLogControl.Instance.AddEntry($"Pounce deals {results.damageDealt} to {c.displayName}");
 			c.AddStatusEffect(typeof(Stun), null);
 		}
 		callback.Invoke();

@@ -7,18 +7,32 @@ using UnityEngine.UI;
 
 public class CardDisplay : MonoBehaviour
 {
+	public enum CardType
+	{
+		Card,
+		Reaction,
+		AggravatedReaction
+	}
+
 	public GameObject content;
 	public TextMeshProUGUI cardName;
 	public GameObject cardDisplayItemPrefab;
 	public GameObject target;
 	public GameObject dismissButton;
+	public GameObject cardBackground;
+	public GameObject reactionBackground;
+	public GameObject aggravatedBackground;
 
 	bool dismissed = false;
 
 	List<GameObject> createdObjects = new List<GameObject>();
 
-	public void ShowCard(CardScriptableObject cardScriptableObject, bool showDismiss)
+	public void ShowCard(CardScriptableObject cardScriptableObject, bool showDismiss, CardType cardType)
 	{
+		aggravatedBackground.SetActive(cardType == CardType.AggravatedReaction);
+		reactionBackground.SetActive(cardType == CardType.Reaction);
+		cardBackground.SetActive(cardType == CardType.Card);
+
 		FadeLerp fadeOutLerp = content.GetComponent<FadeLerp>();
 		if (fadeOutLerp)
 		{

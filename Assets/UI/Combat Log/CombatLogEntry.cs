@@ -29,7 +29,7 @@ public class CombatLogEntry : MonoBehaviour, IPointerEnterHandler , IPointerExit
 	{
 		if (card)
 		{
-			AICardDisplay.Instance.ShowCard(cardScriptableObject);
+			AICardDisplay.Instance.ShowCard(cardScriptableObject, CardDisplay.CardType.Card);
 		}
 		else
 		{

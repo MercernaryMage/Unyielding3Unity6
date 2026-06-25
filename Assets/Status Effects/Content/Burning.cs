@@ -17,9 +17,20 @@ public class Burning : StatusEffect
 		MessagePump.Instance.SendMessage(burnMessage);
 
 		int roll = Util.RollDice(1, 20);
+		string rollText = $"{character.displayName} rolls {roll} to remove Burning (10 or lower fails)";
+		if (burnMessage.autoPass)
+		{
+			rollText += " (auto pass)";
+		}
+		if (burnMessage.autoFail)
+		{
+			rollText += " (auto fail)";
+		}
+		CombatLogControl.Instance.AddEntry(rollText);
+
 		if ((roll > 10 || burnMessage.autoPass) && !burnMessage.autoFail)
 		{
-			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, "Burning removed");
+			CombatLogControl.Instance.AddEntry($"Burning removed from {character.displayName}");
 			Destroy(this);
 			return;
 		}
@@ -29,6 +40,7 @@ public class Burning : StatusEffect
 		profile.breach = true;
 		results.fakeHit = true;
 		ActionController.Instance.DamageCharacter(character, character, profile, results);
+		CombatLogControl.Instance.AddEntry($"Burning deals {results.damageDealt} to {character.displayName}");
 	}
 
 	public override void DoStack(StatusEffectInitData data)

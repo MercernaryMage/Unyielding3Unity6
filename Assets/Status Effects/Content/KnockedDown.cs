@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class KnockedDown : StatusEffect
 {
+	public bool cleared = false;
+
 	public override string GetDisplayName()
 	{
 		return "Knocked Down";
@@ -15,6 +17,7 @@ public class KnockedDown : StatusEffect
 		{
 			MovementController.Instance.ShowMovement(character);
 		}
+		HeroDisplayRouter.Instance.mainDisplay.UpdateWithLastCharacter();
 	}
 
 	public override void CharacterStartTurn(CharacterStartTurnMessage characterStartTurnMessage)
@@ -25,9 +28,11 @@ public class KnockedDown : StatusEffect
 		}
 
 		Destroy(this);
+		cleared = true;
 		if (character.hero == true)
 		{
 			character.currentMovement = 0;
+			HeroDisplayRouter.Instance.mainDisplay.UpdateWithLastCharacter();
 		}
 	}
 

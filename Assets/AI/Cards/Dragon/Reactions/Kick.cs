@@ -72,6 +72,7 @@ public class Kick : ReactionBase
 			ActionController.AttackResults results = new ActionController.AttackResults();
 			results.fakeHit = true;
 			ActionController.Instance.DamageCharacter(attackingCharacter, owningCharacter, new ActionController.AttackProfile(0, 0, damage), results);
+			CombatLogControl.Instance.AddEntry($"Kick deals {results.damageDealt} to {attackingCharacter.displayName}");
 		}
 
 		BattleController.ReturnControlToPlayer();

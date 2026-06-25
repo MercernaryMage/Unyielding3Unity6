@@ -83,6 +83,7 @@ public class ChainWhirl : Card
 				ActionController.AttackResults results = new ActionController.AttackResults();
 				results.fakeHit = true;
 				ActionController.Instance.DamageCharacter(hero, owningCharacter, new ActionController.AttackProfile(0, 0, 4), results);
+				CombatLogControl.Instance.AddEntry($"Chain Whirl deals {results.damageDealt} to {hero.displayName}");
 			}
 
 			foreach (Tile t in hitTiles)

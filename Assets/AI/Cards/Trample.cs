@@ -114,6 +114,7 @@ public class Trample : Card
 			ActionController.AttackResults results = new ActionController.AttackResults();
 			results.fakeHit = true;
 			ActionController.Instance.DamageCharacter(c, character, new ActionController.AttackProfile(1, 6, 0), results);
+			CombatLogControl.Instance.AddEntry($"Trample deals {results.damageDealt} to {c.displayName}");
 			c.AddStatusEffect(typeof(Stun), null);
 		}
 		callback();

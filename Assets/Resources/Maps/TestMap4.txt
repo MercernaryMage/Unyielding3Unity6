@@ -351,7 +351,7 @@
     {
       "x": 3,
       "y": 1,
-      "tileStateScriptableObjectName": "Wall",
+      "tileStateScriptableObjectName": "Floor",
       "mainDeco": {
         "decoPrefab": "GrassTileNoDeco",
         "rotation": {
@@ -361,7 +361,7 @@
         }
       },
       "subDeco": {
-        "decoPrefab": "Bamboo_Tuft",
+        "decoPrefab": "",
         "rotation": {
           "x": 0.0,
           "y": 0.0,
@@ -611,7 +611,7 @@
     {
       "x": 3,
       "y": 2,
-      "tileStateScriptableObjectName": "Wall",
+      "tileStateScriptableObjectName": "Floor",
       "mainDeco": {
         "decoPrefab": "GrassTileNoDeco",
         "rotation": {
@@ -621,7 +621,7 @@
         }
       },
       "subDeco": {
-        "decoPrefab": "Bamboo",
+        "decoPrefab": "",
         "rotation": {
           "x": 0.0,
           "y": 0.0,

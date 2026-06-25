@@ -131,7 +131,7 @@ public class ActionTypes : MonoBehaviour
 	static public void Scry(Character c1, Character c2, ActionPattern pattern)
 	{
 		
-		AICardDisplay.Instance.ShowCard(c2.cards[0].cardScriptableObject);
+		AICardDisplay.Instance.ShowCard(c2.cards[0].cardScriptableObject, CardDisplay.CardType.Card);
 		c2.cards[0].isRevealed = true;
 		ActionController.Instance.EndAction();
 	}
@@ -392,6 +392,11 @@ public class ActionTypes : MonoBehaviour
 		if (c.currentMovement > 0)
 		{
 			return new Tuple<bool, string>(false, $"{c.displayName} has movement already");
+		}
+		KnockedDown kd = c.GetComponent<KnockedDown>();
+		if (kd != null && !kd.cleared)
+		{
+			return new Tuple<bool, string>(false, $"{c.displayName} is knocked down");
 		}
 		return new Tuple<bool, string>(true, "");
 	}

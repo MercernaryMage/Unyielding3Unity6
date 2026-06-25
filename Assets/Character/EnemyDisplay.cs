@@ -57,7 +57,7 @@ public class EnemyDisplay : SceneSingleton<EnemyDisplay>
 		if (!AICardDisplay.Instance.isShowing && currentCharacter.cards[0].isRevealed && !ActionController.Instance.running)
 		{
 			shouldCloseCard = true;
-			AICardDisplay.Instance.ShowCard(currentCharacter.cards[0].cardScriptableObject);
+			AICardDisplay.Instance.ShowCard(currentCharacter.cards[0].cardScriptableObject, CardDisplay.CardType.Card);
 		}
 	}
 

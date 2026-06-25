@@ -12,6 +12,7 @@ public class DamageOnTurnEnd : Trait
 				ActionController.AttackResults results = new ActionController.AttackResults();
 				results.fakeHit = true;
 				ActionController.Instance.DamageCharacter(message.character, character, new ActionController.AttackProfile(0, 0, 4), results);
+				CombatLogControl.Instance.AddEntry($"{character.displayName} deals {results.damageDealt} to {message.character.displayName}");
 			}
 		}
 	}

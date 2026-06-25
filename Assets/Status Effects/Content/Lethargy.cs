@@ -29,6 +29,7 @@ public class Lethargy : StatusEffect
         ActionController.AttackProfile profile = new ActionController.AttackProfile(0, 0, 0);
         profile.guaranteed = tilesMoved;
         ActionController.Instance.DamageCharacter(character, character, profile, results);
+        CombatLogControl.Instance.AddEntry($"Lethargy deals {results.damageDealt} to {character.displayName}");
     }
 
     public override void CharacterEndTurn(CharacterEndTurnMessage characterEndTurnMessage)

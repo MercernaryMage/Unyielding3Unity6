@@ -20,7 +20,7 @@ public class AICardDisplay : SceneSingleton<AICardDisplay>, IPointerEnterHandler
 		cardDisplay.ShowFakeCard(title, body);
 	}
 
-	public void ShowCard(CardScriptableObject cardScriptableObject)
+	public void ShowCard(CardScriptableObject cardScriptableObject, CardDisplay.CardType cardType)
 	{
 		if (time > 0 && cardScriptableObject == lastShownCard && isShowing)
 		{
@@ -30,7 +30,7 @@ public class AICardDisplay : SceneSingleton<AICardDisplay>, IPointerEnterHandler
 		time = -1;
 		lastShownCard = cardScriptableObject;
 		isShowing = true;
-		cardDisplay.ShowCard(cardScriptableObject, true);
+		cardDisplay.ShowCard(cardScriptableObject, true, cardType);
 	}
 
 	public void SoftDismiss(float t)
@@ -70,6 +70,6 @@ public class AICardDisplay : SceneSingleton<AICardDisplay>, IPointerEnterHandler
 		Type t = Type.GetType(cardForDebug.className);
 		Card c = (Card)Activator.CreateInstance(t);
 		c.Set(cardForDebug);
-		ShowCard(c.cardScriptableObject);
+		ShowCard(c.cardScriptableObject, CardDisplay.CardType.Card);
 	}
 }

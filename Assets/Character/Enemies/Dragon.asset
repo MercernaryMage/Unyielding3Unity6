@@ -21,12 +21,12 @@ MonoBehaviour:
   maxHP: 100
   maxEnergy: 0
   maxThreshold: 2
-  evasion: 8
+  evasion: 5
   weight: 0
   isMinion: 0
   allowAoO: 0
   maxDetermination: 0
-  isScannable: 0
+  isScannable: 1
   slots: 
   weapons:
   - item: {fileID: 0}
