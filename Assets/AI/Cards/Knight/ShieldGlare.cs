@@ -18,7 +18,6 @@ public class ShieldGlare : Card
 			AnimationController.Instance.DelayedCallback(3f, () => AIController.Instance.TakeTurn(owningCharacter));
 			return;
 		}
-		Util.FilterToLOS(tilesAndDirection, owningCharacter);
 		AnimationController.Instance.ShowTiles(tilesAndDirection.tiles, Tile.OverlayType.PossibleAttck, ReturnFromShowingAttackTiles);
 	}
 

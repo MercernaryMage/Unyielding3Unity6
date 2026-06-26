@@ -14,7 +14,6 @@ public class FireBreath : Card
 			Finish();
 			return;
 		}
-		Util.FilterToLOS(tilesAndDirection, owningCharacter);
 		if (tilesAndDirection.tiles.Count == 0)
 		{
 			Finish();

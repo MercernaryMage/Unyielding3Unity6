@@ -424,13 +424,13 @@ public static class Util
 		return result;
 	}
 
-	public static void FilterToLOS(TemplateLibrary.TilesAndDirection tilesAndDirection, Character target)
+	public static void FilterToLOS(List<Tile> tiles, Character target)
 	{
-		for (int i = tilesAndDirection.tiles.Count - 1; i >= 0; --i)
+		for (int i = tiles.Count - 1; i >= 0; --i)
 		{
-			if (!TileGrid.Instance.DoesTileHaveLOSToCharacter(tilesAndDirection.tiles[i], target))
+			if (!TileGrid.Instance.DoesTileHaveLOSToCharacter(tiles[i], target))
 			{
-				tilesAndDirection.tiles.RemoveAt(i);
+				tiles.RemoveAt(i);
 			}
 		}
 	}

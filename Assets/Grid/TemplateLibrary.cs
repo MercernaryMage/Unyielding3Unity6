@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static TemplateLibrary;
 
 public class TemplateLibrary : SceneSingleton<TemplateLibrary>
 {
@@ -292,7 +293,7 @@ public class TemplateLibrary : SceneSingleton<TemplateLibrary>
 					}
 				}
 			}
-
+			Util.FilterToLOS(coneTiles, originCharacter);
 			characterAndDirectionGroupings[i] = coneTiles;
 		}
 

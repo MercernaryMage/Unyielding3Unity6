@@ -17,7 +17,7 @@ public class Downed : StatusEffect
 
 	public void ClearEffect()
 	{
-		while (overflow > character.maxHP)
+		while (overflow >= character.maxHP)
 		{
 			--character.storageCharacter.currentDetermination;
 			overflow -= character.maxHP;

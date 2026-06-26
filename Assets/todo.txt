@@ -114,14 +114,46 @@ Do do our characters advance
                 Advantages
         As the game advances, character paths unlock
         charcters can use other characters path
-!!!MARCHING ORDERS!!!
-    --Burn damage happened twice
+!!!MARCHING ORDERS!!!    
     --When david was the against the wall, the dragon played fly and didn't move
-        THE MODEL IS IN THE WRONG POSITION!!!!!!!!!!!
+        THE MODEL IS IN THE WRONG POSITION!!!!!!!!!!
 
-    Fire breath didn't post damage????
-        It targeted no one because the trees blocked it
-    David at 0 hp but not downed
+    !!!!Effects we need!!!!
+        fire breath
+            BIG SPARKS
+        tail swipe
+            ????
+        Wing buffet
+            ????
+        crimson claw
+            fire normal attack
+        fly
+            ????
+        prepare
+            ????
+        singe aura
+            ????
+        inhale
+            ????
+        roar
+            Command effect
+        dreadgaze
+            ????
+        bite
+            ????
+
+        Wound
+            ????
+        recover
+            ????
+        screech
+            Command effect
+        kick
+            ????
+        flare up
+            ????
+        intimidate
+            Command effect
 
     ComatLogEntry defaults mouse over to card, but could be reaction
     2) Create the content for the other levels
