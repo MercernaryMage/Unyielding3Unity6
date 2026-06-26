@@ -8,6 +8,7 @@ public class CardScriptableObject : ScriptableObject
     public string className;
     public string cardDisplayName;
     public List<Tag> tags;
+	public List<EffectScriptableObject> effects;
 
 	public string GetTagStringValue(string tagName)
 	{

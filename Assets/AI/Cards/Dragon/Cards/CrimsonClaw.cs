@@ -75,7 +75,7 @@ public class CrimsonClaw : Card
 	void ReturnFromShowingAttackTiles()
 	{
 		owningCharacter.SetFacing(tilesAndDirection.direction);
-		ActionController.Instance.PlayAttackAnimation(owningCharacter, null, () =>
+		ActionController.Instance.PlayAdvancedAttackAnimation(owningCharacter, cardScriptableObject.effects[0], () =>
 		{
 			foreach (Tile t in tilesAndDirection.tiles)
 			{

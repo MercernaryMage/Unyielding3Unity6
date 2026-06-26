@@ -6446,6 +6446,7 @@ GameObject:
   - component: {fileID: 898251915}
   - component: {fileID: 898251916}
   - component: {fileID: 898251917}
+  - component: {fileID: 898251918}
   m_Layer: 0
   m_Name: Debug Code
   m_TagString: Untagged
@@ -6495,11 +6496,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
-  - David
-  - enemy
   - Lenette
+  - David
   - Cotton
   - Dane
+  - enemy
 --- !u!114 &898251913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6575,6 +6576,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugShowText
   textObject: {fileID: 737714396}
+--- !u!114 &898251918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898251909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4193af2a8c50dc4a8ba85677c856cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugSwing
+  c: {fileID: 0}
+  d: {fileID: 0}
+  effect: {fileID: 0}
 --- !u!1 &916006794
 GameObject:
   m_ObjectHideFlags: 0

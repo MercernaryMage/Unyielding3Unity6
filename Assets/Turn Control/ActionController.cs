@@ -187,7 +187,7 @@ public class ActionController : SceneSingleton<ActionController>
 				targetedTiles.RemoveAll(o => o.character == null);
 			}
 
-			
+
 			if (targetedTiles.Count != 0)
 			{
 				HandleActionStart();
@@ -211,6 +211,13 @@ public class ActionController : SceneSingleton<ActionController>
 		attackWiggle.secondaryAnimationObject = swingAnimationObjectPrefab;
 		attackWiggle.completeCallback = completeCallback;
 		attackWiggle.midwayCallback = midwayCallback;
+	}
+
+	public void PlayAdvancedAttackAnimation(Character attacker, EffectScriptableObject effect, Action completeCallback)
+	{
+		NewAttackWiggle attackWiggle = attacker.token.AddComponent<NewAttackWiggle>();
+		attackWiggle.effect = effect;
+		attackWiggle.completeCallback = completeCallback;
 	}
 
 	public void PlayAttackAnimation(Character attacker, Action midwayCallback, Action completeCallback)

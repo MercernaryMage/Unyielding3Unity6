@@ -118,7 +118,12 @@ Do do our characters advance
     --When david was the against the wall, the dragon played fly and didn't move
         THE MODEL IS IN THE WRONG POSITION!!!!!!!!!!
 
+    We need to do code clean up!
+        newattackwiggle is a bad name
+
+
     !!!!Effects we need!!!!
+        Damage impact
         fire breath
             BIG SPARKS
         tail swipe
