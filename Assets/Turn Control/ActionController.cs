@@ -693,8 +693,10 @@ public class ActionController : SceneSingleton<ActionController>
 		defender.threshold = 0;
 		Character tempAttackingCharacter = attackingCharacter;
 
+		float scrollTime = SelectionManager.Instance.SnapCameraToCharacter(defender);
+
 		ReactionCallback reactionCallback = new ReactionCallback();
-		reactionCallback.time = 1.0f;
+		reactionCallback.time = scrollTime;
 		reactionCallback.callback = () => { AIController.Instance.DoReaction(defender, tempAttackingCharacter); };
 		reactionCallbacks.Add(reactionCallback);
 	}
