@@ -33,4 +33,13 @@ public class CharacterToken : MonoBehaviour
 			renderer.SetPropertyBlock(block);
 		}
 	}
+	public Vector3 GetBonePosition(string str)
+	{
+		Transform t = transform.Find(str);
+		if (t != null)
+		{
+			return t.position;
+		}
+		return Vector3.zero;
+	}
 }

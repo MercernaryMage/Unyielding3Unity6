@@ -42,12 +42,13 @@ public class Roar : Card
 			}
 		}
 
-		AnimationController.Instance.ShowTiles(targetTiles, Tile.OverlayType.PossibleAttck, ReturnFromShowingAttackTiles, null, 3.0f);
+		AnimationController.Instance.ShowTiles(targetTiles, Tile.OverlayType.PossibleAttck, ReturnFromShowingAttackTiles, null, 1.0f);
 	}
 
 	void ReturnFromShowingAttackTiles()
 	{
-		ActionController.Instance.PlayAttackAnimation(owningCharacter, null, () =>
+		AnimationController.PlayEffect(owningCharacter, cardScriptableObject.effects[0]
+			, .25f, () =>
 		{
 			foreach (Character target in targets)
 			{

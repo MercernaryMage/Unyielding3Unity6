@@ -35,13 +35,11 @@ MonoBehaviour:
     damageString: 
     aoeType: 0
     aoeRange: 0
-    number: 0
-    face: 0
-    flatValue: 0
     chargesTaken: 0
     disqualifierFunc: 
     intParam: 2
     stringParam: 
+    effectScriptableObject: {fileID: 11400000, guid: c9590e6d7be7aca4893587a6cc83aa8c, type: 2}
     keywords: []
     postActionCommands: []
     postDamageFunctionName: 

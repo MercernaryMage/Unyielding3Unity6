@@ -4,32 +4,41 @@ using UnityEngine;
 
 public class EffectMinder : MonoBehaviour
 {
-    ParticleSystem[] systems;
-    void Start()
-    {
+    public List<ParticleSystem> systems;
+    public List<Animator> animators;
+    bool ready;
+    bool hasAnimators;
 
-        systems = GetComponentsInChildren<ParticleSystem>();
-		//Invoke(nameof(Stop), 0);
+    private void Start()
+    {
+        hasAnimators = animators.Count > 0;
     }
 
-// 	public void Stop()
-// 	{
-// 		foreach (ParticleSystem pSystem in systems)
-// 		{
-// 			pSystem.Stop();
-// 		}
-// 	}
-
-	// Update is called once per frame
-	void Update()
-	{
-		foreach (ParticleSystem pSystem in systems)
-		{
-            if (pSystem.particleCount > 0)
-			{
-                return;
-			}
-		}
-        Destroy(gameObject);
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        bool live = false;
+        foreach (ParticleSystem system in systems)
+        {
+            if (system.particleCount > 0)
+            {
+                ready = true;
+                live = true;
+                
+            }
+        }
+        bool aliveAnimators = false;
+        foreach (Animator animator in animators)
+        {
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
+            {
+                aliveAnimators = true;
+            }
+        }
+        if (ready && !live
+            || hasAnimators && !aliveAnimators)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

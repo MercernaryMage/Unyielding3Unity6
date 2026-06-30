@@ -3837,6 +3837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swingAnimationObjectPrefab: {fileID: 2225182066511297572, guid: 94e4b96d2e7eb2d43a9c9372df51ab6a, type: 3}
+  hitImpactScriptableObject: {fileID: 11400000, guid: 87c5914575259da4b81329d15330f245, type: 2}
   attackingCharacter: {fileID: 0}
   running: 0
   stepRunning: 0
@@ -6490,7 +6491,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 400200efbf2304345813bd062e52586e, type: 3}
   m_Name: 
@@ -6498,9 +6499,9 @@ MonoBehaviour:
   turnOrder:
   - Lenette
   - David
+  - enemy
   - Cotton
   - Dane
-  - enemy
 --- !u!114 &898251913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6539,14 +6540,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb9a1733fc5c4b44eb86864f5b96f159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugSetReactionOrder
   characterName: Dragon 1
   reactionNames:
-  - Screech
+  - Intimidate
   - Flare Up
 --- !u!114 &898251916
 MonoBehaviour:
@@ -6555,14 +6556,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9574144c87cbea74c9316baacb10b4fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugSetCardOrder
   characterName: Dragon 1
   cardNames:
-  - Fire Breath
+  - Roar
 --- !u!114 &898251917
 MonoBehaviour:
   m_ObjectHideFlags: 0

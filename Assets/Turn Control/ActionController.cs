@@ -13,6 +13,7 @@ using static ActionPattern;
 public class ActionController : SceneSingleton<ActionController>
 {
 	public GameObject swingAnimationObjectPrefab;
+	public EffectScriptableObject hitImpactScriptableObject;
 	public Character attackingCharacter;
 	public Item currentItem;
 	ActionPattern currentAction;
@@ -213,11 +214,28 @@ public class ActionController : SceneSingleton<ActionController>
 		attackWiggle.midwayCallback = midwayCallback;
 	}
 
-	public void PlayAdvancedAttackAnimation(Character attacker, EffectScriptableObject effect, Action completeCallback)
+	public void PlayAdvancedAttackAnimation(Character attacker, List<Character> targets, EffectScriptableObject effect, Action completeCallback)
 	{
 		NewAttackWiggle attackWiggle = attacker.token.AddComponent<NewAttackWiggle>();
 		attackWiggle.effect = effect;
 		attackWiggle.completeCallback = completeCallback;
+		foreach (Character c in targets)
+		{
+			PlayEffectOnDelay effectOnDelay = c.token.AddComponent<PlayEffectOnDelay>();
+			Vector3 position;
+
+			if (effect.position == EffectScriptableObject.EffectPosition.bone)
+			{
+				position = c.token.GetBonePosition(effect.bone);
+			}
+			else
+			{
+				position = c.token.transform.position;
+			}
+
+			effectOnDelay.Create(hitImpactScriptableObject, 0, position, c.characterDefinition.size, c.token.transform.localRotation);
+		}
+
 	}
 
 	public void PlayAttackAnimation(Character attacker, Action midwayCallback, Action completeCallback)
@@ -251,21 +269,22 @@ public class ActionController : SceneSingleton<ActionController>
 		////////////////////////// above here, do once
 		if (currentAction.attack)
 		{
-			////////this stuff happens at the end, remember to queue up reactions to be done at this section
-			PlayAttackAnimation(attackingCharacter, null, () =>
+			currentTargetsForAttack = new List<Character>();
+
+			foreach (Tile targetTile in targetedTiles)
 			{
-				currentTargetsForAttack = new List<Character>();
-
-				foreach (Tile targetTile in targetedTiles)
+				if (targetTile.character)
 				{
-					if (targetTile.character)
-					{
-						currentTargetsForAttack.Add(targetTile.character);
-					}
+					currentTargetsForAttack.Add(targetTile.character);
 				}
+			}
 
-				currentTargetsForAttack = currentTargetsForAttack.Distinct().ToList();
+			currentTargetsForAttack = currentTargetsForAttack.Distinct().ToList();
 
+
+			////////this stuff happens at the end, remember to queue up reactions to be done at this section
+			PlayAdvancedAttackAnimation(attackingCharacter, currentTargetsForAttack, currentAction.effectScriptableObject, () =>
+			{
 				AttackTarget();
 			});
 		}

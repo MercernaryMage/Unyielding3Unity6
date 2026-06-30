@@ -121,8 +121,16 @@ Do do our characters advance
     We need to do code clean up!
         newattackwiggle is a bad name
 
+    Should scroll the camera to the reacting person??
 
     !!!!Effects we need!!!!
+        -Spear
+       - Sparks
+        Bow
+        -knife
+        -shield?
+        Lighting bolt
+        
         Damage impact
         fire breath
             BIG SPARKS
@@ -130,8 +138,6 @@ Do do our characters advance
             ????
         Wing buffet
             ????
-        crimson claw
-            fire normal attack
         fly
             ????
         prepare
@@ -140,8 +146,6 @@ Do do our characters advance
             ????
         inhale
             ????
-        roar
-            Command effect
         dreadgaze
             ????
         bite
@@ -151,14 +155,10 @@ Do do our characters advance
             ????
         recover
             ????
-        screech
-            Command effect
         kick
             ????
         flare up
             ????
-        intimidate
-            Command effect
 
     ComatLogEntry defaults mouse over to card, but could be reaction
     2) Create the content for the other levels

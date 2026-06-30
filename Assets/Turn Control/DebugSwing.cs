@@ -1,3 +1,5 @@
+
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DebugSwing : MonoBehaviour
@@ -26,9 +28,10 @@ public class DebugSwing : MonoBehaviour
 
 	private void Update()
 	{
-        if (Input.GetKeyUp(KeyCode.M))
-        {
-			ActionController.Instance.PlayAdvancedAttackAnimation(c, effect, () => 
+		if (Input.GetKeyUp(KeyCode.M))
+		{
+			List<Character> targets = new List<Character>() {d };
+			ActionController.Instance.PlayAdvancedAttackAnimation(c, targets, effect, () => 
 			{
 				FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(d, "5");
 			}

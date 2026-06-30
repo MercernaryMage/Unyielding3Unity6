@@ -15,3 +15,5 @@ MonoBehaviour:
   className: Roar
   cardDisplayName: Roar
   tags: []
+  effects:
+  - {fileID: 11400000, guid: 25026c34795bf6a4da512d7877ace366, type: 2}

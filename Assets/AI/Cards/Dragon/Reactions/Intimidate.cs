@@ -50,18 +50,21 @@ public class Intimidate : ReactionBase
 			BattleController.ReturnControlToPlayer();
 			return;
 		}
-
 		owningCharacter.SetFacing(TileGrid.Instance.GetFacingDirection(owningCharacter, currentTarget));
-		if (TileGrid.Instance.CharactersAreAdjacent(owningCharacter, currentTarget))
-		{
-			currentTarget.AddStatusEffect(typeof(KnockedDown), null);
-		}
-		else
-		{
-			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(owningCharacter, "out of range");
-		}
+		AnimationController.PlayEffect(owningCharacter, cardScriptableObject.effects[0]
+			, .25f, () =>
+			{
+				if (TileGrid.Instance.CharactersAreAdjacent(owningCharacter, currentTarget))
+				{
+					currentTarget.AddStatusEffect(typeof(KnockedDown), null);
+				}
+				else
+				{
+					FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(owningCharacter, "out of range");
+				}
 
-		ContinueOrFinish();
+				ContinueOrFinish();
+			});
 	}
 
 	// After the attacker pass, if the card is aggravated, repeat once more targeting

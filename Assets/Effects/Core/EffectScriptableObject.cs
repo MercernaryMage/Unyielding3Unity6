@@ -10,7 +10,8 @@ public class EffectScriptableObject : ScriptableObject
 	{
 		origin,
 		target,
-		halfway
+		halfway,
+		bone
 	}
 
 	public enum EffectTiming
@@ -27,4 +28,5 @@ public class EffectScriptableObject : ScriptableObject
 	public Vector3 rotation;
 	public GameObject prefab;
 	public EffectPosition position;
+	public string bone;
 }

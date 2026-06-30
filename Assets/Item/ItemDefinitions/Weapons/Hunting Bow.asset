@@ -39,6 +39,7 @@ MonoBehaviour:
     disqualifierFunc: 
     intParam: 0
     stringParam: 
+    effectScriptableObject: {fileID: 11400000, guid: c9590e6d7be7aca4893587a6cc83aa8c, type: 2}
     keywords:
     - Ranged
     postActionCommands: []

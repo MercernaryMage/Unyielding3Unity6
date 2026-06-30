@@ -13,8 +13,12 @@ public class Screech : ReactionBase
 
 	public void Delay()
 	{
-		HowlAndGrowl.Growl(owningCharacter, GetIntValue("Value"));
-		BattleController.ReturnControlToPlayer();
+		AnimationController.PlayEffect(owningCharacter, cardScriptableObject.effects[0]
+			, .25f, () =>
+			{
+				HowlAndGrowl.Growl(owningCharacter, GetIntValue("Value"));
+				BattleController.ReturnControlToPlayer();
+			});
 	}
 
 	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 public class CrimsonClaw : Card
@@ -75,16 +76,24 @@ public class CrimsonClaw : Card
 	void ReturnFromShowingAttackTiles()
 	{
 		owningCharacter.SetFacing(tilesAndDirection.direction);
-		ActionController.Instance.PlayAdvancedAttackAnimation(owningCharacter, cardScriptableObject.effects[0], () =>
+		List<Character> targets = new List<Character>();
+		foreach (Tile t in tilesAndDirection.tiles)
 		{
+			if (t.character != null && t.character.hero)
+			{
+				targets.Add(t.character);
+			}
+		}
+		ActionController.Instance.PlayAdvancedAttackAnimation(owningCharacter, targets, cardScriptableObject.effects[0], () =>
+		{
+			foreach (Character t in targets)
+			{
+				ActionController.AttackProfile profile = new ActionController.AttackProfile(1, 6, 0);
+				profile.damageType = ActionPattern.DamageType.Burning;
+				ActionController.Instance.AttackCharacter(t, owningCharacter, profile);
+			}
 			foreach (Tile t in tilesAndDirection.tiles)
 			{
-				if (t.character != null && t.character.hero)
-				{
-					ActionController.AttackProfile profile = new ActionController.AttackProfile(1, 6, 0);
-					profile.damageType = ActionPattern.DamageType.Burning;
-					ActionController.Instance.AttackCharacter(t.character, owningCharacter, profile);
-				}
 				t.HideOverlay(Tile.OverlayType.PossibleAttck);
 			}
 			Finish();

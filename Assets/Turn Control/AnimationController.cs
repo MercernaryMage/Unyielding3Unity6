@@ -38,4 +38,21 @@ public class AnimationController : SceneSingleton<AnimationController>
 		storedAction = callback;
 		Invoke(nameof(DoCallback), seconds);
 	}
+
+	static public void PlayEffect(Character character, EffectScriptableObject effect, float actionDelay, Action callback)
+	{
+		PlayEffectOnDelay effectDelay = character.token.gameObject.AddComponent<PlayEffectOnDelay>();
+		Vector3 position;
+
+		if (effect.position == EffectScriptableObject.EffectPosition.bone)
+		{
+			position = character.token.GetBonePosition(effect.bone);
+		}
+		else
+		{
+			position = Vector3.zero;
+		}
+		effectDelay.Create(effect, 0, position, 1, 
+			character.token.transform.localRotation, callback, actionDelay);
+	}
 }
