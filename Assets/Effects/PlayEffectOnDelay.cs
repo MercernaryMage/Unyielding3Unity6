@@ -4,14 +4,14 @@ public class PlayEffectOnDelay : MonoBehaviour
 {
 	float delay;
 	EffectScriptableObject effect;
-	float scale = 1f;
+	Vector3 scale;
 	Vector3 position;
 	Quaternion rotation;
 	bool effectPlayed = false;
 	System.Action action;
 	float actionDelay;
 
-	public void Create(EffectScriptableObject e, float d, Vector3 p, float s, Quaternion r)
+	public void Create(EffectScriptableObject e, float d, Vector3 p, Vector3 s, Quaternion r)
 	{
 		delay = d;
 		effect = e;
@@ -19,7 +19,7 @@ public class PlayEffectOnDelay : MonoBehaviour
 		rotation = r;
 		position = p;
 	}
-	public void Create(EffectScriptableObject e, float d, Vector3 p, float s, Quaternion r, System.Action a, float aD)
+	public void Create(EffectScriptableObject e, float d, Vector3 p, Vector3 s, Quaternion r, System.Action a, float aD)
 	{
 		Create(e,d,p,s,r);
 		action = a;
@@ -58,7 +58,7 @@ public class PlayEffectOnDelay : MonoBehaviour
 		GameObject obj = Instantiate(effect.prefab);
 		obj.transform.SetParent(transform);
 		obj.transform.position = position + effect.offset;
-		obj.transform.localScale = Vector3.one * scale;
+		obj.transform.localScale = scale;
 		obj.transform.rotation = rotation;
 	}
 }

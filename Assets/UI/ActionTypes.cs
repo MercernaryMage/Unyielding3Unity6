@@ -343,7 +343,13 @@ public class ActionTypes : MonoBehaviour
 		c.armor = Mathf.Max(c.armor, pattern.intParam);
 		c.maxArmor = Mathf.Max(c.maxArmor, pattern.intParam);
 		PayActionPatternCost(c, pattern);
-		FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(c, $"+{pattern.intParam} armor");
+		BattleController.playerHasControl = false;
+
+		AnimationController.PlayEffect(c, pattern.effectScriptableObject, 1, () =>
+		{
+			BattleController.playerHasControl = true;
+			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(c, $"+{pattern.intParam} armor");
+		});
 	}
 
 	static public void SpawnGuest(Character c, Tile t, ActionPattern pattern)

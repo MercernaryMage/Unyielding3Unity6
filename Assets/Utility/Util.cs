@@ -524,6 +524,18 @@ public static class Util
 		}
 		return rand.Next(minInclusive, maxExclusive);
 	}
+
+	static public List<Tile> ExpandPathTiles(List<Tile> tiles, Character c)
+	{
+		List<Tile> outTiles = new List<Tile>();
+
+		foreach (Tile t in tiles)
+		{
+			outTiles.AddRange(TileGrid.Instance.WhatTilesWouldCharacterTake(c, t));
+		}
+
+		return outTiles;
+	}
 }
 
 public static class StringExtensions

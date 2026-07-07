@@ -88,7 +88,9 @@ public class ActionPattern
     public string disqualifierFunc;
     public int intParam;
     public string stringParam;
-    public EffectScriptableObject effectScriptableObject;
+	public EffectScriptableObject chargeEffectScriptableObject;
+	public EffectScriptableObject effectScriptableObject;
+	public EffectScriptableObject hitEffectScriptableObject;
 	public List<string> keywords;
     public List<string> postActionCommands;
 	public string postDamageFunctionName;

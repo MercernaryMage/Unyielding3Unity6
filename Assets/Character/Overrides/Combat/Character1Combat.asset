@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSlots:
   - {fileID: 11400000, guid: 18e996dcff016ab40846a53947512ce3, type: 2}
+  - {fileID: 11400000, guid: 49081a8cde1b91d44ab8190148ffc79b, type: 2}
   adventages: []

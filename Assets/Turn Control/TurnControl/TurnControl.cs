@@ -153,7 +153,7 @@ public class TurnControl : SceneSingleton<TurnControl>
 	}
 
 	List<Object> turnStartLocks = new List<Object>();
-	Character currentCharacter;
+	public Character currentCharacter;
 
 	public void RemoveLock(Object obj)
 	{

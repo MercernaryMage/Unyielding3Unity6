@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Recover : ReactionBase
 {
@@ -13,15 +14,18 @@ public class Recover : ReactionBase
 
 	public void Delay()
 	{
-		Injured injured = owningCharacter.GetComponent<Injured>();
-		if (injured != null)
+		ActionController.Instance.PlayAdvancedAttackAnimation(owningCharacter, null, cardScriptableObject.effects[0], null, () =>
 		{
-			GameObject.Destroy(injured);
-		}
+			Injured injured = owningCharacter.GetComponent<Injured>();
+			if (injured != null)
+			{
+				GameObject.Destroy(injured);
+			}
 
-		owningCharacter.armor = Mathf.Min(owningCharacter.armor + GetIntValue("Value"), owningCharacter.characterDefinition.armor);
-		owningCharacter.maxArmor = Mathf.Max(owningCharacter.maxArmor, owningCharacter.armor);
-		BattleController.ReturnControlToPlayer();
+			owningCharacter.armor = Mathf.Min(owningCharacter.armor + GetIntValue("Value"), owningCharacter.characterDefinition.armor);
+			owningCharacter.maxArmor = Mathf.Max(owningCharacter.maxArmor, owningCharacter.armor);
+			BattleController.ReturnControlToPlayer();
+		});
 	}
 
 	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)

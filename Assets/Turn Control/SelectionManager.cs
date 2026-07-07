@@ -316,16 +316,26 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 		MovementController.Instance.MouseExitTile(t);
 	}
 
-	public float SnapCameraToCharacter(Character targetCharacter)
+	Vector3 GetCameraPositionCenteredOnCharacter(Character targetCharacter)
 	{
 		Vector3 tokenPos = targetCharacter.token.transform.position;
 		Vector3 camForward = Camera.main.transform.forward;
 		float s = (tokenPos.y - Camera.main.transform.position.y) / camForward.y;
-		Vector3 finalPos = new Vector3(
+		return new Vector3(
 			tokenPos.x - camForward.x * s,
 			Camera.main.transform.position.y,
 			tokenPos.z - camForward.z * s
 		);
+	}
+
+	public void CenterCameraOnCharacter(Character targetCharacter)
+	{
+		Camera.main.transform.position = GetCameraPositionCenteredOnCharacter(targetCharacter);
+	}
+
+	public float SnapCameraToCharacter(Character targetCharacter)
+	{
+		Vector3 finalPos = GetCameraPositionCenteredOnCharacter(targetCharacter);
 
 		GlobalPositionLerp globalPositionLerp = Camera.main.AddComponent<GlobalPositionLerp>();
 		float runTime = (Camera.main.transform.position - finalPos).magnitude / 15.0f;

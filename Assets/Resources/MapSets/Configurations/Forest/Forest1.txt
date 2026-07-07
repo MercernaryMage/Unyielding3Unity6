@@ -1,13 +1,8 @@
 {
   "player": [
     {
-      "x": 1,
-      "y": 1,
-      "direction": 1
-    },
-    {
-      "x": 1,
-      "y": 3,
+      "x": 2,
+      "y": 4,
       "direction": 1
     },
     {
@@ -16,43 +11,48 @@
       "direction": 1
     },
     {
-      "x": 1,
-      "y": 7,
+      "x": 4,
+      "y": 2,
+      "direction": 1
+    },
+    {
+      "x": 5,
+      "y": 1,
       "direction": 1
     }
   ],
   "enemies": [
     {
       "location": {
-        "x": 5,
-        "y": 1,
-        "direction": 3
-      },
-      "name": "Bandit"
-    },
-    {
-      "location": {
-        "x": 5,
-        "y": 3,
-        "direction": 3
-      },
-      "name": "Bandit"
-    },
-    {
-      "location": {
-        "x": 5,
+        "x": 9,
         "y": 5,
         "direction": 3
       },
-      "name": "Bandit"
+      "name": "Knight"
+    },
+    {
+      "location": {
+        "x": 6,
+        "y": 8,
+        "direction": 3
+      },
+      "name": "Mercenary"
     },
     {
       "location": {
         "x": 5,
-        "y": 7,
+        "y": 8,
         "direction": 3
       },
-      "name": "Bandit"
+      "name": "Deer"
+    },
+    {
+      "location": {
+        "x": 6,
+        "y": 9,
+        "direction": 3
+      },
+      "name": "Witch"
     }
   ],
   "mapMessageTitle": "",

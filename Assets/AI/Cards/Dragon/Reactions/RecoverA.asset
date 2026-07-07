@@ -20,3 +20,5 @@ MonoBehaviour:
     floatData: 0
     intData: 4
     boolData: 0
+  effects:
+  - {fileID: 11400000, guid: e63ed88e38e827f4c9409b98bf682873, type: 2}

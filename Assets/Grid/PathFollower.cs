@@ -31,6 +31,8 @@ public class PathFollower : MonoBehaviour
 
 	public void Update()
 	{
+		SelectionManager.Instance.CenterCameraOnCharacter(character);
+
 		time += Time.deltaTime;
 		if (time >= timeMax)
 		{
@@ -51,8 +53,11 @@ public class PathFollower : MonoBehaviour
 			path.RemoveAt(0);
 			if (path.Count == 1)
 			{
+				CameraFocusCharacter focus = character.gameObject.AddComponent<CameraFocusCharacter>();
+				focus.character = character;
 				positionLerp.callbackFunction = () =>
 				{
+					Destroy(focus);
 					if (moveCharacter)
 					{
 						TileGrid.Instance.MoveCharacterToTile(character, path[0]);

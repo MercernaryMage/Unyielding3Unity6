@@ -39,20 +39,34 @@ public class AnimationController : SceneSingleton<AnimationController>
 		Invoke(nameof(DoCallback), seconds);
 	}
 
-	static public void PlayEffect(Character character, EffectScriptableObject effect, float actionDelay, Action callback)
+	static public void PlayEffect(Character character, Vector3 seconadryPosition, EffectScriptableObject effect, float actionDelay, Action callback)
 	{
 		PlayEffectOnDelay effectDelay = character.token.gameObject.AddComponent<PlayEffectOnDelay>();
 		Vector3 position;
-
+		Vector3 scale = Vector3.one;
+		Vector3 euler = character.token.transform.localRotation.eulerAngles;
 		if (effect.position == EffectScriptableObject.EffectPosition.bone)
 		{
 			position = character.token.GetBonePosition(effect.bone);
 		}
+		else if (effect.position == EffectScriptableObject.EffectPosition.halfway)
+		{
+			Vector3 midway = seconadryPosition - character.token.transform.position;
+			position = character.token.transform.position + midway / 2;
+			scale = new Vector3(1, 1, midway.magnitude * .6666f);
+			float angleBetween = Vector3.SignedAngle(Vector3.right, midway, Vector3.up);
+			euler = new Vector3(0, angleBetween + 90, 0);
+		}
 		else
 		{
-			position = Vector3.zero;
+			position = character.token.transform.position;
 		}
-		effectDelay.Create(effect, 0, position, 1, 
-			character.token.transform.localRotation, callback, actionDelay);
+		effectDelay.Create(effect, effect.delay, position, scale,
+			Quaternion.Euler(euler), callback, actionDelay);
+	}
+
+	static public void PlayEffect(Character character, EffectScriptableObject effect, float actionDelay, Action callback)
+	{
+		PlayEffect(character, Vector3.one, effect, actionDelay, callback);
 	}
 }

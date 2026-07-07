@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: Knight
   model: {fileID: 2741613361274902432, guid: cdb8fcc3533c2c9408cfbaf0893fa94c, type: 3}
   size: 2
-  movement: 2
+  movement: 3
   armor: 7
   toughness: 0
   maxHP: 15

@@ -1,95 +1,92 @@
-
-Big creatures should be able to walk through themselves, even if we disable team movement
-
-frothing has a bug
-    If a character has a slobbered effect and is out of range, the AI will not go
-    Util.RemoveOutOfRangeRoutes(routes, range); fixes it.  Apply to all
-
-Enemies are very polite and obey body blocking.  Is this what we want?
-    Some enemies should 1x1
-    Large enemies should probably not
-
-
 Don't spawn a player if they don't have determination 
 
 2x2 player movement is certainly broken
 
 
+!!!MARCHING ORDERS!!!    
+    --When david was the against the wall, the dragon played fly and didn't move
+        THE MODEL IS IN THE WRONG POSITION!!!!!!!!!!
 
- ///////////TECH DEBT///////////////
-Look into claude skills:
-    C# code formatting
+    We lost 0 real resources
+        2 surges
+    Enemies just crumpled
+    We need 2 more enemies
 
-Need ability to determine if an item is a shield
 
-AttackFairyStarter -> AttackFairyTrait
-    We don't want the AttackFairyStarter class to exist.  We need a way to add generic traits to the owner character
-Burst targeting doesn't show the marked tiles!
-    Remember!  marked = possible, targeted = will hit
+    !!!!Effects we need!!!!
+        -Spear
+        Bow
+            Very fast arrow?
+        -knife
+        kick
+            Slam effect?
+        
+        tail swipe
+            ????
+        Wing buffet
+            ????
+        fly
+            ????
+        prepare
+            ????
+        singe aura
+            ????
+        inhale
+            ????
+        dreadgaze
+            ????
+        bite
+            ????
+        Wound
+            ????
+        flare up
+            ????
 
-///////////TECH DEBT///////////////
-    Ready needs to be universal
-        Restore all lost energy
-        &&&&
-        Reload all weapons
+
     
-    sparks needs to be loading
-        And not deal 1d6
-            2 fire
-    We don't have a way of ending AoE attacks
-        Line, sparks, burst
-    
-    The special attack code should set backstab correctly
-    backstab deals 1 flat damage
-        It should deal +1d6
+    2) Create the content for the other levels
+        Forest
+            Make geo
+            Make enemies
+        Woods
+            Make geo
+            Make enemies
+        Meadow
+            Make geo
+            Make enemies
+        Boss fight
+            Do we make an extra fight in front of the boss?
+            Make geo
+            Make enemies
 
-    Content
-        UI
-            Combat
-                Enemy display
-                    Name
-                    stats
-                !!Card display!!
-                
-            Town
-                Character select
-                Character Display
-                    Stats
-                        Are we locked in here?????
-                    Traits
-                    Subclasses
-                        We need more lies here
-                    Advantages
-                    Add advantage pane
-            Overland
-                Locked UI
-                BG art
-                    Who is going to make this????
-                        Thanh
-                ????
+        Keep tutorial boss as is
+            Is he too long?  Too hard/easy?
 
-        Effects
-            All attacks?
-            Status effects?
-        Sound
-            BG
-            Sound effects for attacks
+       Do move variants
+           Do we need them for the demo?
+           How many?
 
-        Story
 
-        PLAY THE TUTORIAL MORE
+Knowledge system for demo    
+        Show a path for each character
+            Cotton
+                Potion bag
+                    first 3 potions cost weight
+                Quiver
+                    First 3 ammos have no weight
+            Lenette
+                Better shield
+                Cool sword
+            Dane
+                Healing spell
+                Courage
+            David
+                Recharge as a quick action
+                simple lightning line
 
-        Icons
-            weapons
-            Advantage
 
-        We need to auto remove the AI card better 
-        player movement always provokes.  Should it?
-        Check all trait descriptions
-        Move david to the top right of the little forest:
-            The first tree doesn't duck until you rotate the camera
 
-Do do our characters advance
+How do our characters advance
     Premise: UY2 leveling is horrid
         We want like 50% upward growth
     Items
@@ -114,124 +111,3 @@ Do do our characters advance
                 Advantages
         As the game advances, character paths unlock
         charcters can use other characters path
-!!!MARCHING ORDERS!!!    
-    --When david was the against the wall, the dragon played fly and didn't move
-        THE MODEL IS IN THE WRONG POSITION!!!!!!!!!!
-
-    We need to do code clean up!
-        newattackwiggle is a bad name
-
-    Should scroll the camera to the reacting person??
-
-    !!!!Effects we need!!!!
-        -Spear
-       - Sparks
-        Bow
-        -knife
-        -shield?
-        Lighting bolt
-        
-        Damage impact
-        fire breath
-            BIG SPARKS
-        tail swipe
-            ????
-        Wing buffet
-            ????
-        fly
-            ????
-        prepare
-            ????
-        singe aura
-            ????
-        inhale
-            ????
-        dreadgaze
-            ????
-        bite
-            ????
-
-        Wound
-            ????
-        recover
-            ????
-        kick
-            ????
-        flare up
-            ????
-
-    ComatLogEntry defaults mouse over to card, but could be reaction
-    2) Create the content for the other levels
-        Forest
-            Make geo
-            Make enemies
-        Woods
-            Make geo
-            Make enemies
-        Meadow
-            Make geo
-            Make enemies
-        Boss fight
-            Make geo
-            Make enemies
-
-        Keep tutorial boss as is
-            Is he too long?  Too hard/easy?
-
-       Do move variants
-           Do we need them for the demo?
-           How many?
-       
-       DRAGON BOSS
-            Moves
-                fire breath
-                Tail swipe
-                wing buffet
-                Crimson claw
-                Swoop
-                Fly
-                Prepare
-                Burn Aura
-                Inhale
-                Bite
-                Roar
-                Dread Aura
-                            
-            Reactions
-                WoundN
-                WoundA               
-                RecoverN
-                RecoverA
-                ScreechN
-                ScreechA
-                KickN
-                KickA
-                Flare UpN
-                Flare UpA
-                IntimidateN
-                IntimidateA
-
-        Do stuff
-            Better display of cards and reactions happening?
-            
-        Why did the lizard get aggravted stuff?
-
-        Test trample on players right next to trees
-            Does trample just go straight into trees?
-
-Knowledge system for demo    
-        Show a path for each character
-            Cotton
-                Potion bag
-                    first 3 potions cost weight
-                Quiver
-                    First 3 ammos have no weight
-            Lenette
-                Better shield
-                Cool sword
-            Dane
-                Healing spell
-                Courage
-            David
-                Recharge as a quick action
-                simple lightning line

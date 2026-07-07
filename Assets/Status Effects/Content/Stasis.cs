@@ -6,10 +6,10 @@ public class Stasis : Downed
 {
 	public override void CharacterEndTurn(CharacterEndTurnMessage characterEndTurnMessage)
 	{
-// 		if (characterEndTurnMessage.character == character)
-// 		{
-// 			Destroy(this);
-// 		}
+		if (characterEndTurnMessage.character == character)
+		{
+			Destroy(this);
+		}
 	}
 
 	public override string GetDisplayName()

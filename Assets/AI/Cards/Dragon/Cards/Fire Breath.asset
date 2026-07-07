@@ -15,3 +15,5 @@ MonoBehaviour:
   className: FireBreath
   cardDisplayName: Fire Breath
   tags: []
+  effects:
+  - {fileID: 11400000, guid: 5c2944a534ce9da408b5e40911fae819, type: 2}

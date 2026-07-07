@@ -28,6 +28,7 @@ public class ActionController : SceneSingleton<ActionController>
 	int aoeValue;
 
 	List<Tile> markedTiles = new List<Tile>(); //THINGS THAT MIGHT BE TARGETED
+	List<Tile> markedTilesForGameplay; //These are the tiles that were marked before the last update
 	List<Tile> targetedTiles = new List<Tile>(); //THE ACTUAL AOE LIST
 
 	public bool stepRunning = false;
@@ -214,28 +215,43 @@ public class ActionController : SceneSingleton<ActionController>
 		attackWiggle.midwayCallback = midwayCallback;
 	}
 
-	public void PlayAdvancedAttackAnimation(Character attacker, List<Character> targets, EffectScriptableObject effect, Action completeCallback)
+	public void PlayAdvancedAttackAnimation(Character attacker, List<Character> targets, EffectScriptableObject effect, EffectScriptableObject hitEffect, Action completeCallback)
 	{
-		NewAttackWiggle attackWiggle = attacker.token.AddComponent<NewAttackWiggle>();
-		attackWiggle.effect = effect;
-		attackWiggle.completeCallback = completeCallback;
-		foreach (Character c in targets)
+		if (effect.wiggle)
 		{
-			PlayEffectOnDelay effectOnDelay = c.token.AddComponent<PlayEffectOnDelay>();
-			Vector3 position;
-
-			if (effect.position == EffectScriptableObject.EffectPosition.bone)
+			NewAttackWiggle attackWiggle = attacker.token.AddComponent<NewAttackWiggle>();
+			attackWiggle.effect = effect;
+			attackWiggle.completeCallback = completeCallback;
+		}
+		else
+		{
+			if (markedTilesForGameplay != null && markedTilesForGameplay.Count > 0)
 			{
-				position = c.token.GetBonePosition(effect.bone);
+				AnimationController.PlayEffect(attacker, markedTilesForGameplay[markedTilesForGameplay.Count - 1].transform.position,
+				effect, effect.runTime + .2f, completeCallback);
+				markedTilesForGameplay.Clear();
 			}
 			else
 			{
-				position = c.token.transform.position;
+				AnimationController.PlayEffect(attacker,effect, 
+					effect.runTime + .2f, completeCallback);
 			}
-
-			effectOnDelay.Create(hitImpactScriptableObject, 0, position, c.characterDefinition.size, c.token.transform.localRotation);
 		}
 
+		if (targets != null)
+		{
+			foreach (Character c in targets)
+			{
+				PlayEffectOnDelay effectOnDelay = c.token.AddComponent<PlayEffectOnDelay>();
+				Vector3 position = c.token.transform.position;
+				EffectScriptableObject effectScriptableObject = hitImpactScriptableObject;
+				if (hitEffect != null)
+				{
+					effectScriptableObject = hitEffect;
+				}
+				effectOnDelay.Create(effectScriptableObject, effectScriptableObject.runTime, position, Vector3.one * c.characterDefinition.size, c.token.transform.localRotation);
+			}
+		}
 	}
 
 	public void PlayAttackAnimation(Character attacker, Action midwayCallback, Action completeCallback)
@@ -281,9 +297,13 @@ public class ActionController : SceneSingleton<ActionController>
 
 			currentTargetsForAttack = currentTargetsForAttack.Distinct().ToList();
 
-
 			////////this stuff happens at the end, remember to queue up reactions to be done at this section
-			PlayAdvancedAttackAnimation(attackingCharacter, currentTargetsForAttack, currentAction.effectScriptableObject, () =>
+			if (currentAction.chargeEffectScriptableObject != null)
+			{
+				AnimationController.PlayEffect(attackingCharacter, currentAction.chargeEffectScriptableObject, 0, null);
+			}
+			PlayAdvancedAttackAnimation(attackingCharacter, currentTargetsForAttack,
+				currentAction.effectScriptableObject, currentAction.hitEffectScriptableObject, () =>
 			{
 				AttackTarget();
 			});
@@ -944,6 +964,10 @@ public class ActionController : SceneSingleton<ActionController>
 		reactionCallbacks.RemoveAt(0);
 		if (reactionCallbacks.Count == 0)
 		{
+			if (TurnControl.Instance.currentCharacter != null)
+			{
+				SelectionManager.Instance.SnapCameraToCharacter(TurnControl.Instance.currentCharacter);
+			}
 			if (attackingCharacter != null)
 			{
 				EndAction();
@@ -1095,6 +1119,7 @@ public class ActionController : SceneSingleton<ActionController>
 			targetedTiles.Clear();
 
 			targetedTiles = GetAoETiles(currentAction.aoeType, currentAction.aoeRange, attackingCharacter);
+			markedTilesForGameplay = new List<Tile>(targetedTiles);
 			foreach (Tile t in targetedTiles)
 			{
 				t.ShowOverlay(Tile.OverlayType.Selected);
@@ -1155,10 +1180,6 @@ public class ActionController : SceneSingleton<ActionController>
 			List<Tile> outTiles = new List<Tile>();
 			if (lastMousedOverTile != null)
 			{
-				if (Input.GetKeyDown(KeyCode.Z))
-				{
-					Debug.Log("1111");
-				}
 				Tile startingTile = TileGrid.Instance.FindCharacter(attackingCharacter)[0];
 				outTiles = TileGrid.Instance.GetLineTilesTillCollision(startingTile, lastMousedOverTile);
 			}

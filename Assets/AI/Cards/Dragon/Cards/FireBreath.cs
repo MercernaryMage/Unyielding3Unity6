@@ -25,18 +25,25 @@ public class FireBreath : Card
 
 	void ReturnFromShowingAttackTiles()
 	{
-		ActionController.Instance.PlayAttackAnimation(owningCharacter, null, () =>
+		owningCharacter.SetFacing(tilesAndDirection.direction);
+		List<Character> targets = new List<Character>();
+		foreach (Tile t in tilesAndDirection.tiles)
 		{
-			List<Character> hitCharacters = new List<Character>();
+			if (t.character != null && t.character.hero && !targets.Contains(t.character))
+			{
+				targets.Add(t.character);
+			}
+		}
+		ActionController.Instance.PlayAdvancedAttackAnimation(owningCharacter, targets, cardScriptableObject.effects[0], null, () =>
+		{
+			foreach (Character t in targets)
+			{
+				ActionController.AttackProfile profile = new ActionController.AttackProfile(1, 6, 3);
+				profile.damageType = ActionPattern.DamageType.Burning;
+				ActionController.Instance.AttackCharacter(t, owningCharacter, profile);
+			}
 			foreach (Tile t in tilesAndDirection.tiles)
 			{
-				if (t.character != null && t.character.hero && !hitCharacters.Contains(t.character))
-				{
-					hitCharacters.Add(t.character);
-					ActionController.AttackProfile profile = new ActionController.AttackProfile(1, 6, 3);
-					profile.damageType = ActionPattern.DamageType.Burning;
-					ActionController.Instance.AttackCharacter(t.character, owningCharacter, profile);
-				}
 				t.HideOverlay(Tile.OverlayType.PossibleAttck);
 			}
 			Finish();

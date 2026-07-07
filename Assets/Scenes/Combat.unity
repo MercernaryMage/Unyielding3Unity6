@@ -3963,6 +3963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastCharacter: {fileID: 0}
+  currentCharacter: {fileID: 0}
 --- !u!114 &567337329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6448,6 +6449,7 @@ GameObject:
   - component: {fileID: 898251916}
   - component: {fileID: 898251917}
   - component: {fileID: 898251918}
+  - component: {fileID: 898251919}
   m_Layer: 0
   m_Name: Debug Code
   m_TagString: Untagged
@@ -6491,7 +6493,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 400200efbf2304345813bd062e52586e, type: 3}
   m_Name: 
@@ -6540,14 +6542,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb9a1733fc5c4b44eb86864f5b96f159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugSetReactionOrder
   characterName: Dragon 1
   reactionNames:
-  - Intimidate
+  - Recover
   - Flare Up
 --- !u!114 &898251916
 MonoBehaviour:
@@ -6556,14 +6558,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9574144c87cbea74c9316baacb10b4fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugSetCardOrder
   characterName: Dragon 1
   cardNames:
-  - Roar
+  - Fire Breath
 --- !u!114 &898251917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6571,7 +6573,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd0fa8871eebb0a4ca82d706dce65543, type: 3}
   m_Name: 
@@ -6584,7 +6586,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4193af2a8c50dc4a8ba85677c856cf6, type: 3}
   m_Name: 
@@ -6592,6 +6594,21 @@ MonoBehaviour:
   c: {fileID: 0}
   d: {fileID: 0}
   effect: {fileID: 0}
+--- !u!114 &898251919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898251909}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caa094ea4cedf5f47aaf4feaa70afdf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugSetStat
+  characterName: Lenette
+  statName: armor
+  value: -4
 --- !u!1 &916006794
 GameObject:
   m_ObjectHideFlags: 0
@@ -12189,7 +12206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -260, y: 82}
+  m_AnchoredPosition: {x: -260, y: -59.94}
   m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1609134951

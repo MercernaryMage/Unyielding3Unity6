@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12a80c85b9e40304791bccc330a40f50, type: 3}
   m_Name: Hit Impact
   m_EditorClassIdentifier: Assembly-CSharp::EffectScriptableObject
+  wiggle: 0
   timing: 0
   delay: 0
   runTime: 0

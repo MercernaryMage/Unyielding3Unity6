@@ -31,11 +31,15 @@ public class DebugSwing : MonoBehaviour
 		if (Input.GetKeyUp(KeyCode.M))
 		{
 			List<Character> targets = new List<Character>() {d };
-			ActionController.Instance.PlayAdvancedAttackAnimation(c, targets, effect, () => 
+			ActionController.Instance.PlayAdvancedAttackAnimation(c, targets, effect, null, () => 
 			{
 				FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(d, "5");
 			}
 			);
+		}
+		if (Input.GetKeyUp(KeyCode.T)  && Input.GetKey(KeyCode.LeftShift))
+		{
+			Time.timeScale = .1f;
 		}
 
 	}

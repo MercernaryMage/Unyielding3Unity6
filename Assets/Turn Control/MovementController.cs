@@ -73,7 +73,7 @@ public class MovementController : SceneSingleton<MovementController>
 				MovementController.PathfindingRules rules = new MovementController.PathfindingRules();
 				rules.allowedToPathThroughAllies = true;
 				List<Tile> route = FindRoute(c, TileGrid.Instance.tiles[i], j, rules);
-				if (route != null && route.Count <= range)
+				if (route != null && route.Count <= range + 1)
 				{
 					inRangeTiles.Add(TileGrid.Instance.tiles[i]);
 				}

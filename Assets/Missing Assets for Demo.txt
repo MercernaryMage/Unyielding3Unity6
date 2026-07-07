@@ -1,0 +1,72 @@
+Item icons
+	Amber spyglass
+	Call out
+	Causality Gem
+	Curse Paper
+	Dash
+	Energy Potion
+	Health Potion
+	Holy Lasso
+	Medkit
+	Protect
+	Ready
+	Surge
+
+	Big Sword
+	Crossbow
+	Dagger
+	Fireball
+	Great Club
+	Healing Spell
+	Hunting bow
+	lightning bolt
+	longsword
+	phantasm
+	rapier
+	sheild
+	sparks
+	spear
+Sound
+	?????
+Enemy models
+	Arbalist
+	Bandit
+	Chainmaster
+	Deer
+	Dragon
+	Guard
+	Knight
+	Lizard
+	Mercenary
+	Warrior
+	Witch
+Effects
+	tail swipe
+    Wing buffet
+    fly
+    prepare
+    singe aura
+    inhale
+    dreadgaze
+    bite
+    Wound
+    flare up
+	Arbalist
+	Bandit
+	Chainmaster
+	Deer
+	Dragon
+	Guard
+	Knight
+	Lizard
+	Mercenary
+	Warrior
+	Witch
+		Doom
+Overland map
+UI
+	Combat
+		reaction/card selector
+	Town
+	Overland
+Landing page

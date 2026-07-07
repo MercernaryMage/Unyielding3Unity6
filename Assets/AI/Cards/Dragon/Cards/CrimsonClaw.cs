@@ -7,6 +7,7 @@ public class CrimsonClaw : Card
 {
 	TemplateLibrary.TilesAndDirection tilesAndDirection;
 	Tuple<List<Tile>, Tile> route;
+	List<Tile> litRouteTiles;
 	Character target;
 
 	public override void Execute()
@@ -41,7 +42,8 @@ public class CrimsonClaw : Card
 			Util.ShortenPathToMaxRange(route, maxRange);
 		}
 
-		AnimationController.Instance.ShowTiles(route.Item1, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, ReturnFromRoute);
+		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
+		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, ReturnFromRoute);
 	}
 
 	void ReturnFromShowingTiles()
@@ -51,7 +53,7 @@ public class CrimsonClaw : Card
 
 	void ReturnFromRoute()
 	{
-		foreach (Tile t in route.Item1)
+		foreach (Tile t in litRouteTiles)
 		{
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
 		}
@@ -84,7 +86,7 @@ public class CrimsonClaw : Card
 				targets.Add(t.character);
 			}
 		}
-		ActionController.Instance.PlayAdvancedAttackAnimation(owningCharacter, targets, cardScriptableObject.effects[0], () =>
+		ActionController.Instance.PlayAdvancedAttackAnimation(owningCharacter, targets, cardScriptableObject.effects[0], null, () =>
 		{
 			foreach (Character t in targets)
 			{

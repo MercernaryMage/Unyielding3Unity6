@@ -39,7 +39,9 @@ MonoBehaviour:
     disqualifierFunc: 
     intParam: 2
     stringParam: 
-    effectScriptableObject: {fileID: 11400000, guid: c9590e6d7be7aca4893587a6cc83aa8c, type: 2}
+    chargeEffectScriptableObject: {fileID: 0}
+    effectScriptableObject: {fileID: 11400000, guid: 0e9b28b3b61a59a48b7e9cfa2c8f0399, type: 2}
+    hitEffectScriptableObject: {fileID: 0}
     keywords: []
     postActionCommands: []
     postDamageFunctionName: 

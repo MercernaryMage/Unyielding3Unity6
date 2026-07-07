@@ -15,5 +15,5 @@ MonoBehaviour:
   weaponSlots:
   - {fileID: 11400000, guid: a5a2533f851526740be2478c77cd5922, type: 2}
   - {fileID: 11400000, guid: 6f8b3c4cee8d07d4685a6d70eed126ff, type: 2}
-  - {fileID: 11400000, guid: f3b5e80942e2cc54b8d3303a723c1720, type: 2}
+  - {fileID: 11400000, guid: 9252c87ffdfebf84fa726570c164cd41, type: 2}
   adventages: []

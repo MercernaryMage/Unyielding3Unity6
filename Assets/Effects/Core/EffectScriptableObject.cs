@@ -20,7 +20,7 @@ public class EffectScriptableObject : ScriptableObject
 		wiggleApex
 	}
 
-
+	public bool wiggle = true;
 	public EffectTiming timing;
 	public float delay;
 	public float runTime;
