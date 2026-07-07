@@ -9,6 +9,7 @@ public class Whirl : Card
 	List<Tile> hitTiles;
 	List<Character> hitCharacters;
 	Tuple<List<Tile>, Tile> route;
+	List<Tile> litRouteTiles;
 
 	public override void Execute()
 	{
@@ -24,7 +25,8 @@ public class Whirl : Card
 
 		Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
 
-		AnimationController.Instance.ShowTiles(route.Item1, Tile.OverlayType.PossibleMovement, Route, ReturnFromShowingTiles);
+		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
+		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, Route, ReturnFromShowingTiles);
 	}
 
 	public void Route()
@@ -52,7 +54,7 @@ public class Whirl : Card
 			owningCharacter.SetFacing(direction);
 		}
 
-		foreach (Tile t in route.Item1)
+		foreach (Tile t in litRouteTiles)
 		{
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
 		}

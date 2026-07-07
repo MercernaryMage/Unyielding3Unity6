@@ -9,6 +9,7 @@ public class Chop : Card
 	TemplateLibrary.TilesAndDirection tilesAndDirection;
 	List<Character> hitCharacters;
 	Tuple<List<Tile>, Tile> route;
+	List<Tile> litRouteTiles;
 	Tile startTile;
 
 	//Find closest enemy
@@ -29,7 +30,8 @@ public class Chop : Card
 
 		startTile = TileGrid.Instance.FindCharacter(owningCharacter)[0];
 
-		AnimationController.Instance.ShowTiles(route.Item1, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, ReturnFromRoute);
+		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
+		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, ReturnFromRoute);
 	}
 
 	public void ReturnFromShowingTiles()
@@ -41,7 +43,7 @@ public class Chop : Card
 	{
 		//Direction direction = TileGrid.Instance.GetFacingDirection(startTile, TileGrid.Instance.FindCharacter(owningCharacter)[0]);
 		//owningCharacter.SetFacing(direction);
-		foreach (Tile t in route.Item1)
+		foreach (Tile t in litRouteTiles)
 		{
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
 		}

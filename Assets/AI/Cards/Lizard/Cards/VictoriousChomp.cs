@@ -9,6 +9,7 @@ public class VictoriousChomp : Card
 	TemplateLibrary.TilesAndDirection tilesAndDirection;
 	List<Character> hitCharacters;
 	Tuple<List<Tile>, Tile> route;
+	List<Tile> litRouteTiles;
 	Tile startTile;
 
 	//Find closest enemy
@@ -29,7 +30,8 @@ public class VictoriousChomp : Card
 
 		startTile = TileGrid.Instance.FindCharacter(owningCharacter)[0];
 
-		AnimationController.Instance.ShowTiles(route.Item1, Tile.OverlayType.PossibleMovement, Route, ReturnFromRoute);
+		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
+		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, Route, ReturnFromRoute);
 	}
 
 	public void Route()
@@ -39,7 +41,7 @@ public class VictoriousChomp : Card
 
 	public void ReturnFromRoute()
 	{
-		foreach (Tile t in route.Item1)
+		foreach (Tile t in litRouteTiles)
 		{
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
 		}

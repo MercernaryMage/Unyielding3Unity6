@@ -5,6 +5,7 @@ using UnityEngine;
 public class Snipe : Card
 {
     List<Tile> movePath;
+    List<Tile> litRouteTiles;
     List<Tile> attackLine;
     Character targetHero;
 
@@ -93,6 +94,7 @@ public class Snipe : Card
 
         targetHero = bestHero;
         movePath = bestPath;
+        litRouteTiles = Util.ExpandPathTiles(movePath, owningCharacter);
 
         if (movePath.Count == 0)
         {
@@ -100,7 +102,7 @@ public class Snipe : Card
         }
         else
         {
-            AnimationController.Instance.ShowTiles(movePath, Tile.OverlayType.PossibleMovement, Route, ShowAttack);
+            AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, Route, ShowAttack);
         }
     }
 
@@ -111,7 +113,7 @@ public class Snipe : Card
 
     void ShowAttack()
     {
-        foreach (Tile t in movePath)
+        foreach (Tile t in litRouteTiles)
         {
             t.HideOverlay(Tile.OverlayType.PossibleMovement);
         }

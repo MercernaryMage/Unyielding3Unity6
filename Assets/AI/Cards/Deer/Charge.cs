@@ -6,6 +6,7 @@ using UnityEngine;
 public class Charge : Card
 {
 	Tuple<List<Tile>, Tile> route;
+	List<Tile> litRouteTiles;
 	TemplateLibrary.TilesAndDirection tilesAndDirection;
 
 	public override void Execute()
@@ -20,7 +21,8 @@ public class Charge : Card
 		}
 
 		Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
-		AnimationController.Instance.ShowTiles(route.Item1, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, ReturnFromRoute);
+		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
+		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, ReturnFromRoute);
 	}
 
 	void ReturnFromShowingTiles()
@@ -30,7 +32,7 @@ public class Charge : Card
 
 	void ReturnFromRoute()
 	{
-		foreach (Tile t in route.Item1)
+		foreach (Tile t in litRouteTiles)
 		{
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
 		}

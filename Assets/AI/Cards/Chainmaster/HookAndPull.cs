@@ -9,6 +9,7 @@ public class HookAndPull : Card
 {
 	TemplateLibrary.TilesAndDirection tilesAndDirection;
 	Tuple<List<Tile>, Tile> route;
+	List<Tile> litRouteTiles;
 	Character targetHero;
 
 	//Move to range 3, attack, then pull target close
@@ -39,7 +40,8 @@ public class HookAndPull : Card
 		Util.ShortenPathToDesiredRange(route, owningCharacter, targetHero, 3);
 		Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
 
-		AnimationController.Instance.ShowTiles(route.Item1, Tile.OverlayType.PossibleMovement, Route, ReturnFromRoute);
+		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
+		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, Route, ReturnFromRoute);
 	}
 
 	public void Route()
@@ -49,7 +51,7 @@ public class HookAndPull : Card
 
 	public void ReturnFromRoute()
 	{
-		foreach (Tile t in route.Item1)
+		foreach (Tile t in litRouteTiles)
 		{
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
 		}

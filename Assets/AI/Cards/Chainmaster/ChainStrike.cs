@@ -7,6 +7,7 @@ public class ChainStrike : Card
 {
 	TemplateLibrary.TilesAndDirection tilesAndDirection;
 	Tuple<List<Tile>, Tile> route;
+	List<Tile> litRouteTiles;
 
 	public override void Execute()
 	{
@@ -22,7 +23,8 @@ public class ChainStrike : Card
 
 		Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
 
-		AnimationController.Instance.ShowTiles(route.Item1, Tile.OverlayType.PossibleMovement, Route, ReturnFromRoute);
+		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
+		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, Route, ReturnFromRoute);
 	}
 
 	public void Route()
@@ -32,7 +34,7 @@ public class ChainStrike : Card
 
 	public void ReturnFromRoute()
 	{
-		foreach (Tile t in route.Item1)
+		foreach (Tile t in litRouteTiles)
 		{
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
 		}

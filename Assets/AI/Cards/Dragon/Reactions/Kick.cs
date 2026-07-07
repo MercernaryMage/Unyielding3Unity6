@@ -7,6 +7,7 @@ using UnityEngine;
 public class Kick : ReactionBase
 {
 	Tuple<List<Tile>, Tile> route;
+	List<Tile> litRouteTiles;
 
 	public override void Execute()
 	{
@@ -28,7 +29,8 @@ public class Kick : ReactionBase
 		}
 
 		route = routes[attackingCharacter];
-		AnimationController.Instance.ShowTiles(route.Item1, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, AttackTarget);
+		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
+		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, AttackTarget);
 	}
 
 	void ReturnFromShowingTiles()
@@ -39,7 +41,7 @@ public class Kick : ReactionBase
 
 	void AttackTarget()
 	{
-		foreach (Tile t in route.Item1)
+		foreach (Tile t in litRouteTiles)
 		{
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
 		}

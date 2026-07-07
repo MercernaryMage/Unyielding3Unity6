@@ -1,0 +1,39 @@
+All ShowTiles calls that show character movement (Tile.OverlayType.PossibleMovement with actual tiles)
+Null-tile delay-only calls excluded.
+
+=== Variant A: (route.Item1, PossibleMovement, ReturnFromShowingTiles, ReturnFromRoute) ===
+1. Assets\AI\Cards\Warrior\Engage.cs:21
+2. Assets\AI\Cards\Thrust.cs:30
+3. Assets\AI\Cards\Chop.cs:32
+4. Assets\AI\Cards\Lizard\Cards\BloodThirstingFangs.cs:54
+5. Assets\AI\Cards\Knight\ShieldRush.cs:34
+6. Assets\AI\Cards\Dragon\Reactions\Intimidate.cs:31
+7. Assets\AI\Cards\Dragon\Cards\Bite.cs:23
+8. Assets\AI\Cards\Deer\Charge.cs:23
+
+=== Variant B: (route.Item1, PossibleMovement, ReturnFromShowingTiles, ReturnFromMove) ===
+9. Assets\AI\Cards\Generic\CasterApplyStatusEffect.cs:51
+
+=== Variant C: (route.Item1, PossibleMovement, Route, ReturnFromRoute) ===
+10. Assets\AI\Cards\Murderer\Hunt.cs:38
+11. Assets\AI\Cards\Lizard\Cards\VictoriousChomp.cs:32
+12. Assets\AI\Cards\Lizard\Cards\Taste.cs:48
+13. Assets\AI\Cards\Chainmaster\ChainStrike.cs:25
+14. Assets\AI\Cards\Chainmaster\HookAndPull.cs:42
+
+=== Variant D: route.Item1 with other callbacks ===
+15. Assets\AI\Cards\Whirl.cs:27 — (route.Item1, PossibleMovement, Route, ReturnFromShowingTiles)
+16. Assets\AI\Cards\Mercenary\Impale.cs:37 — (route.Item1, PossibleMovement, ReturnFromShowingMovementTiles, ReturnFromRoute)
+17. Assets\AI\Cards\Executioner\Guillotine.cs:35 — (route.Item1, PossibleMovement, ReturnFromShowingMovementTiles, ReturnFromRoute)
+18. Assets\AI\Cards\Dragon\Reactions\Kick.cs:31 — (route.Item1, PossibleMovement, ReturnFromShowingTiles, AttackTarget)
+
+=== Variant E: other tile-list variable names ===
+19. Assets\AI\Cards\Warrior\FightItOut.cs:80 — (moveRoute.Item1, PossibleMovement, ReturnFromShowingMoveTiles, ReturnFromMove)
+20. Assets\AI\Cards\Arbalist\Snipe.cs:103 — (movePath, PossibleMovement, Route, ShowAttack)
+21. Assets\AI\Cards\Dragon\Cards\CrimsonClaw.cs:46 — (litRouteTiles, PossibleMovement, ReturnFromShowingTiles, ReturnFromRoute)
+22. Assets\AI\Cards\Trample.cs:24 — (tilesAndDirection.tiles, PossibleMovement, ReturnFromShowingTiles)
+23. Assets\AI\Cards\Jail\Pounce.cs:26 — (tilesAndDirection.tiles, PossibleMovement, ReturnFromShowingTiles)
+24. Assets\AI\Cards\Dragon\Cards\Swoop.cs:20 — (tilesAndDirection.tiles, PossibleMovement, ReturnFromShowingTiles)
+25. Assets\AI\Cards\Lizard\Reactions\RetreatA.cs:22 — (tilesAndDirection.tiles, PossibleMovement, ReturnFromShowingTiles)
+
+Total: 25 occurrences

@@ -8,6 +8,7 @@ public class FightItOut : Card
     Character attackTarget;
     List<Tile> attackTiles;
     Tuple<List<Tile>, Tile> moveRoute;
+    List<Tile> litRouteTiles;
     Character followUpTarget;
     List<Tile> followUpAttackTiles;
 
@@ -77,7 +78,8 @@ public class FightItOut : Card
         }
 
         Util.ShortenPathToMaxRange(moveRoute, owningCharacter.characterDefinition.movement + 1);
-        AnimationController.Instance.ShowTiles(moveRoute.Item1, Tile.OverlayType.PossibleMovement, ReturnFromShowingMoveTiles, ReturnFromMove);
+        litRouteTiles = Util.ExpandPathTiles(moveRoute.Item1, owningCharacter);
+        AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, ReturnFromShowingMoveTiles, ReturnFromMove);
     }
 
     void ReturnFromShowingMoveTiles()
@@ -87,7 +89,7 @@ public class FightItOut : Card
 
     void ReturnFromMove()
     {
-        foreach (Tile t in moveRoute.Item1)
+        foreach (Tile t in litRouteTiles)
         {
             t.HideOverlay(Tile.OverlayType.PossibleMovement);
         }

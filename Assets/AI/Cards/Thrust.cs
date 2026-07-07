@@ -9,6 +9,7 @@ public class Thrust : Card
 	TemplateLibrary.TilesAndDirection tilesAndDirection;
 	List<Character> hitCharacters;
 	Tuple<List<Tile>, Tile> route;
+	List<Tile> litRouteTiles;
 
 
 	//Find closest enemy
@@ -27,7 +28,8 @@ public class Thrust : Card
 
 		Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
 
-		AnimationController.Instance.ShowTiles(route.Item1, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, ReturnFromRoute);
+		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
+		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, ReturnFromRoute);
 	}
 
 	public void ReturnFromShowingTiles()
@@ -39,7 +41,7 @@ public class Thrust : Card
 	public void ReturnFromRoute()
 	{
 		TileGrid.Instance.MoveCharacterToTile(owningCharacter, route.Item1[route.Item1.Count - 1]);
-		foreach (Tile t in route.Item1)
+		foreach (Tile t in litRouteTiles)
 		{
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
 		}
