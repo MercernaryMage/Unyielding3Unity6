@@ -7,11 +7,15 @@ Don't spawn a player if they don't have determination
     --When david was the against the wall, the dragon played fly and didn't move
         THE MODEL IS IN THE WRONG POSITION!!!!!!!!!!
 
-    We lost 0 real resources
-        2 surges
-    Enemies just crumpled
+    SHOW RANGE
+
+    Chop animation is rotated
+
+    Basically no movement
+
     We need 2 more enemies
 
+    Should we give the cross bow ordiance?
 
     !!!!Effects we need!!!!
         -Spear

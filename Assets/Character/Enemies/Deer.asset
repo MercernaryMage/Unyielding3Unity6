@@ -17,11 +17,11 @@ MonoBehaviour:
   size: 1
   movement: 4
   armor: 0
-  toughness: 0
-  maxHP: 13
+  toughness: 1
+  maxHP: 15
   maxEnergy: 0
   maxThreshold: -1
-  evasion: 0
+  evasion: 8
   weight: 0
   isMinion: 0
   allowAoO: 1

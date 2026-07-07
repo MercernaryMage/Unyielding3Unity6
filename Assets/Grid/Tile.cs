@@ -25,6 +25,7 @@ public class Tile : MonoBehaviour
 	HashSet<OverlayType> activeOverlays = new HashSet<OverlayType>();
 	public List<GameObject> decos = new List<GameObject>();
 	public GameObject foundation;
+	public GameObject outline;
 
 	void Start()
 	{
@@ -185,5 +186,14 @@ public class Tile : MonoBehaviour
 		meshRenderer.material.SetFloat("_South", south ? 1 : 0);
 		meshRenderer.material.SetFloat("_West", west ? 1 : 0);
 		meshRenderer.material.SetFloat("_East", east ? 1 : 0);
+	}
+
+	public void SetOutline(bool north, bool south, bool west, bool east)
+	{
+		MeshRenderer meshRenderer = outline.GetComponent<MeshRenderer>();
+		meshRenderer.material.SetFloat("_FrontFace", north ? 1 : 0);
+		meshRenderer.material.SetFloat("_BackFace", south ? 1 : 0);
+		meshRenderer.material.SetFloat("_LeftFace", west ? 1 : 0);
+		meshRenderer.material.SetFloat("_RightFace", east ? 1 : 0);
 	}
 }

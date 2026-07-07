@@ -14,6 +14,7 @@ public class MapBuilder : MonoBehaviour
 	public int startLevel = 0;
 	public Transform props;
 	public GameObject foundationPrefab;
+	public GameObject outlinePrefab;
 
 	static bool needsInit = true;
 	static Dictionary<string, int> enemyNameCounts = new Dictionary<string, int>();
@@ -230,6 +231,12 @@ public class MapBuilder : MonoBehaviour
 				foundation.transform.localPosition = new Vector3(0, -5.0f, 0);
 				foundation.transform.localScale = new Vector3(1.5f, 10, 1.5f);
 				t.foundation = foundation;
+
+				GameObject outline = Instantiate(outlinePrefab);
+				outline.transform.SetParent(tileObj.transform);
+				outline.transform.localPosition = new Vector3(0, 7.5f, 0);
+				outline.transform.localScale = new Vector3(1.5f, 15, 1.5f);
+				t.outline = outline;
 
 				t.Init(x, y, tileObj, overlay);
 				tiles.Add(t);
