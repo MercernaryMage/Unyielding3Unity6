@@ -137,6 +137,7 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 			actionToolTip.gameObject.SetActive(true);
 			actionToolTip.Set(owningCharacter, pattern, reason, owningItem.itemDefinition);
 		}
+		OutlineTilesInRange();
 	}
 
 	public void OnPointerExit(PointerEventData eventData)
@@ -145,6 +146,28 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 		{
 			actionToolTip.gameObject.SetActive(false);
 			needsExit = false;
+			TileGrid.Instance.ClearOutlines();
 		}
+	}
+
+	void OutlineTilesInRange()
+	{
+		List<Tile> inRangeTiles = new List<Tile>();
+		List<Tile> startingTiles = TileGrid.Instance.FindCharacter(owningCharacter);
+		foreach (Tile startingTile in startingTiles)
+		{
+			foreach (Tile t in TileGrid.Instance.GetAllTilesInRange(startingTile, pattern.range))
+			{
+				if (t.tileScriptableObject != null && t.tileScriptableObject.empty)
+				{
+					continue;
+				}
+				if (!inRangeTiles.Contains(t))
+				{
+					inRangeTiles.Add(t);
+				}
+			}
+		}
+		TileGrid.Instance.OutlineTiles(inRangeTiles);
 	}
 }

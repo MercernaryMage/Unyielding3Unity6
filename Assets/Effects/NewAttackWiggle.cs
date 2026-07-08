@@ -38,6 +38,7 @@ public class NewAttackWiggle : MonoBehaviour
 			secondaryRunning = false;
 			GameObject obj = Instantiate(effect.prefab);
 			obj.transform.position = transform.position + effect.offset;
+			obj.transform.SetParent(transform);
 			obj.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + effect.rotation);
 			if (completeCallback != null)
 			{

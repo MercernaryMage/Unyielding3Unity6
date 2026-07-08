@@ -22,6 +22,8 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 
 	public GameObject cancelButton;
 
+	Tile lastMousedOverTile;
+
 	public void TileClicked(Tile t)
 	{
 		List<RaycastResult> results = GetUIRaycast();
@@ -127,6 +129,16 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 		{
 			scroll *= 4;
 			Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - scroll, 3f, 10f);
+		}
+
+		Tile mousedOverTile = GetMousedOverTile();
+		if (mousedOverTile != lastMousedOverTile && lastMousedOverTile != null)
+		{
+			lastMousedOverTile.MouseExitTile();
+		}
+		if (mousedOverTile)
+		{
+			mousedOverTile.MouseEnterTile();
 		}
 
 		if (Input.GetMouseButton(2))

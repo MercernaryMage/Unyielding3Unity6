@@ -16,7 +16,7 @@ public class Tile : MonoBehaviour
 
 	public TileScriptableObject tileScriptableObject;
 	public GameObject model;
-    public Character character;
+	public Character character;
 	public Guest guest;
 	public int x;
 	public int y;
@@ -45,7 +45,7 @@ public class Tile : MonoBehaviour
 		overlay.TurnOffOverlay();
 	}
 
-    public void EnterTile(Character character)
+	public void EnterTile(Character character)
 	{
 		this.character = character;
 	}
@@ -55,7 +55,7 @@ public class Tile : MonoBehaviour
 		character.token.transform.SetParent(transform.parent);
 		character.token.transform.localPosition =
 			new Vector3(character.characterDefinition.size - 1,
-					    0,
+						0,
 						character.characterDefinition.size - 1);
 	}
 
@@ -140,12 +140,12 @@ public class Tile : MonoBehaviour
 		SelectionManager.Instance.TileClicked(this);
 	}
 
-	public void OnMouseEnter()
+	public void MouseEnterTile()
 	{
 		SelectionManager.Instance.MouseEnterTile(this);
 	}
 
-	public void OnMouseExit()
+	public void MouseExitTile()
 	{
 		SelectionManager.Instance.MouseExitTile(this);
 	}

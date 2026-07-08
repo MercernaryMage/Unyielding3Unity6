@@ -265,7 +265,7 @@ public class MapBuilder : MonoBehaviour
 
 		if (i == -1)
 		{
-			levelConfiguration.players.Add(new PositionConfiguration(Direction.West, 4, 4));
+			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 4, 4));
 			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 0, 4));
 			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 0, 7));
 			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 0, 3));

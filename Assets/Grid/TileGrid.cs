@@ -30,6 +30,8 @@ public class TileGrid : SceneSingleton<TileGrid>
 	public int width;
 	public int height;
 
+	List<Tile> outlinedTiles = new List<Tile>();
+
 	public void Init(int w, int h, List<Tile> tileCollection)
 	{
 		tiles = tileCollection;
@@ -606,6 +608,30 @@ public class TileGrid : SceneSingleton<TileGrid>
 			}
 		}
 		return outTiles;
+	}
+
+	public void OutlineTiles(List<Tile> tilesToOutline)
+	{
+		ClearOutlines();
+		HashSet<Tile> outlineSet = new HashSet<Tile>(tilesToOutline);
+		foreach (Tile t in outlineSet)
+		{
+			bool north = !outlineSet.Contains(GetTile(t.x, t.y + 1));
+			bool south = !outlineSet.Contains(GetTile(t.x, t.y - 1));
+			bool west = !outlineSet.Contains(GetTile(t.x - 1, t.y));
+			bool east = !outlineSet.Contains(GetTile(t.x + 1, t.y));
+			t.SetOutline(north, south, west, east);
+			outlinedTiles.Add(t);
+		}
+	}
+
+	public void ClearOutlines()
+	{
+		foreach (Tile t in outlinedTiles)
+		{
+			t.SetOutline(false, false, false, false);
+		}
+		outlinedTiles.Clear();
 	}
 
 	public void HideAllTiles()
