@@ -152,6 +152,19 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 
 	void OutlineTilesInRange()
 	{
+		if (owningCharacter.token.gameObject.GetComponent<PathFollower>() != null)
+		{
+			return;
+		}
+		if (pattern.aoeType == ActionPattern.AoEType.Cone)
+		{
+			OutlineConeTiles();
+			return;
+		}
+		if (pattern.range == 0)
+		{
+			return;
+		}
 		List<Tile> inRangeTiles = new List<Tile>();
 		List<Tile> startingTiles = TileGrid.Instance.FindCharacter(owningCharacter);
 		foreach (Tile startingTile in startingTiles)
@@ -169,5 +182,26 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 			}
 		}
 		TileGrid.Instance.OutlineTiles(inRangeTiles);
+	}
+
+	void OutlineConeTiles()
+	{
+		List<Tile> coneTiles = new List<Tile>();
+		Direction facing = owningCharacter.facing;
+		foreach (Tile edgeTile in TemplateLibrary.Instance.GetCharacterEdges(owningCharacter, facing))
+		{
+			foreach (Tile t in ActionController.Instance.GetConeTiles(facing, pattern.aoeRange, edgeTile))
+			{
+				if (t.tileScriptableObject != null && t.tileScriptableObject.empty)
+				{
+					continue;
+				}
+				if (!coneTiles.Contains(t))
+				{
+					coneTiles.Add(t);
+				}
+			}
+		}
+		TileGrid.Instance.OutlineTiles(coneTiles);
 	}
 }

@@ -18,7 +18,7 @@ public class TemplateLibrary : SceneSingleton<TemplateLibrary>
 		public Direction direction;
 	}
 
-	List<Tile> GetCharacterEdges(Character character, Direction direction)
+	public List<Tile> GetCharacterEdges(Character character, Direction direction)
 	{
 		List<Tile> outTiles = new List<Tile>();
 		int size = character.characterDefinition.size;

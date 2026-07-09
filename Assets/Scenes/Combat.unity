@@ -3918,7 +3918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overrideRand: 0
-  seed: 669491109
+  seed: 546818439
 --- !u!114 &567337325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6443,6 +6443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 898251911}
   - component: {fileID: 898251917}
+  - component: {fileID: 898251920}
   - component: {fileID: 898251910}
   - component: {fileID: 898251912}
   - component: {fileID: 898251913}
@@ -6501,11 +6502,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
   - enemy
+  - enemy
+  - enemy
   - Lenette
   - David
   - Cotton
   - Dane
-  - enemy
 --- !u!114 &898251913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6611,6 +6613,18 @@ MonoBehaviour:
   characterName: Lenette
   statName: armor
   value: -4
+--- !u!114 &898251920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898251909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697fc5da8e3942e4fa99eada3ddea4e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugKeyboardCommands
 --- !u!1 &916006794
 GameObject:
   m_ObjectHideFlags: 0

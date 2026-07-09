@@ -10,25 +10,20 @@ Don't spawn a player if they don't have determination
     GAMEPLAY STUFF
     Basically no movement
 
+    David dying from targeted on his turn when he attacked broke the game
+
     arhcer and arbalist need traits
     Does arbalist have infinite range?
     Archer doesn't move at all
+    Archer and arbalist need to scroll to the attacked character
 
     KNIGHT IS WORTHLESS
-        COOL ARMOR UP AT MAX ARMOR
         Protector is poorly exaplained, log says I hit myself
     Targeted description is garbage
         mention breaking LOS?
-    Charge does not work
-        It worked twice!
-
-    make attack outline better
-        Show cone correctly
-        don't show range 0 stuff
-
-        Moving characters shouldn't show outlines
 
     Should we give the cross bow ordiance?
+        YES
 
     !!!!Effects we need!!!!
         -Spear

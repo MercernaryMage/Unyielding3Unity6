@@ -132,6 +132,7 @@ public class MovementController : SceneSingleton<MovementController>
 	//player moving
 	public void MoveCharacter(Tile t, Action movementCompleteCallback = null)
 	{
+		TileGrid.Instance.ClearOutlines();
 		CharacterStartMovementMessage characterStartMovementMessage = new CharacterStartMovementMessage();
 		characterStartMovementMessage.movingCharacter = movingCharacter;
 		characterStartMovementMessage.provokeTriggers = onMoveComplete == null;

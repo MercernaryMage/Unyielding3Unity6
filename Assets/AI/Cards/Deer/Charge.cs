@@ -37,7 +37,50 @@ public class Charge : Card
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
 		}
 
+		// Prefer charging the way we face, but turn toward another direction with a hero ahead
+		List<Direction> directionsToTry = new List<Direction>() { owningCharacter.facing };
+		for (int i = 0; i < TileGrid.directions.Count; ++i)
+		{
+			if ((Direction)i != owningCharacter.facing)
+			{
+				directionsToTry.Add((Direction)i);
+			}
+		}
+		foreach (Direction direction in directionsToTry)
+		{
+			if (GetHeroesDirectlyAhead(direction).Count > 0)
+			{
+				if (direction != owningCharacter.facing)
+				{
+					owningCharacter.SetFacing(direction);
+					AnimationController.Instance.DelayedCallback(0.5f, () => DoPushStep(0));
+					return;
+				}
+				break;
+			}
+		}
+
 		DoPushStep(0);
+	}
+
+	HashSet<Character> GetHeroesDirectlyAhead(Direction direction)
+	{
+		Tuple<int, int> dir = TileGrid.directions[(int)direction];
+		List<Tile> chargerTiles = TileGrid.Instance.FindCharacter(owningCharacter);
+		HashSet<Character> heroes = new HashSet<Character>();
+		foreach (Tile ct in chargerTiles)
+		{
+			Tile ahead = TileGrid.Instance.GetTile(ct.x + dir.Item1, ct.y + dir.Item2);
+			if (ahead == null || chargerTiles.Contains(ahead))
+			{
+				continue;
+			}
+			if (ahead.character != null && ahead.character.hero && ahead.character.GetComponent<Downed>() == null)
+			{
+				heroes.Add(ahead.character);
+			}
+		}
+		return heroes;
 	}
 
 	void DoPushStep(int step)
@@ -53,19 +96,7 @@ public class Charge : Card
 		int dy = dir.Item2;
 
 		List<Tile> chargerTiles = TileGrid.Instance.FindCharacter(owningCharacter);
-		HashSet<Character> toPush = new HashSet<Character>();
-		foreach (Tile ct in chargerTiles)
-		{
-			Tile ahead = TileGrid.Instance.GetTile(ct.x + dx, ct.y + dy);
-			if (ahead == null || chargerTiles.Contains(ahead))
-			{
-				continue;
-			}
-			if (ahead.character != null && ahead.character.hero && ahead.character.GetComponent<Downed>() == null)
-			{
-				toPush.Add(ahead.character);
-			}
-		}
+		HashSet<Character> toPush = GetHeroesDirectlyAhead(owningCharacter.facing);
 
 		if (toPush.Count == 0)
 		{

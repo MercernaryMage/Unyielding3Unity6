@@ -37,11 +37,6 @@ public class DebugSwing : MonoBehaviour
 			}
 			);
 		}
-		if (Input.GetKeyUp(KeyCode.T)  && Input.GetKey(KeyCode.LeftShift))
-		{
-			Time.timeScale = .1f;
-		}
-
 	}
 	
 

@@ -13,11 +13,17 @@ public class UnyieldingMenu
 	{
 		string scenePath = "Assets/Scenes/Combat.unity";
 
-		string debugShowTextGuid = FindScriptGuid(typeof(DebugShowText));
-		if (debugShowTextGuid == null)
+		Type[] exemptTypes = new Type[] { typeof(DebugShowText), typeof(DebugKeyboardCommands) };
+		HashSet<string> exemptGuids = new HashSet<string>();
+		foreach (Type exemptType in exemptTypes)
 		{
-			Debug.LogError("Could not find the script GUID for DebugShowText");
-			return;
+			string guid = FindScriptGuid(exemptType);
+			if (guid == null)
+			{
+				Debug.LogError($"Could not find the script GUID for {exemptType.Name}");
+				return;
+			}
+			exemptGuids.Add(guid);
 		}
 
 		string text = File.ReadAllText(scenePath);
@@ -59,7 +65,7 @@ public class UnyieldingMenu
 			}
 		}
 
-		// Disable every MonoBehaviour on Debug Code that isn't DebugShowText.
+		// Disable every MonoBehaviour on Debug Code that isn't an exempt debug script.
 		int disabledCount = 0;
 		for (int i = 0; i < lines.Length; ++i)
 		{
@@ -75,20 +81,27 @@ public class UnyieldingMenu
 			}
 
 			int enabledLineIndex = -1;
-			bool isDebugShowText = false;
+			bool isExempt = false;
 			for (int j = i + 1; j < lines.Length && !lines[j].StartsWith("--- "); ++j)
 			{
 				if (lines[j].StartsWith("  m_Enabled:"))
 				{
 					enabledLineIndex = j;
 				}
-				else if (lines[j].StartsWith("  m_Script:") && lines[j].Contains(debugShowTextGuid))
+				else if (lines[j].StartsWith("  m_Script:"))
 				{
-					isDebugShowText = true;
+					foreach (string exemptGuid in exemptGuids)
+					{
+						if (lines[j].Contains(exemptGuid))
+						{
+							isExempt = true;
+							break;
+						}
+					}
 				}
 			}
 
-			if (!isDebugShowText && enabledLineIndex != -1 && lines[enabledLineIndex] != "  m_Enabled: 0")
+			if (!isExempt && enabledLineIndex != -1 && lines[enabledLineIndex] != "  m_Enabled: 0")
 			{
 				lines[enabledLineIndex] = "  m_Enabled: 0";
 				++disabledCount;
