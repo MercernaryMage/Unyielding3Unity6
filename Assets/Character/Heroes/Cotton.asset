@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: Cotton
   model: {fileID: 4365393165730042595, guid: 4bca56fcd4a4e334b9cf919ca5b9c13e, type: 3}
   size: 1
-  movement: 6
+  movement: 3
   armor: 0
   toughness: 0
   maxHP: 10

@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
-  m_Name: Mercenary
+  m_Name: Archer
   m_EditorClassIdentifier: 
-  displayName: Mercenary
-  model: {fileID: 3204367187798594016, guid: 3f22bff42a3e09c4a9560dd1e9c8d149, type: 3}
+  displayName: Archer
+  model: {fileID: 2140828710567837202, guid: 940183f9a087b0d4e8d416a1f6cc0475, type: 3}
   size: 1
   movement: 4
-  armor: 3
-  toughness: 1
+  armor: 0
+  toughness: 0
   maxHP: 13
   maxEnergy: 0
   maxThreshold: -1
-  evasion: 8
+  evasion: 0
   weight: 0
   isMinion: 0
   allowAoO: 1
@@ -36,14 +36,9 @@ MonoBehaviour:
   cunning: 0
   prowess: 0
   cards:
-  - {fileID: 11400000, guid: 4eeb4cc8b13994443987ef9be43804f0, type: 2}
-  - {fileID: 11400000, guid: a8e01dea3d395ba41912ba619d72ff96, type: 2}
-  - {fileID: 11400000, guid: 73b67158e2bb9c64195cdd1f2e02cd79, type: 2}
-  - {fileID: 11400000, guid: 20a3579853aa3f44d82973c96f32a5c2, type: 2}
-  - {fileID: 11400000, guid: c462dcfca85b6cd47bf938faf0ed3c47, type: 2}
+  - {fileID: 11400000, guid: 755dce2258bffe342bd8409c6c744470, type: 2}
   reactions: []
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}
-  traits:
-  - {fileID: 11400000, guid: ec2ac65d6c11b6140b110ea6d9b1844a, type: 2}
+  traits: []
   subclasses: []

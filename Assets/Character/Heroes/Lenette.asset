@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: Lenette
   model: {fileID: 851267340090767508, guid: 2215e506bf79f3847b6d99b2c66d5e32, type: 3}
   size: 1
-  movement: 6
+  movement: 3
   armor: 3
   toughness: 0
   maxHP: 12

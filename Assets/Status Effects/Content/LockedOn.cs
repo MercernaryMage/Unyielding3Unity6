@@ -68,6 +68,6 @@ public class LockedOn : StatusEffect
 
     public override string GetEffectText()
     {
-        return "sadfsadfsad";
+        return "Once per turn, when this character finishes moving or attacking, the causing character will attack them.";
     }
 }

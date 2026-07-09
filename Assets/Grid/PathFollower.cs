@@ -13,6 +13,8 @@ public class PathFollower : MonoBehaviour
     float time;
     float timeMax = .5f;
 
+	float cameraCatchupTime;
+
 	bool moveCharacter;
 
 	public void Set(Character c, List<Tile> p, Action call, bool m)
@@ -27,10 +29,17 @@ public class PathFollower : MonoBehaviour
 			Destroy(this);
 			return;
 		}
+		cameraCatchupTime = SelectionManager.Instance.SnapCameraToCharacter(character);
 	}
 
 	public void Update()
 	{
+		if (cameraCatchupTime > 0)
+		{
+			cameraCatchupTime -= Time.deltaTime;
+			return;
+		}
+
 		SelectionManager.Instance.CenterCameraOnCharacter(character);
 
 		time += Time.deltaTime;

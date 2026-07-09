@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Lizard
   model: {fileID: 377918357640677934, guid: 5ff8e7d98485f4e4698a37f6bc912ef5, type: 3}
-  size: 2
+  size: 1
   movement: 3
   armor: 2
   toughness: 1
@@ -36,7 +36,7 @@ MonoBehaviour:
   cunning: 0
   prowess: 0
   cards:
-  - {fileID: 11400000, guid: ce0904a29adffa942a5d81fd0add5cbe, type: 2}
+  - {fileID: 11400000, guid: e0c107c897eaf7e4d9599cddf9e58f1f, type: 2}
   reactions:
   - {fileID: 11400000, guid: 04351f384bf60b44b8f6e759b7fc3ffa, type: 2}
   - {fileID: 11400000, guid: 012f80ac0ab16ce4c8377da3ebadb237, type: 2}

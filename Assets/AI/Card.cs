@@ -98,7 +98,7 @@ public class Card
 
 					if (!routes.ContainsKey(target))
 					{
-						Tuple<List<Tile>, Tile> data = new Tuple<List<Tile>, Tile>(MovementController.Instance.FindRoute(owningCharacter, trueTile, i, rules), trueTile);
+						Tuple<List<Tile>, Tile> data = new Tuple<List<Tile>, Tile>(MovementController.Instance.FindRoute(owningCharacter, trueTile, 0, rules), trueTile);
 						if (data.Item1 != null)
 						{
 							routes[target] = data;
@@ -106,7 +106,7 @@ public class Card
 					}
 					else
 					{
-						List<Tile> newRoute = MovementController.Instance.FindRoute(owningCharacter, trueTile, i, rules);
+						List<Tile> newRoute = MovementController.Instance.FindRoute(owningCharacter, trueTile, 0, rules);
 						if (newRoute != null && routes[target].Item1.Count > newRoute.Count)
 						{
 							routes[target] = new Tuple<List<Tile>, Tile>(newRoute, trueTile);
@@ -192,7 +192,7 @@ public class Card
 					MovementController.PathfindingRules rules = new MovementController.PathfindingRules();
 					rules.allowedToPathThroughAllies = true;
 
-					List<Tile> path = MovementController.Instance.FindRoute(owningCharacter, trueTile, i, rules);
+					List<Tile> path = MovementController.Instance.FindRoute(owningCharacter, trueTile, 0, rules);
 					if (path == null)
 					{
 						continue;

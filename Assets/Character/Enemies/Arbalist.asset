@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
   m_Name: Arbalist
   m_EditorClassIdentifier: 
-  displayName: Bandit
-  model: {fileID: 6207216191786593460, guid: 6078833982850254cb8048b3aceb2d27, type: 3}
+  displayName: Arbalist
+  model: {fileID: 2175586619731112336, guid: da2755c8de307d541a3f7c440fb9bffe, type: 3}
   size: 1
   movement: 4
   armor: 0
@@ -40,6 +40,5 @@ MonoBehaviour:
   reactions: []
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}
-  traits:
-  - {fileID: 11400000, guid: 470c8364d302c5e45ad6dccc0fad2f45, type: 2}
+  traits: []
   subclasses: []

@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12a80c85b9e40304791bccc330a40f50, type: 3}
   m_Name: Chop
   m_EditorClassIdentifier: Assembly-CSharp::EffectScriptableObject
+  wiggle: 1
   timing: 0
   delay: 0
   runTime: 0
   offset: {x: 0.5, y: 0, z: 0}
-  rotation: {x: 90, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0}
   prefab: {fileID: 2225182066511297572, guid: 94e4b96d2e7eb2d43a9c9372df51ab6a, type: 3}
   position: 0
+  bone: 

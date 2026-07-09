@@ -6494,17 +6494,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 400200efbf2304345813bd062e52586e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
-  - Lenette
   - enemy
+  - Lenette
   - David
   - Cotton
   - Dane
+  - enemy
 --- !u!114 &898251913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6559,14 +6560,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9574144c87cbea74c9316baacb10b4fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugSetCardOrder
-  characterName: Dragon 1
+  characterName: Knight 1
   cardNames:
-  - Crimson Claw
+  - ShieldRush
 --- !u!114 &898251917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6587,7 +6588,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4193af2a8c50dc4a8ba85677c856cf6, type: 3}
   m_Name: 

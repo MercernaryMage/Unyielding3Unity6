@@ -7,17 +7,26 @@ Don't spawn a player if they don't have determination
     --When david was the against the wall, the dragon played fly and didn't move
         THE MODEL IS IN THE WRONG POSITION!!!!!!!!!!
 
-    snap is very annoying
-        movement snaps
-
     GAMEPLAY STUFF
     Basically no movement
 
-    We need 2 more enemies
+    arhcer and arbalist need traits
+    Does arbalist have infinite range?
+    Archer doesn't move at all
+
+    KNIGHT IS WORTHLESS
+        COOL ARMOR UP AT MAX ARMOR
+        Protector is poorly exaplained, log says I hit myself
+    Targeted description is garbage
+        mention breaking LOS?
+    Charge does not work
+        It worked twice!
 
     make attack outline better
         Show cone correctly
         don't show range 0 stuff
+
+        Moving characters shouldn't show outlines
 
     Should we give the cross bow ordiance?
 

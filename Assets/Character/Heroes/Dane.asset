@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: Dane
   model: {fileID: 6054517980136450167, guid: 4d4bce6813381e647a12a18d985ee469, type: 3}
   size: 1
-  movement: 6
+  movement: 3
   armor: 0
   toughness: 0
   maxHP: 7

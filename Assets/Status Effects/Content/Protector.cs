@@ -14,7 +14,7 @@ public class Protector : StatusEffect
 
     public override void OnAttackComplete(AttackCompleteMessage message)
     {
-        if (message.defender == character)
+        if (!character.alive || message.defender == character)
         {
             return;
         }

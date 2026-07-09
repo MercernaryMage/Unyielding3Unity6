@@ -12,6 +12,14 @@ public class WeakPoint : StatusEffect
 		if (characterAttackingMessage.defender == character)
 		{
 			characterAttackingMessage.autoCrit = true;
+		}
+	}
+
+	public override void OnAttackComplete(AttackCompleteMessage attackCompleteMessage)
+	{
+		if (attackCompleteMessage.defender == character &&
+			attackCompleteMessage.hit)
+		{
 			Destroy(this);
 		}
 	}

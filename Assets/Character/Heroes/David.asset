@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: David
   model: {fileID: 498972774399169908, guid: 7efb3ade84bff0240ad81375efaf6e24, type: 3}
   size: 1
-  movement: 6
+  movement: 3
   armor: 0
   toughness: 0
   maxHP: 7
