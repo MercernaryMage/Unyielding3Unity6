@@ -12,6 +12,10 @@ public class DebugShowText : MonoBehaviour
 			{
 				continue;
 			}
+			if (comp is DebugKeyboardCommands)
+			{
+				continue;
+			}
 
 			if (comp.enabled)
 			{

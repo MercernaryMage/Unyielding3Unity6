@@ -10,14 +10,6 @@ Don't spawn a player if they don't have determination
     GAMEPLAY STUFF
     Basically no movement
 
-    Dying from AoO breaks the game
-        Reactions have a trigger count they put on attacker!  You can use that on the update to track when it's done
-
-    When len dies on her turn attacking, she suddenly faces north
-        
-
-    THe movement controller AoO doesn't pause for animation!!!
-
     arhcer and arbalist need traits
     Does arbalist have infinite range?
     Archer doesn't move at all
@@ -27,9 +19,6 @@ Don't spawn a player if they don't have determination
         Protector is poorly exaplained, log says I hit myself
     Targeted description is garbage
         mention breaking LOS?
-
-    Should we give the cross bow ordiance?
-        YES
 
     !!!!Effects we need!!!!
         -Spear

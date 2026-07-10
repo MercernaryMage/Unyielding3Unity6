@@ -24,6 +24,7 @@ public class Character : MonoBehaviour
 	public int threshold = 0;
 
 	public int actionCount = 2;
+	public bool canUseCumbersome;
 
 	public int armor;
 	public int toughness;
@@ -197,6 +198,7 @@ public class Character : MonoBehaviour
 	{
 		AddMovement();
 		actionCount = 4;
+		canUseCumbersome = true;
 		if (ShouldHaveHalfMovement())
 		{
 			actionCount = Mathf.Max(1, actionCount / 2);

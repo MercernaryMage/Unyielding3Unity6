@@ -7,6 +7,11 @@ public class LockedOn : StatusEffect
 
 	public override void CharacterStartTurn(CharacterStartTurnMessage message)
 	{
+		if (!causingCharacter.alive)
+		{
+			Destroy(this);
+			return;
+		}
 		useable = true;
 	}
 
@@ -45,14 +50,19 @@ public class LockedOn : StatusEffect
 		useable = false;
 		ActionController.Instance.queuedActions.Add(() =>
 		{
-			BattleController.playerHasControl = false;
-			character.SetFacing(TileGrid.Instance.GetFacingDirection(character, message.attacker));
-			ActionController.Instance.PlayAttackAnimation(character, null, () =>
+			if (!character.alive || !causingCharacter.alive)
 			{
-				if (message.defender.alive && character.alive)
+				ActionController.Instance.EndAction();
+				return;
+			}
+			BattleController.playerHasControl = false;
+			causingCharacter.SetFacing(TileGrid.Instance.GetFacingDirection(causingCharacter, character));
+			ActionController.Instance.PlayAttackAnimation(causingCharacter, null, () =>
+			{
+				if (character.alive && causingCharacter.alive)
 				{
 					AICardDisplay.Instance.ShowFakeCard(GetDisplayName(), GetEffectText());
-					ActionController.Instance.AttackCharacter(message.attacker, character, new ActionController.AttackProfile(1, 6, 0));
+					ActionController.Instance.AttackCharacter(character, causingCharacter, new ActionController.AttackProfile(1, 6, 0));
 				}
 
 				ActionController.Instance.EndAction();

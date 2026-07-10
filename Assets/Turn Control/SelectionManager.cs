@@ -172,6 +172,10 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 					allCharacters.AddRange(BattleController.Instance.enemies);
 					foreach (Character c in allCharacters)
 					{
+						if (!c.alive)
+						{
+							continue;
+						}
 						List<Tile> charTiles = TileGrid.Instance.FindCharacter(c);
 						bool anyHasLOS = false;
 						foreach (Tile charTile in charTiles)

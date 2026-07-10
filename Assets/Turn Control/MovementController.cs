@@ -132,30 +132,52 @@ public class MovementController : SceneSingleton<MovementController>
 	//player moving
 	public void MoveCharacter(Tile t, Action movementCompleteCallback = null)
 	{
+		movingCharacter.canUseCumbersome = false;
 		TileGrid.Instance.ClearOutlines();
 		CharacterStartMovementMessage characterStartMovementMessage = new CharacterStartMovementMessage();
 		characterStartMovementMessage.movingCharacter = movingCharacter;
 		characterStartMovementMessage.provokeTriggers = onMoveComplete == null;
 		MessagePump.Instance.SendMessage(characterStartMovementMessage);
 
-		foreach (Trigger trigger in characterStartMovementMessage.raisedTriggers)
-		{
-			trigger.Click();
-		}
-
 		BattleController.playerHasControl = false;
-		
-		List<Tile> exitingTiles = TileGrid.Instance.FindCharacter(movingCharacter);
-		PathfindingRules pathfindingRules = new PathfindingRules();
-		pathfindingRules.allowedToPathThroughAllies = true;
-		List<Tile> route = FindRoute(movingCharacter, t, 0, pathfindingRules);
-		//movingCharacter.currentMovement -= (route.Count - 1);
-		movingCharacter.currentMovement = 0;
-		PathFollower pathFollower = movingCharacter.token.gameObject.AddComponent<PathFollower>();
+
 		Character oldMovingCharacter = movingCharacter;
 		Action stepCallback = onMoveComplete;
 		onMoveComplete = null;
-		pathFollower.Set(movingCharacter, route, () =>
+
+		RunTriggersThenMove(characterStartMovementMessage.raisedTriggers, 0, oldMovingCharacter, t, stepCallback, movementCompleteCallback);
+	}
+
+	void RunTriggersThenMove(List<Trigger> triggers, int index, Character oldMovingCharacter, Tile t, Action stepCallback, Action movementCompleteCallback)
+	{
+		if (index < triggers.Count && oldMovingCharacter.alive)
+		{
+			triggers[index].onComplete = () =>
+			{
+				RunTriggersThenMove(triggers, index + 1, oldMovingCharacter, t, stepCallback, movementCompleteCallback);
+			};
+			triggers[index].Click();
+			return;
+		}
+
+		if (!oldMovingCharacter.alive)
+		{
+			BattleController.playerHasControl = true;
+			if (movementCompleteCallback != null)
+			{
+				movementCompleteCallback();
+			}
+			FinishMovement(stepCallback);
+			return;
+		}
+
+		PathfindingRules pathfindingRules = new PathfindingRules();
+		pathfindingRules.allowedToPathThroughAllies = true;
+		List<Tile> route = FindRoute(oldMovingCharacter, t, 0, pathfindingRules);
+		//oldMovingCharacter.currentMovement -= (route.Count - 1);
+		oldMovingCharacter.currentMovement = 0;
+		PathFollower pathFollower = oldMovingCharacter.token.gameObject.AddComponent<PathFollower>();
+		pathFollower.Set(oldMovingCharacter, route, () =>
 		{
 			Character closestEnemy = TileGrid.Instance.FindClosestEnemy(oldMovingCharacter);
 			if (closestEnemy)
@@ -164,7 +186,7 @@ public class MovementController : SceneSingleton<MovementController>
 				oldMovingCharacter.SetFacing(direction);
 			}
 
-			CharacterFinishedMovingMessage message = new CharacterFinishedMovingMessage(() => 
+			CharacterFinishedMovingMessage message = new CharacterFinishedMovingMessage(() =>
 			{
 				FinishMovement(stepCallback);
 			});

@@ -4,6 +4,7 @@ using System.Reflection;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using static CardDisplay;
 
 public class CardDisplay : MonoBehaviour
 {
@@ -84,6 +85,10 @@ public class CardDisplay : MonoBehaviour
 			obj.transform.SetParent(null);
 			Destroy(obj);
 		}
+		cardBackground.SetActive(true);
+		aggravatedBackground.SetActive(false);
+		reactionBackground.SetActive(false);
+
 		createdObjects.Clear();
 		content.SetActive(true);
 		cardName.text = title;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ using static TemplateLibrary;
 public abstract class Trigger
 {
 	public Character owningCharacter;
+	public Action onComplete;
     public abstract void Click();
 	public abstract string GetTitle();
 }
@@ -29,6 +31,7 @@ public class AttackOfOpportunityTrigger : Trigger
 			ActionController.Instance.AttackCharacter(defender, attacker, attackProfile);
 			TriggerDisplay.Instance.RemoveTrigger(this);
 			--attacker.triggerCount;
+			onComplete?.Invoke();
 		});
 	}
 
@@ -58,6 +61,7 @@ public class AttackFairyTrigger : Trigger
 			ActionController.Instance.DamageCharacter(defender, attacker, attackProfile, attackResults);
 			TriggerDisplay.Instance.RemoveTrigger(this);
 			--attacker.triggerCount;
+			onComplete?.Invoke();
 		});
 	}
 
