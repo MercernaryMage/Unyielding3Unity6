@@ -3917,8 +3917,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b88c884796a7c5418f9bf108c235307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overrideRand: 0
-  seed: 546818439
+  overrideRand: 1
+  seed: 559344353
 --- !u!114 &567337325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6452,6 +6452,7 @@ GameObject:
   - component: {fileID: 898251916}
   - component: {fileID: 898251918}
   - component: {fileID: 898251919}
+  - component: {fileID: 898251921}
   m_Layer: 0
   m_Name: Debug Code
   m_TagString: Untagged
@@ -6495,14 +6496,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 400200efbf2304345813bd062e52586e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
-  - enemy
-  - enemy
   - enemy
   - Lenette
   - David
@@ -6515,15 +6514,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0b1ccec8b986914a9333f7350ac32c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugSetHealth
   healthEntries:
-  - characterName: Dragon 1
-    health: 7
-  - characterName: David
+  - characterName: Lenette
     health: 1
 --- !u!114 &898251914
 MonoBehaviour:
@@ -6605,14 +6602,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: caa094ea4cedf5f47aaf4feaa70afdf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugSetStat
   characterName: Lenette
   statName: armor
-  value: -4
+  value: -5
 --- !u!114 &898251920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6625,6 +6622,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 697fc5da8e3942e4fa99eada3ddea4e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugKeyboardCommands
+--- !u!114 &898251921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898251909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af8963bf588295949a2a7bb6c3261304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugSetDetermination
+  healthEntries:
+  - characterName: Lenette
+    value: 0
 --- !u!1 &916006794
 GameObject:
   m_ObjectHideFlags: 0

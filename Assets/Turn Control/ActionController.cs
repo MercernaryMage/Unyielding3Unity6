@@ -704,6 +704,11 @@ public class ActionController : SceneSingleton<ActionController>
 		DeathAnimator deathAnimator = c.token.AddComponent<DeathAnimator>();
 		deathAnimator.Set(dyingMat, c.characterDefinition.size);
 		TileGrid.Instance.RemoveCharacter(c);
+
+		if (HeroDisplayRouter.Instance.mainDisplay.lastCharacter == c)
+		{
+			HeroDisplayRouter.Instance.mainDisplay.Hide(true);
+		}
 	}
 
 	void HandleReaction(Character defender, AttackResults results)
@@ -771,7 +776,7 @@ public class ActionController : SceneSingleton<ActionController>
 	public void CancelAttack(Character character)
 	{
 		HideAttack();
-		if (character.currentMovement > 0 && BattleController.playerHasControl)
+		if (character.currentMovement > 0 && BattleController.playerHasControl && character.alive)
 		{
 			MovementController.Instance.ShowMovement(character);
 		}

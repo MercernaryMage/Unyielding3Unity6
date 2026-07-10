@@ -265,4 +265,9 @@ public class MovementController : SceneSingleton<MovementController>
 
 		return null;
 	}
+
+	private void Update()
+	{
+		
+	}
 }

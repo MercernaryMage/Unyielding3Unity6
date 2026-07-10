@@ -342,6 +342,10 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 
 	public void CenterCameraOnCharacter(Character targetCharacter)
 	{
+		if (!targetCharacter.alive)
+		{
+			return;
+		}
 		Camera.main.transform.position = GetCameraPositionCenteredOnCharacter(targetCharacter);
 	}
 
