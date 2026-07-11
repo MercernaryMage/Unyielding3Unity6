@@ -209,6 +209,121 @@ public class Card
 		return bestRoute;
 	}
 
+	//if any enemy is within threatRange, moves to a random one of the reachable tiles
+	//farthest from all enemies, then calls onComplete; calls onComplete immediately if
+	//no move is needed or no tile is farther than the current one
+	public void MoveAwayIfNeeded(Action onComplete, int threatRange = 3)
+	{
+		bool foundAny = false;
+		foreach (Character hero in BattleController.Instance.heroes)
+		{
+			if (!hero.alive || hero.GetComponent<Downed>() != null)
+			{
+				continue;
+			}
+			if (TileGrid.Instance.GetDistanceBetweenCharacters(hero, owningCharacter) <= threatRange)
+			{
+				foundAny = true;
+				break;
+			}
+		}
+
+		if (!foundAny)
+		{
+			onComplete();
+			return;
+		}
+
+		List<Character> threats = new List<Character>();
+		foreach (Character hero in BattleController.Instance.heroes)
+		{
+			if (hero.alive)
+			{
+				threats.Add(hero);
+			}
+		}
+
+		int moveRange = owningCharacter.characterDefinition.movement;
+		MovementController.PathfindingRules rules = new MovementController.PathfindingRules();
+		rules.allowedToPathThroughAllies = true;
+
+		List<List<Tile>> bestRoutes = new List<List<Tile>>();
+		int bestMinDist = GetMinDistanceToThreats(TileGrid.Instance.FindCharacter(owningCharacter)[0], threats);
+
+		foreach (Tile tile in TileGrid.Instance.tiles)
+		{
+			if (tile.character != null)
+			{
+				continue;
+			}
+			if (!TileGrid.Instance.WouldCharacterFitAtTile(owningCharacter, tile))
+			{
+				continue;
+			}
+			List<Tile> route = MovementController.Instance.FindRoute(owningCharacter, tile, 0, rules);
+			if (route == null || route.Count > moveRange + 1)
+			{
+				continue;
+			}
+
+			int minDist = GetMinDistanceToThreats(tile, threats);
+			if (minDist > bestMinDist)
+			{
+				bestMinDist = minDist;
+				bestRoutes.Clear();
+				bestRoutes.Add(route);
+			}
+			else if (minDist == bestMinDist && bestRoutes.Count > 0)
+			{
+				bestRoutes.Add(route);
+			}
+		}
+
+		if (bestRoutes.Count == 0)
+		{
+			onComplete();
+			return;
+		}
+
+		List<Tile> movePath = bestRoutes[UnityEngine.Random.Range(0, bestRoutes.Count)];
+		if (movePath.Count <= 1)
+		{
+			onComplete();
+			return;
+		}
+
+		List<Tile> litRouteTiles = Util.ExpandPathTiles(movePath, owningCharacter);
+		Action hideAndComplete = () =>
+		{
+			foreach (Tile t in litRouteTiles)
+			{
+				t.HideOverlay(Tile.OverlayType.PossibleMovement);
+			}
+			onComplete();
+		};
+		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, () =>
+		{
+			TileGrid.Instance.RouteAICharacterToTile(owningCharacter, new List<Tile>(movePath), hideAndComplete);
+		}, hideAndComplete);
+	}
+
+	int GetMinDistanceToThreats(Tile tile, List<Character> threats)
+	{
+		int minDist = int.MaxValue;
+		foreach (Character threat in threats)
+		{
+			foreach (Tile threatTile in TileGrid.Instance.FindCharacter(threat))
+			{
+				int dist = TileGrid.Distance(tile, threatTile);
+				if (dist < minDist)
+				{
+					minDist = dist;
+				}
+			}
+		}
+		return minDist;
+	}
+
 	public string GetCardName()
 	{
 		return cardScriptableObject.cardDisplayName;

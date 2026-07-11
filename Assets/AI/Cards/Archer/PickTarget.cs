@@ -7,6 +7,11 @@ public class PickTarget : Card
 
     public override void Execute()
     {
+        MoveAwayIfNeeded(PickLockOnTarget);
+    }
+
+    void PickLockOnTarget()
+    {
         List<Character> candidates = new List<Character>();
         foreach (Character hero in BattleController.Instance.heroes)
         {
@@ -27,8 +32,9 @@ public class PickTarget : Card
         }
 
         target = candidates[Random.Range(0, candidates.Count)];
-        AnimationController.Instance.ShowTiles(null, Tile.OverlayType.PossibleMovement, Delay, null, 1f);
-    }
+        AnimationController.Instance.ScrollToCharacter(target, Delay, .5f);
+
+	}
 
     void Delay()
     {
@@ -41,6 +47,7 @@ public class PickTarget : Card
     {
         DisplayGrid.Instance.Clear(11, 8);
         List<CardInstruction> instructions = new List<CardInstruction>();
+        instructions.Add(new CardInstruction("If an enemy is within 3 tiles, move to the tile farthest from them"));
         instructions.Add(new CardInstruction("Apply Locked On to a random enemy in line of sight"));
         return instructions;
     }

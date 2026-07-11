@@ -39,6 +39,12 @@ public class AnimationController : SceneSingleton<AnimationController>
 		Invoke(nameof(DoCallback), seconds);
 	}
 
+	public void ScrollToCharacter(Character character, Action callback, float delay = 0.5f)
+	{
+		float scrollTime = SelectionManager.Instance.SnapCameraToCharacter(character);
+		DelayedCallback(scrollTime + delay, callback);
+	}
+
 	static public void PlayEffect(Character character, Vector3 seconadryPosition, EffectScriptableObject effect, float actionDelay, Action callback)
 	{
 		PlayEffectOnDelay effectDelay = character.token.gameObject.AddComponent<PlayEffectOnDelay>();

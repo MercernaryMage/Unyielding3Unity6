@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class CasterApplyStatusEffect : Card
 {
@@ -18,7 +19,13 @@ public class CasterApplyStatusEffect : Card
         }
         else
         {
-            AnimationController.Instance.DelayedCallback(1f, ApplyDoom);
+            targetHero = GetTarget();
+			if (targetHero == null)
+			{
+				Finish();
+				return;
+			}
+			AnimationController.Instance.ScrollToCharacter(targetHero, ApplyDoom, .5f);
         }
     }
 
@@ -64,26 +71,37 @@ public class CasterApplyStatusEffect : Card
         {
             t.HideOverlay(Tile.OverlayType.PossibleMovement);
         }
-        ApplyDoom();
+
+
+
+        targetHero = GetTarget();
+		if (targetHero == null)
+        {
+			Finish();
+			return;
+		}
+		AnimationController.Instance.ScrollToCharacter(targetHero, ApplyDoom, .5f);
     }
 
     void ApplyDoom()
     {
-        List<Character> heroesInRange = Util.GetHeroesInRange(owningCharacter, 5);
-        heroesInRange.RemoveAll(o => !TileGrid.Instance.DoesCharacterHaveLOSToCharacter(o, owningCharacter));
-        if (heroesInRange.Count == 0)
-        {
-            Finish();
-            return;
-        }
-
-        Character target = heroesInRange[UnityEngine.Random.Range(0, heroesInRange.Count)];
-		SelectionManager.Instance.SnapCameraToCharacter(target);
-		target.AddStatusEffect(Type.GetType(GetStringValue("StatusEffectName")), null);
+		targetHero.AddStatusEffect(Type.GetType(GetStringValue("StatusEffectName")), null);
         AnimationController.Instance.DelayedCallback(1.0f, () => Finish());
     }
 
-    public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
+	Character GetTarget()
+	{
+		List<Character> heroesInRange = Util.GetHeroesInRange(owningCharacter, 5);
+		heroesInRange.RemoveAll(o => !TileGrid.Instance.DoesCharacterHaveLOSToCharacter(o, owningCharacter));
+		if (heroesInRange.Count == 0)
+		{
+			return null;
+		}
+
+		return heroesInRange[UnityEngine.Random.Range(0, heroesInRange.Count)];
+	}
+
+	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
     {
         DisplayGrid.Instance.Clear(11, 8);
         List<CardInstruction> instructions = new List<CardInstruction>();

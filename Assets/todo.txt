@@ -10,10 +10,16 @@ Don't spawn a player if they don't have determination
     GAMEPLAY STUFF
     Basically no movement
 
+    We need to make the map more "los friendly"
+
     arhcer and arbalist need traits
     Does arbalist have infinite range?
-    Archer doesn't move at all
     Archer and arbalist need to scroll to the attacked character
+        DO THIS FOR ALL RANGED ATTACKS
+            DOOM
+            STATIS
+            LETHARGY
+            ????????
 
     KNIGHT IS WORTHLESS
         Protector is poorly exaplained, log says I hit myself
