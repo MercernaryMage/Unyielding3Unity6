@@ -823,6 +823,11 @@ public class ActionController : SceneSingleton<ActionController>
 				fitTiles = TileGrid.Instance.WhatTilesWouldCharacterTake(c, t);
 				t.EnterTile(c);
 				t.PlaceInTile(c);
+
+				CharacterKnockbackFinishMessage characterKnockbackFinishMessage = new CharacterKnockbackFinishMessage();
+				characterKnockbackFinishMessage.knockedBackCharacter = c;
+
+				MessagePump.Instance.SendMessage(characterKnockbackFinishMessage);
 				return;
 			}
 		}
@@ -926,9 +931,13 @@ public class ActionController : SceneSingleton<ActionController>
 			}
 			++finalIndex;
 		}
+
 		Tile finalTile = TileGrid.Instance.GetTile(startTile.x + dir.Item1 * finalIndex, startTile.y + dir.Item2 * finalIndex);
 		TileGrid.Instance.MoveCharacterToTile(c, finalTile);
-
+		
+		CharacterKnockbackFinishMessage characterKnockbackFinishMessage = new CharacterKnockbackFinishMessage();
+		characterKnockbackFinishMessage.knockedBackCharacter = c;
+		MessagePump.Instance.SendMessage(characterKnockbackFinishMessage);
 
 		return true;
 	}

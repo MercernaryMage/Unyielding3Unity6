@@ -8,9 +8,11 @@ public class Charge : Card
 	Tuple<List<Tile>, Tile> route;
 	List<Tile> litRouteTiles;
 	TemplateLibrary.TilesAndDirection tilesAndDirection;
+	HashSet<Character> pushedCharacters = new HashSet<Character>();
 
 	public override void Execute()
 	{
+		pushedCharacters.Clear();
 		Dictionary<Character, Tuple<List<Tile>, Tile>> routes = RouteToAllClosestCharacters(true);
 		route = Util.FindSmallestRoute(routes, null);
 
@@ -190,6 +192,7 @@ public class Charge : Card
 		{
 			Tile anchor = TileGrid.Instance.FindCharacter(c)[0];
 			TileGrid.Instance.MoveCharacterToTile(c, TileGrid.Instance.GetTile(anchor.x + dx, anchor.y + dy));
+			pushedCharacters.Add(c);
 		}
 
 		TileGrid.Instance.MoveCharacterToTile(owningCharacter, TileGrid.Instance.GetTile(chargerTiles[0].x + dx, chargerTiles[0].y + dy));
@@ -199,6 +202,14 @@ public class Charge : Card
 
 	void AttackAfterPush()
 	{
+		foreach (Character c in pushedCharacters)
+		{
+			CharacterKnockbackFinishMessage characterKnockbackFinishMessage = new CharacterKnockbackFinishMessage();
+			characterKnockbackFinishMessage.knockedBackCharacter = c;
+			MessagePump.Instance.SendMessage(characterKnockbackFinishMessage);
+		}
+		pushedCharacters.Clear();
+
 		tilesAndDirection = TemplateLibrary.Instance.ChopTargeting(owningCharacter);
 		if (tilesAndDirection == null)
 		{

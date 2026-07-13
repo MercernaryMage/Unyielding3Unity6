@@ -16,6 +16,7 @@ public class TriggerDisplay : SceneSingleton<TriggerDisplay>
 	List<Tuple<GameObject, Trigger>> createdObjects = new List<Tuple<GameObject, Trigger>>();
 	bool abandonded = false;
 	bool showing = false;
+	bool storedRunning = false;
 	List<Tile> showingTiles = new List<Tile>();
 
 	private void Start()
@@ -31,6 +32,7 @@ public class TriggerDisplay : SceneSingleton<TriggerDisplay>
 			t.HideAllOverlays();
 			t.ShowOverlay(Tile.OverlayType.Selected);
 		}
+		storedRunning = ActionController.Instance.running;
 		ActionController.Instance.running = false;
 		showing = true;
 		abandonded = false;
@@ -90,7 +92,7 @@ public class TriggerDisplay : SceneSingleton<TriggerDisplay>
 		}
 		showing = false;
 		content.SetActive(false);
-		ActionController.Instance.running = true;
+		ActionController.Instance.running = storedRunning;
 	}
 
 	public void Continue()

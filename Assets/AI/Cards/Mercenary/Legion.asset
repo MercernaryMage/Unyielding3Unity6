@@ -25,3 +25,8 @@ MonoBehaviour:
     floatData: 0
     intData: 0
     boolData: 0
+  - tagName: DrawExtraCard
+    stringData:
+    floatData: 0
+    intData: 0
+    boolData: 1

@@ -9,17 +9,18 @@ Don't spawn a player if they don't have determination
 
     GAMEPLAY STUFF
     Basically no movement
+    
+    Can we put some kind of danger notification on the buttons when locked on?
 
-    We need to make the map more "los friendly"
+    Caster did the legal move:
+        Reposition due to a close enemy, and then move again
 
     arhcer and arbalist need traits
-    Does arbalist have infinite range?
-    Archer and arbalist need to scroll to the attacked character
-        DO THIS FOR ALL RANGED ATTACKS
-            DOOM
-            STATIS
-            LETHARGY
-            ????????
+    More archer/arbalist cards?
+        Arbalist:
+            Stake: Deal instant damage, immobilize until ally ends adjacent
+        Archer:
+            Bottle toss: Turn tile to fire
 
     KNIGHT IS WORTHLESS
         Protector is poorly exaplained, log says I hit myself

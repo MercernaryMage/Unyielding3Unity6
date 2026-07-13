@@ -25,7 +25,8 @@ public enum MessageType
 	CharacterFinishedMoving,
 	CardStart,
 	CombatStart,
-	CharacterTakingBurnDamage
+	CharacterTakingBurnDamage,
+	CharacterKnockbackFinished
 }
 
 public class Message
@@ -231,6 +232,17 @@ public class CharacterTakingBurnDamageMessage : Message
 	{
 		messageType = MessageType.CharacterTakingBurnDamage;
 	}
+}
+
+public class CharacterKnockbackFinishMessage : Message
+{
+	public Character knockedBackCharacter;
+
+	public CharacterKnockbackFinishMessage()
+	{
+		messageType = MessageType.CharacterKnockbackFinished;
+	}
+
 }
 
 public class MessagePump : SceneSingleton<MessagePump>

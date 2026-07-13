@@ -28,12 +28,8 @@ public class CardDisplay : MonoBehaviour
 
 	List<GameObject> createdObjects = new List<GameObject>();
 
-	public void ShowCard(CardScriptableObject cardScriptableObject, bool showDismiss, CardType cardType)
+	void StartCard()
 	{
-		aggravatedBackground.SetActive(cardType == CardType.AggravatedReaction);
-		reactionBackground.SetActive(cardType == CardType.Reaction);
-		cardBackground.SetActive(cardType == CardType.Card);
-
 		FadeLerp fadeOutLerp = content.GetComponent<FadeLerp>();
 		if (fadeOutLerp)
 		{
@@ -52,6 +48,16 @@ public class CardDisplay : MonoBehaviour
 		}
 		createdObjects.Clear();
 		content.SetActive(true);
+	}
+
+	public void ShowCard(CardScriptableObject cardScriptableObject, bool showDismiss, CardType cardType)
+	{
+		aggravatedBackground.SetActive(cardType == CardType.AggravatedReaction);
+		reactionBackground.SetActive(cardType == CardType.Reaction);
+		cardBackground.SetActive(cardType == CardType.Card);
+
+		StartCard();
+
 		cardName.text = cardScriptableObject.cardDisplayName;
 		DisplayGrid.Instance.Hide();
 		List<CardInstruction> instructions = (List<CardInstruction>)System.Type.GetType(cardScriptableObject.className)
@@ -89,8 +95,7 @@ public class CardDisplay : MonoBehaviour
 		aggravatedBackground.SetActive(false);
 		reactionBackground.SetActive(false);
 
-		createdObjects.Clear();
-		content.SetActive(true);
+		StartCard();
 		cardName.text = title;
 		DisplayGrid.Instance.Hide();
 		GameObject display = Instantiate(cardDisplayItemPrefab);

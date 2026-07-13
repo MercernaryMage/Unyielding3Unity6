@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class LockedOn : StatusEffect
 {
-    public Character causingCharacter;
+	public Character causingCharacter;
 	bool useable = true;
 
 	public override void CharacterStartTurn(CharacterStartTurnMessage message)
 	{
+		DoLOSCheck();
 		if (!causingCharacter.alive)
 		{
 			Destroy(this);
@@ -15,11 +16,19 @@ public class LockedOn : StatusEffect
 		useable = true;
 	}
 
+	void DoLOSCheck()
+	{
+		if (!TileGrid.Instance.DoesCharacterHaveLOSToCharacter(character, causingCharacter))
+		{
+			Destroy(this);
+		}
+	}
+
 	public override void OnCharacterFinishedMoving(CharacterFinishedMovingMessage message)
     {
 		if (message.movingCharacter == character)
 		{
-			
+			DoLOSCheck();
 			if (TileGrid.Instance.DoesCharacterHaveLOSToCharacter(character, causingCharacter))
 			{
 				if (!useable)
@@ -29,10 +38,6 @@ public class LockedOn : StatusEffect
 				useable = false;
 				ActionController.Instance.AttackCharacter(character, causingCharacter,
 			new ActionController.AttackProfile(1, 6, 0));
-			}
-			else
-			{
-				Destroy(this);
 			}
 		}
 	}
@@ -78,6 +83,6 @@ public class LockedOn : StatusEffect
 
     public override string GetEffectText()
     {
-        return "Once per turn, when this character finishes moving or attacking, the causing character will attack them.";
+        return "Once per turn, when this character finishes moving or attacking, the causing character will attack them.  Ends when line of sight to the causing character is broken.";
     }
 }

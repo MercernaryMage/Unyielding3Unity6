@@ -9,9 +9,14 @@ public class Snipe : Card
     List<Tile> attackLine;
     Character targetHero;
 
-    public override void Execute()
+	public override void Execute()
+	{
+		MoveAwayIfNeeded(FinishedRunning);
+	}
+
+	public void FinishedRunning()
     {
-        List<Tile> myTiles = TileGrid.Instance.FindCharacter(owningCharacter);
+		List<Tile> myTiles = TileGrid.Instance.FindCharacter(owningCharacter);
         Tile origin = myTiles[0];
         int moveRange = owningCharacter.characterDefinition.movement;
 
@@ -176,7 +181,8 @@ public class Snipe : Card
     {
         DisplayGrid.Instance.Clear(11, 8);
         List<CardInstruction> instructions = new List<CardInstruction>();
-        instructions.Add(new CardInstruction("Move to the closest tile with line of sight to a hero"));
+		instructions.Add(new CardInstruction("If an enemy is within 3 tiles, move to the tile farthest from all enemies"));
+		instructions.Add(new CardInstruction("Move to the closest tile with line of sight to a hero"));
         instructions.Add(new CardInstruction("Deal 10 damage to the first hero in the line"));
         DisplayGrid.Instance.Show();
         return instructions;
