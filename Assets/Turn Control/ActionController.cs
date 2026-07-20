@@ -330,9 +330,9 @@ public class ActionController : SceneSingleton<ActionController>
 			attackProfile.isBackstab = true;
 		}
 
-		AttackCharacter(target, attackingCharacter, attackProfile);
+		AttackResults attackResults = AttackCharacter(target, attackingCharacter, attackProfile);
 
-		if (!string.IsNullOrEmpty(currentAction.postDamageFunctionName))
+		if (attackResults.hit && !string.IsNullOrEmpty(currentAction.postDamageFunctionName))
 		{
 			ActionTypes.DoPostAction(attackingCharacter, target, currentAction, currentItem, currentAction.postDamageFunctionName);
 		}

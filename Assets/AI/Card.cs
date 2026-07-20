@@ -211,8 +211,10 @@ public class Card
 
 	//if any enemy is within threatRange, moves to a random one of the reachable tiles
 	//farthest from all enemies, then calls onComplete; calls onComplete immediately if
-	//no move is needed or no tile is farther than the current one
-	public void MoveAwayIfNeeded(Action onComplete, int threatRange = 3)
+	//no move is needed or no tile is farther than the current one; the bool passed to
+	//onComplete is true only if a movement actually happened, and a card that moved
+	//this way is not allowed to move a second time
+	public void MoveAwayIfNeeded(Action<bool> onComplete, int threatRange = 3)
 	{
 		bool foundAny = false;
 		foreach (Character hero in BattleController.Instance.heroes)
@@ -230,7 +232,7 @@ public class Card
 
 		if (!foundAny)
 		{
-			onComplete();
+			onComplete(false);
 			return;
 		}
 
@@ -281,30 +283,36 @@ public class Card
 
 		if (bestRoutes.Count == 0)
 		{
-			onComplete();
+			onComplete(false);
 			return;
 		}
 
 		List<Tile> movePath = bestRoutes[UnityEngine.Random.Range(0, bestRoutes.Count)];
 		if (movePath.Count <= 1)
 		{
-			onComplete();
+			onComplete(false);
 			return;
 		}
 
 		List<Tile> litRouteTiles = Util.ExpandPathTiles(movePath, owningCharacter);
-		Action hideAndComplete = () =>
+		Action<bool> hideAndComplete = (moved) =>
 		{
 			foreach (Tile t in litRouteTiles)
 			{
 				t.HideOverlay(Tile.OverlayType.PossibleMovement);
 			}
-			onComplete();
+			onComplete(moved);
 		};
 		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, () =>
 		{
-			TileGrid.Instance.RouteAICharacterToTile(owningCharacter, new List<Tile>(movePath), hideAndComplete);
-		}, hideAndComplete);
+			TileGrid.Instance.RouteAICharacterToTile(owningCharacter, new List<Tile>(movePath), () =>
+			{
+				hideAndComplete(true);
+			});
+		}, () =>
+		{
+			hideAndComplete(false);
+		});
 	}
 
 	int GetMinDistanceToThreats(Tile tile, List<Character> threats)

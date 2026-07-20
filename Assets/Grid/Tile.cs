@@ -1,5 +1,7 @@
 using JetBrains.Annotations;
+using NUnit.Framework.Internal;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using static Tile;
@@ -188,12 +190,22 @@ public class Tile : MonoBehaviour
 		meshRenderer.material.SetFloat("_East", east ? 1 : 0);
 	}
 
-	public void SetOutline(bool north, bool south, bool west, bool east)
+	public void ClearOutline()
+	{
+		MeshRenderer meshRenderer = outline.GetComponent<MeshRenderer>();
+		meshRenderer.material.SetFloat("_FrontFace", 0);
+		meshRenderer.material.SetFloat("_BackFace", 0);
+		meshRenderer.material.SetFloat("_LeftFace", 0);
+		meshRenderer.material.SetFloat("_RightFace", 0);
+	}
+
+	public void SetOutline(bool north, bool south, bool west, bool east, Color color)
 	{
 		MeshRenderer meshRenderer = outline.GetComponent<MeshRenderer>();
 		meshRenderer.material.SetFloat("_FrontFace", north ? 1 : 0);
 		meshRenderer.material.SetFloat("_BackFace", south ? 1 : 0);
 		meshRenderer.material.SetFloat("_LeftFace", west ? 1 : 0);
 		meshRenderer.material.SetFloat("_RightFace", east ? 1 : 0);
+		meshRenderer.material.SetColor("_EmissionColor", color);
 	}
 }

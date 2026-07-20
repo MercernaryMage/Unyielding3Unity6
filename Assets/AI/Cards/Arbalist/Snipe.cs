@@ -14,7 +14,7 @@ public class Snipe : Card
 		MoveAwayIfNeeded(FinishedRunning);
 	}
 
-	public void FinishedRunning()
+	public void FinishedRunning(bool moved)
     {
 		List<Tile> myTiles = TileGrid.Instance.FindCharacter(owningCharacter);
         Tile origin = myTiles[0];
@@ -23,15 +23,39 @@ public class Snipe : Card
         MovementController.PathfindingRules rules = new MovementController.PathfindingRules();
         rules.allowedToPathThroughAllies = true;
 
-        Tile bestTile = null;
-        Character bestHero = null;
-        List<Tile> bestPath = null;
-        int bestPathLength = int.MaxValue;
+        Dictionary<Character, List<Tile>> bestPathForHero = new Dictionary<Character, List<Tile>>();
 
-        List<Tile> candidates = TileGrid.Instance.GetAllTilesInRange(origin, moveRange);
-        if (!candidates.Contains(origin))
+        HashSet<Character> heroesWithAdjacentAllies = new HashSet<Character>();
+        foreach (Character hero in BattleController.Instance.heroes)
         {
-            candidates.Add(origin);
+            foreach (Character ally in BattleController.Instance.enemies)
+            {
+                if (ally == owningCharacter || !ally.alive || ally.gameObject.GetComponent<Downed>() != null)
+                {
+                    continue;
+                }
+                if (TileGrid.AreCharactersAdjacent(hero, ally))
+                {
+                    heroesWithAdjacentAllies.Add(hero);
+                    break;
+                }
+            }
+        }
+
+        //if we already moved away, we are not allowed to move a second time,
+        //so the only candidate tile is the one we are standing on
+        List<Tile> candidates;
+        if (moved)
+        {
+            candidates = new List<Tile>() { origin };
+        }
+        else
+        {
+            candidates = TileGrid.Instance.GetAllTilesInRange(origin, moveRange);
+            if (!candidates.Contains(origin))
+            {
+                candidates.Add(origin);
+            }
         }
 
         foreach (Tile candidate in candidates)
@@ -80,25 +104,42 @@ public class Snipe : Card
                         }
                     }
 
-                    if (!blocked && path.Count < bestPathLength)
+                    if (blocked)
                     {
-                        bestPathLength = path.Count;
-                        bestTile = candidate;
-                        bestHero = hero;
-                        bestPath = path;
+                        continue;
+                    }
+
+                    if (!bestPathForHero.ContainsKey(hero) || path.Count < bestPathForHero[hero].Count)
+                    {
+                        bestPathForHero[hero] = path;
                     }
                 }
             }
         }
 
-        if (bestTile == null)
+        List<Character> targetPool = new List<Character>();
+        foreach (Character hero in bestPathForHero.Keys)
+        {
+            if (heroesWithAdjacentAllies.Contains(hero))
+            {
+                targetPool.Add(hero);
+            }
+        }
+
+        if (targetPool.Count == 0)
+        {
+            targetPool.AddRange(bestPathForHero.Keys);
+        }
+
+        if (targetPool.Count == 0)
         {
             Finish();
             return;
         }
 
-        targetHero = bestHero;
-        movePath = bestPath;
+        Util.Shuffle(targetPool);
+        targetHero = targetPool[0];
+        movePath = bestPathForHero[targetHero];
         litRouteTiles = Util.ExpandPathTiles(movePath, owningCharacter);
 
         if (movePath.Count == 0)
@@ -182,7 +223,8 @@ public class Snipe : Card
         DisplayGrid.Instance.Clear(11, 8);
         List<CardInstruction> instructions = new List<CardInstruction>();
 		instructions.Add(new CardInstruction("If an enemy is within 3 tiles, move to the tile farthest from all enemies"));
-		instructions.Add(new CardInstruction("Move to the closest tile with line of sight to a hero"));
+		instructions.Add(new CardInstruction("Target a random hero with an adjacent ally that a line can be drawn to; if none exists, target a random hero a line can be drawn to"));
+		instructions.Add(new CardInstruction("Move to the closest tile with line of sight to the target"));
         instructions.Add(new CardInstruction("Deal 10 damage to the first hero in the line"));
         DisplayGrid.Instance.Show();
         return instructions;

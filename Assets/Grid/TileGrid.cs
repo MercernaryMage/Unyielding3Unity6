@@ -610,7 +610,7 @@ public class TileGrid : SceneSingleton<TileGrid>
 		return outTiles;
 	}
 
-	public void OutlineTiles(List<Tile> tilesToOutline)
+	public void OutlineTiles(List<Tile> tilesToOutline, Color color)
 	{
 		ClearOutlines();
 		HashSet<Tile> outlineSet = new HashSet<Tile>(tilesToOutline);
@@ -620,7 +620,7 @@ public class TileGrid : SceneSingleton<TileGrid>
 			bool south = !outlineSet.Contains(GetTile(t.x, t.y - 1));
 			bool west = !outlineSet.Contains(GetTile(t.x - 1, t.y));
 			bool east = !outlineSet.Contains(GetTile(t.x + 1, t.y));
-			t.SetOutline(north, south, west, east);
+			t.SetOutline(north, south, west, east, color);
 			outlinedTiles.Add(t);
 		}
 	}
@@ -629,7 +629,7 @@ public class TileGrid : SceneSingleton<TileGrid>
 	{
 		foreach (Tile t in outlinedTiles)
 		{
-			t.SetOutline(false, false, false, false);
+			t.ClearOutline();
 		}
 		outlinedTiles.Clear();
 	}

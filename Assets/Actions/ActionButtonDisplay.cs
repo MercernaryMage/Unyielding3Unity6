@@ -181,7 +181,7 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 				}
 			}
 		}
-		TileGrid.Instance.OutlineTiles(inRangeTiles);
+		TileGrid.Instance.OutlineTiles(inRangeTiles, Util.HexToColor("F1C601"));
 	}
 
 	void OutlineConeTiles()
@@ -202,6 +202,6 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 				}
 			}
 		}
-		TileGrid.Instance.OutlineTiles(coneTiles);
+		TileGrid.Instance.OutlineTiles(coneTiles, Util.HexToColor("802020"));
 	}
 }

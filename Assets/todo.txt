@@ -11,9 +11,16 @@ Don't spawn a player if they don't have determination
     Basically no movement
     
     Can we put some kind of danger notification on the buttons when locked on?
+    protector didn't trigger the next card
+    we shouldn't show tile we don't have los on in the outline view
+    we should show on dash how far we could reach!!!!!!
+    -shield trait activated twice?
+    -    It was the second time in a row?
 
-    Caster did the legal move:
-        Reposition due to a close enemy, and then move again
+    caster moves and stops 3 away, but doesn't promise LOS
+
+    charge should be attack, not direct damage
+    Locked on should be an attack (?)
 
     arhcer and arbalist need traits
     More archer/arbalist cards?

@@ -29,6 +29,9 @@ public class ReloadIfNoAttackTrait : Trait
 		{
 			return;
 		}
+
+		FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, "reload");
+
 		foreach (Item item in character.storageCharacter.equipment)
 		{
 			if (item.itemDefinition == null)

@@ -9,19 +9,14 @@ public class PickTarget : Card
 
     public override void Execute()
     {
-        bool enemyWithinThree = false;
-        foreach (Character hero in GetLivingEnemies())
-        {
-            if (TileGrid.Instance.GetDistanceBetweenCharacters(hero, owningCharacter) <= 3)
-            {
-                enemyWithinThree = true;
-                break;
-            }
-        }
+        MoveAwayIfNeeded(ReturnFromMoveAway);
+    }
 
-        if (enemyWithinThree)
+    void ReturnFromMoveAway(bool moved)
+    {
+        if (moved)
         {
-            MoveAwayIfNeeded(PickLockOnTarget);
+            PickLockOnTarget();
             return;
         }
 

@@ -14,12 +14,18 @@ public class CasterApplyStatusEffect : Card
 		MoveAwayIfNeeded(FinishedRunning);
 	}
 
-	public void FinishedRunning()
+	public void FinishedRunning(bool moved)
     {
         List<Character> heroesInRange = Util.GetHeroesInRange(owningCharacter, 5);
         heroesInRange.RemoveAll(o => !TileGrid.Instance.DoesCharacterHaveLOSToCharacter(o, owningCharacter));
         if (heroesInRange.Count == 0)
         {
+            //if we already moved away, we are not allowed to move a second time
+            if (moved)
+            {
+                Finish();
+                return;
+            }
             DoMove();
         }
         else
