@@ -97,6 +97,16 @@ public class MovementController : SceneSingleton<MovementController>
 		currentMousedOverTile = t;
 		currentMousedOverTile.ShowOverlay(Tile.OverlayType.Selected);
 		currentMousedOverTile.HideOverlay(Tile.OverlayType.PossibleMovement);
+
+		PathfindingRules rules = new PathfindingRules();
+		rules.allowedToPathThroughAllies = true;
+		List<Tile> route = FindRoute(movingCharacter, t, 0, rules);
+		int tilesMoved = route != null ? route.Count - 1 : 0;
+
+		PreviewMovementDamageMessage previewMessage = new PreviewMovementDamageMessage();
+		previewMessage.movingCharacter = movingCharacter;
+		previewMessage.tilesMoved = tilesMoved;
+		MessagePump.Instance.SendMessage(previewMessage);
 	}
 
 	public void MouseExitTile(Tile t)

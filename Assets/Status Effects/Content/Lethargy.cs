@@ -32,6 +32,15 @@ public class Lethargy : StatusEffect
         CombatLogControl.Instance.AddEntry($"Lethargy deals {results.damageDealt} to {character.displayName}");
     }
 
+    public override void OnPreviewMovementDamage(PreviewMovementDamageMessage previewMovementDamageMessage)
+    {
+        if (previewMovementDamageMessage.movingCharacter != character)
+        {
+            return;
+        }
+        previewMovementDamageMessage.damage += previewMovementDamageMessage.tilesMoved;
+    }
+
     public override void CharacterEndTurn(CharacterEndTurnMessage characterEndTurnMessage)
     {
         if (characterEndTurnMessage.character != character)

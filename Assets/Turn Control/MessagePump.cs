@@ -27,7 +27,8 @@ public enum MessageType
 	CombatStart,
 	CharacterTakingBurnDamage,
 	CharacterKnockbackFinished,
-	GetWarningForAction
+	GetWarningForAction,
+	PreviewMovementDamage
 }
 
 public class Message
@@ -255,6 +256,18 @@ public class GetWarningForActionMessage : Message
 	public GetWarningForActionMessage()
 	{
 		messageType = MessageType.GetWarningForAction;
+	}
+}
+
+public class PreviewMovementDamageMessage : Message
+{
+	public Character movingCharacter;
+	public int tilesMoved;
+	public int damage;
+
+	public PreviewMovementDamageMessage()
+	{
+		messageType = MessageType.PreviewMovementDamage;
 	}
 }
 
