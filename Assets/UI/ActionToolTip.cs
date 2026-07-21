@@ -10,30 +10,30 @@ public class ActionToolTip : MonoBehaviour
 	public TextMeshProUGUI bodyText;
 	ItemScriptableObject owningItem;
 
-	public void Set(Character c, ActionPattern pattern, string reason, ItemScriptableObject i)
+	public void Set(Character c, ActionPattern pattern, string reason, bool usable, ItemScriptableObject i)
 	{
 		owningItem = i;
-		
-		if (!string.IsNullOrEmpty(reason))
-		{
-			titleText.text = pattern.displayName;
-			bodyText.text = $"<b>{reason}</b>\n\n {pattern.actionDescription}";
-			return;
-		}
+
 		if (pattern.attack)
 		{
 			ParseAttack(pattern);
-			return;
-		}
-
-		titleText.text = pattern.displayName;
-		if (!string.IsNullOrEmpty(pattern.actionDescriptionFunction))
-		{
-			bodyText.text = ActionTypes.GetDescription(c, pattern);
 		}
 		else
 		{
-			bodyText.text = pattern.actionDescription;
+			titleText.text = pattern.displayName;
+			if (!string.IsNullOrEmpty(pattern.actionDescriptionFunction))
+			{
+				bodyText.text = ActionTypes.GetDescription(c, pattern);
+			}
+			else
+			{
+				bodyText.text = pattern.actionDescription;
+			}
+		}
+
+		if (!string.IsNullOrEmpty(reason))
+		{
+			bodyText.text = $"<b>{reason}</b>\n\n{bodyText.text}";
 		}
 	}
 

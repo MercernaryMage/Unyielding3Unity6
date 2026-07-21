@@ -206,6 +206,6 @@ public class Tile : MonoBehaviour
 		meshRenderer.material.SetFloat("_BackFace", south ? 1 : 0);
 		meshRenderer.material.SetFloat("_LeftFace", west ? 1 : 0);
 		meshRenderer.material.SetFloat("_RightFace", east ? 1 : 0);
-		meshRenderer.material.SetColor("_EmissionColor", color);
+		meshRenderer.material.SetColor("_BaseColor", color);
 	}
 }

@@ -9,13 +9,12 @@ Don't spawn a player if they don't have determination
 
     GAMEPLAY STUFF
     Basically no movement
-    
-    Can we put some kind of danger notification on the buttons when locked on?
-    protector didn't trigger the next card
-    we shouldn't show tile we don't have los on in the outline view
-    we should show on dash how far we could reach!!!!!!
     -shield trait activated twice?
-    -    It was the second time in a row?
+
+    Can we put some kind of danger notification on movement
+        Can we put some kind of danger notification on AoO
+    protector didn't trigger the next card
+    
 
     caster moves and stops 3 away, but doesn't promise LOS
 

@@ -82,6 +82,7 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 	virtual public void OnPreDamageDealt(PreDamageDealtMessage preDamageDealtMessage) { }
 	virtual public void OnCharacterTakeBurnDamage(CharacterTakingBurnDamageMessage characterTakingBurnDamageMessage) { }
 	virtual public void OnCharacterKnockbackFinish(CharacterKnockbackFinishMessage message) { }
+	virtual public void OnWarningForAction(GetWarningForActionMessage GetWarningForActionMessage) { }
 
 
 	public void ReceiveMessage(Message message)
@@ -141,6 +142,10 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 		else if (message.messageType == MessageType.CharacterKnockbackFinished)
 		{
 			OnCharacterKnockbackFinish((CharacterKnockbackFinishMessage)message);
+		}
+		else if (message.messageType == MessageType.GetWarningForAction)
+		{
+			OnWarningForAction((GetWarningForActionMessage)message);
 		}
 	}
 

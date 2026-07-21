@@ -129,6 +129,10 @@ public class HeroDisplay : MonoBehaviour
 				for (int i = 0; i < item.itemDefinition.actions.Count; ++i)
 				{
 					ActionPattern pattern = item.itemDefinition.actions[i];
+					GetWarningForActionMessage getWarningForAction = new GetWarningForActionMessage();
+					getWarningForAction.character = character;
+					getWarningForAction.actionPattern = pattern;
+					MessagePump.Instance.SendMessage(getWarningForAction);
 					if (!IsActionDisplayable(character, item, pattern))
 					{
 						continue;
@@ -141,7 +145,7 @@ public class HeroDisplay : MonoBehaviour
 					obj.transform.SetParent(actionContent.transform);
 					Tuple<bool, string> usable = IsActionUsable(character, item, pattern);
 					ActionButtonDisplay display = obj.GetComponent<ActionButtonDisplay>();
-					obj.GetComponent<ActionButtonDisplay>().Set(character, pattern, item, usable.Item1, usable.Item2, i);
+					obj.GetComponent<ActionButtonDisplay>().Set(character, pattern, item, usable.Item1, usable.Item2, i, getWarningForAction.warnings);
 					createdObjects.Add(display);
 				}
 			}

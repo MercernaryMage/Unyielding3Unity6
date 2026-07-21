@@ -6467,13 +6467,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7dd976f5053a4b9428958f7c44f9a7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statusEffectName: Slobbered
-  characterName: 
+  statusEffectName: Lethargy
+  characterName: Lenette
 --- !u!4 &898251911
 Transform:
   m_ObjectHideFlags: 0
@@ -6496,14 +6496,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 400200efbf2304345813bd062e52586e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
-  - enemy
   - Lenette
+  - enemy
   - David
   - Cotton
   - Dane

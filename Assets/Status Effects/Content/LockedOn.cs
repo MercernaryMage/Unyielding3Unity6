@@ -76,6 +76,17 @@ public class LockedOn : StatusEffect
 		);
 	}
 
+	public override void OnWarningForAction(GetWarningForActionMessage getWarningForActionMessage)
+	{
+		if (character == getWarningForActionMessage.character)
+		{
+			if (getWarningForActionMessage.actionPattern.attack)
+			{
+				getWarningForActionMessage.warnings.Add("Locked On will trigger");
+			}
+		}
+	}
+
 	public override string GetDisplayName()
     {
         return "Locked On";

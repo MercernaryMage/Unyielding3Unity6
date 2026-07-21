@@ -184,7 +184,7 @@ public class MapBuilder : MonoBehaviour
 		}
 		else
 		{
-			map = MapParser.ParseMap("TestMap4.txt");
+			map = MapParser.ParseMap("Playground.txt");
 		}
 		float tileScale = 1.5f;
 		List<Tile> tiles = new List<Tile>();
@@ -271,7 +271,7 @@ public class MapBuilder : MonoBehaviour
 			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 0, 3));
 
 			//levelConfiguration.enemies.Add(new EnemyConfiguration("BigTestEnemy", Direction.West, 6, 5));
-			levelConfiguration.enemies.Add(new EnemyConfiguration("Arbalist", Direction.West, 2, 2));
+			levelConfiguration.enemies.Add(new EnemyConfiguration("Archer", Direction.West, 6, 6));
 			//levelConfiguration.enemies.Add(new EnemyConfiguration("Bandit", Direction.West, 2, 1));
 			return levelConfiguration;
 		}

@@ -26,7 +26,8 @@ public enum MessageType
 	CardStart,
 	CombatStart,
 	CharacterTakingBurnDamage,
-	CharacterKnockbackFinished
+	CharacterKnockbackFinished,
+	GetWarningForAction
 }
 
 public class Message
@@ -243,6 +244,18 @@ public class CharacterKnockbackFinishMessage : Message
 		messageType = MessageType.CharacterKnockbackFinished;
 	}
 
+}
+
+public class GetWarningForActionMessage : Message
+{
+	public Character character;
+	public ActionPattern actionPattern;
+	public List<string> warnings = new List<string>();
+
+	public GetWarningForActionMessage()
+	{
+		messageType = MessageType.GetWarningForAction;
+	}
 }
 
 public class MessagePump : SceneSingleton<MessagePump>

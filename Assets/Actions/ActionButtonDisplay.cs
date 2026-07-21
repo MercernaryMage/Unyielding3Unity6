@@ -38,8 +38,9 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 
 	public ActionToolTip actionToolTip;
 	bool usable;
+	List<string> warnings;
 
-    public void Set(Character c, ActionPattern p, Item i, bool u, string unusableReason, int targetedActionIndex)
+    public void Set(Character c, ActionPattern p, Item i, bool u, string unusableReason, int targetedActionIndex, List<string> w)
 	{
 		owningCharacter = c;
 		pattern = p;
@@ -47,6 +48,7 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 		uniqueName = p.uniqueName;
 		usable = u;
 		this.targetedActionIndex = targetedActionIndex;
+		warnings = w;
 		if (p.cost.actions > 0)
 		{
 			actionObject.SetActive(true);
@@ -134,8 +136,13 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 		needsExit = true;
 		//if (!string.IsNullOrEmpty(pattern.actionDescription) || !string.IsNullOrEmpty(pattern.actionDescriptionFunction))
 		{
+			string message = reason;
+			if (string.IsNullOrEmpty(message) && warnings != null && warnings.Count > 0)
+			{
+				message = warnings[0];
+			}
 			actionToolTip.gameObject.SetActive(true);
-			actionToolTip.Set(owningCharacter, pattern, reason, owningItem.itemDefinition);
+			actionToolTip.Set(owningCharacter, pattern, message, usable, owningItem.itemDefinition);
 		}
 		OutlineTilesInRange();
 	}
@@ -154,6 +161,11 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 	{
 		if (owningCharacter.token.gameObject.GetComponent<PathFollower>() != null)
 		{
+			return;
+		}
+		if (pattern.useInstantAction && pattern.instantAction.actionName == "Dash")
+		{
+			OutlineFullMovementTiles();
 			return;
 		}
 		if (pattern.aoeType == ActionPattern.AoEType.Cone)
@@ -175,6 +187,10 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 				{
 					continue;
 				}
+				if (!TileGrid.Instance.DoesTileHaveLOSToTile(startingTile, t))
+				{
+					continue;
+				}
 				if (!inRangeTiles.Contains(t))
 				{
 					inRangeTiles.Add(t);
@@ -182,6 +198,30 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 			}
 		}
 		TileGrid.Instance.OutlineTiles(inRangeTiles, Util.HexToColor("F1C601"));
+	}
+
+	void OutlineFullMovementTiles()
+	{
+		int fullMovement = owningCharacter.movementMax;
+		if (owningCharacter.ShouldHaveHalfMovement())
+		{
+			fullMovement = Mathf.Max(1, fullMovement / 2);
+		}
+
+		List<Tile> movableTiles = new List<Tile>();
+		foreach (Tile t in MovementController.Instance.GetAllTilesInRange(owningCharacter, fullMovement))
+		{
+			if (t.character != null)
+			{
+				continue;
+			}
+			if (t.tileScriptableObject != null && t.tileScriptableObject.empty)
+			{
+				continue;
+			}
+			movableTiles.Add(t);
+		}
+		TileGrid.Instance.OutlineTiles(movableTiles, Util.HexToColor("202080"));
 	}
 
 	void OutlineConeTiles()

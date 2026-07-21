@@ -56,7 +56,7 @@ public class MovementController : SceneSingleton<MovementController>
 		}
 	}
 
-	List<Tile> GetAllTilesInRange(Character c, int range)
+	public List<Tile> GetAllTilesInRange(Character c, int range)
 	{
 		List<Tile> inRangeTiles = new List<Tile>();
 

@@ -65,6 +65,10 @@ public class FancyHeroDisplay : MonoBehaviour
 			for (int i = 0; i < item.itemDefinition.actions.Count; ++i)
 			{
 				ActionPattern pattern = item.itemDefinition.actions[i];
+				GetWarningForActionMessage getWarningForAction = new GetWarningForActionMessage();
+				getWarningForAction.character = lastCharacter;
+				getWarningForAction.actionPattern = pattern;
+				MessagePump.Instance.SendMessage(getWarningForAction);
 				if (!HeroDisplay.IsActionDisplayable(lastCharacter, item, pattern))
 				{
 					continue;
@@ -77,7 +81,7 @@ public class FancyHeroDisplay : MonoBehaviour
 				obj.transform.SetParent(target);
 				Tuple<bool, string> usable = HeroDisplay.IsActionUsable(lastCharacter, item, pattern);
 				ActionButtonDisplay display = obj.GetComponent<ActionButtonDisplay>();
-				obj.GetComponent<ActionButtonDisplay>().Set(lastCharacter, pattern, item, usable.Item1, usable.Item2, i);
+				obj.GetComponent<ActionButtonDisplay>().Set(lastCharacter, pattern, item, usable.Item1, usable.Item2, i, getWarningForAction.warnings);
 				createdObjects.Add(obj);
 			}
 		}
