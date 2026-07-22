@@ -10,6 +10,8 @@ public class MovementController : SceneSingleton<MovementController>
 	public List<Tile> currentPossibleTiles = new List<Tile>();
 	public bool running = false;
 
+	Tile attackOfOpportunityWarningTile;
+
 	public Character movingCharacter;
 
 	public Tile previousMousedTile;
@@ -20,11 +22,18 @@ public class MovementController : SceneSingleton<MovementController>
 		{
 			tile.HideOverlay(Tile.OverlayType.PossibleMovement);
 			tile.HideOverlay(Tile.OverlayType.Selected);
+			tile.SetWarningActive(false);
 		}
 		currentPossibleTiles.Clear();
 		currentMousedOverTile = null;
 		running = false;
 		movingCharacter = null;
+
+		if (attackOfOpportunityWarningTile != null)
+		{
+			attackOfOpportunityWarningTile.SetWarningActive(false);
+			attackOfOpportunityWarningTile = null;
+		}
 	}
 
 	public Action onMoveComplete;
@@ -54,6 +63,33 @@ public class MovementController : SceneSingleton<MovementController>
 			currentMousedOverTile.HideOverlay(Tile.OverlayType.PossibleMovement);
 			currentMousedOverTile.ShowOverlay(Tile.OverlayType.Selected);
 		}
+
+		if (HasAdjacentAttackOfOpportunityEnemy(character))
+		{
+			attackOfOpportunityWarningTile = TileGrid.Instance.FindCharacter(character)[0];
+			attackOfOpportunityWarningTile.SetWarningText("x");
+			attackOfOpportunityWarningTile.SetWarningActive(true);
+		}
+	}
+
+	bool HasAdjacentAttackOfOpportunityEnemy(Character c)
+	{
+		foreach (Character enemy in BattleController.Instance.enemies)
+		{
+			if (!enemy.alive)
+			{
+				continue;
+			}
+			if (enemy.GetComponent<AttackOfOpportunityTrait>() == null)
+			{
+				continue;
+			}
+			if (TileGrid.Instance.CharactersAreAdjacent(enemy, c))
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public List<Tile> GetAllTilesInRange(Character c, int range)
@@ -88,12 +124,13 @@ public class MovementController : SceneSingleton<MovementController>
 		{
 			currentMousedOverTile.HideOverlay(Tile.OverlayType.Selected);
 			currentMousedOverTile.ShowOverlay(Tile.OverlayType.PossibleMovement);
+			currentMousedOverTile.SetWarningActive(false);
 			currentMousedOverTile = null;
 		}
 		if (!currentPossibleTiles.Contains(t))
 		{
 			return;
-		}	
+		}
 		currentMousedOverTile = t;
 		currentMousedOverTile.ShowOverlay(Tile.OverlayType.Selected);
 		currentMousedOverTile.HideOverlay(Tile.OverlayType.PossibleMovement);
@@ -107,6 +144,16 @@ public class MovementController : SceneSingleton<MovementController>
 		previewMessage.movingCharacter = movingCharacter;
 		previewMessage.tilesMoved = tilesMoved;
 		MessagePump.Instance.SendMessage(previewMessage);
+
+		if (previewMessage.damage > 0)
+		{
+			t.SetWarningText(previewMessage.damage.ToString());
+			t.SetWarningActive(true);
+		}
+		else
+		{
+			t.SetWarningActive(false);
+		}
 	}
 
 	public void MouseExitTile(Tile t)
@@ -117,6 +164,7 @@ public class MovementController : SceneSingleton<MovementController>
 			{
 				currentMousedOverTile.HideOverlay(Tile.OverlayType.Selected);
 				currentMousedOverTile.ShowOverlay(Tile.OverlayType.PossibleMovement);
+				currentMousedOverTile.SetWarningActive(false);
 				currentMousedOverTile = null;
 			}
 		}

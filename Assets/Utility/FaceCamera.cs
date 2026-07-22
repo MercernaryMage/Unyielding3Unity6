@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class FaceCamera : MonoBehaviour
 {
-    
+    void OnEnable()
+    {
+        Face();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Camera.main.transform.rotation;
+        Face();
+    }
+
+    void Face()
+    {
+        if (Camera.main != null)
+        {
+            transform.rotation = Camera.main.transform.rotation;
+        }
     }
 }

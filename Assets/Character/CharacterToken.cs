@@ -6,10 +6,12 @@ public class CharacterToken : MonoBehaviour
 {
     public Character owningCharacter;
 	MeshRenderer[] meshRenderers;
+	public Vector3 UIPoint;
 
 	private void Start()
 	{
 		meshRenderers = GetComponentsInChildren<MeshRenderer>();
+		UIPoint = GetBonePosition("UIPoint");
 	}
 
 	public void Shade()

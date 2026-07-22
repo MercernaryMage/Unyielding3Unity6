@@ -5,6 +5,8 @@ using UnityEngine.TextCore.Text;
 
 public class UIController : SceneSingleton<UIController>
 {
+	public Transform worldUI;
+
 	public void Hide()
 	{
 		HeroDisplayRouter.Instance.Hide(false) ;

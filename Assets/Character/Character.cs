@@ -58,7 +58,7 @@ public class Character : MonoBehaviour
 		currentEvasion = characterDefinition.evasion;
 
 		GameObject healthBar = Instantiate(CharacterRepository.Instance.data.healthBarPrefab);
-		healthBar.transform.SetParent(tokenObject.transform);
+		healthBar.transform.SetParent(UIController.Instance.worldUI);
 		healthBar.GetComponent<CharacterHealthBar>().Set(this);
 		if (characterDefinition.size == 1)
 		{

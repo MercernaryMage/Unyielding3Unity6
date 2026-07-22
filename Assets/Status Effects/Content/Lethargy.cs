@@ -4,7 +4,7 @@ public class Lethargy : StatusEffect
 {
     int lastMovement;
 
-    public override void CharacterStartTurn(CharacterStartTurnMessage characterStartTurnMessage)
+	public override void CharacterStartTurn(CharacterStartTurnMessage characterStartTurnMessage)
     {
         if (characterStartTurnMessage.character != character)
         {

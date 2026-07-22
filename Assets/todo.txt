@@ -11,8 +11,13 @@ Don't spawn a player if they don't have determination
     Basically no movement
     -shield trait activated twice?
 
-    Can we put some kind of danger notification on movement
-        Can we put some kind of danger notification on AoO
+    redo hp bars
+        needs to be screen space ui
+        do a hp bar position in the model
+    redo the warning
+        needs to be screen space ui
+
+    Can we put some kind of danger notification on AoO
     protector didn't trigger the next card
     
 

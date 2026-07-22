@@ -196,9 +196,9 @@ public class Tile : MonoBehaviour
 		tileWarning.gameObject.SetActive(on);
 	}
 
-	public void SetWarningNumber(int number)
+	public void SetWarningText(string text)
 	{
-		tileWarning.SetText(number.ToString());
+		tileWarning.SetText(text);
 	}
 
 	public void ClearOutline()
