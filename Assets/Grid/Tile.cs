@@ -28,7 +28,6 @@ public class Tile : MonoBehaviour
 	public List<GameObject> decos = new List<GameObject>();
 	public GameObject foundation;
 	public GameObject outline;
-	public TileWarning tileWarning;
 
 	void Start()
 	{
@@ -189,16 +188,6 @@ public class Tile : MonoBehaviour
 		meshRenderer.material.SetFloat("_South", south ? 1 : 0);
 		meshRenderer.material.SetFloat("_West", west ? 1 : 0);
 		meshRenderer.material.SetFloat("_East", east ? 1 : 0);
-	}
-
-	public void SetWarningActive(bool on)
-	{
-		tileWarning.gameObject.SetActive(on);
-	}
-
-	public void SetWarningText(string text)
-	{
-		tileWarning.SetText(text);
 	}
 
 	public void ClearOutline()

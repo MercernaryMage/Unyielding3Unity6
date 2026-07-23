@@ -6,11 +6,19 @@ using UnityEngine.TextCore.Text;
 
 public class MovementController : SceneSingleton<MovementController>
 {
+	public GameObject warningPrefab;
+	
 	Tile currentMousedOverTile = null;
 	public List<Tile> currentPossibleTiles = new List<Tile>();
 	public bool running = false;
 
 	Tile attackOfOpportunityWarningTile;
+	GameObject attackOfOpportunityWarning;
+
+	Tile mousedOverWarningTile;
+	GameObject mousedOverWarning;
+
+	public float referenceOrthographicSize = 10f;
 
 	public Character movingCharacter;
 
@@ -22,18 +30,41 @@ public class MovementController : SceneSingleton<MovementController>
 		{
 			tile.HideOverlay(Tile.OverlayType.PossibleMovement);
 			tile.HideOverlay(Tile.OverlayType.Selected);
-			tile.SetWarningActive(false);
 		}
 		currentPossibleTiles.Clear();
 		currentMousedOverTile = null;
 		running = false;
 		movingCharacter = null;
 
-		if (attackOfOpportunityWarningTile != null)
+		DestroyWarning(ref mousedOverWarning, ref mousedOverWarningTile);
+		DestroyWarning(ref attackOfOpportunityWarning, ref attackOfOpportunityWarningTile);
+	}
+
+	GameObject CreateTileWarning(Tile tile, string text)
+	{
+		GameObject warning = Instantiate(warningPrefab, UIController.Instance.worldUI);
+		warning.GetComponent<TileWarning>().SetText(text);
+		warning.SetActive(true);
+		PositionTileWarning(warning, tile);
+		return warning;
+	}
+
+	void PositionTileWarning(GameObject warning, Tile tile)
+	{
+		Camera camera = Camera.main;
+		warning.transform.position = camera.WorldToScreenPoint(tile.transform.position) - new Vector3(0, 25, 0);
+		float scale = referenceOrthographicSize / camera.orthographicSize;
+		warning.transform.localScale = new Vector3(scale, scale, 1f);
+	}
+
+	void DestroyWarning(ref GameObject warning, ref Tile tile)
+	{
+		if (warning != null)
 		{
-			attackOfOpportunityWarningTile.SetWarningActive(false);
-			attackOfOpportunityWarningTile = null;
+			Destroy(warning);
+			warning = null;
 		}
+		tile = null;
 	}
 
 	public Action onMoveComplete;
@@ -67,8 +98,7 @@ public class MovementController : SceneSingleton<MovementController>
 		if (HasAdjacentAttackOfOpportunityEnemy(character))
 		{
 			attackOfOpportunityWarningTile = TileGrid.Instance.FindCharacter(character)[0];
-			attackOfOpportunityWarningTile.SetWarningText("x");
-			attackOfOpportunityWarningTile.SetWarningActive(true);
+			attackOfOpportunityWarning = CreateTileWarning(attackOfOpportunityWarningTile, "x");
 		}
 	}
 
@@ -124,7 +154,7 @@ public class MovementController : SceneSingleton<MovementController>
 		{
 			currentMousedOverTile.HideOverlay(Tile.OverlayType.Selected);
 			currentMousedOverTile.ShowOverlay(Tile.OverlayType.PossibleMovement);
-			currentMousedOverTile.SetWarningActive(false);
+			DestroyWarning(ref mousedOverWarning, ref mousedOverWarningTile);
 			currentMousedOverTile = null;
 		}
 		if (!currentPossibleTiles.Contains(t))
@@ -147,12 +177,8 @@ public class MovementController : SceneSingleton<MovementController>
 
 		if (previewMessage.damage > 0)
 		{
-			t.SetWarningText(previewMessage.damage.ToString());
-			t.SetWarningActive(true);
-		}
-		else
-		{
-			t.SetWarningActive(false);
+			mousedOverWarningTile = t;
+			mousedOverWarning = CreateTileWarning(t, previewMessage.damage.ToString());
 		}
 	}
 
@@ -164,7 +190,7 @@ public class MovementController : SceneSingleton<MovementController>
 			{
 				currentMousedOverTile.HideOverlay(Tile.OverlayType.Selected);
 				currentMousedOverTile.ShowOverlay(Tile.OverlayType.PossibleMovement);
-				currentMousedOverTile.SetWarningActive(false);
+				DestroyWarning(ref mousedOverWarning, ref mousedOverWarningTile);
 				currentMousedOverTile = null;
 			}
 		}
@@ -348,6 +374,13 @@ public class MovementController : SceneSingleton<MovementController>
 
 	private void Update()
 	{
-		
+		if (mousedOverWarning != null && mousedOverWarningTile != null)
+		{
+			PositionTileWarning(mousedOverWarning, mousedOverWarningTile);
+		}
+		if (attackOfOpportunityWarning != null && attackOfOpportunityWarningTile != null)
+		{
+			PositionTileWarning(attackOfOpportunityWarning, attackOfOpportunityWarningTile);
+		}
 	}
 }

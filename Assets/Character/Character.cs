@@ -59,6 +59,7 @@ public class Character : MonoBehaviour
 
 		GameObject healthBar = Instantiate(CharacterRepository.Instance.data.healthBarPrefab);
 		healthBar.transform.SetParent(UIController.Instance.worldUI);
+		token.healthBar = healthBar;
 		healthBar.GetComponent<CharacterHealthBar>().Set(this);
 		if (characterDefinition.size == 1)
 		{
