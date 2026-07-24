@@ -48,13 +48,9 @@ public class Burning : StatusEffect
 		magnitude += data.magnitude;
 	}
 
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Burning";
 	}
 
-	public override string GetEffectText()
-	{
-		return $"At end of turn, roll d20. On 10 or lower, take {magnitude} damage.";
-	}
 }

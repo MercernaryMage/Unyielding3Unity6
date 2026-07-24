@@ -17,13 +17,9 @@ public class Frothing : StatusEffect
 		Destroy(this);
 	}
 
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Frothing";
 	}
 
-	public override string GetEffectText()
-	{
-		return "All damage causes Slobbered until a character is downed.";
-	}
 }

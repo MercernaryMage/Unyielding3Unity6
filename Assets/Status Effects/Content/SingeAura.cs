@@ -21,15 +21,11 @@ public class SingeAura : StatusEffect
 		Destroy(this);
 	}
 
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Singe Aura";
 	}
 
-	public override string GetEffectText()
-	{
-		return "Enemies within 1 tile automatically fail their burn damage roll.";
-	}
 
 	public static List<CardInstruction> GetCardInstructions()
 	{

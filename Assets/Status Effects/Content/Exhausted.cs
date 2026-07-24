@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Exhausted : StatusEffect
 {
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Exhausted";
 	}
@@ -15,8 +15,4 @@ public class Exhausted : StatusEffect
 		}
 	}
 
-	public override string GetEffectText()
-	{
-		return "This character gains half action points and half movement points at the start of their turn.";
-	}
 }

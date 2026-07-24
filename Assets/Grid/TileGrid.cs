@@ -42,6 +42,15 @@ public class TileGrid : SceneSingleton<TileGrid>
 	//AI moving
 	public void RouteAICharacterToTile(Character character, List<Tile> tiles, Action callback, bool moveCharacter = true, bool provokeReactions = true, bool isReaction = false)
 	{
+		//Pathfinding may pass through allies, and truncated routes (ShortenPathToMaxRange)
+		//can leave the path ending on an occupied tile. Trim the tail back to the last tile
+		//where the character's whole footprint legally fits so it never stops on another character.
+		tiles = new List<Tile>(tiles);
+		while (tiles.Count > 1 && !WouldCharacterFitAtTile(character, tiles[tiles.Count - 1]))
+		{
+			tiles.RemoveAt(tiles.Count - 1);
+		}
+
 		CharacterStartMovementMessage characterStartMovementMessage = new CharacterStartMovementMessage();
 		characterStartMovementMessage.movingCharacter = character;
 		characterStartMovementMessage.provokeTriggers = provokeReactions;

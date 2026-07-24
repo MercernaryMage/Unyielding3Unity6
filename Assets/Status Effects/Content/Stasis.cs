@@ -12,13 +12,9 @@ public class Stasis : Downed
 		}
 	}
 
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Stasis";
 	}
 
-	public override string GetEffectText()
-	{
-		return "Cannot take actions, move, or be effected by things.";
-	}
 }

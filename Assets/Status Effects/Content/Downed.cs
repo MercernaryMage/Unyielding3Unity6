@@ -35,13 +35,9 @@ public class Downed : StatusEffect
 		}
 	}
 
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Downed";
 	}
 
-	public override string GetEffectText()
-	{
-		return "Cannot take actions.  Immune to attacks of opportunity.  Will be removed at the start of the next turn.";
-	}
 }

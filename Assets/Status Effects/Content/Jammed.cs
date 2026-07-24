@@ -2,13 +2,9 @@ using UnityEngine;
 
 public class Jammed : StatusEffect
 {
-    public override string GetDisplayName()
+    public override string GetExplanationName()
     {
         return "Jammed";
     }
 
-    public override string GetEffectText()
-    {
-        return "Cannot make ranged attacks.";
-    }
 }

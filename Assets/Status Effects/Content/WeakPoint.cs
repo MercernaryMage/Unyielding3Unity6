@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WeakPoint : StatusEffect
 {
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Weak Point";
 	}
@@ -24,8 +24,4 @@ public class WeakPoint : StatusEffect
 		}
 	}
 
-	public override string GetEffectText()
-	{
-		return "The next attack against this target is automatically a critical hit.";
-	}
 }

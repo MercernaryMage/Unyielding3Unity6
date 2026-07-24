@@ -163,5 +163,9 @@ public class UnyieldingMenu
 		GameObject tileSOCollectionObj = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/TileScriptableObjectCollection.prefab");
 		TileScriptableObjectCollection tileSOCollection = tileSOCollectionObj.GetComponent<TileScriptableObjectCollection>();
 		TileScriptableObjectCollectionEditor.FilloutData(tileSOCollection);
+
+		GameObject explanationItemCollectionObj = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/ExplanationItemCollection.prefab");
+		ExplanationItemCollection explanationItemCollection = explanationItemCollectionObj.GetComponent<ExplanationItemCollection>();
+		ExplanationItemCollectionEditor.FilloutData(explanationItemCollection);
 	}
 }

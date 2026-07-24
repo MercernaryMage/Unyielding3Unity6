@@ -192,7 +192,10 @@ public class Snipe : Card
 
         owningCharacter.SetFacing(TileGrid.Instance.GetFacingDirection(owningCharacter, targetHero));
 
-        AnimationController.Instance.ShowTiles(attackLine, Tile.OverlayType.PossibleAttck, FireShot);
+        AnimationController.Instance.ScrollToCharacter(targetHero, () =>
+        {
+            AnimationController.Instance.ShowTiles(attackLine, Tile.OverlayType.PossibleAttck, FireShot);
+        }, .5f);
     }
 
     void FireShot()

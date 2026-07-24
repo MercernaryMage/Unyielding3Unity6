@@ -38,7 +38,7 @@ public class Protector : StatusEffect
 			{
 				if (message.defender.alive && character.alive)
 				{
-                    AICardDisplay.Instance.ShowFakeCard(GetDisplayName(), GetEffectText());
+                    AICardDisplay.Instance.ShowFakeCard(GetExplanationName(), GetExplanation().explanationContent);
 					ActionController.Instance.AttackCharacter(message.attacker, character, new ActionController.AttackProfile(1, 6, 0));
 				}
 
@@ -48,15 +48,11 @@ public class Protector : StatusEffect
         );
 	}
 
-    public override string GetDisplayName()
+    public override string GetExplanationName()
     {
         return "Protector";
     }
 
-    public override string GetEffectText()
-    {
-        return "When an adjacent ally is hit by an adjacent attacker, this character counterattacks.";
-    }
 
 	public static List<CardInstruction> GetCardInstructions()
 	{

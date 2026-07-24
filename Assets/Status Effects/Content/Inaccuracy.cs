@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Inaccuracy : StatusEffect
 {
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Inaccuracy";
 	}
@@ -14,7 +14,7 @@ public class Inaccuracy : StatusEffect
 		if (characterAttackingMessage.attacker == character)
 		{
 			characterAttackingMessage.accuracy -= 1;
-			characterAttackingMessage.AddToAccuracyString($"-1 ({GetDisplayName()})");
+			characterAttackingMessage.AddToAccuracyString($"-1 ({GetExplanationName()})");
 		}
 	}
 
@@ -26,8 +26,4 @@ public class Inaccuracy : StatusEffect
 		}
 	}
 
-	public override string GetEffectText()
-	{
-		return "Subtracts an accuracy.  Removed the first time this character misses.";
-	}
 }

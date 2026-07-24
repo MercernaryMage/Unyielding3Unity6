@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Marked : StatusEffect
 {
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Marked";
 	}
@@ -14,13 +14,9 @@ public class Marked : StatusEffect
 		if (characterAttackingMessage.defender == character)
 		{
 			characterAttackingMessage.accuracy += 1;
-			characterAttackingMessage.AddToAccuracyString($"+1 ({GetDisplayName()})");
+			characterAttackingMessage.AddToAccuracyString($"+1 ({GetExplanationName()})");
 			Destroy(this);
 		}
 	}
 
-	public override string GetEffectText()
-	{
-		return "Attacking this target consumes this effect to add an accuracy.";
-	}
 }

@@ -12,13 +12,9 @@ public class Doom : StatusEffect
         character.SpendEnergy(4);
     }
 
-    public override string GetDisplayName()
+    public override string GetExplanationName()
     {
         return "Doom";
     }
 
-    public override string GetEffectText()
-    {
-        return "At the start of your turn, lose 4 energy.";
-    }
 }

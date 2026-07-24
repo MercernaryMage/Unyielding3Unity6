@@ -10,8 +10,8 @@ public class StatusEffectElementDispaly : MonoBehaviour
 
 	public void Set(StatusEffect effect)
 	{
-		effectName.text = effect.GetDisplayName();
-		effectText.text = effect.GetEffectText();
+		effectName.text = effect.GetExplanationName();
+		effectText.text = effect.GetExplanation().explanationContent;
 	}
 
 }

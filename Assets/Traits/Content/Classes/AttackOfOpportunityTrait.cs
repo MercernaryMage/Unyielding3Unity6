@@ -4,6 +4,54 @@ using UnityEngine;
 
 public class AttackOfOpportunityTrait : Trait
 {
+	public override void OnPreviewMovementProvoke(PreviewMovementProvokeMessage message)
+	{
+		if (WouldProvoke(message.movingCharacter))
+		{
+			message.provoked = true;
+		}
+	}
+
+	bool WouldProvoke(Character mover)
+	{
+		if (mover.GetComponent<Disengage>() != null)
+		{
+			return false;
+		}
+		if (character.triggerCount <= 0)
+		{
+			return false;
+		}
+		if (mover.hero == character.hero)
+		{
+			return false;
+		}
+		if (!character.alive || !mover.alive)
+		{
+			return false;
+		}
+		if (character.hero == false)
+		{
+			return TileGrid.Instance.CharactersAreAdjacent(character, mover);
+		}
+		int distance = TileGrid.Instance.GetDistanceBetweenCharacters(character, mover);
+		foreach (Item item in character.storageCharacter.equipment)
+		{
+			if (!item.itemDefinition.weapon)
+			{
+				continue;
+			}
+			for (int i = 0; i < item.itemDefinition.actions.Count; ++i)
+			{
+				if (distance <= item.itemDefinition.actions[i].threatRange)
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	public override void CharacterStartMoving(CharacterStartMovementMessage message)
 	{
 		if (!message.provokeTriggers)
@@ -50,6 +98,7 @@ public class AttackOfOpportunityTrait : Trait
 							attackOfOpportunityTrigger.attacker = character;
 							attackOfOpportunityTrigger.defender = message.movingCharacter;
 							attackOfOpportunityTrigger.item = item;
+							attackOfOpportunityTrigger.actionPattern = item.itemDefinition.actions[i];
 							attackOfOpportunityTrigger.attackProfile = Util.GetAttackProfile(item.itemDefinition.actions[i]);
 							message.raisedTriggers.Add(attackOfOpportunityTrigger);
 						}

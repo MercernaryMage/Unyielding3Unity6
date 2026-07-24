@@ -36,6 +36,8 @@ public class Trait : MonoBehaviour, IMessageReceiver
 
 	virtual public void OnCharacterTakeBurnDamage(CharacterTakingBurnDamageMessage message) { }
 
+	virtual public void OnPreviewMovementProvoke(PreviewMovementProvokeMessage message) { }
+
 	public void ReceiveMessage(Message message)
 	{
 		if (message.messageType == MessageType.CharacterMovementStarted)
@@ -77,6 +79,10 @@ public class Trait : MonoBehaviour, IMessageReceiver
 		else if (message.messageType == MessageType.CharacterTakingBurnDamage)
 		{
 			OnCharacterTakeBurnDamage((CharacterTakingBurnDamageMessage)message);
+		}
+		else if (message.messageType == MessageType.PreviewMovementProvoke)
+		{
+			OnPreviewMovementProvoke((PreviewMovementProvokeMessage)message);
 		}
 	}
 }

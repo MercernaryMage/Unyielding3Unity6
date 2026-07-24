@@ -17,8 +17,8 @@ public class StatusEffectDisplayItem : MonoBehaviour, IPointerEnterHandler, IPoi
 	public void Set(StatusEffect effect)
 	{
 		icon.sprite = StatusEffectIconRepository.Instance.GetExactIcon(effect.GetIconName());
-		titleText.text = effect.GetDisplayName();
-		bodyText.text = effect.GetEffectText(); ;
+		titleText.text = effect.GetExplanationName();
+		bodyText.text = effect.GetExplanation().explanationContent; ;
 	}
 
 	public void OnPointerEnter(PointerEventData eventData)

@@ -12,8 +12,8 @@ public class MovementController : SceneSingleton<MovementController>
 	public List<Tile> currentPossibleTiles = new List<Tile>();
 	public bool running = false;
 
-	Tile attackOfOpportunityWarningTile;
-	GameObject attackOfOpportunityWarning;
+	Tile provokeWarningTile;
+	GameObject provokeWarning;
 
 	Tile mousedOverWarningTile;
 	GameObject mousedOverWarning;
@@ -37,7 +37,7 @@ public class MovementController : SceneSingleton<MovementController>
 		movingCharacter = null;
 
 		DestroyWarning(ref mousedOverWarning, ref mousedOverWarningTile);
-		DestroyWarning(ref attackOfOpportunityWarning, ref attackOfOpportunityWarningTile);
+		DestroyWarning(ref provokeWarning, ref provokeWarningTile);
 	}
 
 	GameObject CreateTileWarning(Tile tile, string text)
@@ -95,31 +95,15 @@ public class MovementController : SceneSingleton<MovementController>
 			currentMousedOverTile.ShowOverlay(Tile.OverlayType.Selected);
 		}
 
-		if (HasAdjacentAttackOfOpportunityEnemy(character))
-		{
-			attackOfOpportunityWarningTile = TileGrid.Instance.FindCharacter(character)[0];
-			attackOfOpportunityWarning = CreateTileWarning(attackOfOpportunityWarningTile, "x");
-		}
-	}
+		PreviewMovementProvokeMessage provokeMessage = new PreviewMovementProvokeMessage();
+		provokeMessage.movingCharacter = character;
+		MessagePump.Instance.SendMessage(provokeMessage);
 
-	bool HasAdjacentAttackOfOpportunityEnemy(Character c)
-	{
-		foreach (Character enemy in BattleController.Instance.enemies)
+		if (provokeMessage.provoked)
 		{
-			if (!enemy.alive)
-			{
-				continue;
-			}
-			if (enemy.GetComponent<AttackOfOpportunityTrait>() == null)
-			{
-				continue;
-			}
-			if (TileGrid.Instance.CharactersAreAdjacent(enemy, c))
-			{
-				return true;
-			}
+			provokeWarningTile = TileGrid.Instance.FindCharacter(character)[0];
+			provokeWarning = CreateTileWarning(provokeWarningTile, "x");
 		}
-		return false;
 	}
 
 	public List<Tile> GetAllTilesInRange(Character c, int range)
@@ -378,9 +362,9 @@ public class MovementController : SceneSingleton<MovementController>
 		{
 			PositionTileWarning(mousedOverWarning, mousedOverWarningTile);
 		}
-		if (attackOfOpportunityWarning != null && attackOfOpportunityWarningTile != null)
+		if (provokeWarning != null && provokeWarningTile != null)
 		{
-			PositionTileWarning(attackOfOpportunityWarning, attackOfOpportunityWarningTile);
+			PositionTileWarning(provokeWarning, provokeWarningTile);
 		}
 	}
 }

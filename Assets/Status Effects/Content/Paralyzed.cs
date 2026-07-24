@@ -20,13 +20,9 @@ public class Paralyzed : StatusEffect
 		Destroy(this);
 	}
 
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Paralyzed";
 	}
 
-	public override string GetEffectText()
-	{
-		return "Loses all movement at the start of their turn. Removed at the end of their turn.";
-	}
 }

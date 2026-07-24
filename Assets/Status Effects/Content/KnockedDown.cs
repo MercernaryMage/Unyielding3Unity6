@@ -4,7 +4,7 @@ public class KnockedDown : StatusEffect
 {
 	public bool cleared = false;
 
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Knocked Down";
 	}
@@ -41,12 +41,8 @@ public class KnockedDown : StatusEffect
 		if (characterAttackingMessage.attacker == character)
 		{
 			characterAttackingMessage.accuracy -= 1;
-			characterAttackingMessage.AddToAccuracyString($"-1 ({GetDisplayName()})");
+			characterAttackingMessage.AddToAccuracyString($"-1 ({GetExplanationName()})");
 		}
 	}
 
-	public override string GetEffectText()
-	{
-		return "Loses all movement now and at turn start.  Attacks have -1 accuracy.  Will be removed at the start of the units turn.";
-	}
 }

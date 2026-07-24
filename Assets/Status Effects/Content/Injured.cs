@@ -19,13 +19,9 @@ public class Injured : StatusEffect
 		magnitude += data.magnitude;
 	}
 
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Injured";
 	}
 
-	public override string GetEffectText()
-	{
-		return $"Toughness reduced by {magnitude}.";
-	}
 }

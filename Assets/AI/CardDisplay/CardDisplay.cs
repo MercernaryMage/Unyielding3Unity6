@@ -71,6 +71,10 @@ public class CardDisplay : MonoBehaviour
 				GameObject obj = Instantiate(cardDisplayItemPrefab);
 				obj.transform.SetParent(target.transform);
 				obj.GetComponent<TextMeshProUGUI>().text = cardInstruction.instructionWords;
+				if (cardInstruction.instructionWords.Contains("<u>"))
+				{
+					obj.AddComponent<UnderlinedTextHover>();
+				}
 				createdObjects.Add(obj);
 			}
 			if (cardInstruction.instruction == InstructionType.Grid)

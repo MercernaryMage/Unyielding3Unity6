@@ -18,6 +18,7 @@ public class AttackOfOpportunityTrigger : Trigger
 	public Character attacker;
 	public Character defender;
 	public Item item;
+	public ActionPattern actionPattern;
 	public ActionController.AttackProfile attackProfile;
 
 	public override void Click()
@@ -29,6 +30,10 @@ public class AttackOfOpportunityTrigger : Trigger
 		{
 			attackProfile.trigger = true;
 			ActionController.Instance.AttackCharacter(defender, attacker, attackProfile);
+			if (item != null && actionPattern != null)
+			{
+				ActionTypes.PayActionPatternCharges(actionPattern, item);
+			}
 			TriggerDisplay.Instance.RemoveTrigger(this);
 			--attacker.triggerCount;
 			onComplete?.Invoke();

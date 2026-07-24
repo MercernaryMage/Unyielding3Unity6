@@ -28,13 +28,9 @@ public class Targeted : StatusEffect
         }
     }
 
-    public override string GetDisplayName()
+    public override string GetExplanationName()
     {
         return "Targeted";
     }
 
-    public override string GetEffectText()
-    {
-        return "At the start of the causing character's turn, take 10 damage on hit. Removed when this character moves.";
-    }
 }

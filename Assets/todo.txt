@@ -10,17 +10,9 @@ Don't spawn a player if they don't have determination
     GAMEPLAY STUFF
     -shield trait activated twice?
 
-    protector didn't trigger the next card
-    
-
     caster moves and stops 3 away, but doesn't promise LOS
 
-    arhcer and arbalist need traits
-    More archer/arbalist cards?
-        Arbalist:
-            Stake: Deal instant damage, immobilize until ally ends adjacent
-        Archer:
-            Bottle toss: Turn tile to fire
+    put an eye icon over the archer when you locked on
 
     KNIGHT IS WORTHLESS
         Protector is poorly exaplained, log says I hit myself

@@ -23,15 +23,11 @@ public class FightingDirty : StatusEffect
         }
     }
 
-    public override string GetDisplayName()
+    public override string GetExplanationName()
     {
         return "Fighting Dirty";
     }
 
-    public override string GetEffectText()
-    {
-        return "Attacks apply Marked to targets that don't already have it. Expires after 3 applications.";
-    }
 
 	public static List<CardInstruction> GetCardInstructions()
 	{

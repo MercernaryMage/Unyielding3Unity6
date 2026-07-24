@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cursed : Inaccuracy
 {
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Cursed";
 	}

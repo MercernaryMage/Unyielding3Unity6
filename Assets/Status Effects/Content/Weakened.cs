@@ -23,13 +23,9 @@ public class Weakened : StatusEffect
 		}
 	}
 
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Weakened";
 	}
 
-	public override string GetEffectText()
-	{
-		return $"Deals {value} less damage. Reduces by 1 each time it applies, removed at 0.";
-	}
 }

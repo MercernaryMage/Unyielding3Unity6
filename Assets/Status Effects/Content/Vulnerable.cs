@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Vulnerable : StatusEffect
 {
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Vulnerable";
 	}
@@ -15,8 +15,4 @@ public class Vulnerable : StatusEffect
 		}
 	}
 
-	public override string GetEffectText()
-	{
-		return "This character takes double damage.";
-	}
 }

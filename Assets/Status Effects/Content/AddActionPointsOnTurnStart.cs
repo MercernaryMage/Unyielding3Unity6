@@ -15,13 +15,9 @@ public class AddActionPointsOnTurnStart : StatusEffect
 		Destroy(this);
 	}
 
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Energized";
 	}
 
-	public override string GetEffectText()
-	{
-		return $"Gain {amount} action points at the start of your turn.";
-	}
 }

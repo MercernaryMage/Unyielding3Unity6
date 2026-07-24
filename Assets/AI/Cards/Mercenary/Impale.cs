@@ -75,7 +75,7 @@ public class Impale : Card
 					{
 						t.character.armor = 0;
 					};
-					ActionController.Instance.AttackCharacter(t.character, owningCharacter, new AttackProfile(1, 6, 0));
+					ActionController.Instance.AttackCharacter(t.character, owningCharacter, attackProfile);
 				}
 				t.HideOverlay(Tile.OverlayType.PossibleAttck);
 			}

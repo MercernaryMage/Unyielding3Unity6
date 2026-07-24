@@ -27,15 +27,11 @@ public class Defend : StatusEffect
         preDamageDealtMessage.hasResistance = true;
     }
 
-    public override string GetDisplayName()
+    public override string GetExplanationName()
     {
         return "Defend";
     }
 
-    public override string GetEffectText()
-    {
-        return "Movement is halved. Takes half damage from all sources.";
-    }
 
 	public static List<CardInstruction> GetCardInstructions()
 	{

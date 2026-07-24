@@ -80,13 +80,9 @@ public class Freightened : StatusEffect
 		});
 	}
 
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Freightened";
 	}
 
-	public override string GetEffectText()
-	{
-		return "At the start of your turn, move to the farthest reachable tile from all enemies, then remove this effect.";
-	}
 }

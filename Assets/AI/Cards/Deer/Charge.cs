@@ -202,6 +202,7 @@ public class Charge : Card
 
 	void AttackAfterPush()
 	{
+		List<Character> pushed = new List<Character>(pushedCharacters);
 		foreach (Character c in pushedCharacters)
 		{
 			CharacterKnockbackFinishMessage characterKnockbackFinishMessage = new CharacterKnockbackFinishMessage();
@@ -210,13 +211,44 @@ public class Charge : Card
 		}
 		pushedCharacters.Clear();
 
-		tilesAndDirection = TemplateLibrary.Instance.ChopTargeting(owningCharacter);
+		tilesAndDirection = null;
+		foreach (Character c in pushed)
+		{
+			if (!c.alive)
+			{
+				continue;
+			}
+			TemplateLibrary.TilesAndDirection candidate = TemplateLibrary.Instance.ChopTargetingTowardCharacter(owningCharacter, c);
+			if (candidate != null && TemplateHitsCharacter(candidate, c))
+			{
+				tilesAndDirection = candidate;
+				break;
+			}
+		}
+
+		if (tilesAndDirection == null)
+		{
+			tilesAndDirection = TemplateLibrary.Instance.ChopTargeting(owningCharacter);
+		}
+
 		if (tilesAndDirection == null)
 		{
 			Finish();
 			return;
 		}
 		AnimationController.Instance.ShowTiles(tilesAndDirection.tiles, Tile.OverlayType.PossibleAttck, ReturnFromShowingAttackTiles);
+	}
+
+	bool TemplateHitsCharacter(TemplateLibrary.TilesAndDirection template, Character c)
+	{
+		foreach (Tile t in template.tiles)
+		{
+			if (t.character == c)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	void ReturnFromShowingAttackTiles()

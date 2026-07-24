@@ -50,13 +50,9 @@ public class Lethargy : StatusEffect
         Destroy(this);
     }
 
-    public override string GetDisplayName()
+    public override string GetExplanationName()
     {
         return "Lethargy";
     }
 
-    public override string GetEffectText()
-    {
-        return "Take 1 damage per tile moved. Removed at end of turn.";
-    }
 }

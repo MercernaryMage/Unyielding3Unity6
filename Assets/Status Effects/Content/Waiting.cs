@@ -32,7 +32,7 @@ public class Waiting : StatusEffect
             {
                 if (character.alive && attacker.alive)
                 {
-                    AICardDisplay.Instance.ShowFakeCard(GetDisplayName(), GetEffectText());
+                    AICardDisplay.Instance.ShowFakeCard(GetExplanationName(), GetExplanation().explanationContent);
                     ActionController.AttackProfile profile = new ActionController.AttackProfile(1, 6, 0);
                     profile.trigger = true;
                     ActionController.Instance.AttackCharacter(attacker, character, profile);
@@ -43,13 +43,9 @@ public class Waiting : StatusEffect
         });
     }
 
-    public override string GetDisplayName()
+    public override string GetExplanationName()
     {
         return "Waiting";
     }
 
-    public override string GetEffectText()
-    {
-        return "When attacked, counter-attack the attacker. Removed at the start of this character's turn.";
-    }
 }

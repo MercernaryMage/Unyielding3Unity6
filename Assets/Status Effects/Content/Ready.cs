@@ -34,15 +34,11 @@ public class Ready : StatusEffect
 		Destroy(this);
 	}
 
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Ready";
 	}
 
-	public override string GetEffectText()
-	{
-		return "When an enemy finishes moving adjacent to this character, make an attack of opportunity.";
-	}
 
 	public static List<CardInstruction> GetCardInstructions()
 	{

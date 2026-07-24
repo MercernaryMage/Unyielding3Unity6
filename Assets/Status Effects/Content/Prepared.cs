@@ -29,15 +29,11 @@ public class Prepared : StatusEffect
 		Destroy(this);
 	}
 
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Readied";
 	}
 
-	public override string GetEffectText()
-	{
-		return "Attack any hero that ends their movement adjacent to this character. Removed when a hero is downed.";
-	}
 
 	public static List<CardInstruction> GetCardInstructions()
 	{

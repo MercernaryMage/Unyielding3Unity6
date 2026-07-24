@@ -37,6 +37,10 @@ MonoBehaviour:
   prowess: 0
   cards:
   - {fileID: 11400000, guid: 755dce2258bffe342bd8409c6c744470, type: 2}
+  - {fileID: 11400000, guid: 755dce2258bffe342bd8409c6c744470, type: 2}
+  - {fileID: 11400000, guid: 755dce2258bffe342bd8409c6c744470, type: 2}
+  - {fileID: 11400000, guid: 755dce2258bffe342bd8409c6c744470, type: 2}
+  - {fileID: 11400000, guid: 380a3d3912b806045b18ddd61d4737ca, type: 2}
   reactions: []
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}

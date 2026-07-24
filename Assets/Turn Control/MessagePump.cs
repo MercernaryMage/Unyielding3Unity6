@@ -28,7 +28,8 @@ public enum MessageType
 	CharacterTakingBurnDamage,
 	CharacterKnockbackFinished,
 	GetWarningForAction,
-	PreviewMovementDamage
+	PreviewMovementDamage,
+	PreviewMovementProvoke
 }
 
 public class Message
@@ -268,6 +269,17 @@ public class PreviewMovementDamageMessage : Message
 	public PreviewMovementDamageMessage()
 	{
 		messageType = MessageType.PreviewMovementDamage;
+	}
+}
+
+public class PreviewMovementProvokeMessage : Message
+{
+	public Character movingCharacter;
+	public bool provoked;
+
+	public PreviewMovementProvokeMessage()
+	{
+		messageType = MessageType.PreviewMovementProvoke;
 	}
 }
 

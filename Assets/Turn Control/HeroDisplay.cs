@@ -203,6 +203,10 @@ public class HeroDisplay : MonoBehaviour
         {
 			return new Tuple<bool, string>(false, "Jammed");
 		}
+		if (a.useInstantAction && a.instantAction.actionName == "Dash" && c.GetComponent<Immobilize>() != null)
+		{
+			return new Tuple<bool, string>(false, "Immobilized");
+		}
 		if (a.keywords.Contains("Cumbersome") && !c.canUseCumbersome)
 		{
 			return new Tuple<bool, string>(false, "Weapon can't be used after moving");

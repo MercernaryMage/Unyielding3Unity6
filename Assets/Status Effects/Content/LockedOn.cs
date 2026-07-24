@@ -7,12 +7,14 @@ public class LockedOn : StatusEffect
 
 	public override void CharacterStartTurn(CharacterStartTurnMessage message)
 	{
-		DoLOSCheck();
-		if (!causingCharacter.alive)
+		
+		if (!causingCharacter.alive || !character.alive)
 		{
 			Destroy(this);
 			return;
 		}
+		DoLOSCheck();
+		
 		useable = true;
 	}
 
@@ -66,7 +68,7 @@ public class LockedOn : StatusEffect
 			{
 				if (character.alive && causingCharacter.alive)
 				{
-					AICardDisplay.Instance.ShowFakeCard(GetDisplayName(), GetEffectText());
+					AICardDisplay.Instance.ShowFakeCard(GetExplanationName(), GetExplanation().explanationContent);
 					ActionController.Instance.AttackCharacter(character, causingCharacter, new ActionController.AttackProfile(1, 6, 0));
 				}
 
@@ -74,6 +76,24 @@ public class LockedOn : StatusEffect
 			});
 		}
 		);
+	}
+
+	public override void OnPreviewMovementProvoke(PreviewMovementProvokeMessage message)
+	{
+		if (message.movingCharacter != character)
+		{
+			return;
+		}
+		if (WillTriggerOnMove())
+		{
+			message.provoked = true;
+		}
+	}
+
+	bool WillTriggerOnMove()
+	{
+		return useable && causingCharacter != null && causingCharacter.alive
+			&& TileGrid.Instance.DoesCharacterHaveLOSToCharacter(character, causingCharacter);
 	}
 
 	public override void OnWarningForAction(GetWarningForActionMessage getWarningForActionMessage)
@@ -87,13 +107,9 @@ public class LockedOn : StatusEffect
 		}
 	}
 
-	public override string GetDisplayName()
+	public override string GetExplanationName()
     {
         return "Locked On";
     }
 
-    public override string GetEffectText()
-    {
-        return "Once per turn, when this character finishes moving or attacking, the causing character will attack them.  Ends when line of sight to the causing character is broken.";
-    }
 }

@@ -6,7 +6,7 @@ public class Poison : StatusEffect
 {
 	public int value;
 
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Poison";
 	}
@@ -31,8 +31,4 @@ public class Poison : StatusEffect
 		}
 	}
 
-	public override string GetEffectText()
-	{
-		return $"Attacks against this character crit on {value} lower.";
-	}
 }

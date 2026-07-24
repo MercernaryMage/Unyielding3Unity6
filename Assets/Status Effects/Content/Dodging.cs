@@ -17,13 +17,9 @@ public class Dodging : StatusEffect
 		}
 	}
 
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Dodging";
 	}
 
-	public override string GetEffectText()
-	{
-		return "+2 evasion. Removed the first time an attack misses this character.";
-	}
 }

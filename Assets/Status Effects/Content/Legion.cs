@@ -18,21 +18,17 @@ public class Legion : StatusEffect
             if (TileGrid.Instance.CharactersAreAdjacent(character, ally))
             {
                 characterAttackingMessage.accuracy += 1;
-				characterAttackingMessage.AddToAccuracyString($"+1 ({GetDisplayName()})");
+				characterAttackingMessage.AddToAccuracyString($"+1 ({GetExplanationName()})");
 				return;
             }
         }
     }
 
-    public override string GetDisplayName()
+    public override string GetExplanationName()
     {
         return "Legion";
     }
 
-    public override string GetEffectText()
-    {
-        return "Attacks gain +1 accuracy while adjacent to an ally.";
-    }
 
 	public static List<CardInstruction> GetCardInstructions()
 	{

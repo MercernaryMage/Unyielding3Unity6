@@ -28,7 +28,7 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 
 		MessagePump.Instance.AddListener(this);
 
-		FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, GetDisplayName());
+		FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, GetExplanationName());
 	}
 
 #if UNITY_EDITOR
@@ -56,7 +56,7 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 		if (MessagePump.Instance)
 		{
 			EffectBeingRemoved();
-			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, $"-{GetDisplayName()}");
+			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, $"-{GetExplanationName()}");
 			MessagePump.Instance.RemoveListener(this);
 			this.enabled = false;
 
@@ -84,6 +84,7 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 	virtual public void OnCharacterKnockbackFinish(CharacterKnockbackFinishMessage message) { }
 	virtual public void OnWarningForAction(GetWarningForActionMessage GetWarningForActionMessage) { }
 	virtual public void OnPreviewMovementDamage(PreviewMovementDamageMessage previewMovementDamageMessage) { }
+	virtual public void OnPreviewMovementProvoke(PreviewMovementProvokeMessage previewMovementProvokeMessage) { }
 
 
 	public void ReceiveMessage(Message message)
@@ -152,6 +153,10 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 		{
 			OnPreviewMovementDamage((PreviewMovementDamageMessage)message);
 		}
+		else if (message.messageType == MessageType.PreviewMovementProvoke)
+		{
+			OnPreviewMovementProvoke((PreviewMovementProvokeMessage)message);
+		}
 	}
 
 	public virtual string GetIconName()
@@ -159,8 +164,12 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 		return "";
 	}
 
-	public abstract string GetDisplayName();
-	public abstract string GetEffectText();
+	public abstract string GetExplanationName();
+
+	public ExplanationIemScrptableObject GetExplanation()
+	{
+		return ExplanationItemRepository.Instance.GetExplanation(GetExplanationName());
+	}
 
 	public class StatusEffectInitData
 	{

@@ -11,15 +11,11 @@ public class Disengage : StatusEffect
 		}
 	}
 
-	public override string GetDisplayName()
+	public override string GetExplanationName()
 	{
 		return "Disengage";
 	}
 
-	public override string GetEffectText()
-	{
-		return "This character does not provoke attacks of opportunity when moving.";
-	}
 
 	public static List<CardInstruction> GetCardInstructions()
 	{
