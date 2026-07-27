@@ -43,7 +43,7 @@ public class Swoop : Card
 		instructions.Add(new CardInstruction("that hits the most enemies"));
 		instructions.Add(new CardInstruction());
 		instructions.Add(new CardInstruction("Deal 1d6 damage to each target"));
-		instructions.Add(new CardInstruction("Stun on hit"));
+		instructions.Add(new CardInstruction("<u>Stunned</u> on hit"));
 		DisplayGrid.Instance.Show();
 		return instructions;
 	}

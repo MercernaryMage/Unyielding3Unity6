@@ -67,7 +67,7 @@ public class Roar : Card
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Apply Weakened to all non-adjacent enemies"));
+		instructions.Add(new CardInstruction("Apply <u>Weakened</u> to all non-adjacent enemies"));
 		DisplayGrid.Instance.Show();
 		return instructions;
 	}

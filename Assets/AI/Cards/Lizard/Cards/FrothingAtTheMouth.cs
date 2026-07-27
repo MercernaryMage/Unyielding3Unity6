@@ -27,7 +27,7 @@ public class FrothingAtTheMouth : Card
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Until a hero is downed, all damage causes slobber"));
+		instructions.Add(new CardInstruction("Until a hero is <u>Downed</u>, all damage applies <u>Slobbered</u>"));
 		instructions.Add(new CardInstruction("Do next action"));
 
 		return instructions;

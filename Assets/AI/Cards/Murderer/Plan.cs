@@ -63,7 +63,7 @@ public class Plan : Card
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Apply Marked to the closest isolated enemy"));
+		instructions.Add(new CardInstruction("Apply <u>Marked</u> to the closest isolated enemy"));
 		instructions.Add(new CardInstruction("or closest enemy if none are isolated"));
 		instructions.Add(new CardInstruction("Do next action"));
 		return instructions;

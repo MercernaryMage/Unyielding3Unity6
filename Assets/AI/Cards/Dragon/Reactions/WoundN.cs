@@ -23,7 +23,7 @@ public class WoundN : ReactionBase
 	{
 		DisplayGrid.Instance.Clear(12, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Become Injured"));
+		instructions.Add(new CardInstruction("Become <u>Injured</u>"));
 		return instructions;
 	}
 }

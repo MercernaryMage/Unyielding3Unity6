@@ -31,7 +31,7 @@ public class SingeAura : StatusEffect
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction($"Enemies within 1 tile automatically fail their burn damage roll.  Removed when a hero is Downed."));
+		instructions.Add(new CardInstruction($"Enemies within 1 tile automatically fail their burn damage roll.  Removed when a hero is <u>Downed</u>."));
 		instructions.Add(new CardInstruction($"Play this characters next card"));
 
 		return instructions;

@@ -102,8 +102,8 @@ public class Taste : Card
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Slobber all adjacent enemies to the side"));
-		instructions.Add(new CardInstruction("Move to closest slobbered enemy"));
+		instructions.Add(new CardInstruction("Apply <u>Slobbered</u> to all adjacent enemies to the side"));
+		instructions.Add(new CardInstruction("Move to closest <u>Slobbered</u> enemy"));
 		instructions.Add(new CardInstruction());
 		instructions.Add(new CardInstruction("Attack enemy for 1d6 damage"));
 

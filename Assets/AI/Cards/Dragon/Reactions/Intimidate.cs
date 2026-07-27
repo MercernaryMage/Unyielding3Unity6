@@ -94,7 +94,7 @@ public class Intimidate : ReactionBase
 		DisplayGrid.Instance.Clear(12, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
 		instructions.Add(new CardInstruction("Move to the attacker"));
-		instructions.Add(new CardInstruction("Knock them down if adjacent"));
+		instructions.Add(new CardInstruction("Apply <u>Knocked Down</u> if adjacent"));
 		if (scriptableObject.GetTagBoolValue("Aggravated"))
 		{
 			instructions.Add(new CardInstruction("Aggravated: repeat on the farthest reachable enemy"));

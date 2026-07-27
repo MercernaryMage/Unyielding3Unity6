@@ -70,7 +70,7 @@ public class LeapOut : Card
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
 		instructions.Add(new CardInstruction("Teleport adjacent to the farthest enemy"));
-		instructions.Add(new CardInstruction("Apply Paralyzed to them"));
+		instructions.Add(new CardInstruction("Apply <u>Paralyzed</u> to them"));
 		DisplayGrid.Instance.Show();
 		return instructions;
 	}

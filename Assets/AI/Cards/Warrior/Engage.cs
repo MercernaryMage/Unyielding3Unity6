@@ -53,8 +53,8 @@ public class Engage : Card
         DisplayGrid.Instance.Clear(11, 8);
         List<CardInstruction> instructions = new List<CardInstruction>();
         instructions.Add(new CardInstruction("Move toward closest enemy"));
-        instructions.Add(new CardInstruction("Give adjacent enemies Jammed"));
-        instructions.Add(new CardInstruction("Give self Waiting"));
+        instructions.Add(new CardInstruction("Give adjacent enemies <u>Jammed</u>"));
+        instructions.Add(new CardInstruction("Give self <u>Waiting</u>"));
         DisplayGrid.Instance.Show();
         return instructions;
     }

@@ -32,7 +32,7 @@ public class Recover : ReactionBase
 	{
 		DisplayGrid.Instance.Clear(12, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Remove Injured"));
+		instructions.Add(new CardInstruction("Remove <u>Injured</u>"));
 		instructions.Add(new CardInstruction($"Restore up to {scriptableObject.GetTagIntValue("Value")} armor"));
 		return instructions;
 	}

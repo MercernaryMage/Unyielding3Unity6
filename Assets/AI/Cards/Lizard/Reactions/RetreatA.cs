@@ -50,7 +50,7 @@ public class RetreatA : ReactionBase
 		DisplayGrid.Instance.Clear(12, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
 		instructions.Add(new CardInstruction("Move 4 spaces directly away from attacker."));
-		instructions.Add(new CardInstruction("Deal 1d6 damage and stun any character in the way."));
+		instructions.Add(new CardInstruction("Deal 1d6 damage and apply <u>Stunned</u> to any character in the way."));
 		return instructions;
 	}
 }

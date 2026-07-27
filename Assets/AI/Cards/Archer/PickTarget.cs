@@ -179,7 +179,7 @@ public class PickTarget : Card
         List<CardInstruction> instructions = new List<CardInstruction>();
         instructions.Add(new CardInstruction("If an enemy is within 3 tiles, move to the tile farthest from all enemies"));
         instructions.Add(new CardInstruction("Otherwise, if no enemy is in line of sight, move to the closest tile with line of sight that has no enemy within 3 tiles"));
-        instructions.Add(new CardInstruction("Apply Locked On to a random enemy in line of sight"));
+        instructions.Add(new CardInstruction("Apply <u>Locked On</u> to a random enemy in line of sight"));
         return instructions;
     }
 }

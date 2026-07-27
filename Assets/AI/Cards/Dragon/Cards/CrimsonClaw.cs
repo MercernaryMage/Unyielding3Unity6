@@ -109,7 +109,7 @@ public class CrimsonClaw : Card
 		instructions.Add(new CardInstruction("Move to farthest reachable enemy"));
 		instructions.Add(new CardInstruction("Hit enemies in chop pattern"));
 		instructions.Add(new CardInstruction());
-		instructions.Add(new CardInstruction("Deal 1d6 burning damage to each target"));
+		instructions.Add(new CardInstruction("Deal 1d6 <u>Burning</u> damage to each target"));
 		DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.Size1Enemy, DisplayGrid.DisplayGridDirection.South, 5, 4);
 		DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.EffectedTile, new List<Tuple<int, int>>()
 		{

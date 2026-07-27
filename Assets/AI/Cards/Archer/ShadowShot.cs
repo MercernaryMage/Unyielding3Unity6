@@ -65,7 +65,7 @@ public class ShadowShot : Card
         DisplayGrid.Instance.Clear(11, 8);
         List<CardInstruction> instructions = new List<CardInstruction>();
         instructions.Add(new CardInstruction("If an enemy is within 3 tiles, move to the tile farthest from all enemies"));
-        instructions.Add(new CardInstruction("Apply Shadowed to a random enemy, preferring one not in line of sight"));
+        instructions.Add(new CardInstruction("Apply <u>Shadowed</u> to a random enemy, preferring one not in line of sight"));
         return instructions;
     }
 }

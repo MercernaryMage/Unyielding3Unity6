@@ -1,19 +1,48 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChainStrike : Card
+public class Trap : Card
 {
-	TemplateLibrary.TilesAndDirection tilesAndDirection;
 	Tuple<List<Tile>, Tile> route;
 	List<Tile> litRouteTiles;
+	TemplateLibrary.TilesAndDirection tilesAndDirection;
+
+	bool applyStatus;
+	int attackDice;
+
+	bool IsNotStaked(Character target)
+	{
+		if (target.GetComponent<Downed>())
+		{
+			return false;
+		}
+		return target.GetComponent<Staked>() == null;
+	}
 
 	public override void Execute()
 	{
 		Dictionary<Character, Tuple<List<Tile>, Tile>> routes = RouteToAllClosestCharacters(true);
+		int range = owningCharacter.characterDefinition.movement + 1;
 
-		route = Util.FindSmallestRoute(routes, null);
+		//Primary: hunt the closest non-staked enemy we can actually reach this turn.
+		Dictionary<Character, Tuple<List<Tile>, Tile>> inRange = new Dictionary<Character, Tuple<List<Tile>, Tile>>(routes);
+		Util.RemoveOutOfRangeRoutes(inRange, range);
+		route = Util.FindSmallestRoute(inRange, IsNotStaked);
+
+		if (route != null)
+		{
+			applyStatus = true;
+			attackDice = 1;
+		}
+		else
+		{
+			//Fallback: no valid target in range, so close on the nearest enemy and hit harder.
+			route = Util.FindSmallestRoute(routes, null);
+			applyStatus = false;
+			attackDice = 2;
+		}
+
 		if (route == null)
 		{
 			Debug.Log("No possible route");
@@ -21,7 +50,7 @@ public class ChainStrike : Card
 			return;
 		}
 
-		Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
+		Util.ShortenPathToMaxRange(route, range);
 
 		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
 		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, Route, ReturnFromRoute);
@@ -60,10 +89,12 @@ public class ChainStrike : Card
 			{
 				if (t.character != null && t.character.hero)
 				{
-					ActionController.AttackResults results = ActionController.Instance.AttackCharacter(t.character, owningCharacter, new ActionController.AttackProfile(1, 6, 0));
-					if (results.hit && t.character.alive)
+					ActionController.AttackResults results = ActionController.Instance.AttackCharacter(
+						t.character, owningCharacter, new ActionController.AttackProfile(attackDice, 6, 0));
+					if (applyStatus && results.hit)
 					{
-						t.character.AddStatusEffect(typeof(Paralyzed), null);
+						t.character.AddStatusEffect(typeof(Staked), null);
+						t.character.AddStatusEffect(typeof(Immobilize), null);
 					}
 					t.HideOverlay(Tile.OverlayType.PossibleAttck);
 				}
@@ -77,9 +108,10 @@ public class ChainStrike : Card
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Move to closest enemy"));
-		instructions.Add(new CardInstruction("Attack adjacent enemy for 1d6 damage"));
-		instructions.Add(new CardInstruction("<u>Paralyzed</u> on hit"));
+		instructions.Add(new CardInstruction("Move to the closest enemy in range that is not <u>Staked</u>"));
+		instructions.Add(new CardInstruction("Attack for 1d6 damage"));
+		instructions.Add(new CardInstruction("On hit, apply <u>Staked</u> and <u>Immobilized</u>"));
+		instructions.Add(new CardInstruction("If there is no target, move to the closest enemy and attack for 2d6 damage"));
 		DisplayGrid.Instance.Show();
 
 		return instructions;

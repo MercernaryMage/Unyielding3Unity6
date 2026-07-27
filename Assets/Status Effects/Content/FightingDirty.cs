@@ -33,7 +33,7 @@ public class FightingDirty : StatusEffect
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction($"Attacks apply Marked to targets that don't already have it. Expires after 3 applications."));
+		instructions.Add(new CardInstruction($"Attacks apply <u>Marked</u> to targets that don't already have it. Expires after 3 applications."));
 		instructions.Add(new CardInstruction($"Play this characters next card"));
 
 		return instructions;

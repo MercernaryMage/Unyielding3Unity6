@@ -40,6 +40,8 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 	bool usable;
 	List<string> warnings;
 
+	int outlineId = -1;
+
     public void Set(Character c, ActionPattern p, Item i, bool u, string unusableReason, int targetedActionIndex, List<string> w)
 	{
 		owningCharacter = c;
@@ -90,6 +92,7 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 			return;
 		}
 		MovementController.Instance.HideMovement();
+		HideOutline();
 		if (pattern.attack)
 		{
 			if (owningItem.itemDefinition.keywords.ContainsIgnoreCase("Step"))
@@ -153,7 +156,16 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 		{
 			actionToolTip.gameObject.SetActive(false);
 			needsExit = false;
-			TileGrid.Instance.ClearOutlines();
+			HideOutline();
+		}
+	}
+
+	void HideOutline()
+	{
+		if (outlineId != -1)
+		{
+			OutlineManager.Instance.Destroy(outlineId);
+			outlineId = -1;
 		}
 	}
 
@@ -197,7 +209,8 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 				}
 			}
 		}
-		TileGrid.Instance.OutlineTiles(inRangeTiles, Util.HexToColor("F1C601"));
+		HideOutline();
+		outlineId = OutlineManager.Instance.Create(inRangeTiles, Util.HexToColor("F1C601"));
 	}
 
 	void OutlineFullMovementTiles()
@@ -221,7 +234,8 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 			}
 			movableTiles.Add(t);
 		}
-		TileGrid.Instance.OutlineTiles(movableTiles, Util.HexToColor("202080"));
+		HideOutline();
+		outlineId = OutlineManager.Instance.Create(movableTiles, Util.HexToColor("202080"));
 	}
 
 	void OutlineConeTiles()
@@ -242,6 +256,7 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 				}
 			}
 		}
-		TileGrid.Instance.OutlineTiles(coneTiles, Util.HexToColor("802020"));
+		HideOutline();
+		outlineId = OutlineManager.Instance.Create(coneTiles, Util.HexToColor("802020"));
 	}
 }

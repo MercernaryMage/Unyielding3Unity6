@@ -56,7 +56,7 @@ public class FireBreath : Card
 		List<CardInstruction> instructions = new List<CardInstruction>();
 		instructions.Add(new CardInstruction("Breathe fire in a large cone"));
 		instructions.Add(new CardInstruction());
-		instructions.Add(new CardInstruction("Deal 1d6+3 burning damage to each target"));
+		instructions.Add(new CardInstruction("Deal 1d6+3 <u>Burning</u> damage to each target"));
 		DisplayGrid.Instance.Show();
 		return instructions;
 	}

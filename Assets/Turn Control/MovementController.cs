@@ -18,6 +18,9 @@ public class MovementController : SceneSingleton<MovementController>
 	Tile mousedOverWarningTile;
 	GameObject mousedOverWarning;
 
+	Tile characterWarningTile;
+	GameObject characterWarning;
+
 	public float referenceOrthographicSize = 10f;
 
 	public Character movingCharacter;
@@ -65,6 +68,18 @@ public class MovementController : SceneSingleton<MovementController>
 			warning = null;
 		}
 		tile = null;
+	}
+
+	public void ShowCharacterWarning(Character c, string text)
+	{
+		HideCharacterWarning();
+		characterWarningTile = TileGrid.Instance.FindCharacter(c)[0];
+		characterWarning = CreateTileWarning(characterWarningTile, text);
+	}
+
+	public void HideCharacterWarning()
+	{
+		DestroyWarning(ref characterWarning, ref characterWarningTile);
 	}
 
 	public Action onMoveComplete;
@@ -201,7 +216,6 @@ public class MovementController : SceneSingleton<MovementController>
 	public void MoveCharacter(Tile t, Action movementCompleteCallback = null)
 	{
 		movingCharacter.canUseCumbersome = false;
-		TileGrid.Instance.ClearOutlines();
 		CharacterStartMovementMessage characterStartMovementMessage = new CharacterStartMovementMessage();
 		characterStartMovementMessage.movingCharacter = movingCharacter;
 		characterStartMovementMessage.provokeTriggers = onMoveComplete == null;
@@ -365,6 +379,10 @@ public class MovementController : SceneSingleton<MovementController>
 		if (provokeWarning != null && provokeWarningTile != null)
 		{
 			PositionTileWarning(provokeWarning, provokeWarningTile);
+		}
+		if (characterWarning != null && characterWarningTile != null)
+		{
+			PositionTileWarning(characterWarning, characterWarningTile);
 		}
 	}
 }

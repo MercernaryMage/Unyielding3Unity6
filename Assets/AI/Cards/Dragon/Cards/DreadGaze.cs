@@ -36,7 +36,7 @@ public class DreadGaze : Card
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Apply Freightened to each enemy in front of you"));
+		instructions.Add(new CardInstruction("Apply <u>Freightened</u> to each enemy in front of you"));
 		DisplayGrid.Instance.Show();
 		return instructions;
 	}

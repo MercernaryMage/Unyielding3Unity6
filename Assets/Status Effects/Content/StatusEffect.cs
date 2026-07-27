@@ -56,7 +56,10 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 		if (MessagePump.Instance)
 		{
 			EffectBeingRemoved();
-			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, $"-{GetExplanationName()}");
+			if (character.alive)
+			{
+				FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, $"-{GetExplanationName()}");
+			}
 			MessagePump.Instance.RemoveListener(this);
 			this.enabled = false;
 

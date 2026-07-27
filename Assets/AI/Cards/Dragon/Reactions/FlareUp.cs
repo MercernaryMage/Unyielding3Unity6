@@ -46,7 +46,7 @@ public class FlareUp : ReactionBase
 	{
 		DisplayGrid.Instance.Clear(12, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction($"Deal 2 burning damage to all characters within range {scriptableObject.GetTagIntValue("Range")}"));
+		instructions.Add(new CardInstruction($"Deal 2 <u>Burning</u> damage to all characters within range {scriptableObject.GetTagIntValue("Range")}"));
 		return instructions;
 	}
 }

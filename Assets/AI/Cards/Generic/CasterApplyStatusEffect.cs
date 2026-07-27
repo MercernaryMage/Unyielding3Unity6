@@ -119,7 +119,7 @@ public class CasterApplyStatusEffect : Card
 		instructions.Add(new CardInstruction("If an enemy is within 3 tiles, move to the tile farthest from all enemies"));
 		instructions.Add(new CardInstruction("If no enemy is within range 5,"));
         instructions.Add(new CardInstruction("move toward closest enemy, stopping 3 away"));
-        instructions.Add(new CardInstruction($"Apply {scriptableObject.GetTagStringValue("StatusEffectDisplayName")} to a random enemy in range 5"));
+        instructions.Add(new CardInstruction($"Apply <u>{scriptableObject.GetTagStringValue("StatusEffectDisplayName")}</u> to a random enemy in range 5"));
         DisplayGrid.Instance.Show();
         return instructions;
     }

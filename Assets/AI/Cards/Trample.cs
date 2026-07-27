@@ -129,7 +129,7 @@ public class Trample : Card
 		instructions.Add(new CardInstruction());
 		instructions.Add(new CardInstruction("Move in that direction"));
 		instructions.Add(new CardInstruction("Deal 1d6 damage to each target"));
-		instructions.Add(new CardInstruction("Stun on hit"));
+		instructions.Add(new CardInstruction("<u>Stunned</u> on hit"));
 		
 		DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.Size2Enemy, DisplayGrid.DisplayGridDirection.South, 4, 4);
 		DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.Size2EnemyMove, DisplayGrid.DisplayGridDirection.South, 4, 0);
