@@ -45,6 +45,12 @@ public class AnimationController : SceneSingleton<AnimationController>
 		DelayedCallback(scrollTime + delay, callback);
 	}
 
+	public void ScrollToTile(Tile tile, Action callback, float delay = 0.5f)
+	{
+		float scrollTime = SelectionManager.Instance.SnapCameraToTile(tile);
+		DelayedCallback(scrollTime + delay, callback);
+	}
+
 	static public void PlayEffect(Character character, Vector3 seconadryPosition, EffectScriptableObject effect, float actionDelay, Action callback)
 	{
 		PlayEffectOnDelay effectDelay = character.token.gameObject.AddComponent<PlayEffectOnDelay>();

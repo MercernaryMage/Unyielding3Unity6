@@ -617,6 +617,23 @@ public class TileGrid : SceneSingleton<TileGrid>
 		return outTiles;
 	}
 
+	//Every tile within range of any tile the character occupies, counted once.
+	public List<Tile> GetAllTilesInRangeOfCharacter(Character c, int range)
+	{
+		List<Tile> outTiles = new List<Tile>();
+		foreach (Tile characterTile in FindCharacter(c))
+		{
+			foreach (Tile t in GetAllTilesInRange(characterTile, range))
+			{
+				if (!outTiles.Contains(t))
+				{
+					outTiles.Add(t);
+				}
+			}
+		}
+		return outTiles;
+	}
+
 	public void HideAllTiles()
 	{
 		foreach (Tile t in tiles)

@@ -25,6 +25,20 @@ public class OutlineManager : SceneSingleton<OutlineManager>
 		return entry.id;
 	}
 
+	//Move an existing outline onto a new set of tiles, keeping its id and its render order.
+	public void SetTiles(int id, List<Tile> tiles)
+	{
+		foreach (OutlineEntry entry in entries)
+		{
+			if (entry.id == id)
+			{
+				entry.tiles = new List<Tile>(tiles);
+				break;
+			}
+		}
+		Render();
+	}
+
 	public void Destroy(int id)
 	{
 		for (int i = 0; i < entries.Count; ++i)

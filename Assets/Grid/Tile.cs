@@ -13,7 +13,8 @@ public class Tile : MonoBehaviour
 		PossibleMovement,
 		Selected,
 		PossibleAttck,
-		BlockedLOS
+		BlockedLOS,
+		TileWarning
 	}
 
 	public TileScriptableObject tileScriptableObject;
@@ -28,6 +29,8 @@ public class Tile : MonoBehaviour
 	public List<GameObject> decos = new List<GameObject>();
 	public GameObject foundation;
 	public GameObject outline;
+
+	int warningCount;
 
 	void Start()
 	{
@@ -207,5 +210,23 @@ public class Tile : MonoBehaviour
 		meshRenderer.material.SetFloat("_LeftFace", west ? 1 : 0);
 		meshRenderer.material.SetFloat("_RightFace", east ? 1 : 0);
 		meshRenderer.material.SetColor("_BaseColor", color);
+	}
+
+	public void AddWarning()
+	{
+		++warningCount;
+		if (warningCount == 1)
+		{
+			overlay.Set(OverlayType.TileWarning);
+		}
+	}
+
+	public void RemoveWarning()
+	{
+		--warningCount;
+		if (warningCount == 0)
+		{
+			overlay.TurnOffWarning();
+		}
 	}
 }

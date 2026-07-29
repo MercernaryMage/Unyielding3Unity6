@@ -12,29 +12,16 @@ Don't spawn a player if they don't have determination
 
     caster moves and stops 3 away, but doesn't promise LOS
 
-    We need events
-        Blast should be this
-
-    event:
-        takes place at an initiave number
-        action or lambda
-        must end with calling finish
-
-    no scroll on blast
-
     new enemies
         Greenmaw
             ????
-        Wizard
-            Following blast
-            Excuse
-                allies not hit
         Outrider
-            range 2 attacker
-            
             thrust
             normal stab
             ????
+                Buff
+                debuff
+                attack
 
         Te4 steamroll
         Doom statue

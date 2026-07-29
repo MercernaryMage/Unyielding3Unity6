@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 757b336c629bb2b4cb86518c2f2a5957, type: 3}
-  m_Name: Blast
+  m_Name: FollowingBlast
   m_EditorClassIdentifier: 
-  className: Blast
-  cardDisplayName: Blast
+  className: FollowingBlast
+  cardDisplayName: Following Blast
   tags: []
   effects: []

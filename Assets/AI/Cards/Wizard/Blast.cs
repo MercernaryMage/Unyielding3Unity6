@@ -15,23 +15,30 @@ public class Blast : Card
 			return;
 		}
 
-		//Telegraph: mark every tile within range 2 of the target, then queue the blast to
-		//go off as a turn event (fires between character turns on the given tick).
-		List<Tile> outlineTiles = GetTilesAroundCharacter(target, 2);
-		int outlineId = OutlineManager.Instance.Create(outlineTiles, Util.HexToColor("802080"));
+		List<Tile> warnedTiles = TileGrid.Instance.GetAllTilesInRangeOfCharacter(target, 2);
+		foreach (Tile t in warnedTiles)
+		{
+			t.AddWarning();
+		}
 
-		//Fire on the caster's own tick, so the blast goes off just before its next turn.
+		Tile centerTile = TileGrid.Instance.FindCharacter(target)[0];
 		int detonationTick = TurnControl.Instance.GetValue(owningCharacter);
-		TurnEventController.Instance.AddEvent(() => Detonate(outlineTiles, outlineId), detonationTick);
+		TurnEventController.Instance.AddEvent(() => Detonate(centerTile, warnedTiles), detonationTick);
 
 		AnimationController.Instance.ScrollToCharacter(target, () => Finish(), .5f);
 	}
 
-	//Hit every character standing on a marked tile once, then clear the telegraph outline.
-	void Detonate(List<Tile> tiles, int outlineId)
+	void Detonate(Tile centerTile, List<Tile> warnedTiles)
 	{
+		AnimationController.Instance.ScrollToTile(centerTile, () => DetonateActual(centerTile, warnedTiles), .5f);
+	}
+
+	void DetonateActual(Tile centerTile, List<Tile> warnedTiles)
+	{
+		ClearWarnings(warnedTiles);
+
 		List<Character> hitCharacters = new List<Character>();
-		foreach (Tile t in tiles)
+		foreach (Tile t in warnedTiles)
 		{
 			if (t.character != null && !hitCharacters.Contains(t.character))
 			{
@@ -39,18 +46,36 @@ public class Blast : Card
 			}
 		}
 
+		NoFriendlyFire noFriendlyFire = owningCharacter.gameObject.GetComponent<NoFriendlyFire>();
+		if (noFriendlyFire != null)
+		{
+			noFriendlyFire.SpareAllies(hitCharacters);
+		}
+
+		if (hitCharacters.Count == 0)
+		{
+			FloatingCombatNumberController.Instance.ShowFloatingCombatNumber(
+				centerTile.transform.position + Vector3.up * 1.5f, "no target");
+		}
+
 		foreach (Character c in hitCharacters)
 		{
 			ActionController.Instance.AttackCharacter(c, owningCharacter, new ActionController.AttackProfile(1, 6, 3));
 		}
 
-		OutlineManager.Instance.Destroy(outlineId);
+		TurnEventController.Instance.Pump();
 	}
 
-	Character GetLowestMaxHPTarget()
+	void ClearWarnings(List<Tile> warnedTiles)
 	{
-		//Prefer the lowest max HP enemy we haven't targeted yet. Once every enemy has
-		//been targeted, clear the history and cycle through them again.
+		foreach (Tile t in warnedTiles)
+		{
+			t.RemoveWarning();
+		}
+	}
+
+	public Character GetLowestMaxHPTarget()
+	{
 		Character target = FindLowestUntargeted();
 		if (target == null)
 		{
@@ -83,22 +108,6 @@ public class Blast : Card
 			}
 		}
 		return lowest;
-	}
-
-	List<Tile> GetTilesAroundCharacter(Character c, int range)
-	{
-		List<Tile> result = new List<Tile>();
-		foreach (Tile characterTile in TileGrid.Instance.FindCharacter(c))
-		{
-			foreach (Tile t in TileGrid.Instance.GetAllTilesInRange(characterTile, range))
-			{
-				if (!result.Contains(t))
-				{
-					result.Add(t);
-				}
-			}
-		}
-		return result;
 	}
 
 	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)

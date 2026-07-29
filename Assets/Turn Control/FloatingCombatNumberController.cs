@@ -55,7 +55,7 @@ public class FloatingCombatNumberController : SceneSingleton<FloatingCombatNumbe
 		}
 	}
 
-	void ShowFloatingCombatNumber(Vector3 position, string number)
+	public void ShowFloatingCombatNumber(Vector3 position, string number)
 	{
 		GameObject obj = Instantiate(FloatingCombatNumberPrefab);
 		obj.GetComponent<FloatingCombatNumber>().Set(position, number);

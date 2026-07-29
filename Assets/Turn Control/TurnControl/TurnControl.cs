@@ -131,7 +131,10 @@ public class TurnControl : SceneSingleton<TurnControl>
 				turnControlEntries[i].hasGone = true;
 				lastCharacter = turnControlEntries[i].character;
 				UpdateSystem();
-				PreTakeTurn(turnControlEntries[i].character);
+				//Every turn event on this tick resolves before the character gets to go. The events
+				//are not inline, so the turn continues in TurnEventControlFinished().
+				pendingCharacter = turnControlEntries[i].character;
+				TurnEventController.Instance.PumpStart(turnControlEntries[i].value);
 				return;
 			}
 		}
@@ -154,6 +157,7 @@ public class TurnControl : SceneSingleton<TurnControl>
 
 	List<Object> turnStartLocks = new List<Object>();
 	public Character currentCharacter;
+	Character pendingCharacter;
 
 	public void RemoveLock(Object obj)
 	{
@@ -212,6 +216,36 @@ public class TurnControl : SceneSingleton<TurnControl>
 			MovementController.Instance.ShowMovement(currentCharacter);
 			UIController.Instance.ShowHero(currentCharacter, true);
 		}
+	}
+
+	public void TurnEventControlFinished()
+	{
+		Character c = pendingCharacter;
+		pendingCharacter = null;
+		if (c == null)
+		{
+			return;
+		}
+		//An event may have killed the character whose turn it was, so hand off to the next one.
+		if (!c.alive)
+		{
+			UpdateSystem();
+			Pump();
+			return;
+		}
+		PreTakeTurn(c);
+	}
+
+	public int GetValue(Character c)
+	{
+		foreach (TurnControlEntry turnControlEntry in turnControlEntries)
+		{
+			if (turnControlEntry.character == c)
+			{
+				return turnControlEntry.value;
+			}
+		}
+		return 0;
 	}
 }
 

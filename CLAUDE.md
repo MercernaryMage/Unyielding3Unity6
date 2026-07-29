@@ -2,3 +2,9 @@ Before writing new logic, always keep in mind the shared helpers in `Assets/Util
 
 
 Do not use properties ever for any reason.
+
+Do not use the protected modifier ever for any reason.
+
+Do not read or consider todo.txt
+
+Do not add comments
