@@ -16,10 +16,7 @@ public class Blast : Card
 		}
 
 		List<Tile> warnedTiles = TileGrid.Instance.GetAllTilesInRangeOfCharacter(target, 2);
-		foreach (Tile t in warnedTiles)
-		{
-			t.AddWarning();
-		}
+		TileGrid.AddWarnings(warnedTiles);
 
 		Tile centerTile = TileGrid.Instance.FindCharacter(target)[0];
 		int detonationTick = TurnControl.Instance.GetValue(owningCharacter);
@@ -35,43 +32,17 @@ public class Blast : Card
 
 	void DetonateActual(Tile centerTile, List<Tile> warnedTiles)
 	{
-		ClearWarnings(warnedTiles);
+		TileGrid.RemoveWarnings(warnedTiles);
 
-		List<Character> hitCharacters = new List<Character>();
-		foreach (Tile t in warnedTiles)
-		{
-			if (t.character != null && !hitCharacters.Contains(t.character))
-			{
-				hitCharacters.Add(t.character);
-			}
-		}
-
-		NoFriendlyFire noFriendlyFire = owningCharacter.gameObject.GetComponent<NoFriendlyFire>();
-		if (noFriendlyFire != null)
-		{
-			noFriendlyFire.SpareAllies(hitCharacters);
-		}
-
+		List<Character> hitCharacters = GetTargetsOnTiles(warnedTiles);
 		if (hitCharacters.Count == 0)
 		{
-			FloatingCombatNumberController.Instance.ShowFloatingCombatNumber(
-				centerTile.transform.position + Vector3.up * 1.5f, "no target");
+			ShowNoTarget(centerTile.transform.position);
 		}
 
-		foreach (Character c in hitCharacters)
-		{
-			ActionController.Instance.AttackCharacter(c, owningCharacter, new ActionController.AttackProfile(1, 6, 3));
-		}
+		AttackCharacters(hitCharacters, new ActionController.AttackProfile(1, 6, 3));
 
 		TurnEventController.Instance.Pump();
-	}
-
-	void ClearWarnings(List<Tile> warnedTiles)
-	{
-		foreach (Tile t in warnedTiles)
-		{
-			t.RemoveWarning();
-		}
 	}
 
 	public Character GetLowestMaxHPTarget()

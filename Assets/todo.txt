@@ -40,6 +40,10 @@ Don't spawn a player if they don't have determination
     Targeted description is garbage
         mention breaking LOS?
 
+    We need to make a more simple level 1
+        level 1: normal bandits
+        level 2: normal bandits + knight
+
     !!!!Effects we need!!!!
         -Spear
         Bow

@@ -11,7 +11,7 @@ public class Following : StatusEffect
 		ClearWarnings();
 		range = trackRange;
 		warnedTiles = GetTiles();
-		AddWarnings(warnedTiles);
+		TileGrid.AddWarnings(warnedTiles);
 	}
 
 	public List<Tile> GetTiles()
@@ -47,25 +47,14 @@ public class Following : StatusEffect
 			return;
 		}
 		List<Tile> newTiles = GetTiles();
-		AddWarnings(newTiles);
+		TileGrid.AddWarnings(newTiles);
 		ClearWarnings();
 		warnedTiles = newTiles;
 	}
 
-	void AddWarnings(List<Tile> tiles)
-	{
-		foreach (Tile t in tiles)
-		{
-			t.AddWarning();
-		}
-	}
-
 	void ClearWarnings()
 	{
-		foreach (Tile t in warnedTiles)
-		{
-			t.RemoveWarning();
-		}
+		TileGrid.RemoveWarnings(warnedTiles);
 		warnedTiles.Clear();
 	}
 

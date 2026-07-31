@@ -48,10 +48,7 @@ public class PowerChop : Card
 
 		owningCharacter.SetFacing(tilesAndDirection.direction);
 		List<Tile> warnedTiles = new List<Tile>(tilesAndDirection.tiles);
-		foreach (Tile t in warnedTiles)
-		{
-			t.AddWarning();
-		}
+		TileGrid.AddWarnings(warnedTiles);
 
 		int chopTick = TurnControl.Instance.GetValue(owningCharacter);
 		TurnEventController.Instance.AddEvent(() => Chop(warnedTiles), chopTick);
@@ -63,7 +60,7 @@ public class PowerChop : Card
 	{
 		if (!owningCharacter.alive)
 		{
-			ClearWarnings(warnedTiles);
+			TileGrid.RemoveWarnings(warnedTiles);
 			TurnEventController.Instance.Pump();
 			return;
 		}
@@ -73,46 +70,21 @@ public class PowerChop : Card
 
 	void ChopActual(List<Tile> warnedTiles)
 	{
-		ClearWarnings(warnedTiles);
+		TileGrid.RemoveWarnings(warnedTiles);
 
-		List<Character> hitCharacters = new List<Character>();
-		foreach (Tile t in warnedTiles)
-		{
-			if (t.character != null && !hitCharacters.Contains(t.character))
-			{
-				hitCharacters.Add(t.character);
-			}
-		}
-
-		NoFriendlyFire noFriendlyFire = owningCharacter.gameObject.GetComponent<NoFriendlyFire>();
-		if (noFriendlyFire != null)
-		{
-			noFriendlyFire.SpareAllies(hitCharacters);
-		}
+		List<Character> hitCharacters = GetTargetsOnTiles(warnedTiles);
 
 		ActionController.Instance.PlayAttackAnimation(owningCharacter, null, () =>
 		{
 			if (hitCharacters.Count == 0)
 			{
-				FloatingCombatNumberController.Instance.ShowFloatingCombatNumber(
-					owningCharacter.token.transform.position + Vector3.up * 1.5f, "no target");
+				ShowNoTarget(owningCharacter.token.transform.position);
 			}
 
-			foreach (Character c in hitCharacters)
-			{
-				ActionController.Instance.AttackCharacter(c, owningCharacter, new ActionController.AttackProfile(1, 6, 2));
-			}
+			AttackCharacters(hitCharacters, new ActionController.AttackProfile(1, 6, 2));
 
 			TurnEventController.Instance.Pump();
 		});
-	}
-
-	void ClearWarnings(List<Tile> warnedTiles)
-	{
-		foreach (Tile t in warnedTiles)
-		{
-			t.RemoveWarning();
-		}
 	}
 
 	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)

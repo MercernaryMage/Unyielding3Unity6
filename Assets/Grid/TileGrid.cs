@@ -518,6 +518,36 @@ public class TileGrid : SceneSingleton<TileGrid>
 		return false;
 	}
 
+	public static List<Character> GetCharactersOnTiles(List<Tile> tiles)
+	{
+		List<Character> characters = new List<Character>();
+		foreach (Tile t in tiles)
+		{
+			if (t.character != null && !characters.Contains(t.character))
+			{
+				characters.Add(t.character);
+			}
+		}
+
+		return characters;
+	}
+
+	public static void AddWarnings(List<Tile> tiles)
+	{
+		foreach (Tile t in tiles)
+		{
+			t.AddWarning();
+		}
+	}
+
+	public static void RemoveWarnings(List<Tile> tiles)
+	{
+		foreach (Tile t in tiles)
+		{
+			t.RemoveWarning();
+		}
+	}
+
 	public static bool AreTilesCardinal(Tile t0, Tile t1)
 	{
 		return t0.x == t1.x || t0.y == t1.y;

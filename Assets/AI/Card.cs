@@ -332,6 +332,32 @@ public class Card
 		return minDist;
 	}
 
+	public List<Character> GetTargetsOnTiles(List<Tile> tiles)
+	{
+		List<Character> targets = TileGrid.GetCharactersOnTiles(tiles);
+
+		NoFriendlyFire noFriendlyFire = owningCharacter.gameObject.GetComponent<NoFriendlyFire>();
+		if (noFriendlyFire != null)
+		{
+			noFriendlyFire.SpareAllies(targets);
+		}
+
+		return targets;
+	}
+
+	public void AttackCharacters(List<Character> targets, ActionController.AttackProfile attackProfile)
+	{
+		foreach (Character c in targets)
+		{
+			ActionController.Instance.AttackCharacter(c, owningCharacter, attackProfile);
+		}
+	}
+
+	public void ShowNoTarget(Vector3 position)
+	{
+		FloatingCombatNumberController.Instance.ShowFloatingCombatNumber(position + Vector3.up * 1.5f, "no target");
+	}
+
 	public string GetCardName()
 	{
 		return cardScriptableObject.cardDisplayName;
