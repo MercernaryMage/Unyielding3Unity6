@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e55f24fd73bc40d4aa4be0ea597fa59f, type: 3}
   m_Name: Following
   m_EditorClassIdentifier: Assembly-CSharp::ExplanationIemScrptableObject
-  explanationName: following
+  explanationName: Following
   explanationContent: A blast is going to land on this target soon.
