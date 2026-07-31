@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerChop : Card
+public class PowerChop : Card, IMessageReceiver
 {
 	Tuple<List<Tile>, Tile> route;
 	List<Tile> litRouteTiles;
 	TemplateLibrary.TilesAndDirection tilesAndDirection;
+	List<Tile> warnedTiles;
+	bool cancelled;
 
 	public override void Execute()
 	{
@@ -47,17 +49,36 @@ public class PowerChop : Card
 		}
 
 		owningCharacter.SetFacing(tilesAndDirection.direction);
-		List<Tile> warnedTiles = new List<Tile>(tilesAndDirection.tiles);
+		warnedTiles = new List<Tile>(tilesAndDirection.tiles);
 		TileGrid.AddWarnings(warnedTiles);
 
+		cancelled = false;
+
 		int chopTick = TurnControl.Instance.GetValue(owningCharacter);
-		TurnEventController.Instance.AddEvent(() => Chop(warnedTiles), chopTick);
+		TurnEventController.Instance.AddEvent(Chop, chopTick);
 
 		Finish();
 	}
 
-	void Chop(List<Tile> warnedTiles)
+	void Cancel()
 	{
+		if (cancelled)
+		{
+			return;
+		}
+
+		cancelled = true;
+		TileGrid.RemoveWarnings(warnedTiles);
+	}
+
+	void Chop()
+	{
+		if (cancelled)
+		{
+			TurnEventController.Instance.Pump();
+			return;
+		}
+
 		if (!owningCharacter.alive)
 		{
 			TileGrid.RemoveWarnings(warnedTiles);
@@ -65,10 +86,10 @@ public class PowerChop : Card
 			return;
 		}
 
-		AnimationController.Instance.ScrollToCharacter(owningCharacter, () => ChopActual(warnedTiles), .5f);
+		AnimationController.Instance.ScrollToCharacter(owningCharacter, ChopActual, .5f);
 	}
 
-	void ChopActual(List<Tile> warnedTiles)
+	void ChopActual()
 	{
 		TileGrid.RemoveWarnings(warnedTiles);
 
@@ -85,6 +106,22 @@ public class PowerChop : Card
 
 			TurnEventController.Instance.Pump();
 		});
+	}	
+
+	public override void OnCharacterKnockbackFinished(CharacterKnockbackFinishMessage message)
+	{
+		if (((CharacterKnockbackFinishMessage)message).knockedBackCharacter == owningCharacter)
+		{
+			Cancel();
+		}
+	}
+
+	public override void OnCharacterDied(CharacterDiedMessage message)
+	{
+		if (((CharacterDiedMessage)message).character == owningCharacter)
+		{
+			Cancel();
+		}
 	}
 
 	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
@@ -95,6 +132,7 @@ public class PowerChop : Card
 		instructions.Add(new CardInstruction("Mark a range 2 cone covering as many enemies as possible"));
 		instructions.Add(new CardInstruction());
 		instructions.Add(new CardInstruction("At the start of your next turn, deal 1d6+2 damage to any character on a marked tile"));
+		instructions.Add(new CardInstruction("If you are killed or knocked back first, the marks are cleared and nothing happens"));
 
 		DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.Size1Enemy, DisplayGrid.DisplayGridDirection.South, 5, 4);
 		DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.EffectedTile, new List<Tuple<int, int>>()

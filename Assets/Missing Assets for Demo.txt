@@ -66,7 +66,56 @@ Effects
 Overland map
 UI
 	Combat
-		reaction/card selector
+		Hero  Display
+			Determination
+			character name
+			Character portait
+			hp
+			armor
+			Action points
+			energy
+			movement
+			Toughness
+			evasion
+			tooltip
+		Action Buttons
+			Main icon
+			cost unit
+			Not usable state
+			danger state
+
+			Action button tooltip
+				action name
+				Failure reason - "action was used this turn"
+				danger reason - "will trigger ambush"
+				small tags
+				stats
+		End turn
+		Status effect ribbon
+			icon
+			tooltip
+		Log window
+			Log entry
+			Log popout
+		initiave ribbon
+		character inspector
+			determination
+			hp
+			energy
+			armor
+			evasion
+			movement
+			prowess
+			cunning
+			Traits
+
+		card display
+			Name
+			grid
+			description
+		Tile warning
+		Overlay
+
 	Town
 	Overland
 Landing page

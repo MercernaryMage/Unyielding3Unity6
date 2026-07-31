@@ -709,6 +709,10 @@ public class ActionController : SceneSingleton<ActionController>
 		{
 			HeroDisplayRouter.Instance.mainDisplay.Hide(true);
 		}
+
+		CharacterDiedMessage characterDiedMessage = new CharacterDiedMessage();
+		characterDiedMessage.character = c;
+		MessagePump.Instance.SendMessage(characterDiedMessage);
 	}
 
 	void HandleReaction(Character defender, AttackResults results)

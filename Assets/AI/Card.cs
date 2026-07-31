@@ -2,7 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public enum InstructionType
 {
@@ -26,18 +30,47 @@ public class CardInstruction
 }
 
 [Serializable]
-public class Card 
+public class Card : IMessageReceiver
 {
+	bool exiting = false;
 	public Character owningCharacter;
 	public CardScriptableObject cardScriptableObject;
 
 	public bool isRevealed = false;
 
+	bool listening;
+
 	public void Set(CardScriptableObject c)
 	{
+#if UNITY_EDITOR
+		EditorApplication.playModeStateChanged += OnEditorChangeState;
+#endif
 		cardScriptableObject = c;
+		MessagePump.Instance.AddListener(this);
 	}
-	
+
+#if UNITY_EDITOR
+	public void OnEditorChangeState(PlayModeStateChange state)
+	{
+		if (state == PlayModeStateChange.ExitingPlayMode)
+		{
+			exiting = true;
+		}
+	}
+#endif
+
+	public void OnDestroy()
+	{
+		if (exiting)
+		{
+			return;
+		}
+		if (MessagePump.Instance)
+		{
+			MessagePump.Instance.RemoveListener(this);
+		}
+	}
+
 	virtual public void Execute()
 	{
 
@@ -376,5 +409,21 @@ public class Card
 	public bool GetBoolValue(string s)
 	{
 		return cardScriptableObject.GetTagBoolValue(s);
+	}
+
+	public virtual void OnCharacterKnockbackFinished(CharacterKnockbackFinishMessage message) { }
+
+	public virtual void OnCharacterDied(CharacterDiedMessage message) { }
+
+	public void ReceiveMessage(Message message)
+	{
+		if (message.messageType == MessageType.CharacterKnockbackFinished)
+		{
+			OnCharacterKnockbackFinished((CharacterKnockbackFinishMessage)message);
+		}
+		else if (message.messageType == MessageType.CharacterDied)
+		{
+			OnCharacterDied((CharacterDiedMessage)message);
+		}
 	}
 }
