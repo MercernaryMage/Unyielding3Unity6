@@ -24,11 +24,27 @@
   "enemies": [
     {
       "location": {
-        "x": 2,
-        "y": 10,
+        "x": 9,
+        "y": 5,
         "direction": 3
       },
-      "name": "Bandit"
+      "name": "Knight"
+    },
+    {
+      "location": {
+        "x": 6,
+        "y": 8,
+        "direction": 3
+      },
+      "name": "Mercenary"
+    },
+    {
+      "location": {
+        "x": 5,
+        "y": 8,
+        "direction": 3
+      },
+      "name": "Deer"
     },
     {
       "location": {
@@ -36,24 +52,24 @@
         "y": 9,
         "direction": 3
       },
-      "name": "Bandit"
+      "name": "Witch"
     },
     {
       "location": {
-        "x": 9,
-        "y": 6,
+        "x": 7,
+        "y": 10,
         "direction": 3
       },
-      "name": "Bandit"
+      "name": "Arbalist"
     },
     {
       "location": {
-        "x": 10,
-        "y": 1,
+        "x": 5,
+        "y": 10,
         "direction": 3
       },
-      "name": "Bandit"
-    },
+      "name": "Archer"
+    }
   ],
   "mapMessageTitle": "",
   "mapMessageBody": ""

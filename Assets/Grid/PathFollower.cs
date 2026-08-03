@@ -16,6 +16,7 @@ public class PathFollower : MonoBehaviour
 	float cameraCatchupTime;
 
 	bool moveCharacter;
+	bool finished;
 
 	public void Set(Character c, List<Tile> p, Action call, bool m)
 	{
@@ -34,6 +35,11 @@ public class PathFollower : MonoBehaviour
 
 	public void Update()
 	{
+		if (finished)
+		{
+			return;
+		}
+
 		if (cameraCatchupTime > 0)
 		{
 			cameraCatchupTime -= Time.deltaTime;
@@ -64,6 +70,7 @@ public class PathFollower : MonoBehaviour
 			{
 				CameraFocusCharacter focus = character.gameObject.AddComponent<CameraFocusCharacter>();
 				focus.character = character;
+				finished = true;
 				positionLerp.callbackFunction = () =>
 				{
 					Destroy(focus);
@@ -71,9 +78,9 @@ public class PathFollower : MonoBehaviour
 					{
 						TileGrid.Instance.MoveCharacterToTile(character, path[0]);
 					}
+					Destroy(this);
 					callback();
 				};
-				Destroy(this);
 			}
 		}
 	}

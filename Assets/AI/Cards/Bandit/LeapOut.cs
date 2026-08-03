@@ -60,9 +60,14 @@ public class LeapOut : Card
 			}
 			owningCharacter.SetFacing(TileGrid.Instance.GetFacingDirection(owningCharacter, target));
 			TileGrid.Instance.MoveCharacterToTile(owningCharacter, landingTile);
-			target.AddStatusEffect(typeof(Paralyzed), null);
-			Finish();
+			AnimationController.Instance.ScrollToCharacter(owningCharacter, ReturnFromScroll, .5f);
 		});
+	}
+
+	void ReturnFromScroll()
+	{
+		target.AddStatusEffect(typeof(Paralyzed), null);
+		Finish();
 	}
 
 	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)

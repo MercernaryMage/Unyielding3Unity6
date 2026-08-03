@@ -7,4 +7,4 @@ Do not use the protected modifier ever for any reason.
 
 Do not read or consider todo.txt
 
-Do not add comments
+Do not add comments ever for any reason, including when writing new logic

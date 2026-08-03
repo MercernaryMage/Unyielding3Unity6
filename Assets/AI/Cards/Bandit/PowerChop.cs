@@ -8,7 +8,7 @@ public class PowerChop : Card, IMessageReceiver
 	List<Tile> litRouteTiles;
 	TemplateLibrary.TilesAndDirection tilesAndDirection;
 	List<Tile> warnedTiles;
-	bool cancelled;
+	bool running;
 
 	public override void Execute()
 	{
@@ -52,7 +52,7 @@ public class PowerChop : Card, IMessageReceiver
 		warnedTiles = new List<Tile>(tilesAndDirection.tiles);
 		TileGrid.AddWarnings(warnedTiles);
 
-		cancelled = false;
+		running = true;
 
 		int chopTick = TurnControl.Instance.GetValue(owningCharacter);
 		TurnEventController.Instance.AddEvent(Chop, chopTick);
@@ -62,18 +62,18 @@ public class PowerChop : Card, IMessageReceiver
 
 	void Cancel()
 	{
-		if (cancelled)
+		if (!running)
 		{
 			return;
 		}
 
-		cancelled = true;
+		running = false;
 		TileGrid.RemoveWarnings(warnedTiles);
 	}
 
 	void Chop()
 	{
-		if (cancelled)
+		if (!running)
 		{
 			TurnEventController.Instance.Pump();
 			return;
@@ -81,7 +81,7 @@ public class PowerChop : Card, IMessageReceiver
 
 		if (!owningCharacter.alive)
 		{
-			TileGrid.RemoveWarnings(warnedTiles);
+			Cancel();
 			TurnEventController.Instance.Pump();
 			return;
 		}
@@ -91,6 +91,7 @@ public class PowerChop : Card, IMessageReceiver
 
 	void ChopActual()
 	{
+		running = false;
 		TileGrid.RemoveWarnings(warnedTiles);
 
 		List<Character> hitCharacters = GetTargetsOnTiles(warnedTiles);

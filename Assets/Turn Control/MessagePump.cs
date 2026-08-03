@@ -310,7 +310,6 @@ public class MessagePump : SceneSingleton<MessagePump>
 
 	public void SendMessage(Message message)
 	{
-		//Copied because a receiver is allowed to remove itself while it is handling the message.
 		foreach (IMessageReceiver receiver in new List<IMessageReceiver>(listeners))
 		{
 			receiver.ReceiveMessage(message);
