@@ -26,7 +26,7 @@ public class DecoScalar : DecoHider
         elapsed += Time.deltaTime;
         float t = Mathf.Clamp01(elapsed / Duration);
         float s = Mathf.Lerp(startScale, targetScale, t);
-        transform.localScale = new Vector3(s, s, s);
+        transform.localScale = new Vector3(s, 10, s);
 
         if (t >= 1f)
         {

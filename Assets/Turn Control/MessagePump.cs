@@ -30,7 +30,8 @@ public enum MessageType
 	GetWarningForAction,
 	PreviewMovementDamage,
 	PreviewMovementProvoke,
-	CharacterDied
+	CharacterDied,
+	CharacterHit
 }
 
 public class Message
@@ -93,6 +94,17 @@ public class CharacterMissMessage : Message
 	public CharacterMissMessage()
 	{
 		messageType = MessageType.CharacterMiss;
+	}
+}
+
+public class CharacterHitMessage : Message
+{
+	public Character attacker;
+	public Character defender;
+
+	public CharacterHitMessage()
+	{
+		messageType = MessageType.CharacterHit;
 	}
 }
 

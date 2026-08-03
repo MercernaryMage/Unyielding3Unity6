@@ -55,7 +55,7 @@ public class StakeShot : Card
                 target, owningCharacter, new ActionController.AttackProfile(1, 6, 0));
             if (results.hit)
             {
-                target.AddStatusEffect(typeof(Immobilize), null);
+                target.AddStatusEffect(typeof(Paralyzed), null);
                 target.AddStatusEffect(typeof(Staked), null);
             }
 
@@ -68,7 +68,7 @@ public class StakeShot : Card
         DisplayGrid.Instance.Clear(11, 8);
         List<CardInstruction> instructions = new List<CardInstruction>();
         instructions.Add(new CardInstruction("Attack a non-adjacent hero in line of sight for 1d6 damage"));
-        instructions.Add(new CardInstruction("On hit, apply <u>Immobilized</u> and <u>Staked</u>"));
+        instructions.Add(new CardInstruction("On hit, apply <u>Paralyzed</u> and <u>Staked</u>"));
         instructions.Add(new CardInstruction("If there is no target, play Snipe"));
         DisplayGrid.Instance.Show();
         return instructions;

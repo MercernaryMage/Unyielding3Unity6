@@ -50,4 +50,15 @@ public class ScenesMenu
 		}
 		EditorSceneManager.OpenScene("Assets/Scenes/TutorialStart.unity");
 	}
+
+	[MenuItem("Scenes/Level Editor")]
+	private static void GoToLevelEditor()
+	{
+		if (SceneManager.GetActiveScene().isDirty)
+		{
+			Debug.LogWarning("Scene is dirty, please save");
+			return;
+		}
+		EditorSceneManager.OpenScene("Assets/Scenes/Level Editor.unity");
+	}
 }

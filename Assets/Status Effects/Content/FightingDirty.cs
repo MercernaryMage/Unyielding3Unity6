@@ -5,17 +5,17 @@ public class FightingDirty : StatusEffect
 {
     int marksApplied = 0;
 
-    public override void OnDamageDealt(DamageDealtMessage damageDealtMessage)
+    public override void OnCharacterHit(CharacterHitMessage characterHitMessage)
     {
-        if (damageDealtMessage.attacker != character)
+        if (characterHitMessage.attacker != character)
         {
             return;
         }
-        if (damageDealtMessage.defender.GetComponent<Marked>() != null)
+        if (characterHitMessage.defender.GetComponent<Marked>() != null)
         {
             return;
         }
-        damageDealtMessage.defender.AddStatusEffect(typeof(Marked), null);
+        characterHitMessage.defender.AddStatusEffect(typeof(Marked), null);
         marksApplied++;
         if (marksApplied >= 3)
         {

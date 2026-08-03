@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Staked
   m_EditorClassIdentifier: Assembly-CSharp::ExplanationIemScrptableObject
   explanationName: Staked
-  explanationContent: Immobilized is not removed at the end of this character's turn.
+  explanationContent: Paralyzed is not removed at the end of this character's turn.
     Removed when an ally ends their movement adjacent to this character, which also
-    removes Immobilized.
+    removes Paralyzed.

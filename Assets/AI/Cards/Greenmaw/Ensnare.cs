@@ -10,13 +10,13 @@ public class Ensnare : Card
 
 	const int range = 3;
 
-	bool IsNotImmobilized(Character target)
+	bool IsNotParalyzed(Character target)
 	{
 		if (target.GetComponent<Downed>())
 		{
 			return false;
 		}
-		return target.GetComponent<Immobilize>() == null;
+		return target.GetComponent<Paralyzed>() == null;
 	}
 
 	public override void Execute()
@@ -24,19 +24,19 @@ public class Ensnare : Card
 		targetHero = GetTarget();
 		if (targetHero != null)
 		{
-			AnimationController.Instance.ScrollToCharacter(targetHero, ApplyImmobilize, .5f);
+			AnimationController.Instance.ScrollToCharacter(targetHero, ApplyParalyzed, .5f);
 			return;
 		}
 
 		DoMove();
 	}
 
-	//A valid target is an enemy in range with line of sight that is not already immobilized.
+	//A valid target is an enemy in range with line of sight that is not already paralyzed.
 	Character GetTarget()
 	{
 		List<Character> heroesInRange = Util.GetHeroesInRange(owningCharacter, range);
 		heroesInRange.RemoveAll(o => !TileGrid.Instance.DoesCharacterHaveLOSToCharacter(o, owningCharacter));
-		heroesInRange.RemoveAll(o => o.GetComponent<Immobilize>() != null);
+		heroesInRange.RemoveAll(o => o.GetComponent<Paralyzed>() != null);
 		if (heroesInRange.Count == 0)
 		{
 			return null;
@@ -45,17 +45,17 @@ public class Ensnare : Card
 		return heroesInRange[UnityEngine.Random.Range(0, heroesInRange.Count)];
 	}
 
-	void ApplyImmobilize()
+	void ApplyParalyzed()
 	{
-		targetHero.AddStatusEffect(typeof(Immobilize), null);
+		targetHero.AddStatusEffect(typeof(Paralyzed), null);
 		AnimationController.Instance.DelayedCallback(1.0f, () => Finish());
 	}
 
 	void DoMove()
 	{
-		//No target in range: close on the nearest enemy that is not already immobilized.
+		//No target in range: close on the nearest enemy that is not already paralyzed.
 		Dictionary<Character, Tuple<List<Tile>, Tile>> routes = RouteToAllClosestCharacters(true);
-		route = Util.FindSmallestRoute(routes, IsNotImmobilized);
+		route = Util.FindSmallestRoute(routes, IsNotParalyzed);
 
 		if (route == null)
 		{
@@ -88,7 +88,7 @@ public class Ensnare : Card
 			PlayTrap();
 			return;
 		}
-		AnimationController.Instance.ScrollToCharacter(targetHero, ApplyImmobilize, .5f);
+		AnimationController.Instance.ScrollToCharacter(targetHero, ApplyParalyzed, .5f);
 	}
 
 	void PlayTrap()
@@ -101,8 +101,8 @@ public class Ensnare : Card
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Apply <u>Immobilized</u> to an enemy within range 3 that is not <u>Immobilized</u>"));
-		instructions.Add(new CardInstruction("If there is no target, move toward the closest enemy that is not <u>Immobilized</u> and try again"));
+		instructions.Add(new CardInstruction("Apply <u>Paralyzed</u> to an enemy within range 3 that is not <u>Paralyzed</u>"));
+		instructions.Add(new CardInstruction("If there is no target, move toward the closest enemy that is not <u>Paralyzed</u> and try again"));
 		instructions.Add(new CardInstruction("If there is still no target, play Trap"));
 		DisplayGrid.Instance.Show();
 

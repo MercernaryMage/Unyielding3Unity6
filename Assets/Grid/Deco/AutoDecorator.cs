@@ -54,11 +54,11 @@ public class AutoDecorator : MonoBehaviour
 
 		obj.transform.SetParent(transform, false);
 		obj.transform.localPosition = Vector3.zero;
-		float x = 1 / obj.transform.lossyScale.x;
-		float y = 1 / obj.transform.lossyScale.y;
-		float z = 1 / obj.transform.lossyScale.z;
+		float x = .9f;
+		float y = 10;
+		float z = .9f;
 		obj.transform.localScale = new Vector3(x, y, z);
-		obj.transform.localPosition = new Vector3(0, .75f, 0);
+		obj.transform.localPosition = new Vector3(0, .2f, 0);
 		int index = Random.Range(0, 4);
 		if (index == 0)
 		{

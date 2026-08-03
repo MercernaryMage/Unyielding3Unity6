@@ -171,6 +171,10 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 
 	void OutlineTilesInRange()
 	{
+		if (!usable)
+		{
+			return;
+		}
 		if (owningCharacter.token.gameObject.GetComponent<PathFollower>() != null)
 		{
 			return;

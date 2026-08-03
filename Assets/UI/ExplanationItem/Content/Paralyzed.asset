@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Paralyzed
   m_EditorClassIdentifier: Assembly-CSharp::ExplanationIemScrptableObject
   explanationName: Paralyzed
-  explanationContent: Loses all movement at the start of their turn. Removed at the end of their turn.
+  explanationContent: Loses all movement at the start of their turn and cannot dash.
+    Removed at the end of their turn.

@@ -480,6 +480,12 @@ public class ActionController : SceneSingleton<ActionController>
 		else
 		{
 			results.hit = true;
+
+			CharacterHitMessage characterHitMessage = new CharacterHitMessage();
+			characterHitMessage.defender = defender;
+			characterHitMessage.attacker = attacker;
+			MessagePump.Instance.SendMessage(characterHitMessage);
+
 			CharacterCritCheckMessage critCheckMessage = new CharacterCritCheckMessage();
 			critCheckMessage.attacker = attacker;
 			critCheckMessage.defender = defender;

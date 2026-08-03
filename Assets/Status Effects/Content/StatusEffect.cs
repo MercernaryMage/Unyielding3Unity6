@@ -74,6 +74,7 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 	virtual public void CharacterEndTurn(CharacterEndTurnMessage characterEndTurnMessage) { }
 	virtual public void OnCharacterAttacking(CharacterAttackingMessage characterAttackingMessage) { }
 	virtual public void OnCharacterMiss(CharacterMissMessage characterMissMessage) { }
+	virtual public void OnCharacterHit(CharacterHitMessage characterHitMessage) { }
 
 	virtual public void OnCharacterFinishedMoving(CharacterFinishedMovingMessage characterFinishedMovingMessage) { }
 	virtual public void OnHeroDowned(HeroDownedMessage heroDownedMessage) { }
@@ -111,6 +112,10 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 		else if (message.messageType == MessageType.CharacterMiss)
 		{
 			OnCharacterMiss((CharacterMissMessage)message);
+		}
+		else if (message.messageType == MessageType.CharacterHit)
+		{
+			OnCharacterHit((CharacterHitMessage)message);
 		}
 		else if (message.messageType == MessageType.DamageDealt)
 		{

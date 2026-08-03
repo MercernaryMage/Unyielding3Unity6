@@ -22,10 +22,10 @@ public class Staked : StatusEffect
 
 	public override void EffectBeingRemoved()
 	{
-		Immobilize immobilize = character.GetComponent<Immobilize>();
-		if (immobilize != null)
+		Paralyzed paralyzed = character.GetComponent<Paralyzed>();
+		if (paralyzed != null)
 		{
-			Destroy(immobilize);
+			Destroy(paralyzed);
 		}
 	}
 
