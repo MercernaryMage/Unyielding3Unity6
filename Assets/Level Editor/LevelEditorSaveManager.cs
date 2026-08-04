@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class LevelEditorSaveManager : MonoBehaviour
 {
@@ -25,6 +28,7 @@ public class LevelEditorSaveManager : MonoBehaviour
 	{
 		public int x;
 		public int y;
+		public string swatchName;
 		public string tileStateScriptableObjectName;
 		public SavedDeco mainDeco;
 		public SavedDeco subDeco;
@@ -65,7 +69,6 @@ public class LevelEditorSaveManager : MonoBehaviour
 	}
 
 	public TMP_InputField mapName;
-	public string defaultTileState = "Floor";
 
 	public SavedMap FormMap()
 	{
@@ -90,7 +93,8 @@ public class LevelEditorSaveManager : MonoBehaviour
 		SavedMapTile mapTile = new SavedMapTile();
 		mapTile.x = emptyTile.x;
 		mapTile.y = emptyTile.y;
-		mapTile.tileStateScriptableObjectName = defaultTileState;
+		mapTile.swatchName = emptyTile.swatch.name;
+		mapTile.tileStateScriptableObjectName = emptyTile.swatch.tileStateScriptableObjectName;
 		mapTile.mainDeco = FormDeco(emptyTile.swatch.prefab0);
 		mapTile.subDeco = FormDeco(emptyTile.swatch.prefab1);
 		mapTile.fallThroughObjectData = new SavedFallThroughObjectData();
@@ -124,5 +128,48 @@ public class LevelEditorSaveManager : MonoBehaviour
 		}
 
 		File.WriteAllText($"Assets/Resources/Maps/{fileName}.txt", Util.JSONSerializer.Serialize(FormMap()));
+	}
+
+	public void ClickLoad()
+	{
+#if UNITY_EDITOR
+		string path = EditorUtility.OpenFilePanel("Load Map", "Assets/Resources/Maps", "txt");
+		if (path == "")
+		{
+			return;
+		}
+
+		Load(path);
+		Debug.Log($"Load Complete: {path}");
+#endif
+	}
+
+	public void Load(string fullPath)
+	{
+		SavedMap map = Util.JSONSerializer.Deserialize<SavedMap>(File.ReadAllText(fullPath));
+
+		LevelEditorManager.Instance.Generate(map.width, map.height);
+		mapName.text = Path.GetFileNameWithoutExtension(fullPath);
+
+		foreach (SavedMapTile mapTile in map.mapTiles)
+		{
+			int index = mapTile.x + mapTile.y * map.width;
+
+			SwatchScriptableObject swatch = FindSwatch(mapTile.swatchName);
+
+			LevelEditorManager.Instance.tiles[index].GetComponent<EmptyTile>().ChangeToTile(swatch);
+		}
+	}
+
+	SwatchScriptableObject FindSwatch(string swatchName)
+	{
+		foreach (SwatchScriptableObject swatch in SwatchRepository.Instance.GetSwatches())
+		{
+			if (swatch.name == swatchName)
+			{
+				return swatch;
+			}
+		}
+		return null;
 	}
 }

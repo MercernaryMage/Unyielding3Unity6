@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Grass
   m_EditorClassIdentifier: Assembly-CSharp::SwatchScriptableObject
   image: {fileID: -3023766824798548878, guid: 1232b3d22aba9684a95c753f93ba6e8e, type: 3}
+  tileStateScriptableObjectName: Floor
   prefab0: {fileID: 4955078559805311777, guid: ae983f2c43d25d447b7f61d885973bd0, type: 3}
   prefab1: {fileID: 0}
   prefab2: {fileID: 0}

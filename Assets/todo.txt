@@ -35,7 +35,12 @@ Don't spawn a player if they don't have determination
 
     put an eye icon over the archer when you locked on
 
-    swatch system!!!
+    ADD CONTENT
+        Dirt road
+        props
+            Sign
+    Remake old levels
+    Click sucks move it to drag
 
     KNIGHT IS WORTHLESS
         Protector is poorly exaplained, log says I hit myself

@@ -80,11 +80,21 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 
 	public void ClickGenerate()
 	{
-		int xDim = System.Convert.ToInt32(XDimension.text);
-		int yDim = System.Convert.ToInt32(YDimension.text);
+		Generate(System.Convert.ToInt32(XDimension.text), System.Convert.ToInt32(YDimension.text));
+	}
+
+	public void Generate(int xDim, int yDim)
+	{
+		foreach (GameObject tile in tiles)
+		{
+			Destroy(tile);
+		}
+		tiles.Clear();
 
 		mapWidth = xDim;
 		mapHeight = yDim;
+		XDimension.text = xDim.ToString();
+		YDimension.text = yDim.ToString();
 
 		for (int y = 0; y < yDim; ++y)
 		{

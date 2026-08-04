@@ -4,7 +4,8 @@ using UnityEngine;
 public class SwatchScriptableObject : ScriptableObject
 {
     public Sprite image;
-    public GameObject prefab0;
+	public string tileStateScriptableObjectName;
+	public GameObject prefab0;
 	public GameObject prefab1;
 	public GameObject prefab2;
 }
