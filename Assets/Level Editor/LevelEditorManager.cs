@@ -22,9 +22,11 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 	public float minOrthographicSize = 3;
 	public float maxOrthographicSize = 30;
 
-	List<GameObject> tiles = new List<GameObject>();
+	public List<GameObject> tiles = new List<GameObject>();
 	float tileScale = 1.5f;
 	float cameraHeight;
+	public int mapWidth;
+	public int mapHeight;
 
 	private void Start()
 	{
@@ -81,6 +83,9 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 		int xDim = System.Convert.ToInt32(XDimension.text);
 		int yDim = System.Convert.ToInt32(YDimension.text);
 
+		mapWidth = xDim;
+		mapHeight = yDim;
+
 		for (int y = 0; y < yDim; ++y)
 		{
 			for (int x = 0; x < xDim; ++x)
@@ -93,8 +98,10 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 				obj.transform.localPosition = new Vector3(x * (tileScale + .75f), 0, y * (tileScale + .75f));
 				obj.transform.localScale = Vector3.one * tileScale;
 
-				
-				
+				EmptyTile emptyTile = obj.GetComponent<EmptyTile>();
+				emptyTile.x = x;
+				emptyTile.y = y;
+
 				tiles.Add(obj);
 			}
 		}
