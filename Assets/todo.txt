@@ -35,7 +35,7 @@ Don't spawn a player if they don't have determination
 
     put an eye icon over the archer when you locked on
 
-    Combat has all deco's crushed
+    swatch system!!!
 
     KNIGHT IS WORTHLESS
         Protector is poorly exaplained, log says I hit myself
