@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Newtonsoft.Json;
 using UnityEngine.Windows;
 using System.Text.RegularExpressions;
@@ -448,6 +449,21 @@ public static class Util
 				tiles.RemoveAt(i);
 			}
 		}
+	}
+
+	public static bool IsPointerOverUI()
+	{
+		if (EventSystem.current == null)
+		{
+			return false;
+		}
+
+		PointerEventData pointerData = new PointerEventData(EventSystem.current);
+		pointerData.position = UnityEngine.Input.mousePosition;
+
+		List<RaycastResult> results = new List<RaycastResult>();
+		EventSystem.current.RaycastAll(pointerData, results);
+		return results.Count > 0;
 	}
 
 	public class JSONSerializer

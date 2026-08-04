@@ -11,10 +11,70 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 
 	public GameObject combatWorld;
 
-	public GameObject debugTile;
+	public SwatchScriptableObject currentSwatch;
+
+	public Transform swatchTarget;
+	public GameObject swatchPrefab;
+	public GameObject swatchesObject;
+
+	public float cameraSpeed = 15;
+	public float zoomSpeed = 4;
+	public float minOrthographicSize = 3;
+	public float maxOrthographicSize = 30;
 
 	List<GameObject> tiles = new List<GameObject>();
 	float tileScale = 1.5f;
+	float cameraHeight;
+
+	private void Start()
+	{
+		cameraHeight = Camera.main.transform.position.y;
+
+		foreach (SwatchScriptableObject swatch in SwatchRepository.Instance.GetSwatches())
+		{
+			GameObject obj = Instantiate(swatchPrefab);
+			obj.GetComponent<SwatchDisplay>().Set(swatch);
+			obj.transform.SetParent(swatchTarget);
+		}
+	}
+
+	private void Update()
+	{
+		Vector3 move = Vector3.zero;
+
+		if (Input.GetKey(KeyCode.W))
+		{
+			move += Camera.main.transform.up;
+		}
+		if (Input.GetKey(KeyCode.S))
+		{
+			move -= Camera.main.transform.up;
+		}
+		if (Input.GetKey(KeyCode.D))
+		{
+			move += Camera.main.transform.right;
+		}
+		if (Input.GetKey(KeyCode.A))
+		{
+			move -= Camera.main.transform.right;
+		}
+
+		if (move != Vector3.zero)
+		{
+			Camera.main.transform.position += move * Time.deltaTime * cameraSpeed;
+			Camera.main.transform.position = new Vector3(Camera.main.transform.position.x,
+														 cameraHeight,
+														 Camera.main.transform.position.z);
+		}
+
+		float scroll = Input.GetAxis("Mouse ScrollWheel");
+		if (scroll != 0)
+		{
+			Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - scroll * zoomSpeed,
+													   minOrthographicSize,
+													   maxOrthographicSize);
+		}
+	}
 
 	public void ClickGenerate()
 	{
@@ -43,7 +103,17 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 
 	public void TileWasClicked(GameObject clickedGameObject)
 	{
+		if (Util.IsPointerOverUI())
+		{
+			return;
+		}
+
 		EmptyTile emptyTile = clickedGameObject.GetComponent<EmptyTile>();
-		emptyTile.ChangeToTile(debugTile);
+		emptyTile.ChangeToTile(currentSwatch);
+	}
+
+	public void SwatchesClicked()
+	{
+		swatchesObject.SetActive(!swatchesObject.activeInHierarchy);
 	}
 }

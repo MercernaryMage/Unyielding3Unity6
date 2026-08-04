@@ -167,5 +167,9 @@ public class UnyieldingMenu
 		GameObject explanationItemCollectionObj = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/ExplanationItemCollection.prefab");
 		ExplanationItemCollection explanationItemCollection = explanationItemCollectionObj.GetComponent<ExplanationItemCollection>();
 		ExplanationItemCollectionEditor.FilloutData(explanationItemCollection);
+
+		GameObject swatchCollectionObj = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/SwatchCollection.prefab");
+		SwatchCollection swatchCollection = swatchCollectionObj.GetComponent<SwatchCollection>();
+		SwatchCollectionEditor.FilloutData(swatchCollection);
 	}
 }

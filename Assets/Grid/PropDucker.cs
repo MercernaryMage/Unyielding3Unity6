@@ -12,7 +12,10 @@ abstract public class PropDucker : MonoBehaviour
 
 	void Start()
 	{
-		BattleController.Instance.AddDucker(this);
+		if (BattleController.Instance)
+		{
+			BattleController.Instance.AddDucker(this);
+		}
 	}
 
 	void Update()

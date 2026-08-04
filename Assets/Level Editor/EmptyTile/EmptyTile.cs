@@ -1,22 +1,41 @@
-using JetBrains.Annotations;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EmptyTile : MonoBehaviour
 {
-	public GameObject currentTile;
+	public List<GameObject> currentTileObjects ;
 
 	public void OnMouseDown()
 	{
 		LevelEditorManager.Instance.TileWasClicked(gameObject);
 	}
 
-	public void ChangeToTile(GameObject newTile)
+	public void ChangeToTile(SwatchScriptableObject swatch)
 	{
-		Destroy(currentTile);
-		GameObject newObj =  Instantiate(newTile);
+		foreach (GameObject obj in currentTileObjects)
+		{
+			Destroy(obj);
+		}
+		currentTileObjects.Clear();
+		AddObject(swatch.prefab0);
+		AddObject(swatch.prefab1);
+		AddObject(swatch.prefab2);
+	}
+
+	void AddObject(GameObject obj)
+	{
+		if (obj == null)
+		{
+			return;
+		}
+		GameObject newObj = Instantiate(obj);
 		newObj.transform.SetParent(transform);
 		newObj.transform.localPosition = Vector3.zero;
-		newObj.transform.localScale = new Vector3(1, .1f, 1);
-		currentTile = newObj;
+		newObj.transform.localScale = new Vector3(1, 1, 1);
+		foreach (Tile tile in newObj.GetComponentsInChildren<Tile>())
+		{
+			tile.enabled = false;
+		}
+		currentTileObjects.Add(newObj);
 	}
 }

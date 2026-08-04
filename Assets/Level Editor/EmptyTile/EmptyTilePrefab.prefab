@@ -211,7 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6911efbf45e72c2478f368adcc195a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmptyTile
-  currentTile: {fileID: 1005118992432715716}
+  currentTileObjects:
+  - {fileID: 1005118992432715716}
 --- !u!65 &7760057335143261177
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -57,6 +57,14 @@ public class AutoDecorator : MonoBehaviour
 		float x = .9f;
 		float y = 10;
 		float z = .9f;
+#if UNITY_EDITOR
+		string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+		if (sceneName == "Level Editor")
+		{
+			y = 1;
+		}
+
+#endif
 		obj.transform.localScale = new Vector3(x, y, z);
 		obj.transform.localPosition = new Vector3(0, .2f, 0);
 		int index = Random.Range(0, 4);
