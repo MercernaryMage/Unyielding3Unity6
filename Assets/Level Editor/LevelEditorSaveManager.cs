@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 #if UNITY_EDITOR
@@ -8,13 +9,6 @@ using UnityEditor;
 
 public class LevelEditorSaveManager : MonoBehaviour
 {
-	[System.Serializable]
-	public class SavedDeco
-	{
-		public string decoPrefab;
-		public Vector3 rotation;
-	}
-
 	[System.Serializable]
 	public class SavedFallThroughObjectData
 	{
@@ -30,8 +24,6 @@ public class LevelEditorSaveManager : MonoBehaviour
 		public int y;
 		public string swatchName;
 		public string tileStateScriptableObjectName;
-		public SavedDeco mainDeco;
-		public SavedDeco subDeco;
 		public SavedFallThroughObjectData fallThroughObjectData;
 	}
 
@@ -85,7 +77,32 @@ public class LevelEditorSaveManager : MonoBehaviour
 			map.mapTiles.Add(FormMapTile(tileObject.GetComponent<EmptyTile>()));
 		}
 
+		foreach (Transform propTransform in LevelEditorManager.Instance.propsParent.transform)
+		{
+			map.props.Add(FormProp(propTransform));
+		}
+
 		return map;
+	}
+
+	SavedProp FormProp(Transform propTransform)
+	{
+		SavedProp prop = new SavedProp();
+		prop.position = propTransform.localPosition;
+		prop.rotation = propTransform.localEulerAngles;
+		prop.scale = propTransform.localScale;
+		prop.propName = CleanPropName(propTransform.name);
+		prop.parent = false;
+		prop.group = -1;
+		return prop;
+	}
+
+	string CleanPropName(string propName)
+	{
+		string cleaned = propName.Replace("(Clone)", "");
+		cleaned = Regex.Replace(cleaned, @"\s*\(\d+\)$", "");
+		cleaned = Regex.Replace(cleaned, @"\s*\d+$", "");
+		return cleaned.Trim();
 	}
 
 	SavedMapTile FormMapTile(EmptyTile emptyTile)
@@ -95,22 +112,12 @@ public class LevelEditorSaveManager : MonoBehaviour
 		mapTile.y = emptyTile.y;
 		mapTile.swatchName = emptyTile.swatch.name;
 		mapTile.tileStateScriptableObjectName = emptyTile.swatch.tileStateScriptableObjectName;
-		mapTile.mainDeco = FormDeco(emptyTile.swatch.prefab0);
-		mapTile.subDeco = FormDeco(emptyTile.swatch.prefab1);
 		mapTile.fallThroughObjectData = new SavedFallThroughObjectData();
 		mapTile.fallThroughObjectData.enterable = true;
 		mapTile.fallThroughObjectData.blocksLOS = false;
 		mapTile.fallThroughObjectData.forceEnterable = false;
 
 		return mapTile;
-	}
-
-	SavedDeco FormDeco(GameObject prefab)
-	{
-		SavedDeco deco = new SavedDeco();
-		deco.decoPrefab = prefab == null ? null : prefab.name;
-		deco.rotation = Vector3.zero;
-		return deco;
 	}
 
 	public void ClickSave()
@@ -158,6 +165,28 @@ public class LevelEditorSaveManager : MonoBehaviour
 			SwatchScriptableObject swatch = FindSwatch(mapTile.swatchName);
 
 			LevelEditorManager.Instance.tiles[index].GetComponent<EmptyTile>().ChangeToTile(swatch);
+		}
+
+		LoadProps(map);
+	}
+
+	void LoadProps(SavedMap map)
+	{
+		Transform propsParent = LevelEditorManager.Instance.propsParent.transform;
+
+		for (int i = propsParent.childCount - 1; i >= 0; --i)
+		{
+			Destroy(propsParent.GetChild(i).gameObject);
+		}
+
+		foreach (SavedProp prop in map.props)
+		{
+			GameObject obj = Instantiate(PropRepository.Instance.GetProp(prop.propName));
+			obj.name = prop.propName;
+			obj.transform.SetParent(propsParent);
+			obj.transform.localPosition = prop.position;
+			obj.transform.localEulerAngles = prop.rotation;
+			obj.transform.localScale = prop.scale;
 		}
 	}
 

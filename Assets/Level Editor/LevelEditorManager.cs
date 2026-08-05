@@ -28,6 +28,14 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 	public int mapWidth;
 	public int mapHeight;
 
+	public GameObject propsParent;
+
+	public float doubleClickTime = .5f;
+
+	bool paintAllowed;
+	float lastGenerateClick = -100;
+	EmptyTile lastPaintedTile;
+
 	private void Start()
 	{
 		cameraHeight = Camera.main.transform.position.y;
@@ -42,6 +50,17 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 
 	private void Update()
 	{
+		if (Input.GetMouseButtonDown(0))
+		{
+			paintAllowed = !Util.IsPointerOverUI();
+			lastPaintedTile = null;
+		}
+
+		if (Input.GetMouseButton(0) && paintAllowed && !Util.IsPointerOverUI())
+		{
+			Paint();
+		}
+
 		Vector3 move = Vector3.zero;
 
 		if (Input.GetKey(KeyCode.W))
@@ -80,6 +99,14 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 
 	public void ClickGenerate()
 	{
+		if (tiles.Count > 0 && Time.time - lastGenerateClick > doubleClickTime)
+		{
+			lastGenerateClick = Time.time;
+			Debug.Log("Click Generate again to replace the current map");
+			return;
+		}
+
+		lastGenerateClick = -100;
 		Generate(System.Convert.ToInt32(XDimension.text), System.Convert.ToInt32(YDimension.text));
 	}
 
@@ -118,14 +145,26 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 		combatWorld.transform.localPosition = new Vector3(-2.5f, 0, -12.5f);
 	}
 
-	public void TileWasClicked(GameObject clickedGameObject)
+	void Paint()
 	{
-		if (Util.IsPointerOverUI())
+		if (currentSwatch == null)
 		{
 			return;
 		}
 
-		EmptyTile emptyTile = clickedGameObject.GetComponent<EmptyTile>();
+		RaycastHit hit;
+		if (!Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+		{
+			return;
+		}
+
+		EmptyTile emptyTile = hit.collider.GetComponentInParent<EmptyTile>();
+		if (emptyTile == null || emptyTile == lastPaintedTile)
+		{
+			return;
+		}
+
+		lastPaintedTile = emptyTile;
 		emptyTile.ChangeToTile(currentSwatch);
 	}
 

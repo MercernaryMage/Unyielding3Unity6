@@ -184,7 +184,7 @@ public class MapBuilder : MonoBehaviour
 		}
 		else
 		{
-			map = MapParser.ParseMap("SmallMap.txt");
+			map = MapParser.ParseMap("Playground.txt");
 		}
 		float tileScale = 1.5f;
 		List<Tile> tiles = new List<Tile>();
@@ -197,9 +197,9 @@ public class MapBuilder : MonoBehaviour
 				obj.transform.SetParent(root.transform);
 				obj.transform.localPosition = new Vector3(x * (tileScale + .75f), 0, y * (tileScale + .75f));
 
-				MapTile mapTile = map.mapTiles[x + y * map.height];
-				string prefabName = mapTile.mainDeco.decoPrefab;
-				GameObject tileObj = Instantiate(TileRepository.Instance.GetExactTile(prefabName).gameObject);
+				MapTile mapTile = map.mapTiles[x + y * map.width];
+				SwatchScriptableObject swatch = SwatchRepository.Instance.GetExactSwatch(mapTile.swatchName);
+				GameObject tileObj = Instantiate(swatch.prefab0);
 				Tile t = tileObj.GetComponent<Tile>();
 				t.name = $"{x}, {y} tile";
 
@@ -210,16 +210,8 @@ public class MapBuilder : MonoBehaviour
 				tileObj.transform.localScale = new Vector3(tileScale, .1f, tileScale);
 				tileObj.transform.localPosition = Vector3.zero;
 
-				if (mapTile.subDeco.decoPrefab != "")
-				{
-					Deco deco = mapTile.subDeco;
-
-					GameObject subDeco = Instantiate(PropRepository.Instance.GetProp(deco.decoPrefab));
-					subDeco.transform.SetParent(tileObj.transform);
-					subDeco.transform.localPosition = Vector3.zero;
-					subDeco.transform.eulerAngles = deco.rotation;
-					t.decos.Add(subDeco);
-				}
+				AddDeco(swatch.prefab1, tileObj, t);
+				AddDeco(swatch.prefab2, tileObj, t);
 
 				GameObject overlay = Instantiate(overlayPrefab);
 				overlay.transform.SetParent(obj.transform);
@@ -248,14 +240,28 @@ public class MapBuilder : MonoBehaviour
 		foreach (MapParser.Prop prop in map.props)
 		{
 			GameObject obj = Instantiate(PropRepository.Instance.GetProp(prop.propName));
+			obj.name = prop.propName;
 			obj.transform.SetParent(props);
 			obj.transform.localPosition = prop.position;
-			obj.transform.eulerAngles = prop.rotation;
+			obj.transform.localEulerAngles = prop.rotation;
 			obj.transform.localScale = prop.scale;
 		}
 
 		TileGrid.Instance.Init(map.width, map.height, tiles);
 		PlaceCharacters();
+	}
+
+	void AddDeco(GameObject prefab, GameObject tileObj, Tile t)
+	{
+		if (prefab == null)
+		{
+			return;
+		}
+
+		GameObject deco = Instantiate(prefab);
+		deco.transform.SetParent(tileObj.transform);
+		deco.transform.localPosition = Vector3.zero;
+		t.decos.Add(deco);
 	}
 
 	LevelConfiguration GetLevelConfiguration(int i)

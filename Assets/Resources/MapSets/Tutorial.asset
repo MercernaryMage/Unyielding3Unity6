@@ -15,9 +15,9 @@ MonoBehaviour:
   setName: Tutorial
   setDescription: 
   maps:
-  - TestMap.txt
-  - TestMap2.txt
-  - TestMap3.txt
+  - Tutorial1.txt
+  - Tutorial2.txt
+  - Tutorial3.txt
   configurations:
   - Tutorial/Tutorial1
   - Tutorial/Tutorial2

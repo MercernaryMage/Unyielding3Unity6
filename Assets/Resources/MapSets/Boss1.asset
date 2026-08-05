@@ -15,7 +15,7 @@ MonoBehaviour:
   setName: The Boss
   setDescription: 
   maps:
-  - TestMap.txt
+  - Dragon1.txt
   configurations:
   - Dragon/Dragon Boss
   rewardText: ????

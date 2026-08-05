@@ -15,9 +15,9 @@ MonoBehaviour:
   setName: Forest Fracas
   setDescription: Battle forest monsters
   maps:
-  - NewMap.txt
-  - TestMap.txt
-  - TestMap.txt
+  - Forest1.txt
+  - Forest2.txt
+  - Forest1.txt
   configurations:
   - Forest/Forest1
   - Tutorial/Tutorial1

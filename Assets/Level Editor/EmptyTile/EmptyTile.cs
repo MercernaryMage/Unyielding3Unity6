@@ -8,11 +8,6 @@ public class EmptyTile : MonoBehaviour
 	public int x;
 	public int y;
 
-	public void OnMouseDown()
-	{
-		LevelEditorManager.Instance.TileWasClicked(gameObject);
-	}
-
 	public void ChangeToTile(SwatchScriptableObject newSwatch)
 	{
 		foreach (GameObject obj in currentTileObjects)

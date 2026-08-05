@@ -24,7 +24,7 @@
   "enemies": [
     {
       "location": {
-        "x": 6,
+        "x": 4,
         "y": 4,
         "direction": 3
       },

@@ -175,8 +175,8 @@ public class Tile : MonoBehaviour
 			RaycastHit[] hits = Physics.RaycastAll(pos, Camera.main.transform.position - pos);
 			foreach (RaycastHit hit in hits)
 			{
-				PropDucker ducker = hit.collider.gameObject.GetComponent<PropDucker>();
-				if (ducker != null)
+				PropDucker[] duckers = hit.collider.gameObject.GetComponents<PropDucker>();
+				foreach (PropDucker ducker in duckers)
 				{
 					ducker.Duck();
 				}

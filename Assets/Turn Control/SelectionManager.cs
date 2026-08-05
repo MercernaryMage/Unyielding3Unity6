@@ -207,12 +207,15 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 
 		if (Input.GetMouseButtonUp(0))
 		{
-
-			if ((clickVec - Input.mousePosition).magnitude > 3)
+			if ((clickVec - Input.mousePosition).magnitude > 5)
 			{
 				return;
 			}
-
+			Tile t = GetMousedOverTile();
+			if (t == null)
+			{
+				return;
+			}
 
 			List<RaycastResult> results = GetUIRaycast();
 
@@ -240,15 +243,11 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 
 			if (!found)
 			{
-				Tile t = GetMousedOverTile();
-				if (t != null)
+				if (t.character == null)
 				{
-					if (t.character == null)
-					{
-						UIController.Instance.NothingClicked();
-					}
-					found = true;
+					UIController.Instance.NothingClicked();
 				}
+				found = true;
 			}
 			if (!found)
 			{

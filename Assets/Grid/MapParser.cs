@@ -15,20 +15,12 @@ public class MapParser
 	}
 
 	[System.Serializable]
-	public class Deco
-	{
-		public string decoPrefab;
-		public Vector3 rotation;
-	}
-
-	[System.Serializable]
 	public class MapTile
 	{
 		public int x;
 		public int y;
+		public string swatchName;
 		public string tileStateScriptableObjectName;
-		public Deco mainDeco;
-		public Deco subDeco;
 	}
 
 	[System.Serializable]
