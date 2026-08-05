@@ -33,7 +33,6 @@ public class MapBuilder : MonoBehaviour
 			{
 				FlowControl.currentLevel = startLevel;
 			}
-
 		}
 	}
 

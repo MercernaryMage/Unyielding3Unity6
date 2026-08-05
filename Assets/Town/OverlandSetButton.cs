@@ -41,6 +41,11 @@ public class OverlandSetButton : MonoBehaviour
 		}
 		//SET THE MAP TO BE LOADED
 		FlowControl.currentLevel = 0;
+		DebugSetLevel debugSetLevel = FindFirstObjectByType<DebugSetLevel>();
+		if (debugSetLevel.enabled)
+		{
+			FlowControl.currentLevel = debugSetLevel.level;
+		}
 		FlowControl.mapSetName = mapSetScriptableObject.name;
 		//SET THE CONFIGURATION TO BE LOADED
 		SceneManager.LoadScene("Combat");
