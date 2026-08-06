@@ -20,7 +20,7 @@ MonoBehaviour:
   - Forest1.txt
   configurations:
   - Forest/Forest1
-  - Tutorial/Tutorial1
+  - Forest/Forest2
   - Tutorial/Tutorial1
   rewardText: Unlock weapons and weapon equipping
   lockedText: 

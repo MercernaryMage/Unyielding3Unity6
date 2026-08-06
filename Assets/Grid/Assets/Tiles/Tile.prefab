@@ -113,7 +113,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6719340090081913923
 Rigidbody:
@@ -164,7 +164,6 @@ MonoBehaviour:
   decos: []
   foundation: {fileID: 0}
   outline: {fileID: 0}
-  tileWarning: {fileID: 0}
 --- !u!1 &3780372597423590173
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +216,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.95, y: 0.95, z: 0.95}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &4804128044457410517
 Rigidbody:

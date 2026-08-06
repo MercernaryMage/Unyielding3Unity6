@@ -6,22 +6,9 @@ using UnityEngine.TextCore.Text;
 
 public class MovementController : SceneSingleton<MovementController>
 {
-	public GameObject warningPrefab;
-	
 	Tile currentMousedOverTile = null;
 	public List<Tile> currentPossibleTiles = new List<Tile>();
 	public bool running = false;
-
-	Tile provokeWarningTile;
-	GameObject provokeWarning;
-
-	Tile mousedOverWarningTile;
-	GameObject mousedOverWarning;
-
-	Tile characterWarningTile;
-	GameObject characterWarning;
-
-	public float referenceOrthographicSize = 10f;
 
 	public Character movingCharacter;
 
@@ -39,47 +26,8 @@ public class MovementController : SceneSingleton<MovementController>
 		running = false;
 		movingCharacter = null;
 
-		DestroyWarning(ref mousedOverWarning, ref mousedOverWarningTile);
-		DestroyWarning(ref provokeWarning, ref provokeWarningTile);
-	}
-
-	GameObject CreateTileWarning(Tile tile, string text)
-	{
-		GameObject warning = Instantiate(warningPrefab, UIController.Instance.worldUI);
-		warning.GetComponent<TileWarning>().SetText(text);
-		warning.SetActive(true);
-		PositionTileWarning(warning, tile);
-		return warning;
-	}
-
-	void PositionTileWarning(GameObject warning, Tile tile)
-	{
-		Camera camera = Camera.main;
-		warning.transform.position = camera.WorldToScreenPoint(tile.transform.position) - new Vector3(0, 25, 0);
-		float scale = referenceOrthographicSize / camera.orthographicSize;
-		warning.transform.localScale = new Vector3(scale, scale, 1f);
-	}
-
-	void DestroyWarning(ref GameObject warning, ref Tile tile)
-	{
-		if (warning != null)
-		{
-			Destroy(warning);
-			warning = null;
-		}
-		tile = null;
-	}
-
-	public void ShowCharacterWarning(Character c, string text)
-	{
-		HideCharacterWarning();
-		characterWarningTile = TileGrid.Instance.FindCharacter(c)[0];
-		characterWarning = CreateTileWarning(characterWarningTile, text);
-	}
-
-	public void HideCharacterWarning()
-	{
-		DestroyWarning(ref characterWarning, ref characterWarningTile);
+		BattleController.Instance.HideMousedOverWarning();
+		BattleController.Instance.HideProvokeWarning();
 	}
 
 	public Action onMoveComplete;
@@ -116,8 +64,7 @@ public class MovementController : SceneSingleton<MovementController>
 
 		if (provokeMessage.provoked)
 		{
-			provokeWarningTile = TileGrid.Instance.FindCharacter(character)[0];
-			provokeWarning = CreateTileWarning(provokeWarningTile, "x");
+			BattleController.Instance.ShowProvokeWarning(TileGrid.Instance.FindCharacter(character)[0]);
 		}
 	}
 
@@ -153,7 +100,7 @@ public class MovementController : SceneSingleton<MovementController>
 		{
 			currentMousedOverTile.HideOverlay(Tile.OverlayType.Selected);
 			currentMousedOverTile.ShowOverlay(Tile.OverlayType.PossibleMovement);
-			DestroyWarning(ref mousedOverWarning, ref mousedOverWarningTile);
+			BattleController.Instance.HideMousedOverWarning();
 			currentMousedOverTile = null;
 		}
 		if (!currentPossibleTiles.Contains(t))
@@ -176,8 +123,7 @@ public class MovementController : SceneSingleton<MovementController>
 
 		if (previewMessage.damage > 0)
 		{
-			mousedOverWarningTile = t;
-			mousedOverWarning = CreateTileWarning(t, previewMessage.damage.ToString());
+			BattleController.Instance.ShowMousedOverWarning(t, previewMessage.damage.ToString());
 		}
 	}
 
@@ -189,7 +135,7 @@ public class MovementController : SceneSingleton<MovementController>
 			{
 				currentMousedOverTile.HideOverlay(Tile.OverlayType.Selected);
 				currentMousedOverTile.ShowOverlay(Tile.OverlayType.PossibleMovement);
-				DestroyWarning(ref mousedOverWarning, ref mousedOverWarningTile);
+				BattleController.Instance.HideMousedOverWarning();
 				currentMousedOverTile = null;
 			}
 		}
@@ -370,19 +316,4 @@ public class MovementController : SceneSingleton<MovementController>
 		return null;
 	}
 
-	private void Update()
-	{
-		if (mousedOverWarning != null && mousedOverWarningTile != null)
-		{
-			PositionTileWarning(mousedOverWarning, mousedOverWarningTile);
-		}
-		if (provokeWarning != null && provokeWarningTile != null)
-		{
-			PositionTileWarning(provokeWarning, provokeWarningTile);
-		}
-		if (characterWarning != null && characterWarningTile != null)
-		{
-			PositionTileWarning(characterWarning, characterWarningTile);
-		}
-	}
 }

@@ -9,8 +9,5 @@ public class Scratch : MonoBehaviour
 }
 
 /*
-
-1) correctness
-2) readability
  
  */

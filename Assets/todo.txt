@@ -32,6 +32,9 @@ Don't spawn a player if they don't have determination
         deer x 2
         chainmaster
 
+    Sancturary is very poorly messaged
+        1) warning system!
+    Tile Warning
 
     put an eye icon over the archer when you locked on
 

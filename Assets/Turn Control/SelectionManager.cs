@@ -24,20 +24,6 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 
 	Tile lastMousedOverTile;
 
-	public void TileClicked(Tile t)
-	{
-		List<RaycastResult> results = GetUIRaycast();
-		if (results.Count > 0)
-		{
-			return;
-		}
-
-		if (t.character != null)
-		{
-			UIController.Instance.ShowCharacter(t.character);
-		}
-	}
-
 	List<RaycastResult> GetUIRaycast()
 	{
 		PointerEventData pointerData = new PointerEventData(EventSystem.current);
@@ -211,48 +197,38 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 			{
 				return;
 			}
+			if (GetUIRaycast().Count > 0)
+			{
+				return;
+			}
+
 			Tile t = GetMousedOverTile();
-			if (t == null)
-			{
-				return;
-			}
 
-			List<RaycastResult> results = GetUIRaycast();
-
-			if (results.Count > 0)
+			if (t != null)
 			{
-				return;
-			}
-
-			if (MovementController.Instance.running)
-			{
-				if (MovementController.Instance.HandleClick())
+				if (MovementController.Instance.running)
 				{
+					if (MovementController.Instance.HandleClick())
+					{
+						return;
+					}
+				}
+				else if (ActionController.Instance.running)
+				{
+					if (ActionController.Instance.HandleClick())
+					{
+						return;
+					}
+				}
+
+				if (t.character != null)
+				{
+					UIController.Instance.ShowCharacter(t.character);
 					return;
 				}
 			}
-			else if (ActionController.Instance.running)
-			{
-				if (ActionController.Instance.HandleClick())
-				{
-					return;
-				}
-			}
 
-			bool found = results.Count > 0;
-
-			if (!found)
-			{
-				if (t.character == null)
-				{
-					UIController.Instance.NothingClicked();
-				}
-				found = true;
-			}
-			if (!found)
-			{
-				UIController.Instance.NothingClicked();
-			}
+			UIController.Instance.NothingClicked();
 		}
 		else if (Input.GetMouseButtonUp(1))
 		{

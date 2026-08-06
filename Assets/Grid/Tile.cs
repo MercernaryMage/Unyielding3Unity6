@@ -140,11 +140,6 @@ public class Tile : MonoBehaviour
 		BattleController.Instance.RequestRunDuckers();
 	}
 
-	public void OnMouseDown()
-	{
-		SelectionManager.Instance.TileClicked(this);
-	}
-
 	public void MouseEnterTile()
 	{
 		SelectionManager.Instance.MouseEnterTile(this);

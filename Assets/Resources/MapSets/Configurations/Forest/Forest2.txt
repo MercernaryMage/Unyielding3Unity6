@@ -25,7 +25,15 @@
     {
       "location": {
         "x": 5,
-        "y": 3,
+        "y": 2,
+        "direction": 3
+      },
+      "name": "Bandit"
+    },
+    {
+      "location": {
+        "x": 4,
+        "y": 7,
         "direction": 3
       },
       "name": "Bandit"
@@ -33,7 +41,7 @@
     {
       "location": {
         "x": 5,
-        "y": 6,
+        "y": 5,
         "direction": 3
       },
       "name": "Bandit"
@@ -44,7 +52,7 @@
         "y": 4,
         "direction": 3
       },
-      "name": "Guard"
+      "name": "Knight"
     }
   ],
   "mapMessageTitle": "",

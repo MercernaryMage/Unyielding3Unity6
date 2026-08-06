@@ -13,7 +13,7 @@ public class Targeted : StatusEffect
 		}
 		if (message.character == character)
 		{
-			MovementController.Instance.ShowCharacterWarning(character, "!!!!!");
+			BattleController.Instance.ShowCharacterWarning(character, "!!!!!");
 			return;
 		}
 		if (message.character != causingCharacter)
@@ -42,15 +42,15 @@ public class Targeted : StatusEffect
     {
         if (message.character == character)
         {
-            MovementController.Instance.HideCharacterWarning();
+            BattleController.Instance.HideCharacterWarning();
         }
     }
 
     public override void EffectBeingRemoved()
     {
-        if (MovementController.Instance != null)
+        if (BattleController.Instance != null)
         {
-            MovementController.Instance.HideCharacterWarning();
+            BattleController.Instance.HideCharacterWarning();
         }
     }
 
