@@ -269,24 +269,28 @@ public class MovementController : SceneSingleton<MovementController>
 		public bool allowedToPathThroughAllies;
 	}
 
-
-	public List<Tile> FindRoute(Character c, Tile destination, int offsetIndex, PathfindingRules rules)
+	public List<Tile> FindRoute(Character c, Tile destination, int offsetIndex, PathfindingRules rules, int movement = -1)
 	{
 		List<Tile> startingTiles = TileGrid.Instance.FindCharacter(c);
 		Tile startingTile = startingTiles[0];
-		List<Tuple<List<Tile>,int>> openList = new List<Tuple<List<Tile>, int>>();
+		List<Tuple<List<Tile>, int, bool>> openList = new List<Tuple<List<Tile>, int, bool>>();
 		List<Tile> closestList = new List<Tile>();
 
 
-		Tuple<List<Tile>, int> firstNode = new Tuple<List<Tile>, int>(new List<Tile>() {startingTile },0);
+		Tuple<List<Tile>, int, bool> firstNode = new Tuple<List<Tile>, int, bool>(new List<Tile>() { startingTile }, 0, false);
 
 		openList.Add(firstNode);
-		while(openList.Count > 0)
+		while (openList.Count > 0)
 		{
 			List<Tile> currentTileRoute = openList[0].Item1;
+			bool currentCanStop = openList[0].Item3;
 			openList.RemoveAt(0);
 			if (currentTileRoute[0] == destination)
 			{
+				if (movement != -1 && currentTileRoute.Count > 1 && !currentCanStop)
+				{
+					continue;
+				}
 				currentTileRoute.Reverse();
 				return currentTileRoute;
 			}
@@ -304,6 +308,7 @@ public class MovementController : SceneSingleton<MovementController>
 				}
 				List<Tile> fitTilesAtLocation = TileGrid.Instance.WhatTilesWouldCharacterTake(c, trueTile);
 				bool fail = false;
+				bool occupied = false;
 				if (fitTilesAtLocation == null)
 				{
 					continue;
@@ -312,12 +317,16 @@ public class MovementController : SceneSingleton<MovementController>
 				{
 					if (fitTileAtLocation == null ||
 						!fitTileAtLocation.tileScriptableObject.enterable ||
-						(fitTileAtLocation.character && 
+						(fitTileAtLocation.character &&
 						fitTileAtLocation.character.hero != c.hero) ||
 						(fitTileAtLocation.character && !rules.allowedToPathThroughAllies))
 					{
 						fail = true;
 						break;
+					}
+					if (fitTileAtLocation.character)
+					{
+						occupied = true;
 					}
 				}
 				if (fail)
@@ -329,14 +338,19 @@ public class MovementController : SceneSingleton<MovementController>
 
 				List<Tile> route = new List<Tile>(currentTileRoute);
 				route.Insert(0, adjacentTile);
+				int steps = route.Count - 1;
+				bool canStop = currentCanStop || (steps <= movement && !occupied);
+				if (movement != -1 && !canStop && steps >= movement)
+				{
+					continue;
+				}
 				int distance = TileGrid.Distance(adjacentTile, destination);
-				
-				openList.Add(new Tuple<List<Tile>, int>(route, distance));
+
+				openList.Add(new Tuple<List<Tile>, int, bool>(route, distance, canStop));
 			}
 			openList = openList.OrderBy(o => o.Item2).ToList();
 		}
 
 		return null;
 	}
-
 }

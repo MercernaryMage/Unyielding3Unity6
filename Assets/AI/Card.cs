@@ -131,7 +131,7 @@ public class Card : IMessageReceiver
 
 					if (!routes.ContainsKey(target))
 					{
-						Tuple<List<Tile>, Tile> data = new Tuple<List<Tile>, Tile>(MovementController.Instance.FindRoute(owningCharacter, trueTile, 0, rules), trueTile);
+						Tuple<List<Tile>, Tile> data = new Tuple<List<Tile>, Tile>(MovementController.Instance.FindRoute(owningCharacter, trueTile, 0, rules, owningCharacter.currentMovement), trueTile);
 						if (data.Item1 != null)
 						{
 							routes[target] = data;

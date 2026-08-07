@@ -112,6 +112,25 @@ public static class Util
 		}
 	}
 
+	public static int FindStoppableIndex(List<Tile> route, Character character, int range)
+	{
+		int index = Math.Min(route.Count, range) - 1;
+		while (index > 0 && !TileGrid.Instance.WouldCharacterFitAtTile(character, route[index]))
+		{
+			--index;
+		}
+		return index;
+	}
+
+	public static bool CanUseRoute(List<Tile> route, Character character, int range)
+	{
+		if (route.Count == 1)
+		{
+			return true;
+		}
+		return FindStoppableIndex(route, character, range) > 0;
+	}
+
 	public static void RemoveOutOfRangeRoutes(Dictionary<Character, Tuple<List<Tile>, Tile>> data, int range)
 	{
 		List<Character> characterRoutesToRemove = new List<Character>();
