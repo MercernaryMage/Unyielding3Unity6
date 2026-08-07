@@ -27,8 +27,6 @@ Don't spawn a player if they don't have determination
         Doom statue
             Garbage accuracy that ramps up
 
-    Pointsettia is missing ducker
-
     Chop error: Chop was played, the AI passed, and did nothing:
         very likely the route it created was invalid all the way through
     backstab should not trigger from reliable damage

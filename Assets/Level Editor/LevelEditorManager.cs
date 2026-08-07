@@ -165,7 +165,7 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 		}
 
 		lastPaintedTile = emptyTile;
-		emptyTile.ChangeToTile(currentSwatch);
+		emptyTile.ChangeToTile(currentSwatch, true);
 	}
 
 	public void SwatchesClicked()

@@ -229,6 +229,13 @@ public class MapBuilder : MonoBehaviour
 				outline.transform.localScale = new Vector3(1.5f, 15, 1.5f);
 				t.outline = outline;
 
+				System.Random rand = new System.Random(mapTile.seed);
+				AutoDecorator[] autoDecs =  obj.GetComponentsInChildren<AutoDecorator>();
+				foreach (AutoDecorator autoDec in autoDecs)
+				{
+					autoDec.Set(rand);
+				}
+
 				t.Init(x, y, tileObj, overlay);
 				tiles.Add(t);
 			}

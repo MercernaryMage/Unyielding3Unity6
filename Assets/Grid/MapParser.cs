@@ -21,6 +21,7 @@ public class MapParser
 		public int y;
 		public string swatchName;
 		public string tileStateScriptableObjectName;
+		public int seed;
 	}
 
 	[System.Serializable]

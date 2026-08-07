@@ -14,15 +14,15 @@ public class AutoDecorator : MonoBehaviour
 	Tile ourTile;
 	public List<PrefabWeights> prefabWeights;
 
-	GameObject GetPrefab()
+	GameObject GetPrefab(System.Random rand)
 	{
 		int total = 0;
 		for (int i = 0; i < prefabWeights.Count; ++i)
 		{
 			total += prefabWeights[i].weight;
 		}
-
-		int index = Random.Range(0, total);
+		
+		int index = rand.Next(0, total);
 		int currentTotal = 0;
 		for (int i = 0; i < prefabWeights.Count; ++i)
 		{
@@ -41,9 +41,9 @@ public class AutoDecorator : MonoBehaviour
 		ourTile = GetComponent<Tile>();
 	}
 
-	void Start()
+	public void Set(System.Random rand)
 	{
-		GameObject prefab = GetPrefab();
+		GameObject prefab = GetPrefab(rand);
 
 		if (prefab == null)
 		{
@@ -67,7 +67,7 @@ public class AutoDecorator : MonoBehaviour
 #endif
 		obj.transform.localScale = new Vector3(x, y, z);
 		obj.transform.localPosition = new Vector3(0, .2f, 0);
-		int index = Random.Range(0, 4);
+		int index = rand.Next(0, 4);
 		if (index == 0)
 		{
 			obj.transform.eulerAngles = new Vector3(0, 0, 0);
@@ -76,7 +76,7 @@ public class AutoDecorator : MonoBehaviour
 		{
 			obj.transform.eulerAngles = new Vector3(0, 90, 0);
 		}
-		else if (index == 0)
+		else if (index == 2)
 		{
 			obj.transform.eulerAngles = new Vector3(0, 180, 0);
 		}

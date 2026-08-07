@@ -25,6 +25,7 @@ public class LevelEditorSaveManager : MonoBehaviour
 		public string swatchName;
 		public string tileStateScriptableObjectName;
 		public SavedFallThroughObjectData fallThroughObjectData;
+		public int seed;
 	}
 
 	[System.Serializable]
@@ -112,6 +113,7 @@ public class LevelEditorSaveManager : MonoBehaviour
 		mapTile.y = emptyTile.y;
 		mapTile.swatchName = emptyTile.swatch.name;
 		mapTile.tileStateScriptableObjectName = emptyTile.swatch.tileStateScriptableObjectName;
+		mapTile.seed = emptyTile.seed;
 		mapTile.fallThroughObjectData = new SavedFallThroughObjectData();
 		mapTile.fallThroughObjectData.enterable = true;
 		mapTile.fallThroughObjectData.blocksLOS = false;
@@ -164,7 +166,9 @@ public class LevelEditorSaveManager : MonoBehaviour
 
 			SwatchScriptableObject swatch = FindSwatch(mapTile.swatchName);
 
-			LevelEditorManager.Instance.tiles[index].GetComponent<EmptyTile>().ChangeToTile(swatch);
+			EmptyTile emptyTile = LevelEditorManager.Instance.tiles[index].GetComponent<EmptyTile>();
+			emptyTile.seed = mapTile.seed;
+			emptyTile.ChangeToTile(swatch, false);
 		}
 
 		LoadProps(map);

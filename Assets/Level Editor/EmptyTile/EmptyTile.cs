@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static MapParser;
 
 public class EmptyTile : MonoBehaviour
 {
@@ -7,11 +8,13 @@ public class EmptyTile : MonoBehaviour
 	public SwatchScriptableObject swatch;
 	public int x;
 	public int y;
+	public int seed;
 
-	public void ChangeToTile(SwatchScriptableObject newSwatch)
+	public void ChangeToTile(SwatchScriptableObject newSwatch, bool newTile)
 	{
 		foreach (GameObject obj in currentTileObjects)
 		{
+			obj.transform.SetParent(null);
 			Destroy(obj);
 		}
 		currentTileObjects.Clear();
@@ -19,6 +22,18 @@ public class EmptyTile : MonoBehaviour
 		AddObject(swatch.prefab0);
 		AddObject(swatch.prefab1);
 		AddObject(swatch.prefab2);
+
+		if (newTile)
+		{
+			seed = Random.Range(0, int.MaxValue);
+		}
+
+		System.Random rand = new System.Random(seed);
+		AutoDecorator[] autoDecs = transform.GetComponentsInChildren<AutoDecorator>();
+		foreach (AutoDecorator autoDec in autoDecs)
+		{
+			autoDec.Set(rand);
+		}
 	}
 
 	void AddObject(GameObject obj)
