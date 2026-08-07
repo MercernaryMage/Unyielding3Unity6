@@ -43,5 +43,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 012f80ac0ab16ce4c8377da3ebadb237, type: 2}
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}
-  traits: []
+  traits:
+  - {fileID: 11400000, guid: 16281f8bc2103764aa95faf14a094b69, type: 2}
   subclasses: []

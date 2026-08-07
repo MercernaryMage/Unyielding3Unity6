@@ -6747,8 +6747,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
-  - enemy
   - Lenette
+  - enemy
   - David
   - Cotton
   - Dane
@@ -6779,8 +6779,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd976f5053a4b9428958f7c44f9a7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugStatusEffect
-  statusEffectName: Downed
-  characterName: David
+  statusEffectName: Lethargy
+  characterName: Lenette
 --- !u!114 &898251915
 MonoBehaviour:
   m_ObjectHideFlags: 0

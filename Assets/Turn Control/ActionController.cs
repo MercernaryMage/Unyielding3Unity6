@@ -27,6 +27,7 @@ public class ActionController : SceneSingleton<ActionController>
 	ActionPattern.AoEType aoeType;
 	int aoeValue;
 
+	List<CharacterWarning> currentAttackWarnings = new List<CharacterWarning>();
 	List<Tile> markedTiles = new List<Tile>(); //THINGS THAT MIGHT BE TARGETED
 	List<Tile> markedTilesForGameplay; //These are the tiles that were marked before the last update
 	List<Tile> targetedTiles = new List<Tile>(); //THE ACTUAL AOE LIST
@@ -81,7 +82,55 @@ public class ActionController : SceneSingleton<ActionController>
 		targetedTiles.Clear();
 		SetRunning(false);
 
+		BattleController.Instance.HideWarnings();
+		currentAttackWarnings.Clear();
+
 		attackingCharacter = null;
+	}
+
+	void RefreshAttackWarnings()
+	{
+		PreviewAttackWarningMessage message = new PreviewAttackWarningMessage();
+		message.attackingCharacter = attackingCharacter;
+
+		foreach (Tile markedTile in markedTiles)
+		{
+			if (markedTile.character != null && !message.possibleTargets.Contains(markedTile.character))
+			{
+				message.possibleTargets.Add(markedTile.character);
+			}
+		}
+
+		MessagePump.Instance.SendMessage(message);
+
+		if (WarningsMatch(message.warnings))
+		{
+			return;
+		}
+
+		currentAttackWarnings = message.warnings;
+		BattleController.Instance.HideWarnings();
+		foreach (CharacterWarning characterWarning in currentAttackWarnings)
+		{
+			BattleController.Instance.ShowCharacterWarning(characterWarning.character, characterWarning.warning);
+		}
+	}
+
+	bool WarningsMatch(List<CharacterWarning> warnings)
+	{
+		if (warnings.Count != currentAttackWarnings.Count)
+		{
+			return false;
+		}
+		for (int i = 0; i < warnings.Count; ++i)
+		{
+			if (warnings[i].character != currentAttackWarnings[i].character ||
+				warnings[i].warning != currentAttackWarnings[i].warning)
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 
 	void SetRunning(bool newRunning)
@@ -1113,6 +1162,8 @@ public class ActionController : SceneSingleton<ActionController>
 				reachableTile.ShowOverlay(Tile.OverlayType.PossibleAttck);
 			}
 		}
+
+		RefreshAttackWarnings();
 	}
 
 	void ShowAoETargeting()

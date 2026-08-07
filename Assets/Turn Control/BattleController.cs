@@ -19,14 +19,13 @@ public class BattleController : SceneSingleton<BattleController>
 	List<PropDucker> duckers = new List<PropDucker>();
 	bool duckersRequested;
 
-	Tile provokeWarningTile;
-	GameObject provokeWarning;
+	class ActiveWarning
+	{
+		public Tile tile;
+		public GameObject warning;
+	}
 
-	Tile mousedOverWarningTile;
-	GameObject mousedOverWarning;
-
-	Tile characterWarningTile;
-	GameObject characterWarning;
+	List<ActiveWarning> activeWarnings = new List<ActiveWarning>();
 
 	public void Start()
 	{
@@ -39,15 +38,6 @@ public class BattleController : SceneSingleton<BattleController>
 		TurnControl.Instance.Pump();
 	}
 
-	public GameObject CreateTileWarning(Tile tile, string text)
-	{
-		GameObject warning = Instantiate(warningPrefab, UIController.Instance.worldUI);
-		warning.GetComponent<TileWarning>().SetText(text);
-		warning.SetActive(true);
-		PositionTileWarning(warning, tile);
-		return warning;
-	}
-
 	void PositionTileWarning(GameObject warning, Tile tile)
 	{
 		Camera camera = Camera.main;
@@ -56,63 +46,39 @@ public class BattleController : SceneSingleton<BattleController>
 		warning.transform.localScale = new Vector3(scale, scale, 1f);
 	}
 
-	void DestroyWarning(ref GameObject warning, ref Tile tile)
+	public void ShowWarning(Tile tile, string text)
 	{
-		if (warning != null)
-		{
-			Destroy(warning);
-			warning = null;
-		}
-		tile = null;
+		ActiveWarning activeWarning = new ActiveWarning();
+		activeWarning.tile = tile;
+		activeWarning.warning = Instantiate(warningPrefab, UIController.Instance.worldUI);
+		activeWarning.warning.GetComponent<TileWarning>().SetText(text);
+		activeWarning.warning.SetActive(true);
+		PositionTileWarning(activeWarning.warning, tile);
+		activeWarnings.Add(activeWarning);
 	}
 
 	public void ShowCharacterWarning(Character c, string text)
 	{
-		HideCharacterWarning();
-		characterWarningTile = TileGrid.Instance.FindCharacter(c)[0];
-		characterWarning = CreateTileWarning(characterWarningTile, text);
+		ShowWarning(TileGrid.Instance.FindCharacter(c)[0], text);
 	}
 
-	public void HideCharacterWarning()
+	public void HideWarnings()
 	{
-		DestroyWarning(ref characterWarning, ref characterWarningTile);
-	}
-
-	public void ShowProvokeWarning(Tile tile)
-	{
-		provokeWarningTile = tile;
-		provokeWarning = CreateTileWarning(tile, "x");
-	}
-
-	public void HideProvokeWarning()
-	{
-		DestroyWarning(ref provokeWarning, ref provokeWarningTile);
-	}
-
-	public void ShowMousedOverWarning(Tile tile, string text)
-	{
-		mousedOverWarningTile = tile;
-		mousedOverWarning = CreateTileWarning(tile, text);
-	}
-
-	public void HideMousedOverWarning()
-	{
-		DestroyWarning(ref mousedOverWarning, ref mousedOverWarningTile);
+		foreach (ActiveWarning activeWarning in activeWarnings)
+		{
+			Destroy(activeWarning.warning);
+		}
+		activeWarnings.Clear();
 	}
 
 	void PositionWarnings()
 	{
-		if (mousedOverWarning != null && mousedOverWarningTile != null)
+		foreach (ActiveWarning activeWarning in activeWarnings)
 		{
-			PositionTileWarning(mousedOverWarning, mousedOverWarningTile);
-		}
-		if (provokeWarning != null && provokeWarningTile != null)
-		{
-			PositionTileWarning(provokeWarning, provokeWarningTile);
-		}
-		if (characterWarning != null && characterWarningTile != null)
-		{
-			PositionTileWarning(characterWarning, characterWarningTile);
+			if (activeWarning.warning != null && activeWarning.tile != null)
+			{
+				PositionTileWarning(activeWarning.warning, activeWarning.tile);
+			}
 		}
 	}
 

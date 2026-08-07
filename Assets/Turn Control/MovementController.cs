@@ -14,6 +14,10 @@ public class MovementController : SceneSingleton<MovementController>
 
 	public Tile previousMousedTile;
 
+	bool provoked;
+	Tile damageWarningTile;
+	string damageWarningText;
+
 	public void HideMovement()
 	{
 		foreach (Tile tile in currentPossibleTiles)
@@ -26,8 +30,25 @@ public class MovementController : SceneSingleton<MovementController>
 		running = false;
 		movingCharacter = null;
 
-		BattleController.Instance.HideMousedOverWarning();
-		BattleController.Instance.HideProvokeWarning();
+		provoked = false;
+		damageWarningTile = null;
+
+		BattleController.Instance.HideWarnings();
+	}
+
+	void RefreshWarnings()
+	{
+		BattleController.Instance.HideWarnings();
+
+		if (provoked && movingCharacter != null)
+		{
+			BattleController.Instance.ShowWarning(TileGrid.Instance.FindCharacter(movingCharacter)[0], "x");
+		}
+
+		if (damageWarningTile != null)
+		{
+			BattleController.Instance.ShowWarning(damageWarningTile, damageWarningText);
+		}
 	}
 
 	public Action onMoveComplete;
@@ -62,10 +83,8 @@ public class MovementController : SceneSingleton<MovementController>
 		provokeMessage.movingCharacter = character;
 		MessagePump.Instance.SendMessage(provokeMessage);
 
-		if (provokeMessage.provoked)
-		{
-			BattleController.Instance.ShowProvokeWarning(TileGrid.Instance.FindCharacter(character)[0]);
-		}
+		provoked = provokeMessage.provoked;
+		RefreshWarnings();
 	}
 
 	public List<Tile> GetAllTilesInRange(Character c, int range)
@@ -100,7 +119,8 @@ public class MovementController : SceneSingleton<MovementController>
 		{
 			currentMousedOverTile.HideOverlay(Tile.OverlayType.Selected);
 			currentMousedOverTile.ShowOverlay(Tile.OverlayType.PossibleMovement);
-			BattleController.Instance.HideMousedOverWarning();
+			damageWarningTile = null;
+			RefreshWarnings();
 			currentMousedOverTile = null;
 		}
 		if (!currentPossibleTiles.Contains(t))
@@ -123,7 +143,9 @@ public class MovementController : SceneSingleton<MovementController>
 
 		if (previewMessage.damage > 0)
 		{
-			BattleController.Instance.ShowMousedOverWarning(t, previewMessage.damage.ToString());
+			damageWarningTile = t;
+			damageWarningText = previewMessage.damage.ToString();
+			RefreshWarnings();
 		}
 	}
 
@@ -135,7 +157,8 @@ public class MovementController : SceneSingleton<MovementController>
 			{
 				currentMousedOverTile.HideOverlay(Tile.OverlayType.Selected);
 				currentMousedOverTile.ShowOverlay(Tile.OverlayType.PossibleMovement);
-				BattleController.Instance.HideMousedOverWarning();
+				damageWarningTile = null;
+				RefreshWarnings();
 				currentMousedOverTile = null;
 			}
 		}

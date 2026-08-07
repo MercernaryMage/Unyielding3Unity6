@@ -11,4 +11,18 @@ public class ProtectAdjacentAllies : Trait
 			}
 		}
 	}
+
+	public override void OnPreviewAttackWarning(PreviewAttackWarningMessage message)
+	{
+		foreach (Character possibleTarget in message.possibleTargets)
+		{
+			if (possibleTarget != character && possibleTarget.hero == character.hero)
+			{
+				if (TileGrid.AreCharactersAdjacent(possibleTarget, character))
+				{
+					message.AddWarning(possibleTarget, "D");
+				}
+			}
+		}
+	}
 }

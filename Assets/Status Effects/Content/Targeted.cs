@@ -42,7 +42,7 @@ public class Targeted : StatusEffect
     {
         if (message.character == character)
         {
-            BattleController.Instance.HideCharacterWarning();
+            BattleController.Instance.HideWarnings();
         }
     }
 
@@ -50,7 +50,7 @@ public class Targeted : StatusEffect
     {
         if (BattleController.Instance != null)
         {
-            BattleController.Instance.HideCharacterWarning();
+            BattleController.Instance.HideWarnings();
         }
     }
 

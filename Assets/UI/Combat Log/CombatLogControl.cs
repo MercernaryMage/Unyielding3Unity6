@@ -61,7 +61,7 @@ public class CombatLogControl : SceneSingleton<CombatLogControl>
 		popout.SetActive(true);
 		popoutText.text = text;
 		Canvas.ForceUpdateCanvases();
-		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)targetTransform.parent);
+		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)popout.transform.parent);
 	}
 
 	public void HidePopout()

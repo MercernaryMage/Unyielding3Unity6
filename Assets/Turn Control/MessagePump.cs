@@ -30,6 +30,7 @@ public enum MessageType
 	GetWarningForAction,
 	PreviewMovementDamage,
 	PreviewMovementProvoke,
+	PreviewAttackWarning,
 	CharacterDied,
 	CharacterHit
 }
@@ -293,6 +294,32 @@ public class PreviewMovementProvokeMessage : Message
 	public PreviewMovementProvokeMessage()
 	{
 		messageType = MessageType.PreviewMovementProvoke;
+	}
+}
+
+public class CharacterWarning
+{
+	public Character character;
+	public string warning;
+}
+
+public class PreviewAttackWarningMessage : Message
+{
+	public Character attackingCharacter;
+	public List<Character> possibleTargets = new List<Character>();
+	public List<CharacterWarning> warnings = new List<CharacterWarning>();
+
+	public PreviewAttackWarningMessage()
+	{
+		messageType = MessageType.PreviewAttackWarning;
+	}
+
+	public void AddWarning(Character character, string warning)
+	{
+		CharacterWarning characterWarning = new CharacterWarning();
+		characterWarning.character = character;
+		characterWarning.warning = warning;
+		warnings.Add(characterWarning);
 	}
 }
 
