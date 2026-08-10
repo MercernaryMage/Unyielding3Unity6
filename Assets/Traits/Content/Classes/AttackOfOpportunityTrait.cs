@@ -18,6 +18,10 @@ public class AttackOfOpportunityTrait : Trait
 		{
 			return false;
 		}
+		if (mover.IsDowned())
+		{
+			return false;
+		}
 		if (character.triggerCount <= 0)
 		{
 			return false;
@@ -41,13 +45,19 @@ public class AttackOfOpportunityTrait : Trait
 			{
 				continue;
 			}
+			if (item.itemDefinition.actions[0].keywords.ContainsIgnoreCase("Loading") && item.loaded == false)
+			{
+				return false;
+			}
 			for (int i = 0; i < item.itemDefinition.actions.Count; ++i)
 			{
-				if (distance <= item.itemDefinition.actions[i].threatRange)
+				
+				if (distance > item.itemDefinition.actions[i].threatRange)
 				{
-					return true;
+					return false;
 				}
 			}
+			return true;
 		}
 		return false;
 	}
@@ -59,6 +69,10 @@ public class AttackOfOpportunityTrait : Trait
 			return;
 		}
 		if (message.movingCharacter.GetComponent<Disengage>() != null)
+		{
+			return;
+		}
+		if (message.movingCharacter.IsDowned())
 		{
 			return;
 		}
@@ -89,10 +103,16 @@ public class AttackOfOpportunityTrait : Trait
                     {
 						continue;
                     }
-                    for (int i = 0; i < item.itemDefinition.actions.Count; ++i)
+					
+					for (int i = 0; i < item.itemDefinition.actions.Count; ++i)
 					{
 						if (distance <= item.itemDefinition.actions[i].threatRange)
 						{
+							if (item.itemDefinition.actions[i].keywords.ContainsIgnoreCase("Loading") && item.loaded == false)
+							{
+								continue;
+							}
+
 							AttackOfOpportunityTrigger attackOfOpportunityTrigger = new AttackOfOpportunityTrigger();
 							attackOfOpportunityTrigger.owningCharacter = character;
 							attackOfOpportunityTrigger.attacker = character;

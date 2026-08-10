@@ -183,7 +183,7 @@ public class MapBuilder : MonoBehaviour
 		}
 		else
 		{
-			map = MapParser.ParseMap("TestMap.txt");
+			map = MapParser.ParseMap("Playground.txt");
 		}
 		float tileScale = 1.5f;
 		List<Tile> tiles = new List<Tile>();
@@ -277,14 +277,15 @@ public class MapBuilder : MonoBehaviour
 
 		if (i == -1)
 		{
-			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 3, 3));
+			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 1, 7));
 			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 2, 5));
 			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 1, 5));
-			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 1, 7));
+			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 4, 3));
 
-			levelConfiguration.enemies.Add(new EnemyConfiguration("Bandit", Direction.West, 5, 2));
-			levelConfiguration.enemies.Add(new EnemyConfiguration("Bandit", Direction.West, 3, 4));
-			levelConfiguration.enemies.Add(new EnemyConfiguration("Knight", Direction.West, 4, 3));
+			levelConfiguration.enemies.Add(new EnemyConfiguration("BigTestEnemy", Direction.West, 4, 2));
+			levelConfiguration.enemies.Add(new EnemyConfiguration("BigTestEnemy", Direction.West, 5, 3));
+			//levelConfiguration.enemies.Add(new EnemyConfiguration("Bandit", Direction.West, 3, 4));
+			//levelConfiguration.enemies.Add(new EnemyConfiguration("Knight", Direction.West, 4, 3));
 			//levelConfiguration.enemies.Add(new EnemyConfiguration("Archer", Direction.West, 2, 2));
 			//levelConfiguration.enemies.Add(new EnemyConfiguration("Bandit", Direction.West, 2, 1));
 			return levelConfiguration;

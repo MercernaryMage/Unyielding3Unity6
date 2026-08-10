@@ -195,8 +195,26 @@ public class Character : MonoBehaviour
 	}
 
 
+	void RemoveStatusEffectsWhileDowned()
+	{
+		StatusEffect[] effects = GetComponents<StatusEffect>();
+		foreach (StatusEffect effect in effects)
+		{
+			if (effect.GetType() == typeof(Downed))
+			{
+				continue;
+			}
+			MessagePump.Instance.RemoveListener(effect);
+			Destroy(effect);
+		}
+	}
+
 	public void StartTurn()
 	{
+		if (IsDowned())
+		{
+			RemoveStatusEffectsWhileDowned();
+		}
 		AddMovement();
 		actionCount = 4;
 		canUseCumbersome = true;

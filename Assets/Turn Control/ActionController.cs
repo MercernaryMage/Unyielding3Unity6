@@ -646,7 +646,7 @@ public class ActionController : SceneSingleton<ActionController>
 		}
 
 		bool doReaction = false;
-		if (!defender.hero && !profile.trigger)
+		if (!defender.hero && !profile.trigger && defender.reactions.Count > 0)
 		{
 			if (defender.gameObject.GetComponent<KnockedDown>() == null)
 			{
