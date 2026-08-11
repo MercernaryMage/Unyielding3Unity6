@@ -34,14 +34,17 @@ Don't spawn a player if they don't have determination
 
     put an eye icon over the archer when you locked on
 
-    AI going in succession is very hard to follow
-        Switch to zipper order
+    Invisible fail cards
+
+    Come up with keyword for snipe style targeting
+
     AI playing multiple cards at once is impossible to follow
-        Bandit needs to be fixed: 
-            Remove all self buff cards
-            Add replacement cards
+        ??Did we actaully remove targeted??
+        FIX ALL CHARACTERS
     Cards are hard to understand
-        Bandit cards to read like an UY2
+        FIX ALL CARDS
+
+    Tile warnings need to show a piece of information when you mouse over them
 
     Dane didn't get AoOed twice then threatened by bandit and knight
 

@@ -130,10 +130,9 @@ public class PowerChop : Card, IMessageReceiver
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
 		instructions.Add(new CardInstruction("Move to closest enemy"));
-		instructions.Add(new CardInstruction("Mark a range 2 cone covering as many enemies as possible"));
+		instructions.Add(new CardInstruction("Mark a range 2 cone and <u>Charge</u>"));
 		instructions.Add(new CardInstruction());
-		instructions.Add(new CardInstruction("At the start of your next turn, deal 1d6+2 damage to any character on a marked tile"));
-		instructions.Add(new CardInstruction("If you are killed or knocked back first, the marks are cleared and nothing happens"));
+		instructions.Add(new CardInstruction("On <u>Charge</u> completion: deal 1d6+2 damage to characters in marked tiles"));
 
 		DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.Size1Enemy, DisplayGrid.DisplayGridDirection.South, 5, 4);
 		DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.EffectedTile, new List<Tuple<int, int>>()

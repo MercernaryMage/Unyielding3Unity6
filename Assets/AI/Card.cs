@@ -426,4 +426,9 @@ public class Card : IMessageReceiver
 			OnCharacterDied((CharacterDiedMessage)message);
 		}
 	}
+
+	public virtual bool FailSilently()
+	{
+		return false;
+	}
 }

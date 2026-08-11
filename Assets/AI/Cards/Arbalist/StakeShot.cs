@@ -8,6 +8,11 @@ public class StakeShot : Card
 
     public override void Execute()
     {
+        MoveAwayIfNeeded(ReturnFromMoveAway);
+    }
+
+    void ReturnFromMoveAway(bool moved)
+    {
         List<Character> candidates = new List<Character>();
         foreach (Character hero in BattleController.Instance.heroes)
         {
@@ -26,11 +31,10 @@ public class StakeShot : Card
             candidates.Add(hero);
         }
 
-        if (candidates.Count == 0)
+		if (candidates.Count == 0)
         {
-            Util.BringCardToTopOfDeck(owningCharacter, "Snipe");
-            AIController.Instance.TakeTurn(owningCharacter);
-            return;
+			Finish();
+			return;
         }
 
         target = candidates[Random.Range(0, candidates.Count)];
@@ -67,9 +71,9 @@ public class StakeShot : Card
     {
         DisplayGrid.Instance.Clear(11, 8);
         List<CardInstruction> instructions = new List<CardInstruction>();
+        instructions.Add(new CardInstruction("Move away from near by enemies"));
         instructions.Add(new CardInstruction("Attack a non-adjacent hero in line of sight for 1d6 damage"));
         instructions.Add(new CardInstruction("On hit, apply <u>Paralyzed</u> and <u>Staked</u>"));
-        instructions.Add(new CardInstruction("If there is no target, play Snipe"));
         DisplayGrid.Instance.Show();
         return instructions;
     }

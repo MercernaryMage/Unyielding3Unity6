@@ -44,7 +44,12 @@ public class Bash : Card
         });
     }
 
-    public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
+	public override bool FailSilently()
+	{
+		return TemplateLibrary.GetAdjacentCharacterTarget(owningCharacter, null) == null;
+	}
+
+	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
     {
         DisplayGrid.Instance.Clear(11, 8);
         List<CardInstruction> instructions = new List<CardInstruction>();

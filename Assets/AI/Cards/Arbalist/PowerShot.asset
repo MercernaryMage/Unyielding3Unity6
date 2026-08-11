@@ -10,24 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 757b336c629bb2b4cb86518c2f2a5957, type: 3}
-  m_Name: Fighting DIrty
+  m_Name: PowerShot
   m_EditorClassIdentifier: 
-  className: AddStatusEffectToSelf
-  cardDisplayName: FightingDIrty
-  tags:
-  - tagName: Param
-    stringData: FightingDirty
-    floatData: 0
-    intData: 0
-    boolData: 0
-  - tagName: Name
-    stringData: Fighting DIrty
-    floatData: 0
-    intData: 0
-    boolData: 0
-  - tagName: DrawExtraCard
-    stringData: 
-    floatData: 0
-    intData: 0
-    boolData: 1
+  className: PowerShot
+  cardDisplayName: Power Shot
+  tags: []
   effects: []

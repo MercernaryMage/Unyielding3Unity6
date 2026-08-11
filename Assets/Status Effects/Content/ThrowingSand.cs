@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FightingDirty : StatusEffect
+public class ThrowingSand : StatusEffect
 {
     int marksApplied = 0;
 
@@ -25,7 +25,7 @@ public class FightingDirty : StatusEffect
 
     public override string GetExplanationName()
     {
-        return "Fighting Dirty";
+        return "Throwing Sand";
     }
 
 
@@ -34,7 +34,6 @@ public class FightingDirty : StatusEffect
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
 		instructions.Add(new CardInstruction($"Attacks apply <u>Marked</u> to targets that don't already have it. Expires after 3 applications."));
-		instructions.Add(new CardInstruction($"Play this characters next card"));
 
 		return instructions;
 	}

@@ -1,58 +1,69 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Snipe : Card
+public class PowerShot : Card
 {
 	List<Tile> warnedTiles;
 	bool running;
 
 	public override void Execute()
 	{
-		MoveAwayIfNeeded(ReturnFromMoveAway);
-	}
+		List<Tile> ownTiles = TileGrid.Instance.FindCharacter(owningCharacter);
+		Tile origin = ownTiles[0];
 
-	void ReturnFromMoveAway(bool moved)
-	{
-		List<Character> engagedHeroes = new List<Character>();
-		List<Character> allHeroes = new List<Character>();
+		List<List<Tile>> bestLines = new List<List<Tile>>();
+		int bestCount = 0;
 
-		foreach (Character hero in BattleController.Instance.heroes)
+		foreach (Tile endTile in TileGrid.Instance.tiles)
 		{
-			if (!hero.alive || hero.GetComponent<Downed>() != null)
+			if (endTile == origin)
 			{
 				continue;
 			}
 
-			allHeroes.Add(hero);
-
-			foreach (Character ally in BattleController.Instance.enemies)
+			List<Tile> line = TileGrid.Instance.GetLineTilesTillCollision(origin, endTile);
+			foreach (Tile ownTile in ownTiles)
 			{
-				if (ally == owningCharacter || !ally.alive || ally.GetComponent<Downed>() != null)
+				line.Remove(ownTile);
+			}
+
+			List<Character> hitHeroes = new List<Character>();
+			foreach (Tile t in line)
+			{
+				if (t.character == null || !t.character.hero || !t.character.alive || t.character.IsDowned())
 				{
 					continue;
 				}
-				if (TileGrid.AreCharactersAdjacent(hero, ally))
+				if (!hitHeroes.Contains(t.character))
 				{
-					engagedHeroes.Add(hero);
-					break;
+					hitHeroes.Add(t.character);
 				}
 			}
+
+			if (hitHeroes.Count == 0 || hitHeroes.Count < bestCount)
+			{
+				continue;
+			}
+
+			if (hitHeroes.Count > bestCount)
+			{
+				bestCount = hitHeroes.Count;
+				bestLines.Clear();
+			}
+			bestLines.Add(line);
 		}
 
-		List<Character> targetPool = engagedHeroes.Count > 0 ? engagedHeroes : allHeroes;
-		if (targetPool.Count == 0)
+		if (bestLines.Count == 0)
 		{
 			ShowNoTarget(owningCharacter.token.transform.position);
 			Finish();
 			return;
 		}
 
-		Util.Shuffle(targetPool);
-		Character targetHero = targetPool[0];
+		warnedTiles = bestLines[UnityEngine.Random.Range(0, bestLines.Count)];
 
-		owningCharacter.SetFacing(TileGrid.Instance.GetFacingDirection(owningCharacter, targetHero));
-
-		warnedTiles = new List<Tile>(TileGrid.Instance.FindCharacter(targetHero));
+		owningCharacter.SetFacing(TileGrid.Instance.GetFacingDirection(origin, warnedTiles[warnedTiles.Count - 1]));
 		TileGrid.AddWarnings(warnedTiles);
 
 		running = true;
@@ -106,7 +117,7 @@ public class Snipe : Card
 				ShowNoTarget(owningCharacter.token.transform.position);
 			}
 
-			AttackCharacters(hitCharacters, new ActionController.AttackProfile(0, 0, 10));
+			AttackCharacters(hitCharacters, new ActionController.AttackProfile(1, 6, 0));
 
 			TurnEventController.Instance.Pump();
 		});
@@ -131,13 +142,10 @@ public class Snipe : Card
 	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
 	{
 		DisplayGrid.Instance.Clear(11, 8);
-		List<CardInstruction> instructions = new List<CardInstruction>();		
-		
-		instructions.Add(new CardInstruction("Move away from near by enemies"));
-		instructions.Add(new CardInstruction("Marks a target and <u>Charge</u>"));
-		instructions.Add(new CardInstruction());
-		instructions.Add(new CardInstruction("On <u>Charge</u> completion: deal 10 damage to characters in marked tiles"));
-		DisplayGrid.Instance.Show();
+		List<CardInstruction> instructions = new List<CardInstruction>();
+		instructions.Add(new CardInstruction("Mark a line through as many enemies as possible and <u>Charge</u>"));
+		instructions.Add(new CardInstruction("On <u>Charge</u> completion: deal 1d6 damage to any character on a marked tile"));
+
 		return instructions;
 	}
 }

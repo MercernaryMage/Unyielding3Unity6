@@ -16,6 +16,7 @@ public class AIController : SceneSingleton<AIController>
 		}
 		if (character.alive && (character.cards.Count > 0 || character.cardDiscard.Count > 0))
 		{
+			DiscardSilentFailures(character);
 			AICardDisplay.Instance.Dismiss();
 			AICardDisplay.Instance.ShowCard(character.cards[0].cardScriptableObject, CardDisplay.CardType.Card);
 			CardStartMessage cardStartMessage = new CardStartMessage();
@@ -24,6 +25,16 @@ public class AIController : SceneSingleton<AIController>
 			MessagePump.Instance.SendMessage(cardStartMessage);
 			CombatLogControl.Instance.AddCard($"{character.displayName} uses {character.cards[0].GetCardName()}", character.cards[0]);
 			character.cards[0].Execute();
+		}
+	}
+
+	void DiscardSilentFailures(Character character)
+	{
+		int remaining = character.cards.Count + character.cardDiscard.Count;
+		while (remaining > 0 && character.cards.Count > 0 && character.cards[0].FailSilently())
+		{
+			Reshuffle(character);
+			--remaining;
 		}
 	}
 

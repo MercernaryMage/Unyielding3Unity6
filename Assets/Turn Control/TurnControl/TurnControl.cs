@@ -17,51 +17,84 @@ public class TurnControl : SceneSingleton<TurnControl>
 	public void AddCharacters(List<Character> characters)
 	{
 		DebugCharacterTurnOrder debugCharacterTurnOrder = FindFirstObjectByType<DebugCharacterTurnOrder>();
+		List<Character> ordered;
 		if (debugCharacterTurnOrder != null && debugCharacterTurnOrder.enabled)
 		{
-			// Assign descending values from the configured order so the sort below
-			// preserves it (highest value goes first) instead of using initiative.
-			List<Character> ordered = debugCharacterTurnOrder.GetOrderedCharacters();
-			int value = ordered.Count;
-			foreach (Character character in ordered)
-			{
-				TurnControlEntry turnControlEntry = new TurnControlEntry();
-				turnControlEntry.character = character;
-				turnControlEntry.value = value;
-				--value;
-
-				turnControlEntries.Add(turnControlEntry);
-			}
+			ordered = debugCharacterTurnOrder.GetOrderedCharacters();
 		}
 		else
 		{
-			foreach (Character character in characters)
-			{
-				TurnControlEntry turnControlEntry = new TurnControlEntry();
-				turnControlEntry.character = character;
-				turnControlEntry.value = character.GetInitiative();
+			ordered = BuildAlternatingOrder(characters);
+		}
 
-				turnControlEntries.Add(turnControlEntry);
-			}
+		// Assign descending values from the configured order so the sort below
+		// preserves it (highest value goes first) instead of using initiative.
+		int value = ordered.Count;
+		foreach (Character character in ordered)
+		{
+			TurnControlEntry turnControlEntry = new TurnControlEntry();
+			turnControlEntry.character = character;
+			turnControlEntry.value = value;
+			--value;
+
+			turnControlEntries.Add(turnControlEntry);
 		}
 		turnControlEntries = turnControlEntries.OrderByDescending(o => o.value).ToList();
 		UpdateSystem();
 	}
 
+	List<Character> BuildAlternatingOrder(List<Character> characters)
+	{
+		Dictionary<Character, int> initiatives = new Dictionary<Character, int>();
+		List<Character> heroes = new List<Character>();
+		List<Character> enemies = new List<Character>();
+
+		foreach (Character character in characters)
+		{
+			initiatives[character] = character.GetInitiative();
+			if (character.hero)
+			{
+				heroes.Add(character);
+			}
+			else
+			{
+				enemies.Add(character);
+			}
+		}
+
+		heroes = heroes.OrderByDescending(o => initiatives[o]).ToList();
+		enemies = enemies.OrderByDescending(o => initiatives[o]).ToList();
+
+		List<Character> ordered = new List<Character>();
+		for (int i = 0; i < Mathf.Max(heroes.Count, enemies.Count); ++i)
+		{
+			if (i < heroes.Count)
+			{
+				ordered.Add(heroes[i]);
+			}
+			if (i < enemies.Count)
+			{
+				ordered.Add(enemies[i]);
+			}
+		}
+
+		return ordered;
+	}
+
 	public void AddCharacter(Character c)
 	{
+		int lowestValue = 1;
+		if (turnControlEntries.Count > 0)
+		{
+			lowestValue = turnControlEntries.Min(o => o.value);
+		}
+
 		TurnControlEntry turnControlEntry = new TurnControlEntry();
 		turnControlEntry.character = c;
-		turnControlEntry.value = c.GetInitiative();
-
+		turnControlEntry.value = lowestValue - 1;
 
 		turnControlEntries.Add(turnControlEntry);
 		turnControlEntries = turnControlEntries.OrderByDescending(o => o.value).ToList();
-		int index = turnControlEntries.IndexOf(turnControlEntry);
-		if (index != -1 && index != turnControlEntries.Count - 1)
-		{
-			turnControlEntry.hasGone = true;
-		}
 		UpdateSystem();
 	}
 

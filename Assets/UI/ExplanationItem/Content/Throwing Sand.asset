@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e55f24fd73bc40d4aa4be0ea597fa59f, type: 3}
-  m_Name: Targeted
+  m_Name: Throwing Sand
   m_EditorClassIdentifier: Assembly-CSharp::ExplanationIemScrptableObject
-  explanationName: Targeted
-  explanationContent: At the start of the causing character's turn, take 10 damage on hit. Removed when this character moves.
+  explanationName: Throwing Sand
+  explanationContent: Attacks apply Marked to targets that don't already have it.
+    Expires after 3 applications.
