@@ -2102,7 +2102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52dc53f84daeaf4398c3ca71b1b27a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugSetLevel
-  level: 1
+  level: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

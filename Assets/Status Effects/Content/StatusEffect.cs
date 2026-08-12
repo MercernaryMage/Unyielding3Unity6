@@ -13,8 +13,6 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 {
 	public Character character;
 
-	bool exiting = false;
-
 	void Awake()
 	{
 		character = GetComponent<Character>();
@@ -22,24 +20,10 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 
 	virtual public void Start()
 	{
-#if UNITY_EDITOR
-		EditorApplication.playModeStateChanged += OnEditorChangeState;
-#endif
-
 		MessagePump.Instance.AddListener(this);
 
 		FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, GetExplanationName());
 	}
-
-#if UNITY_EDITOR
-	public void OnEditorChangeState(PlayModeStateChange state)
-	{
-		if (state == PlayModeStateChange.ExitingPlayMode)
-		{
-			exiting = true;
-		}
-	}
-#endif
 
 	public virtual void EffectBeingRemoved()
 	{
@@ -48,7 +32,7 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 
 	public void OnDestroy()
 	{
-		if (exiting)
+		if (gameObject.scene.isLoaded)
 		{
 			return;
 		}

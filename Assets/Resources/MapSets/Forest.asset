@@ -17,11 +17,11 @@ MonoBehaviour:
   maps:
   - Forest1.txt
   - Forest2.txt
-  - Forest1.txt
+  - Forest3.txt
   configurations:
   - Forest/Forest1
   - Forest/Forest2
-  - Tutorial/Tutorial1
+  - Forest/Forest3
   rewardText: Unlock weapons and weapon equipping
   lockedText: 
   levelCompletedFunction: 

@@ -34,9 +34,24 @@ Don't spawn a player if they don't have determination
 
     put an eye icon over the archer when you locked on
 
-    Invisible fail cards
+    Punt on the status effects on the hp bars:
+        I am not cool enough to imagine it
 
     Come up with keyword for snipe style targeting
+
+    Do we have defenders advantage?
+        How severe is it?
+
+    Shield glare debuff should probably be shown visually on the tokens
+        Is this universally true?
+
+    Large creatures can't have 1 movement
+        They move into themselves, which counts as blocking
+
+    David got killed in one round
+        It was very unclear.  From the persepctive of the player, he just fell over dead
+            1) If you become downed a second time, say it
+            2) if you die while downed, die instantly
 
     AI playing multiple cards at once is impossible to follow
         ??Did we actaully remove targeted??

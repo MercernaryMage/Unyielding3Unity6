@@ -68,12 +68,7 @@ public class Grab : Card
 			if (target.alive)
 			{
 				Util.PullToAttacker(target, owningCharacter);
-				if (TileGrid.Instance.CharactersAreAdjacent(owningCharacter, target))
-				{
-					Util.BringCardToTopOfDeck(owningCharacter, "Guillotine");
-					AIController.Instance.TakeTurn(owningCharacter);
-					return;
-				}
+				ActionController.Instance.AttackCharacter(target, owningCharacter, new ActionController.AttackProfile(0, 0, 10));
 			}
 
 			Finish();
@@ -85,7 +80,7 @@ public class Grab : Card
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
 		instructions.Add(new CardInstruction("Pull an enemy within range 2 adjacent"));
-		instructions.Add(new CardInstruction("If adjacent after pull, draw and play Chop"));
+		instructions.Add(new CardInstruction("Attack them for 10 damage"));
 		return instructions;
 	}
 }

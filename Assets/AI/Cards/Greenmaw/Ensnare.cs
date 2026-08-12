@@ -59,7 +59,7 @@ public class Ensnare : Card
 
 		if (route == null)
 		{
-			PlayTrap();
+			Finish();
 			return;
 		}
 
@@ -85,16 +85,10 @@ public class Ensnare : Card
 		targetHero = GetTarget();
 		if (targetHero == null)
 		{
-			PlayTrap();
+			Finish();
 			return;
 		}
 		AnimationController.Instance.ScrollToCharacter(targetHero, ApplyParalyzed, .5f);
-	}
-
-	void PlayTrap()
-	{
-		Util.BringCardToTopOfDeck(owningCharacter, "Trap");
-		AIController.Instance.TakeTurn(owningCharacter);
 	}
 
 	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
@@ -103,7 +97,6 @@ public class Ensnare : Card
 		List<CardInstruction> instructions = new List<CardInstruction>();
 		instructions.Add(new CardInstruction("Apply <u>Paralyzed</u> to an enemy within range 3 that is not <u>Paralyzed</u>"));
 		instructions.Add(new CardInstruction("If there is no target, move toward the closest enemy that is not <u>Paralyzed</u> and try again"));
-		instructions.Add(new CardInstruction("If there is still no target, play Trap"));
 		DisplayGrid.Instance.Show();
 
 		return instructions;

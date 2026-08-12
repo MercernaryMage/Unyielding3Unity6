@@ -40,6 +40,11 @@ public class ShieldGlare : Card
 		});
 	}
 
+	public override bool FailSilently()
+	{
+		return TemplateLibrary.Instance.ConeTargeting(owningCharacter, GetIntValue("range")) == null;
+	}
+
 	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
 	{
 		DisplayGrid.Instance.Clear(11, 8);

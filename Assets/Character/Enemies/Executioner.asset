@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
-  m_Name: Bandit
+  m_Name: Executioner
   m_EditorClassIdentifier: 
-  displayName: Bandit
+  displayName: Executioner
   model: {fileID: 6207216191786593460, guid: 6078833982850254cb8048b3aceb2d27, type: 3}
-  size: 1
-  movement: 4
+  size: 2
+  movement: 2
   armor: 0
-  toughness: 0
-  maxHP: 13
+  toughness: 1
+  maxHP: 26
   maxEnergy: 0
   maxThreshold: -1
   evasion: 0
@@ -36,11 +36,11 @@ MonoBehaviour:
   cunning: 0
   prowess: 0
   cards:
-  - {fileID: 11400000, guid: 017b2b75c35d2b4439d545641e63b7ab, type: 2}
-  - {fileID: 11400000, guid: 73b67158e2bb9c64195cdd1f2e02cd79, type: 2}
-  - {fileID: 11400000, guid: 73b67158e2bb9c64195cdd1f2e02cd79, type: 2}
-  - {fileID: 11400000, guid: 73b67158e2bb9c64195cdd1f2e02cd79, type: 2}
-  - {fileID: 11400000, guid: 42c826110a4fcd9468a14591c628dbf9, type: 2}
+  - {fileID: 11400000, guid: ded880165073c6343b9257b5f5226168, type: 2}
+  - {fileID: 11400000, guid: ded880165073c6343b9257b5f5226168, type: 2}
+  - {fileID: 11400000, guid: ded880165073c6343b9257b5f5226168, type: 2}
+  - {fileID: 11400000, guid: ded880165073c6343b9257b5f5226168, type: 2}
+  - {fileID: 11400000, guid: e0c2bb14a41785c49b1afbb05d61d11f, type: 2}
   reactions: []
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}
