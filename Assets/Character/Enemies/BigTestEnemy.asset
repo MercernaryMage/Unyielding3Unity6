@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Lizard
   model: {fileID: 377918357640677934, guid: 5ff8e7d98485f4e4698a37f6bc912ef5, type: 3}
-  size: 1
-  movement: 3
+  size: 2
+  movement: 1
   armor: 2
   toughness: 1
   maxHP: 50
@@ -36,7 +36,7 @@ MonoBehaviour:
   cunning: 0
   prowess: 0
   cards:
-  - {fileID: 11400000, guid: a4b156aec3e2c1949a1b08b99ea5afc6, type: 2}
+  - {fileID: 11400000, guid: 73b67158e2bb9c64195cdd1f2e02cd79, type: 2}
   reactions: []
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}

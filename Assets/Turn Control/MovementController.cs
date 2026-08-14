@@ -324,7 +324,7 @@ public class MovementController : SceneSingleton<MovementController>
 						fail = true;
 						break;
 					}
-					if (fitTileAtLocation.character)
+					if (fitTileAtLocation.character && fitTileAtLocation.character != c)
 					{
 						occupied = true;
 					}
@@ -340,7 +340,7 @@ public class MovementController : SceneSingleton<MovementController>
 				route.Insert(0, adjacentTile);
 				int steps = route.Count - 1;
 				bool canStop = currentCanStop || (steps <= movement && !occupied);
-				if (movement != -1 && !canStop && steps >= movement)
+				if (movement != -1 && !canStop && steps >= movement && adjacentTile.character != c)
 				{
 					continue;
 				}
