@@ -32,7 +32,7 @@ public class Swoop : Card
 	void ReturnFromRoute()
 	{
 		int size = owningCharacter.characterDefinition.size;
-		Trample.DoTrample(owningCharacter, tilesAndDirection, size, Finish);
+		Trample.DoTrample(owningCharacter, tilesAndDirection, size, Finish, 6);
 	}
 
 	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)

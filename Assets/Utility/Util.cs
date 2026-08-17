@@ -579,6 +579,11 @@ public static class Util
 	{
 		List<Tile> outTiles = new List<Tile>();
 
+		if (tiles == null || tiles.Count <= 1)
+		{
+			return outTiles;
+		}
+
 		foreach (Tile t in tiles)
 		{
 			outTiles.AddRange(TileGrid.Instance.WhatTilesWouldCharacterTake(c, t));

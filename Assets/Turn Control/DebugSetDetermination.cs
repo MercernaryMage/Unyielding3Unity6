@@ -13,11 +13,18 @@ public class DebugSetDetermination : MonoBehaviour
 
 	public List<DeterminationEntry> healthEntries = new List<DeterminationEntry>();
 
+	public bool runOnce;
+	static bool runOnceInternal = true;
+
 	void Start()
 	{
-		if (!Application.isEditor)
+		if (!Application.isEditor || !runOnceInternal)
 		{
 			return;
+		}
+		if (runOnce)
+		{
+			runOnceInternal = false;
 		}
 		Invoke("ApplyDetermination", 1);
 	}

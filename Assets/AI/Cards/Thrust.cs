@@ -64,7 +64,7 @@ public class Thrust : Card
 			{
 				if (t.character && t.character.hero)
 				{
-					ActionController.Instance.AttackCharacter(t.character, owningCharacter, new ActionController.AttackProfile(1, 6, 0));
+					ActionController.Instance.AttackCharacter(t.character, owningCharacter, new ActionController.AttackProfile(1, GetIntValue("Damage"), 0));
 				}
 				t.HideOverlay(Tile.OverlayType.PossibleAttck);
 			}

@@ -32,14 +32,16 @@ MonoBehaviour:
     range: 4
     threatRange: 0
     accuracy: 0
-    damageString: 
+    damageString: 2
     aoeType: 0
     aoeRange: 0
     chargesTaken: 0
     disqualifierFunc: 
     intParam: 0
     stringParam: 
+    chargeEffectScriptableObject: {fileID: 0}
     effectScriptableObject: {fileID: 11400000, guid: c9590e6d7be7aca4893587a6cc83aa8c, type: 2}
+    hitEffectScriptableObject: {fileID: 0}
     keywords:
     - Ranged
     postActionCommands: []
@@ -53,7 +55,7 @@ MonoBehaviour:
       targetType: 0
       actionName: Heal
       disqualiferFunction: AllowedToHealTarget
-    actionDescription: Heals a target for 1d6 HP
+    actionDescription: Heals a target for 2 HP
     actionDescriptionFunction: 
     uniqueName: 
     forcedTarget: {fileID: 0}

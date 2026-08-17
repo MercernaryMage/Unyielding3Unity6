@@ -154,13 +154,12 @@ public class Character : MonoBehaviour
 		armor = maxArmor;
 	}
 
-	public void Downed(int overflow)
+	public void Downed()
 	{
 		HeroDownedMessage heroDownedMessage = new HeroDownedMessage();
 		heroDownedMessage.downedCharacter = this;
 		MessagePump.Instance.SendMessage(heroDownedMessage);
-		Downed downed = (Downed)AddStatusEffect(typeof(Downed), null);
-		downed.overflow += overflow;
+		AddStatusEffect(typeof(Downed), null);
 		currentMovement = 0;
 		actionCount = 0;
 	}

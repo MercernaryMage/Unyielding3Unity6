@@ -32,13 +32,6 @@ public class ShieldRush : Card
 
         Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
 
-        if (route.Item1.Count <= 1)
-        {
-            litRouteTiles = new List<Tile>();
-            ReturnFromRoute();
-            return;
-        }
-
         litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
         AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, ReturnFromRoute);
     }

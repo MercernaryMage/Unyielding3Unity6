@@ -48,5 +48,5 @@
     }
   ],
   "mapMessageTitle": "New Items",
-  "mapMessageBody": "Dane and David have gained new abilities!  They can now see what an enemy will do next and change it."
+  "mapMessageBody": "Dane has gained a new ability!  He can now heal people each turn."
 }

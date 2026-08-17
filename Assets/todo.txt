@@ -45,10 +45,24 @@ Don't spawn a player if they don't have determination
     Do we have defenders advantage?
         How severe is it?
 
-    David got killed in one round
-        It was very unclear.  From the persepctive of the player, he just fell over dead
-            1) If you become downed a second time, say it
-            2) if you die while downed, die instantly
+    Ranged attacks need their penalty when adjacent
+    Put in imposed
+
+    !!Our Tutorial sucks!!
+        Get rid of that healing spell
+            + damage
+                Busy body work???
+                +1 damage until damage
+        No info on howl and growl
+        Summoned bandit's first action is totally untelegraphed
+        Lizard cards don't obey the new rule
+        Aggravated lunge stunned cotton
+            Should it?  Didn't say it does!
+        Bandits have a negative init score!
+        Heal is REALLY messing with us
+        The boss's high hp and toughness makes this a huge slog
+        Blood thristing fang made a crazy path
+        using shield first on len made it so she couldn't walk?
 
     AI playing multiple cards at once is impossible to follow
         ??Did we actaully remove targeted??

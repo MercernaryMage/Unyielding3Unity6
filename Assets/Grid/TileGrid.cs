@@ -52,7 +52,10 @@ public class TileGrid : SceneSingleton<TileGrid>
 		CharacterStartMovementMessage characterStartMovementMessage = new CharacterStartMovementMessage();
 		characterStartMovementMessage.movingCharacter = character;
 		characterStartMovementMessage.provokeTriggers = provokeReactions;
-		MessagePump.Instance.SendMessage(characterStartMovementMessage);
+		if (tiles.Count > 1)
+		{
+			MessagePump.Instance.SendMessage(characterStartMovementMessage);
+		}
 		Action continueAction = () =>
 		{
 			ActionController.Instance.running = false;

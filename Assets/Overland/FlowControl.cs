@@ -33,11 +33,12 @@ public class FlowControl : Singleton<FlowControl>
 	{
 		if (currentLevel == 1)
 		{
-			StorageCharacter davidCharacter = PersistenceManager.Instance.GetStorageCharacter("David");
-			davidCharacter.AddItem(ItemRepository.Instance.GetExactItem("Amber Spyglass"));
-
 			StorageCharacter daneCharacter = PersistenceManager.Instance.GetStorageCharacter("Dane");
-			daneCharacter.AddItem(ItemRepository.Instance.GetExactItem("Causality Gem"));
+			Item item = new Item();
+			item.Init(ItemRepository.Instance.GetExactItem("Healing Spell"));
+			daneCharacter.slots[1].weapon = item;
+
+			daneCharacter.equipment.Add(item);
 		}
 
 		if (currentLevel == 2)
@@ -46,6 +47,7 @@ public class FlowControl : Singleton<FlowControl>
 			Item item = new Item();
 			item.Init(ItemRepository.Instance.GetExactItem("Shield"));
 			lenetteCharacter.slots[1].weapon = item;
+			lenetteCharacter.equipment.Add(item);
 
 			StorageCharacter davidCharacter = PersistenceManager.Instance.GetStorageCharacter("David");
 			davidCharacter.AddItem(ItemRepository.Instance.GetExactItem("Call Out"));

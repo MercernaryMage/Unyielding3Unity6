@@ -44,7 +44,7 @@ public class Trample : Card
 
 	public void ReturnFromRoute()
 	{
-		DoTrample(owningCharacter, tilesAndDirection, range, GoToFinish);
+		DoTrample(owningCharacter, tilesAndDirection, range, GoToFinish, GetIntValue("Damage"));
 	}
 
 	public static List<Tile> GetTramplePath(Character character, Tile startTile, Tuple<int, int> dir, int range)
@@ -66,7 +66,7 @@ public class Trample : Card
 		return outTiles;
 	}
 
-	public static void DoTrample(Character character, TemplateLibrary.TilesAndDirection tilesAndDirection, int range, Action callback)
+	public static void DoTrample(Character character, TemplateLibrary.TilesAndDirection tilesAndDirection, int range, Action callback, int maxDamage)
 	{
 		List<Tile> characterOrigin = TileGrid.Instance.FindCharacter(character);
 		Tile startTile = characterOrigin[0];
@@ -113,7 +113,7 @@ public class Trample : Card
 			}
 			ActionController.AttackResults results = new ActionController.AttackResults();
 			results.fakeHit = true;
-			ActionController.Instance.DamageCharacter(c, character, new ActionController.AttackProfile(1, 6, 0), results);
+			ActionController.Instance.DamageCharacter(c, character, new ActionController.AttackProfile(1, maxDamage, 0), results);
 			CombatLogControl.Instance.AddEntry($"Trample deals {results.damageDealt} to {c.displayName}");
 			c.AddStatusEffect(typeof(Stun), null);
 		}

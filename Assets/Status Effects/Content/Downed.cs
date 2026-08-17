@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Downed : StatusEffect
 {
-	public int overflow;
-
 	public override void CharacterEndTurn(CharacterEndTurnMessage characterEndTurnMessage)
 	{
 		if (characterEndTurnMessage.character == character)
@@ -17,22 +15,7 @@ public class Downed : StatusEffect
 
 	public void ClearEffect()
 	{
-		while (overflow >= character.maxHP)
-		{
-			--character.storageCharacter.currentDetermination;
-			overflow -= character.maxHP;
-		}
-
-		if (character.storageCharacter.currentDetermination <= 0)
-		{
-			ActionController.Instance.KillCharacter(character);
-		}
-		else
-		{
-			character.currentHP = character.maxHP - overflow;
-			--character.storageCharacter.currentDetermination;
-			overflow = 0;
-		}
+		character.currentHP = character.maxHP;
 	}
 
 	public override string GetExplanationName()

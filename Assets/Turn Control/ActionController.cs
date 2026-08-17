@@ -727,9 +727,26 @@ public class ActionController : SceneSingleton<ActionController>
 			{
 				TriggerDisplay.Instance.Abandon();
 			}
-			if (defender.storageCharacter != null && defender.storageCharacter.currentDetermination > 1)
+			int downCount = 1;
+			if (defender.maxHP > 0)
 			{
-				defender.Downed(overflow);
+				downCount += overflow / defender.maxHP;
+			}
+
+			if (defender.storageCharacter != null)
+			{
+				defender.storageCharacter.currentDetermination -= downCount;
+			}
+
+			if (defender.storageCharacter != null && defender.storageCharacter.currentDetermination > 0)
+			{
+				
+				int announcedDowns = defender.GetComponent<Downed>() == null ? 1 : 0;
+				defender.Downed();
+				for (int i = announcedDowns; i < downCount; ++i)
+				{
+					FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, "Downed");
+				}
 				return;
 			}
 			else

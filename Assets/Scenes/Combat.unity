@@ -4138,7 +4138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b88c884796a7c5418f9bf108c235307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overrideRand: 1
+  overrideRand: 0
   seed: 240493967
 --- !u!114 &567337325
 MonoBehaviour:
@@ -6766,7 +6766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugSetHealth
   healthEntries:
-  - characterName: Lenette
+  - characterName: Dane
     health: 1
 --- !u!114 &898251914
 MonoBehaviour:
@@ -6853,9 +6853,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa094ea4cedf5f47aaf4feaa70afdf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugSetStat
-  characterName: Lenette
+  characterName: Dane
   statName: armor
-  value: -5
+  value: 2
 --- !u!114 &898251920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6881,8 +6881,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugSetDetermination
   healthEntries:
-  - characterName: Lenette
-    value: 0
+  - characterName: Dane
+    value: 1
+  runOnce: 1
 --- !u!1 &916006794
 GameObject:
   m_ObjectHideFlags: 0

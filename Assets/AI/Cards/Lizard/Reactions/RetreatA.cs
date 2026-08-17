@@ -37,7 +37,7 @@ public class RetreatA : ReactionBase
 
 	public void ReturnFromRoute()
 	{
-		Trample.DoTrample(owningCharacter, tilesAndDirection, 4, ReturnFromTrample);
+		Trample.DoTrample(owningCharacter, tilesAndDirection, 4, ReturnFromTrample, 6);
 	}
 
 	public void ReturnFromTrample()
