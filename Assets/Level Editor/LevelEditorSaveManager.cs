@@ -124,19 +124,32 @@ public class LevelEditorSaveManager : MonoBehaviour
 
 	public void ClickSave()
 	{
-		Save(mapName.text);
+		if (!Save(mapName.text))
+		{
+			return;
+		}
 		Debug.Log("Save Complete");
 	}
 
-	public void Save(string fileName)
+	public bool Save(string fileName)
 	{
 		if (fileName == "")
 		{
 			Debug.LogError("Cannot save a map with an empty name");
-			return;
+			return false;
 		}
 
-		File.WriteAllText($"Assets/Resources/Maps/{fileName}.txt", Util.JSONSerializer.Serialize(FormMap()));
+		try
+		{
+			File.WriteAllText($"Assets/Resources/Maps/{fileName}.txt", Util.JSONSerializer.Serialize(FormMap()));
+		}
+		catch (System.Exception e)
+		{
+			Debug.LogError($"Failed to save map {fileName}: {e.Message}");
+			return false;
+		}
+
+		return true;
 	}
 
 	public void ClickLoad()

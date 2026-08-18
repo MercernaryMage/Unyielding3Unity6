@@ -282,7 +282,7 @@ public class MapBuilder : MonoBehaviour
 			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 4, 2));
 			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 1, 5));
 
-			levelConfiguration.enemies.Add(new EnemyConfiguration("Executioner", Direction.West, 4, 3));
+			levelConfiguration.enemies.Add(new EnemyConfiguration("BigTestEnemy", Direction.West, 4, 3));
 			//levelConfiguration.enemies.Add(new EnemyConfiguration("Bandit", Direction.West, 3, 4));
 			//levelConfiguration.enemies.Add(new EnemyConfiguration("Knight", Direction.West, 4, 3));
 			//levelConfiguration.enemies.Add(new EnemyConfiguration("Archer", Direction.West, 2, 2));

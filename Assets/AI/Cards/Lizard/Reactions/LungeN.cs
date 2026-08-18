@@ -39,7 +39,7 @@ public class LungeN : ReactionBase
 		List<CardInstruction> instructions = new List<CardInstruction>();
 		instructions.Add(new CardInstruction("Face attacker"));
 		instructions.Add(new CardInstruction($"Perform a cunning check diff:{scriptableObject.GetTagIntValue("Difficulty")}"));
-		instructions.Add(new CardInstruction("On failure pounce foward for 1d6 damage"));
+		instructions.Add(new CardInstruction("On failure <u>Pounce</u>"));
 		return instructions;
 	}
 }

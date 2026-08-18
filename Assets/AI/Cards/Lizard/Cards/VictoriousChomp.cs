@@ -63,6 +63,7 @@ public class VictoriousChomp : Card
 		owningCharacter.SetFacing(TileGrid.Instance.GetFacingDirection(owningCharacter, tilesAndDirection.tiles[0].character));
 		ActionController.Instance.PlayAttackAnimation(owningCharacter, null, () => 
 		{
+			int howlCount = 0;
 			foreach (Tile t in tilesAndDirection.tiles)
 			{
 				if (t.character && t.character.hero)
@@ -71,12 +72,18 @@ public class VictoriousChomp : Card
 					ActionController.AttackResults results = ActionController.Instance.AttackCharacter(t.character, owningCharacter, new ActionController.AttackProfile(1, 6, 0));
 					if (results.damageDealt >= 3)
 					{
-						HowlAndGrowl.Howl(owningCharacter, 1);
+						++howlCount;
 					}
 					t.HideOverlay(Tile.OverlayType.PossibleAttck);
 				}
 			}
-			Finish();
+
+			if (howlCount == 0)
+			{
+				Finish();
+				return;
+			}
+			HowlAndGrowl.Howl(owningCharacter, howlCount, Finish);
 		});
 	}
 
@@ -86,7 +93,7 @@ public class VictoriousChomp : Card
 		List<CardInstruction> instructions = new List<CardInstruction>();
 		instructions.Add(new CardInstruction("Move to closest enemy"));
 		instructions.Add(new CardInstruction("Attack character for 1d6 damage"));
-		instructions.Add(new CardInstruction("If 3 or more damage was dealt, Howl"));
+		instructions.Add(new CardInstruction("If 3 or more damage was dealt, <u>Howl</u>"));
 		DisplayGrid.Instance.Show();
 
 

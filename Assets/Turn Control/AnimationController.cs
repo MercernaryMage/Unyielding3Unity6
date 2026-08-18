@@ -51,6 +51,24 @@ public class AnimationController : SceneSingleton<AnimationController>
 		DelayedCallback(scrollTime + delay, callback);
 	}
 
+	public void ScrollThroughCharacters(List<Character> characters, Action callback, float pause = 0.5f)
+	{
+		ScrollToNextCharacter(characters, 0, callback, pause);
+	}
+
+	void ScrollToNextCharacter(List<Character> characters, int index, Action callback, float pause)
+	{
+		if (index >= characters.Count)
+		{
+			callback();
+			return;
+		}
+		ScrollToCharacter(characters[index], () =>
+		{
+			ScrollToNextCharacter(characters, index + 1, callback, pause);
+		}, pause);
+	}
+
 	static public void PlayEffect(Character character, Vector3 seconadryPosition, EffectScriptableObject effect, float actionDelay, Action callback)
 	{
 		PlayEffectOnDelay effectDelay = character.token.gameObject.AddComponent<PlayEffectOnDelay>();

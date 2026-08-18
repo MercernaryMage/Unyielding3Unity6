@@ -70,7 +70,7 @@ public class BloodThirstingFangs : Card
 
 		if (!TileGrid.AreCharactersAdjacent(lowestHPHero, owningCharacter))
 		{
-			Debug.Log("Not in range");
+			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(owningCharacter, "target out of range");
 			Finish();
 			return;
 		}

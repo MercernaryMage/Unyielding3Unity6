@@ -20,17 +20,19 @@ public class HowlAndGrowl : Card
 
 	public void Delay()
 	{
-		Howl(owningCharacter, 1);
-		Growl(owningCharacter, 2);
-		Finish();
+		Howl(owningCharacter, 1, () =>
+		{
+			Growl(owningCharacter, 2);
+			Finish();
+		});
 	}
 
 	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Howl"));
-		instructions.Add(new CardInstruction("Growl"));
+		instructions.Add(new CardInstruction("<u>Howl</u>"));
+		instructions.Add(new CardInstruction("<u>Growl</u>"));
 		DisplayGrid.Instance.Show();
 
 
@@ -39,7 +41,7 @@ public class HowlAndGrowl : Card
 		return instructions;
 	}
 
-	public static void Howl(Character howlingCharacter, int value)
+	public static void Howl(Character howlingCharacter, int value, Action callback)
 	{
 		List<Tuple<Tile,Direction>> edgeTiles = new List<Tuple<Tile, Direction>>();
 		for (int i = 0; i < TileGrid.Instance.width; ++i)
@@ -69,6 +71,7 @@ public class HowlAndGrowl : Card
 			}
 		}
 		value = Mathf.Min(value, edgeTiles.Count);
+		List<Character> createdCharacters = new List<Character>();
 		for (int i = 0; i < value; ++i)
 		{
 			int index = UnityEngine.Random.Range(0, edgeTiles.Count);
@@ -77,7 +80,10 @@ public class HowlAndGrowl : Card
 			Character newCharacter = MapBuilder.PlaceEnemy(t.Item1.x, t.Item1.y, CharacterRepository.Instance.GetCharacter("Weak Bandit"), t.Item2);
 			newCharacter.AddStatusEffect(typeof(Stun), null);
 			TurnControl.Instance.AddCharacter(newCharacter);
+			createdCharacters.Add(newCharacter);
 		}
+
+		AnimationController.Instance.ScrollThroughCharacters(createdCharacters, callback);
 	}
 
 	public static void Growl(Character growlingCharacer, int value)

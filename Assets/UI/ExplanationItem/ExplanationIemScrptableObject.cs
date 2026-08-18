@@ -4,5 +4,6 @@ using UnityEngine;
 public class ExplanationIemScrptableObject : ScriptableObject
 {
     public string explanationName;
+	[TextArea]
 	public string explanationContent;
 }

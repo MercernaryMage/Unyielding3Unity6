@@ -349,6 +349,7 @@ public class ActionTypes : MonoBehaviour
 		{
 			BattleController.playerHasControl = true;
 			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(c, $"+{pattern.intParam} armor");
+			HeroDisplayRouter.Instance.mainDisplay.UpdateWithLastCharacter();
 		});
 	}
 

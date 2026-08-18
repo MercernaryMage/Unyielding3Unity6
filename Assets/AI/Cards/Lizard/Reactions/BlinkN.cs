@@ -34,7 +34,7 @@ public class BlinkN : ReactionBase
 		List<CardInstruction> instructions = new List<CardInstruction>();
 		instructions.Add(new CardInstruction($"Perform a prowess check diff:{scriptableObject.GetTagIntValue("Difficulty")}"));
 		instructions.Add(new CardInstruction("On success reduce monster toughness by 1"));
-		instructions.Add(new CardInstruction("On failure Growl"));
+		instructions.Add(new CardInstruction("On failure <u>Growl</u>"));
 		return instructions;
 	}
 }

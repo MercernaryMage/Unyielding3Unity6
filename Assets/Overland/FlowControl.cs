@@ -31,17 +31,17 @@ public class FlowControl : Singleton<FlowControl>
 
 	public void RunTutorialCode()
 	{
-		if (currentLevel == 1)
+		if (currentLevel == 2)
 		{
 			StorageCharacter daneCharacter = PersistenceManager.Instance.GetStorageCharacter("Dane");
 			Item item = new Item();
-			item.Init(ItemRepository.Instance.GetExactItem("Healing Spell"));
+			item.Init(ItemRepository.Instance.GetExactItem("Symbol of Courage"));
 			daneCharacter.slots[1].weapon = item;
 
 			daneCharacter.equipment.Add(item);
 		}
 
-		if (currentLevel == 2)
+		if (currentLevel == 3)
 		{
 			StorageCharacter lenetteCharacter = PersistenceManager.Instance.GetStorageCharacter("Lenette");
 			Item item = new Item();
@@ -53,7 +53,7 @@ public class FlowControl : Singleton<FlowControl>
 			davidCharacter.AddItem(ItemRepository.Instance.GetExactItem("Call Out"));
 		}
 
-		if (currentLevel == 3)
+		if (currentLevel == 4)
 		{
 			StorageCharacter lenetteCharacter = PersistenceManager.Instance.GetStorageCharacter("Cotton");
 			lenetteCharacter.AddItem(ItemRepository.Instance.GetExactItem("Medkit"));

@@ -18,7 +18,7 @@ MonoBehaviour:
   movement: 6
   armor: 5
   toughness: 1
-  maxHP: 90
+  maxHP: 50
   maxEnergy: 0
   maxThreshold: 3
   evasion: 0

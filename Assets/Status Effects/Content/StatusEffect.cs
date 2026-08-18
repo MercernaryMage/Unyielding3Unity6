@@ -32,7 +32,7 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 
 	public void OnDestroy()
 	{
-		if (gameObject.scene.isLoaded)
+		if (!gameObject.scene.isLoaded)
 		{
 			return;
 		}

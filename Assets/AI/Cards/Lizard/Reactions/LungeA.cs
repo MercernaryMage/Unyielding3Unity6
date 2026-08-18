@@ -27,7 +27,7 @@ public class LungeA : ReactionBase
 		DisplayGrid.Instance.Clear(12, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
 		instructions.Add(new CardInstruction("Face attacker"));
-		instructions.Add(new CardInstruction("Pounce towards for 1d6 damage"));
+		instructions.Add(new CardInstruction("<u>Pounce</u> towards for 1d6 damage"));
 		return instructions;
 	}
 }

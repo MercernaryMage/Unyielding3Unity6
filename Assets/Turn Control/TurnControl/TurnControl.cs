@@ -95,7 +95,24 @@ public class TurnControl : SceneSingleton<TurnControl>
 
 		turnControlEntries.Add(turnControlEntry);
 		turnControlEntries = turnControlEntries.OrderByDescending(o => o.value).ToList();
+		if (turnControlEntry.value <= 0)
+		{
+			RenumberEntries();
+		}
 		UpdateSystem();
+	}
+
+	void RenumberEntries()
+	{
+		Dictionary<int, int> remappedValues = new Dictionary<int, int>();
+		int value = turnControlEntries.Count;
+		foreach (TurnControlEntry turnControlEntry in turnControlEntries)
+		{
+			remappedValues[turnControlEntry.value] = value;
+			turnControlEntry.value = value;
+			--value;
+		}
+		TurnEventController.Instance.RemapTicks(remappedValues);
 	}
 
 	public void UpdateSystem()

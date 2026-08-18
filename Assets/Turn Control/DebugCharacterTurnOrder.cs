@@ -36,10 +36,6 @@ public class DebugCharacterTurnOrder : MonoBehaviour
 					result.Add(enemies[enemyIndex]);
 					enemyIndex++;
 				}
-				else
-				{
-					Debug.LogWarning($"DebugCharacterTurnOrder: more \"{EnemyToken}\" entries than enemies; extra entry ignored.");
-				}
 				continue;
 			}
 

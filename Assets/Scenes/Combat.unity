@@ -6747,12 +6747,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
+  - Dane
   - Cotton
   - enemy
   - enemy
   - Lenette
   - David
-  - Dane
 --- !u!114 &898251913
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,6 +24,21 @@ public class TurnEventController : SceneSingleton<TurnEventController>
 		events.Add(new TurnEvent(a, t));
 	}
 
+	public void RemapTicks(Dictionary<int, int> remappedValues)
+	{
+		foreach (TurnEvent turnEvent in events)
+		{
+			if (remappedValues.ContainsKey(turnEvent.tick))
+			{
+				turnEvent.tick = remappedValues[turnEvent.tick];
+			}
+		}
+		if (remappedValues.ContainsKey(currentTick))
+		{
+			currentTick = remappedValues[currentTick];
+		}
+	}
+
 	//Run every event scheduled for this tick before the tick's character is allowed to go.
 	//Events are not inline: each event's action must call Pump() once it has finished so the
 	//next one can start, and the last Pump() hands control back to TurnControl.

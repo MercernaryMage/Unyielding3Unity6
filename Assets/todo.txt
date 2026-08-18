@@ -48,21 +48,21 @@ Don't spawn a player if they don't have determination
     Ranged attacks need their penalty when adjacent
     Put in imposed
 
-    !!Our Tutorial sucks!!
-        Get rid of that healing spell
-            + damage
-                Busy body work???
-                +1 damage until damage
-        No info on howl and growl
-        Summoned bandit's first action is totally untelegraphed
-        Lizard cards don't obey the new rule
-        Aggravated lunge stunned cotton
-            Should it?  Didn't say it does!
-        Bandits have a negative init score!
-        Heal is REALLY messing with us
-        The boss's high hp and toughness makes this a huge slog
-        Blood thristing fang made a crazy path
-        using shield first on len made it so she couldn't walk?
+    Get rid of holy lasso for the tutorial???
+
+    as people die, we don't change the init order, breaking zipper order
+
+    boss dying makes the reaction bar go to full
+
+    pounce dealt 0 damage to cotton
+        And everybody!  We saw it multiple times for the reaction
+
+    Why am I not play testing???
+        tutorial1 geo feels bad for a tutorial.  Something about it is off
+        No UI
+        2 other fight sets
+
+
 
     AI playing multiple cards at once is impossible to follow
         ??Did we actaully remove targeted??
