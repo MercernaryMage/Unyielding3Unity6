@@ -39,7 +39,7 @@ public class LockedOn : StatusEffect
 				}
 				useable = false;
 				ActionController.Instance.AttackCharacter(character, causingCharacter,
-			new ActionController.AttackProfile(1, 6, 0));
+			new ActionController.AttackProfile(1, 6, 0, true));
 			}
 		}
 	}

@@ -43,6 +43,7 @@ public class FancyHeroDisplay : MonoBehaviour
 		//Create lower UI
 		CreateButtons();
 		statusEffectDisplayGroup.Set(c);
+		ImposedControl.Instance.Run();
 	}
 
 	void CreateButtons()
@@ -137,5 +138,12 @@ public class FancyHeroDisplay : MonoBehaviour
 		evasion.text = $"{lastCharacter.characterDefinition.evasion}";
 	}
 
-	
+	public void UpdateStatusEffects()
+	{
+		if (lastCharacter == null)
+		{
+			return;
+		}
+		statusEffectDisplayGroup.Set(lastCharacter);
+	}
 }

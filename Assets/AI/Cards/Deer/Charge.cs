@@ -202,6 +202,7 @@ public class Charge : Card
 
 	void AttackAfterPush()
 	{
+		ImposedControl.Instance.Run();
 		List<Character> pushed = new List<Character>(pushedCharacters);
 		foreach (Character c in pushedCharacters)
 		{

@@ -34,6 +34,7 @@ public class CharacterHealthBar : MonoBehaviour
 		else
 		{
 			t = character.threshold / (float)character.characterDefinition.maxThreshold;
+			t = Mathf.Min(t, 1.0f);
 		}
 		reactionBar.rectTransform.sizeDelta = new Vector2(t * 100,
 											reactionBar.rectTransform.sizeDelta.y);

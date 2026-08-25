@@ -83,6 +83,7 @@ public class Card : IMessageReceiver
 			ActionController.Instance.DoQueuedAction();
 			return;
 		}
+		ImposedControl.Instance.Run();
 		BattleController.Instance.CardFinished();
 	}
 

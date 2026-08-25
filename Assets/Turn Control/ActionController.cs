@@ -490,6 +490,7 @@ public class ActionController : SceneSingleton<ActionController>
 		characterAttackingMessage.attacker = attacker;
 		characterAttackingMessage.pattern = currentAction;
 		characterAttackingMessage.backstab = profile.isBackstab;
+		characterAttackingMessage.ranged = profile.ranged;
 		characterAttackingMessage.AddToAccuracyString(GenerateAccurarcyString(profile.accuracy));
 		MessagePump.Instance.SendMessage(characterAttackingMessage);
 
@@ -646,6 +647,7 @@ public class ActionController : SceneSingleton<ActionController>
 		}
 
 		bool doReaction = false;
+		int armorAbsorbed = 0;
 		if (!defender.hero && !profile.trigger && defender.reactions.Count > 0)
 		{
 			if (defender.gameObject.GetComponent<KnockedDown>() == null)
@@ -674,10 +676,11 @@ public class ActionController : SceneSingleton<ActionController>
 				results.outString += $" - {originalArmor} (armor)";
 			}
 			damage -= originalArmor;
+			armorAbsorbed = originalArmor;
 
 			if (damage <= 0)
 			{
-				FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, "0");
+				FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, Mathf.Max(0, damage + armorAbsorbed).ToString());
 				if (doReaction)
 				{
 					HandleReaction(defender, results);
@@ -703,7 +706,7 @@ public class ActionController : SceneSingleton<ActionController>
 
 		if (damage <= 0)
 		{
-			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, "0");
+			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, Mathf.Max(0, damage + armorAbsorbed).ToString());
 			if (doReaction)
 			{
 				HandleReaction(defender, results);
@@ -713,7 +716,7 @@ public class ActionController : SceneSingleton<ActionController>
 
 		results.damageDealt = damage;
 		defender.currentHP -= damage;
-		FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, damage.ToString());
+		FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, (damage + armorAbsorbed).ToString());
 		if (profile.damageType == DamageType.Burning)
 		{
 			AddBurning(defender, damage);
@@ -770,6 +773,7 @@ public class ActionController : SceneSingleton<ActionController>
 
 	public void KillCharacter(Character c)
 	{
+		c.threshold = 0;
 		TurnControl.Instance.UpdateSystem();
 		c.Die();
 		//Destroy(c.token.gameObject);
@@ -911,11 +915,12 @@ public class ActionController : SceneSingleton<ActionController>
 
 	public class AttackProfile
 	{
-		public AttackProfile(int c, int f, int ad)
+		public AttackProfile(int c, int f, int ad, bool r = false)
 		{
 			diceCount = c;
 			diceFace = f;
 			addedDamage = ad;
+			ranged = r;
 		}
 		public DamageType damageType;
 		public int diceCount;

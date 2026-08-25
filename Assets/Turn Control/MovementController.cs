@@ -253,6 +253,7 @@ public class MovementController : SceneSingleton<MovementController>
 				movementCompleteCallback();
 			}
 			FinishMovement(stepCallback);
+			ImposedControl.Instance.Run();
 		}, true);
 	}
 

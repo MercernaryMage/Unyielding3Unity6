@@ -50,7 +50,7 @@ public class FollowingBlast : Blast
 			ShowNoTarget(centerTile.transform.position);
 		}
 
-		AttackCharacters(hitCharacters, new ActionController.AttackProfile(1, 6, 3));
+		AttackCharacters(hitCharacters, new ActionController.AttackProfile(1, 6, 3, true));
 
 		following.Remove();
 

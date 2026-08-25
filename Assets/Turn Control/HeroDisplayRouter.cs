@@ -44,6 +44,11 @@ public class HeroDisplayRouter : SceneSingleton<HeroDisplayRouter>
 		}
 	}
 
+	public void UpdateStatusEffects()
+	{
+		mainDisplay.UpdateStatusEffects();
+	}
+
 	public void UpdateWithLastCharacter(bool main)
 	{
 		if (main)

@@ -51,7 +51,7 @@ public class FightItOut : Card
             {
                 if (t.character != null && t.character.hero)
                 {
-                    ActionController.Instance.AttackCharacter(t.character, owningCharacter, new ActionController.AttackProfile(1, 3, 0));
+                    ActionController.Instance.AttackCharacter(t.character, owningCharacter, new ActionController.AttackProfile(1, 3, 0, true));
                 }
                 t.HideOverlay(Tile.OverlayType.PossibleAttck);
             }

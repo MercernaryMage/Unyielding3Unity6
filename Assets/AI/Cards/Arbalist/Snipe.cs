@@ -106,7 +106,7 @@ public class Snipe : Card
 				ShowNoTarget(owningCharacter.token.transform.position);
 			}
 
-			AttackCharacters(hitCharacters, new ActionController.AttackProfile(0, 0, 10));
+			AttackCharacters(hitCharacters, new ActionController.AttackProfile(0, 0, 10, true));
 
 			TurnEventController.Instance.Pump();
 		});

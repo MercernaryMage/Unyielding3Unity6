@@ -53,6 +53,7 @@ public class Tile : MonoBehaviour
 	public void EnterTile(Character character)
 	{
 		this.character = character;
+		ImposedControl.Instance.SetDirty();
 	}
 
 	public void PlaceInTile(Character character)

@@ -85,12 +85,10 @@ public class Pounce
 		TileGrid.Instance.MoveCharacterToTile(owningCharacter, newPlacementTile);
 		owningCharacter.SetFacing(direction);
 		hitCharacters = hitCharacters.Distinct().ToList();
-		int damageDiceCount = 1;
-		int damageDiceFace = 4;
 		foreach (Character c in hitCharacters)
 		{
 			ActionController.AttackResults results = new ActionController.AttackResults();
-			ActionController.Instance.DamageCharacter(c, owningCharacter, new ActionController.AttackProfile(damageDiceCount, damageDiceFace, 0), results);
+			ActionController.Instance.DamageCharacter(c, owningCharacter, new ActionController.AttackProfile(1, 4, 0), results);
 			CombatLogControl.Instance.AddEntry($"Pounce deals {results.damageDealt} to {c.displayName}");
 			c.AddStatusEffect(typeof(Stun), null);
 		}

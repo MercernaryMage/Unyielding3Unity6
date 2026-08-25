@@ -33,7 +33,7 @@
     {
       "location": {
         "x": 5,
-        "y": 3,
+        "y": 4,
         "direction": 3
       },
       "name": "Tutorial Bandit"

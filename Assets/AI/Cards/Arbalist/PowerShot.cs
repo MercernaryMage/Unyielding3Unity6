@@ -117,7 +117,7 @@ public class PowerShot : Card
 				ShowNoTarget(owningCharacter.token.transform.position);
 			}
 
-			AttackCharacters(hitCharacters, new ActionController.AttackProfile(1, 6, 0));
+			AttackCharacters(hitCharacters, new ActionController.AttackProfile(1, 6, 0, true));
 
 			TurnEventController.Instance.Pump();
 		});

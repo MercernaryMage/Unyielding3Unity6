@@ -66,6 +66,7 @@ public class TileGrid : SceneSingleton<TileGrid>
 				{
 					ActionController.Instance.running = true;
 				}
+				ImposedControl.Instance.Run();
 				callback();
 			};
 			pathFollower.Set(character, tiles, encasingFunction, moveCharacter);
@@ -243,6 +244,43 @@ public class TileGrid : SceneSingleton<TileGrid>
 		return outTiles;
 	}
 
+	public List<Tile> GetSurroundingTiles(Tile t)
+	{
+		List<Tile> outTiles = GetAdjacentTiles(t);
+		if (t.x - 1 >= 0 && t.y - 1 >= 0)
+		{
+			outTiles.Add(GetTile(t.x - 1, t.y - 1));
+		}
+		if (t.x + 1 < width && t.y + 1 < height)
+		{
+			outTiles.Add(GetTile(t.x + 1, t.y + 1));
+		}
+
+		if (t.x + 1 < width && t.y - 1 >= 0)
+		{
+			outTiles.Add(GetTile(t.x + 1, t.y - 1));
+		}
+		if (t.x - 1 >= 0 && t.y + 1 < height)
+		{
+			outTiles.Add(GetTile(t.x - 1, t.y + 1));
+		}
+
+		return outTiles;
+	}
+
+	public List<Tile> GetSurroundingTiles(Character c)
+	{
+		List<Tile> outTiles = new List<Tile>();
+		List<Tile> characterTiles = FindCharacter(c);
+		foreach (Tile characterTile in characterTiles)
+		{
+			outTiles.AddRange(GetSurroundingTiles(characterTile));
+		}
+		outTiles = outTiles.Distinct().ToList();
+
+		return outTiles;
+	}
+
 	public bool AreTilesAdjacent(Tile t0, Tile t1)
 	{
 		List<Tuple<int, int>> directions = new List<Tuple<int, int>>()
@@ -298,6 +336,7 @@ public class TileGrid : SceneSingleton<TileGrid>
 		{
 			t.character = null;
 		}
+		ImposedControl.Instance.SetDirty();
 	}
 
 	public bool WouldCharacterFitAtTile(Character c, Tile tile)
@@ -822,5 +861,19 @@ public class TileGrid : SceneSingleton<TileGrid>
 		}
 
 		return collisions;
+	}
+
+	public List<Character> GetAllAdjacentCharcters(Character c)
+	{
+		List<Tile> tiles = GetAllAdjacentTilesToCharacter(c);
+		List<Character> characters = new List<Character>();
+		foreach (Tile tile in tiles)
+		{
+			if (tile.character != null && !characters.Contains(tile.character))
+			{
+				characters.Add(tile.character);
+			}
+		}
+		return characters;
 	}
 }

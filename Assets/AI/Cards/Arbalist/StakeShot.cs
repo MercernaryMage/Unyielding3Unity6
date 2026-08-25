@@ -56,7 +56,7 @@ public class StakeShot : Card
             }
 
             ActionController.AttackResults results = ActionController.Instance.AttackCharacter(
-                target, owningCharacter, new ActionController.AttackProfile(1, 6, 0));
+                target, owningCharacter, new ActionController.AttackProfile(1, 6, 0, true));
             if (results.hit)
             {
                 target.AddStatusEffect(typeof(Paralyzed), null);

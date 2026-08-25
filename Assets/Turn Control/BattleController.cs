@@ -34,9 +34,13 @@ public class BattleController : SceneSingleton<BattleController>
 
 	public void StartCombat()
 	{
+		ImposedControl.Instance.SetDirty();
+		ImposedControl.Instance.Run();
 		MessagePump.Instance.SendMessage(new CombatStartMessage());
 		TurnControl.Instance.Pump();
 	}
+
+	
 
 	void PositionTileWarning(GameObject warning, Tile tile)
 	{

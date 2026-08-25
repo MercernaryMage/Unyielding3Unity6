@@ -27,8 +27,6 @@ public class TurnControl : SceneSingleton<TurnControl>
 			ordered = BuildAlternatingOrder(characters);
 		}
 
-		// Assign descending values from the configured order so the sort below
-		// preserves it (highest value goes first) instead of using initiative.
 		int value = ordered.Count;
 		foreach (Character character in ordered)
 		{
@@ -99,6 +97,53 @@ public class TurnControl : SceneSingleton<TurnControl>
 		{
 			RenumberEntries();
 		}
+		UpdateSystem();
+	}
+
+	void RebuildAlternatingOrder()
+	{
+		DebugCharacterTurnOrder debugCharacterTurnOrder = FindFirstObjectByType<DebugCharacterTurnOrder>();
+		if (debugCharacterTurnOrder != null && debugCharacterTurnOrder.enabled)
+		{
+			return;
+		}
+
+		List<TurnControlEntry> heroes = new List<TurnControlEntry>();
+		List<TurnControlEntry> enemies = new List<TurnControlEntry>();
+		List<TurnControlEntry> dead = new List<TurnControlEntry>();
+
+		foreach (TurnControlEntry turnControlEntry in turnControlEntries)
+		{
+			if (!turnControlEntry.character.alive)
+			{
+				dead.Add(turnControlEntry);
+			}
+			else if (turnControlEntry.character.hero)
+			{
+				heroes.Add(turnControlEntry);
+			}
+			else
+			{
+				enemies.Add(turnControlEntry);
+			}
+		}
+
+		List<TurnControlEntry> ordered = new List<TurnControlEntry>();
+		for (int i = 0; i < Mathf.Max(heroes.Count, enemies.Count); ++i)
+		{
+			if (i < heroes.Count)
+			{
+				ordered.Add(heroes[i]);
+			}
+			if (i < enemies.Count)
+			{
+				ordered.Add(enemies[i]);
+			}
+		}
+		ordered.AddRange(dead);
+
+		turnControlEntries = ordered;
+		RenumberEntries();
 		UpdateSystem();
 	}
 
@@ -181,8 +226,6 @@ public class TurnControl : SceneSingleton<TurnControl>
 				turnControlEntries[i].hasGone = true;
 				lastCharacter = turnControlEntries[i].character;
 				UpdateSystem();
-				//Every turn event on this tick resolves before the character gets to go. The events
-				//are not inline, so the turn continues in TurnEventControlFinished().
 				pendingCharacter = turnControlEntries[i].character;
 				TurnEventController.Instance.PumpStart(turnControlEntries[i].value);
 				return;
@@ -202,6 +245,8 @@ public class TurnControl : SceneSingleton<TurnControl>
 		{
 			return;
 		}
+		RebuildAlternatingOrder();
+		lastCharacter = null;
 		Pump();
 	}
 

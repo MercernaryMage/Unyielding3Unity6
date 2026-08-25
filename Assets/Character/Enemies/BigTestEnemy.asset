@@ -16,11 +16,11 @@ MonoBehaviour:
   model: {fileID: 377918357640677934, guid: 5ff8e7d98485f4e4698a37f6bc912ef5, type: 3}
   size: 2
   movement: 3
-  armor: 2
-  toughness: 1
-  maxHP: 50
+  armor: 0
+  toughness: 0
+  maxHP: 1
   maxEnergy: 0
-  maxThreshold: 1
+  maxThreshold: 3
   evasion: 2
   weight: 0
   isMinion: 0
@@ -36,8 +36,9 @@ MonoBehaviour:
   cunning: 0
   prowess: 0
   cards:
-  - {fileID: 11400000, guid: 4b0aa238c4b11d5468eadd115da37044, type: 2}
-  reactions: []
+  - {fileID: 11400000, guid: 73b67158e2bb9c64195cdd1f2e02cd79, type: 2}
+  reactions:
+  - {fileID: 11400000, guid: 260bd2c62ae58c94197326be3e1fcf2c, type: 2}
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}
   traits:

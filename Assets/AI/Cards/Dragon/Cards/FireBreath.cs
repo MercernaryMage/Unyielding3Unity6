@@ -38,7 +38,7 @@ public class FireBreath : Card
 		{
 			foreach (Character t in targets)
 			{
-				ActionController.AttackProfile profile = new ActionController.AttackProfile(1, 6, 3);
+				ActionController.AttackProfile profile = new ActionController.AttackProfile(1, 6, 3, true);
 				profile.damageType = ActionPattern.DamageType.Burning;
 				ActionController.Instance.AttackCharacter(t, owningCharacter, profile);
 			}

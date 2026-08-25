@@ -71,6 +71,7 @@ public class CharacterAttackingMessage : Message
 	public ActionPattern pattern;
 	public string accuracyString;
 	public bool backstab;
+	public bool ranged;
 
 	public CharacterAttackingMessage()
 	{

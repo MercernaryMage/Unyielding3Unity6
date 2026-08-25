@@ -30,7 +30,7 @@ public class ShieldGlare : Card
 			{
 				if (t.character && t.character.hero)
 				{
-					ActionController.Instance.AttackCharacter(t.character, owningCharacter, new ActionController.AttackProfile(1, 6, 0));
+					ActionController.Instance.AttackCharacter(t.character, owningCharacter, new ActionController.AttackProfile(1, 6, 0, true));
 					t.character.AddStatusEffect(typeof(Inaccuracy), null);
 				}
 				t.HideOverlay(Tile.OverlayType.PossibleAttck);

@@ -36,7 +36,7 @@ public class Shadowed : StatusEffect
 		}
 		useable = false;
 		ActionController.Instance.AttackCharacter(character, causingCharacter,
-			new ActionController.AttackProfile(1, 6, 0));
+			new ActionController.AttackProfile(1, 6, 0, true));
 	}
 
 	public override void CharacterEndTurn(CharacterEndTurnMessage message)

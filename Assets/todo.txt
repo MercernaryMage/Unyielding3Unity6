@@ -45,17 +45,6 @@ Don't spawn a player if they don't have determination
     Do we have defenders advantage?
         How severe is it?
 
-    Ranged attacks need their penalty when adjacent
-    Put in imposed
-
-    Get rid of holy lasso for the tutorial???
-
-    as people die, we don't change the init order, breaking zipper order
-
-    boss dying makes the reaction bar go to full
-
-    pounce dealt 0 damage to cotton
-        And everybody!  We saw it multiple times for the reaction
 
     Why am I not play testing???
         tutorial1 geo feels bad for a tutorial.  Something about it is off

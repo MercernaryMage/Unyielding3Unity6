@@ -49,7 +49,7 @@ public class ExtendoChain : Card
 		owningCharacter.SetFacing(TileGrid.Instance.GetFacingDirection(owningCharacter, targetHero));
 		ActionController.Instance.PlayAttackAnimation(owningCharacter, null, () =>
 		{
-			AttackResults results = ActionController.Instance.AttackCharacter(targetHero, owningCharacter, new ActionController.AttackProfile(1, 6, 0));
+			AttackResults results = ActionController.Instance.AttackCharacter(targetHero, owningCharacter, new ActionController.AttackProfile(1, 6, 0, true));
 
 			foreach (Tile t in tilesAndDirection.tiles)
 			{
