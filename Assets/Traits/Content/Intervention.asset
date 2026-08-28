@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Intervention
   m_EditorClassIdentifier: 
   displayName: Intervention
-  description: AoE magic attacks automatically miss allies
+  description: 'Allies and Enemies in surrending tiles get +1 accuracy and -1 accuracy
+    respectively. '
   className: InterventionTrait
   intParams: 
   stringParams: []

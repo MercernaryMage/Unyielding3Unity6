@@ -15,6 +15,8 @@ public class MapBuilder : MonoBehaviour
 	public Transform props;
 	public GameObject foundationPrefab;
 	public GameObject outlinePrefab;
+	public string DebugMap;
+	public string DebugConfiguration;
 
 	static bool needsInit = true;
 	static Dictionary<string, int> enemyNameCounts = new Dictionary<string, int>();
@@ -175,10 +177,14 @@ public class MapBuilder : MonoBehaviour
 	void Run()
 	{
 		LevelConfiguration levelConfiguration = GetLevelConfiguration(FlowControl.currentLevel);
-		MapSetScriptableObject mapSet = Resources.Load<MapSetScriptableObject>($"MapSets/{FlowControl.mapSetName}");
 		MapParser.Map map;
-		if (FlowControl.currentLevel >= 0)
+		if (UsingDebugLevel())
 		{
+			map = MapParser.ParseMap(DebugMap);
+		}
+		else if (FlowControl.currentLevel >= 0)
+		{
+			MapSetScriptableObject mapSet = Resources.Load<MapSetScriptableObject>($"MapSets/{FlowControl.mapSetName}");
 			map = MapParser.ParseMap(mapSet.maps[FlowControl.currentLevel]);
 		}
 		else
@@ -270,9 +276,20 @@ public class MapBuilder : MonoBehaviour
 		t.decos.Add(deco);
 	}
 
+	bool UsingDebugLevel()
+	{
+		return !string.IsNullOrEmpty(DebugMap) && !string.IsNullOrEmpty(DebugConfiguration);
+	}
+
 	LevelConfiguration GetLevelConfiguration(int i)
 	{
 		LevelConfiguration levelConfiguration = new LevelConfiguration();
+
+		if (UsingDebugLevel())
+		{
+			return BuildLevelConfiguration(levelConfiguration, DebugConfiguration);
+		}
+
 		MapSetScriptableObject mapSet = Resources.Load<MapSetScriptableObject>($"MapSets/{FlowControl.mapSetName}");
 
 		if (i == -1)
@@ -290,7 +307,11 @@ public class MapBuilder : MonoBehaviour
 			return levelConfiguration;
 		}
 
-		string path = mapSet.configurations[i];
+		return BuildLevelConfiguration(levelConfiguration, mapSet.configurations[i]);
+	}
+
+	LevelConfiguration BuildLevelConfiguration(LevelConfiguration levelConfiguration, string path)
+	{
 		string data = Resources.Load<TextAsset>($"Mapsets/Configurations/{path}").text;
 		MapConfiguration mapConfiguration = JSONSerializer.Deserialize<MapConfiguration>(data);
 		foreach (MapLocation playerLocation in mapConfiguration.player)

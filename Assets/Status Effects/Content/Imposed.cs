@@ -50,4 +50,9 @@ public class Imposed : StatusEffect
 
 		return instructions;
 	}
+
+	public override bool ShowStatusEffectFloatingCombatMessage()
+	{
+		return false;
+	}
 }

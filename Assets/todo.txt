@@ -41,13 +41,28 @@ Don't spawn a player if they don't have determination
         Is this universally true?
 
     Come up with keyword for snipe style targeting
+        It purposely targets engaged heroes
 
-    Do we have defenders advantage?
-        How severe is it?
+    How do we do objectives?
+        Every round at the end of the round objective cards get played automatically
+        Do we do one for the demo??
 
+    Guard has armor up
+        ArmorUp needs to attack poorly
+
+    August
+
+    Guard went first
+        Shield rush did something very strange (this is for map 2 of forest)
+        This is obviously not what the card was designed too...but is kinda fun???
+
+    We need to not display traits when they are not turned on
+        Wait to fix this until new UI
+
+    BUGS:
+        I hit end turn before the enemy started moving and things went bonkers
 
     Why am I not play testing???
-        tutorial1 geo feels bad for a tutorial.  Something about it is off
         No UI
         2 other fight sets
 

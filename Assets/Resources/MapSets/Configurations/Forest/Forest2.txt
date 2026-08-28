@@ -24,6 +24,14 @@
   "enemies": [
     {
       "location": {
+        "x": 6,
+        "y": 4,
+        "direction": 3
+      },
+      "name": "Knight"
+    },
+    {
+      "location": {
         "x": 5,
         "y": 2,
         "direction": 3
@@ -45,14 +53,6 @@
         "direction": 3
       },
       "name": "Bandit"
-    },
-    {
-      "location": {
-        "x": 6,
-        "y": 4,
-        "direction": 3
-      },
-      "name": "Knight"
     }
   ],
   "mapMessageTitle": "",

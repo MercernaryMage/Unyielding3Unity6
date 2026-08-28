@@ -22,7 +22,10 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 	{
 		MessagePump.Instance.AddListener(this);
 
-		FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, GetExplanationName());
+		if (ShowStatusEffectFloatingCombatMessage())
+		{
+			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, GetExplanationName());
+		}
 	}
 
 	public virtual void EffectBeingRemoved()
@@ -171,5 +174,10 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 	public virtual void DoStack(StatusEffectInitData data)
 	{
 
+	}
+
+	public virtual bool ShowStatusEffectFloatingCombatMessage()
+	{
+		return true;
 	}
 }

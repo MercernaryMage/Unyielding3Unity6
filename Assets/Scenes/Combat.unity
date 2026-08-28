@@ -3699,7 +3699,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Cancel
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3971,6 +3971,8 @@ MonoBehaviour:
   props: {fileID: 1652642198}
   foundationPrefab: {fileID: 347164264174509607, guid: 0835aabd35028e249b3dddaf0f644887, type: 3}
   outlinePrefab: {fileID: 1457452664793614734, guid: c98747e70eaff7a489a71695204ccf06, type: 3}
+  DebugMap: Forest2.txt
+  DebugConfiguration: Forest/Forest2
 --- !u!114 &567337313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6754,17 +6756,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 400200efbf2304345813bd062e52586e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
   - enemy
-  - Dane
+  - Knight 1
   - Cotton
+  - Dane
   - Lenette
   - David
+  - enemy
+  - enemy
 --- !u!114 &898251913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6778,7 +6783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugSetHealth
   healthEntries:
-  - characterName: Dane
+  - characterName: David
     health: 1
 --- !u!114 &898251914
 MonoBehaviour:
