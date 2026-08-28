@@ -50,6 +50,9 @@ Don't spawn a player if they don't have determination
     Guard has armor up
         ArmorUp needs to attack poorly
 
+    Bars!
+        Use the padding on the mask!!!
+
     August
 
     Guard went first
