@@ -50,11 +50,6 @@ Don't spawn a player if they don't have determination
     Guard has armor up
         ArmorUp needs to attack poorly
 
-    Bars!
-        Use the padding on the mask!!!
-
-    August
-
     Guard went first
         Shield rush did something very strange (this is for map 2 of forest)
         This is obviously not what the card was designed too...but is kinda fun???
@@ -62,12 +57,16 @@ Don't spawn a player if they don't have determination
     We need to not display traits when they are not turned on
         Wait to fix this until new UI
 
+    pop up is broken
+
     BUGS:
         I hit end turn before the enemy started moving and things went bonkers
 
     Why am I not play testing???
         No UI
         2 other fight sets
+        Questions for J
+            How do you feel about the HP bar?
 
 
 
@@ -182,3 +181,7 @@ How do our characters advance
                 Advantages
         As the game advances, character paths unlock
         charcters can use other characters path
+
+Fourth = Saints
+Third world = Troubleshooters
+second world = Exiles

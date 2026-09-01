@@ -35,6 +35,13 @@ public class FancyHeroDisplay : MonoBehaviour
 
 	public StatusEffectDisplayGroup statusEffectDisplayGroup;
 
+	public UYMaskBar hpBar;
+	public UYMaskBar armorBar;
+
+	public UYMaskBar APBar;
+	public UYMaskBar energyBar;
+	public UYMaskBar movementBar;
+
 	public void Set(Character c)
 	{
 		lastCharacter = c;
@@ -86,6 +93,8 @@ public class FancyHeroDisplay : MonoBehaviour
 				createdObjects.Add(obj);
 			}
 		}
+		Canvas.ForceUpdateCanvases();
+		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)target.transform);
 	}
 
 	public void Show()
@@ -129,11 +138,16 @@ public class FancyHeroDisplay : MonoBehaviour
 
 		characterName.text = lastCharacter.displayName;
 		hp.text = $"{lastCharacter.currentHP}/{lastCharacter.maxHP}";
+		hpBar.Set(lastCharacter.currentHP / (float)lastCharacter.maxHP);
 		determination.text = $"{lastCharacter.storageCharacter.currentDetermination}";
-		armor.text = $"{lastCharacter.armor}";
+		armor.text = $"{lastCharacter.armor} / {lastCharacter.maxArmor}";
+		armorBar.Set(lastCharacter.armor / (float)lastCharacter.maxArmor);
 		actionPoint.text = $"{lastCharacter.actionCount}";
+		APBar.Set(lastCharacter.actionCount /  4.0f);
 		energy.text = $"{lastCharacter.currentEnergy}/{lastCharacter.characterDefinition.maxEnergy}";
+		energyBar.Set(lastCharacter.currentEnergy / (float)lastCharacter.characterDefinition.maxEnergy);
 		movement.text = $"{lastCharacter.currentMovement}";
+		movementBar.Set(lastCharacter.currentMovement / (float)lastCharacter.movementMax);
 		toughness.text = $"{lastCharacter.toughness}";
 		evasion.text = $"{lastCharacter.characterDefinition.evasion}";
 	}
