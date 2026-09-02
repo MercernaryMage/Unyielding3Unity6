@@ -67,6 +67,7 @@ Don't spawn a player if they don't have determination
         2 other fight sets
         Questions for J
             How do you feel about the HP bar?
+            How about the keywords on the action bar pop up
 
 
 

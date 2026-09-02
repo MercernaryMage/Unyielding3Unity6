@@ -29,9 +29,16 @@ public class FancyHeroDisplay : MonoBehaviour
 	public Character lastCharacter;
 	public bool showing = false;
 
-	List<GameObject> createdObjects = new List<GameObject>();
+	List<List<GameObject>> createdObjects = new List<List<GameObject>>()
+	{
+		new List<GameObject>(),
+		new List<GameObject>(),
+		new List<GameObject>()
+	};
 
-	public Transform target;
+	public Transform attackButtonTarget;
+	public Transform advantagesButtonTarget;
+	public Transform otherButtonTarget;
 
 	public StatusEffectDisplayGroup statusEffectDisplayGroup;
 
@@ -55,11 +62,14 @@ public class FancyHeroDisplay : MonoBehaviour
 
 	void CreateButtons()
 	{
-		foreach (GameObject obj in createdObjects)
+		foreach (List<GameObject> list in createdObjects)
 		{
-			Destroy(obj);
+			foreach (GameObject obj in list)
+			{
+				Destroy(obj);
+			}
+			list.Clear();
 		}
-		createdObjects.Clear();
 
 		if (lastCharacter.GetComponent<Stun>() || lastCharacter.GetComponent<Downed>())
 		{
@@ -85,16 +95,52 @@ public class FancyHeroDisplay : MonoBehaviour
 				{
 					continue;
 				}*/
+
+				//attack
+				//advantage
+				//other
+
 				GameObject obj = Instantiate(actionButtonPrefab);
-				obj.transform.SetParent(target);
+				if (pattern.attack)
+				{
+					obj.transform.SetParent(attackButtonTarget);
+					createdObjects[0].Add(obj);
+				}
+				else if (!pattern.other)
+				{
+					obj.transform.SetParent(advantagesButtonTarget);
+					createdObjects[1].Add(obj);
+				}
+				else
+				{
+					obj.transform.SetParent(otherButtonTarget);
+					createdObjects[2].Add(obj);
+				}
+
 				Tuple<bool, string> usable = HeroDisplay.IsActionUsable(lastCharacter, item, pattern);
 				ActionButtonDisplay display = obj.GetComponent<ActionButtonDisplay>();
 				obj.GetComponent<ActionButtonDisplay>().Set(lastCharacter, pattern, item, usable.Item1, usable.Item2, i, getWarningForAction.warnings);
-				createdObjects.Add(obj);
 			}
 		}
 		Canvas.ForceUpdateCanvases();
-		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)target.transform);
+		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)attackButtonTarget.transform);
+		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)advantagesButtonTarget.transform);
+		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)otherButtonTarget.transform);
+		for (int i = 0; i < createdObjects.Count; ++i)
+		{
+			if (i == 0)
+			{
+				attackButtonTarget.parent.gameObject.SetActive(createdObjects[i].Count > 0);
+			}
+			else if (i == 1)
+			{
+				advantagesButtonTarget.parent.gameObject.SetActive(createdObjects[i].Count > 0);
+			}
+			else
+			{
+				otherButtonTarget.parent.gameObject.SetActive(createdObjects[i].Count > 0);
+			}
+		}
 	}
 
 	public void Show()
@@ -143,7 +189,7 @@ public class FancyHeroDisplay : MonoBehaviour
 		armor.text = $"{lastCharacter.armor} / {lastCharacter.maxArmor}";
 		armorBar.Set(lastCharacter.armor / (float)lastCharacter.maxArmor);
 		actionPoint.text = $"{lastCharacter.actionCount}";
-		APBar.Set(lastCharacter.actionCount /  4.0f);
+		APBar.Set(lastCharacter.actionCount / 4.0f);
 		energy.text = $"{lastCharacter.currentEnergy}/{lastCharacter.characterDefinition.maxEnergy}";
 		energyBar.Set(lastCharacter.currentEnergy / (float)lastCharacter.characterDefinition.maxEnergy);
 		movement.text = $"{lastCharacter.currentMovement}";

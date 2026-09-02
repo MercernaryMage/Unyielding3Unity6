@@ -78,6 +78,7 @@ public class ActionPattern
     public bool attack;
     public bool physical;
     public bool ranged;
+    public bool other;
     public int range = 1;
     public int threatRange = 0;
     public int accuracy = 0;

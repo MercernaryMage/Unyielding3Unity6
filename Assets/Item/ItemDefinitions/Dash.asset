@@ -29,6 +29,7 @@ MonoBehaviour:
     attack: 0
     physical: 0
     ranged: 0
+    other: 1
     range: 0
     threatRange: 0
     accuracy: 0
@@ -39,6 +40,9 @@ MonoBehaviour:
     disqualifierFunc: 
     intParam: 0
     stringParam: 
+    chargeEffectScriptableObject: {fileID: 0}
+    effectScriptableObject: {fileID: 0}
+    hitEffectScriptableObject: {fileID: 0}
     keywords: []
     postActionCommands: []
     postDamageFunctionName: 

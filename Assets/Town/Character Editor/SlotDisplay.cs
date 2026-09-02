@@ -155,6 +155,21 @@ public class SlotDisplay : MonoBehaviour
 		return $"{itemScriptable.keywords}, {patternKeywords}";
 	}
 
+	public static List<string> GetActionKeywordsAsList(ItemScriptableObject itemScriptable, ActionPattern pattern)
+	{
+		List<string> keywords = new List<string>();
+		foreach (string keyword in GetActionKeywords(itemScriptable, pattern).Split(','))
+		{
+			string trimmed = keyword.Trim();
+			if (trimmed == "")
+			{
+				continue;
+			}
+			keywords.Add(trimmed);
+		}
+		return keywords;
+	}
+
 	public void SlotClicked(int index)
 	{
 		if (PersistenceManager.Instance.GetFlag("WeaponSlotsLocked"))
