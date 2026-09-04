@@ -28,7 +28,7 @@ public class HeroDisplayRouter : SceneSingleton<HeroDisplayRouter>
 		}
 		else
 		{
-			subDisplay.Show();
+			//subDisplay.Show();
 		}
 	}
 
@@ -40,6 +40,7 @@ public class HeroDisplayRouter : SceneSingleton<HeroDisplayRouter>
 		}
 		else
 		{
+			CharacterInspector.Instance.Set(character);
 			subDisplay.Set(character);
 		}
 	}

@@ -37,6 +37,11 @@ public class StatusEffectDisplayGroup : MonoBehaviour
 			obj.transform.SetParent(content);
 			obj.GetComponent<StatusEffectDisplayItem>().Set(effect);
 		}
+
+		for (int i = 0; i < createdObjects.Count; i++)
+		{
+			createdObjects[i].GetComponent<StatusEffectDisplayItem>().SetEnds(i == 0, i == createdObjects.Count - 1);
+		}
 	}
 
 	private void DestroyGarbage()

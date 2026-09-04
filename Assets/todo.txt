@@ -57,7 +57,8 @@ Don't spawn a player if they don't have determination
     We need to not display traits when they are not turned on
         Wait to fix this until new UI
 
-    pop up is broken
+    Flicker on select for inspector
+
 
     BUGS:
         I hit end turn before the enemy started moving and things went bonkers

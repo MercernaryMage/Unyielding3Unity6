@@ -9,6 +9,7 @@ public class Scratch : MonoBehaviour
 }
 
 /*
-	1920 * 1.333333333 = 2560
+ 
+	
 
 */

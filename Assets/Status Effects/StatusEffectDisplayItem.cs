@@ -14,11 +14,25 @@ public class StatusEffectDisplayItem : MonoBehaviour, IPointerEnterHandler, IPoi
 	public TextMeshProUGUI titleText;
 	public TextMeshProUGUI bodyText;
 
+	public GameObject leftArrow;
+	public GameObject rightArrow;
+
+	public GameObject leftPole;
+	public GameObject rightPole;
+
 	public void Set(StatusEffect effect)
 	{
 		icon.sprite = StatusEffectIconRepository.Instance.GetExactIcon(effect.GetIconName());
 		titleText.text = effect.GetExplanationName();
 		bodyText.text = effect.GetExplanation().explanationContent;
+	}
+
+	public void SetEnds(bool first, bool last)
+	{
+		leftArrow.SetActive(first);
+		leftPole.SetActive(first);
+		rightArrow.SetActive(last);
+		rightPole.SetActive(true);
 	}
 
 	public void OnPointerEnter(PointerEventData eventData)

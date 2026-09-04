@@ -104,16 +104,19 @@ public class FancyHeroDisplay : MonoBehaviour
 				if (pattern.attack)
 				{
 					obj.transform.SetParent(attackButtonTarget);
+					obj.transform.transform.localScale = Vector3.one;
 					createdObjects[0].Add(obj);
 				}
 				else if (!pattern.other)
 				{
 					obj.transform.SetParent(advantagesButtonTarget);
+					obj.transform.transform.localScale = Vector3.one;
 					createdObjects[1].Add(obj);
 				}
 				else
 				{
 					obj.transform.SetParent(otherButtonTarget);
+					obj.transform.transform.localScale = Vector3.one;
 					createdObjects[2].Add(obj);
 				}
 
