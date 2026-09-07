@@ -267,7 +267,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 127, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6466077312644351633
 MonoBehaviour:
@@ -285,6 +285,11 @@ MonoBehaviour:
   leftGroup: {fileID: 3176879949646601130}
   rightArrow: {fileID: 575357047367661300}
   rightBar: {fileID: 6772491212589155123}
+  unitIcon: {fileID: 7858732074835446307}
+  frame: {fileID: 7672566547317662748}
+  background: {fileID: 7931728326282984421}
+  enemyBackground: {fileID: 21300000, guid: 81a0a1ada1b6b064d88b6ea66fca1789, type: 3}
+  enemyFrame: {fileID: 21300000, guid: d53e99a535cc3f94fb1d79c8b53bdc05, type: 3}
 --- !u!1 &6556649989696504758
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +399,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.6, y: -12.8}
+  m_AnchoredPosition: {x: 12.7, y: -12.8}
   m_SizeDelta: {x: 116, y: 29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3577211958319210254

@@ -53,8 +53,9 @@ public class UIController : SceneSingleton<UIController>
 
 	public void ShowEnemy(Character character)
 	{
-		EnemyDisplay.Instance.Show();
-		EnemyDisplay.Instance.Set(character);
+		//EnemyDisplay.Instance.Show();
+		//EnemyDisplay.Instance.Set(character);
+		CharacterInspector.Instance.Set(character);
 	}
 
 	public void HideEnemy()

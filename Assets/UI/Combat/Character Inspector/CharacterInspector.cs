@@ -32,6 +32,10 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 		{
 			SetHero(c);
 		}
+		else
+		{
+			SetEnemy(c);
+		}
 
 		Canvas.ForceUpdateCanvases();
 		LayoutRebuilder.ForceRebuildLayoutImmediate(target);
@@ -46,6 +50,29 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 		CreateEntry("Evasion", $"{c.currentEvasion}");
 		CreateEntry("Toughness", $"{c.toughness}");
 		CreateEntry("Energy", $"{c.currentEnergy}/{c.characterDefinition.maxEnergy}");
+		CreateEntry("Movement", $"{c.movementMax}");
+
+		cunning.text = $"Cunning\n{c.characterDefinition.cunning}";
+		prowess.text = $"Prowess\n{c.characterDefinition.prowess}";
+
+		bottomUI.transform.SetAsLastSibling();
+		bottomUI.Set(c.characterDefinition.traits);
+	}
+
+	void SetEnemy(Character c)
+	{
+		CreateEntry("HP", $"{c.currentHP}/{c.maxHP}");
+		CreateEntry("Armor", $"{c.armor}/{c.maxArmor}");
+		CreateEntry("Evasion", $"{c.currentEvasion}");
+		CreateEntry("Toughness", $"{c.toughness}");
+		if (c.characterDefinition.maxThreshold == -1)
+		{
+			CreateEntry("Reaction", $"-/-");
+		}
+		else
+		{
+			CreateEntry("Reaction", $"{c.threshold}/{c.characterDefinition.maxThreshold}");
+		}
 		CreateEntry("Movement", $"{c.movementMax}");
 
 		cunning.text = $"Cunning\n{c.characterDefinition.cunning}";

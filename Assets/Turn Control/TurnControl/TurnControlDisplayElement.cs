@@ -12,9 +12,20 @@ public class TurnControlDisplayElement : MonoBehaviour
 	public GameObject rightBar;
 	public Image unitIcon;
 
-	public void Set(int value, Sprite icon, bool left, bool rArrow, bool rBar)
+	public Image frame;
+	public Image background;
+
+	public Sprite enemyBackground;
+	public Sprite enemyFrame;
+
+	public void Set(bool hero, int value, Sprite icon, bool left, bool rArrow, bool rBar)
 	{
-		this.value.text = value.ToString();
+        if (!hero)
+        {
+			frame.sprite = enemyFrame;
+			background.sprite = enemyBackground;
+        }
+        this.value.text = value.ToString();
 		unitIcon.sprite = icon;
 		leftGroup.SetActive(left);
 		rightArrow.SetActive(rArrow);

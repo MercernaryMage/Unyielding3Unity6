@@ -57,8 +57,19 @@ Don't spawn a player if they don't have determination
     We need to not display traits when they are not turned on
         Wait to fix this until new UI
 
-    Flicker on select for inspector
+    CODE CLEANUP
+        Delete hero router
+        delete enemydisplay
 
+    Tile indication about which unit is clicked
+    We should probably not say "bandit 1", right?
+    Surge should not able to be used multiple times in a turn
+
+    They never did a mock for the combat log pop out
+    status effect ribbon pop isn't finished
+    fleeting courage didn't create an entry in the log
+    surge didn't create an entry in the log
+    We need to do the card
 
     BUGS:
         I hit end turn before the enemy started moving and things went bonkers
