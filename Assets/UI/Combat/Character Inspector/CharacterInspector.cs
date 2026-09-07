@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterInspector : SceneSingleton<CharacterInspector>
 {
@@ -31,6 +32,10 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 		{
 			SetHero(c);
 		}
+
+		Canvas.ForceUpdateCanvases();
+		LayoutRebuilder.ForceRebuildLayoutImmediate(target);
+		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)target.parent);
 	}
 
 	void SetHero(Character c)

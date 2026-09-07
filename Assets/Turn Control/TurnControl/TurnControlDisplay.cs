@@ -32,7 +32,7 @@ public class TurnControlDisplay : SceneSingleton<TurnControlDisplay>
 		{
 			displayName += entry.character.displayNumber.ToString();
 		}
-		element.Set(displayName, entry.value);
+		//element.Set(displayName, entry.value);
 		
 		displayElement.transform.SetParent(content);
 		createdObjects.Add(displayElement);
