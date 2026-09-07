@@ -79,7 +79,7 @@ public class TileGrid : SceneSingleton<TileGrid>
 			}
 			if (character.hero)
 			{
-				HeroDisplayRouter.Instance.mainDisplay.Hide(true);
+				UIController.Instance.heroDisplay.Hide(true);
 			}
 			else
 			{

@@ -66,6 +66,7 @@ public class FancyHeroDisplay : MonoBehaviour
 		{
 			foreach (GameObject obj in list)
 			{
+				obj.transform.SetParent(null);
 				Destroy(obj);
 			}
 			list.Clear();
@@ -125,10 +126,6 @@ public class FancyHeroDisplay : MonoBehaviour
 				obj.GetComponent<ActionButtonDisplay>().Set(lastCharacter, pattern, item, usable.Item1, usable.Item2, i, getWarningForAction.warnings);
 			}
 		}
-		Canvas.ForceUpdateCanvases();
-		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)attackButtonTarget.transform);
-		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)advantagesButtonTarget.transform);
-		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)otherButtonTarget.transform);
 		for (int i = 0; i < createdObjects.Count; ++i)
 		{
 			if (i == 0)
@@ -144,6 +141,18 @@ public class FancyHeroDisplay : MonoBehaviour
 				otherButtonTarget.parent.gameObject.SetActive(createdObjects[i].Count > 0);
 			}
 		}
+
+		Canvas.ForceUpdateCanvases();
+		RebuildButtonRow(attackButtonTarget);
+		RebuildButtonRow(advantagesButtonTarget);
+		RebuildButtonRow(otherButtonTarget);
+		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)attackButtonTarget.parent.parent);
+	}
+
+	void RebuildButtonRow(Transform buttonTarget)
+	{
+		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)buttonTarget);
+		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)buttonTarget.parent);
 	}
 
 	public void Show()

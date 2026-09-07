@@ -184,15 +184,15 @@ public class BattleController : SceneSingleton<BattleController>
 	static public void ReturnControlToPlayer()
 	{
 		ActionController.Instance.ReturnFromReaction();
-		HeroDisplayRouter.Instance.mainDisplay.lastCharacter = TurnControl.Instance.lastCharacter;
-		HeroDisplayRouter.Instance.mainDisplay.UpdateWithLastCharacter();
+		UIController.Instance.heroDisplay.lastCharacter = TurnControl.Instance.lastCharacter;
+		UIController.Instance.heroDisplay.UpdateWithLastCharacter();
 	}
 
 	static public void RemoveControlFromPlayer(Character character)
 	{
 		playerHasControl = false;
 		storedCharacterForControl = character;
-		HeroDisplayRouter.Instance.Hide(true);
+		UIController.Instance.heroDisplay.Hide(true);
 	}
 
 	public void AddDucker(PropDucker ducker)

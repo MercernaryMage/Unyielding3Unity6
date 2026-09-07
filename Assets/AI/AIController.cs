@@ -66,7 +66,7 @@ public class AIController : SceneSingleton<AIController>
 
 	public void DoReaction(Character reactingCharacter, Character attacker)
 	{
-		BattleController.RemoveControlFromPlayer(HeroDisplayRouter.Instance.mainDisplay.lastCharacter);
+		BattleController.RemoveControlFromPlayer(UIController.Instance.heroDisplay.lastCharacter);
 		reactingCharacter.reactions[0].Prep(attacker);
 		reactingCharacter.reactions[0].Execute();
 		Reaction reaction = reactingCharacter.reactions[0];

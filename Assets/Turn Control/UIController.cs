@@ -6,11 +6,12 @@ using UnityEngine.TextCore.Text;
 public class UIController : SceneSingleton<UIController>
 {
 	public Transform worldUI;
+	public FancyHeroDisplay heroDisplay;
+
 
 	public void Hide()
 	{
-		HeroDisplayRouter.Instance.Hide(false) ;
-		EnemyDisplay.Instance.Hide();
+		heroDisplay.Hide(false) ;
 	}
 
 	public void NothingClicked()
@@ -40,8 +41,7 @@ public class UIController : SceneSingleton<UIController>
 	{
 		if (character.hero)
 		{
-			ShowHero(character, false);
-			HideEnemy();
+			ShowHero(character, true);
 			return;
 		}
 		else
@@ -53,32 +53,37 @@ public class UIController : SceneSingleton<UIController>
 
 	public void ShowEnemy(Character character)
 	{
-		//EnemyDisplay.Instance.Show();
-		//EnemyDisplay.Instance.Set(character);
 		CharacterInspector.Instance.Set(character);
 	}
 
-	public void HideEnemy()
+	public void ShowHero(Character character, bool useInspector)
 	{
-		EnemyDisplay.Instance.Hide();
-	}
-
-	public void ShowHero(Character character, bool main)
-	{
-		HeroDisplayRouter.Instance.Show(main);
-		HeroDisplayRouter.Instance.Set(character, main);
+		if (useInspector)
+		{
+			CharacterInspector.Instance.Set(character);
+		}
+		else
+		{
+			heroDisplay.Show();
+			heroDisplay.Set(character);
+		}
 	}
 
 	public void HideHero()
 	{
-		HeroDisplayRouter.Instance.Hide(false);
+		heroDisplay.Hide(false);
 	}
 
 	public void UpdateAfterUsage()
 	{
-		if (HeroDisplayRouter.Instance.mainDisplay.showing)
+		if (heroDisplay.showing)
 		{
-			HeroDisplayRouter.Instance.UpdateWithLastCharacter(true);
+			heroDisplay.UpdateWithLastCharacter();
 		}
+	}
+
+	public void UpdateWithLastCharacter()
+	{
+		heroDisplay.UpdateWithLastCharacter();
 	}
 }

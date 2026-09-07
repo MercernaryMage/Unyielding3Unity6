@@ -299,17 +299,17 @@ public class TurnControl : SceneSingleton<TurnControl>
 	{
 		if (!currentCharacter.hero)
 		{
-			HeroDisplayRouter.Instance.Hide(true);
+			UIController.Instance.heroDisplay.Hide(true);
 			BattleController.playerHasControl = false;
 			AIController.Instance.TakeTurn(currentCharacter);
 		}
 		else
 		{
 			BattleController.playerHasControl = true;
-			HeroDisplayRouter.Instance.Set(currentCharacter, true);
+			UIController.Instance.heroDisplay.Set(currentCharacter);
 
 			MovementController.Instance.ShowMovement(currentCharacter);
-			UIController.Instance.ShowHero(currentCharacter, true);
+			UIController.Instance.ShowHero(currentCharacter, false);
 		}
 	}
 

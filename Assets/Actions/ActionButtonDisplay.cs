@@ -110,7 +110,7 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 			{
 				owningItem.used = true;
 				ActionTypes.DoInstantAction(owningCharacter, pattern);
-				HeroDisplayRouter.Instance.mainDisplay.UpdateWithLastCharacter();
+				UIController.Instance.UpdateWithLastCharacter();
 			}
 			else
 			{

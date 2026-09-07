@@ -50,7 +50,7 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 			MessagePump.Instance.RemoveListener(this);
 			this.enabled = false;
 
-			FancyHeroDisplay display = HeroDisplayRouter.Instance.mainDisplay;
+			FancyHeroDisplay display = UIController.Instance.heroDisplay;
 			if (display.showing && display.lastCharacter == character)
 			{
 				display.statusEffectDisplayGroup.Set(character);

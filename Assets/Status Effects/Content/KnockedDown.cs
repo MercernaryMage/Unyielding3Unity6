@@ -17,7 +17,7 @@ public class KnockedDown : StatusEffect
 		{
 			MovementController.Instance.ShowMovement(character);
 		}
-		HeroDisplayRouter.Instance.mainDisplay.UpdateWithLastCharacter();
+		UIController.Instance.heroDisplay.UpdateWithLastCharacter();
 	}
 
 	public override void CharacterStartTurn(CharacterStartTurnMessage characterStartTurnMessage)
@@ -32,7 +32,7 @@ public class KnockedDown : StatusEffect
 		if (character.hero == true)
 		{
 			character.currentMovement = 0;
-			HeroDisplayRouter.Instance.mainDisplay.UpdateWithLastCharacter();
+			UIController.Instance.heroDisplay.UpdateWithLastCharacter();
 		}
 	}
 

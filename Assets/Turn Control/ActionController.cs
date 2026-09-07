@@ -781,9 +781,9 @@ public class ActionController : SceneSingleton<ActionController>
 		deathAnimator.Set(dyingMat, c.characterDefinition.size);
 		TileGrid.Instance.RemoveCharacter(c);
 
-		if (HeroDisplayRouter.Instance.mainDisplay.lastCharacter == c)
+		if (UIController.Instance.heroDisplay.lastCharacter == c)
 		{
-			HeroDisplayRouter.Instance.mainDisplay.Hide(true);
+			UIController.Instance.heroDisplay.Hide(true);
 		}
 
 		CharacterDiedMessage characterDiedMessage = new CharacterDiedMessage();

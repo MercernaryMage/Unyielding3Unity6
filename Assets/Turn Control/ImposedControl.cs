@@ -44,7 +44,7 @@ public class ImposedControl : SceneSingleton<ImposedControl>
 				}
 			}
 		}
-		HeroDisplayRouter.Instance.UpdateStatusEffects();
+		UIController.Instance.heroDisplay.UpdateStatusEffects();
 	}
 
 	public bool HandleImposed(Character movingCharacter)
@@ -60,7 +60,7 @@ public class ImposedControl : SceneSingleton<ImposedControl>
 				found = true;
 			}
 		}
-		HeroDisplayRouter.Instance.UpdateStatusEffects();
+		UIController.Instance.heroDisplay.UpdateStatusEffects();
 		return found;
 	}
 }

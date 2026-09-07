@@ -35,7 +35,7 @@ public class UseShieldTrait : Trait
 				if (i.itemDefinition.name == "Shield")
 				{
 					ActionTypes.DoInstantAction(character, i.itemDefinition.actions[0]);
-					HeroDisplayRouter.Instance.mainDisplay.UpdateWithLastCharacter();
+					UIController.Instance.heroDisplay.UpdateWithLastCharacter();
 					FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, "using shield");
 					break;
 				}

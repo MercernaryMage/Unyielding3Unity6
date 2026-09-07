@@ -57,9 +57,9 @@ Don't spawn a player if they don't have determination
     We need to not display traits when they are not turned on
         Wait to fix this until new UI
 
-    CODE CLEANUP
-        Delete hero router
-        delete enemydisplay
+    You can click a character and get their fancy UI
+        If you click a character and it's not their turn, run inspector instead
+    Cross bow tags are a mess
 
     Tile indication about which unit is clicked
     We should probably not say "bandit 1", right?
