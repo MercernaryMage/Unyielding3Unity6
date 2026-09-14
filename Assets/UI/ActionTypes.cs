@@ -30,6 +30,13 @@ public class ActionTypes : MonoBehaviour
 			c2,
 			pattern,
 		};
+		string str = pattern.actionMessage;
+		if (pattern.storedPattern != null)
+		{
+			str = pattern.fakeActionMessage;
+		}
+		string finalString = string.Format(str, c1.name, c2.name);
+		CombatLogControl.Instance.AddEntry(finalString);
 		Type.GetType("ActionTypes").GetMethod(pattern.targetedAction.actionName).Invoke(null, paramsList);
 	}
 
@@ -41,6 +48,8 @@ public class ActionTypes : MonoBehaviour
 			t,
 			pattern,
 		};
+		string finalString = string.Format(pattern.actionMessage, c.name);
+		CombatLogControl.Instance.AddEntry(finalString);
 		Type.GetType("ActionTypes").GetMethod(pattern.targetedAction.actionName).Invoke(null, paramsList);
 	}
 
@@ -108,6 +117,8 @@ public class ActionTypes : MonoBehaviour
 			pattern,
 			alternate
 		};
+		string finalString = string.Format(pattern.actionMessage, c.name);
+		CombatLogControl.Instance.AddEntry(finalString);
 		Type.GetType("ActionTypes").GetMethod(pattern.instantAction.actionName).Invoke(null, paramsList);
 	}
 

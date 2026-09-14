@@ -163,8 +163,8 @@ public class FancyHeroDisplay : MonoBehaviour
 
 	public void Hide(bool hideMovement)
 	{
-		showing = false;
-		content.SetActive(false);
+		//showing = false;
+		//content.SetActive(false);
 		if (hideMovement)
 		{
 			MovementController.Instance.HideMovement();
@@ -202,7 +202,7 @@ public class FancyHeroDisplay : MonoBehaviour
 		armorBar.Set(lastCharacter.armor / (float)lastCharacter.maxArmor);
 		actionPoint.text = $"{lastCharacter.actionCount}";
 		APBar.Set(lastCharacter.actionCount / 4.0f);
-		energy.text = $"{lastCharacter.currentEnergy}/{lastCharacter.characterDefinition.maxEnergy}";
+		energy.text = $"{lastCharacter.currentEnergy}";
 		energyBar.Set(lastCharacter.currentEnergy / (float)lastCharacter.characterDefinition.maxEnergy);
 		movement.text = $"{lastCharacter.currentMovement}";
 		movementBar.Set(lastCharacter.currentMovement / (float)lastCharacter.movementMax);

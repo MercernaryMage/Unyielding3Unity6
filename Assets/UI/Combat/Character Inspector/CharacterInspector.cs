@@ -56,7 +56,11 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 		prowess.text = $"Prowess\n{c.characterDefinition.prowess}";
 
 		bottomUI.transform.SetAsLastSibling();
-		bottomUI.Set(c.characterDefinition.traits);
+		bottomUI.ClearTraits();
+		if (!PersistenceManager.Instance.GetFlag("WeaponSlotsLocked"))
+		{
+			bottomUI.Set(c.characterDefinition.traits);
+		}
 	}
 
 	void SetEnemy(Character c)

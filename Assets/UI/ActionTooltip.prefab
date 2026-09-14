@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActionTooltipBubbleGenerator
   bubblePrefab: {fileID: 3107953202694895061, guid: 25875c8b840de5b48b410181588ebcc2, type: 3}
-  width: 240
+  width: 260
   minHorizontalSpacing: 15
   verticalSpacing: 30
   lineHeight: 40

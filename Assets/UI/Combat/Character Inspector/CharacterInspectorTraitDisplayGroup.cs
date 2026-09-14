@@ -8,14 +8,17 @@ public class CharacterInspectorTraitDisplayGroup : MonoBehaviour
 
 	List<GameObject> createdObjects = new List<GameObject>();
 
-	public void Set(List<TraitScriptableObject> traits)
+	public void ClearTraits()
 	{
 		foreach (GameObject obj in createdObjects)
 		{
 			Destroy(obj);
 		}
 		createdObjects.Clear();
+	}
 
+	public void Set(List<TraitScriptableObject> traits)
+	{
 		foreach (TraitScriptableObject trait in traits)
 		{
 			GameObject obj = Instantiate(elementPrefab);

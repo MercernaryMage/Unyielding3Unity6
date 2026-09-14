@@ -9,6 +9,7 @@ public class Character : MonoBehaviour
 	public string displayName;
 	public int displayNumber;
 	public CharacterToken token;
+	public GameObject selectionVisual;
 	public CharacterScriptableObject characterDefinition;
 	public StorageCharacter storageCharacter;
 	public int movementMax;
@@ -56,6 +57,12 @@ public class Character : MonoBehaviour
 		maxArmor = characterDefinition.armor;
 		toughness = characterDefinition.toughness;
 		currentEvasion = characterDefinition.evasion;
+
+		selectionVisual = Instantiate(UIController.Instance.characterSelectorVisualPrefab);
+		selectionVisual.transform.SetParent(token.transform);
+		selectionVisual.transform.localScale = Vector3.one * 2;
+		selectionVisual.transform.localPosition = new Vector3(0, 1, 0);
+		selectionVisual.SetActive(false);
 
 		GameObject healthBar = Instantiate(CharacterRepository.Instance.data.healthBarPrefab);
 		healthBar.transform.SetParent(UIController.Instance.worldUI);
@@ -110,7 +117,7 @@ public class Character : MonoBehaviour
 		BattleController.Instance.AddCharacter(this);
 	}
 
-	public void ResetActions()
+	public void ResetActions(bool fullReset)
 	{
 		if (storageCharacter != null)
 		{
@@ -120,6 +127,10 @@ public class Character : MonoBehaviour
 			}
 			foreach (Item i in temporaryItems)
 			{
+				if (!fullReset && i.itemDefinition.name == "Surge")
+				{
+					continue;
+				}
 				i.Reset();
 			}
 		}
@@ -223,7 +234,7 @@ public class Character : MonoBehaviour
 		}
 		triggerCount = 1;
 		RefillArmor();
-		ResetActions();
+		ResetActions(true);
 	}
 
 	public void Die()

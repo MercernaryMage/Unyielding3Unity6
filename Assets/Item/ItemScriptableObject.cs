@@ -102,7 +102,11 @@ public class ActionPattern
 	[TextArea]
     public string actionDescription;
 	public string actionDescriptionFunction;
-    public string uniqueName;
+	[TextArea]
+	public string actionMessage;
+	[TextArea]
+	public string fakeActionMessage;
+	public string uniqueName;
     public ActionPattern storedPattern;
     public Character forcedTarget;
     public bool cannotBeUsedOnOthers;

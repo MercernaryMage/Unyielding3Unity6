@@ -29,6 +29,7 @@ MonoBehaviour:
     attack: 1
     physical: 1
     ranged: 1
+    other: 0
     range: 4
     threatRange: 1
     accuracy: 0
@@ -39,7 +40,9 @@ MonoBehaviour:
     disqualifierFunc: 
     intParam: 0
     stringParam: 
+    chargeEffectScriptableObject: {fileID: 0}
     effectScriptableObject: {fileID: 11400000, guid: c9590e6d7be7aca4893587a6cc83aa8c, type: 2}
+    hitEffectScriptableObject: {fileID: 0}
     keywords:
     - Ranged
     postActionCommands: []
@@ -58,5 +61,5 @@ MonoBehaviour:
     uniqueName: 
     forcedTarget: {fileID: 0}
     cannotBeUsedOnOthers: 0
-  keywords: Ranged, bow, guaranteed 2
+  keywords: guaranteed 2
   displayable: 1

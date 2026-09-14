@@ -29,6 +29,7 @@ MonoBehaviour:
     attack: 1
     physical: 1
     ranged: 1
+    other: 0
     range: 4
     threatRange: 1
     accuracy: 0
@@ -64,5 +65,5 @@ MonoBehaviour:
     uniqueName: 
     forcedTarget: {fileID: 0}
     cannotBeUsedOnOthers: 0
-  keywords: Ranged
+  keywords: 
   displayable: 1

@@ -30,7 +30,8 @@ public class ActionTooltipBubbleGenerator : MonoBehaviour
 			Destroy(previousOverObject);
 		}
 		GameObject createdOverObject = new GameObject();
-		createdOverObject.AddComponent<RectTransform>();
+		RectTransform rectTransform = createdOverObject.AddComponent<RectTransform>();
+		rectTransform.pivot = new Vector2(.5f, 0);
 		previousOverObject = createdOverObject;
 		createdOverObject.transform.SetParent(overallTarget, false);
 		List<GameObject> createdBubbles = new List<GameObject>();

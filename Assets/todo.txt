@@ -54,21 +54,22 @@ Don't spawn a player if they don't have determination
         Shield rush did something very strange (this is for map 2 of forest)
         This is obviously not what the card was designed too...but is kinda fun???
 
-    We need to not display traits when they are not turned on
-        Wait to fix this until new UI
-
-    You can click a character and get their fancy UI
-        If you click a character and it's not their turn, run inspector instead
-    Cross bow tags are a mess
-
     Tile indication about which unit is clicked
     We should probably not say "bandit 1", right?
-    Surge should not able to be used multiple times in a turn
 
-    They never did a mock for the combat log pop out
-    status effect ribbon pop isn't finished
-    fleeting courage didn't create an entry in the log
-    surge didn't create an entry in the log
+    polish
+        status effect ribbon pop isn't finished
+        Font is wrong everywhere
+        Icons
+
+    Try outline effect on the armor text
+
+    init bar mouse over effect
+
+    DO ALL THE NON ATTACK ITEMS
+        This is a using string
+        Remember the Cotton version!
+
     We need to do the card
 
     BUGS:
