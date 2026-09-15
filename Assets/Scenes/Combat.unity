@@ -1348,7 +1348,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 61.36487, y: 25}
-  m_SizeDelta: {x: 222.7297, y: 203.34}
+  m_SizeDelta: {x: 407, y: 180.97}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &246897012
 MonoBehaviour:
@@ -1377,10 +1377,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 10
+    m_Left: 85
     m_Right: 10
-    m_Top: 10
-    m_Bottom: 10
+    m_Top: 51
+    m_Bottom: 35
   m_ChildAlignment: 0
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
@@ -1403,15 +1403,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.43529415, g: 0.43529415, b: 0.43529415, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: -8054106929620292135, guid: 30f0054d3a222d249b212e062dea1ca9, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2138,7 +2138,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170.7, y: 32.5}
+  m_AnchoredPosition: {x: 302.6, y: 68.03}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &390215815
@@ -6307,12 +6307,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
-  - Lenette
-  - Cotton
   - enemy
-  - Knight 1
   - Dane
   - David
+  - Knight 1
+  - Lenette
+  - Cotton
   - enemy
   - enemy
 --- !u!114 &898251913
@@ -9647,8 +9647,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 110, y: -10}
-  m_SizeDelta: {x: 200, y: 183.34}
+  m_AnchoredPosition: {x: 202.85, y: -51}
+  m_SizeDelta: {x: 235.7, y: 94.97}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1422344424
 MonoBehaviour:
@@ -9678,30 +9678,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'New Text
-
-    asdf
-
-    asdf
-
-    asd
-
-    dfas
-
-    dfa
-
-    sdfas
-
-    df'
+  m_text: adsadsadfsadfsadf asd asdf sadf asdf asdf asdf sadf asdfasd fsad sad fsadf
+    sadf sadaaaaaaaaa
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3ebe25096b932e74b83e38e22ca4537a, type: 2}
+  m_sharedMaterial: {fileID: 8452371172786045014, guid: 3ebe25096b932e74b83e38e22ca4537a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9732,8 +9719,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -9748,7 +9735,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -19974,61 +19961,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 739412351}
     m_Modifications:
-    - target: {fileID: 6131222410716562370, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6131222410716562370, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6131222410716562370, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 137.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 6131222410716562370, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 6131222410716562370, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -88.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 7828134927291819933, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7828134927291819933, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7828134927291819933, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 68.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 7828134927291819933, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 150
-      objectReference: {fileID: 0}
     - target: {fileID: 8233463445692911288, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233463445997488847, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 436.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233463446591359277, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 436.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233463446591359278, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_text
-      value: Frothing At The Mouth
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233463446612257515, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_Transition
-      value: 2
+      propertyPath: m_AnchoredPosition.y
+      value: -151
       objectReference: {fileID: 0}
     - target: {fileID: 8233463446739658786, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
       propertyPath: m_Name
@@ -20041,10 +19976,6 @@ PrefabInstance:
     - target: {fileID: 8233463446739658787, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233463446739658787, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8233463446739658787, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
       propertyPath: m_AnchorMax.x
@@ -20116,22 +20047,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8233463446739658787, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233463446885944067, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233463446885944067, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233463446885944067, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233463446885944067, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8233463447467572209, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}

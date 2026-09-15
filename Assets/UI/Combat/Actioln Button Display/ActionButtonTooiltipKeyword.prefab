@@ -37,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 44.620003, y: -15.5}
-  m_SizeDelta: {x: 89.240005, y: 31}
+  m_AnchoredPosition: {x: 44.795, y: -15.5}
+  m_SizeDelta: {x: 89.59, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &66655356066373305
 CanvasRenderer:
@@ -153,8 +153,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 44.620003, y: -14.75765}
-  m_SizeDelta: {x: 55.24, y: 29.5153}
+  m_AnchoredPosition: {x: 44.795, y: -14.75765}
+  m_SizeDelta: {x: 55.59, y: 29.5153}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4203176043055664225
 CanvasRenderer:
@@ -186,8 +186,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Melee
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3ebe25096b932e74b83e38e22ca4537a, type: 2}
+  m_sharedMaterial: {fileID: 8452371172786045014, guid: 3ebe25096b932e74b83e38e22ca4537a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

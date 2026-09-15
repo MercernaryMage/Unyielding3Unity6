@@ -67,6 +67,7 @@ Don't spawn a player if they don't have determination
         Remember the Cotton version!
 
     We need to do the card
+        Why is the grid showing up on leap out?
 
     BUGS:
         I hit end turn before the enemy started moving and things went bonkers

@@ -67,6 +67,7 @@ public class WispEmitter : MonoBehaviour
         GameObject obj = Instantiate(wispBasePrefab);
 
         int index = Util.Range(0, validTiles.Count);
+        obj.transform.SetParent(transform, false);
         obj.transform.position = validTiles[index].transform.position;
         obj.AddComponent<VerticalWisp>();
     }

@@ -31,7 +31,7 @@ public class ActionTooltipBubbleGenerator : MonoBehaviour
 		}
 		GameObject createdOverObject = new GameObject();
 		RectTransform rectTransform = createdOverObject.AddComponent<RectTransform>();
-		rectTransform.pivot = new Vector2(.5f, 0);
+		rectTransform.pivot = new Vector2(.5f, 1);
 		previousOverObject = createdOverObject;
 		createdOverObject.transform.SetParent(overallTarget, false);
 		List<GameObject> createdBubbles = new List<GameObject>();
@@ -51,7 +51,11 @@ public class ActionTooltipBubbleGenerator : MonoBehaviour
 			LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)obj.transform);
 		}
 		float y = 0;
+		List<List<GameObject>> lines = new List<List<GameObject>>();
+		List<float> lineYs = new List<float>();
 		List<GameObject> lineBubbles = new List<GameObject>();
+		lines.Add(lineBubbles);
+		lineYs.Add(y);
 		while (createdBubbles.Count > 0)
 		{
 			float sum = GetTotalLength(lineBubbles);
@@ -60,7 +64,6 @@ public class ActionTooltipBubbleGenerator : MonoBehaviour
 			{
 				lineBubbles.Add(createdBubbles[0]);
 				createdBubbles.RemoveAt(0);
-				SetHorizontalSpacing(lineBubbles, y);
 			}
 			else
 			{
@@ -70,11 +73,17 @@ public class ActionTooltipBubbleGenerator : MonoBehaviour
 					return;
 				}
 				y += lineHeight;
-				lineBubbles.Clear();
+				lineBubbles = new List<GameObject>();
+				lines.Add(lineBubbles);
+				lineYs.Add(y);
 			}
 		}
 		previousOverObject.transform.localPosition = Vector3.zero;
-		previousOverObject.GetComponent<RectTransform>().sizeDelta = new Vector2(100, y + lineHeight);
+		previousOverObject.GetComponent<RectTransform>().sizeDelta = new Vector2(100,Mathf.Abs(y));
+		for (int i = 0; i < lines.Count; ++i)
+		{
+			SetHorizontalSpacing(lines[i], lineYs[i]);
+		}
 	}
 
 	float GetTotalLength(List<GameObject> lineObjects)

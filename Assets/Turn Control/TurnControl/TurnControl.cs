@@ -208,6 +208,7 @@ public class TurnControl : SceneSingleton<TurnControl>
 
 	public void Pump()
 	{
+		processStarted = true;
 		if (lastCharacter != null)
 		{
 			CharacterEndTurnMessage characterEndTurnMessage = new CharacterEndTurnMessage();
@@ -265,7 +266,6 @@ public class TurnControl : SceneSingleton<TurnControl>
 
 	public void TakeTurn()
 	{
-		processStarted = false;
 		currentCharacter.StartTurn();
 		if (currentCharacter.hero && currentCharacter.gameObject.GetComponent<Exhausted>() != null)
 		{
@@ -305,6 +305,7 @@ public class TurnControl : SceneSingleton<TurnControl>
 		}
 		else
 		{
+			processStarted = false;
 			BattleController.playerHasControl = true;
 			UIController.Instance.heroDisplay.Set(currentCharacter);
 
