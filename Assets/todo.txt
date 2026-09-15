@@ -62,10 +62,6 @@ Don't spawn a player if they don't have determination
         Font is wrong everywhere
         Icons
 
-    Try outline effect on the armor text
-
-    init bar mouse over effect
-
     DO ALL THE NON ATTACK ITEMS
         This is a using string
         Remember the Cotton version!

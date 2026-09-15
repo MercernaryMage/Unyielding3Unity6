@@ -27,7 +27,7 @@ public class TurnControlDisplay : SceneSingleton<TurnControlDisplay>
 	{
 		GameObject displayElement = Instantiate(prefab);
 		TurnControlDisplayElement element = displayElement.GetComponent<TurnControlDisplayElement>();
-		element.Set(entry.character.hero, entry.value, entry.character.characterDefinition.battlePortrait, first, last, true);
+		element.Set(entry.character, entry.value, first, last, true);
 
 		displayElement.transform.SetParent(content);
 		displayElement.transform.localScale = Vector3.one;

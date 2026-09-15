@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0ce3973bfcc590b4292ff95c692981e2
+guid: eb3c56a98b77fdf49a49275ec61056e8
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,13 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: Averia Serif Libre
   fontNames:
   - Averia Serif Libre
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1b41c100de1771f4daf4a2d52b094611, type: 3}
+  - {fileID: 12800000, guid: f97a5021d29b9574d95120374459a91a, type: 3}
+  - {fileID: 12800000, guid: f407160219d53b9459725489c9440768, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
