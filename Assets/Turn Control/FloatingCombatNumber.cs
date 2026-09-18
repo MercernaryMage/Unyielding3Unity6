@@ -6,8 +6,10 @@ using TMPro;
 public class FloatingCombatNumber : MonoBehaviour
 {
     public TextMeshProUGUI number;
+    public GameObject canvasGroupObject;
     float lifeTime = 3;
     bool marked = false;
+
 
     // Start is called before the first frame update
     public void Set(Vector3 position, string num)
@@ -24,7 +26,7 @@ public class FloatingCombatNumber : MonoBehaviour
         if (lifeTime < 0 && !marked)
 		{
             marked = true;
-            FadeLerp fadeLerp = gameObject.AddComponent<FadeLerp>();
+            CanvasGroupLerper fadeLerp = canvasGroupObject.AddComponent<CanvasGroupLerper>();
             fadeLerp.a0 = 1;
             fadeLerp.a1 = 0;
             fadeLerp.runTime = .3f;

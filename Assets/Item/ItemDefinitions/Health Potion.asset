@@ -29,6 +29,7 @@ MonoBehaviour:
     attack: 0
     physical: 0
     ranged: 0
+    other: 0
     range: 0
     threatRange: 0
     accuracy: 0
@@ -39,6 +40,9 @@ MonoBehaviour:
     disqualifierFunc: 
     intParam: 0
     stringParam: 
+    chargeEffectScriptableObject: {fileID: 0}
+    effectScriptableObject: {fileID: 0}
+    hitEffectScriptableObject: {fileID: 0}
     keywords: []
     postActionCommands: []
     postDamageFunctionName: 
@@ -53,6 +57,8 @@ MonoBehaviour:
       disqualiferFunction: 
     actionDescription: Restore all HP.
     actionDescriptionFunction: 
+    actionMessage: '{0} drinks a Health Potion.'
+    fakeActionMessage: '{0} gives  a Health Potion to {1}.'
     uniqueName: 
     forcedTarget: {fileID: 0}
     cannotBeUsedOnOthers: 0

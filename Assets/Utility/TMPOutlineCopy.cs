@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class TMPOutlineCopy : MonoBehaviour
 {
+    public bool overrideColor = false;
+    public Color overrideOutlineColor = Color.black;
     TextMeshProUGUI ourField;
     TextMeshProUGUI parentField;
 
@@ -19,7 +21,13 @@ public class TMPOutlineCopy : MonoBehaviour
         ourField.enabled = true;
         ourField.font = parentField.font;
         ourField.transform.localPosition = parentField.transform.localPosition;
+        ourField.fontStyle = parentField.fontStyle;
         ((RectTransform)ourField.transform).sizeDelta = ((RectTransform)parentField.transform).sizeDelta;
+
+        if (overrideColor)
+        {
+            ourField.outlineColor = overrideOutlineColor;
+        }
 	}
 
     void Update()

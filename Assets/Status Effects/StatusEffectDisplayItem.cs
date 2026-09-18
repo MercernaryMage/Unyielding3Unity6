@@ -38,6 +38,7 @@ public class StatusEffectDisplayItem : MonoBehaviour, IPointerEnterHandler, IPoi
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		explanationObject.SetActive(true);
+		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)explanationObject.transform);
 	}
 
 	public void OnPointerExit(PointerEventData eventData)

@@ -57,6 +57,8 @@ MonoBehaviour:
       disqualiferFunction: 
     actionDescription: Gain 2 AP costs 1 energy
     actionDescriptionFunction: GetSurgeDescription
+    actionMessage: '{0} surges.'
+    fakeActionMessage: 
     uniqueName: 
     forcedTarget: {fileID: 0}
     cannotBeUsedOnOthers: 1

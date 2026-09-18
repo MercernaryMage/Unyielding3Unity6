@@ -3646,8 +3646,8 @@ MonoBehaviour:
   props: {fileID: 1652642198}
   foundationPrefab: {fileID: 347164264174509607, guid: 0835aabd35028e249b3dddaf0f644887, type: 3}
   outlinePrefab: {fileID: 1457452664793614734, guid: c98747e70eaff7a489a71695204ccf06, type: 3}
-  DebugMap: Forest2.txt
-  DebugConfiguration: Forest/Forest2
+  DebugMap: 
+  DebugConfiguration: 
 --- !u!114 &567337313
 MonoBehaviour:
   m_ObjectHideFlags: 0

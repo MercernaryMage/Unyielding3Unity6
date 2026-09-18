@@ -29,6 +29,7 @@ MonoBehaviour:
     attack: 0
     physical: 0
     ranged: 0
+    other: 0
     range: 1000
     threatRange: 0
     accuracy: 0
@@ -39,6 +40,9 @@ MonoBehaviour:
     disqualifierFunc: 
     intParam: 0
     stringParam: Cursed
+    chargeEffectScriptableObject: {fileID: 0}
+    effectScriptableObject: {fileID: 0}
+    hitEffectScriptableObject: {fileID: 0}
     keywords: []
     postActionCommands: []
     postDamageFunctionName: 
@@ -53,6 +57,8 @@ MonoBehaviour:
       disqualiferFunction: StatusEffectStacking
     actionDescription: Gives target Inaccuracy
     actionDescriptionFunction: 
+    actionMessage: '{0} uses curse on {1}.'
+    fakeActionMessage: 
     uniqueName: 
     forcedTarget: {fileID: 0}
     cannotBeUsedOnOthers: 0

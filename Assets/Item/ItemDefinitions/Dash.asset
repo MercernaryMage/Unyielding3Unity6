@@ -57,7 +57,7 @@ MonoBehaviour:
       disqualiferFunction: 
     actionDescription: Gives full movement points
     actionDescriptionFunction: 
-    actionMessage: '{0} uses Dash'
+    actionMessage: '{0} uses Dash.'
     fakeActionMessage: 
     uniqueName: 
     forcedTarget: {fileID: 0}

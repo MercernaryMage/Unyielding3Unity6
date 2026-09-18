@@ -58,23 +58,19 @@ Don't spawn a player if they don't have determination
     We should probably not say "bandit 1", right?
 
     polish
-        status effect ribbon pop isn't finished
-        Font is wrong everywhere
         Icons
 
-    DO ALL THE NON ATTACK ITEMS
-        This is a using string
-        Remember the Cotton version!
-
-    We need to do the card
-        Why is the grid showing up on leap out?
-
-    BUGS:
-        I hit end turn before the enemy started moving and things went bonkers
+    Do we need to show imposed all the time?  It's pretty annoying?
+        We gotta train the player!!
 
     Why am I not play testing???
-        No UI
         2 other fight sets
+            Tutorial is looking good
+            Map set 1 is looking good
+            Map set 2 unstarted
+            Map set 3 unstarted
+            Boss????
+                Do we want something before the boss?
         Questions for J
             How do you feel about the HP bar?
             How about the keywords on the action bar pop up

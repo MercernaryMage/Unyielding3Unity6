@@ -7,10 +7,20 @@ using UnityEngine.SceneManagement;
 
 public class ScenesMenu
 {
+	static bool CanSwapScene()
+	{
+		Scene s = SceneManager.GetActiveScene();
+		if (s.isDirty && s.name != "")
+		{
+			return false;
+		}
+		return true;
+	}
+
 	[MenuItem("Scenes/Combat")]
 	private static void GoToCombat()
 	{
-		if (SceneManager.GetActiveScene().isDirty)
+		if (!CanSwapScene())
 		{
 			Debug.LogWarning("Scene is dirty, please save");
 			return;
@@ -21,7 +31,7 @@ public class ScenesMenu
 	[MenuItem("Scenes/Town")]
 	private static void GoToTown()
 	{
-		if (SceneManager.GetActiveScene().isDirty)
+		if (!CanSwapScene())
 		{
 			Debug.LogWarning("Scene is dirty, please save");
 			return;
@@ -32,7 +42,7 @@ public class ScenesMenu
 	[MenuItem("Scenes/Overland")]
 	private static void GoToOverland()
 	{
-		if (SceneManager.GetActiveScene().isDirty)
+		if (!CanSwapScene())
 		{
 			Debug.LogWarning("Scene is dirty, please save");
 			return;
@@ -43,7 +53,7 @@ public class ScenesMenu
 	[MenuItem("Scenes/Tutorial Start")]
 	private static void GoToTutorialStart()
 	{
-		if (SceneManager.GetActiveScene().isDirty)
+		if (!CanSwapScene())
 		{
 			Debug.LogWarning("Scene is dirty, please save");
 			return;
@@ -54,7 +64,7 @@ public class ScenesMenu
 	[MenuItem("Scenes/Level Editor")]
 	private static void GoToLevelEditor()
 	{
-		if (SceneManager.GetActiveScene().isDirty)
+		if (!CanSwapScene())
 		{
 			Debug.LogWarning("Scene is dirty, please save");
 			return;
