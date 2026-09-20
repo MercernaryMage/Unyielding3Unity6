@@ -6307,8 +6307,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
-  - enemy
   - Dane
+  - enemy
   - David
   - Knight 1
   - Lenette
