@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CharacterInspector : SceneSingleton<CharacterInspector>
 {
+	public GameObject content;
 	public GameObject characterEntryPrefab;
 	public CharacterInspectorTraitDisplayGroup bottomUI;
 
@@ -13,13 +14,22 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 	public TextMeshProUGUI prowess;
 	public TextMeshProUGUI cunning;
 
+	public StatusEffectDisplayGroup statusEffectDisplayGroup;
 
 	public RectTransform target;
 
 	List<GameObject> createdObjects = new List<GameObject>();
 
+	Character lastCharacter;
+
 	public void Set(Character c)
 	{
+		if (c == null)
+		{
+			return;
+		}
+		lastCharacter = c;
+		Show();
 		foreach (GameObject obj in createdObjects)
 		{
 			Destroy(obj);
@@ -40,6 +50,8 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 		Canvas.ForceUpdateCanvases();
 		LayoutRebuilder.ForceRebuildLayoutImmediate(target);
 		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)target.parent);
+
+		statusEffectDisplayGroup.Set(c);
 	}
 
 	void SetHero(Character c)
@@ -83,6 +95,7 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 		prowess.text = $"Prowess\n{c.characterDefinition.prowess}";
 
 		bottomUI.transform.SetAsLastSibling();
+		bottomUI.ClearTraits();
 		bottomUI.Set(c.characterDefinition.traits);
 	}
 
@@ -93,5 +106,23 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 		obj.transform.SetParent(target);
 		obj.transform.localScale = Vector3.one;
 		createdObjects.Add(obj);
+	}
+
+	public void Show()
+	{
+		content.SetActive(true);
+	}
+
+	public void Hide()
+	{
+		content.SetActive(false);
+	}
+
+	public void Refresh()
+	{
+		if (content.activeInHierarchy)
+		{
+			Set(lastCharacter);
+		}
 	}
 }

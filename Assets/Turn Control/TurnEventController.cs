@@ -39,9 +39,6 @@ public class TurnEventController : SceneSingleton<TurnEventController>
 		}
 	}
 
-	//Run every event scheduled for this tick before the tick's character is allowed to go.
-	//Events are not inline: each event's action must call Pump() once it has finished so the
-	//next one can start, and the last Pump() hands control back to TurnControl.
 	public void PumpStart(int tick)
 	{
 		currentTick = tick;

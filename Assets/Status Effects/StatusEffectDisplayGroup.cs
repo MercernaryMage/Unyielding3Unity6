@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class StatusEffectDisplayGroup : MonoBehaviour
 {
+	public bool rotate;
     public GameObject displayItemPrefab;
 
 	public Transform content;
@@ -35,7 +36,9 @@ public class StatusEffectDisplayGroup : MonoBehaviour
 			GameObject obj = Instantiate(displayItemPrefab);
 			createdObjects.Add(obj);
 			obj.transform.SetParent(content);
-			obj.GetComponent<StatusEffectDisplayItem>().Set(effect);
+			obj.GetComponent<StatusEffectDisplayItem>().Set(effect, rotate);
+			obj.transform.localRotation = Quaternion.identity;
+			obj.transform.localScale = Vector3.one;
 		}
 
 		for (int i = 0; i < createdObjects.Count; i++)

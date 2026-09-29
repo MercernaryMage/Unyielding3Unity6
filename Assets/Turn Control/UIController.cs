@@ -11,6 +11,7 @@ public class UIController : SceneSingleton<UIController>
 
 	public void Hide()
 	{
+		CharacterInspector.Instance.Hide();
 		heroDisplay.Hide(false) ;
 	}
 

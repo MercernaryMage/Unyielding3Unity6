@@ -836,6 +836,7 @@ public class ActionController : SceneSingleton<ActionController>
 			return;
 		}
 
+		CharacterInspector.Instance.Refresh();
 		BattleController.playerHasControl = true;
 
 		currentItem.used = true;

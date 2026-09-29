@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class StatusEffectDisplayItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+	bool rotate;
     public Image icon;
 
 	public GameObject explanationObject;
@@ -20,11 +21,12 @@ public class StatusEffectDisplayItem : MonoBehaviour, IPointerEnterHandler, IPoi
 	public GameObject leftPole;
 	public GameObject rightPole;
 
-	public void Set(StatusEffect effect)
+	public void Set(StatusEffect effect, bool rotate)
 	{
 		icon.sprite = StatusEffectIconRepository.Instance.GetExactIcon(effect.GetIconName());
 		titleText.text = effect.GetExplanationName();
 		bodyText.text = effect.GetExplanation().explanationContent;
+		this.rotate = rotate;
 	}
 
 	public void SetEnds(bool first, bool last)
@@ -39,6 +41,12 @@ public class StatusEffectDisplayItem : MonoBehaviour, IPointerEnterHandler, IPoi
 	{
 		explanationObject.SetActive(true);
 		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)explanationObject.transform);
+		if (rotate)
+		{
+			icon.transform.localRotation = Quaternion.Euler(0, 0, 90);
+			explanationObject.transform.localRotation = Quaternion.Euler(0, 0, 90);
+			explanationObject.transform.localPosition = new Vector3(((RectTransform)explanationObject.transform).sizeDelta.y /2, -382.75f, 0);
+		}
 	}
 
 	public void OnPointerExit(PointerEventData eventData)

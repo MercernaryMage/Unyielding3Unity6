@@ -39,7 +39,7 @@ MonoBehaviour:
     chargesTaken: 0
     disqualifierFunc: 
     intParam: 0
-    stringParam: Cursed
+    stringParam: Inaccuracy
     chargeEffectScriptableObject: {fileID: 0}
     effectScriptableObject: {fileID: 0}
     hitEffectScriptableObject: {fileID: 0}
@@ -54,7 +54,7 @@ MonoBehaviour:
     targetedAction:
       targetType: 1
       actionName: GiveStatusEffect
-      disqualiferFunction: StatusEffectStacking
+      disqualiferFunction: 
     actionDescription: Gives target Inaccuracy
     actionDescriptionFunction: 
     actionMessage: '{0} uses curse on {1}.'

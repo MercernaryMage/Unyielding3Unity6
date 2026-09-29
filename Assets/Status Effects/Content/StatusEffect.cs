@@ -39,6 +39,10 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 		{
 			return;
 		}
+		if (!ShowStatusEffectFloatingCombatMessage())
+		{
+			return;
+		}
 		//this stupid line is to prevent the unity singleton shutdown errors
 		if (MessagePump.Instance)
 		{

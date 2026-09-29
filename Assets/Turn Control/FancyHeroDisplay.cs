@@ -74,6 +74,10 @@ public class FancyHeroDisplay : MonoBehaviour
 
 		if (lastCharacter.GetComponent<Stun>() || lastCharacter.GetComponent<Downed>())
 		{
+			
+			attackButtonTarget.parent.gameObject.SetActive(false);
+			advantagesButtonTarget.parent.gameObject.SetActive(false);
+			otherButtonTarget.parent.gameObject.SetActive(false);
 			return;
 		}
 
@@ -163,8 +167,8 @@ public class FancyHeroDisplay : MonoBehaviour
 
 	public void Hide(bool hideMovement)
 	{
-		//showing = false;
-		//content.SetActive(false);
+		showing = false;
+		content.SetActive(false);
 		if (hideMovement)
 		{
 			MovementController.Instance.HideMovement();

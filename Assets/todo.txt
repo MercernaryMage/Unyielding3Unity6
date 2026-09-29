@@ -60,8 +60,13 @@ Don't spawn a player if they don't have determination
     polish
         Icons
 
-    Do we need to show imposed all the time?  It's pretty annoying?
-        We gotta train the player!!
+    Knight is colored modded - this is not okay
+
+    Bloodthirsting fangs made the enemy run around like a fool
+        limit the targets to reachable
+    Shield rush makes the monster run around all stupid
+    Text on the left side of the log got cut off
+    pop up text spawns behind people
 
     Why am I not play testing???
         2 other fight sets

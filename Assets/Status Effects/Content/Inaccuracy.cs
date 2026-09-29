@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Inaccuracy : StatusEffect
 {
+	int stack = 1;
+
 	public override string GetExplanationName()
 	{
 		return "Inaccuracy";
@@ -13,8 +15,8 @@ public class Inaccuracy : StatusEffect
 	{
 		if (characterAttackingMessage.attacker == character)
 		{
-			characterAttackingMessage.accuracy -= 1;
-			characterAttackingMessage.AddToAccuracyString($"-1 ({GetExplanationName()})");
+			characterAttackingMessage.accuracy -= stack;
+			characterAttackingMessage.AddToAccuracyString($"-{stack} ({GetExplanationName()})");
 		}
 	}
 
@@ -26,4 +28,9 @@ public class Inaccuracy : StatusEffect
 		}
 	}
 
+	public override void DoStack(StatusEffectInitData data)
+	{
+		++stack;
+		Debug.Log(stack);
+	}
 }

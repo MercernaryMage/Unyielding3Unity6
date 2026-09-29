@@ -148,6 +148,7 @@ public class Character : MonoBehaviour
 		if (component == null)
 		{
 			component = gameObject.AddComponent(statusEffectType);
+			return component;
 		}
 		StatusEffect effect = (StatusEffect)component;
 		effect.DoStack(data);
@@ -221,6 +222,10 @@ public class Character : MonoBehaviour
 
 	public void StartTurn()
 	{
+		if (!hero)
+		{
+			CharacterInspector.Instance.Set(this);
+		}
 		if (IsDowned())
 		{
 			RemoveStatusEffectsWhileDowned();

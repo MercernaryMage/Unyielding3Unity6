@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
   m_Name: BigTestEnemy
   m_EditorClassIdentifier: 
-  displayName: Lizard
+  displayName: BigTestEnemy
   model: {fileID: 377918357640677934, guid: 5ff8e7d98485f4e4698a37f6bc912ef5, type: 3}
   size: 2
   movement: 3
@@ -36,7 +36,7 @@ MonoBehaviour:
   cunning: 0
   prowess: 0
   cards:
-  - {fileID: 11400000, guid: a3252cbe4eba2094b83e0dfe35c96e40, type: 2}
+  - {fileID: 11400000, guid: 73b67158e2bb9c64195cdd1f2e02cd79, type: 2}
   reactions:
   - {fileID: 11400000, guid: 260bd2c62ae58c94197326be3e1fcf2c, type: 2}
   bigPortrait: {fileID: 0}
