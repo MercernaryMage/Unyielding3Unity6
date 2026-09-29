@@ -3685,8 +3685,8 @@ MonoBehaviour:
   props: {fileID: 1652642198}
   foundationPrefab: {fileID: 347164264174509607, guid: 0835aabd35028e249b3dddaf0f644887, type: 3}
   outlinePrefab: {fileID: 1457452664793614734, guid: c98747e70eaff7a489a71695204ccf06, type: 3}
-  DebugMap: 
-  DebugConfiguration: 
+  DebugMap: Forest2.txt
+  DebugConfiguration: Forest/Forest2
 --- !u!114 &567337313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3857,8 +3857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b88c884796a7c5418f9bf108c235307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overrideRand: 0
-  seed: 240493967
+  overrideRand: 1
+  seed: 355513070
 --- !u!114 &567337325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6347,9 +6347,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
   - David
+  - Knight 1
   - enemy
   - Dane
-  - Knight 1
   - Lenette
   - Cotton
   - enemy

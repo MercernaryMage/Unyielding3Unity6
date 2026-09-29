@@ -10,17 +10,46 @@ public class ShieldRush : Card
 
     public override void Execute()
     {
-        route = FindRouteAdjacentToBoth();
+        int maxRange = owningCharacter.characterDefinition.movement + 1;
+
+        Tuple<List<Tile>, Tile> bothRoute = FindRouteAdjacentToBoth();
+        Dictionary<Character, Tuple<List<Tile>, Tile>> allyRoutes = null;
+        Dictionary<Character, Tuple<List<Tile>, Tile>> enemyRoutes = null;
+
+        route = null;
+        if (bothRoute != null && bothRoute.Item1.Count <= maxRange)
+        {
+            route = bothRoute;
+        }
 
         if (route == null)
         {
-            Dictionary<Character, Tuple<List<Tile>, Tile>> allyRoutes = RouteToAllClosestCharacters(false);
+            allyRoutes = RouteToAllClosestCharacters(false);
+            Dictionary<Character, Tuple<List<Tile>, Tile>> reachableAllyRoutes = new Dictionary<Character, Tuple<List<Tile>, Tile>>(allyRoutes);
+            Util.RemoveOutOfRangeRoutes(reachableAllyRoutes, maxRange);
+            route = Util.FindSmallestRoute(reachableAllyRoutes, null);
+        }
+
+        if (route == null)
+        {
+            enemyRoutes = RouteToAllClosestCharacters(true);
+            Dictionary<Character, Tuple<List<Tile>, Tile>> reachableEnemyRoutes = new Dictionary<Character, Tuple<List<Tile>, Tile>>(enemyRoutes);
+            Util.RemoveOutOfRangeRoutes(reachableEnemyRoutes, maxRange);
+            route = Util.FindSmallestRoute(reachableEnemyRoutes, null);
+        }
+
+        if (route == null)
+        {
+            route = bothRoute;
+        }
+
+        if (route == null)
+        {
             route = Util.FindSmallestRoute(allyRoutes, null);
         }
 
         if (route == null)
         {
-            Dictionary<Character, Tuple<List<Tile>, Tile>> enemyRoutes = RouteToAllClosestCharacters(true);
             route = Util.FindSmallestRoute(enemyRoutes, null);
         }
 
@@ -30,7 +59,7 @@ public class ShieldRush : Card
             return;
         }
 
-        Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
+        Util.ShortenPathToMaxRange(route, maxRange);
 
         litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
         AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, ReturnFromRoute);

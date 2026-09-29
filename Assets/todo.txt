@@ -68,6 +68,12 @@ Don't spawn a player if they don't have determination
     Text on the left side of the log got cut off
     pop up text spawns behind people
 
+     AI playing multiple cards at once is impossible to follow
+        ??Did we actaully remove targeted??
+        FIX ALL CHARACTERS
+    Cards are hard to understand
+        FIX ALL CARDS
+
     Why am I not play testing???
         2 other fight sets
             Tutorial is looking good
@@ -82,11 +88,7 @@ Don't spawn a player if they don't have determination
 
 
 
-    AI playing multiple cards at once is impossible to follow
-        ??Did we actaully remove targeted??
-        FIX ALL CHARACTERS
-    Cards are hard to understand
-        FIX ALL CARDS
+   
 
     Tile warnings need to show a piece of information when you mouse over them
 

@@ -18,10 +18,11 @@ public class BloodThirstingFangs : Card
 	public override void Execute()
 	{
 		Dictionary<Character, Tuple<List<Tile>, Tile>> routes = RouteToAllClosestCharacters(true);
+		Util.RemoveOutOfRangeRoutes(routes, owningCharacter.characterDefinition.movement + 1);
 
 		if (routes.Count == 0)
 		{
-			Debug.Log("No possible route");
+			Debug.Log("No reachable targets");
 			Finish();
 			return;
 		}
@@ -49,7 +50,6 @@ public class BloodThirstingFangs : Card
 			Finish();
 			return;
 		}
-		Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
 		startTile = TileGrid.Instance.FindCharacter(owningCharacter)[0];
 
 		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
@@ -143,7 +143,7 @@ public class BloodThirstingFangs : Card
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Move to lowest hp enemy"));
+		instructions.Add(new CardInstruction("Move to lowest hp enemy in range"));
 		instructions.Add(new CardInstruction("Attack enemy for 1d6 damage"));
 
 		DisplayGrid.Instance.Show();
