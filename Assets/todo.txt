@@ -62,17 +62,50 @@ Don't spawn a player if they don't have determination
 
     Knight is colored modded - this is not okay
 
-    Bloodthirsting fangs made the enemy run around like a fool
-        limit the targets to reachable
-    Shield rush makes the monster run around all stupid
-    Text on the left side of the log got cut off
-    pop up text spawns behind people
+    FINISH KNIGHT
+    MISSING ENEMIES
+        Outrider
+        Greenmaw
+        wizard
+    FOCUS ON FINISHING MISSING MISSIONS
+        Mission set 1
+            3 unique enemies
+                Arb
+                archer
+                chain master
+                deer
+                mercernary
+                murderer
+                Warrior
+                witch
+                Green maw
+                Outrider
+                wizard
+        Mission set 2
 
      AI playing multiple cards at once is impossible to follow
-        ??Did we actaully remove targeted??
-        FIX ALL CHARACTERS
-    Cards are hard to understand
-        FIX ALL CARDS
+        ArmorUp
+            DOOOO BOOOOOOOTH
+                Just get 5 armor
+                Gain X armor + go hit enemy
+
+        Plan
+            Could we cause isolation?
+                Knockback?  Teleport?
+            mark all isolated enemies
+            Next strike deals bonus damage to isolated
+
+Inhale
+AddStatusEffectToSelf: Singe Aura (Dragon), Legion (Mercenary), Escape Vector (Murderer).
+
+Chain only on whiff (no valid target)
+Bash
+ChainWhirl
+ShieldGlare
+Roar
+    
+ Cards are hard to understand
+     FIX ALL CARDS
 
     Why am I not play testing???
         2 other fight sets

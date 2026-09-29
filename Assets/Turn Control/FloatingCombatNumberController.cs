@@ -35,6 +35,18 @@ public class FloatingCombatNumberController : SceneSingleton<FloatingCombatNumbe
 		}
 	}
 
+	Vector3 GetSpawnPosition(Character c)
+	{
+		if (c.characterDefinition.size == 1)
+		{
+			return c.token.transform.position;
+		}
+		else
+		{
+			return c.token.transform.position + new Vector3(0, 1.2f, 0);
+		}
+	}
+
 	public void QueueFloatingCombatNumber(Character c, string message)
 	{
 		if (c.token == null)
@@ -44,13 +56,13 @@ public class FloatingCombatNumberController : SceneSingleton<FloatingCombatNumbe
 		if (data.ContainsKey(c))
 		{
 			data[c].messages.Add(message);
-			data[c].tokenPosition = c.token.transform.position;
+			data[c].tokenPosition = GetSpawnPosition(c);
 		}
 		else
 		{
 			FloatingCombatData floatingCombatData = new FloatingCombatData();
 			floatingCombatData.messages.Add(message);
-			floatingCombatData.tokenPosition = c.token.transform.position;
+			floatingCombatData.tokenPosition = GetSpawnPosition(c);
 			data[c] = (floatingCombatData);
 		}
 	}
