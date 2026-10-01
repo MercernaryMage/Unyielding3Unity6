@@ -1,58 +1,58 @@
 {
   "player": [
     {
-      "x": 1,
-      "y": 1,
-      "direction": 1
-    },
-    {
-      "x": 1,
-      "y": 3,
-      "direction": 1
-    },
-    {
-      "x": 1,
+      "x": 4,
       "y": 5,
       "direction": 1
     },
     {
-      "x": 1,
+      "x": 5,
+      "y": 6,
+      "direction": 1
+    },
+    {
+      "x": 4,
       "y": 7,
+      "direction": 1
+    },
+    {
+      "x": 4,
+      "y": 3,
       "direction": 1
     }
   ],
   "enemies": [
     {
       "location": {
-        "x": 5,
+        "x": 10,
+        "y": 6,
+        "direction": 3
+      },
+      "name": "Arbalist"
+    },
+    {
+      "location": {
+        "x": 9,
         "y": 1,
         "direction": 3
       },
-      "name": "Bandit"
+      "name": "Arbalist"
     },
     {
       "location": {
-        "x": 5,
-        "y": 3,
+        "x": 8,
+        "y": 6,
         "direction": 3
       },
-      "name": "Bandit"
+      "name": "Greenmaw"
     },
     {
       "location": {
-        "x": 5,
-        "y": 5,
+        "x": 8,
+        "y": 2,
         "direction": 3
       },
-      "name": "Bandit"
-    },
-    {
-      "location": {
-        "x": 5,
-        "y": 7,
-        "direction": 3
-      },
-      "name": "Bandit"
+      "name": "Greenmaw"
     }
   ],
   "mapMessageTitle": "",

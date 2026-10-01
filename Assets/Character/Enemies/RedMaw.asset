@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
-  m_Name: BigTestEnemy
+  m_Name: RedMaw
   m_EditorClassIdentifier: 
-  displayName: BigTestEnemy
-  model: {fileID: 377918357640677934, guid: 5ff8e7d98485f4e4698a37f6bc912ef5, type: 3}
-  size: 1
-  movement: 2
+  displayName: Redmaw
+  model: {fileID: 6207216191786593460, guid: 6078833982850254cb8048b3aceb2d27, type: 3}
+  size: 2
+  movement: 4
   armor: 0
-  toughness: 0
-  maxHP: 10
+  toughness: 1
+  maxHP: 20
   maxEnergy: 0
-  maxThreshold: 3
-  evasion: 2
+  maxThreshold: -1
+  evasion: 8
   weight: 0
   isMinion: 0
   allowAoO: 1
   maxDetermination: 0
-  isScannable: 1
+  isScannable: 0
   slots: 
   weapons:
   - item: {fileID: 0}
@@ -36,10 +36,13 @@ MonoBehaviour:
   cunning: 0
   prowess: 0
   cards:
-  - {fileID: 11400000, guid: f66c87051ceda104ab0037600970fb59, type: 2}
+  - {fileID: 11400000, guid: 4388fe9a9e1fb3b4fb29009b6d02e533, type: 2}
+  - {fileID: 11400000, guid: 19c5ec418c52001479e21041c3999070, type: 2}
+  - {fileID: 11400000, guid: df70166b9781a154baf5ee37931fc7f7, type: 2}
+  - {fileID: 11400000, guid: df70166b9781a154baf5ee37931fc7f7, type: 2}
+  - {fileID: 11400000, guid: df70166b9781a154baf5ee37931fc7f7, type: 2}
   reactions: []
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}
-  traits:
-  - {fileID: 11400000, guid: 18d98d2bec48b214abcca61c24e83e6a, type: 2}
+  traits: []
   subclasses: []

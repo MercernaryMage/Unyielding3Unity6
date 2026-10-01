@@ -60,21 +60,17 @@ Don't spawn a player if they don't have determination
     polish
         Icons
 
+    Town is broken for equipping weapons:
+        WeaponSlotDisplay is what is being shown in the picker, but that has the wrong required class.  The prefab that has that is Weapon Display
+
     Knight is colored modded - this is not okay
-
-    Redmaw
-        Sticky sap
-        thorn spray
-    Arbalist
-        Instant line attack
-
-    Advanced monster
         
+    Sparks is given too early: player doesn't have energy
+
     Snipe has the correct nomenclature for what the stalk card should say
 
     MISSING ENEMIES
         Outrider
-        Greenmaw
         wizard
     FOCUS ON FINISHING MISSING MISSIONS
         Mission set 1

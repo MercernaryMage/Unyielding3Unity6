@@ -15,6 +15,7 @@ public class MapBuilder : MonoBehaviour
 	public Transform props;
 	public GameObject foundationPrefab;
 	public GameObject outlinePrefab;
+	public bool useDebugMap;
 	public string DebugMap;
 	public string DebugConfiguration;
 
@@ -278,7 +279,7 @@ public class MapBuilder : MonoBehaviour
 
 	bool UsingDebugLevel()
 	{
-		return !string.IsNullOrEmpty(DebugMap) && !string.IsNullOrEmpty(DebugConfiguration);
+		return useDebugMap;
 	}
 
 	LevelConfiguration GetLevelConfiguration(int i)
