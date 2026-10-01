@@ -62,7 +62,17 @@ Don't spawn a player if they don't have determination
 
     Knight is colored modded - this is not okay
 
-    FINISH KNIGHT
+    Redmaw
+        Sticky sap
+        thorn spray
+        trait: Paralyzed and staked units take 1 damage when status is cleared
+    Arbalist
+        Instant line attack
+
+    Advanced monster
+        
+    Snipe has the correct nomenclature for what the stalk card should say
+
     MISSING ENEMIES
         Outrider
         Greenmaw
@@ -84,16 +94,6 @@ Don't spawn a player if they don't have determination
         Mission set 2
 
      AI playing multiple cards at once is impossible to follow
-        ArmorUp
-            DOOOO BOOOOOOOTH
-                Just get 5 armor
-                Gain X armor + go hit enemy
-
-        Plan
-            Could we cause isolation?
-                Knockback?  Teleport?
-            mark all isolated enemies
-            Next strike deals bonus damage to isolated
 
 Inhale
 AddStatusEffectToSelf: Singe Aura (Dragon), Legion (Mercenary), Escape Vector (Murderer).

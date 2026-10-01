@@ -6,6 +6,7 @@ public class Ensnare : Card
 {
 	Tuple<List<Tile>, Tile> route;
 	List<Tile> litRouteTiles;
+	List<Tile> attackTiles;
 	Character targetHero;
 
 	const int range = 3;
@@ -24,7 +25,7 @@ public class Ensnare : Card
 		targetHero = GetTarget();
 		if (targetHero != null)
 		{
-			AnimationController.Instance.ScrollToCharacter(targetHero, ApplyParalyzed, .5f);
+			AnimationController.Instance.ScrollToCharacter(targetHero, ShowAttackTiles, .5f);
 			return;
 		}
 
@@ -45,10 +46,30 @@ public class Ensnare : Card
 		return heroesInRange[UnityEngine.Random.Range(0, heroesInRange.Count)];
 	}
 
-	void ApplyParalyzed()
+	void ShowAttackTiles()
 	{
-		targetHero.AddStatusEffect(typeof(Paralyzed), null);
-		AnimationController.Instance.DelayedCallback(1.0f, () => Finish());
+		attackTiles = TileGrid.Instance.FindCharacter(targetHero);
+		AnimationController.Instance.ShowTiles(attackTiles, Tile.OverlayType.PossibleAttck, Attack);
+	}
+
+	void Attack()
+	{
+		owningCharacter.SetFacing(TileGrid.Instance.GetFacingDirection(owningCharacter, targetHero));
+		ActionController.Instance.PlayAttackAnimation(owningCharacter, null, () =>
+		{
+			ActionController.AttackResults results = ActionController.Instance.AttackCharacter(
+				targetHero, owningCharacter, new ActionController.AttackProfile(1, 6, 0, true));
+			if (results.hit)
+			{
+				targetHero.AddStatusEffect(typeof(Paralyzed), null);
+			}
+			foreach (Tile t in attackTiles)
+			{
+				t.HideOverlay(Tile.OverlayType.PossibleAttck);
+			}
+
+			AnimationController.Instance.DelayedCallback(1.0f, () => Finish());
+		});
 	}
 
 	void DoMove()
@@ -88,15 +109,16 @@ public class Ensnare : Card
 			Finish();
 			return;
 		}
-		AnimationController.Instance.ScrollToCharacter(targetHero, ApplyParalyzed, .5f);
+		AnimationController.Instance.ScrollToCharacter(targetHero, ShowAttackTiles, .5f);
 	}
 
 	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Apply <u>Paralyzed</u> to an enemy within range 3 that is not <u>Paralyzed</u>"));
-		instructions.Add(new CardInstruction("If there is no target, move toward the closest enemy that is not <u>Paralyzed</u> and try again"));
+		instructions.Add(new CardInstruction("Attack an enemy within range 3 that is not <u>Paralyzed</u> for 1d6 damage"));
+		instructions.Add(new CardInstruction("On hit, apply <u>Paralyzed</u>"));
+		instructions.Add(new CardInstruction("If there is no target, move toward the closest enemy that is not <u>Paralyzed</u> and attack"));
 		DisplayGrid.Instance.Show();
 
 		return instructions;

@@ -15,8 +15,7 @@ public class ArmorUp : Card
         {
             owningCharacter.armor = amount;
         }
-        AIController.Instance.Reshuffle(owningCharacter);
-        AIController.Instance.TakeTurn(owningCharacter);
+        Finish();
     }
 
     public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
@@ -25,7 +24,6 @@ public class ArmorUp : Card
         DisplayGrid.Instance.Clear(11, 8);
         List<CardInstruction> instructions = new List<CardInstruction>();
         instructions.Add(new CardInstruction($"If armor is below {amount}, set armor to {amount}"));
-        instructions.Add(new CardInstruction("Do next action"));
         DisplayGrid.Instance.Show();
         return instructions;
     }

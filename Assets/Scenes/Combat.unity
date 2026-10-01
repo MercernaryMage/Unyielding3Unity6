@@ -3857,8 +3857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b88c884796a7c5418f9bf108c235307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overrideRand: 0
-  seed: 355513070
+  overrideRand: 1
+  seed: 40211587
 --- !u!114 &567337325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6347,9 +6347,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
   - David
-  - Knight 1
-  - enemy
   - Dane
+  - enemy
   - Lenette
   - Cotton
   - enemy

@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
-  m_Name: BigTestEnemy
+  m_Name: Assassin
   m_EditorClassIdentifier: 
-  displayName: BigTestEnemy
-  model: {fileID: 377918357640677934, guid: 5ff8e7d98485f4e4698a37f6bc912ef5, type: 3}
+  displayName: Murderer
+  model: {fileID: 6207216191786593460, guid: 6078833982850254cb8048b3aceb2d27, type: 3}
   size: 2
-  movement: 2
+  movement: 4
   armor: 0
   toughness: 0
-  maxHP: 10
+  maxHP: 19
   maxEnergy: 0
-  maxThreshold: 3
-  evasion: 2
+  maxThreshold: -1
+  evasion: 0
   weight: 0
   isMinion: 0
   allowAoO: 1
   maxDetermination: 0
-  isScannable: 1
+  isScannable: 0
   slots: 
   weapons:
   - item: {fileID: 0}
@@ -36,7 +36,12 @@ MonoBehaviour:
   cunning: 0
   prowess: 0
   cards:
-  - {fileID: 11400000, guid: ddd98bb78f2008648a4ff6c160cdcb5a, type: 2}
+  - {fileID: 11400000, guid: 4a0e43a9f7bc0a244a397494d1b44dba, type: 2}
+  - {fileID: 11400000, guid: ecfe9c15cd5ba4f4bb4b836b1c18d52c, type: 2}
+  - {fileID: 11400000, guid: ecfe9c15cd5ba4f4bb4b836b1c18d52c, type: 2}
+  - {fileID: 11400000, guid: ecfe9c15cd5ba4f4bb4b836b1c18d52c, type: 2}
+  - {fileID: 11400000, guid: ee6706e1e30096c4f8550081f2a27773, type: 2}
+  - {fileID: 11400000, guid: 1f20a652fcf87e14f852bec145c9215d, type: 2}
   reactions: []
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}

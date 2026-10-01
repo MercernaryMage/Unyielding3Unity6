@@ -36,12 +36,11 @@ MonoBehaviour:
   cunning: 0
   prowess: 0
   cards:
-  - {fileID: 11400000, guid: 43219b2ff00886243a24da8a49c71632, type: 2}
-  - {fileID: 11400000, guid: 82bc5610bf1bb3d43a81d2a90481cfbc, type: 2}
   - {fileID: 11400000, guid: 4a0e43a9f7bc0a244a397494d1b44dba, type: 2}
   - {fileID: 11400000, guid: ecfe9c15cd5ba4f4bb4b836b1c18d52c, type: 2}
   - {fileID: 11400000, guid: ecfe9c15cd5ba4f4bb4b836b1c18d52c, type: 2}
   - {fileID: 11400000, guid: ecfe9c15cd5ba4f4bb4b836b1c18d52c, type: 2}
+  - {fileID: 11400000, guid: ee6706e1e30096c4f8550081f2a27773, type: 2}
   reactions: []
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}

@@ -78,13 +78,15 @@ public class Card : IMessageReceiver
 
 	static public void Finish()
 	{
+		float time = FloatingCombatNumberController.Instance.GetMaxQueueCount() * 2f;
+
 		if (ActionController.Instance.queuedActions.Count > 0)
 		{
 			ActionController.Instance.DoQueuedAction();
 			return;
 		}
 		ImposedControl.Instance.Run();
-		BattleController.Instance.CardFinished();
+		BattleController.Instance.CardFinished(time);
 	}
 
 	public Dictionary<Character, Tuple<List<Tile>, Tile>> RouteToAllClosestCharacters(bool targetHeroes)

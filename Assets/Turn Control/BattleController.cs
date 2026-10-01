@@ -228,9 +228,9 @@ public class BattleController : SceneSingleton<BattleController>
 		return c.hero ? enemies : heroes;
 	}
 
-	public void CardFinished()
+	public void CardFinished(float time)
 	{
-		Invoke("CardFinishedActual", .5f);
+		Invoke("CardFinishedActual", .5f + time);
 	}
 	public void CardFinishedActual()
 	{

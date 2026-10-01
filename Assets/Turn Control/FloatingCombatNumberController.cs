@@ -72,4 +72,15 @@ public class FloatingCombatNumberController : SceneSingleton<FloatingCombatNumbe
 		GameObject obj = Instantiate(FloatingCombatNumberPrefab);
 		obj.GetComponent<FloatingCombatNumber>().Set(position, number);
 	}
+
+	public int GetMaxQueueCount()
+	{
+		List<KeyValuePair<Character, FloatingCombatData>> listData = data.ToList();
+		int max = -1;
+		foreach (KeyValuePair<Character, FloatingCombatData> pairs in listData)
+		{
+			max = Mathf.Max(max, pairs.Value.messages.Count);
+		}
+		return max;
+	}
 }

@@ -54,18 +54,19 @@ public class Plan : Card
 		if (target != null)
 		{
 			target.AddStatusEffect(typeof(Marked), null);
+			MarkedForDeath markedForDeath = (MarkedForDeath)target.AddStatusEffect(typeof(MarkedForDeath), null);
+			markedForDeath.causingCharacter = owningCharacter;
 		}
-		AIController.Instance.Reshuffle(owningCharacter);
-		AIController.Instance.TakeTurn(owningCharacter);
+		Finish();
 	}
 
 	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Apply <u>Marked</u> to the closest isolated enemy"));
+		instructions.Add(new CardInstruction("Apply <u>Marked</u> and <u>Marked For Death</u>"));
+		instructions.Add(new CardInstruction("to the closest isolated enemy"));
 		instructions.Add(new CardInstruction("or closest enemy if none are isolated"));
-		instructions.Add(new CardInstruction("Do next action"));
 		return instructions;
 	}
 }

@@ -8,7 +8,7 @@ public class Hunt : Card
 	Tuple<List<Tile>, Tile> route;
 	List<Tile> litRouteTiles;
 
-	bool IsIsolated(Character target)
+	public bool IsIsolated(Character target)
 	{
 		if (target.GetComponent<Downed>())
 		{

@@ -22,6 +22,7 @@ public class ExplanationItemRepository : Singleton<ExplanationItemRepository>
 		{
 			return explanations[explanationName];
 		}
+		Debug.LogError($"Missing Explanation: {explanationName}");
 		return null;
 	}
 }

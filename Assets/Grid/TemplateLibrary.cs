@@ -268,6 +268,31 @@ public class TemplateLibrary : SceneSingleton<TemplateLibrary>
 		return BuildDirectionResult(tiles, direction);
 	}
 
+	public TilesAndDirection SizeSquareTargeting(Character originCharacter)
+	{
+		List<Tile>[] characterAndDirectionGroupings = new List<Tile>[]
+		{
+			new List<Tile>(),
+			new List<Tile>(),
+			new List<Tile>(),
+			new List<Tile>()
+		};
+
+		for (int i = 0; i < 4; ++i)
+		{
+			characterAndDirectionGroupings[i] = GetTilesInMatchedSizeCardinalDirection(originCharacter, originCharacter.characterDefinition.size, i);
+		}
+
+		return GetLargestDirection(characterAndDirectionGroupings);
+	}
+
+	public TilesAndDirection SizeSquareTargetingTowardCharacter(Character originCharacter, Character target)
+	{
+		Direction direction = TileGrid.Instance.GetFacingDirection(originCharacter, target);
+		List<Tile> tiles = GetTilesInMatchedSizeCardinalDirection(originCharacter, originCharacter.characterDefinition.size, (int)direction);
+		return BuildDirectionResult(tiles, direction);
+	}
+
 	public TilesAndDirection ConeTargeting(Character originCharacter, int range)
 	{
 		List<Tile>[] characterAndDirectionGroupings = new List<Tile>[]

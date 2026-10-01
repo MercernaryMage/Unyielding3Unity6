@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Downed : StatusEffect
 {
+	bool readyToClear = false;
+	public override void CharacterStartTurn(CharacterStartTurnMessage characterStartTurnMessage)
+	{
+		readyToClear = true;
+	}
+
 	public override void CharacterEndTurn(CharacterEndTurnMessage characterEndTurnMessage)
 	{
-		if (characterEndTurnMessage.character == character)
+		if (characterEndTurnMessage.character == character && readyToClear)
 		{
 			ClearEffect();
 			Destroy(this);

@@ -155,6 +155,11 @@ public class Character : MonoBehaviour
 		return component;
 	}
 
+	public Component AddStatusEffectAllowDuplicate(Type statusEffectType)
+	{
+		return gameObject.AddComponent(statusEffectType);
+	}
+
 	public void RefillArmor()
 	{
 		int armorDifference = maxArmor - armor;

@@ -13,7 +13,7 @@ public class FollowingBlast : Blast
 			return;
 		}
 
-		Following following = (Following)target.AddStatusEffect(typeof(Following), null);
+		Following following = (Following)target.AddStatusEffectAllowDuplicate(typeof(Following));
 		following.Track(2);
 
 		int detonationTick = TurnControl.Instance.GetValue(owningCharacter);
