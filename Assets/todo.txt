@@ -65,7 +65,6 @@ Don't spawn a player if they don't have determination
     Redmaw
         Sticky sap
         thorn spray
-        trait: Paralyzed and staked units take 1 damage when status is cleared
     Arbalist
         Instant line attack
 

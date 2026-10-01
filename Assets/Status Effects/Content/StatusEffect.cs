@@ -54,6 +54,11 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 			MessagePump.Instance.RemoveListener(this);
 			this.enabled = false;
 
+			StatusEffectRemovedMessage statusEffectRemovedMessage = new StatusEffectRemovedMessage();
+			statusEffectRemovedMessage.character = character;
+			statusEffectRemovedMessage.effect = this;
+			MessagePump.Instance.SendMessage(statusEffectRemovedMessage);
+
 			FancyHeroDisplay display = UIController.Instance.heroDisplay;
 			if (display.showing && display.lastCharacter == character)
 			{

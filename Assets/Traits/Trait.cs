@@ -34,6 +34,8 @@ public class Trait : MonoBehaviour, IMessageReceiver
 
 	virtual public void CombatStart(CombatStartMessage message) { }
 
+	virtual public void StatusEffectRemoved(StatusEffectRemovedMessage message) { }
+
 	virtual public void OnCharacterTakeBurnDamage(CharacterTakingBurnDamageMessage message) { }
 
 	virtual public void OnPreviewMovementProvoke(PreviewMovementProvokeMessage message) { }
@@ -77,6 +79,10 @@ public class Trait : MonoBehaviour, IMessageReceiver
 		else if (message.messageType == MessageType.CombatStart)
 		{
 			CombatStart((CombatStartMessage)message);
+		}
+		else if (message.messageType == MessageType.StatusEffectRemoved)
+		{
+			StatusEffectRemoved((StatusEffectRemovedMessage)message);
 		}
 		else if (message.messageType == MessageType.CharacterTakingBurnDamage)
 		{

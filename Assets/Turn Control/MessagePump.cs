@@ -32,7 +32,8 @@ public enum MessageType
 	PreviewMovementProvoke,
 	PreviewAttackWarning,
 	CharacterDied,
-	CharacterHit
+	CharacterHit,
+	StatusEffectRemoved
 }
 
 public class Message
@@ -331,6 +332,17 @@ public class CharacterDiedMessage : Message
 	public CharacterDiedMessage()
 	{
 		messageType = MessageType.CharacterDied;
+	}
+}
+
+public class StatusEffectRemovedMessage : Message
+{
+	public Character character;
+	public StatusEffect effect;
+
+	public StatusEffectRemovedMessage()
+	{
+		messageType = MessageType.StatusEffectRemoved;
 	}
 }
 

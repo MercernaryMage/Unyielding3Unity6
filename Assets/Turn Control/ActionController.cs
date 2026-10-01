@@ -688,20 +688,23 @@ public class ActionController : SceneSingleton<ActionController>
 				return;
 			}
 
-			if (defender.toughness != 0)
+			if (!profile.ignoreToughness)
 			{
-				if (defender.toughness > 0)
+				if (defender.toughness != 0)
 				{
-					results.outString += $" - {defender.toughness} (toughness)";
+					if (defender.toughness > 0)
+					{
+						results.outString += $" - {defender.toughness} (toughness)";
+					}
+					else
+					{
+						results.outString += $" - {-defender.toughness} (toughness)";
+					}
 				}
-				else
-				{
-					results.outString += $" - {-defender.toughness} (toughness)";
-				}
+
+
+				damage -= defender.toughness;
 			}
-
-
-			damage -= defender.toughness;
 		}
 
 		if (damage <= 0)
@@ -930,6 +933,7 @@ public class ActionController : SceneSingleton<ActionController>
 		public int accuracy;
 		public bool isBackstab;
 		public bool breach;
+		public bool ignoreToughness;
 		public bool trigger;
 		public int guaranteed;
 		public bool autoCrit;
