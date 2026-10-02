@@ -67,14 +67,14 @@ public class Character : MonoBehaviour
 		GameObject healthBar = Instantiate(CharacterRepository.Instance.data.healthBarPrefab);
 		healthBar.transform.SetParent(UIController.Instance.worldUI);
 		token.healthBar = healthBar;
-		healthBar.GetComponent<CharacterHealthBar>().Set(this);
+		healthBar.GetComponent<HealthBarController>().Set(this);
 		if (characterDefinition.size == 1)
 		{
-			healthBar.transform.localPosition = new Vector3(0, -1.3f, 0);
+			healthBar.transform.GetChild(0).localPosition = new Vector3(0, 49, 0);
 		}
 		else if (characterDefinition.size == 2)
 		{
-			healthBar.transform.localPosition = new Vector3(0, .29f, 0);
+			healthBar.transform.GetChild(0).localPosition = new Vector3(0, 74, 0);
 		}
 
 		foreach (CardScriptableObject cardScriptableObject in characterDefinition.cards)

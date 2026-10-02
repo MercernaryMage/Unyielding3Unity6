@@ -12,7 +12,7 @@ public class UIController : SceneSingleton<UIController>
 	public void Hide()
 	{
 		CharacterInspector.Instance.Hide();
-		heroDisplay.Hide(false) ;
+		//heroDisplay.Hide(false) ;
 	}
 
 	public void NothingClicked()

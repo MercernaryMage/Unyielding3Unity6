@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,8 @@ public class SlotDisplay : MonoBehaviour
 		public TextMeshProUGUI cost;
 		public Image itemIcon;
 	}
+
+	public bool setOnClick = false;
 
 	public TextMeshProUGUI slotTypeText;
 
@@ -176,6 +179,13 @@ public class SlotDisplay : MonoBehaviour
 		{
 			return;
 		}
-		AdvantageSelectionPane.Instance.Set(slotType, slot, item);
+		if (setOnClick)
+		{
+			AdvantageSelectionPane.Instance.WeaponDisplayClicked(item, Item.CreateItem(item));
+		}
+		else
+		{
+			AdvantageSelectionPane.Instance.Set(slotType, slot, item);
+		}
 	}
 }

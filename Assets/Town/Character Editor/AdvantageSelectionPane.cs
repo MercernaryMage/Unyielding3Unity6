@@ -57,6 +57,7 @@ public class AdvantageSelectionPane : SceneSingleton<AdvantageSelectionPane>
 			GameObject obj = Instantiate(WeaponSlotDisplayPrefab);
 			SlotDisplay weaponDisplay = obj.GetComponent<SlotDisplay>();
 			weaponDisplay.Set(weaponSlotType, s, item);
+			weaponDisplay.setOnClick = true;
 			obj.transform.SetParent(targetWeapon);
 			createdObjects.Add(obj);
 		}

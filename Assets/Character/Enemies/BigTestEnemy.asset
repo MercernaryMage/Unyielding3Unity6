@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: BigTestEnemy
   model: {fileID: 377918357640677934, guid: 5ff8e7d98485f4e4698a37f6bc912ef5, type: 3}
-  size: 1
+  size: 2
   movement: 2
   armor: 0
   toughness: 0

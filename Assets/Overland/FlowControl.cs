@@ -83,12 +83,10 @@ public class FlowControl : Singleton<FlowControl>
 		//give weapons
 		PersistenceManager.Instance.AddUnlockedItem("Phantasm");
 		PersistenceManager.Instance.AddUnlockedItem("Rapier");
-		PersistenceManager.Instance.AddUnlockedItem("Sparks");
 		PersistenceManager.Instance.AddUnlockedItem("Healing Spell");
 		PersistenceManager.Instance.AddUnlockedItem("Spear");
 		PersistenceManager.Instance.AddUnlockedItem("Big Sword");
 		PersistenceManager.Instance.AddUnlockedItem("Great Club");
-
 		PersistenceManager.Instance.SetFlag("ForestComplete", true);
 	}
 
@@ -99,6 +97,7 @@ public class FlowControl : Singleton<FlowControl>
 		//give weapons
 		PersistenceManager.Instance.AddUnlockedItem("Fireball");
 		PersistenceManager.Instance.AddUnlockedItem("Lightning Bolt");
+		PersistenceManager.Instance.AddUnlockedItem("Sparks");
 		PersistenceManager.Instance.SetFlag("MeadowComplete", true);
 	}
 
