@@ -97,6 +97,11 @@ ChainWhirl
 ShieldGlare
 Roar
     
+floating combat text should come out of the HP bar
+rapier is broken?
+    Step doesn't seem to work
+
+
  Cards are hard to understand
      FIX ALL CARDS
 
