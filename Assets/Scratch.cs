@@ -9,6 +9,7 @@ public class Scratch : MonoBehaviour
 }
 
 /*
- * 
+ * Det: 2
+ * HP: 9
  * 
 */

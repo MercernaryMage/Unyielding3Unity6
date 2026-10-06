@@ -8,6 +8,8 @@ public class HealthBar : MonoBehaviour
 	public RectTransform reaction;
 	public RectTransform energy;
 
+	public RectTransform statusEffects;
+
 	public float barWidth = 117;
 
 

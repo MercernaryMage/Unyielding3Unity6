@@ -640,6 +640,11 @@ public class ActionController : SceneSingleton<ActionController>
 			profile.preDamageAction();
 		}
 
+		if (defender.GetComponent<Downed>() != null)
+		{
+			damage = 0;
+		}
+
 		if (damage <= 0)
 		{
 			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, "0");
@@ -727,32 +732,16 @@ public class ActionController : SceneSingleton<ActionController>
 
 		if (defender.currentHP <= 0)
 		{
-			int overflow = 0 - defender.currentHP;
 			defender.currentHP = 0;
 			if (profile.trigger)
 			{
 				TriggerDisplay.Instance.Abandon();
 			}
-			int downCount = 1;
-			if (defender.maxHP > 0)
-			{
-				downCount += overflow / defender.maxHP;
-			}
-
-			if (defender.storageCharacter != null)
-			{
-				defender.storageCharacter.currentDetermination -= downCount;
-			}
-
+			
 			if (defender.storageCharacter != null && defender.storageCharacter.currentDetermination > 0)
 			{
-				
-				int announcedDowns = defender.GetComponent<Downed>() == null ? 1 : 0;
+				--defender.storageCharacter.currentDetermination;
 				defender.Downed();
-				for (int i = announcedDowns; i < downCount; ++i)
-				{
-					FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, "Downed");
-				}
 				return;
 			}
 			else

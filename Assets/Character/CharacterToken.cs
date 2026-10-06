@@ -16,7 +16,7 @@ public class CharacterToken : MonoBehaviour
 		meshRenderers = GetComponentsInChildren<MeshRenderer>();
 		uiPoint = transform.Find("UIPoint");
 		UIPoint = uiPoint.position;
-	}
+}
 
 	private void Update()
 	{

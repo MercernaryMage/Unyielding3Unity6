@@ -40,17 +40,29 @@ public class StatusEffectDisplayItem : MonoBehaviour, IPointerEnterHandler, IPoi
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		explanationObject.SetActive(true);
-		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)explanationObject.transform);
+		RebuildExplanationLayout();
 		if (rotate)
 		{
 			icon.transform.localRotation = Quaternion.Euler(0, 0, 90);
 			explanationObject.transform.localRotation = Quaternion.Euler(0, 0, 90);
-			explanationObject.transform.localPosition = new Vector3(((RectTransform)explanationObject.transform).sizeDelta.y /2, -382.75f, 0);
+			explanationObject.transform.localPosition = new Vector3(((RectTransform)explanationObject.transform).sizeDelta.y - 53.0f, -405.6f, 0);
 		}
 	}
 
 	public void OnPointerExit(PointerEventData eventData)
 	{
 		explanationObject.SetActive(false);
+	}
+
+	void RebuildExplanationLayout()
+	{
+		titleText.ForceMeshUpdate();
+		bodyText.ForceMeshUpdate();
+
+		RectTransform[] rects = explanationObject.GetComponentsInChildren<RectTransform>(true);
+		for (int i = rects.Length - 1; i >= 0; --i)
+		{
+			LayoutRebuilder.ForceRebuildLayoutImmediate(rects[i]);
+		}
 	}
 }

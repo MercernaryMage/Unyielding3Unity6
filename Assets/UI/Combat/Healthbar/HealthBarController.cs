@@ -14,6 +14,7 @@ public class HealthBarController : MonoBehaviour
 	}
 
 	public List<HealthBar> healthBars;
+	public GameObject statusEffectIconPrefab;
 	Character character;
 
 	public void Set(Character c)
@@ -131,5 +132,10 @@ public class HealthBarController : MonoBehaviour
 		{
 			healthBar.SetReaction(percent);
 		}
+	}
+
+	public void AddEffectIcon(Sprite s)
+	{
+
 	}
 }

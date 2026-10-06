@@ -97,11 +97,14 @@ ChainWhirl
 ShieldGlare
 Roar
 
-You shouldn't be able to use step when paralyzed
+StatusEffect on the healthbar
+    We need to track the actual effect with add and remove
+    Create the icon and map it to the actual effect
 
-We need a reminder on paralyzed, stun, downed
+
 Step should probably show something different?
     Show step range instead?
+Staked probably needs an icon on the character
 
 
 

@@ -71,3 +71,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d5df7b4b1ebb5074383c85baef771672, type: 2}
   - {fileID: 11400000, guid: dc8a752f5b24d2744859ec40725594ef, type: 2}
   healthBarPrefab: {fileID: 3990121842934109005, guid: 2f96da5e15e872842be1c03bbd312e86, type: 3}
+  stausEffectRingPrefab: {fileID: 8787757819599810418, guid: 9f6a912ea61ccdc429d25093ab8ff077, type: 3}
