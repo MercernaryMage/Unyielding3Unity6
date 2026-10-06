@@ -27,8 +27,7 @@ public class FloatingCombatNumberController : SceneSingleton<FloatingCombatNumbe
 			if (combatData.Value.time <= 0 && combatData.Value.messages.Count > 0)
 			{
 				
-				ShowFloatingCombatNumber(combatData.Value.tokenPosition +
-					Vector3.up * 1.5f * combatData.Key.characterDefinition.size, combatData.Value.messages[0]);
+				ShowFloatingCombatNumber(combatData.Value.tokenPosition, combatData.Value.messages[0]);
 				combatData.Value.messages.RemoveAt(0);
 				combatData.Value.time = messageDelay;
 			}
@@ -37,14 +36,7 @@ public class FloatingCombatNumberController : SceneSingleton<FloatingCombatNumbe
 
 	Vector3 GetSpawnPosition(Character c)
 	{
-		if (c.characterDefinition.size == 1)
-		{
-			return c.token.transform.position;
-		}
-		else
-		{
-			return c.token.transform.position + new Vector3(0, 1.2f, 0);
-		}
+		return c.token.GetHealthBarPosition();
 	}
 
 	public void QueueFloatingCombatNumber(Character c, string message)

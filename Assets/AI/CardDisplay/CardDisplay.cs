@@ -83,6 +83,10 @@ public class CardDisplay : MonoBehaviour
 			}
 			++index;
 		}
+		FadeLerp lerp = target.AddComponent<FadeLerp>();
+		lerp.BasicFadeIn();
+		lerp.Init();
+
 		dismissButton.SetActive(showDismiss);
 		dismissButton.transform.SetSiblingIndex(10000);
 		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)target.transform);
@@ -111,15 +115,38 @@ public class CardDisplay : MonoBehaviour
 		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)target.transform);
 	}
 
-	public void Dismiss()
+	public void Dismiss(bool fly)
 	{
 		if (!dismissed)
 		{
-			FadeLerp lerp = content.AddComponent<FadeLerp>();
-			lerp.BasicFadeOut();
-			lerp.callbackFunction = DismissActual;
-			lerp.Init();
 			dismissed = true;
+			if (fly)
+			{
+				GameObject obj = Instantiate(gameObject);
+				obj.transform.SetParent(transform.parent, false);
+
+				ScaleLerp scaleLerp = obj.AddComponent<ScaleLerp>();
+				scaleLerp.startScale = 1;
+				scaleLerp.endScale = .1f;
+				scaleLerp.runTime = .75f;
+				scaleLerp.Init();
+
+				GlobalPositionLerp positionLerp = obj.AddComponent<GlobalPositionLerp>();
+				positionLerp.p0 = obj.transform.position;
+				positionLerp.p1 = CombatLogControl.Instance.UIPoint.position;
+				positionLerp.runTime = .75f;
+				positionLerp.destroy = true;
+				positionLerp.Init();
+
+				DismissActual();
+			}
+			else
+			{
+				FadeLerp lerp = content.AddComponent<FadeLerp>();
+				lerp.BasicFadeOut();
+				lerp.callbackFunction = DismissActual;
+				lerp.Init();
+			}
 		}
 	}
 

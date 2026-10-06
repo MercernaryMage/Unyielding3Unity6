@@ -66,7 +66,7 @@ public class HealthBarController : MonoBehaviour
 		}
 		if (character.hero)
 		{
-			SetReaction(character.currentEnergy / (float)character.characterDefinition.maxEnergy);
+			SetEnergy(character.currentEnergy / (float)character.characterDefinition.maxEnergy);
 		}
 	}
 
@@ -76,6 +76,29 @@ public class HealthBarController : MonoBehaviour
 		{
 			healthBars[i].gameObject.SetActive(i == (int)type);
 		}
+	}
+
+	public Vector3 GetWorldPosition()
+	{
+		Camera camera = Camera.main;
+		if (camera == null || character == null || character.token == null)
+		{
+			return transform.position;
+		}
+
+		Transform barTransform = transform;
+		foreach (HealthBar healthBar in healthBars)
+		{
+			if (healthBar.gameObject.activeSelf)
+			{
+				barTransform = healthBar.transform;
+				break;
+			}
+		}
+
+		Vector3 screenPosition = barTransform.position;
+		screenPosition.z = camera.WorldToScreenPoint(character.token.transform.position).z;
+		return camera.ScreenToWorldPoint(screenPosition);
 	}
 
 	public void SetHealth(float percent)

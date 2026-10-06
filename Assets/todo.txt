@@ -96,10 +96,13 @@ Bash
 ChainWhirl
 ShieldGlare
 Roar
-    
-floating combat text should come out of the HP bar
-rapier is broken?
-    Step doesn't seem to work
+
+You shouldn't be able to use step when paralyzed
+
+We need a reminder on paralyzed, stun, downed
+Step should probably show something different?
+    Show step range instead?
+
 
 
  Cards are hard to understand
@@ -114,6 +117,7 @@ rapier is broken?
         Our playtesting
         Questions for J
             How about the keywords on the action bar pop up
+            Where do I put the enemy card? On the left?  On the right?
 
 
 

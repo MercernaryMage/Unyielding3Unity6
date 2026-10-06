@@ -17,7 +17,7 @@ MonoBehaviour:
   size: 1
   movement: 4
   armor: 0
-  toughness: 1
+  toughness: 2
   maxHP: 15
   maxEnergy: 0
   maxThreshold: -1

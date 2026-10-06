@@ -38,12 +38,12 @@ public class AICardDisplay : SceneSingleton<AICardDisplay>, IPointerEnterHandler
 		time = t;
 	}
 
-	public void Dismiss()
+	public void Dismiss(bool fly)
 	{
 		if (isShowing)
 		{
 			isShowing = false;
-			cardDisplay.Dismiss();
+			cardDisplay.Dismiss(fly);
 		}
 	}
 
@@ -54,7 +54,7 @@ public class AICardDisplay : SceneSingleton<AICardDisplay>, IPointerEnterHandler
 			time -= Time.deltaTime;
 			if (time < 0)
 			{
-				Dismiss();
+				Dismiss(false);
 			}
 		}	
 	}

@@ -15,6 +15,8 @@ public class CombatLogControl : SceneSingleton<CombatLogControl>
 	public TextMeshProUGUI popoutText;
 	public GameObject popout;
 
+	public Transform UIPoint;
+
 	private void Start()
 	{
 	}

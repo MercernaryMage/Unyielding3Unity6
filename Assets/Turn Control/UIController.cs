@@ -47,7 +47,6 @@ public class UIController : SceneSingleton<UIController>
 		}
 		else
 		{
-			HideHero();
 			ShowEnemy(character);
 		}
 	}

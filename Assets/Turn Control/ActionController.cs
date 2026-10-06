@@ -1033,6 +1033,16 @@ public class ActionController : SceneSingleton<ActionController>
 		stepCharacter = c;
 		stepItem = i;
 		stepAction = actionPattern;
+
+		if (c.GetComponent<Paralyzed>() != null)
+		{
+			stepRunning = false;
+			wasStep = false;
+			MovementController.Instance.onMoveComplete = null;
+			ShowAttackableTiles(stepCharacter, stepItem, stepAction);
+			return;
+		}
+
 		stepRunning = true;
 		wasStep = true;
 		MovementController.Instance.onMoveComplete = () =>

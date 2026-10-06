@@ -17,7 +17,7 @@ public class AIController : SceneSingleton<AIController>
 		if (character.alive && (character.cards.Count > 0 || character.cardDiscard.Count > 0))
 		{
 			DiscardSilentFailures(character);
-			AICardDisplay.Instance.Dismiss();
+			AICardDisplay.Instance.Dismiss(true);
 			AICardDisplay.Instance.ShowCard(character.cards[0].cardScriptableObject, CardDisplay.CardType.Card);
 			CardStartMessage cardStartMessage = new CardStartMessage();
 			cardStartMessage.character = character;

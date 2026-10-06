@@ -8,38 +8,20 @@ public class HealthBar : MonoBehaviour
 	public RectTransform reaction;
 	public RectTransform energy;
 
-	float healthWidth;
-	float armorWidth;
-	float reactionWidth;
-	float energyWidth;
+	public float barWidth = 117;
 
-	private void Awake()
-	{
-		healthWidth = health.sizeDelta.x;
-		if (armor != null)
-		{
-			armorWidth = armor.sizeDelta.x;
-		}
-		if (reaction != null)
-		{
-			reactionWidth = reaction.sizeDelta.x;
-		}
-		if (energy != null)
-		{
-			energyWidth = energy.sizeDelta.x;
-		}
-	}
+
 
 	public void SetHealth(float percent)
 	{
-		health.sizeDelta = new Vector2(healthWidth * percent, health.sizeDelta.y);
+		health.sizeDelta = new Vector2(barWidth * percent, health.sizeDelta.y);
 	}
 
 	public void SetArmor(float percent)
 	{
 		if (armor != null)
 		{
-			armor.sizeDelta = new Vector2(armorWidth * percent, armor.sizeDelta.y);
+			armor.sizeDelta = new Vector2(barWidth * percent, armor.sizeDelta.y);
 		}
 	}
 
@@ -47,7 +29,7 @@ public class HealthBar : MonoBehaviour
 	{
 		if (reaction != null)
 		{
-			reaction.sizeDelta = new Vector2(reactionWidth * percent, reaction.sizeDelta.y);
+			reaction.sizeDelta = new Vector2(barWidth * percent, reaction.sizeDelta.y);
 		}
 	}
 
@@ -55,7 +37,7 @@ public class HealthBar : MonoBehaviour
 	{
 		if (energy != null)
 		{
-			energy.sizeDelta = new Vector2(energyWidth * percent, energy.sizeDelta.y);
+			energy.sizeDelta = new Vector2(barWidth * percent, energy.sizeDelta.y);
 		}
 	}
 }

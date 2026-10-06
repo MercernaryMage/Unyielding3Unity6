@@ -59,6 +59,22 @@ public class CharacterToken : MonoBehaviour
 			renderer.SetPropertyBlock(block);
 		}
 	}
+	public Vector3 GetHealthBarPosition()
+	{
+		if (healthBar == null)
+		{
+			return transform.position;
+		}
+
+		HealthBarController healthBarController = healthBar.GetComponent<HealthBarController>();
+		if (healthBarController == null)
+		{
+			return transform.position;
+		}
+
+		return healthBarController.GetWorldPosition();
+	}
+
 	public Vector3 GetBonePosition(string str)
 	{
 		Transform t = transform.Find(str);

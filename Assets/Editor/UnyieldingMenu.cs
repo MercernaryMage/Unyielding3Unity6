@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UnyieldingMenu
 {
@@ -171,5 +172,11 @@ public class UnyieldingMenu
 		GameObject swatchCollectionObj = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/SwatchCollection.prefab");
 		SwatchCollection swatchCollection = swatchCollectionObj.GetComponent<SwatchCollection>();
 		SwatchCollectionEditor.FilloutData(swatchCollection);
+	}
+
+	[MenuItem("Unyielding/Do Random Code")]
+	static void DoRandomCode()
+	{
+		//Fill this out but delete it later
 	}
 }

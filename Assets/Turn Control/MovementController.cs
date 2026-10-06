@@ -60,7 +60,7 @@ public class MovementController : SceneSingleton<MovementController>
 		movingCharacter = character;
 		List<Tile> tiles = TileGrid.Instance.FindCharacter(character);
 
-		int range = rangeLimit >= 0 ? Mathf.Min(character.currentMovement, rangeLimit) : character.currentMovement;
+		int range = rangeLimit >= 0 ? Mathf.Max(character.currentMovement, rangeLimit) : character.currentMovement;
 		List<Tile> inRangeTiles = GetAllTilesInRange(character, range);
 
 		foreach (Tile t in inRangeTiles)
@@ -225,8 +225,11 @@ public class MovementController : SceneSingleton<MovementController>
 		PathfindingRules pathfindingRules = new PathfindingRules();
 		pathfindingRules.allowedToPathThroughAllies = true;
 		List<Tile> route = FindRoute(oldMovingCharacter, t, 0, pathfindingRules);
-		//oldMovingCharacter.currentMovement -= (route.Count - 1);
-		oldMovingCharacter.currentMovement = 0;
+		if (stepCallback == null)
+		{
+			oldMovingCharacter.currentMovement = 0;
+		}
+		
 		PathFollower pathFollower = oldMovingCharacter.token.gameObject.AddComponent<PathFollower>();
 		pathFollower.Set(oldMovingCharacter, route, () =>
 		{
