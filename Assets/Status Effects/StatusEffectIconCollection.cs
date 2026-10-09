@@ -5,5 +5,6 @@ using UnityEngine;
 public class StatusEffectIconCollection : MonoBehaviour
 {
     public Sprite missingIcon;
-    public List<Sprite> icons;
+	public GameObject healthBarStatusIconPrefab;
+	public List<Sprite> icons;
 }

@@ -1,3 +1,6 @@
+using NUnit.Framework;
+using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,7 +15,7 @@ public class HealthBar : MonoBehaviour
 
 	public float barWidth = 117;
 
-
+	Dictionary<StatusEffect, GameObject> createdEffects = new Dictionary<StatusEffect, GameObject>();
 
 	public void SetHealth(float percent)
 	{
@@ -41,5 +44,17 @@ public class HealthBar : MonoBehaviour
 		{
 			energy.sizeDelta = new Vector2(barWidth * percent, energy.sizeDelta.y);
 		}
+	}
+
+	public void AddEffect(StatusEffect effect, GameObject iconObject)
+	{
+		createdEffects[effect] = iconObject;
+		iconObject.transform.SetParent(statusEffects);
+	}
+
+	public void RemoveEffect(StatusEffect effect)
+	{
+		Destroy(createdEffects[effect]);
+		createdEffects.Remove(effect);
 	}
 }

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missingIcon: {fileID: 21300000, guid: 1c4280fbdc61c9d4a87fe3a18d725b7e, type: 3}
+  healthBarStatusIconPrefab: {fileID: 5924998046481136064, guid: 0126e4266a6caa74783c53f283637022, type: 3}
   icons:
   - {fileID: 21300000, guid: cc1f07a8c6498924baa2e120ab55c2a7, type: 3}
   - {fileID: 21300000, guid: 392c42a7117a8894288da1dcd359ab2a, type: 3}
@@ -72,6 +73,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4a68c8924757ce0488936e062e178bb0, type: 3}
   - {fileID: 21300000, guid: 0e2e897b2ae385d45b546aa3a51c717f, type: 3}
   - {fileID: 21300000, guid: 1241fa4c2afe3e24aae0ff05d240d7f0, type: 3}
+  - {fileID: 21300000, guid: 40c92ac6d93067c4e9fc79d6e6a9fdee, type: 3}
   - {fileID: 21300000, guid: 05cd2d7a8068a2143b069d33ac1dc7d2, type: 3}
   - {fileID: 21300000, guid: 184cd7075771a3a49b3a340ec40e550c, type: 3}
   - {fileID: 21300000, guid: e57494e4452ea99409a2bb0984d4c810, type: 3}

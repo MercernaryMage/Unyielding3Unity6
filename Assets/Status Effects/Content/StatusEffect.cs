@@ -26,6 +26,11 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 		{
 			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, GetExplanationName());
 		}
+		if (this.StatusEffectIsVisibleInHealthBar())
+		{
+			character.healthBarController.AddEffectIcon(this);
+		}
+		
 	}
 
 	public virtual void EffectBeingRemoved()
@@ -50,6 +55,10 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 			if (character.alive)
 			{
 				FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, $"-{GetExplanationName()}");
+				if (this.StatusEffectIsVisibleInHealthBar())
+				{
+					character.healthBarController.RemoveEffectIcon(this);
+				}
 			}
 			MessagePump.Instance.RemoveListener(this);
 			this.enabled = false;
@@ -188,5 +197,10 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 	public virtual bool ShowStatusEffectFloatingCombatMessage()
 	{
 		return true;
+	}
+
+	public virtual bool StatusEffectIsVisibleInHealthBar()
+	{
+		return false;
 	}
 }

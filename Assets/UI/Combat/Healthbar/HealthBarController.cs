@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthBarController : MonoBehaviour
 {
@@ -134,8 +136,21 @@ public class HealthBarController : MonoBehaviour
 		}
 	}
 
-	public void AddEffectIcon(Sprite s)
+	public void AddEffectIcon(StatusEffect effect)
 	{
+		foreach (HealthBar healthBar in healthBars)
+		{
+			GameObject obj = Instantiate(StatusEffectIconRepository.Instance.GetEffectHealthBarIcon());
+			obj.GetComponent<Image>().sprite = StatusEffectIconRepository.Instance.GetExactIcon(effect.GetIconName());
+			healthBar.AddEffect(effect, obj);
+		}
+	}
 
+	public void RemoveEffectIcon(StatusEffect effect)
+	{
+		foreach (HealthBar healthBar in healthBars)
+		{
+			healthBar.RemoveEffect(effect);
+		}
 	}
 }

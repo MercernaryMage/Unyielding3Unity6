@@ -39,6 +39,8 @@ public class Character : MonoBehaviour
 	public List<Reaction> reactions = new List<Reaction>();
 	public List<Reaction> reactionDiscard = new List<Reaction>();
 
+	public HealthBarController healthBarController;
+
 	public Direction facing;
 
 	public void Init(CharacterScriptableObject characterScriptableObject)
@@ -67,7 +69,8 @@ public class Character : MonoBehaviour
 		GameObject healthBar = Instantiate(CharacterRepository.Instance.data.healthBarPrefab);
 		healthBar.transform.SetParent(UIController.Instance.worldUI);
 		token.healthBar = healthBar;
-		healthBar.GetComponent<HealthBarController>().Set(this);
+		healthBarController = healthBar.GetComponent<HealthBarController>();
+		healthBarController.Set(this);
 		if (characterDefinition.size == 1)
 		{
 			healthBar.transform.GetChild(0).localPosition = new Vector3(0, 49, 0);

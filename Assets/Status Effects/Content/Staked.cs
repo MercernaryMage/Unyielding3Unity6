@@ -33,4 +33,14 @@ public class Staked : StatusEffect
 	{
 		return "Staked";
 	}
+
+	public override string GetIconName()
+	{
+		return "Staked";
+	}
+
+	public override bool StatusEffectIsVisibleInHealthBar()
+	{
+		return true;
+	}
 }

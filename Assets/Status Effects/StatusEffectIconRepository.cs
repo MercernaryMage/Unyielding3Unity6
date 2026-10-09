@@ -25,4 +25,9 @@ public class StatusEffectIconRepository : Singleton<StatusEffectIconRepository>
 		}
 		return iconsReal.missingIcon;
 	}
+
+	public GameObject GetEffectHealthBarIcon()
+	{
+		return iconsReal.healthBarStatusIconPrefab;
+	}
 }
