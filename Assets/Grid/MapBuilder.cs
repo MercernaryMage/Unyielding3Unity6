@@ -44,12 +44,21 @@ public class MapBuilder : MonoBehaviour
 		enemyNameCounts.Clear();
 		LevelConfiguration levelConfiguration = GetLevelConfiguration(FlowControl.currentLevel);
 
-		for (int i = 0; i < levelConfiguration.players.Count; ++i)
+		if (levelConfiguration.players.Count <= 4)
 		{
-			PlaceHero(levelConfiguration.players[i].x,
-				levelConfiguration.players[i].y,
-				PersistenceManager.Instance.currentTeam[i],
-				(Direction)levelConfiguration.players[i].facing);
+			for (int i = 0; i < levelConfiguration.players.Count; ++i)
+			{
+				PlaceHero(levelConfiguration.players[i].x,
+					levelConfiguration.players[i].y,
+					PersistenceManager.Instance.currentTeam[i],
+					(Direction)levelConfiguration.players[i].facing);
+			}
+		}
+		else
+		{
+			//TURN THESE INTO TILES
+			//levelConfiguration.players
+			//BattleController.Instance.SetPlacementTiles()
 		}
 
 		for (int i = 0; i < levelConfiguration.enemies.Count; ++i)
@@ -72,7 +81,14 @@ public class MapBuilder : MonoBehaviour
 		characters.AddRange(BattleController.Instance.enemies);
 		TurnControl.Instance.AddCharacters(characters);
 
-		BattleController.playerHasControl = true;
+		if (levelConfiguration.players.Count <= 4)
+		{
+			BattleController.playerHasControl = true;
+		}
+		else
+		{
+			BattleController.Instance.doingPlacement = true;
+		}
 		BattleController.Instance.RequestRunDuckers();
 	}
 
@@ -295,17 +311,7 @@ public class MapBuilder : MonoBehaviour
 
 		if (i == -1)
 		{
-			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 1, 7));
-			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 2, 5));
-			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 4, 2));
-			levelConfiguration.players.Add(new PositionConfiguration(Direction.East, 1, 5));
-
-			levelConfiguration.enemies.Add(new EnemyConfiguration("BigTestEnemy", Direction.West, 4, 3));
-			//levelConfiguration.enemies.Add(new EnemyConfiguration("Bandit", Direction.West, 3, 4));
-			//levelConfiguration.enemies.Add(new EnemyConfiguration("Knight", Direction.West, 4, 3));
-			//levelConfiguration.enemies.Add(new EnemyConfiguration("Archer", Direction.West, 2, 2));
-			//levelConfiguration.enemies.Add(new EnemyConfiguration("Bandit", Direction.West, 2, 1));
-			return levelConfiguration;
+			return BuildLevelConfiguration(levelConfiguration, "TestConfiguration");
 		}
 
 		return BuildLevelConfiguration(levelConfiguration, mapSet.configurations[i]);
@@ -326,7 +332,7 @@ public class MapBuilder : MonoBehaviour
 				new EnemyConfiguration(enemy.name, (Direction)enemy.location.direction,
 				enemy.location.x, enemy.location.y));
 		}
-		if (mapConfiguration.mapMessageBody != "")
+		if (!string.IsNullOrEmpty(mapConfiguration.mapMessageBody))
 		{
 			CombatSystemMessage.Instance.Show(mapConfiguration.mapMessageTitle, mapConfiguration.mapMessageBody);
 		}

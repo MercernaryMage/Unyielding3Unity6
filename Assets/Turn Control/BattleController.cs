@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BattleController : SceneSingleton<BattleController>
@@ -13,6 +14,7 @@ public class BattleController : SceneSingleton<BattleController>
 	static public bool playerHasControl = true;
 	static Character storedCharacterForControl;
 
+	public bool doingPlacement = false;
 	bool playerWinning = false;
 	bool enemyWinning = false;
 
@@ -236,5 +238,10 @@ public class BattleController : SceneSingleton<BattleController>
 	{
 		playerHasControl = true;
 		TurnControl.Instance.Pump();
+	}
+
+	public void SetPlacementTiles(List<Tile> tiles)
+	{
+
 	}
 }

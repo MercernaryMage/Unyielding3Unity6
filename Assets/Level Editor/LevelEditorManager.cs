@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 {
 	public LevelEditorConfigurationManager configurationManager;
+	public LevelEditorInspector inspector;
 	public GameObject emptyTilePrefab;
 	public TMP_InputField XDimension;
 	public TMP_InputField YDimension;
@@ -56,6 +57,14 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 			paintAllowed = !Util.IsPointerOverUI();
 			lastPaintedTile = null;
 		}
+		if (Input.GetMouseButtonDown(1))
+		{
+			EmptyTile tile = GetTile();
+			if (tile != null)
+			{
+				inspector.Set(tile);
+			}
+		}
 
 		if (Input.GetMouseButton(0) && paintAllowed && !Util.IsPointerOverUI())
 		{
@@ -103,7 +112,7 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 		if (tiles.Count > 0 && Time.time - lastGenerateClick > doubleClickTime)
 		{
 			lastGenerateClick = Time.time;
-			Debug.Log("Click Generate again to replace the current map");
+			Debug.Log("Double click to replace the current map");
 			return;
 		}
 
@@ -146,6 +155,18 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 		combatWorld.transform.localPosition = new Vector3(-2.5f, 0, -12.5f);
 	}
 
+	EmptyTile GetTile()
+	{
+		RaycastHit hit;
+		if (!Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+		{
+			return null;
+		}
+
+		EmptyTile emptyTile = hit.collider.GetComponentInParent<EmptyTile>();
+		return emptyTile;
+	}
+
 	void Paint()
 	{
 		if (currentSwatch == null)
@@ -153,13 +174,7 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 			return;
 		}
 
-		RaycastHit hit;
-		if (!Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
-		{
-			return;
-		}
-
-		EmptyTile emptyTile = hit.collider.GetComponentInParent<EmptyTile>();
+		EmptyTile emptyTile = GetTile();
 		if (emptyTile == null || emptyTile == lastPaintedTile)
 		{
 			return;
@@ -167,6 +182,7 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 
 		if (configurationManager.ClickTile(emptyTile))
 		{
+			paintAllowed = false;
 			return;
 		}
 

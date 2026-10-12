@@ -106,6 +106,19 @@ Step should probably show something different?
     Show step range instead?
 Staked probably needs an icon on the character
 
+PLAYER PLACEMENT:
+    if only 4 tiles:
+        NO PLACEMENT
+    Do placement
+        void PlaceCharacters()
+            skip placing the characters
+        
+        DO NOT BattleController.playerHasControl = true;
+
+        show tiles
+        left click places a character
+        right click removes a character
+
 
 
  Cards are hard to understand
