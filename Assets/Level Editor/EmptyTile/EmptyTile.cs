@@ -9,6 +9,9 @@ public class EmptyTile : MonoBehaviour
 	public int x;
 	public int y;
 	public int seed;
+	public int playerIndex = -1;
+	public string mosnterName;
+	public Direction direction;
 
 	public void ChangeToTile(SwatchScriptableObject newSwatch, bool newTile)
 	{

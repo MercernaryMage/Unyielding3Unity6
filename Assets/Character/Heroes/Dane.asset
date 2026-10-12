@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
   m_Name: Dane
   m_EditorClassIdentifier: 
+  enemy: 0
   displayName: Dane
   model: {fileID: 6054517980136450167, guid: 4d4bce6813381e647a12a18d985ee469, type: 3}
   size: 1

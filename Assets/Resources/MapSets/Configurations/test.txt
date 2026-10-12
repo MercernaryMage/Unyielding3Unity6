@@ -1,0 +1,1 @@
+{"player":[{"x":6,"y":5,"direction":0},{"x":6,"y":4,"direction":0},{"x":6,"y":3,"direction":0},{"x":6,"y":2,"direction":0}],"enemies":[{"location":{"x":6,"y":9,"direction":0},"name":"Archer"},{"location":{"x":9,"y":3,"direction":0},"name":"Arbalist"}],"mapMessageTitle":null,"mapMessageBody":null}

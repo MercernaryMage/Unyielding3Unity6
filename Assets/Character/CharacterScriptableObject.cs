@@ -21,6 +21,7 @@ public enum WeaponSlotType
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Character", order = 1)]
 public class CharacterScriptableObject : ScriptableObject
 {
+    public bool enemy = true;
     public string displayName;
     public GameObject model;
     public int size = 1;

@@ -1,0 +1,1417 @@
+fileFormatVersion: 2
+guid: 4248efc455e6d30489361a16aeb722ed
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1443517950165871240
+    second: executioner_texture_0
+  - first:
+      213: 1216728322333635129
+    second: executioner_texture_1
+  - first:
+      213: 5140085576732818890
+    second: executioner_texture_2
+  - first:
+      213: -2039460902456213075
+    second: executioner_texture_3
+  - first:
+      213: 980658347681116815
+    second: executioner_texture_4
+  - first:
+      213: 7411365166365705393
+    second: executioner_texture_5
+  - first:
+      213: 2419772749343977012
+    second: executioner_texture_6
+  - first:
+      213: 3171350614889470387
+    second: executioner_texture_7
+  - first:
+      213: 3316926521353722019
+    second: executioner_texture_8
+  - first:
+      213: 1160735348305134353
+    second: executioner_texture_9
+  - first:
+      213: 7635100987542474088
+    second: executioner_texture_10
+  - first:
+      213: 5503758189417012988
+    second: executioner_texture_11
+  - first:
+      213: 4511395324786809259
+    second: executioner_texture_12
+  - first:
+      213: 7712914756352459122
+    second: executioner_texture_13
+  - first:
+      213: 4439348389151961586
+    second: executioner_texture_14
+  - first:
+      213: -4797868739418493856
+    second: executioner_texture_15
+  - first:
+      213: -4335223964550892107
+    second: executioner_texture_16
+  - first:
+      213: -2759671977576705930
+    second: executioner_texture_17
+  - first:
+      213: -1216607907125357295
+    second: executioner_texture_18
+  - first:
+      213: 3358437988591974177
+    second: executioner_texture_19
+  - first:
+      213: 4260349675210761496
+    second: executioner_texture_20
+  - first:
+      213: -1762928594161257211
+    second: executioner_texture_21
+  - first:
+      213: 2768730301232158875
+    second: executioner_texture_22
+  - first:
+      213: 5199453364100607196
+    second: executioner_texture_23
+  - first:
+      213: 8019901425229551439
+    second: executioner_texture_24
+  - first:
+      213: 5858733524639470702
+    second: executioner_texture_25
+  - first:
+      213: -3209558405556665303
+    second: executioner_texture_26
+  - first:
+      213: 534649857900456564
+    second: executioner_texture_27
+  - first:
+      213: 3974889705916116900
+    second: executioner_texture_28
+  - first:
+      213: -6511985802992855682
+    second: executioner_texture_29
+  - first:
+      213: 3122720470153934211
+    second: executioner_texture_30
+  - first:
+      213: -6138224489187450882
+    second: executioner_texture_31
+  - first:
+      213: -7248970622153194148
+    second: executioner_texture_32
+  - first:
+      213: 1557466571808844413
+    second: executioner_texture_33
+  - first:
+      213: 4552862410804568266
+    second: executioner_texture_34
+  - first:
+      213: 1534990437225718317
+    second: executioner_texture_35
+  - first:
+      213: 6372806902841548792
+    second: executioner_texture_36
+  - first:
+      213: 8849779058058250843
+    second: executioner_texture_37
+  - first:
+      213: 8980126334531120442
+    second: executioner_texture_38
+  - first:
+      213: -5697598338991983489
+    second: executioner_texture_39
+  - first:
+      213: 5784865225912350869
+    second: executioner_texture_40
+  - first:
+      213: 3538918747058050488
+    second: executioner_texture_41
+  - first:
+      213: -6195439939275778464
+    second: executioner_texture_42
+  - first:
+      213: 985910992226036284
+    second: executioner_texture_43
+  - first:
+      213: -4688596048011806159
+    second: executioner_texture_44
+  - first:
+      213: 7850769564399218934
+    second: executioner_texture_45
+  - first:
+      213: -7761755038130802291
+    second: executioner_texture_46
+  - first:
+      213: -3423275820035528466
+    second: executioner_texture_47
+  - first:
+      213: 3428480880479012672
+    second: executioner_texture_48
+  - first:
+      213: 4111860817708381577
+    second: executioner_texture_49
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: executioner_texture_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1192
+        width: 143
+        height: 839
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88a69867de7680410800000000000000
+      internalID: 1443517950165871240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 1801
+        width: 134
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9327ad076ffa2e010800000000000000
+      internalID: 1216728322333635129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_2
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 1707
+        width: 469
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acdb4444990455740800000000000000
+      internalID: 5140085576732818890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_3
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 1736
+        width: 448
+        height: 276
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da1cccf5d1162b3e0800000000000000
+      internalID: -2039460902456213075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_4
+      rect:
+        serializedVersion: 2
+        x: 1427
+        y: 1454
+        width: 603
+        height: 572
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f82fd8b429ffb9d00800000000000000
+      internalID: 980658347681116815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_5
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 1628
+        width: 158
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b48ee90a557ad660800000000000000
+      internalID: 7411365166365705393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_6
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 1476
+        width: 191
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43e61d9be72c49120800000000000000
+      internalID: 2419772749343977012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_7
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 1467
+        width: 476
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b914bae496e20c20800000000000000
+      internalID: 3171350614889470387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_8
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 1236
+        width: 194
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a85c5be817180e20800000000000000
+      internalID: 3316926521353722019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_9
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 1467
+        width: 476
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11387f146a2cb1010800000000000000
+      internalID: 1160735348305134353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_10
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 948
+        width: 200
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86d04ba45e355f960800000000000000
+      internalID: 7635100987542474088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_11
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 948
+        width: 199
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfe19d1c9e6416c40800000000000000
+      internalID: 5503758189417012988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_12
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 1246
+        width: 171
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba9964f3522bb9e30800000000000000
+      internalID: 4511395324786809259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_13
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 1066
+        width: 151
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 271c14b2b17c90b60800000000000000
+      internalID: 7712914756352459122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_14
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 1221
+        width: 191
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f1fa99d6dbbb9d30800000000000000
+      internalID: 4439348389151961586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_15
+      rect:
+        serializedVersion: 2
+        x: 1453
+        y: 796
+        width: 563
+        height: 632
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06c620c3dcb8a6db0800000000000000
+      internalID: -4797868739418493856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_16
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 1028
+        width: 166
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b5fe23f5c036d3c0800000000000000
+      internalID: -4335223964550892107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_17
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 1028
+        width: 166
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 670d0ff25fca3b9d0800000000000000
+      internalID: -2759671977576705930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_18
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 1020
+        width: 64
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1159cd8ed8dbd1fe0800000000000000
+      internalID: -1216607907125357295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_19
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 1020
+        width: 65
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 127b33e8e819b9e20800000000000000
+      internalID: 3358437988591974177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_20
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 790
+        width: 170
+        height: 397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81563e1157dcf1b30800000000000000
+      internalID: 4260349675210761496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_21
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 749
+        width: 339
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 505b3a4b8c1d887e0800000000000000
+      internalID: -1762928594161257211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_22
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 779
+        width: 251
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b989dc32a818c6620800000000000000
+      internalID: 2768730301232158875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_23
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 429
+        width: 343
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdc2d69694b282840800000000000000
+      internalID: 5199453364100607196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_24
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 779
+        width: 251
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f47d470ead96c4f60800000000000000
+      internalID: 8019901425229551439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_25
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 710
+        width: 151
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e64dec989176e4150800000000000000
+      internalID: 5858733524639470702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_26
+      rect:
+        serializedVersion: 2
+        x: 1195
+        y: 425
+        width: 238
+        height: 405
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9240de692ab5573d0800000000000000
+      internalID: -3209558405556665303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_27
+      rect:
+        serializedVersion: 2
+        x: 1404
+        y: 792
+        width: 45
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47aae5b86357b6700800000000000000
+      internalID: 534649857900456564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_28
+      rect:
+        serializedVersion: 2
+        x: 1471
+        y: 792
+        width: 45
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4afac7ea025a92730800000000000000
+      internalID: 3974889705916116900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_29
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 516
+        width: 339
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7559360a67c0a5a0800000000000000
+      internalID: -6511985802992855682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_30
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 372
+        width: 205
+        height: 319
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 385bd5409b1265b20800000000000000
+      internalID: 3122720470153934211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_31
+      rect:
+        serializedVersion: 2
+        x: 1443
+        y: 34
+        width: 576
+        height: 736
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: effd06a4955a0daa0800000000000000
+      internalID: -6138224489187450882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_32
+      rect:
+        serializedVersion: 2
+        x: 1450
+        y: 681
+        width: 79
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c55015730ab766b90800000000000000
+      internalID: -7248970622153194148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_33
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 276
+        width: 118
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7a2632689b3d9510800000000000000
+      internalID: 1557466571808844413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_34
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 353
+        width: 141
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac02c339d340f2f30800000000000000
+      internalID: 4552862410804568266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_35
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 400
+        width: 31
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d22e5708ba16d4510800000000000000
+      internalID: 1534990437225718317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_36
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 397
+        width: 31
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ff17021d12c07850800000000000000
+      internalID: 6372806902841548792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_37
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 396
+        width: 48
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5ac0484a2bb0da70800000000000000
+      internalID: 8849779058058250843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_38
+      rect:
+        serializedVersion: 2
+        x: 1097
+        y: 11
+        width: 336
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3dabdf8251df9c70800000000000000
+      internalID: 8980126334531120442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_39
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 274
+        width: 66
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f74f6837f701ee0b0800000000000000
+      internalID: -5697598338991983489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_40
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 256
+        width: 65
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 598f3000648f74050800000000000000
+      internalID: 5784865225912350869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_41
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 180
+        width: 113
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b59d57b9d3cc1130800000000000000
+      internalID: 3538918747058050488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_42
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 300
+        width: 48
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06613383330650aa0800000000000000
+      internalID: -6195439939275778464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_43
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 20
+        width: 371
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3a29c7e2d8aead00800000000000000
+      internalID: 985910992226036284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_44
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 24
+        width: 205
+        height: 319
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13ab4fe4cb2ceeeb0800000000000000
+      internalID: -4688596048011806159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_45
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 27
+        width: 241
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f0b67bd25983fc60800000000000000
+      internalID: 7850769564399218934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_46
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 101
+        width: 75
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d817d969ae4b84490800000000000000
+      internalID: -7761755038130802291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_47
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 76
+        width: 82
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee8299a67c41e70d0800000000000000
+      internalID: -3423275820035528466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_48
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 10
+        width: 75
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0478b282239649f20800000000000000
+      internalID: 3428480880479012672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_texture_49
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 7
+        width: 68
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 985fa5dc0a3401930800000000000000
+      internalID: 4111860817708381577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      executioner_texture_0: 1443517950165871240
+      executioner_texture_1: 1216728322333635129
+      executioner_texture_10: 7635100987542474088
+      executioner_texture_11: 5503758189417012988
+      executioner_texture_12: 4511395324786809259
+      executioner_texture_13: 7712914756352459122
+      executioner_texture_14: 4439348389151961586
+      executioner_texture_15: -4797868739418493856
+      executioner_texture_16: -4335223964550892107
+      executioner_texture_17: -2759671977576705930
+      executioner_texture_18: -1216607907125357295
+      executioner_texture_19: 3358437988591974177
+      executioner_texture_2: 5140085576732818890
+      executioner_texture_20: 4260349675210761496
+      executioner_texture_21: -1762928594161257211
+      executioner_texture_22: 2768730301232158875
+      executioner_texture_23: 5199453364100607196
+      executioner_texture_24: 8019901425229551439
+      executioner_texture_25: 5858733524639470702
+      executioner_texture_26: -3209558405556665303
+      executioner_texture_27: 534649857900456564
+      executioner_texture_28: 3974889705916116900
+      executioner_texture_29: -6511985802992855682
+      executioner_texture_3: -2039460902456213075
+      executioner_texture_30: 3122720470153934211
+      executioner_texture_31: -6138224489187450882
+      executioner_texture_32: -7248970622153194148
+      executioner_texture_33: 1557466571808844413
+      executioner_texture_34: 4552862410804568266
+      executioner_texture_35: 1534990437225718317
+      executioner_texture_36: 6372806902841548792
+      executioner_texture_37: 8849779058058250843
+      executioner_texture_38: 8980126334531120442
+      executioner_texture_39: -5697598338991983489
+      executioner_texture_4: 980658347681116815
+      executioner_texture_40: 5784865225912350869
+      executioner_texture_41: 3538918747058050488
+      executioner_texture_42: -6195439939275778464
+      executioner_texture_43: 985910992226036284
+      executioner_texture_44: -4688596048011806159
+      executioner_texture_45: 7850769564399218934
+      executioner_texture_46: -7761755038130802291
+      executioner_texture_47: -3423275820035528466
+      executioner_texture_48: 3428480880479012672
+      executioner_texture_49: 4111860817708381577
+      executioner_texture_5: 7411365166365705393
+      executioner_texture_6: 2419772749343977012
+      executioner_texture_7: 3171350614889470387
+      executioner_texture_8: 3316926521353722019
+      executioner_texture_9: 1160735348305134353
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Executioner
   m_EditorClassIdentifier: 
   displayName: Executioner
-  model: {fileID: 6207216191786593460, guid: 6078833982850254cb8048b3aceb2d27, type: 3}
+  model: {fileID: 6257802974378125461, guid: 70906cce53b07b64391c90f8ecc7d050, type: 3}
   size: 2
   movement: 2
   armor: 0

@@ -390,6 +390,12 @@ public class MapBuilder : MonoBehaviour
 
 public class MapLocation
 {
+	public MapLocation(int x1, int y1, int d1)
+	{
+		x = x1;
+		y = y1;
+		direction = d1;
+	}
 	public int x;
 	public int y;
 	public int direction;
@@ -397,6 +403,11 @@ public class MapLocation
 
 public class NPCLocation
 {
+	public NPCLocation(string n, int x1, int y1, int d1)
+	{
+		name = n;
+		location = new MapLocation(x1, y1, d1);
+	}
 	public MapLocation location;
 	public string name;
 }

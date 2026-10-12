@@ -97,9 +97,9 @@ ChainWhirl
 ShieldGlare
 Roar
 
-StatusEffect on the healthbar
-    We need to track the actual effect with add and remove
-    Create the icon and map it to the actual effect
+Rename:
+    stake shot -> bolo throw
+    staked -> shackled
 
 
 Step should probably show something different?

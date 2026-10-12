@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
   m_Name: David
   m_EditorClassIdentifier: 
+  enemy: 0
   displayName: David
   model: {fileID: 498972774399169908, guid: 7efb3ade84bff0240ad81375efaf6e24, type: 3}
   size: 1

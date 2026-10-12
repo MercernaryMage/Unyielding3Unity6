@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
   m_Name: Cotton
   m_EditorClassIdentifier: 
+  enemy: 0
   displayName: Cotton
   model: {fileID: 4365393165730042595, guid: 4bca56fcd4a4e334b9cf919ca5b9c13e, type: 3}
   size: 1

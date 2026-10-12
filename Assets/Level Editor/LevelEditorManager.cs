@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 {
+	public LevelEditorConfigurationManager configurationManager;
 	public GameObject emptyTilePrefab;
 	public TMP_InputField XDimension;
 	public TMP_InputField YDimension;
@@ -160,6 +161,11 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 
 		EmptyTile emptyTile = hit.collider.GetComponentInParent<EmptyTile>();
 		if (emptyTile == null || emptyTile == lastPaintedTile)
+		{
+			return;
+		}
+
+		if (configurationManager.ClickTile(emptyTile))
 		{
 			return;
 		}

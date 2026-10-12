@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BigTestEnemy
   m_EditorClassIdentifier: 
   displayName: BigTestEnemy
-  model: {fileID: 377918357640677934, guid: 5ff8e7d98485f4e4698a37f6bc912ef5, type: 3}
+  model: {fileID: 6257802974378125461, guid: 70906cce53b07b64391c90f8ecc7d050, type: 3}
   size: 2
   movement: 2
   armor: 0

@@ -1,0 +1,455 @@
+fileFormatVersion: 2
+guid: 86cd0f4ff156d92438e81f6568f6ea67
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4281457938928321602
+    second: executioner_weapon_texture_0
+  - first:
+      213: -1539363520194483253
+    second: executioner_weapon_texture_1
+  - first:
+      213: 937691432779361873
+    second: executioner_weapon_texture_2
+  - first:
+      213: -8807954110340286972
+    second: executioner_weapon_texture_3
+  - first:
+      213: -5425685070455531434
+    second: executioner_weapon_texture_4
+  - first:
+      213: 3470789346703070303
+    second: executioner_weapon_texture_5
+  - first:
+      213: -9042250358765568162
+    second: executioner_weapon_texture_6
+  - first:
+      213: -4352753987570298557
+    second: executioner_weapon_texture_7
+  - first:
+      213: -3943442327040217749
+    second: executioner_weapon_texture_8
+  - first:
+      213: -5689321097825243009
+    second: executioner_weapon_texture_9
+  - first:
+      213: 154413564083556360
+    second: executioner_weapon_texture_10
+  - first:
+      213: -6633800655304797426
+    second: executioner_weapon_texture_11
+  - first:
+      213: -707160556748034710
+    second: executioner_weapon_texture_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: executioner_weapon_texture_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 98
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebbb66d40b43594c0800000000000000
+      internalID: -4281457938928321602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_weapon_texture_1
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 400
+        width: 184
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcbec96c80513aae0800000000000000
+      internalID: -1539363520194483253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_weapon_texture_2
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 387
+        width: 61
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15eadb7d369530d00800000000000000
+      internalID: 937691432779361873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_weapon_texture_3
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 297
+        width: 25
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 406b937376cd3c580800000000000000
+      internalID: -8807954110340286972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_weapon_texture_4
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 4
+        width: 178
+        height: 356
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6589b58cc2814b4b0800000000000000
+      internalID: -5425685070455531434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_weapon_texture_5
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 288
+        width: 100
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5452749588ba2030800000000000000
+      internalID: 3470789346703070303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_weapon_texture_6
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 4
+        width: 179
+        height: 356
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5f31a3e439738280800000000000000
+      internalID: -9042250358765568162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_weapon_texture_7
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 288
+        width: 100
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34115386f49e793c0800000000000000
+      internalID: -4352753987570298557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_weapon_texture_8
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 319
+        width: 21
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6d2788c8141649c0800000000000000
+      internalID: -3943442327040217749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_weapon_texture_9
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 319
+        width: 21
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f70bdf6da987b01b0800000000000000
+      internalID: -5689321097825243009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_weapon_texture_10
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 15
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 800d3b38156942200800000000000000
+      internalID: 154413564083556360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_weapon_texture_11
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 6
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e03ddcd837100f3a0800000000000000
+      internalID: -6633800655304797426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: executioner_weapon_texture_12
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 7
+        width: 24
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6dadd76839af26f0800000000000000
+      internalID: -707160556748034710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      executioner_weapon_texture_0: -4281457938928321602
+      executioner_weapon_texture_1: -1539363520194483253
+      executioner_weapon_texture_10: 154413564083556360
+      executioner_weapon_texture_11: -6633800655304797426
+      executioner_weapon_texture_12: -707160556748034710
+      executioner_weapon_texture_2: 937691432779361873
+      executioner_weapon_texture_3: -8807954110340286972
+      executioner_weapon_texture_4: -5425685070455531434
+      executioner_weapon_texture_5: 3470789346703070303
+      executioner_weapon_texture_6: -9042250358765568162
+      executioner_weapon_texture_7: -4352753987570298557
+      executioner_weapon_texture_8: -3943442327040217749
+      executioner_weapon_texture_9: -5689321097825243009
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

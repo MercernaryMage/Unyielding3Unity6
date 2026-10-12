@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CharacterRepository : Singleton<CharacterRepository>
 {
@@ -20,5 +21,10 @@ public class CharacterRepository : Singleton<CharacterRepository>
 		}
 		Debug.LogError($"{characterName} not found in the Character Repository");
 		return null;
+	}
+
+	public List<CharacterScriptableObject> GetAllEnemies()
+	{
+		return data.characters.Where(o => o.enemy).ToList();
 	}
 }
