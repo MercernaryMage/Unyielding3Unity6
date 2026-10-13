@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StakeShot : Card
+public class ShackleShot : Card
 {
     Character target;
     List<Tile> targetTiles;
@@ -60,7 +60,7 @@ public class StakeShot : Card
             if (results.hit)
             {
                 target.AddStatusEffect(typeof(Paralyzed), null);
-                target.AddStatusEffect(typeof(Staked), null);
+                target.AddStatusEffect(typeof(Shackled), null);
             }
 
             Finish();
@@ -73,7 +73,7 @@ public class StakeShot : Card
         List<CardInstruction> instructions = new List<CardInstruction>();
         instructions.Add(new CardInstruction("Move away from near by enemies"));
         instructions.Add(new CardInstruction("Attack a non-adjacent hero in line of sight for 1d6 damage"));
-        instructions.Add(new CardInstruction("On hit, apply <u>Paralyzed</u> and <u>Staked</u>"));
+        instructions.Add(new CardInstruction("On hit, apply <u>Paralyzed</u> and <u>Shackled</u>"));
         DisplayGrid.Instance.Show();
         return instructions;
     }

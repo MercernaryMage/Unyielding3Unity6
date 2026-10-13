@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Staked : StatusEffect
+public class Shackled : StatusEffect
 {
 	public override void OnCharacterFinishedMoving(CharacterFinishedMovingMessage characterFinishedMovingMessage)
 	{
@@ -31,12 +31,12 @@ public class Staked : StatusEffect
 
 	public override string GetExplanationName()
 	{
-		return "Staked";
+		return "Shackled";
 	}
 
 	public override string GetIconName()
 	{
-		return "Staked";
+		return "Shackled";
 	}
 
 	public override bool StatusEffectIsVisibleInHealthBar()

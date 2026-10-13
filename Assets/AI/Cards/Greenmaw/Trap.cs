@@ -11,13 +11,13 @@ public class Trap : Card
 	bool applyStatus;
 	int attackDice;
 
-	bool IsNotStaked(Character target)
+	bool IsNotShackled(Character target)
 	{
 		if (target.GetComponent<Downed>())
 		{
 			return false;
 		}
-		return target.GetComponent<Staked>() == null;
+		return target.GetComponent<Shackled>() == null;
 	}
 
 	public override void Execute()
@@ -25,10 +25,10 @@ public class Trap : Card
 		Dictionary<Character, Tuple<List<Tile>, Tile>> routes = RouteToAllClosestCharacters(true);
 		int range = owningCharacter.characterDefinition.movement + 1;
 
-		//Primary: hunt the closest non-staked enemy we can actually reach this turn.
+		//Primary: hunt the closest non-shackled enemy we can actually reach this turn.
 		Dictionary<Character, Tuple<List<Tile>, Tile>> inRange = new Dictionary<Character, Tuple<List<Tile>, Tile>>(routes);
 		Util.RemoveOutOfRangeRoutes(inRange, range);
-		route = Util.FindSmallestRoute(inRange, IsNotStaked);
+		route = Util.FindSmallestRoute(inRange, IsNotShackled);
 
 		if (route != null)
 		{
@@ -93,7 +93,7 @@ public class Trap : Card
 						t.character, owningCharacter, new ActionController.AttackProfile(attackDice, 6, 0));
 					if (applyStatus && results.hit)
 					{
-						t.character.AddStatusEffect(typeof(Staked), null);
+						t.character.AddStatusEffect(typeof(Shackled), null);
 						t.character.AddStatusEffect(typeof(Paralyzed), null);
 					}
 					t.HideOverlay(Tile.OverlayType.PossibleAttck);
@@ -108,9 +108,9 @@ public class Trap : Card
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Move to the closest enemy in range that is not <u>Staked</u>"));
+		instructions.Add(new CardInstruction("Move to the closest enemy in range that is not <u>Shackled</u>"));
 		instructions.Add(new CardInstruction("Attack for 1d6 damage"));
-		instructions.Add(new CardInstruction("On hit, apply <u>Staked</u> and <u>Paralyzed</u>"));
+		instructions.Add(new CardInstruction("On hit, apply <u>Shackled</u> and <u>Paralyzed</u>"));
 		instructions.Add(new CardInstruction("If there is no target, move to the closest enemy and attack for 2d6 damage"));
 		DisplayGrid.Instance.Show();
 

@@ -21,6 +21,13 @@ public class BattleController : SceneSingleton<BattleController>
 	List<PropDucker> duckers = new List<PropDucker>();
 	bool duckersRequested;
 
+	List<Tile> tilesForPlacement = new List<Tile>();
+
+	Dictionary<Tile, Character> placedCharacters = new Dictionary<Tile, Character>();
+
+	public GameObject EndTurnButton;
+	public GameObject deployButton;
+
 	class ActiveWarning
 	{
 		public Tile tile;
@@ -31,11 +38,18 @@ public class BattleController : SceneSingleton<BattleController>
 
 	public void Start()
 	{
-		Invoke("StartCombat", 1);
+		if (!BattleController.Instance.doingPlacement)
+		{
+			Invoke("StartCombat", 1);
+		}
 	}
 
 	public void StartCombat()
 	{
+		if (doingPlacement)
+		{
+			return;
+		}
 		ImposedControl.Instance.SetDirty();
 		ImposedControl.Instance.Run();
 		MessagePump.Instance.SendMessage(new CombatStartMessage());
@@ -181,6 +195,120 @@ public class BattleController : SceneSingleton<BattleController>
 			WinLossControl.Instance.EnemyWins();
 			return;
 		}
+
+		deployButton.SetActive(doingPlacement && placedCharacters.Count == 4);
+	}
+
+	public void TileClicked(Tile t, bool rightClicked)
+	{
+		if (rightClicked)
+		{
+			RemovePlacedCharacter(t);
+			return;
+		}
+
+		if (placedCharacters.ContainsKey(t) || t.character != null)
+		{
+			return;
+		}
+
+		StorageCharacter storageCharacter = GetNextCharacterToPlace();
+		if (storageCharacter == null)
+		{
+			return;
+		}
+
+		placedCharacters[t] = MapBuilder.PlaceHero(t.x, t.y, storageCharacter, Direction.North);
+	}
+
+	public void StartFight()
+	{
+		Dictionary<StorageCharacter, Tile> placementTiles = new Dictionary<StorageCharacter, Tile>();
+		foreach (KeyValuePair<Tile, Character> pair in placedCharacters)
+		{
+			placementTiles[pair.Value.storageCharacter] = pair.Key;
+		}
+
+		List<Tile> occupiedTiles = new List<Tile>(placedCharacters.Keys);
+		foreach (Tile tile in occupiedTiles)
+		{
+			RemovePlacedCharacter(tile);
+		}
+
+		foreach (StorageCharacter storageCharacter in PersistenceManager.Instance.currentTeam)
+		{
+			if (!placementTiles.ContainsKey(storageCharacter))
+			{
+				continue;
+			}
+
+			Tile tile = placementTiles[storageCharacter];
+			MapBuilder.PlaceHero(tile.x, tile.y, storageCharacter, Direction.North);
+		}
+
+		foreach (Tile tile in tilesForPlacement)
+		{
+			tile.HideOverlay(Tile.OverlayType.Selected);
+			tile.HideOverlay(Tile.OverlayType.PossibleMovement);
+		}
+		tilesForPlacement.Clear();
+		doingPlacement = false;
+
+		List<Character> characters = new List<Character>();
+		characters.AddRange(heroes);
+		characters.AddRange(enemies);
+		TurnControl.Instance.ClearCharacters();
+		TurnControl.Instance.AddCharacters(characters);
+		EndTurnButton.SetActive(true);
+
+		playerHasControl = true;
+		StartCombat();
+	}
+
+	StorageCharacter GetNextCharacterToPlace()
+	{
+		foreach (StorageCharacter storageCharacter in PersistenceManager.Instance.currentTeam)
+		{
+			if (!IsCharacterPlaced(storageCharacter))
+			{
+				return storageCharacter;
+			}
+		}
+		return null;
+	}
+
+	bool IsCharacterPlaced(StorageCharacter storageCharacter)
+	{
+		foreach (KeyValuePair<Tile, Character> pair in placedCharacters)
+		{
+			if (pair.Value.storageCharacter == storageCharacter)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	void RemovePlacedCharacter(Tile t)
+	{
+		if (!placedCharacters.ContainsKey(t))
+		{
+			return;
+		}
+
+		Character character = placedCharacters[t];
+		placedCharacters.Remove(t);
+
+		TileGrid.Instance.RemoveCharacter(character);
+		heroes.Remove(character);
+
+		if (character.storageCharacter != null)
+		{
+			character.storageCharacter.createdCharacter = null;
+		}
+
+		Destroy(character.token.gameObject);
+		Destroy(character.gameObject);
 	}
 
 	static public void ReturnControlToPlayer()
@@ -242,6 +370,16 @@ public class BattleController : SceneSingleton<BattleController>
 
 	public void SetPlacementTiles(List<Tile> tiles)
 	{
+		EndTurnButton.SetActive(false);
+		foreach (Tile tile in tiles)
+		{
+			tile.ShowOverlay(Tile.OverlayType.PossibleMovement);
+		}
+		tilesForPlacement = tiles;
+	}
 
+	public bool IsPlacementTile(Tile t)
+	{
+		return tilesForPlacement.Contains(t);
 	}
 }

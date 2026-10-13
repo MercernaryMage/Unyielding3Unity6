@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e55f24fd73bc40d4aa4be0ea597fa59f, type: 3}
-  m_Name: Staked
+  m_Name: Shackled
   m_EditorClassIdentifier: Assembly-CSharp::ExplanationIemScrptableObject
-  explanationName: Staked
+  explanationName: Shackled
   explanationContent: Paralyzed is not removed at the end of this character's turn.
     Removed when an ally ends their movement adjacent to this character, which also
     removes Paralyzed.

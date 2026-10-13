@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Branching
   m_EditorClassIdentifier: 
   displayName: Branching
-  description: Removing paralyze or staked causes the unit to take 1 damage which
+  description: Removing paralyze or shackled causes the unit to take 1 damage which
     ignores toughness.
   className: BranchingTrait
   intParams: 

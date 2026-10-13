@@ -22,7 +22,7 @@ public class Paralyzed : StatusEffect
 		{
 			return;
 		}
-		if (character.GetComponent<Staked>() != null)
+		if (character.GetComponent<Shackled>() != null)
 		{
 			return;
 		}

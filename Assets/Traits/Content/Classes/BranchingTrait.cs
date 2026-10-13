@@ -4,7 +4,7 @@ public class BranchingTrait : Trait
 {
 	public override void StatusEffectRemoved(StatusEffectRemovedMessage message)
 	{
-		if (message.effect.GetType() != typeof(Paralyzed) && message.effect.GetType() != typeof(Staked))
+		if (message.effect.GetType() != typeof(Paralyzed) && message.effect.GetType() != typeof(Shackled))
 		{
 			return;
 		}

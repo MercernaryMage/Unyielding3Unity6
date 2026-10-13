@@ -32,15 +32,6 @@ public class Tile : MonoBehaviour
 
 	int warningCount;
 
-	void Start()
-	{
-		if (overlay != null)
-		{
-			overlay.TurnOffOverlay();
-		}
-		activeOverlays.Clear();
-	}
-
 	public void Init(int x, int y, GameObject m, GameObject o)
 	{
 		this.x = x;

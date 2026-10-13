@@ -56,9 +56,15 @@ public class MapBuilder : MonoBehaviour
 		}
 		else
 		{
-			//TURN THESE INTO TILES
-			//levelConfiguration.players
-			//BattleController.Instance.SetPlacementTiles()
+			List<Tile> tiles = new List<Tile>();
+			for (int i = 0; i < levelConfiguration.players.Count; ++i)
+			{
+				int x = levelConfiguration.players[i].x;
+				int y = levelConfiguration.players[i].y;
+				Tile t = TileGrid.Instance.GetTile(x, y);
+				tiles.Add(t);
+			}
+			BattleController.Instance.SetPlacementTiles(tiles);
 		}
 
 		for (int i = 0; i < levelConfiguration.enemies.Count; ++i)
@@ -76,13 +82,13 @@ public class MapBuilder : MonoBehaviour
 
 
 
-		List<Character> characters = new List<Character>();
-		characters.AddRange(BattleController.Instance.heroes);
-		characters.AddRange(BattleController.Instance.enemies);
-		TurnControl.Instance.AddCharacters(characters);
-
 		if (levelConfiguration.players.Count <= 4)
 		{
+			List<Character> characters = new List<Character>();
+			characters.AddRange(BattleController.Instance.heroes);
+			characters.AddRange(BattleController.Instance.enemies);
+			TurnControl.Instance.AddCharacters(characters);
+
 			BattleController.playerHasControl = true;
 		}
 		else

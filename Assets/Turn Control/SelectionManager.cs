@@ -23,6 +23,7 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 	public GameObject cancelButton;
 
 	Tile lastMousedOverTile;
+	Tile lastPlacementTile;
 
 	List<RaycastResult> GetUIRaycast()
 	{
@@ -115,6 +116,12 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 		{
 			scroll *= 4;
 			Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - scroll, 3f, 10f);
+		}
+
+		if (BattleController.Instance.doingPlacement)
+		{
+			HandleInputForPlacement();
+			return;
 		}
 
 		Tile mousedOverTile = GetMousedOverTile();
@@ -358,5 +365,53 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 		globalPositionLerp.Init();
 
 		return runTime;
+	}
+
+	void HandleInputForPlacement()
+	{
+		Tile mousedOverTile = GetMousedOverTile();
+		if (mousedOverTile != null && !BattleController.Instance.IsPlacementTile(mousedOverTile))
+		{
+			mousedOverTile = null;
+		}
+
+		if (mousedOverTile != lastPlacementTile)
+		{
+			if (lastPlacementTile != null)
+			{
+				lastPlacementTile.HideOverlay(Tile.OverlayType.Selected);
+				lastPlacementTile.ShowOverlay(Tile.OverlayType.PossibleMovement);
+			}
+			if (mousedOverTile != null)
+			{
+				mousedOverTile.HideOverlay(Tile.OverlayType.PossibleMovement);
+				mousedOverTile.ShowOverlay(Tile.OverlayType.Selected);
+			}
+			lastPlacementTile = mousedOverTile;
+		}
+
+		if (Input.GetMouseButtonDown(1))
+		{
+			clickVec = Input.mousePosition;
+		}
+
+		if (!Input.GetMouseButtonUp(0) && !Input.GetMouseButtonUp(1))
+		{
+			return;
+		}
+		if ((clickVec - Input.mousePosition).magnitude > 5)
+		{
+			return;
+		}
+		if (GetUIRaycast().Count > 0)
+		{
+			return;
+		}
+		if (mousedOverTile == null)
+		{
+			return;
+		}
+
+		BattleController.Instance.TileClicked(mousedOverTile, Input.GetMouseButtonUp(1));
 	}
 }

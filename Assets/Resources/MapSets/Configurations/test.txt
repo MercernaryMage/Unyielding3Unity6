@@ -1,1 +1,0 @@
-{"player":[{"x":0,"y":0,"direction":0},{"x":0,"y":0,"direction":0},{"x":0,"y":0,"direction":0},{"x":0,"y":0,"direction":0}],"enemies":[{"location":{"x":0,"y":0,"direction":0},"name":"BigTestEnemy"},{"location":{"x":6,"y":1,"direction":0},"name":"Arbalist"}],"mapMessageTitle":null,"mapMessageBody":null}

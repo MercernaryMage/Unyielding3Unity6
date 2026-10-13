@@ -14,6 +14,13 @@ public class TurnControl : SceneSingleton<TurnControl>
 
 	public Character lastCharacter = null;
 
+	public void ClearCharacters()
+	{
+		turnControlEntries.Clear();
+		lastCharacter = null;
+		UpdateSystem();
+	}
+
 	public void AddCharacters(List<Character> characters)
 	{
 		DebugCharacterTurnOrder debugCharacterTurnOrder = FindFirstObjectByType<DebugCharacterTurnOrder>();
