@@ -29,6 +29,8 @@ public class FancyHeroDisplay : MonoBehaviour
 	public Character lastCharacter;
 	public bool showing = false;
 
+	const int startingActionCount = 4;
+
 	List<List<GameObject>> createdObjects = new List<List<GameObject>>()
 	{
 		new List<GameObject>(),
@@ -60,7 +62,46 @@ public class FancyHeroDisplay : MonoBehaviour
 		ImposedControl.Instance.Run();
 	}
 
-	void CreateButtons()
+	public void Set(StorageCharacter storageCharacter)
+	{
+		lastCharacter = null;
+
+		CharacterScriptableObject definition = storageCharacter.characterDefintion;
+
+		characterFace.sprite = definition.battlePortrait;
+		characterName.text = definition.displayName;
+		determination.text = $"{storageCharacter.currentDetermination}";
+		hp.text = $"{definition.maxHP}/{definition.maxHP}";
+		hpBar.Set(GetFullBarValue(definition.maxHP));
+		armor.text = $"{definition.armor} / {definition.armor}";
+		armorBar.Set(GetFullBarValue(definition.armor));
+		actionPoint.text = $"{startingActionCount}";
+		APBar.Set(1);
+		energy.text = $"{definition.maxEnergy}";
+		energyBar.Set(GetFullBarValue(definition.maxEnergy));
+		movement.text = $"{definition.movement}";
+		movementBar.Set(GetFullBarValue(definition.movement));
+		toughness.text = $"{definition.toughness}";
+		evasion.text = $"{definition.evasion}";
+
+		DestroyButtons();
+		attackButtonTarget.parent.gameObject.SetActive(false);
+		advantagesButtonTarget.parent.gameObject.SetActive(false);
+		otherButtonTarget.parent.gameObject.SetActive(false);
+
+		statusEffectDisplayGroup.Clear();
+	}
+
+	float GetFullBarValue(int maxValue)
+	{
+		if (maxValue <= 0)
+		{
+			return 0;
+		}
+		return 1;
+	}
+
+	void DestroyButtons()
 	{
 		foreach (List<GameObject> list in createdObjects)
 		{
@@ -71,6 +112,11 @@ public class FancyHeroDisplay : MonoBehaviour
 			}
 			list.Clear();
 		}
+	}
+
+	void CreateButtons()
+	{
+		DestroyButtons();
 
 		if (lastCharacter.GetComponent<Stun>() || lastCharacter.GetComponent<Downed>())
 		{

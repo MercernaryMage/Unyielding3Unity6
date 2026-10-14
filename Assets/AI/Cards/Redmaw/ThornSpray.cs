@@ -67,7 +67,7 @@ public class ThornSpray : Card
 				if (t.character && t.character.hero && !hitCharacters.Contains(t.character))
 				{
 					hitCharacters.Add(t.character);
-					ActionController.Instance.AttackCharacter(t.character, owningCharacter, new ActionController.AttackProfile(1, GetIntValue("Damage"), 0));
+					ActionController.Instance.AttackCharacter(t.character, owningCharacter, new ActionController.AttackProfile(1, 6, 0));
 				}
 				t.HideOverlay(Tile.OverlayType.PossibleAttck);
 			}
@@ -83,7 +83,7 @@ public class ThornSpray : Card
 		instructions.Add(new CardInstruction("Move to closest enemy"));
 		instructions.Add(new CardInstruction("Hit enemies in pattern"));
 		instructions.Add(new CardInstruction());
-		instructions.Add(new CardInstruction($"Deal 1d{scriptableObject.GetTagIntValue("Damage")} damage to each target"));
+		instructions.Add(new CardInstruction($"Deal 1d6 damage to each target"));
 
 		DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.Size1Enemy, DisplayGrid.DisplayGridDirection.South, 5, 4);
 		DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.EffectedTile, new List<Tuple<int, int>>()

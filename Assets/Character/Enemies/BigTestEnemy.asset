@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
   m_Name: BigTestEnemy
   m_EditorClassIdentifier: 
+  enemy: 1
   displayName: BigTestEnemy
   model: {fileID: 6257802974378125461, guid: 70906cce53b07b64391c90f8ecc7d050, type: 3}
   size: 2
@@ -36,7 +37,7 @@ MonoBehaviour:
   cunning: 0
   prowess: 0
   cards:
-  - {fileID: 11400000, guid: faea64a507615674dbbe592db85177f1, type: 2}
+  - {fileID: 11400000, guid: 8e653e2281ab8964b8231526d1f980dd, type: 2}
   reactions: []
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}

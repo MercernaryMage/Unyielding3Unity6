@@ -740,12 +740,14 @@ public class ActionController : SceneSingleton<ActionController>
 			
 			if (defender.storageCharacter != null && defender.storageCharacter.currentDetermination > 0)
 			{
+				CombatLogControl.Instance.AddEntry($"{defender.displayName} is Downed!");
 				--defender.storageCharacter.currentDetermination;
 				defender.Downed();
 				return;
 			}
 			else
 			{
+				CombatLogControl.Instance.AddEntry($"{defender.displayName} is defeated!");
 				KillCharacter(defender);
 			}
 		}

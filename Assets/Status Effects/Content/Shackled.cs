@@ -17,6 +17,7 @@ public class Shackled : StatusEffect
 		{
 			return;
 		}
+		CombatLogControl.Instance.AddEntry($"{mover.displayName} removes {character.displayName}'s shackles.");
 		Destroy(this);
 	}
 

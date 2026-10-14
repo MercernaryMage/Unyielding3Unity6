@@ -103,15 +103,43 @@ public class Snipe : Card
 
 		ActionController.Instance.PlayAttackAnimation(owningCharacter, null, () =>
 		{
-			if (hitCharacters.Count == 0)
+			if (warnedTiles.Count == 0)
 			{
-				ShowNoTarget(owningCharacter.token.transform.position);
+				DealDamage(hitCharacters);
+				return;
 			}
 
-			AttackCharacters(hitCharacters, new ActionController.AttackProfile(0, 0, 10, true));
-
-			TurnEventController.Instance.Pump();
+			AnimationController.Instance.ScrollToTile(warnedTiles[0], () => DealDamage(hitCharacters), .5f);
 		});
+	}
+
+	void DealDamage(List<Character> hitCharacters)
+	{
+		if (hitCharacters.Count == 0)
+		{
+			Vector3 noTargetPosition = owningCharacter.token.transform.position;
+			if (warnedTiles.Count > 0)
+			{
+				noTargetPosition = warnedTiles[0].transform.position;
+			}
+			ShowNoTarget(noTargetPosition);
+		}
+
+		AttackCharacters(hitCharacters, new ActionController.AttackProfile(0, 0, 10, true));
+
+		float floatingTextTime = Mathf.Max(0, FloatingCombatNumberController.Instance.GetMaxQueueCount()) * 2f;
+		AnimationController.Instance.DelayedCallback(floatingTextTime, ScrollBackToShooter);
+	}
+
+	void ScrollBackToShooter()
+	{
+		if (!owningCharacter.alive)
+		{
+			TurnEventController.Instance.Pump();
+			return;
+		}
+
+		AnimationController.Instance.ScrollToCharacter(owningCharacter, () => TurnEventController.Instance.Pump(), .5f);
 	}
 
 	public override void OnCharacterKnockbackFinished(CharacterKnockbackFinishMessage message)

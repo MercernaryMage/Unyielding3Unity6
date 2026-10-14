@@ -69,6 +69,12 @@ public class UIController : SceneSingleton<UIController>
 		}
 	}
 
+	public void ShowHeroPreview(StorageCharacter storageCharacter)
+	{
+		heroDisplay.Show();
+		heroDisplay.Set(storageCharacter);
+	}
+
 	public void HideHero()
 	{
 		heroDisplay.Hide(false);

@@ -218,14 +218,33 @@ public class BattleController : SceneSingleton<BattleController>
 			return;
 		}
 
-		Character placedCharacter = MapBuilder.PlaceHero(t.x, t.y, storageCharacter, GetPlacementFacing(t));
-		placedCharacters[t] = placedCharacter;
+		placedCharacters[t] = MapBuilder.PlaceHero(t.x, t.y, storageCharacter, GetPlacementFacing(t));
 
-		UIController.Instance.ShowHero(placedCharacter, false);
+		ShowNextCharacterToPlace();
+	}
+
+	void ShowNextCharacterToPlace()
+	{
+		if (!doingPlacement)
+		{
+			return;
+		}
+
+		StorageCharacter storageCharacter = GetNextCharacterToPlace();
+		if (storageCharacter == null)
+		{
+			UIController.Instance.heroDisplay.lastCharacter = null;
+			UIController.Instance.HideHero();
+			return;
+		}
+
+		UIController.Instance.ShowHeroPreview(storageCharacter);
 	}
 
 	public void StartFight()
 	{
+		doingPlacement = false;
+
 		Dictionary<StorageCharacter, Tile> placementTiles = new Dictionary<StorageCharacter, Tile>();
 		foreach (KeyValuePair<Tile, Character> pair in placedCharacters)
 		{
@@ -305,12 +324,6 @@ public class BattleController : SceneSingleton<BattleController>
 		TileGrid.Instance.RemoveCharacter(character);
 		heroes.Remove(character);
 
-		if (UIController.Instance.heroDisplay.lastCharacter == character)
-		{
-			UIController.Instance.heroDisplay.lastCharacter = null;
-			UIController.Instance.HideHero();
-		}
-
 		if (character.storageCharacter != null)
 		{
 			character.storageCharacter.createdCharacter = null;
@@ -318,6 +331,8 @@ public class BattleController : SceneSingleton<BattleController>
 
 		Destroy(character.token.gameObject);
 		Destroy(character.gameObject);
+
+		ShowNextCharacterToPlace();
 	}
 
 	static public void ReturnControlToPlayer()
@@ -385,6 +400,9 @@ public class BattleController : SceneSingleton<BattleController>
 			pair.Key.ShowOverlay(Tile.OverlayType.PossibleMovement);
 		}
 		tilesForPlacement = tiles;
+		doingPlacement = true;
+
+		ShowNextCharacterToPlace();
 	}
 
 	public bool IsPlacementTile(Tile t)

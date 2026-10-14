@@ -14,7 +14,7 @@ public class StatusEffectDisplayGroup : MonoBehaviour
 	List<GameObject> objectsToDestroy = new List<GameObject>();
 	bool awaitingDestroy = false;
 
-	public void Set(Character c)
+	public void Clear()
 	{
 		foreach (GameObject obj in createdObjects)
 		{
@@ -24,6 +24,11 @@ public class StatusEffectDisplayGroup : MonoBehaviour
 		objectsToDestroy = new List<GameObject>(createdObjects);
 		Invoke("DestroyGarbage", .3f);
 		createdObjects.Clear();
+	}
+
+	public void Set(Character c)
+	{
+		Clear();
 
 		StatusEffect[] effects = c.gameObject.GetComponents<StatusEffect>();
 		foreach (StatusEffect effect in effects)

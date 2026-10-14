@@ -9,9 +9,5 @@ public class Scratch : MonoBehaviour
 }
 
 /*
- *
- *charactercontroller
- *		runningController
- *		->DrivingController
  * 
 */
