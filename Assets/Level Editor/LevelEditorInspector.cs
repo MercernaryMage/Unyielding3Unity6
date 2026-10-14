@@ -14,10 +14,11 @@ public class LevelEditorInspector : MonoBehaviour
 		currentTile = null;
 		characterName.text = "";
 
-		if (t.playerIndex != -1)
+		int placementIndex = configurationManager.GetPlacementIndex(t);
+		if (placementIndex != -1)
 		{
 			currentTile = t;
-			characterName.text = GetHeroName(t.playerIndex);
+			characterName.text = GetPlacementName(placementIndex);
 		}
 		else if (t.mosnterName != "")
 		{
@@ -29,6 +30,11 @@ public class LevelEditorInspector : MonoBehaviour
 	public void RotateClicked()
 	{
 		if (currentTile == null)
+		{
+			return;
+		}
+
+		if (configurationManager.RotatePlacementTile(currentTile))
 		{
 			return;
 		}
@@ -50,6 +56,30 @@ public class LevelEditorInspector : MonoBehaviour
 
 		currentTile = null;
 		characterName.text = "";
+	}
+
+	public void DeletePlacementClicked()
+	{
+		if (currentTile == null)
+		{
+			return;
+		}
+
+		if (!configurationManager.RemovePlacementTile(currentTile))
+		{
+			return;
+		}
+
+		Set(currentTile);
+	}
+
+	string GetPlacementName(int i)
+	{
+		if (i < 4)
+		{
+			return GetHeroName(i);
+		}
+		return "Placement";
 	}
 
 	string GetHeroName(int i)

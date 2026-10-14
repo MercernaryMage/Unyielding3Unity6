@@ -34,6 +34,9 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 
 	public float doubleClickTime = .5f;
 
+	public GameObject placementTilePrefab;
+
+	bool placementMode;
 	bool paintAllowed;
 	float lastGenerateClick = -100;
 	EmptyTile lastPaintedTile;
@@ -169,11 +172,6 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 
 	void Paint()
 	{
-		if (currentSwatch == null)
-		{
-			return;
-		}
-
 		EmptyTile emptyTile = GetTile();
 		if (emptyTile == null || emptyTile == lastPaintedTile)
 		{
@@ -187,11 +185,33 @@ public class LevelEditorManager : SceneSingleton<LevelEditorManager>
 		}
 
 		lastPaintedTile = emptyTile;
+
+		if (placementMode)
+		{
+			configurationManager.AddPlacementTile(emptyTile);
+			return;
+		}
+
+		if (currentSwatch == null)
+		{
+			return;
+		}
+
 		emptyTile.ChangeToTile(currentSwatch, true);
 	}
 
 	public void SwatchesClicked()
 	{
 		swatchesObject.SetActive(!swatchesObject.activeInHierarchy);
+	}
+
+	public void EnterPlacementMode()
+	{
+		placementMode = true;
+	}
+
+	public void ExitPlacementMode()
+	{
+		placementMode = false;
 	}
 }

@@ -9,7 +9,9 @@ public class Scratch : MonoBehaviour
 }
 
 /*
- * Det: 2
- * HP: 9
+ *
+ *charactercontroller
+ *		runningController
+ *		->DrivingController
  * 
 */

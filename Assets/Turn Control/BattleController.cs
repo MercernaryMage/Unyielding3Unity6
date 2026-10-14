@@ -21,7 +21,7 @@ public class BattleController : SceneSingleton<BattleController>
 	List<PropDucker> duckers = new List<PropDucker>();
 	bool duckersRequested;
 
-	List<Tile> tilesForPlacement = new List<Tile>();
+	Dictionary<Tile, Direction> tilesForPlacement = new Dictionary<Tile, Direction>();
 
 	Dictionary<Tile, Character> placedCharacters = new Dictionary<Tile, Character>();
 
@@ -218,7 +218,10 @@ public class BattleController : SceneSingleton<BattleController>
 			return;
 		}
 
-		placedCharacters[t] = MapBuilder.PlaceHero(t.x, t.y, storageCharacter, Direction.North);
+		Character placedCharacter = MapBuilder.PlaceHero(t.x, t.y, storageCharacter, GetPlacementFacing(t));
+		placedCharacters[t] = placedCharacter;
+
+		UIController.Instance.ShowHero(placedCharacter, false);
 	}
 
 	public void StartFight()
@@ -243,13 +246,13 @@ public class BattleController : SceneSingleton<BattleController>
 			}
 
 			Tile tile = placementTiles[storageCharacter];
-			MapBuilder.PlaceHero(tile.x, tile.y, storageCharacter, Direction.North);
+			MapBuilder.PlaceHero(tile.x, tile.y, storageCharacter, GetPlacementFacing(tile));
 		}
 
-		foreach (Tile tile in tilesForPlacement)
+		foreach (KeyValuePair<Tile, Direction> pair in tilesForPlacement)
 		{
-			tile.HideOverlay(Tile.OverlayType.Selected);
-			tile.HideOverlay(Tile.OverlayType.PossibleMovement);
+			pair.Key.HideOverlay(Tile.OverlayType.Selected);
+			pair.Key.HideOverlay(Tile.OverlayType.PossibleMovement);
 		}
 		tilesForPlacement.Clear();
 		doingPlacement = false;
@@ -301,6 +304,12 @@ public class BattleController : SceneSingleton<BattleController>
 
 		TileGrid.Instance.RemoveCharacter(character);
 		heroes.Remove(character);
+
+		if (UIController.Instance.heroDisplay.lastCharacter == character)
+		{
+			UIController.Instance.heroDisplay.lastCharacter = null;
+			UIController.Instance.HideHero();
+		}
 
 		if (character.storageCharacter != null)
 		{
@@ -368,18 +377,27 @@ public class BattleController : SceneSingleton<BattleController>
 		TurnControl.Instance.Pump();
 	}
 
-	public void SetPlacementTiles(List<Tile> tiles)
+	public void SetPlacementTiles(Dictionary<Tile, Direction> tiles)
 	{
 		EndTurnButton.SetActive(false);
-		foreach (Tile tile in tiles)
+		foreach (KeyValuePair<Tile, Direction> pair in tiles)
 		{
-			tile.ShowOverlay(Tile.OverlayType.PossibleMovement);
+			pair.Key.ShowOverlay(Tile.OverlayType.PossibleMovement);
 		}
 		tilesForPlacement = tiles;
 	}
 
 	public bool IsPlacementTile(Tile t)
 	{
-		return tilesForPlacement.Contains(t);
+		return tilesForPlacement.ContainsKey(t);
+	}
+
+	Direction GetPlacementFacing(Tile t)
+	{
+		if (tilesForPlacement.ContainsKey(t))
+		{
+			return tilesForPlacement[t];
+		}
+		return Direction.North;
 	}
 }

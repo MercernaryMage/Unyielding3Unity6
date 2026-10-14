@@ -97,19 +97,13 @@ ChainWhirl
 ShieldGlare
 Roar
 
-Rename:
-    stake shot -> bolo throw
-    staked -> shackled
-
-
 Step should probably show something different?
     Show step range instead?
-Staked probably needs an icon on the character
 
-PLAYER PLACEMENT:
-    How do we handle player direction?
-
-
+Show the current hero during each step of placing a character
+snipe needs to scroll to the target
+highlight state on the init bar when you mouse over the token
+highlight state on the character when you mouse over the init bar entry
 
  Cards are hard to understand
      FIX ALL CARDS

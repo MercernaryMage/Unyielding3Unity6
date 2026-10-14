@@ -7,15 +7,7 @@ using UnityEngine;
 
 public class LevelEditorConfigurationManager : MonoBehaviour
 {
-	public int currentPlayerIndex = -1;
 	public string currentMonsterName = "";
-	List<MapLocation> playerPositions = new List<MapLocation>()
-	{
-		new MapLocation(0,0,0),
-		new MapLocation(0,0,0),
-		new MapLocation(0,0,0),
-		new MapLocation(0,0,0)
-	};
 	List<NPCLocation> enemyConfigurations = new List<NPCLocation>();
 
 	Dictionary<EmptyTile, string> enemyTiles = new Dictionary<EmptyTile, string>();
@@ -24,12 +16,22 @@ public class LevelEditorConfigurationManager : MonoBehaviour
 	{
 		public GameObject model;
 		public List<EmptyTile> footprint = new List<EmptyTile>();
-		public int playerIndex = -1;
 		public string monsterName = "";
 		public int direction;
 	}
 
 	List<PlacedCharacter> placedCharacters = new List<PlacedCharacter>();
+
+	class PlacementTile
+	{
+		public EmptyTile tile;
+		public GameObject marker;
+		public Quaternion markerRotation;
+		public GameObject model;
+		public int direction;
+	}
+
+	List<PlacementTile> placementTiles = new List<PlacementTile>();
 
 	List<GameObject> createdObjects = new List<GameObject>();
 	public GameObject monsterButtonPrefab;
@@ -44,22 +46,9 @@ public class LevelEditorConfigurationManager : MonoBehaviour
 		ShowMonsterList();
 	}
 
-	public void SetPlayerNumber(int playerNumber)
-	{
-		currentPlayerIndex = playerNumber;
-	}
-
 	public bool ClickTile(EmptyTile t)
 	{
-		if (currentPlayerIndex != -1)
-		{
-			t.playerIndex = currentPlayerIndex;
-			playerPositions[currentPlayerIndex] = new MapLocation(t.x, t.y, 0);
-			PlacePlayer(t, currentPlayerIndex, 0);
-			currentPlayerIndex = -1;
-			return true;
-		}
-		else if (currentMonsterName != "")
+		if (currentMonsterName != "")
 		{
 			if (!PlaceMonster(t, currentMonsterName, 0))
 			{
@@ -130,7 +119,7 @@ public class LevelEditorConfigurationManager : MonoBehaviour
 
 		MapConfiguration mapConfiguration = new MapConfiguration();
 		mapConfiguration.enemies = enemyConfigurations;
-		mapConfiguration.player = playerPositions;
+		mapConfiguration.player = GetPlayerLocations();
 
 		File.WriteAllText(path, Util.JSONSerializer.Serialize(mapConfiguration));
 #endif
@@ -155,10 +144,9 @@ public class LevelEditorConfigurationManager : MonoBehaviour
 
 		ClearConfiguration();
 
-		for (int i = 0; i < playerPositions.Count && i < mapConfiguration.player.Count; ++i)
+		for (int i = 0; i < mapConfiguration.player.Count; ++i)
 		{
 			MapLocation playerLocation = mapConfiguration.player[i];
-			playerPositions[i] = playerLocation;
 
 			EmptyTile emptyTile = FindTile(playerLocation.x, playerLocation.y);
 			if (emptyTile == null)
@@ -167,8 +155,7 @@ public class LevelEditorConfigurationManager : MonoBehaviour
 				continue;
 			}
 
-			emptyTile.playerIndex = i;
-			PlacePlayer(emptyTile, i, playerLocation.direction);
+			AddPlacementTile(emptyTile, playerLocation.direction);
 		}
 
 		foreach (NPCLocation enemy in mapConfiguration.enemies)
@@ -208,15 +195,11 @@ public class LevelEditorConfigurationManager : MonoBehaviour
 			emptyTile.mosnterName = "";
 		}
 
-		for (int i = 0; i < playerPositions.Count; ++i)
-		{
-			playerPositions[i] = new MapLocation(0, 0, 0);
-		}
+		ClearPlacementTiles();
 
 		enemyConfigurations.Clear();
 		enemyTiles.Clear();
 
-		currentPlayerIndex = -1;
 		currentMonsterName = "";
 	}
 
@@ -247,11 +230,161 @@ public class LevelEditorConfigurationManager : MonoBehaviour
 		return true;
 	}
 
-	void PlacePlayer(EmptyTile emptyTile, int playerIndex, int direction)
+	public bool AddPlacementTile(EmptyTile emptyTile)
 	{
-		PlacedCharacter placedCharacter = AddCharacterModel(new List<EmptyTile>() { emptyTile },
-			playerModels[playerIndex], 1, direction);
-		placedCharacter.playerIndex = playerIndex;
+		return AddPlacementTile(emptyTile, 0);
+	}
+
+	public bool AddPlacementTile(EmptyTile emptyTile, int direction)
+	{
+		if (emptyTile == null || IsPlacementTile(emptyTile))
+		{
+			return false;
+		}
+
+		PlacementTile placementTile = new PlacementTile();
+		placementTile.tile = emptyTile;
+		placementTile.direction = direction;
+		placementTile.marker = Instantiate(LevelEditorManager.Instance.placementTilePrefab);
+		placementTile.marker.transform.SetParent(emptyTile.transform.parent, false);
+		placementTile.marker.transform.position = emptyTile.transform.position + new Vector3(0, .01f, 0);
+		placementTile.markerRotation = placementTile.marker.transform.localRotation;
+
+		placementTiles.Add(placementTile);
+		RefreshPlacementModels();
+
+		return true;
+	}
+
+	public bool RemovePlacementTile(EmptyTile emptyTile)
+	{
+		PlacementTile placementTile = FindPlacementTile(emptyTile);
+		if (placementTile == null)
+		{
+			return false;
+		}
+
+		DestroyPlacementTile(placementTile);
+		placementTiles.Remove(placementTile);
+		RefreshPlacementModels();
+
+		return true;
+	}
+
+	public bool IsPlacementTile(EmptyTile emptyTile)
+	{
+		return FindPlacementTile(emptyTile) != null;
+	}
+
+	public int GetPlacementIndex(EmptyTile emptyTile)
+	{
+		for (int i = 0; i < placementTiles.Count; ++i)
+		{
+			if (placementTiles[i].tile == emptyTile)
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	public bool RotatePlacementTile(EmptyTile emptyTile)
+	{
+		PlacementTile placementTile = FindPlacementTile(emptyTile);
+		if (placementTile == null)
+		{
+			return false;
+		}
+
+		placementTile.direction = (placementTile.direction + 1) % 4;
+		placementTile.tile.direction = (Direction)placementTile.direction;
+		ApplyPlacementRotation(placementTile);
+
+		return true;
+	}
+
+	void ApplyPlacementRotation(PlacementTile placementTile)
+	{
+		Quaternion facing = Util.GetFacing((Direction)placementTile.direction);
+
+		if (placementTile.marker != null)
+		{
+			placementTile.marker.transform.localRotation = facing * placementTile.markerRotation;
+		}
+		if (placementTile.model != null)
+		{
+			placementTile.model.transform.localRotation = facing;
+		}
+	}
+
+	PlacementTile FindPlacementTile(EmptyTile emptyTile)
+	{
+		foreach (PlacementTile placementTile in placementTiles)
+		{
+			if (placementTile.tile == emptyTile)
+			{
+				return placementTile;
+			}
+		}
+		return null;
+	}
+
+	void ClearPlacementTiles()
+	{
+		foreach (PlacementTile placementTile in placementTiles)
+		{
+			DestroyPlacementTile(placementTile);
+		}
+		placementTiles.Clear();
+	}
+
+	void DestroyPlacementTile(PlacementTile placementTile)
+	{
+		if (placementTile.marker != null)
+		{
+			placementTile.marker.transform.SetParent(null);
+			Destroy(placementTile.marker);
+		}
+		DestroyPlacementModel(placementTile);
+	}
+
+	void DestroyPlacementModel(PlacementTile placementTile)
+	{
+		if (placementTile.model == null)
+		{
+			return;
+		}
+		placementTile.model.transform.SetParent(null);
+		Destroy(placementTile.model);
+		placementTile.model = null;
+	}
+
+	void RefreshPlacementModels()
+	{
+		for (int i = 0; i < placementTiles.Count; ++i)
+		{
+			PlacementTile placementTile = placementTiles[i];
+			DestroyPlacementModel(placementTile);
+
+			if (i < playerModels.Count)
+			{
+				GameObject model = Instantiate(playerModels[i]);
+				model.transform.SetParent(placementTile.tile.transform, false);
+				placementTile.model = model;
+			}
+
+			ApplyPlacementRotation(placementTile);
+		}
+	}
+
+	List<MapLocation> GetPlayerLocations()
+	{
+		List<MapLocation> playerLocations = new List<MapLocation>();
+		foreach (PlacementTile placementTile in placementTiles)
+		{
+			playerLocations.Add(new MapLocation(placementTile.tile.x, placementTile.tile.y, placementTile.direction));
+		}
+		return playerLocations;
 	}
 
 	public bool RotateCharacter(EmptyTile emptyTile)
@@ -268,12 +401,6 @@ public class LevelEditorConfigurationManager : MonoBehaviour
 		foreach (EmptyTile footprintTile in placedCharacter.footprint)
 		{
 			footprintTile.direction = (Direction)placedCharacter.direction;
-		}
-
-		if (placedCharacter.playerIndex != -1)
-		{
-			playerPositions[placedCharacter.playerIndex].direction = placedCharacter.direction;
-			return true;
 		}
 
 		NPCLocation enemyConfiguration = FindEnemyConfiguration(placedCharacter);
@@ -294,28 +421,14 @@ public class LevelEditorConfigurationManager : MonoBehaviour
 
 		foreach (EmptyTile footprintTile in placedCharacter.footprint)
 		{
-			if (placedCharacter.playerIndex != -1)
-			{
-				footprintTile.playerIndex = -1;
-			}
-			else
-			{
-				footprintTile.mosnterName = "";
-				enemyTiles.Remove(footprintTile);
-			}
+			footprintTile.mosnterName = "";
+			enemyTiles.Remove(footprintTile);
 		}
 
-		if (placedCharacter.playerIndex != -1)
+		NPCLocation enemyConfiguration = FindEnemyConfiguration(placedCharacter);
+		if (enemyConfiguration != null)
 		{
-			playerPositions[placedCharacter.playerIndex] = new MapLocation(0, 0, 0);
-		}
-		else
-		{
-			NPCLocation enemyConfiguration = FindEnemyConfiguration(placedCharacter);
-			if (enemyConfiguration != null)
-			{
-				enemyConfigurations.Remove(enemyConfiguration);
-			}
+			enemyConfigurations.Remove(enemyConfiguration);
 		}
 
 		placedCharacter.model.transform.SetParent(null);

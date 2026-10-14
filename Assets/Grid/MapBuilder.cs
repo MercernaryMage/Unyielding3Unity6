@@ -56,13 +56,17 @@ public class MapBuilder : MonoBehaviour
 		}
 		else
 		{
-			List<Tile> tiles = new List<Tile>();
+			Dictionary<Tile, Direction> tiles = new Dictionary<Tile, Direction>();
 			for (int i = 0; i < levelConfiguration.players.Count; ++i)
 			{
 				int x = levelConfiguration.players[i].x;
 				int y = levelConfiguration.players[i].y;
 				Tile t = TileGrid.Instance.GetTile(x, y);
-				tiles.Add(t);
+				if (t == null || tiles.ContainsKey(t))
+				{
+					continue;
+				}
+				tiles[t] = (Direction)levelConfiguration.players[i].facing;
 			}
 			BattleController.Instance.SetPlacementTiles(tiles);
 		}
