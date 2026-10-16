@@ -405,6 +405,18 @@ public static class Util
 		return new List<(int x, int y, int z, ActionPattern.DamageType type)>() { (x, y, z, type) };
 	}
 
+	public static bool lastPlayerAttackMissed = false;
+
+	public static int RollAttackDice(Character c)
+	{
+		int value = RollDice(1, 20);
+		if (value > 4 && lastPlayerAttackMissed)
+		{
+			value = RollDice(1, 20);
+		}
+		return value;
+	}
+
 	public static int RollDice(int number, int face)
 	{
 		int result = 0;

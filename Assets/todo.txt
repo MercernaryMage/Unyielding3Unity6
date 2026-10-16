@@ -99,11 +99,7 @@ Roar
 
 Step should probably show something different?
     Show step range instead?
-
-Clicking end turn while the fight is booting up is very bad
-highlight state on the init bar when you mouse over the token
-highlight state on the character when you mouse over the init bar entry
-
+    
  Cards are hard to understand
      FIX ALL CARDS
 

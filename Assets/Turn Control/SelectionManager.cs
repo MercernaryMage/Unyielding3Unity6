@@ -124,6 +124,7 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 			return;
 		}
 
+
 		Tile mousedOverTile = GetMousedOverTile();
 		if (mousedOverTile != lastMousedOverTile && lastMousedOverTile != null)
 		{
@@ -133,6 +134,7 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 		{
 			mousedOverTile.MouseEnterTile();
 		}
+		lastMousedOverTile = mousedOverTile;
 
 		if (Input.GetMouseButton(2))
 		{
@@ -298,6 +300,10 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 
 	public void MouseEnterTile(Tile t)
 	{
+		if (t.character != null)
+		{
+			TurnControlDisplay.Instance.ChangeHighlightState(t.character, true);
+		}
 		MovementController.Instance.previousMousedTile = t;
 		if (MovementController.Instance.running)
 		{
@@ -311,6 +317,10 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 
 	public void MouseExitTile(Tile t)
 	{
+		if (t.character != null)
+		{
+			TurnControlDisplay.Instance.ChangeHighlightState(t.character, false);
+		}
 		MovementController.Instance.MouseExitTile(t);
 	}
 

@@ -8,6 +8,7 @@ public class CharacterEditorCharacter : MonoBehaviour
 {
     public Image characterPortrait;
     public TextMeshProUGUI characterName;
+	public GameObject highlightFrame;
 	StorageCharacter storageCharacter;
 
 	public void Set(StorageCharacter s)
@@ -19,6 +20,6 @@ public class CharacterEditorCharacter : MonoBehaviour
 
 	public void Click()
 	{
-		CharacterEditor.Instance.SetToCharacter(storageCharacter);
+		CharacterEditor.Instance.SetToCharacter(storageCharacter, this);
 	}
 }

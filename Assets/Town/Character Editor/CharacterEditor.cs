@@ -34,6 +34,7 @@ public class CharacterEditor : SceneSingleton<CharacterEditor>
 	public GameObject traitDisplayPrefab;
 	public Transform traitTarget;
 	List<GameObject> createdTraits = new List<GameObject>();
+	CharacterEditorCharacter lastEditorCharacter = null;
 
 	public GameObject addButton;
 
@@ -43,12 +44,21 @@ public class CharacterEditor : SceneSingleton<CharacterEditor>
 		{
 			characterTargets[i].Set(PersistenceManager.Instance.currentTeam[i]);
 		}
-		SetToCharacter(PersistenceManager.Instance.currentTeam[0]);
+		SetToCharacter(PersistenceManager.Instance.currentTeam[0], characterTargets[0]);
 		addButton.SetActive(!PersistenceManager.Instance.GetFlag("AdvantagesLocked") == true);
 	}
 
-	public void SetToCharacter(StorageCharacter storageCharacter)
+	public void SetToCharacter(StorageCharacter storageCharacter, CharacterEditorCharacter editorCharacter)
 	{
+		if (lastEditorCharacter != null)
+		{
+			lastEditorCharacter.highlightFrame.SetActive(false);
+		}
+		if (editorCharacter)
+		{
+			editorCharacter.highlightFrame.SetActive(true);
+		}
+		lastEditorCharacter = editorCharacter;
 		subclassDispaly.SetActive(!PersistenceManager.Instance.GetFlag("WeaponSlotsLocked"));
 		currentCharacter = storageCharacter;
 		characterPortrait.sprite = storageCharacter.characterDefintion.bigPortrait;
@@ -120,7 +130,7 @@ public class CharacterEditor : SceneSingleton<CharacterEditor>
 
 	public void ResetToBase()
 	{
-		SetToCharacter(currentCharacter);
+		SetToCharacter(currentCharacter, lastEditorCharacter);
 	}
 
 	public void AddAdvantageClicked()

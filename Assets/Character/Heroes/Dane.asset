@@ -22,7 +22,7 @@ MonoBehaviour:
   maxHP: 7
   maxEnergy: 10
   maxThreshold: 10
-  evasion: 0
+  evasion: 8
   weight: 3
   isMinion: 0
   allowAoO: 1

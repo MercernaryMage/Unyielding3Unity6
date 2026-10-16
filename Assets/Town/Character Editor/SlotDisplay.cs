@@ -27,6 +27,7 @@ public class SlotDisplay : MonoBehaviour
 	public TextMeshProUGUI slotTypeText;
 
 	public SlotElement normal;
+	public GameObject rulesTextObject;
 
 	WeaponSlotType slotType;
 	WeaponSlot slot;
@@ -62,6 +63,9 @@ public class SlotDisplay : MonoBehaviour
 			normal.stats.text = "";
 			normal.rules.text = "";
 			normal.cost.text = "";
+			rulesTextObject.SetActive(false);
+			normal.rules.gameObject.SetActive(false);
+			((RectTransform)transform).sizeDelta = new Vector2(385, 164);
 		}
 		else
 		{
@@ -90,7 +94,16 @@ public class SlotDisplay : MonoBehaviour
 				normal.stats.text = "";
 				normal.stats.gameObject.SetActive(false);
 			}
-			normal.rules.text = item.actions[0].actionDescription;
+			float height = 164;
+			rulesTextObject.SetActive(item.actions[0].actionDescription != "");
+			normal.rules.gameObject.SetActive(item.actions[0].actionDescription != "");
+			if (item.actions[0].actionDescription != "")
+			{
+				height += 50;
+				
+				normal.rules.text = item.actions[0].actionDescription;
+			}
+			((RectTransform)transform).sizeDelta = new Vector2(385, height);
 			normal.cost.text = $"Cost: {Util.GetCostString(item.actions[0].cost)}";
 			Canvas.ForceUpdateCanvases();
 			LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)normal.stats.transform.parent);

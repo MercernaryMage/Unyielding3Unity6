@@ -7,13 +7,13 @@ public class TurnControlDisplay : SceneSingleton<TurnControlDisplay>
 	public Transform content;
 	public GameObject prefab;
 
-	List<GameObject> createdObjects = new List<GameObject>();
+	List<System.Tuple<Character, GameObject>> createdObjects = new List<System.Tuple<Character, GameObject>>();
 
 	public void Set(List<TurnControlEntry> turnControlEntries)
 	{
-		foreach (GameObject obj in createdObjects)
+		foreach (System.Tuple<Character, GameObject> obj in createdObjects)
 		{
-			Destroy(obj);
+			Destroy(obj.Item2);
 		}
 		createdObjects.Clear();
 
@@ -31,7 +31,18 @@ public class TurnControlDisplay : SceneSingleton<TurnControlDisplay>
 
 		displayElement.transform.SetParent(content);
 		displayElement.transform.localScale = Vector3.one;
-		createdObjects.Add(displayElement);
+		createdObjects.Add(new System.Tuple<Character, GameObject>(entry.character, displayElement));
+	}
+
+	public void ChangeHighlightState(Character c, bool state)
+	{
+		foreach (System.Tuple<Character, GameObject> tuple in createdObjects)
+		{
+			if (tuple.Item1 == c)
+			{
+				tuple.Item2.GetComponent<TurnControlDisplayElement>().highlight.SetActive(state);
+			}
+		}
 	}
 }
 //2560 * x = 1920

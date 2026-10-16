@@ -483,7 +483,7 @@ public class ActionController : SceneSingleton<ActionController>
 		string blurb;
 		List<string> entries = new List<string>();
 		AttackResults results = new AttackResults();
-		int attackRoll = Util.RollDice(1, 20);
+		int attackRoll = Util.RollAttackDice(attacker);
 
 		CharacterAttackingMessage characterAttackingMessage = new CharacterAttackingMessage();
 		characterAttackingMessage.defender = defender;
@@ -510,6 +510,7 @@ public class ActionController : SceneSingleton<ActionController>
 
 		if (attackValue < effectiveEvasion || characterAttackingMessage.autoMiss)
 		{
+			Util.lastPlayerAttackMissed = true;
 			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, "miss");
 
 			CharacterMissMessage characterMissMessage = new CharacterMissMessage();
@@ -529,6 +530,7 @@ public class ActionController : SceneSingleton<ActionController>
 		}
 		else
 		{
+			Util.lastPlayerAttackMissed = false;
 			results.hit = true;
 
 			CharacterHitMessage characterHitMessage = new CharacterHitMessage();

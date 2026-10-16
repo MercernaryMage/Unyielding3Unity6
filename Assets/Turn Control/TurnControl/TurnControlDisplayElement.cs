@@ -21,6 +21,8 @@ public class TurnControlDisplayElement : MonoBehaviour, IPointerEnterHandler, IP
 
 	public Character character;
 
+	public GameObject highlight;
+
 	public void Set(Character character, int value, bool left, bool rArrow, bool rBar)
 	{
 		this.character = character;

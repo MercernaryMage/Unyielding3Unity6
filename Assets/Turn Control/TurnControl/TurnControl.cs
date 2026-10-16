@@ -204,7 +204,11 @@ public class TurnControl : SceneSingleton<TurnControl>
 		if (!BattleController.playerHasControl || processStarted)
 		{
 			return;
-		}		
+		}
+		if (currentCharacter == null || !currentCharacter.hero)
+		{
+			return;
+		}
 		UIController.Instance.heroDisplay.Hide(false);
 		processStarted = true;
 		if (ActionController.Instance.running)
