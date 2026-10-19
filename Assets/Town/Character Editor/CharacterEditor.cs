@@ -172,7 +172,7 @@ public class CharacterEditor : SceneSingleton<CharacterEditor>
 			bool keepOpen = false;
 			foreach (RaycastResult result in results)
 			{
-				if (UTag.HasTag(result.gameObject, "KeepScreenOpen"))
+				if (HasKeepOpenTag(result.gameObject))
 				{
 					keepOpen = true;
 					break;
@@ -183,5 +183,19 @@ public class CharacterEditor : SceneSingleton<CharacterEditor>
 				AdvantageSelectionPane.Instance.Hide();
 			}
 		}
+	}
+
+	bool HasKeepOpenTag(GameObject obj)
+	{
+		Transform current = obj.transform;
+		while (current != null)
+		{
+			if (UTag.HasTag(current.gameObject, "KeepScreenOpen"))
+			{
+				return true;
+			}
+			current = current.parent;
+		}
+		return false;
 	}
 }

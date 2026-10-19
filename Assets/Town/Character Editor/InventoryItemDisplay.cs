@@ -12,6 +12,7 @@ public class InventoryItemDisplay : MonoBehaviour, IPointerClickHandler
     public Image itemIcon;
     public TextMeshProUGUI itemName;
 	public TextMeshProUGUI itemDescription;
+	public TextMeshProUGUI itemCost;
 	public GameObject deleteButton;
 	bool inInventory;
 	ItemScriptableObject item;
@@ -30,12 +31,18 @@ public class InventoryItemDisplay : MonoBehaviour, IPointerClickHandler
 		}
 		itemIcon.sprite = item.itemImage;
 		itemName.text = item.displayName;
+		itemCost.text = item.weight.ToString();
 		string charges = "";
 		if (item.charges > 0)
 		{
-			charges = $" {item.charges} {Util.Pluralize(item.charges, "charge")}";	
+			charges = $" {item.charges} {Util.Pluralize(item.charges, "charge")}";
+			itemDescription.text = $"{charges}\n{item.actions[0].actionDescription}";
 		}
-		itemDescription.text = $"{item.weight} weight{charges}\n{item.actions[0].actionDescription}";
+		else
+		{
+			itemDescription.text = $"{item.actions[0].actionDescription}";
+		}
+
 	}
 
 	public void Remove()
