@@ -97,6 +97,9 @@ ChainWhirl
 ShieldGlare
 Roar
 
+crossbow has a rogue comma in the description
+weapons say their slot
+
 Gold color: 8E5911
 black color: 342B28
 

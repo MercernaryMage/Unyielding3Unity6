@@ -109,7 +109,10 @@ public class UnyieldingMenu
 			}
 		}
 
-		if (disabledCount > 0)
+		int useDebugMapCount = DisableUseDebugMap(lines, scenePath);
+		int changedCount = disabledCount + useDebugMapCount;
+
+		if (changedCount > 0)
 		{
 			File.WriteAllText(scenePath, string.Join(newline, lines));
 			AssetDatabase.ImportAsset(scenePath);
@@ -121,7 +124,45 @@ public class UnyieldingMenu
 			Debug.LogWarning("Combat.unity is currently open in the editor; reload it (or discard and reopen) to pick up the changes made on disk.");
 		}
 
-		Debug.Log($"Disable All Debug In Combat: disabled {disabledCount} components on Debug Code");
+		Debug.Log($"Disable All Debug In Combat: disabled {disabledCount} components on Debug Code and turned off {useDebugMapCount} useDebugMap on MapBuilder");
+	}
+
+	static int DisableUseDebugMap(string[] lines, string scenePath)
+	{
+		string mapBuilderGuid = FindScriptGuid(typeof(MapBuilder));
+
+		for (int i = 0; i < lines.Length; ++i)
+		{
+			if (!lines[i].StartsWith("--- !u!114 &"))
+			{
+				continue;
+			}
+
+			bool isMapBuilder = false;
+			int useDebugMapLineIndex = -1;
+			for (int j = i + 1; j < lines.Length && !lines[j].StartsWith("--- "); ++j)
+			{
+				if (lines[j].StartsWith("  m_Script:") && lines[j].Contains(mapBuilderGuid))
+				{
+					isMapBuilder = true;
+				}
+				else if (lines[j].StartsWith("  useDebugMap:"))
+				{
+					useDebugMapLineIndex = j;
+				}
+			}
+
+			if (!isMapBuilder)
+			{
+				continue;
+			}
+
+			lines[useDebugMapLineIndex] = "  useDebugMap: 0";
+			return 1;
+		}
+
+		Debug.LogError($"Could not find a MapBuilder in {scenePath}");
+		return 0;
 	}
 
 	static string FindScriptGuid(Type type)
