@@ -17,7 +17,7 @@ public class Frothing : StatusEffect
 		Destroy(this);
 	}
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Frothing";
 	}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Marked : StatusEffect
 {
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Marked";
 	}

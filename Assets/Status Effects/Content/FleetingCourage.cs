@@ -39,9 +39,14 @@ public class FleetingCourage : StatusEffect
 		Destroy(this);
 	}
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Fleeting Courage";
+	}
+
+	public override string GetIconName()
+	{
+		return "status_symbol_courage";
 	}
 
 	public static List<CardInstruction> GetCardInstructions()

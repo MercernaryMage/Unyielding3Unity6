@@ -6,6 +6,30 @@ public class MarkedForDeath : StatusEffect
 	public Character causingCharacter;
 	public int value = 5;
 
+	bool sawCausingCharacterTurnStart;
+
+	public override void CharacterStartTurn(CharacterStartTurnMessage characterStartTurnMessage)
+	{
+		if (characterStartTurnMessage.character != causingCharacter)
+		{
+			return;
+		}
+		sawCausingCharacterTurnStart = true;
+	}
+
+	public override void CharacterEndTurn(CharacterEndTurnMessage characterEndTurnMessage)
+	{
+		if (characterEndTurnMessage.character != causingCharacter)
+		{
+			return;
+		}
+		if (!sawCausingCharacterTurnStart)
+		{
+			return;
+		}
+		Destroy(this);
+	}
+
 	public override void OnPreDamageDealt(PreDamageDealtMessage preDamageDealtMessage)
 	{
 		if (preDamageDealtMessage.defender != character)
@@ -29,17 +53,22 @@ public class MarkedForDeath : StatusEffect
 		Destroy(this);
 	}
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
-		return "Marked For Death";
+		return "MarkedForDeath";
 	}
 
 	public static List<CardInstruction> GetCardInstructions()
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction($"The next time the character that applied this effect damages this target, it deals 5 additional damage and the effect is consumed."));
+		instructions.Add(new CardInstruction(ExplanationItemRepository.Instance.GetExplanation("MarkedForDeath").explanationContent));
 
 		return instructions;
+	}
+
+	public override bool StatusEffectIsVisibleInHealthBar()
+	{
+		return true;
 	}
 }

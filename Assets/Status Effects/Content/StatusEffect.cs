@@ -177,11 +177,19 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 		return "";
 	}
 
-	public abstract string GetExplanationName();
-
-	public ExplanationIemScrptableObject GetExplanation()
+	public virtual string GetStatusEffectKey()
 	{
-		return ExplanationItemRepository.Instance.GetExplanation(GetExplanationName());
+		return "";
+	}
+
+	public string GetExplanationName()
+	{
+		return ExplanationItemRepository.Instance.GetExplanation(GetStatusEffectKey()).explanationName;
+	}
+
+	public string GetExplanationContent()
+	{
+		return ExplanationItemRepository.Instance.GetExplanation(GetStatusEffectKey()).explanationContent;
 	}
 
 	public class StatusEffectInitData

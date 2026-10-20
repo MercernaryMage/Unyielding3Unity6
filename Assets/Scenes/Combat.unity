@@ -1535,6 +1535,7 @@ MonoBehaviour:
   cunning: {fileID: 6199459384794685266}
   statusEffectDisplayGroup: {fileID: 1869919181}
   target: {fileID: 973253689}
+  lastCharacter: {fileID: 0}
 --- !u!1 &290390807
 GameObject:
   m_ObjectHideFlags: 0
@@ -3862,8 +3863,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b88c884796a7c5418f9bf108c235307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overrideRand: 0
-  seed: 342363645
+  overrideRand: 1
+  seed: 545556516
 --- !u!114 &567337325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6340,6 +6341,7 @@ GameObject:
   - component: {fileID: 898251918}
   - component: {fileID: 898251919}
   - component: {fileID: 898251921}
+  - component: {fileID: 898251922}
   m_Layer: 0
   m_Name: Debug Code
   m_TagString: Untagged
@@ -6527,6 +6529,18 @@ MonoBehaviour:
   - characterName: Dane
     value: 1
   runOnce: 1
+--- !u!114 &898251922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898251909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678165fb64625074fa9405777123ab20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugKillCharacter
 --- !u!1 &904316261
 GameObject:
   m_ObjectHideFlags: 0

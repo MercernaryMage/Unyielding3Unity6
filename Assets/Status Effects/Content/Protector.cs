@@ -38,7 +38,7 @@ public class Protector : StatusEffect
 			{
 				if (message.defender.alive && character.alive)
 				{
-                    AICardDisplay.Instance.ShowFakeCard(GetExplanationName(), GetExplanation().explanationContent);
+                    AICardDisplay.Instance.ShowFakeCard(GetExplanationName(), GetExplanationContent());
 					ActionController.Instance.AttackCharacter(message.attacker, character, new ActionController.AttackProfile(1, 6, 0));
 				}
 
@@ -48,7 +48,7 @@ public class Protector : StatusEffect
         );
 	}
 
-    public override string GetExplanationName()
+    public override string GetStatusEffectKey()
     {
         return "Protector";
     }

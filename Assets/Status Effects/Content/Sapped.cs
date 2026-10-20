@@ -44,7 +44,7 @@ public class Sapped : StatusEffect
 		}
 	}
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Sapped";
 	}

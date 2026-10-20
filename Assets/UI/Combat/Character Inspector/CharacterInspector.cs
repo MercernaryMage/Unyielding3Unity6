@@ -20,7 +20,7 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 
 	List<GameObject> createdObjects = new List<GameObject>();
 
-	Character lastCharacter;
+	public Character lastCharacter;
 
 	public void Set(Character c)
 	{

@@ -15,7 +15,7 @@ public class AddActionPointsOnTurnStart : StatusEffect
 		Destroy(this);
 	}
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Energized";
 	}

@@ -12,7 +12,7 @@ public class Doom : StatusEffect
         character.SpendEnergy(4);
     }
 
-    public override string GetExplanationName()
+    public override string GetStatusEffectKey()
     {
         return "Doom";
     }

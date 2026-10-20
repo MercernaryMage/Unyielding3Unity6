@@ -11,7 +11,7 @@ public class Disengage : StatusEffect
 		}
 	}
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Disengage";
 	}

@@ -11,7 +11,7 @@ public class StatusEffectElementDispaly : MonoBehaviour
 	public void Set(StatusEffect effect)
 	{
 		effectName.text = effect.GetExplanationName();
-		effectText.text = effect.GetExplanation().explanationContent;
+		effectText.text = effect.GetExplanationContent();
 	}
 
 }

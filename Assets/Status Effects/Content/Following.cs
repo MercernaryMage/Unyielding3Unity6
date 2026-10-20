@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Following : TileTrackingEffect
 {
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Following";
 	}

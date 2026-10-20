@@ -68,7 +68,7 @@ public class LockedOn : StatusEffect
 			{
 				if (character.alive && causingCharacter.alive)
 				{
-					AICardDisplay.Instance.ShowFakeCard(GetExplanationName(), GetExplanation().explanationContent);
+					AICardDisplay.Instance.ShowFakeCard(GetExplanationName(), GetExplanationContent());
 					ActionController.Instance.AttackCharacter(character, causingCharacter, new ActionController.AttackProfile(1, 6, 0));
 				}
 
@@ -107,7 +107,7 @@ public class LockedOn : StatusEffect
 		}
 	}
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
     {
         return "Locked On";
     }

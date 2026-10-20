@@ -30,14 +30,14 @@ public class Shackled : StatusEffect
 		}
 	}
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Shackled";
 	}
 
 	public override string GetIconName()
 	{
-		return "Shackled";
+		return "status_symbol_shackled";
 	}
 
 	public override bool StatusEffectIsVisibleInHealthBar()

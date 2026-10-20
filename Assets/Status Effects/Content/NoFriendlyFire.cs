@@ -30,7 +30,7 @@ public class NoFriendlyFire : StatusEffect
 		return true;
 	}
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "No Friendly Fire";
 	}

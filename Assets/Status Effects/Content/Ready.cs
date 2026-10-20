@@ -34,7 +34,7 @@ public class Ready : StatusEffect
 		Destroy(this);
 	}
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Ready";
 	}

@@ -12,17 +12,17 @@ public class ExplanationItemRepository : Singleton<ExplanationItemRepository>
 		explanations = new Dictionary<string, ExplanationIemScrptableObject>();
 		foreach (ExplanationIemScrptableObject item in collectionReal.explanationItems)
 		{
-			explanations[item.explanationName] = item;
+			explanations[item.name] = item;
 		}
 	}
 
-	public ExplanationIemScrptableObject GetExplanation(string explanationName)
+	public ExplanationIemScrptableObject GetExplanation(string explanationKey)
 	{
-		if (explanations.ContainsKey(explanationName))
+		if (explanations.ContainsKey(explanationKey))
 		{
-			return explanations[explanationName];
+			return explanations[explanationKey];
 		}
-		Debug.LogError($"Missing Explanation: {explanationName}");
+		Debug.LogError($"Missing Explanation: {explanationKey}");
 		return null;
 	}
 }

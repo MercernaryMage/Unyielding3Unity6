@@ -68,7 +68,8 @@ public class AttackOfOpportunityTrait : Trait
 		{
 			return;
 		}
-		if (message.movingCharacter.GetComponent<Disengage>() != null)
+		if (message.movingCharacter.GetComponent<Disengage>() != null ||
+			message.movingCharacter.GetComponent<MarkedForDeath>() != null)
 		{
 			return;
 		}

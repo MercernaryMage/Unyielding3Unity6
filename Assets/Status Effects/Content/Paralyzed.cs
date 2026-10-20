@@ -29,9 +29,14 @@ public class Paralyzed : StatusEffect
 		Destroy(this);
 	}
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Paralyzed";
+	}
+
+	public override string GetIconName()
+	{
+		return "status_symbol_paralyzed";
 	}
 
 }

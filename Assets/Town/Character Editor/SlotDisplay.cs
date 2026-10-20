@@ -70,7 +70,7 @@ public class SlotDisplay : MonoBehaviour
 		else
 		{
 			normal.weaponName.text = item.displayName;
-			normal.keywords.text = $"{slotTypeName}, {GetActionKeywords(item, item.actions[0])}";
+			normal.keywords.text = $"{GetActionKeywords(item, item.actions[0])}";
 			//"Range 5, 1d6 + 2";
 			//"Range 20, Blast 1, 2d6"
 			//range, AOE, damage
@@ -168,7 +168,14 @@ public class SlotDisplay : MonoBehaviour
 			return itemScriptable.keywords;
 		}
 		string patternKeywords = string.Join(", ", pattern.keywords);
-		return $"{itemScriptable.keywords}, {patternKeywords}";
+		if (itemScriptable.keywords != "")
+		{
+			return $"{itemScriptable.keywords}, {patternKeywords}";
+		}
+		else
+		{
+			return $"{patternKeywords}";
+		}
 	}
 
 	public static List<string> GetActionKeywordsAsList(ItemScriptableObject itemScriptable, ActionPattern pattern)

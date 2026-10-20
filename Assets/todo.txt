@@ -97,8 +97,51 @@ ChainWhirl
 ShieldGlare
 Roar
 
-crossbow has a rogue comma in the description
-weapons say their slot
+Duration cards need to not play a card after their duration step
+    IF THE TARGET IS DEAD YOU GET TO PLAY ANOTHER CARD
+
+convert all status effects to use their data collection: see MarkedForDeath
+    AddActionPointsOnTurnStart
+    Burning
+    Defend
+    Disengage
+    Dodging
+    Doom
+    Downed
+    Exhausted
+    FleetingCourage
+    Following
+    Freightened
+    Frothing
+    Imposed
+    Inaccuracy
+    Injured
+    Jammed
+    KnockedDown
+    Legion
+    Lethargy
+    LockedOn
+    Marked
+    NoFriendlyFire
+    Paralyzed
+    Poison
+    Prepared
+    Protector
+    Ready
+    Sapped
+    Shackled
+    Shadowed
+    SingeAura
+    Stalked
+    Stalking
+    Stun
+    ThrowingSand
+    Vulnerable
+    Waiting
+    WeakPoint
+    Weakened
+
+
 
 Gold color: 8E5911
 black color: 342B28

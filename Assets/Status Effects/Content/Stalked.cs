@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Stalked : TileTrackingEffect
 {
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Stalked";
 	}

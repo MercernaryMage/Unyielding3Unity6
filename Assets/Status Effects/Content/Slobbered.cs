@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Slobbered : Inaccuracy
 {
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Slobbered";
 	}

@@ -37,7 +37,7 @@ MonoBehaviour:
   cunning: 0
   prowess: 0
   cards:
-  - {fileID: 11400000, guid: 8e653e2281ab8964b8231526d1f980dd, type: 2}
+  - {fileID: 11400000, guid: 4a0e43a9f7bc0a244a397494d1b44dba, type: 2}
   reactions: []
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}

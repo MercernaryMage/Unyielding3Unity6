@@ -4,7 +4,7 @@ public class KnockedDown : StatusEffect
 {
 	public bool cleared = false;
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Knocked Down";
 	}

@@ -12,7 +12,7 @@ public class Stasis : Downed
 		}
 	}
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Stasis";
 	}

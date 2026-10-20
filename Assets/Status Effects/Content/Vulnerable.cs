@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Vulnerable : StatusEffect
 {
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Vulnerable";
 	}
@@ -15,4 +15,8 @@ public class Vulnerable : StatusEffect
 		}
 	}
 
+	public override string GetIconName()
+	{
+		return "status_symbol_vulnerable";
+	}
 }

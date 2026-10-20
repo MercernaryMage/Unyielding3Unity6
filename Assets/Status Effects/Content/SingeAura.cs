@@ -21,7 +21,7 @@ public class SingeAura : StatusEffect
 		Destroy(this);
 	}
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Singe Aura";
 	}

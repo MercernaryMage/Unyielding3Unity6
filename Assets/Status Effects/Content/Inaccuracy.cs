@@ -6,7 +6,7 @@ public class Inaccuracy : StatusEffect
 {
 	int stack = 1;
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Inaccuracy";
 	}

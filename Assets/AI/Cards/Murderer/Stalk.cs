@@ -73,18 +73,73 @@ public class Stalk : Card
 		chaseCompleteCallback = onComplete;
 		litRouteTiles = new List<Tile>();
 
-		Dictionary<Character, Tuple<List<Tile>, Tile>> routes = RouteToAllClosestCharacters(true);
-		if (!routes.ContainsKey(target))
+		AICardDisplay.Instance.Dismiss(true);
+		AICardDisplay.Instance.ShowCard(cardScriptableObject, CardDisplay.CardType.Card);
+		CombatLogControl.Instance.AddCard($"{owningCharacter} pursues {target}", this);
+
+		route = FindChaseRoute(target);
+		if (route == null)
 		{
 			AnimationController.Instance.DelayedCallback(.5f, ReturnFromRoute);
 			return;
 		}
 
-		route = routes[target];
-		Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
-
 		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
 		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, Route, ReturnFromRoute);
+	}
+
+	Tuple<List<Tile>, Tile> FindChaseRoute(Character chaseTarget)
+	{
+		int maxRange = owningCharacter.characterDefinition.movement + 1;
+		int tileSize = owningCharacter.characterDefinition.size * owningCharacter.characterDefinition.size;
+
+		MovementController.PathfindingRules rules = new MovementController.PathfindingRules();
+		rules.allowedToPathThroughAllies = true;
+
+		List<Tile> adjacentTiles = TileGrid.Instance.GetAllAdjacentTilesToCharacter(chaseTarget);
+
+		Tuple<List<Tile>, Tile> bestRoute = null;
+		int bestDistance = int.MaxValue;
+		int bestSteps = int.MaxValue;
+
+		for (int i = 0; i < tileSize; ++i)
+		{
+			foreach (Tile t in adjacentTiles)
+			{
+				Tile trueTile = TileGrid.Instance.GetTrueTileFromOffset(t, i, owningCharacter.characterDefinition.size);
+				if (trueTile == null)
+				{
+					continue;
+				}
+				if (!TileGrid.Instance.WouldCharacterFitAtTile(owningCharacter, trueTile))
+				{
+					continue;
+				}
+
+				List<Tile> path = MovementController.Instance.FindRoute(owningCharacter, trueTile, 0, rules);
+				if (path == null)
+				{
+					continue;
+				}
+
+				int stoppableIndex = Util.FindStoppableIndex(path, owningCharacter, maxRange);
+				int distance = TileGrid.Instance.GetDistanceBetweenCharacterAndTile(chaseTarget, path[stoppableIndex]);
+
+				if (distance > bestDistance || (distance == bestDistance && stoppableIndex >= bestSteps))
+				{
+					continue;
+				}
+
+				Tuple<List<Tile>, Tile> candidate = new Tuple<List<Tile>, Tile>(path, trueTile);
+				Util.ShortenPathToMaxRange(candidate, stoppableIndex + 1);
+
+				bestDistance = distance;
+				bestSteps = stoppableIndex;
+				bestRoute = candidate;
+			}
+		}
+
+		return bestRoute;
 	}
 
 	public void Route()
@@ -125,7 +180,7 @@ public class Stalk : Card
 			{
 				if (t.character && t.character.hero)
 				{
-					ActionController.Instance.AttackCharacter(t.character, owningCharacter, new ActionController.AttackProfile(1, 6, 0));
+					ActionController.Instance.AttackCharacter(t.character, owningCharacter, new ActionController.AttackProfile(1, 6, 2));
 				}
 				t.HideOverlay(Tile.OverlayType.PossibleAttck);
 			}
@@ -136,6 +191,8 @@ public class Stalk : Card
 
 	void FinishChase()
 	{
+		AICardDisplay.Instance.SoftDismiss(.5f);
+
 		Action callback = chaseCompleteCallback;
 		chaseCompleteCallback = null;
 		if (callback != null)
@@ -152,7 +209,7 @@ public class Stalk : Card
 		instructions.Add(new CardInstruction("or closest enemy if none are isolated"));
 		instructions.Add(new CardInstruction("The mark follows them as they move"));
 		instructions.Add(new CardInstruction("At the start of the next turn, move to the marked enemy"));
-		instructions.Add(new CardInstruction("and attack it for 1d6 damage"));
+		instructions.Add(new CardInstruction("and attack it for 1d6+2 damage"));
 		DisplayGrid.Instance.Show();
 
 		return instructions;

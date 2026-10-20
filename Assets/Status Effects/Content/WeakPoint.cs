@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WeakPoint : StatusEffect
 {
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Weak Point";
 	}

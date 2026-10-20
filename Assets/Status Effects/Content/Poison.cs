@@ -6,7 +6,7 @@ public class Poison : StatusEffect
 {
 	public int value;
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Poison";
 	}

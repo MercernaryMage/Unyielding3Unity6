@@ -24,7 +24,7 @@ public class Downed : StatusEffect
 		character.currentHP = character.maxHP;
 	}
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Downed";
 	}

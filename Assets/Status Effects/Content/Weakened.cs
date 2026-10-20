@@ -23,7 +23,7 @@ public class Weakened : StatusEffect
 		}
 	}
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Weakened";
 	}

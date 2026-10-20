@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Predator
   m_EditorClassIdentifier: 
   displayName: Predator
-  description: If this character does not move during their turn, they activate an
-    equipped shield.
+  description: Deal 5 extra damage to isolated targets on hit.
   className: DealExtraDamageIfIsolated
   intParams: 
   stringParams: []

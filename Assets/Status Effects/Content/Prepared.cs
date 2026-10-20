@@ -29,7 +29,7 @@ public class Prepared : StatusEffect
 		Destroy(this);
 	}
 
-	public override string GetExplanationName()
+	public override string GetStatusEffectKey()
 	{
 		return "Readied";
 	}

@@ -27,7 +27,7 @@ public class Defend : StatusEffect
         preDamageDealtMessage.hasResistance = true;
     }
 
-    public override string GetExplanationName()
+    public override string GetStatusEffectKey()
     {
         return "Defend";
     }
