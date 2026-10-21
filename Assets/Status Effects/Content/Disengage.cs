@@ -21,7 +21,7 @@ public class Disengage : StatusEffect
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction($"This character does not provoke attacks of opportunity when moving."));
+		instructions.Add(new CardInstruction(ExplanationItemRepository.Instance.GetExplanation("Disengage").explanationContent));
 		instructions.Add(new CardInstruction($"Play this characters next card"));
 
 		return instructions;

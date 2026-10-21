@@ -39,7 +39,7 @@ public class NoFriendlyFire : StatusEffect
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("The next time this character's <u>Blast</u> would hit an ally, it spares them instead."));
+		instructions.Add(new CardInstruction(ExplanationItemRepository.Instance.GetExplanation("No Friendly Fire").explanationContent));
 
 		return instructions;
 	}

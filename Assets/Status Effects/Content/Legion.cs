@@ -34,7 +34,7 @@ public class Legion : StatusEffect
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction($"Attacks gain +1 accuracy while adjacent to an ally."));
+		instructions.Add(new CardInstruction(ExplanationItemRepository.Instance.GetExplanation("Legion").explanationContent));
 		instructions.Add(new CardInstruction($"Play this characters next card"));
 
 		return instructions;

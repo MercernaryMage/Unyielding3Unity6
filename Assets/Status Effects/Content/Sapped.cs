@@ -53,7 +53,7 @@ public class Sapped : StatusEffect
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Movement is reduced to 1. Removed when this character ends their turn with at least 3 AP."));
+		instructions.Add(new CardInstruction(ExplanationItemRepository.Instance.GetExplanation("Sapped").explanationContent));
 
 		return instructions;
 	}

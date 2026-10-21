@@ -39,7 +39,7 @@ public class Prepared : StatusEffect
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction($"Attack any hero that ends their movement adjacent to this character. Removed when a hero is <u>Downed</u>."));
+		instructions.Add(new CardInstruction(ExplanationItemRepository.Instance.GetExplanation("Readied").explanationContent));
 		return instructions;
 	}
 }

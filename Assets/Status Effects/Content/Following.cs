@@ -12,7 +12,7 @@ public class Following : TileTrackingEffect
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("The marked area moves with this character until the blast goes off."));
+		instructions.Add(new CardInstruction(ExplanationItemRepository.Instance.GetExplanation("Following").explanationContent));
 
 		return instructions;
 	}

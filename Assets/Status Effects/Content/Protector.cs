@@ -58,7 +58,7 @@ public class Protector : StatusEffect
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction($"When an adjacent ally is hit by an adjacent attacker, this character counterattacks."));
+		instructions.Add(new CardInstruction(ExplanationItemRepository.Instance.GetExplanation("Protector").explanationContent));
 
 		return instructions;
 	}

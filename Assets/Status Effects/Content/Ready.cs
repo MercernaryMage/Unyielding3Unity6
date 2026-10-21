@@ -44,7 +44,7 @@ public class Ready : StatusEffect
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction($"When an enemy finishes moving adjacent to this character, make an attack of opportunity."));
+		instructions.Add(new CardInstruction(ExplanationItemRepository.Instance.GetExplanation("Ready").explanationContent));
 		instructions.Add(new CardInstruction($"Play this characters next card"));
 
 		return instructions;

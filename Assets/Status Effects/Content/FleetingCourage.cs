@@ -53,7 +53,7 @@ public class FleetingCourage : StatusEffect
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction($"Attacks deal 1 additional damage. Removed when this character takes damage."));
+		instructions.Add(new CardInstruction(ExplanationItemRepository.Instance.GetExplanation("Fleeting Courage").explanationContent));
 		return instructions;
 	}
 }

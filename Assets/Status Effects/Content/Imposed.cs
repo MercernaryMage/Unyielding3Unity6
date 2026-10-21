@@ -46,7 +46,7 @@ public class Imposed : StatusEffect
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction($"Adjacent enemy is giving -1 accuracy to ranged attacks."));
+		instructions.Add(new CardInstruction(ExplanationItemRepository.Instance.GetExplanation("Imposed").explanationContent));
 
 		return instructions;
 	}

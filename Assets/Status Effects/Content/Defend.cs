@@ -37,7 +37,7 @@ public class Defend : StatusEffect
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction($"Movement is halved. Takes half damage from all sources."));
+		instructions.Add(new CardInstruction(ExplanationItemRepository.Instance.GetExplanation("Defend").explanationContent));
 		instructions.Add(new CardInstruction($"Play this characters next card"));
 
 		return instructions;

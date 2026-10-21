@@ -33,7 +33,7 @@ public class ThrowingSand : StatusEffect
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction($"Attacks apply <u>Marked</u> to targets that don't already have it. Expires after 3 applications."));
+		instructions.Add(new CardInstruction(ExplanationItemRepository.Instance.GetExplanation("Throwing Sand").explanationContent));
 
 		return instructions;
 	}

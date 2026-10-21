@@ -70,7 +70,7 @@ public class Stalking : StatusEffect
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("At the start of this character's turn, it moves to the marked enemy and attacks it."));
+		instructions.Add(new CardInstruction(ExplanationItemRepository.Instance.GetExplanation("Stalking").explanationContent));
 
 		return instructions;
 	}
