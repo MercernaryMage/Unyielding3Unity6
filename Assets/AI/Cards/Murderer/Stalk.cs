@@ -205,11 +205,9 @@ public class Stalk : Card
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Mark the tile of the closest isolated enemy"));
-		instructions.Add(new CardInstruction("or closest enemy if none are isolated"));
+		instructions.Add(new CardInstruction("Mark the tile of the closest isolated enemy or closest enemy if none are isolated and use <i>Charge</i>"));
 		instructions.Add(new CardInstruction("The mark follows them as they move"));
-		instructions.Add(new CardInstruction("At the start of the next turn, move to the marked enemy"));
-		instructions.Add(new CardInstruction("and attack it for 1d6+2 damage"));
+		instructions.Add(new CardInstruction("On <u>Charge</u> completion: move to the marked enemy and attack it for 1d6+2 damage"));
 		DisplayGrid.Instance.Show();
 
 		return instructions;

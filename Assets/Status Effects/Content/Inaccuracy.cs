@@ -31,6 +31,5 @@ public class Inaccuracy : StatusEffect
 	public override void DoStack(StatusEffectInitData data)
 	{
 		++stack;
-		Debug.Log(stack);
 	}
 }

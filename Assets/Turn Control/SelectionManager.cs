@@ -58,6 +58,7 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 			lastMousePos = Input.mousePosition;
 			panAllowed = GetUIRaycast().Count == 0;
 		}
+
 		//why 17.14f?  It's just some arbitrary height above the ground plane to make sure we don't clip into th ground.
 		if (Input.GetMouseButton(0) && panAllowed && !cameraMoving)
 		{
@@ -109,6 +110,16 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 		if (Input.GetKeyDown(KeyCode.E) && Camera.main.GetComponent<RotateAround>() == null && !cameraMoving)
 		{
 			RotateCamera(-90);
+		}
+
+		if (GetUIRaycast().Count > 0)
+		{
+			if (lastMousedOverTile != null)
+			{
+				lastMousedOverTile.MouseExitTile();
+				lastMousedOverTile = null;
+			}
+			return;
 		}
 
 		float scroll = Input.GetAxis("Mouse ScrollWheel");

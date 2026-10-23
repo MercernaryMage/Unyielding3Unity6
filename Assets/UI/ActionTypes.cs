@@ -391,7 +391,7 @@ public class ActionTypes : MonoBehaviour
 	{
 		if (c.armor >= pattern.intParam)
 		{
-			return new Tuple<bool, string>(false, $"{c.displayName} has armor");
+			return new Tuple<bool, string>(false, $"{c.displayName} has more armor than this would give");
 		}
 		return new Tuple<bool, string>(true, "");
 	}

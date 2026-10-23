@@ -216,7 +216,7 @@ public class MapBuilder : MonoBehaviour
 		}
 		else
 		{
-			map = MapParser.ParseMap("Playground.txt");
+			map = MapParser.ParseMap("Playground");
 		}
 		float tileScale = 1.5f;
 		List<Tile> tiles = new List<Tile>();

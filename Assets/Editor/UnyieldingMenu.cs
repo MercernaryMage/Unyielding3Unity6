@@ -14,7 +14,8 @@ public class UnyieldingMenu
 	{
 		string scenePath = "Assets/Scenes/Combat.unity";
 
-		Type[] exemptTypes = new Type[] { typeof(DebugShowText), typeof(DebugKeyboardCommands) };
+		Type[] exemptTypes = new Type[] { typeof(DebugShowText), typeof(DebugKeyboardCommands),
+		typeof(DebugShowCard)};
 		HashSet<string> exemptGuids = new HashSet<string>();
 		foreach (Type exemptType in exemptTypes)
 		{

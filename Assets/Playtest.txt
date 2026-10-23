@@ -1,0 +1,45 @@
+1 armor on david is worthless
+Tooltips on weapon
+Should we not have cotton???
+Reverse init order?
+Diagonal attacking?
+Dane item get in tutorial has bad wording
+Dane should go first on the dane level
+tooltip on the AoO indicator
+Direction indicator to show which enemy is threatening
+AoO indicator drifts a little bit
+Fleeting courage is not explained
+Indicator for active player
+Trample should slide
+Stun should not prevent movement
+knockback should slide
+Bandit should not play does nothing card first
+Whirl made him face somewhere weird
+check display stay on screen till dismissed
+David should go first on lizard fight
+Can we display items on players
+Stronger indicator on a card that disabled
+Weight should have a tooltip
+Continous movement
+Movement on chop showed that it would move onto a unit and then didn't
+Hide end turn?
+	make it skip animations?
+Knowlege fake toolip
+Town should make it clear you can click the weapons
+Popup for trying to quest without a filled slot
+Prowess and cunning on town page
+wrapping on name in inspector
+Trigger UI isn't finished
+Overlapping with charged tiles isn't great
+Action buttons should cancel each other
+Show ghost when placing a character
+Right click is totally unexplained when deploying
+Bring back the eye for LOS checks
+big bite should show it's version
+big bite mystic journey problem
+	Show a journey?
+Len AoO'd while downed
+You can medkit downed characters
+Downed is not a good term
+types on the advantages screen
+medkit should say range 1

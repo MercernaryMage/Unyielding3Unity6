@@ -164,10 +164,9 @@ public class Snipe : Card
 		List<CardInstruction> instructions = new List<CardInstruction>();		
 		
 		instructions.Add(new CardInstruction("Move away from near by enemies"));
-		instructions.Add(new CardInstruction("Marks a target and <u>Charge</u>"));
+		instructions.Add(new CardInstruction("Marks a target and uses <u>Charge</u>"));
 		instructions.Add(new CardInstruction());
 		instructions.Add(new CardInstruction("On <u>Charge</u> completion: deal 10 damage to characters in marked tiles"));
-		DisplayGrid.Instance.Show();
 		return instructions;
 	}
 }

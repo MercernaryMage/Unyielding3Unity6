@@ -410,8 +410,9 @@ public static class Util
 	public static int RollAttackDice(Character c)
 	{
 		int value = RollDice(1, 20);
-		if (value > 4 && lastPlayerAttackMissed)
+		if (value <= 4 && lastPlayerAttackMissed && c.hero)
 		{
+			Debug.Log($"Rerolling: {value}");
 			value = RollDice(1, 20);
 		}
 		return value;

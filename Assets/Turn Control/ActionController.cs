@@ -3,9 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static ActionController;
 using static ActionPattern;
@@ -510,7 +508,11 @@ public class ActionController : SceneSingleton<ActionController>
 
 		if (attackValue < effectiveEvasion || characterAttackingMessage.autoMiss)
 		{
-			Util.lastPlayerAttackMissed = true;
+			if (attacker.hero)
+			{
+				Util.lastPlayerAttackMissed = true;
+			}
+			
 			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, "miss");
 
 			CharacterMissMessage characterMissMessage = new CharacterMissMessage();
@@ -530,7 +532,10 @@ public class ActionController : SceneSingleton<ActionController>
 		}
 		else
 		{
-			Util.lastPlayerAttackMissed = false;
+			if (attacker.hero)
+			{
+				Util.lastPlayerAttackMissed = false;
+			}
 			results.hit = true;
 
 			CharacterHitMessage characterHitMessage = new CharacterHitMessage();

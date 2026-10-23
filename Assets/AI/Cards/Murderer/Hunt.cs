@@ -8,6 +8,9 @@ public class Hunt : Card
 	Tuple<List<Tile>, Tile> route;
 	List<Tile> litRouteTiles;
 
+	const int isolatedMovement = 5;
+	const int closestMovement = 3;
+
 	public bool IsIsolated(Character target)
 	{
 		if (target.GetComponent<Downed>())
@@ -21,10 +24,16 @@ public class Hunt : Card
 	{
 		Dictionary<Character, Tuple<List<Tile>, Tile>> routes = RouteToAllClosestCharacters(true);
 
-		route = Util.FindSmallestRoute(routes, IsIsolated);
+		int maxRange = isolatedMovement + 1;
+
+		Dictionary<Character, Tuple<List<Tile>, Tile>> isolatedRoutes = new Dictionary<Character, Tuple<List<Tile>, Tile>>(routes);
+		Util.RemoveOutOfRangeRoutes(isolatedRoutes, maxRange);
+		route = Util.FindSmallestRoute(isolatedRoutes, IsIsolated);
+
 		if (route == null)
 		{
 			route = Util.FindSmallestRoute(routes, null);
+			maxRange = closestMovement + 1;
 		}
 
 		if (route == null)
@@ -34,7 +43,7 @@ public class Hunt : Card
 			return;
 		}
 
-		Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
+		Util.ShortenPathToMaxRange(route, maxRange);
 
 		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
 		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, Route, ReturnFromRoute);
@@ -86,8 +95,8 @@ public class Hunt : Card
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Move to closest isolated enemy"));
-		instructions.Add(new CardInstruction("or closest enemy if none isolated"));
+		instructions.Add(new CardInstruction($"Move up to {isolatedMovement} to the closest isolated enemy in range {isolatedMovement}"));
+		instructions.Add(new CardInstruction($"or move up to {closestMovement} toward the closest enemy"));
 		instructions.Add(new CardInstruction("Attack adjacent enemy for 1d6 damage"));
 		DisplayGrid.Instance.Show();
 

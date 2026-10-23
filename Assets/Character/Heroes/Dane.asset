@@ -44,6 +44,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c45dc67fa4f3fb34ca2ee42f163e72b2, type: 2}
   subclasses:
   - subclassName: Ally
-    lie1: Locked/Heal 3 allies
-    lie2: Locked/Use a support weapon for 10 hits
-    lie3: Locked/Use Courage on 3 allies in a row
+    lie1: <sprite=0> Give the Tremble ability
+    lie2: <sprite=0> Give the Purge ability
+    lie3: <sprite=0> Ending your turn adjacent to an ally without attacking gives
+      your ally 1 energy

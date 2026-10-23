@@ -1,141 +1,40 @@
 Don't spawn a player if they don't have determination 
 
 2x2 player movement is certainly broken
+ 
+put an eye icon over the archer when you locked on
 
+Shield glare debuff should probably be shown visually on the tokens
+    Is this universally true?
 
-!!!MARCHING ORDERS!!!    
-    --When david was the against the wall, the dragon played fly and didn't move
-        THE MODEL IS IN THE WRONG POSITION!!!!!!!!!!
-
-    GAMEPLAY STUFF
-    -shield trait activated twice?
-
-    caster moves and stops 3 away, but doesn't promise LOS
-
-    new enemies
-        Greenmaw
-            ????
-        Outrider
-            thrust
-            normal stab
-            ????
-                Buff
-                debuff
-                attack
-
-        Te4 steamroll
-        Doom statue
-            Garbage accuracy that ramps up
-
-    fight 2?
-        exe
-        deer x 2
-        chainmaster
-
-    put an eye icon over the archer when you locked on
-
-    Punt on the status effects on the hp bars:
-        I am not cool enough to imagine it
-
-     Shield glare debuff should probably be shown visually on the tokens
-        Is this universally true?
-
-    Come up with keyword for snipe style targeting
-        It purposely targets engaged heroes
-
-    How do we do objectives?
-        Every round at the end of the round objective cards get played automatically
-        Do we do one for the demo??
-
-    Guard has armor up
-        ArmorUp needs to attack poorly
-
-    Guard went first
-        Shield rush did something very strange (this is for map 2 of forest)
-        This is obviously not what the card was designed too...but is kinda fun???
-
-    Tile indication about which unit is clicked
-    We should probably not say "bandit 1", right?
-
-    polish
-        Icons
-
-    Town is broken for equipping weapons:
-        WeaponSlotDisplay is what is being shown in the picker, but that has the wrong required class.  The prefab that has that is Weapon Display
-
-    Knight is colored modded - this is not okay
-
-    Snipe has the correct nomenclature for what the stalk card should say
-
-    MISSING ENEMIES
-        Outrider
-        wizard
-    FOCUS ON FINISHING MISSING MISSIONS
-        Mission set 1
-            3 unique enemies
-                Arb
-                archer
-                chain master
-                deer
-                mercernary
-                murderer
-                Warrior
-                witch
-                Green maw
-                Outrider
-                wizard
-        Mission set 2
-
-     AI playing multiple cards at once is impossible to follow
-
-Inhale
-AddStatusEffectToSelf: Singe Aura (Dragon), Legion (Mercenary), Escape Vector (Murderer).
-
-Chain only on whiff (no valid target)
-Bash
-ChainWhirl
-ShieldGlare
-Roar
+Tile indication about which unit is clicked
+Knight is colored modded - this is not okay
 
 Duration cards need to not play a card after their duration step
     IF THE TARGET IS DEAD YOU GET TO PLAY ANOTHER CARD
 
-
-
 Gold color: 8E5911
-black color: 342B28
+blonk color: 342B28
+
+tool tips titles are hard baked :(
+scroll wheel on the combat log zooms combat
+
+Dismiss is done on mouse down
+    We click the on mouse up
+    Easiest fix is a UYButton
 
 Step should probably show something different?
     Show step range instead?
     
- Cards are hard to understand
-     FIX ALL CARDS
+Questions for J
+    How about the keywords on the action bar pop up
+    Where do I put the enemy card? On the left?  On the right?
 
-    Why am I not play testing???
-        models?????
-            Murderer
-            Assasin
-            greenmaw
-            redmaw
-        Our playtesting
-        Questions for J
-            How about the keywords on the action bar pop up
-            Where do I put the enemy card? On the left?  On the right?
+Tile warnings need to show a piece of information when you mouse over them
 
-
-
-   
-
-    Tile warnings need to show a piece of information when you mouse over them
-
-    Dane didn't get AoOed twice then threatened by bandit and knight
-
-    Targeted description is garbage
-        mention breaking LOS?
-
-    !!!!Effects we need!!!!
-        -Spear
-        Bow
+!!!!Effects we need!!!!
+    -Spear
+    Bow
             Very fast arrow?
         -knife
         kick
@@ -162,30 +61,41 @@ Step should probably show something different?
         flare up
             ????
 
+Item - beat up monsters, get monster parts, turn them into items
 
-    
-    2) Create the content for the other levels
-        Forest
-            Make geo
-            Make enemies
-        Woods
-            Make geo
-            Make enemies
-        Meadow
-            Make geo
-            Make enemies
-        Boss fight
-            Do we make an extra fight in front of the boss?
-            Make geo
-            Make enemies
 
-        Keep tutorial boss as is
-            Is he too long?  Too hard/easy?
+Knowledge system - 
+    You get knowledge points when you kill enemies with the knowledge equipped
+        Spend points to unlock
+    You can equip 2 knowledge groups
+    A knowledge group is a list of objectives and their benefits
+        Are they shared?
+            Yes
+        Are they limited?
+            No
+        How stragiht forward are they?
+        How long to unlock?
+    Medic
+        Boost medkit
+        -When using medkit remove 1 negative status effect
+        -Add 1 extra charge
+        -When healing someone else, also gain the HP effect on you
+    Healer
+        Healing spell
+        -Unlock a healing spell that does 1d6
+        -Healing spells restore 1 energy
+        -
 
-       Do move variants
-           Do we need them for the demo?
-           How many?
 
+
+Path System - as individual characters level up, everybody can take parts of their level
+    Cotton
+        Potion bag
+            first 3 potions cost weight
+        Quiver
+            First 3 ammos have no weight
+    How do we advance down a path?
+        Character scenes?
 
 Knowledge system for demo    
         Show a path for each character
@@ -203,35 +113,3 @@ Knowledge system for demo
             David
                 Recharge as a quick action
                 simple lightning line
-
-
-
-How do our characters advance
-    Premise: UY2 leveling is horrid
-        We want like 50% upward growth
-    Items
-        KDM style
-            crafted - monster bits
-        Lancer LL style
-            You get from LLs
-    Actual levels???
-        Just straight stat gain???
-    Knowledge system
-        A knowledge is a set of traits/abilities/upgrades
-        As you complete tasks of that knowledge, you unlock the rewards
-        All knowledge is shared
-        Are knowledges locked?
-            Maybe a little bit
-            Maybe a lot?
-                Generic + class/race?
-    Path system (lancer LLs)
-        Each character has a path: 1-3
-            Each step unlocks stuff:
-                Weapons
-                Advantages
-        As the game advances, character paths unlock
-        charcters can use other characters path
-
-Fourth = Saints
-Third world = Troubleshooters
-second world = Exiles

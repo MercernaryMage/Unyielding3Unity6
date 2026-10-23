@@ -98,11 +98,8 @@ public class Frenzy : Card
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
 		instructions.Add(new CardInstruction("Move to the closest enemy and attack for 1d6 damage"));
-		instructions.Add(new CardInstruction("On a hit, step 1 tile toward the closest enemy"));
-		instructions.Add(new CardInstruction("that has not been attacked and attack it"));
-		instructions.Add(new CardInstruction("Repeat until a miss, an enemy out of reach,"));
-		instructions.Add(new CardInstruction("or every enemy has been attacked"));
-		DisplayGrid.Instance.Show();
+		instructions.Add(new CardInstruction("On a hit, step 1 tile toward the closest enemy that has not been attacked and attack it"));
+		instructions.Add(new CardInstruction("Repeat until a miss, no reachable enemies, or every enemy has been attacked"));
 
 		return instructions;
 	}

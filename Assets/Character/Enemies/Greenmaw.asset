@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
   m_Name: Greenmaw
   m_EditorClassIdentifier: 
+  enemy: 1
   displayName: Greenmaw
-  model: {fileID: 6207216191786593460, guid: 6078833982850254cb8048b3aceb2d27, type: 3}
+  model: {fileID: 3952812829377165701, guid: a1dc44ce51e55604d830906a3f9ced27, type: 3}
   size: 1
   movement: 4
   armor: 0

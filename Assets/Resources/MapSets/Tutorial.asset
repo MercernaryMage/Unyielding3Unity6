@@ -15,10 +15,10 @@ MonoBehaviour:
   setName: Tutorial
   setDescription: 
   maps:
-  - Tutorial0.txt
-  - Tutorial1.txt
-  - Tutorial2.txt
-  - Tutorial3.txt
+  - Tutorial0
+  - Tutorial1
+  - Tutorial2
+  - Tutorial3
   configurations:
   - Tutorial/Tutorial0
   - Tutorial/Tutorial1

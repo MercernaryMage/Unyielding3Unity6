@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.TestTools;
 
 public class FlowControl : Singleton<FlowControl>
 {
@@ -71,6 +72,9 @@ public class FlowControl : Singleton<FlowControl>
 			PersistenceManager.Instance.AddUnlockedItem("Call Out");
 			PersistenceManager.Instance.AddUnlockedItem("Medkit");
 			PersistenceManager.Instance.AddUnlockedItem("Curse Paper");
+
+			TownSystemPopup.QueueMessage("You can view your characters in town and later modify them.");
+			TownSystemPopup.pulseQuestButton = true;
 		}
 	}
 
@@ -87,6 +91,14 @@ public class FlowControl : Singleton<FlowControl>
 		PersistenceManager.Instance.AddUnlockedItem("Spear");
 		PersistenceManager.Instance.AddUnlockedItem("Big Sword");
 		PersistenceManager.Instance.AddUnlockedItem("Great Club");
+
+		//base weapons
+		PersistenceManager.Instance.AddUnlockedItem("Longsword");
+		PersistenceManager.Instance.AddUnlockedItem("Dagger");
+		PersistenceManager.Instance.AddUnlockedItem("Crossbow");
+		PersistenceManager.Instance.AddUnlockedItem("Symbol of Courage");
+		
+
 		PersistenceManager.Instance.SetFlag("ForestComplete", true);
 	}
 

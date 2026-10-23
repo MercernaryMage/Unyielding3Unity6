@@ -18,7 +18,7 @@ public class AttackOfOpportunityTrait : Trait
 		{
 			return false;
 		}
-		if (mover.IsDowned())
+		if (mover.IsDowned() || character.IsDowned())
 		{
 			return false;
 		}

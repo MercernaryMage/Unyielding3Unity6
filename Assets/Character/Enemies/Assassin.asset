@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
   m_Name: Assassin
   m_EditorClassIdentifier: 
+  enemy: 1
   displayName: Murderer
-  model: {fileID: 6207216191786593460, guid: 6078833982850254cb8048b3aceb2d27, type: 3}
+  model: {fileID: 9050739958934784618, guid: 23def8f0a26bbff4cad3a0052d41bd24, type: 3}
   size: 2
   movement: 4
-  armor: 0
+  armor: 6
   toughness: 0
-  maxHP: 19
+  maxHP: 22
   maxEnergy: 0
   maxThreshold: -1
   evasion: 0
@@ -37,7 +38,6 @@ MonoBehaviour:
   prowess: 0
   cards:
   - {fileID: 11400000, guid: 4a0e43a9f7bc0a244a397494d1b44dba, type: 2}
-  - {fileID: 11400000, guid: ecfe9c15cd5ba4f4bb4b836b1c18d52c, type: 2}
   - {fileID: 11400000, guid: ecfe9c15cd5ba4f4bb4b836b1c18d52c, type: 2}
   - {fileID: 11400000, guid: ecfe9c15cd5ba4f4bb4b836b1c18d52c, type: 2}
   - {fileID: 11400000, guid: ee6706e1e30096c4f8550081f2a27773, type: 2}

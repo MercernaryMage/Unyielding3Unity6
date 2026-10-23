@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.UI;
 using static CharacterScriptableObject;
@@ -65,10 +63,12 @@ public class SlotDisplay : MonoBehaviour
 			normal.cost.text = "";
 			rulesTextObject.SetActive(false);
 			normal.rules.gameObject.SetActive(false);
+			normal.itemIcon.sprite = null;
 			((RectTransform)transform).sizeDelta = new Vector2(385, 164);
 		}
 		else
 		{
+			normal.itemIcon.sprite = item.itemImage;
 			normal.weaponName.text = item.displayName;
 			normal.keywords.text = $"{GetActionKeywords(item, item.actions[0])}";
 			//"Range 5, 1d6 + 2";

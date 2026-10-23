@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: 1
   displayName: Murderer
-  model: {fileID: 6207216191786593460, guid: 6078833982850254cb8048b3aceb2d27, type: 3}
+  model: {fileID: 2370772967260149315, guid: 685ee9dfd6affd442bed7a1fd029d948, type: 3}
   size: 1
   movement: 4
-  armor: 4
+  armor: 6
   toughness: 0
   maxHP: 10
   maxEnergy: 0

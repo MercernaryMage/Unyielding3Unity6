@@ -15,8 +15,8 @@ MonoBehaviour:
   setName: Woods Whammy
   setDescription: 
   maps:
-  - Woods1.txt
-  - Woods2.txt
+  - Woods1
+  - Woods2
   configurations:
   - Woods/Woods1
   - Woods/Woods2

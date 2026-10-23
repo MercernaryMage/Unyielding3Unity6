@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dagger
   m_EditorClassIdentifier: 
   displayName: Dagger
-  itemImage: {fileID: 21300000, guid: ebc5753404d39f64cba31c4f23b9be55, type: 3}
+  itemImage: {fileID: 21300000, guid: 6f2f7984c341acc4780b2fae86e32fbd, type: 3}
   weight: 0
   weapon: 1
   slotType: 0
@@ -29,6 +29,7 @@ MonoBehaviour:
     attack: 1
     physical: 1
     ranged: 0
+    other: 0
     range: 1
     threatRange: 1
     accuracy: 0
@@ -39,7 +40,9 @@ MonoBehaviour:
     disqualifierFunc: 
     intParam: 0
     stringParam: 
+    chargeEffectScriptableObject: {fileID: 0}
     effectScriptableObject: {fileID: 11400000, guid: c9590e6d7be7aca4893587a6cc83aa8c, type: 2}
+    hitEffectScriptableObject: {fileID: 0}
     keywords: []
     postActionCommands: []
     postDamageFunctionName: Backstab
@@ -54,6 +57,8 @@ MonoBehaviour:
       disqualiferFunction: 
     actionDescription: If attacking from behind the target gains Weak Point.
     actionDescriptionFunction: 
+    actionMessage: 
+    fakeActionMessage: 
     uniqueName: 
     forcedTarget: {fileID: 0}
     cannotBeUsedOnOthers: 0

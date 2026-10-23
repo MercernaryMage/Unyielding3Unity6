@@ -204,7 +204,7 @@ public class ShieldRush : Card
 		instructions.Add(new CardInstruction("or adjacent to closest enemy if not possible"));
 		instructions.Add(new CardInstruction("If adjacent to enemy after moving,"));
         instructions.Add(new CardInstruction("attack for 1d6 damage"));
-        DisplayGrid.Instance.Show();
+        //DisplayGrid.Instance.Show();
 
         return instructions;
     }

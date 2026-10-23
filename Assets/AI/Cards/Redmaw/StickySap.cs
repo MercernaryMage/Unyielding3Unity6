@@ -93,20 +93,6 @@ public class StickySap : Card
 		instructions.Add(new CardInstruction("Deal 1d6 damage to every enemy in the 3x3 around them"));
 		instructions.Add(new CardInstruction("and apply <u>Sapped</u>"));
 
-		DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.Size1Enemy, DisplayGrid.DisplayGridDirection.South, 5, 4);
-		DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.EffectedTile, new List<Tuple<int, int>>()
-		{
-			new Tuple<int, int>(4, 5),
-			new Tuple<int, int>(5, 5),
-			new Tuple<int, int>(6, 5),
-			new Tuple<int, int>(4, 4),
-			new Tuple<int, int>(6, 4),
-			new Tuple<int, int>(4, 3),
-			new Tuple<int, int>(5, 3),
-			new Tuple<int, int>(6, 3),
-		});
-		DisplayGrid.Instance.Show();
-
 		return instructions;
 	}
 }

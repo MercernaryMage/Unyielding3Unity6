@@ -1,9 +1,5 @@
-using JetBrains.Annotations;
-using NUnit.Framework.Internal;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using static Tile;
 
 public class Tile : MonoBehaviour

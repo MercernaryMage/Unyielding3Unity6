@@ -45,6 +45,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9ae8e5ed97ba2264486b706f25385021, type: 2}
   subclasses:
   - subclassName: Arbalist
-    lie1: Locked/Kill 3 enemies with a crossbow
-    lie2: Locked/Consume Marked 3 times with a crossbow
-    lie3: Locked/Crit 3 times with a crossbow
+    lie1: <sprite=0> The first time per combat you miss an attack with a loading
+      weapon does not cause it to be unloaded
+    lie2: <sprite=0> Gain the Eagle Eye ability
+    lie3: <sprite=0> Remove cumbersome on crossbows

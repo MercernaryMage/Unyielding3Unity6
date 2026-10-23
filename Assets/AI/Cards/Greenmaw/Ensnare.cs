@@ -119,7 +119,6 @@ public class Ensnare : Card
 		instructions.Add(new CardInstruction("Attack an enemy within range 3 that is not <u>Paralyzed</u> for 1d6 damage"));
 		instructions.Add(new CardInstruction("On hit, apply <u>Paralyzed</u>"));
 		instructions.Add(new CardInstruction("If there is no target, move toward the closest enemy that is not <u>Paralyzed</u> and attack"));
-		DisplayGrid.Instance.Show();
 
 		return instructions;
 	}

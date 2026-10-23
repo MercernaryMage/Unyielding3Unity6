@@ -16,6 +16,10 @@ public class DebugShowText : MonoBehaviour
 			{
 				continue;
 			}
+			if (comp is DebugShowCard)
+			{
+				continue;
+			}
 
 			if (comp.enabled)
 			{

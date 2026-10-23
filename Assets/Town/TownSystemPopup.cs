@@ -7,8 +7,10 @@ public class TownSystemPopup : MonoBehaviour
 {
 	public GameObject content;
 	public TextMeshProUGUI systemText;
+	public GameObject questButton;
 
 	static string queuedMessage = "";
+	public static bool pulseQuestButton = false;
 
 	void Start()
 	{
@@ -16,6 +18,12 @@ public class TownSystemPopup : MonoBehaviour
 		{
 			Set(queuedMessage);
 			queuedMessage = "";
+		}
+		if (pulseQuestButton)
+		{
+			Pulse pulse = questButton.AddComponent<Pulse>();
+			pulse.scale = .1f;
+			pulseQuestButton = false;
 		}
 	}
 

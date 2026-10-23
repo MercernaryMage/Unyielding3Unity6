@@ -15,8 +15,8 @@ MonoBehaviour:
   setName: Meadow Massacre
   setDescription: 
   maps:
-  - Meadow1.txt
-  - Meadow2.txt
+  - Meadow1
+  - Meadow2
   configurations:
   - Meadow/Meadow1
   - Meadow/Meadow2

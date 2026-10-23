@@ -143,7 +143,7 @@ public class PowerShot : Card
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Mark a line through as many enemies as possible and <u>Charge</u>"));
+		instructions.Add(new CardInstruction("Mark a line through as many enemies as possible and use <u>Charge</u>"));
 		instructions.Add(new CardInstruction("On <u>Charge</u> completion: deal 1d6 damage to any character on a marked tile"));
 
 		return instructions;

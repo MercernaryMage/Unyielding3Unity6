@@ -2,9 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
-using UnityEditor.VersionControl;
-using UnityEngine.TextCore.Text;
-using UnityEditor;
 
 public enum Direction
 {

@@ -112,7 +112,6 @@ public class Trap : Card
 		instructions.Add(new CardInstruction("Attack for 1d6 damage"));
 		instructions.Add(new CardInstruction("On hit, apply <u>Shackled</u> and <u>Paralyzed</u>"));
 		instructions.Add(new CardInstruction("If there is no target, move to the closest enemy and attack for 2d6 damage"));
-		DisplayGrid.Instance.Show();
 
 		return instructions;
 	}

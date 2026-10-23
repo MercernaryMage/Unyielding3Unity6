@@ -44,6 +44,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0e190a343c3236148a3f63d05d52308b, type: 2}
   subclasses:
   - subclassName: Lightning Lord
-    lie1: Locked/Kill 10 units with lightning magic
-    lie2: Locked/Hit 2 targets with lightning magic 10 times
-    lie3: Locked/Be attacked with a reaction 3 times
+    lie1: <sprite=0> The first lightning spell used each combat ignores it's energy
+      cost
+    lie2: <sprite=0> Gain the Trail Bolt ability
+    lie3: <sprite=0> Each enemy hit increases accuracy, resetting at the end of the
+      turn
