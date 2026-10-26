@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class ActionTooltipBubbleGenerator : MonoBehaviour
 {
@@ -38,7 +39,8 @@ public class ActionTooltipBubbleGenerator : MonoBehaviour
 		foreach (string str in values)
 		{
 			GameObject obj = Instantiate(bubblePrefab);
-			obj.GetComponent<ActionButtonTooiltipKeyword>().Set(str);
+			string keyword = Translate(str);
+			obj.GetComponent<ActionButtonTooiltipKeyword>().Set(str, keyword);
 			obj.name = str;
 			createdBubbles.Add(obj);
 			obj.transform.SetParent(createdOverObject.transform, false);
@@ -111,5 +113,14 @@ public class ActionTooltipBubbleGenerator : MonoBehaviour
 			run += tempWidth / 2;
 			run += unitPadding;
 		}
+	}
+
+	string Translate(string str)
+	{
+		if (str.Contains("Guaranteed"))
+		{
+			return "Guaranteed";
+		}
+		return str;
 	}
 }

@@ -63,6 +63,8 @@ public class Pounce
 		Tile newPlacementTile = TileGrid.Instance.GetTile(startTile.x + dir.Item1 * i, startTile.y + dir.Item2 * i);
 		List<Tile> impactTiles = TileGrid.Instance.WhatTilesWouldCharacterTake(owningCharacter, newPlacementTile);
 		hitCharacters = new List<Character>();
+		List<Character> impactedCharacters = new List<Character>();
+
 		foreach (Tile t in tilesAndDirection.tiles)
 		{
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
@@ -73,25 +75,53 @@ public class Pounce
 				{
 					hitCharacters.Add(t.character);
 				}
-				if (impactTiles.Contains(t))
+				if (impactTiles.Contains(t) && !impactedCharacters.Contains(t.character))
 				{
-					ActionController.Instance.MoveCharacterFromImpact(t.character, impactTiles);
+					impactedCharacters.Add(t.character);
 				}
 			}
-			
+
+		}
+
+		int pendingMoves = impactedCharacters.Count;
+		bool movesStarted = false;
+
+		Action damageHitCharacters = () =>
+		{
+			foreach (Character c in hitCharacters)
+			{
+				ActionController.AttackResults results = new ActionController.AttackResults();
+				ActionController.Instance.DamageCharacter(c, owningCharacter, new ActionController.AttackProfile(1, 4, 0), results);
+				CombatLogControl.Instance.AddEntry($"Pounce deals {results.damageDealt} to {c.displayName}");
+				c.AddStatusEffect(typeof(Stun), null);
+			}
+			callback.Invoke();
+		};
+
+		Action tryFinish = () =>
+		{
+			if (!movesStarted || pendingMoves > 0)
+			{
+				return;
+			}
+			damageHitCharacters();
+		};
+
+		foreach (Character impacted in impactedCharacters)
+		{
+			ActionController.Instance.MoveCharacterFromImpact(impacted, impactTiles, () =>
+			{
+				--pendingMoves;
+				tryFinish();
+			});
 		}
 
 		Direction direction = TileGrid.Instance.GetFacingDirection(startTile, newPlacementTile);
 		TileGrid.Instance.MoveCharacterToTile(owningCharacter, newPlacementTile);
 		owningCharacter.SetFacing(direction);
 		hitCharacters = hitCharacters.Distinct().ToList();
-		foreach (Character c in hitCharacters)
-		{
-			ActionController.AttackResults results = new ActionController.AttackResults();
-			ActionController.Instance.DamageCharacter(c, owningCharacter, new ActionController.AttackProfile(1, 4, 0), results);
-			CombatLogControl.Instance.AddEntry($"Pounce deals {results.damageDealt} to {c.displayName}");
-			c.AddStatusEffect(typeof(Stun), null);
-		}
-		callback.Invoke();
+
+		movesStarted = true;
+		tryFinish();
 	}
 }

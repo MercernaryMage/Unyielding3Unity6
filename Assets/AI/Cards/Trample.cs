@@ -84,6 +84,8 @@ public class Trample : Card
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
 		}
 
+		List<Character> impactedCharacters = new List<Character>();
+
 		List<Tile> actualSweptTiles = TemplateLibrary.Instance.GetTilesInMatchedSizeCardinalDirection(character, trail.Count, (int)tilesAndDirection.direction);
 		foreach (Tile t in actualSweptTiles)
 		{
@@ -93,11 +95,49 @@ public class Trample : Card
 				{
 					hitCharacters.Add(t.character);
 				}
-				if (impactTiles.Contains(t))
+				if (impactTiles.Contains(t) && !impactedCharacters.Contains(t.character))
 				{
-					ActionController.Instance.MoveCharacterFromImpact(t.character, impactTiles);
+					impactedCharacters.Add(t.character);
 				}
 			}
+		}
+
+		int pendingMoves = impactedCharacters.Count;
+		bool movesStarted = false;
+
+		Action damageHitCharacters = () =>
+		{
+			foreach (Character c in hitCharacters)
+			{
+				if (c.GetComponent<Stasis>() != null)
+				{
+					continue;
+				}
+				ActionController.AttackResults results = new ActionController.AttackResults();
+				results.fakeHit = true;
+				ActionController.Instance.DamageCharacter(c, character, new ActionController.AttackProfile(1, maxDamage, 0), results);
+				CombatLogControl.Instance.AddEntry($"Trample deals {results.damageDealt} to {c.displayName}");
+				c.AddStatusEffect(typeof(Stun), null);
+			}
+			callback();
+		};
+
+		Action tryFinish = () =>
+		{
+			if (!movesStarted || pendingMoves > 0)
+			{
+				return;
+			}
+			damageHitCharacters();
+		};
+
+		foreach (Character impacted in impactedCharacters)
+		{
+			ActionController.Instance.MoveCharacterFromImpact(impacted, impactTiles, () =>
+			{
+				--pendingMoves;
+				tryFinish();
+			});
 		}
 
 		Direction direction = TileGrid.Instance.GetFacingDirection(startTile, newPlacementTile);
@@ -105,19 +145,8 @@ public class Trample : Card
 		character.SetFacing(direction);
 		hitCharacters = hitCharacters.Distinct().ToList();
 
-		foreach (Character c in hitCharacters)
-		{
-			if (c.GetComponent<Stasis>() != null)
-			{
-				continue;
-			}
-			ActionController.AttackResults results = new ActionController.AttackResults();
-			results.fakeHit = true;
-			ActionController.Instance.DamageCharacter(c, character, new ActionController.AttackProfile(1, maxDamage, 0), results);
-			CombatLogControl.Instance.AddEntry($"Trample deals {results.damageDealt} to {c.displayName}");
-			c.AddStatusEffect(typeof(Stun), null);
-		}
-		callback();
+		movesStarted = true;
+		tryFinish();
 	}
 
 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: 1
   displayName: BigTestEnemy
-  model: {fileID: 6257802974378125461, guid: 70906cce53b07b64391c90f8ecc7d050, type: 3}
+  model: {fileID: 377918357640677934, guid: 5ff8e7d98485f4e4698a37f6bc912ef5, type: 3}
   size: 2
   movement: 2
   armor: 0
@@ -37,7 +37,7 @@ MonoBehaviour:
   cunning: 0
   prowess: 0
   cards:
-  - {fileID: 11400000, guid: 4a0e43a9f7bc0a244a397494d1b44dba, type: 2}
+  - {fileID: 11400000, guid: 20a3579853aa3f44d82973c96f32a5c2, type: 2}
   reactions: []
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}

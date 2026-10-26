@@ -45,6 +45,7 @@ MonoBehaviour:
     hitEffectScriptableObject: {fileID: 0}
     keywords:
     - Ranged
+    - Guaranteed 2
     postActionCommands: []
     postDamageFunctionName: 
     useInstantAction: 0
@@ -63,5 +64,5 @@ MonoBehaviour:
     uniqueName: 
     forcedTarget: {fileID: 0}
     cannotBeUsedOnOthers: 0
-  keywords: guaranteed 2
+  keywords: 
   displayable: 1

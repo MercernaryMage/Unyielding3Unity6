@@ -43,6 +43,8 @@ public class ActionController : SceneSingleton<ActionController>
 	public List<Action> queuedActions = new List<Action>();
 	public Material dyingMat;
 
+	const float impactMoveTimePerTile = .2f;
+
 	class ReactionCallback
 	{
 		public float time;
@@ -870,7 +872,7 @@ public class ActionController : SceneSingleton<ActionController>
 		CancelAttack(attackingCharacter);
 	}
 
-	public void MoveCharacterFromImpact(Character c, List<Tile> impactTiles)
+	public void MoveCharacterFromImpact(Character c, List<Tile> impactTiles, Action onComplete)
 	{
 		List<Tile> possibleTiles = new List<Tile>(TileGrid.Instance.tiles);
 		List<Tile> startingTiles = TileGrid.Instance.FindCharacter(c);
@@ -897,6 +899,9 @@ public class ActionController : SceneSingleton<ActionController>
 			}
 			if (failed == false)
 			{
+				Vector3 startPosition = c.token.transform.position;
+				int distance = TileGrid.Distance(startingTiles[0], t);
+
 				List<Tile> exitingTiles = TileGrid.Instance.FindCharacter(c);
 				foreach (Tile exitTile in exitingTiles)
 				{
@@ -906,12 +911,31 @@ public class ActionController : SceneSingleton<ActionController>
 				t.EnterTile(c);
 				t.PlaceInTile(c);
 
-				CharacterKnockbackFinishMessage characterKnockbackFinishMessage = new CharacterKnockbackFinishMessage();
-				characterKnockbackFinishMessage.knockedBackCharacter = c;
+				GlobalPositionLerp positionLerp = c.token.gameObject.AddComponent<GlobalPositionLerp>();
+				positionLerp.p0 = startPosition;
+				positionLerp.p1 = c.token.transform.position;
+				positionLerp.type = InterpolationType.Smoother;
+				positionLerp.runTime = distance * impactMoveTimePerTile;
+				positionLerp.callbackFunction = () =>
+				{
+					CharacterKnockbackFinishMessage characterKnockbackFinishMessage = new CharacterKnockbackFinishMessage();
+					characterKnockbackFinishMessage.knockedBackCharacter = c;
 
-				MessagePump.Instance.SendMessage(characterKnockbackFinishMessage);
+					MessagePump.Instance.SendMessage(characterKnockbackFinishMessage);
+
+					if (onComplete != null)
+					{
+						onComplete();
+					}
+				};
+				positionLerp.Init();
 				return;
 			}
+		}
+
+		if (onComplete != null)
+		{
+			onComplete();
 		}
 	}
 

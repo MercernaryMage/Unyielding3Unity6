@@ -17,7 +17,6 @@ Gold color: 8E5911
 blonk color: 342B28
 
 tool tips titles are hard baked :(
-scroll wheel on the combat log zooms combat
 
 Dismiss is done on mouse down
     We click the on mouse up
