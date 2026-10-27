@@ -55,7 +55,8 @@ MonoBehaviour:
       targetType: 0
       actionName: GiveStatusEffect
       disqualiferFunction: StatusEffectStacking
-    actionDescription: Gives a target Fleeting Courage, increasing their damage temporarily
+    actionDescription: Gives a target <u>Fleeting Courage</u>, increasing their damage
+      temporarily
     actionDescriptionFunction: 
     actionMessage: '{0} gives {1} courage.'
     fakeActionMessage: 

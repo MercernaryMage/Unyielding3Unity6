@@ -55,7 +55,7 @@ MonoBehaviour:
       targetType: 1
       actionName: GiveStatusEffect
       disqualiferFunction: 
-    actionDescription: Gives target Inaccuracy
+    actionDescription: Gives target <u>Inaccuracy</u>
     actionDescriptionFunction: 
     actionMessage: '{0} uses curse on {1}.'
     fakeActionMessage: 

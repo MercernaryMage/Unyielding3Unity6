@@ -75,6 +75,12 @@ public class Whirl : Card
 
 	public void ReturnFromShowingAttackTiles()
 	{
+		Character faceCharacter = GetFirstHitHero();
+		if (faceCharacter != null)
+		{
+			owningCharacter.SetFacing(TileGrid.Instance.GetFacingDirection(owningCharacter, faceCharacter));
+		}
+
 		List<Character> hitCharacters = new List<Character>();
 		ActionController.Instance.PlayAttackAnimation(owningCharacter, null, () =>
 		{
@@ -91,6 +97,18 @@ public class Whirl : Card
 
 			Finish();
 		});
+	}
+
+	Character GetFirstHitHero()
+	{
+		foreach (Tile t in hitTiles)
+		{
+			if (t.character && t.character.hero)
+			{
+				return t.character;
+			}
+		}
+		return null;
 	}
 
 	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)

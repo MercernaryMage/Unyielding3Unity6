@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Stunned
   m_EditorClassIdentifier: Assembly-CSharp::ExplanationIemScrptableObject
   explanationName: Stunned
-  explanationContent: Cannot take actions or move. Will be removed at the end of the unit's turn.
+  explanationContent: Cannot take actions. Will be removed at the end of the unit's
+    turn.

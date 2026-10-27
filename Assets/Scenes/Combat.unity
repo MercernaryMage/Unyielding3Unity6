@@ -3994,6 +3994,7 @@ MonoBehaviour:
   foundationPrefab: {fileID: 347164264174509607, guid: 0835aabd35028e249b3dddaf0f644887, type: 3}
   outlinePrefab: {fileID: 1457452664793614734, guid: c98747e70eaff7a489a71695204ccf06, type: 3}
   useDebugMap: 0
+  lastMapFunc: 
   DebugMap: Meadow2
   DebugConfiguration: Meadow/Meadow2
 --- !u!114 &567337313
@@ -4072,6 +4073,7 @@ MonoBehaviour:
   worldUI: {fileID: 2083960675}
   heroDisplay: {fileID: 794118671}
   characterSelectorVisualPrefab: {fileID: 1457452664793614734, guid: 70c00137bc663b945b340b7840b7e3ed, type: 3}
+  characterTurnIndicatorPrefab: {fileID: 3040692001632367391, guid: 954aafd457f3c3b45aa36d5b7830f247, type: 3}
 --- !u!114 &567337318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4105,6 +4107,7 @@ MonoBehaviour:
   heroes: []
   enemies: []
   warningPrefab: {fileID: 6726245201694333087, guid: b8470efbdeb130e488907b650542d49e, type: 3}
+  AoOIndicatorPrefab: {fileID: 8466054371302976743, guid: 4bb90af85ace74e46880de2117f77128, type: 3}
   referenceOrthographicSize: 10
   doingPlacement: 0
   EndTurnButton: {fileID: 390215815}
@@ -6692,15 +6695,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 400200efbf2304345813bd062e52586e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
   - Cotton
-  - David
   - Dane
+  - David
   - enemy
   - Lenette
   - enemy

@@ -303,6 +303,8 @@ public class CharacterWarning
 {
 	public Character character;
 	public string warning;
+	public string tooltipTitle;
+	public string tooltipText;	
 }
 
 public class PreviewAttackWarningMessage : Message
@@ -316,11 +318,13 @@ public class PreviewAttackWarningMessage : Message
 		messageType = MessageType.PreviewAttackWarning;
 	}
 
-	public void AddWarning(Character character, string warning)
+	public void AddWarning(Character character, string warning, string tooltipTitle, string tooltipText)
 	{
 		CharacterWarning characterWarning = new CharacterWarning();
 		characterWarning.character = character;
 		characterWarning.warning = warning;
+		characterWarning.tooltipTitle = tooltipTitle;
+		characterWarning.tooltipText = tooltipText;
 		warnings.Add(characterWarning);
 	}
 }

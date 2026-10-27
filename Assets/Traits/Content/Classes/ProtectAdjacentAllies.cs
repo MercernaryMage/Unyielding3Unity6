@@ -20,7 +20,7 @@ public class ProtectAdjacentAllies : Trait
 			{
 				if (TileGrid.AreCharactersAdjacent(possibleTarget, character))
 				{
-					message.AddWarning(possibleTarget, "D");
+					message.AddWarning(possibleTarget, "D", "Counterattack", "This character will be counterattacked");
 				}
 			}
 		}

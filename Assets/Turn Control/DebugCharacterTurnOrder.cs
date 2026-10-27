@@ -2,16 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Defines an explicit turn order for a battle.
-//
-// Populate `turnOrder` with character names. Use a character's displayName for a
-// specific character (e.g. a hero like "Catelly"). Enemies can be named either by
-// their numbered displayName ("Bandit 2") or by their base name ("Bandit"), which
-// takes the next enemy of that type that has not been placed yet. The generic token
-// "enemy" takes the next enemy of any type that has not been placed yet.
-//
-// Any characters not referenced by the list are appended at the end so nobody is
-// dropped from the turn order.
 public class DebugCharacterTurnOrder : MonoBehaviour
 {
 	public const string EnemyToken = "enemy";

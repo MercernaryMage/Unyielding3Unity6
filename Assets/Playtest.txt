@@ -1,30 +1,23 @@
 Reverse init order?
 	Display only
-Trample should slide
 
-
-Dane item get in tutorial has bad wording
-Dane should go first on the dane level
-tooltip on the AoO indicator
 Direction indicator to show which enemy is threatening
 AoO indicator drifts a little bit
-Fleeting courage is not explained
-Indicator for active player
 
-Stun should not prevent movement
 
-Bandit should not play does nothing card first
-Whirl made him face somewhere weird
+Lizard should not play does nothing card first
 check display stay on screen till dismissed
 David should go first on lizard fight
-Can we display items on players
 Stronger indicator on a card that disabled
 Weight should have a tooltip
+	"The amount of weight an advantage takes to equip"
+	"The total amount of weight a character can have equipped"
 Continous movement
 Movement on chop showed that it would move onto a unit and then didn't
 Hide end turn?
 	make it skip animations?
 Knowlege fake toolip
+	"Knowledges are unlockable abilities earned over time"
 Town should make it clear you can click the weapons
 Popup for trying to quest without a filled slot
 Prowess and cunning on town page
@@ -43,3 +36,4 @@ You can medkit downed characters
 Downed is not a good term
 types on the advantages screen
 medkit should say range 1
+Can we display items on players

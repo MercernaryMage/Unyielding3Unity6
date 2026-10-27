@@ -28,63 +28,22 @@ public class Pounce
 
 	public void ReturnFromShowingTiles()
 	{
-		Tuple<int, int> dir = TileGrid.directions[(int)tilesAndDirection.direction];
 		List<Tile> characterOrigin = TileGrid.Instance.FindCharacter(owningCharacter);
 		Tile startTile = characterOrigin[0];
+		Tuple<int, int> dir = TileGrid.directions[(int)tilesAndDirection.direction];
+
 		List<Tile> trail = Trample.GetTramplePath(owningCharacter, startTile, dir, range);
-		while (trail.Count > 2)
-		{
-			trail.RemoveAt(1);
-		}
-		TileGrid.Instance.RouteAICharacterToTile(owningCharacter, trail, ReturnFromRoute, false, false);
-
-	}
-
-	public void ReturnFromRoute()
-	{
-		List<Tile> characterOrigin = TileGrid.Instance.FindCharacter(owningCharacter);
-		Tile startTile = characterOrigin[0];
-		Tuple<int, int> dir = TileGrid.directions[(int)tilesAndDirection.direction];
-		int i = 1;
-		for (; i <= range; ++i)
-		{
-			Tile newTile = TileGrid.Instance.GetTile(startTile.x + dir.Item1 * i, startTile.y + dir.Item2 * i);
-			if (newTile == null)
-			{
-				break;
-			}
-			if (TileGrid.Instance.WhatTilesWouldCharacterTake(owningCharacter, newTile) == null)
-			{
-				break;
-			}
-
-		}
-		--i;
-		Tile newPlacementTile = TileGrid.Instance.GetTile(startTile.x + dir.Item1 * i, startTile.y + dir.Item2 * i);
-		List<Tile> impactTiles = TileGrid.Instance.WhatTilesWouldCharacterTake(owningCharacter, newPlacementTile);
 		hitCharacters = new List<Character>();
-		List<Character> impactedCharacters = new List<Character>();
 
 		foreach (Tile t in tilesAndDirection.tiles)
 		{
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
 
-			if (t.character != null)
+			if (t.character != null && t.character.hero && !hitCharacters.Contains(t.character))
 			{
-				if (t.character.hero)
-				{
-					hitCharacters.Add(t.character);
-				}
-				if (impactTiles.Contains(t) && !impactedCharacters.Contains(t.character))
-				{
-					impactedCharacters.Add(t.character);
-				}
+				hitCharacters.Add(t.character);
 			}
-
 		}
-
-		int pendingMoves = impactedCharacters.Count;
-		bool movesStarted = false;
 
 		Action damageHitCharacters = () =>
 		{
@@ -98,30 +57,14 @@ public class Pounce
 			callback.Invoke();
 		};
 
-		Action tryFinish = () =>
+		if (trail.Count == 0)
 		{
-			if (!movesStarted || pendingMoves > 0)
-			{
-				return;
-			}
 			damageHitCharacters();
-		};
-
-		foreach (Character impacted in impactedCharacters)
-		{
-			ActionController.Instance.MoveCharacterFromImpact(impacted, impactTiles, () =>
-			{
-				--pendingMoves;
-				tryFinish();
-			});
+			return;
 		}
 
-		Direction direction = TileGrid.Instance.GetFacingDirection(startTile, newPlacementTile);
-		TileGrid.Instance.MoveCharacterToTile(owningCharacter, newPlacementTile);
-		owningCharacter.SetFacing(direction);
-		hitCharacters = hitCharacters.Distinct().ToList();
+		owningCharacter.SetFacing(TileGrid.Instance.GetFacingDirection(startTile, trail[trail.Count - 1]));
 
-		movesStarted = true;
-		tryFinish();
+		Trample.MoveAttackerThroughPath(owningCharacter, trail, 0, damageHitCharacters);
 	}
 }

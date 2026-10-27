@@ -112,7 +112,9 @@ public class ActionController : SceneSingleton<ActionController>
 		BattleController.Instance.HideWarnings();
 		foreach (CharacterWarning characterWarning in currentAttackWarnings)
 		{
-			BattleController.Instance.ShowCharacterWarning(characterWarning.character, characterWarning.warning);
+			BattleController.Instance.ShowCharacterWarning(characterWarning.character, 
+				characterWarning.warning, characterWarning.tooltipTitle, 
+				characterWarning.tooltipText);
 		}
 	}
 

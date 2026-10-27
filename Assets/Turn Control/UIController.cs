@@ -8,6 +8,7 @@ public class UIController : SceneSingleton<UIController>
 	public Transform worldUI;
 	public FancyHeroDisplay heroDisplay;
 	public GameObject characterSelectorVisualPrefab;
+	public GameObject characterTurnIndicatorPrefab;
 
 	public void Hide()
 	{

@@ -29,6 +29,10 @@ public class ActionToolTip : MonoBehaviour
 			}
 			else
 			{
+				if (pattern.actionDescription.Contains("<u>"))
+				{
+					bodyText.gameObject.AddComponent<UnderlinedTextHover>();
+				}
 				bodyText.text = pattern.actionDescription;
 			}
 		}

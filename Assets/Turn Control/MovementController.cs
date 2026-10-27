@@ -42,12 +42,12 @@ public class MovementController : SceneSingleton<MovementController>
 
 		if (provoked && movingCharacter != null)
 		{
-			BattleController.Instance.ShowWarning(TileGrid.Instance.FindCharacter(movingCharacter)[0], "x");
+			BattleController.Instance.ShowWarning(TileGrid.Instance.FindCharacter(movingCharacter)[0], "x", "Attack of Opportunity", "This character will be attacked for moving away from adjacent enemies.");
 		}
 
 		if (damageWarningTile != null)
 		{
-			BattleController.Instance.ShowWarning(damageWarningTile, damageWarningText);
+			BattleController.Instance.ShowWarning(damageWarningTile, damageWarningText, "Damage from moving", $"This character will take {damageWarningText} damage from moving.");
 		}
 	}
 

@@ -1,21 +1,15 @@
 using UnityEngine;
 using TMPro;
 
-//Watches a TextMeshProUGUI label and drives the shared GenericTooltip when the mouse
-//moves onto, off of, or between underlined (<u>...</u>) runs of characters within it.
 public class UnderlinedTextHover : MonoBehaviour
 {
-	//the hover that currently owns the shared tooltip, so a label losing hover never
-	//hides a tooltip that another (stacked) label just showed
 	static UnderlinedTextHover activeHover;
 
 	TextMeshProUGUI text;
 	Canvas canvas;
 
-	//extra hit area (in the text's local units) added around each underlined character
 	public float hoverPadding = 6f;
 
-	//first character index of the underlined run the mouse is currently over, or -1
 	int hoveredRunStart = -1;
 
 	void Awake()
@@ -51,8 +45,6 @@ public class UnderlinedTextHover : MonoBehaviour
 			return;
 		}
 
-		//react whenever the hovered run changes, not just when entering from nothing, so
-		//moving directly from one underlined word to a stacked one updates the tooltip
 		int runStart = GetUnderlinedRunStart(charIndex);
 		if (runStart == hoveredRunStart)
 		{
@@ -100,9 +92,6 @@ public class UnderlinedTextHover : MonoBehaviour
 		}
 	}
 
-	//Wider than TMP's glyph-quad hit test: uses each character's horizontal span but the
-	//whole line's vertical span (so the underline below the baseline counts), plus padding.
-	//Returns the nearest underlined character when several padded boxes overlap.
 	int FindHoveredUnderlinedCharacter(Vector2 localPoint)
 	{
 		TMP_TextInfo textInfo = text.textInfo;

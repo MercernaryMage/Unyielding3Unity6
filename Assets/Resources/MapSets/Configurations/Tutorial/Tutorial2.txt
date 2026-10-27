@@ -48,5 +48,6 @@
     }
   ],
   "mapMessageTitle": "New Items",
-  "mapMessageBody": "Dane has gained a new ability!  He can now increase their damage."
+  "mapMessageBody": "Dane has gained a new ability!  He can now increase a character's damage until they take damage.",
+  "preFightFunc": "DaneTutorialFight"
 }

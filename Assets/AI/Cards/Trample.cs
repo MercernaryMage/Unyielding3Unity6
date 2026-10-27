@@ -10,6 +10,8 @@ public class Trample : Card
 	int range = 4;
 	List<Character> hitCharacters;
 
+	public const float moveTimePerTile = .2f;
+
 	public override void Execute()
 	{
 		tilesAndDirection = TemplateLibrary.Instance.GetMostCharactersInCardinalDirections(owningCharacter, range);
@@ -30,19 +32,6 @@ public class Trample : Card
 	}
 
 	public void ReturnFromShowingTiles()
-	{
-		Tuple<int, int> dir = TileGrid.directions[(int)tilesAndDirection.direction];
-		List<Tile> characterOrigin = TileGrid.Instance.FindCharacter(owningCharacter);
-		Tile startTile = characterOrigin[0];
-		List<Tile> trail = GetTramplePath(owningCharacter, startTile, dir, range);
-		while (trail.Count > 2)
-		{
-			trail.RemoveAt(1);
-		}
-		TileGrid.Instance.RouteAICharacterToTile(owningCharacter, trail, ReturnFromRoute, false, false);
-	}
-
-	public void ReturnFromRoute()
 	{
 		DoTrample(owningCharacter, tilesAndDirection, range, GoToFinish, GetIntValue("Damage"));
 	}
@@ -71,12 +60,8 @@ public class Trample : Card
 		List<Tile> characterOrigin = TileGrid.Instance.FindCharacter(character);
 		Tile startTile = characterOrigin[0];
 		Tuple<int, int> dir = TileGrid.directions[(int)tilesAndDirection.direction];
-		
-		List<Tile> trail = GetTramplePath(character, startTile, dir, range);
 
-		int i = trail.Count;
-		Tile newPlacementTile = TileGrid.Instance.GetTile(startTile.x + dir.Item1 * i, startTile.y + dir.Item2 * i);
-		List<Tile> impactTiles = TileGrid.Instance.WhatTilesWouldCharacterTake(character, newPlacementTile);
+		List<Tile> trail = GetTramplePath(character, startTile, dir, range);
 		List<Character> hitCharacters = new List<Character>();
 
 		foreach (Tile t in tilesAndDirection.tiles)
@@ -84,26 +69,14 @@ public class Trample : Card
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
 		}
 
-		List<Character> impactedCharacters = new List<Character>();
-
 		List<Tile> actualSweptTiles = TemplateLibrary.Instance.GetTilesInMatchedSizeCardinalDirection(character, trail.Count, (int)tilesAndDirection.direction);
 		foreach (Tile t in actualSweptTiles)
 		{
-			if (t.character != null)
+			if (t.character != null && t.character.hero && !hitCharacters.Contains(t.character))
 			{
-				if (t.character.hero)
-				{
-					hitCharacters.Add(t.character);
-				}
-				if (impactTiles.Contains(t) && !impactedCharacters.Contains(t.character))
-				{
-					impactedCharacters.Add(t.character);
-				}
+				hitCharacters.Add(t.character);
 			}
 		}
-
-		int pendingMoves = impactedCharacters.Count;
-		bool movesStarted = false;
 
 		Action damageHitCharacters = () =>
 		{
@@ -122,13 +95,86 @@ public class Trample : Card
 			callback();
 		};
 
+		if (trail.Count == 0)
+		{
+			damageHitCharacters();
+			return;
+		}
+
+		character.SetFacing(TileGrid.Instance.GetFacingDirection(startTile, trail[trail.Count - 1]));
+
+		MoveAttackerThroughPath(character, trail, 0, damageHitCharacters);
+	}
+
+	public static void MoveAttackerThroughPath(Character character, List<Tile> path, int index, Action onComplete)
+	{
+		if (index >= path.Count)
+		{
+			onComplete();
+			return;
+		}
+
+		Tile tile = path[index];
+
+		GlobalPositionLerp positionLerp = character.token.gameObject.AddComponent<GlobalPositionLerp>();
+		positionLerp.p0 = character.token.transform.position;
+		positionLerp.p1 = GetTokenPositionForTile(character, tile);
+		positionLerp.type = InterpolationType.Simple;
+		positionLerp.runTime = moveTimePerTile;
+		positionLerp.callbackFunction = () =>
+		{
+			ShoveCharactersAtTile(character, tile, () =>
+			{
+				TileGrid.Instance.MoveCharacterToTile(character, tile);
+				MoveAttackerThroughPath(character, path, index + 1, onComplete);
+			});
+		};
+		positionLerp.Init();
+	}
+
+	static Vector3 GetTokenPositionForTile(Character character, Tile tile)
+	{
+		Vector3 offset = new Vector3(character.characterDefinition.size - 1, 0, character.characterDefinition.size - 1);
+		return tile.transform.parent.TransformPoint(offset);
+	}
+
+	static void ShoveCharactersAtTile(Character character, Tile tile, Action onComplete)
+	{
+		List<Tile> impactTiles = TileGrid.Instance.WhatTilesWouldCharacterTake(character, tile);
+		List<Character> impactedCharacters = new List<Character>();
+
+		if (impactTiles != null)
+		{
+			foreach (Tile impactTile in impactTiles)
+			{
+				if (impactTile.character == null || impactTile.character == character)
+				{
+					continue;
+				}
+				if (impactedCharacters.Contains(impactTile.character))
+				{
+					continue;
+				}
+				impactedCharacters.Add(impactTile.character);
+			}
+		}
+
+		int pendingMoves = impactedCharacters.Count;
+		if (pendingMoves == 0)
+		{
+			onComplete();
+			return;
+		}
+
+		bool movesStarted = false;
+
 		Action tryFinish = () =>
 		{
 			if (!movesStarted || pendingMoves > 0)
 			{
 				return;
 			}
-			damageHitCharacters();
+			onComplete();
 		};
 
 		foreach (Character impacted in impactedCharacters)
@@ -140,15 +186,9 @@ public class Trample : Card
 			});
 		}
 
-		Direction direction = TileGrid.Instance.GetFacingDirection(startTile, newPlacementTile);
-		TileGrid.Instance.MoveCharacterToTile(character, newPlacementTile);
-		character.SetFacing(direction);
-		hitCharacters = hitCharacters.Distinct().ToList();
-
 		movesStarted = true;
 		tryFinish();
 	}
-
 
 	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
 	{

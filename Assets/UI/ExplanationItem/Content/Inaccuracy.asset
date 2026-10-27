@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Inaccuracy
   m_EditorClassIdentifier: Assembly-CSharp::ExplanationIemScrptableObject
   explanationName: Inaccuracy
-  explanationContent: Subtracts an accuracy. Removed the first time this character misses.
+  explanationContent: Subtracts an 1d6 from attacks. Removed the first time this
+    character misses.

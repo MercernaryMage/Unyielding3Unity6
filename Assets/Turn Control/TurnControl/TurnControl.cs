@@ -218,9 +218,7 @@ public class TurnControl : SceneSingleton<TurnControl>
 		processStarted = true;
 		if (lastCharacter != null)
 		{
-			CharacterEndTurnMessage characterEndTurnMessage = new CharacterEndTurnMessage();
-			characterEndTurnMessage.character = lastCharacter;
-			MessagePump.Instance.SendMessage(characterEndTurnMessage);
+			lastCharacter.EndTurn();
 			TileGrid.Instance.HideAllTiles();
 			if (!lastCharacter.hero)
 			{
@@ -349,6 +347,25 @@ public class TurnControl : SceneSingleton<TurnControl>
 			}
 		}
 		return 0;
+	}
+
+	public int GetDisplayValue(int value)
+	{
+		return turnControlEntries.Count + 1 - value;
+	}
+
+	public void PromoteCharacterToFirst(string str)
+	{
+		foreach (TurnControlEntry entry in turnControlEntries)
+		{
+			if (entry.character.name == str)
+			{
+				turnControlEntries.Remove(entry);
+				turnControlEntries.Insert(0, entry);
+				break;
+			}
+		}
+		RebuildAlternatingOrder();
 	}
 }
 

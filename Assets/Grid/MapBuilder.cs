@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 using static MapParser;
 using static Util;
 
-public class MapBuilder : MonoBehaviour
+public class MapBuilder : SceneSingleton<MapBuilder>
 {
 	public GameObject root;
 	public GameObject tilePrefab;
@@ -16,6 +16,7 @@ public class MapBuilder : MonoBehaviour
 	public GameObject foundationPrefab;
 	public GameObject outlinePrefab;
 	public bool useDebugMap;
+	public string lastMapFunc;
 	public string DebugMap;
 	public string DebugConfiguration;
 
@@ -346,6 +347,7 @@ public class MapBuilder : MonoBehaviour
 		{
 			CombatSystemMessage.Instance.Show(mapConfiguration.mapMessageTitle, mapConfiguration.mapMessageBody);
 		}
+		lastMapFunc = mapConfiguration.preFightFunc;
 		return levelConfiguration;
 	}
 
@@ -434,4 +436,5 @@ public class MapConfiguration
 	public List<NPCLocation> enemies = new List<NPCLocation>();
 	public string mapMessageTitle;
 	public string mapMessageBody;
+	public string preFightFunc;
 }

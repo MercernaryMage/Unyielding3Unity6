@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
+using System.Reflection;
+using Mono.Cecil;
 
 public class BattleController : SceneSingleton<BattleController>
 {
@@ -9,6 +12,7 @@ public class BattleController : SceneSingleton<BattleController>
 	public List<Character> enemies;
 
 	public GameObject warningPrefab;
+	public GameObject AoOIndicatorPrefab;
 	public float referenceOrthographicSize = 10f;
 
 	static public bool playerHasControl = true;
@@ -46,6 +50,13 @@ public class BattleController : SceneSingleton<BattleController>
 
 	public void StartCombat()
 	{
+		//CALL CODE HERE
+		if (!string.IsNullOrEmpty(MapBuilder.Instance.lastMapFunc))
+		{
+			Type type = typeof(MapFuncs);
+			MethodInfo method = type.GetMethod(MapBuilder.Instance.lastMapFunc, BindingFlags.Public | BindingFlags.Static);
+			method.Invoke(null, null);
+		}
 		if (doingPlacement)
 		{
 			return;
@@ -66,20 +77,20 @@ public class BattleController : SceneSingleton<BattleController>
 		warning.transform.localScale = new Vector3(scale, scale, 1f);
 	}
 
-	public void ShowWarning(Tile tile, string text)
+	public void ShowWarning(Tile tile, string text, string tooltipTitle, string tooltipText)
 	{
 		ActiveWarning activeWarning = new ActiveWarning();
 		activeWarning.tile = tile;
 		activeWarning.warning = Instantiate(warningPrefab, UIController.Instance.worldUI);
-		activeWarning.warning.GetComponent<TileWarning>().SetText(text);
+		activeWarning.warning.GetComponent<TileWarning>().SetText(text, tooltipTitle, tooltipText);
 		activeWarning.warning.SetActive(true);
 		PositionTileWarning(activeWarning.warning, tile);
 		activeWarnings.Add(activeWarning);
 	}
 
-	public void ShowCharacterWarning(Character c, string text)
+	public void ShowCharacterWarning(Character c, string text, string tooltipTitle, string tooltipText)
 	{
-		ShowWarning(TileGrid.Instance.FindCharacter(c)[0], text);
+		ShowWarning(TileGrid.Instance.FindCharacter(c)[0], text, tooltipTitle, tooltipText);
 	}
 
 	public void HideWarnings()

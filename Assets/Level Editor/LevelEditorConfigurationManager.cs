@@ -39,6 +39,8 @@ public class LevelEditorConfigurationManager : MonoBehaviour
 
 	public List<GameObject> playerModels;
 
+	string preFightFunc;
+
 	int pageNumber;
 
 	public void Start()
@@ -120,6 +122,7 @@ public class LevelEditorConfigurationManager : MonoBehaviour
 		MapConfiguration mapConfiguration = new MapConfiguration();
 		mapConfiguration.enemies = enemyConfigurations;
 		mapConfiguration.player = GetPlayerLocations();
+		mapConfiguration.preFightFunc = preFightFunc;
 
 		File.WriteAllText(path, Util.JSONSerializer.Serialize(mapConfiguration));
 #endif
@@ -143,6 +146,8 @@ public class LevelEditorConfigurationManager : MonoBehaviour
 		MapConfiguration mapConfiguration = Util.JSONSerializer.Deserialize<MapConfiguration>(File.ReadAllText(fullPath));
 
 		ClearConfiguration();
+
+		preFightFunc = mapConfiguration.preFightFunc;
 
 		for (int i = 0; i < mapConfiguration.player.Count; ++i)
 		{

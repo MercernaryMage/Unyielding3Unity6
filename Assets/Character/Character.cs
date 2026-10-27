@@ -10,6 +10,7 @@ public class Character : MonoBehaviour
 	public int displayNumber;
 	public CharacterToken token;
 	public GameObject selectionVisual;
+	public GameObject CharacterTurnIndicator;
 	public CharacterScriptableObject characterDefinition;
 	public StorageCharacter storageCharacter;
 	public int movementMax;
@@ -65,6 +66,12 @@ public class Character : MonoBehaviour
 		selectionVisual.transform.localScale = Vector3.one * 2;
 		selectionVisual.transform.localPosition = new Vector3(0, 1, 0);
 		selectionVisual.SetActive(false);
+
+		CharacterTurnIndicator = Instantiate(UIController.Instance.characterTurnIndicatorPrefab);
+		CharacterTurnIndicator.transform.SetParent(token.transform);
+		CharacterTurnIndicator.transform.localScale = Vector3.one * 2;
+		CharacterTurnIndicator.transform.localPosition = new Vector3(0, .5f, 0);
+		CharacterTurnIndicator.SetActive(false);
 
 		GameObject healthBar = Instantiate(CharacterRepository.Instance.data.healthBarPrefab);
 		healthBar.transform.SetParent(UIController.Instance.worldUI);
@@ -234,6 +241,10 @@ public class Character : MonoBehaviour
 		{
 			CharacterInspector.Instance.Set(this);
 		}
+		else
+		{
+			CharacterTurnIndicator.SetActive(true);
+		}
 		if (IsDowned())
 		{
 			RemoveStatusEffectsWhileDowned();
@@ -296,5 +307,13 @@ public class Character : MonoBehaviour
 	public bool IsDowned()
 	{
 		return GetComponent<Downed>() != null;
+	}
+
+	public void EndTurn()
+	{
+		CharacterTurnIndicator.SetActive(false);
+		CharacterEndTurnMessage characterEndTurnMessage = new CharacterEndTurnMessage();
+		characterEndTurnMessage.character = this;
+		MessagePump.Instance.SendMessage(characterEndTurnMessage);
 	}
 }
