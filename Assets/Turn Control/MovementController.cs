@@ -15,6 +15,7 @@ public class MovementController : SceneSingleton<MovementController>
 	public Tile previousMousedTile;
 
 	bool provoked;
+	List<Character> provokingCharacters = new List<Character>();
 	Tile damageWarningTile;
 	string damageWarningText;
 
@@ -31,18 +32,26 @@ public class MovementController : SceneSingleton<MovementController>
 		movingCharacter = null;
 
 		provoked = false;
+		provokingCharacters.Clear();
 		damageWarningTile = null;
 
 		BattleController.Instance.HideWarnings();
+		BattleController.Instance.HideAoOIndicators();
 	}
 
 	void RefreshWarnings()
 	{
 		BattleController.Instance.HideWarnings();
+		BattleController.Instance.HideAoOIndicators();
 
 		if (provoked && movingCharacter != null)
 		{
 			BattleController.Instance.ShowWarning(TileGrid.Instance.FindCharacter(movingCharacter)[0], "x", "Attack of Opportunity", "This character will be attacked for moving away from adjacent enemies.");
+
+			foreach (Character provokingCharacter in provokingCharacters)
+			{
+				BattleController.Instance.ShowAoOIndicator(provokingCharacter, movingCharacter);
+			}
 		}
 
 		if (damageWarningTile != null)
@@ -84,6 +93,7 @@ public class MovementController : SceneSingleton<MovementController>
 		MessagePump.Instance.SendMessage(provokeMessage);
 
 		provoked = provokeMessage.provoked;
+		provokingCharacters = provokeMessage.provokingCharacters;
 		RefreshWarnings();
 	}
 

@@ -32,5 +32,6 @@
     }
   ],
   "mapMessageTitle": "New Items",
-  "mapMessageBody": "David and Lenette have gained new abilities.  Lenette has gained a shield and David can now mark enemies."
+  "mapMessageBody": "David and Lenette have gained new abilities.  Lenette has gained a shield and David can now mark enemies.",
+  "preFightFunc": "DavidTutorialFight"
 }

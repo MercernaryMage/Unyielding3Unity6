@@ -38,6 +38,17 @@ public class BattleController : SceneSingleton<BattleController>
 		public GameObject warning;
 	}
 
+	class ActiveAoOIndicator
+	{
+		public Character attacker;
+		public Character defender;
+		public GameObject indicator;
+		public float height;
+		public float length;
+	}
+
+	List<ActiveAoOIndicator> activeAoOIndicators = new List<ActiveAoOIndicator>();
+
 	List<ActiveWarning> activeWarnings = new List<ActiveWarning>();
 
 	public void Start()
@@ -72,8 +83,8 @@ public class BattleController : SceneSingleton<BattleController>
 	void PositionTileWarning(GameObject warning, Tile tile)
 	{
 		Camera camera = Camera.main;
-		warning.transform.position = camera.WorldToScreenPoint(tile.transform.position) - new Vector3(0, 25, 0);
 		float scale = referenceOrthographicSize / camera.orthographicSize;
+		warning.transform.position = camera.WorldToScreenPoint(tile.transform.position) - new Vector3(0, 25, 0) * scale;
 		warning.transform.localScale = new Vector3(scale, scale, 1f);
 	}
 
@@ -100,6 +111,58 @@ public class BattleController : SceneSingleton<BattleController>
 			Destroy(activeWarning.warning);
 		}
 		activeWarnings.Clear();
+	}
+
+	public void ShowAoOIndicator(Character attacker, Character defender)
+	{
+		if (attacker == null || defender == null || attacker.token == null || defender.token == null)
+		{
+			return;
+		}
+
+		ActiveAoOIndicator activeAoOIndicator = new ActiveAoOIndicator();
+		activeAoOIndicator.attacker = attacker;
+		activeAoOIndicator.defender = defender;
+		activeAoOIndicator.indicator = Instantiate(AoOIndicatorPrefab);
+		activeAoOIndicator.height = activeAoOIndicator.indicator.transform.position.y;
+		activeAoOIndicator.length = activeAoOIndicator.indicator.transform.localScale.x;
+
+		PositionAoOIndicator(activeAoOIndicator);
+		activeAoOIndicators.Add(activeAoOIndicator);
+	}
+
+	public void HideAoOIndicators()
+	{
+		foreach (ActiveAoOIndicator activeAoOIndicator in activeAoOIndicators)
+		{
+			Destroy(activeAoOIndicator.indicator);
+		}
+		activeAoOIndicators.Clear();
+	}
+
+	void PositionAoOIndicator(ActiveAoOIndicator activeAoOIndicator)
+	{
+		Vector3 attackerPosition = activeAoOIndicator.attacker.token.transform.position;
+		Vector3 defenderPosition = activeAoOIndicator.defender.token.transform.position;
+		attackerPosition.y = activeAoOIndicator.height;
+		defenderPosition.y = activeAoOIndicator.height;
+
+		Vector3 difference = defenderPosition - attackerPosition;
+		float distance = difference.magnitude;
+
+		activeAoOIndicator.indicator.transform.position = attackerPosition + difference * .5f;
+		activeAoOIndicator.indicator.transform.rotation = Quaternion.FromToRotation(Vector3.up, -difference / distance);
+		activeAoOIndicator.indicator.transform.localScale = new Vector3(activeAoOIndicator.length,
+			distance * .5f,
+			activeAoOIndicator.length);
+	}
+
+	void PositionAoOIndicators()
+	{
+		foreach (ActiveAoOIndicator activeAoOIndicator in activeAoOIndicators)
+		{
+			PositionAoOIndicator(activeAoOIndicator);
+		}
 	}
 
 	void PositionWarnings()
@@ -164,6 +227,7 @@ public class BattleController : SceneSingleton<BattleController>
 	void Update()
 	{
 		PositionWarnings();
+		PositionAoOIndicators();
 
 		if (duckersRequested)
 		{

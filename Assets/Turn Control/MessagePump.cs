@@ -292,6 +292,7 @@ public class PreviewMovementProvokeMessage : Message
 {
 	public Character movingCharacter;
 	public bool provoked;
+	public List<Character> provokingCharacters = new List<Character>();
 
 	public PreviewMovementProvokeMessage()
 	{

@@ -9,6 +9,10 @@ public class AttackOfOpportunityTrait : Trait
 		if (WouldProvoke(message.movingCharacter))
 		{
 			message.provoked = true;
+			if (!message.provokingCharacters.Contains(character))
+			{
+				message.provokingCharacters.Add(character);
+			}
 		}
 	}
 

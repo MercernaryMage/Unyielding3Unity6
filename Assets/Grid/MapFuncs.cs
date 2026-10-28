@@ -6,4 +6,9 @@ static public class MapFuncs
 	{
 		TurnControl.Instance.PromoteCharacterToFirst("Dane");
 	}
+
+	public static void DavidTutorialFight()
+	{
+		TurnControl.Instance.PromoteCharacterToFirst("David");
+	}
 }

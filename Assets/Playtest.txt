@@ -1,17 +1,8 @@
-Reverse init order?
-	Display only
-
-Direction indicator to show which enemy is threatening
-AoO indicator drifts a little bit
-
-
 Lizard should not play does nothing card first
-check display stay on screen till dismissed
-David should go first on lizard fight
+	Solve this by removing all the do nothing options
+
 Stronger indicator on a card that disabled
-Weight should have a tooltip
-	"The amount of weight an advantage takes to equip"
-	"The total amount of weight a character can have equipped"
+
 Continous movement
 Movement on chop showed that it would move onto a unit and then didn't
 Hide end turn?
