@@ -27,7 +27,7 @@ public class StickySap : Card
 
 		foreach (Character hero in BattleController.Instance.heroes)
 		{
-			if (!hero.alive || hero.IsDowned())
+			if (!hero.alive || hero.IsRecovering())
 			{
 				continue;
 			}

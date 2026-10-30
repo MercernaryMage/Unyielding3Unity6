@@ -17,7 +17,7 @@ public class Waiting : StatusEffect
             return;
         }
 
-        if (!character.alive || character.IsDowned())
+        if (!character.alive || character.IsRecovering())
         {
             return;
         }

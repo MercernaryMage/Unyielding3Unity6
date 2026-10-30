@@ -65,7 +65,7 @@ public class Blast : Card
 		Character lowest = null;
 		foreach (Character hero in BattleController.Instance.heroes)
 		{
-			if (!hero.alive || hero.GetComponent<Downed>() != null)
+			if (!hero.alive || hero.GetComponent<Recovering>() != null)
 			{
 				continue;
 			}

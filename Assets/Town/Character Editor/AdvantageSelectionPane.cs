@@ -62,6 +62,11 @@ public class AdvantageSelectionPane : SceneSingleton<AdvantageSelectionPane>
 
 	public void Set()
 	{
+		int curentWeight = 0;
+		foreach (ItemScriptableObject item in CharacterEditor.Instance.currentCharacter.advantages)
+		{
+			curentWeight += item.weight;
+		}
 		SetDisplay();
 		foreach (ItemScriptableObject item in PersistenceManager.Instance.unlockedItems)
 		{
@@ -74,6 +79,10 @@ public class AdvantageSelectionPane : SceneSingleton<AdvantageSelectionPane>
 				continue;
 			}
 			if (CharacterEditor.Instance.currentCharacter.advantages.Contains(item))
+			{
+				continue;
+			}
+			if (curentWeight + item.weight > CharacterEditor.Instance.currentCharacter.characterDefintion.weight)
 			{
 				continue;
 			}

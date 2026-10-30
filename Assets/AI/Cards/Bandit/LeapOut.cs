@@ -16,7 +16,7 @@ public class LeapOut : Card
 			{
 				continue;
 			}
-			if (hero.GetComponent<Downed>() != null)
+			if (hero.GetComponent<Recovering>() != null)
 			{
 				continue;
 			}

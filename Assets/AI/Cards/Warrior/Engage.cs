@@ -37,7 +37,7 @@ public class Engage : Card
 
         foreach (Tile t in TileGrid.Instance.GetAllAdjacentTilesToCharacter(owningCharacter))
         {
-            if (t.character != null && t.character.hero && !t.character.IsDowned())
+            if (t.character != null && t.character.hero && !t.character.IsRecovering())
             {
                 t.character.AddStatusEffect(typeof(Jammed), null);
             }

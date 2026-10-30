@@ -158,7 +158,7 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 			LOSTile = newLOSTile;
 			if (LOSTile != null)
 			{
-				LOSTile.ShowOverlay(Tile.OverlayType.Selected);
+				LOSTile.ShowOverlay(Tile.OverlayType.LOSOrigin);
 				if (LOSTile)
 				{
 					foreach (Tile t1 in TileGrid.Instance.tiles)
@@ -277,7 +277,7 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 	{
 		if (LOSTile != null)
 		{
-			LOSTile.HideOverlay(Tile.OverlayType.Selected);
+			LOSTile.HideOverlay(Tile.OverlayType.LOSOrigin);
 		}
 		LOSTile = null;
 		foreach (Tile t in losTiles)

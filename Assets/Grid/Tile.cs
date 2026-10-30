@@ -10,7 +10,8 @@ public class Tile : MonoBehaviour
 		Selected,
 		PossibleAttck,
 		BlockedLOS,
-		TileWarning
+		TileWarning,
+		LOSOrigin
 	}
 
 	public TileScriptableObject tileScriptableObject;

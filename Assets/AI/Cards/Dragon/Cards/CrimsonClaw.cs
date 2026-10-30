@@ -57,7 +57,7 @@ public class CrimsonClaw : Card
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
 		}
 		tilesAndDirection = null;
-		if (target != null && target.alive && !target.IsDowned())
+		if (target != null && target.alive && !target.IsRecovering())
 		{
 			tilesAndDirection = TemplateLibrary.Instance.ChopTargetingTowardCharacter(owningCharacter, target);
 		}

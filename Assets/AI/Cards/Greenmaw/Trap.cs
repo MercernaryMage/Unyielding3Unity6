@@ -13,7 +13,7 @@ public class Trap : Card
 
 	bool IsNotShackled(Character target)
 	{
-		if (target.GetComponent<Downed>())
+		if (target.GetComponent<Recovering>())
 		{
 			return false;
 		}

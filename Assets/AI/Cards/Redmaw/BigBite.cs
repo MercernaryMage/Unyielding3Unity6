@@ -11,7 +11,7 @@ public class BigBite : Card
 
 	bool IsParalyzed(Character c)
 	{
-		if (c.GetComponent<Downed>())
+		if (c.GetComponent<Recovering>())
 		{
 			return false;
 		}

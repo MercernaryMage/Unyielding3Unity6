@@ -55,7 +55,7 @@ MonoBehaviour:
       targetType: 0
       actionName: HalfHeal
       disqualiferFunction: AllowedToHealTarget
-    actionDescription: Heals a target for half of their max hp.
+    actionDescription: Range 1\nHeals a target for half of their max hp.
     actionDescriptionFunction: 
     actionMessage: '{0} uses Medkit on {1}.'
     fakeActionMessage: 

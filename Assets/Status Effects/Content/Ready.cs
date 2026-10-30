@@ -13,7 +13,7 @@ public class Ready : StatusEffect
 		{
 			return;
 		}
-		if (message.movingCharacter.gameObject.GetComponent<Downed>() != null)
+		if (message.movingCharacter.gameObject.GetComponent<Recovering>() != null)
 		{
 			return;
 		}

@@ -10,6 +10,10 @@ Shield glare debuff should probably be shown visually on the tokens
 Tile indication about which unit is clicked
 Knight is colored modded - this is not okay
 
+We have two different UI pieces that use the AABB: we should make a unifiying class
+    removepulse
+    tilewarning
+
 Duration cards need to not play a card after their duration step
     IF THE TARGET IS DEAD YOU GET TO PLAY ANOTHER CARD
 
@@ -28,6 +32,7 @@ Step should probably show something different?
 Questions for J
     How about the keywords on the action bar pop up
     Where do I put the enemy card? On the left?  On the right?
+    Overlapping with charged tiles isn't great
 
 Tile warnings need to show a piece of information when you mouse over them
 

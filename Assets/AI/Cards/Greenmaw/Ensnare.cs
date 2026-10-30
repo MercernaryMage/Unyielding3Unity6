@@ -13,7 +13,7 @@ public class Ensnare : Card
 
 	bool IsNotParalyzed(Character target)
 	{
-		if (target.GetComponent<Downed>())
+		if (target.GetComponent<Recovering>())
 		{
 			return false;
 		}

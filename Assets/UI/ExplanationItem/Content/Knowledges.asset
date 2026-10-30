@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e55f24fd73bc40d4aa4be0ea597fa59f, type: 3}
-  m_Name: Downed
+  m_Name: Knowledges
   m_EditorClassIdentifier: Assembly-CSharp::ExplanationIemScrptableObject
-  explanationName: Downed
-  explanationContent: Cannot take actions. Immune to attacks of opportunity. Will be removed at the start of the next turn.
+  explanationName: Knowledges
+  explanationContent: Knowledges are traits and abilities unlocked over time as the
+    story advances.

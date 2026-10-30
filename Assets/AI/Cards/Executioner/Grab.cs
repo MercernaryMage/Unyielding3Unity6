@@ -19,7 +19,7 @@ public class Grab : Card
 			{
 				continue;
 			}
-			if (hero.GetComponent<Downed>())
+			if (hero.GetComponent<Recovering>())
 			{
 				continue;
 			}

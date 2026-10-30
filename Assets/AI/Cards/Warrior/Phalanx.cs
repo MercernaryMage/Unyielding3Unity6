@@ -9,7 +9,7 @@ public class Phalanx : Card
 
         foreach (Tile t in TileGrid.Instance.GetAllAdjacentTilesToCharacter(owningCharacter))
         {
-            if (t.character == null || !t.character.alive || t.character.IsDowned())
+            if (t.character == null || !t.character.alive || t.character.IsRecovering())
             {
                 continue;
             }

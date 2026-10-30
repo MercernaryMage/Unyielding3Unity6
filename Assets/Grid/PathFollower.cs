@@ -10,13 +10,14 @@ public class PathFollower : MonoBehaviour
 	Character character;
 	Action callback;
 
-    float time;
-    float timeMax = .5f;
+	float timePerTile = .3f;
 
 	float cameraCatchupTime;
 
 	bool moveCharacter;
 	bool finished;
+	bool firstTile = true;
+	bool started;
 
 	public void Set(Character c, List<Tile> p, Action call, bool m)
 	{
@@ -31,6 +32,20 @@ public class PathFollower : MonoBehaviour
 			return;
 		}
 		cameraCatchupTime = SelectionManager.Instance.SnapCameraToCharacter(character);
+	}
+
+	InterpolationType GetInterpolationType()
+	{
+		if (firstTile)
+		{
+			firstTile = false;
+			return InterpolationType.EaseOut;
+		}
+		if (path.Count == 2)
+		{
+			return InterpolationType.EaseIn;
+		}
+		return InterpolationType.Simple;
 	}
 
 	public void Update()
@@ -48,40 +63,48 @@ public class PathFollower : MonoBehaviour
 
 		SelectionManager.Instance.CenterCameraOnCharacter(character);
 
-		time += Time.deltaTime;
-		if (time >= timeMax)
+		if (started)
 		{
-			time = 0;
-			Vector3 offset = new Vector3(character.characterDefinition.size - 1,
-						0,
-						character.characterDefinition.size - 1);
-			//transform.position = path[1].transform.position + offset;
-
-			GlobalPositionLerp positionLerp = gameObject.AddComponent<GlobalPositionLerp>();
-			positionLerp.p0 = path[0].transform.position + offset;
-			positionLerp.p1 = path[1].transform.position + offset;
-			positionLerp.type = InterpolationType.Smoother;
-			positionLerp.runTime = .3f;
-			positionLerp.Init();
-
-			character.SetFacing(TileGrid.Instance.GetFacingDirection(path[0], path[1]));
-			path.RemoveAt(0);
-			if (path.Count == 1)
-			{
-				CameraFocusCharacter focus = character.gameObject.AddComponent<CameraFocusCharacter>();
-				focus.character = character;
-				finished = true;
-				positionLerp.callbackFunction = () =>
-				{
-					Destroy(focus);
-					if (moveCharacter)
-					{
-						TileGrid.Instance.MoveCharacterToTile(character, path[0]);
-					}
-					Destroy(this);
-					callback();
-				};
-			}
+			return;
 		}
+
+		started = true;
+		StepToNextTile();
+	}
+
+	void StepToNextTile()
+	{
+		Vector3 offset = new Vector3(character.characterDefinition.size - 1,
+					0,
+					character.characterDefinition.size - 1);
+
+		GlobalPositionLerp positionLerp = gameObject.AddComponent<GlobalPositionLerp>();
+		positionLerp.p0 = path[0].transform.position + offset;
+		positionLerp.p1 = path[1].transform.position + offset;
+		positionLerp.type = GetInterpolationType();
+		positionLerp.runTime = timePerTile;
+		positionLerp.Init();
+
+		character.SetFacing(TileGrid.Instance.GetFacingDirection(path[0], path[1]));
+		path.RemoveAt(0);
+		if (path.Count == 1)
+		{
+			CameraFocusCharacter focus = character.gameObject.AddComponent<CameraFocusCharacter>();
+			focus.character = character;
+			finished = true;
+			positionLerp.callbackFunction = () =>
+			{
+				Destroy(focus);
+				if (moveCharacter)
+				{
+					TileGrid.Instance.MoveCharacterToTile(character, path[0]);
+				}
+				Destroy(this);
+				callback();
+			};
+			return;
+		}
+
+		positionLerp.callbackFunction = StepToNextTile;
 	}
 }

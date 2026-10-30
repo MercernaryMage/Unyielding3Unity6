@@ -18,7 +18,7 @@ public class Snipe : Card
 
 		foreach (Character hero in BattleController.Instance.heroes)
 		{
-			if (!hero.alive || hero.GetComponent<Downed>() != null)
+			if (!hero.alive || hero.GetComponent<Recovering>() != null)
 			{
 				continue;
 			}
@@ -27,7 +27,7 @@ public class Snipe : Card
 
 			foreach (Character ally in BattleController.Instance.enemies)
 			{
-				if (ally == owningCharacter || !ally.alive || ally.GetComponent<Downed>() != null)
+				if (ally == owningCharacter || !ally.alive || ally.GetComponent<Recovering>() != null)
 				{
 					continue;
 				}

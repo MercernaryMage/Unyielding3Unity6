@@ -82,6 +82,7 @@ public class FlowControl : Singleton<FlowControl>
 	
 	public void CompleteForest()
 	{
+		TownSystemPopup.pulseWeaponSlot = true;
 		TownSystemPopup.QueueMessage("You've unlocked characters traits and the ability to change weapons.");
 		PersistenceManager.Instance.SetFlag("WeaponSlotsLocked", false);
 		//give weapons

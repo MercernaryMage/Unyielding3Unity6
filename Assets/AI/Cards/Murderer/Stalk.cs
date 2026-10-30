@@ -12,7 +12,7 @@ public class Stalk : Card
 
 	bool IsIsolated(Character c)
 	{
-		if (c.GetComponent<Downed>())
+		if (c.GetComponent<Recovering>())
 		{
 			return false;
 		}

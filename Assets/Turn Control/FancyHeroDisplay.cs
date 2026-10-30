@@ -116,7 +116,7 @@ public class FancyHeroDisplay : MonoBehaviour
 	{
 		DestroyButtons();
 
-		if (lastCharacter.GetComponent<Stun>() || lastCharacter.GetComponent<Downed>())
+		if (lastCharacter.GetComponent<Stun>() || lastCharacter.GetComponent<Recovering>())
 		{
 			
 			attackButtonTarget.parent.gameObject.SetActive(false);
@@ -226,7 +226,7 @@ public class FancyHeroDisplay : MonoBehaviour
 			return;
 		}
 
-		if (lastCharacter.currentMovement > 0 && lastCharacter.GetComponent<Downed>() == false &&
+		if (lastCharacter.currentMovement > 0 && lastCharacter.GetComponent<Recovering>() == false &&
 			BattleController.playerHasControl)
 		{
 			MovementController.Instance.ShowMovement(lastCharacter);

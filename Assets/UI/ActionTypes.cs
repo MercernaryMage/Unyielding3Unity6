@@ -252,6 +252,10 @@ public class ActionTypes : MonoBehaviour
 
 	static public Tuple<bool, string> AllowedToHealTarget(Character c1, Character c2, ActionPattern pattern)
 	{
+		if (c2.GetComponent<Recovering>())
+		{
+			return new Tuple<bool, string>(false, $"Recovering characters can't be healed.");
+		}
 		return new Tuple<bool, string>(c2.currentHP < c2.maxHP, $"{c2.displayName} is at full health");
 	}
 

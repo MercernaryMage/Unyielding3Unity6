@@ -26,7 +26,7 @@ public class CounterTrait : Trait
 		{
 			return;
 		}
-		if (!character.alive || character.IsDowned())
+		if (!character.alive || character.IsRecovering())
 		{
 			return;
 		}
@@ -36,7 +36,7 @@ public class CounterTrait : Trait
 
 		ActionController.Instance.queuedActions.Add(() =>
 		{
-			if (!character.alive || character.IsDowned() || !attacker.alive)
+			if (!character.alive || character.IsRecovering() || !attacker.alive)
 			{
 				ActionController.Instance.EndAction();
 				return;
@@ -54,7 +54,7 @@ public class CounterTrait : Trait
 
 	void DoCounter(Character attacker)
 	{
-		if (!character.alive || character.IsDowned() || !attacker.alive)
+		if (!character.alive || character.IsRecovering() || !attacker.alive)
 		{
 			ActionController.Instance.EndAction();
 			return;

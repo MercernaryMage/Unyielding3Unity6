@@ -189,7 +189,7 @@ public static class Util
 		foreach (Character hero in BattleController.Instance.heroes)
 		{
 			if (!hero.alive) continue;
-			if (hero.gameObject.GetComponent<Downed>() != null) continue;
+			if (hero.gameObject.GetComponent<Recovering>() != null) continue;
 
 			List<Tile> heroTiles = TileGrid.Instance.FindCharacter(hero);
 			int minDistToHero = int.MaxValue;
@@ -458,7 +458,7 @@ public static class Util
 			{
 				continue;
 			}
-			if (hero.gameObject.GetComponent<Downed>() != null)
+			if (hero.gameObject.GetComponent<Recovering>() != null)
 			{
 				continue;
 			}

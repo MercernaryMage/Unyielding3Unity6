@@ -65,7 +65,7 @@ public class HeroDisplay : MonoBehaviour
 			return;
 		}
 
-		if (lastCharacter.currentMovement > 0 && lastCharacter.GetComponent<Downed>() == false &&
+		if (lastCharacter.currentMovement > 0 && lastCharacter.GetComponent<Recovering>() == false &&
 			BattleController.playerHasControl)
 		{
 			MovementController.Instance.ShowMovement(lastCharacter);
@@ -115,7 +115,7 @@ public class HeroDisplay : MonoBehaviour
 			return;
 		}
 
-		if (character.GetComponent<Stun>() || character.GetComponent<Downed>())
+		if (character.GetComponent<Stun>() || character.GetComponent<Recovering>())
 		{
 			stunnedLabel.SetActive(true);
 		}

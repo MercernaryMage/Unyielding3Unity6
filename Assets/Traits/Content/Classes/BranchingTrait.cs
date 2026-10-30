@@ -10,7 +10,7 @@ public class BranchingTrait : Trait
 		}
 
 		Character damagedCharacter = message.character;
-		if (damagedCharacter == null || !damagedCharacter.alive || damagedCharacter.IsDowned())
+		if (damagedCharacter == null || !damagedCharacter.alive || damagedCharacter.IsRecovering())
 		{
 			return;
 		}

@@ -77,7 +77,7 @@ public class Charge : Card
 			{
 				continue;
 			}
-			if (ahead.character != null && ahead.character.hero && ahead.character.GetComponent<Downed>() == null)
+			if (ahead.character != null && ahead.character.hero && ahead.character.GetComponent<Recovering>() == null)
 			{
 				heroes.Add(ahead.character);
 			}
@@ -120,7 +120,7 @@ public class Charge : Card
 					{
 						continue;
 					}
-					if (ahead.character.hero && ahead.character.GetComponent<Downed>() == null && !toPush.Contains(ahead.character))
+					if (ahead.character.hero && ahead.character.GetComponent<Recovering>() == null && !toPush.Contains(ahead.character))
 					{
 						toPush.Add(ahead.character);
 						changed = true;

@@ -31,7 +31,7 @@ public class PowerShot : Card
 			List<Character> hitHeroes = new List<Character>();
 			foreach (Tile t in line)
 			{
-				if (t.character == null || !t.character.hero || !t.character.alive || t.character.IsDowned())
+				if (t.character == null || !t.character.hero || !t.character.alive || t.character.IsRecovering())
 				{
 					continue;
 				}

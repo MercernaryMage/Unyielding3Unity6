@@ -12,7 +12,7 @@ public class Roar : Card
 		targets = new List<Character>();
 		foreach (Character hero in BattleController.Instance.heroes)
 		{
-			if (!hero.alive || hero.IsDowned())
+			if (!hero.alive || hero.IsRecovering())
 			{
 				continue;
 			}

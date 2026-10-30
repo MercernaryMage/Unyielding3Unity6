@@ -55,6 +55,6 @@ public class InventoryItemDisplay : MonoBehaviour, IPointerClickHandler
 			return;
 		}
 		CharacterEditor.Instance.AddItemToInventory(item);
-		AdvantageSelectionPane.Instance.RemoveGameObject(gameObject);
+		AdvantageSelectionPane.Instance.Set();
 	}
 }

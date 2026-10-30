@@ -1,30 +1,26 @@
-Lizard should not play does nothing card first
-	Solve this by removing all the do nothing options
+Game Design
+	Lizard should not play does nothing card first
+		Solve this by removing all the do nothing options
 
-Stronger indicator on a card that disabled
+Art
+	Stronger indicator on a card that disabled
+	Trigger UI isn't finished
 
-Continous movement
-Movement on chop showed that it would move onto a unit and then didn't
-Hide end turn?
-	make it skip animations?
-Knowlege fake toolip
-	"Knowledges are unlockable abilities earned over time"
-Town should make it clear you can click the weapons
-Popup for trying to quest without a filled slot
-Prowess and cunning on town page
-wrapping on name in inspector
-Trigger UI isn't finished
-Overlapping with charged tiles isn't great
-Action buttons should cancel each other
-Show ghost when placing a character
-Right click is totally unexplained when deploying
-Bring back the eye for LOS checks
-big bite should show it's version
-big bite mystic journey problem
-	Show a journey?
-Len AoO'd while downed
-You can medkit downed characters
-Downed is not a good term
-types on the advantages screen
-medkit should say range 1
-Can we display items on players
+Other
+	enforce weight limits
+	Movement on chop showed that it would move onto a unit and then didn't
+	Hide end turn?
+		make it skip animations?
+
+	Prowess and cunning on town page
+	wrapping on name in inspector
+	Action buttons should cancel each other
+	Show ghost when placing a character
+	Right click is totally unexplained when deploying
+	big bite should show it's version
+	big bite mystic journey problem
+		Show a journey?
+	Can we display items on players
+
+	When you click in the town to remove an advantage, it shuts the window
+		AdvantageSelectionPane.Instance.Set();

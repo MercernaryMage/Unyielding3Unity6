@@ -741,7 +741,7 @@ public class TileGrid : SceneSingleton<TileGrid>
 			{
 				continue;
 			}
-			if (c.gameObject.GetComponent<Downed>() != null)
+			if (c.gameObject.GetComponent<Recovering>() != null)
 			{
 				continue;
 			}

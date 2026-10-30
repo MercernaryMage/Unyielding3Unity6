@@ -59,7 +59,7 @@ public class TemplateLibrary : SceneSingleton<TemplateLibrary>
 			int currentCharacterCount = 0;
 			foreach (Tile t in tilesGroups[i])
 			{
-				if (t.character != null && t.character.hero && !t.character.IsDowned())
+				if (t.character != null && t.character.hero && !t.character.IsRecovering())
 				{
 					++currentCharacterCount;
 				}
@@ -409,7 +409,7 @@ public class TemplateLibrary : SceneSingleton<TemplateLibrary>
 			tileAndDirectionGroupings[i] = GetTilesInMatchedSizeCardinalDirection(originCharacter, range, i);
 			foreach (Tile t in tileAndDirectionGroupings[i])
 			{
-				if (t.character && t.character.hero && t.character.GetComponent<Downed>() == null)
+				if (t.character && t.character.hero && t.character.GetComponent<Recovering>() == null)
 				{
 					characterAndDirectionGroupings[i].Add(t.character);
 				}

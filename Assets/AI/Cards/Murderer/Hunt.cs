@@ -13,7 +13,7 @@ public class Hunt : Card
 
 	public bool IsIsolated(Character target)
 	{
-		if (target.GetComponent<Downed>())
+		if (target.GetComponent<Recovering>())
 		{
 			return false;
 		}

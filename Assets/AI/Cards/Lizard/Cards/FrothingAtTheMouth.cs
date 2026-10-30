@@ -117,7 +117,7 @@ public class FrothingAtTheMouth : Card
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
-		instructions.Add(new CardInstruction("Until a hero is <u>Downed</u>, all damage applies <u>Slobbered</u>"));
+		instructions.Add(new CardInstruction("Until a hero is reduced to 0 hp, all damage applies <u>Slobbered</u>"));
 		instructions.Add(new CardInstruction("Move to closest enemy without <u>Slobbered</u> or a random reachable enemy if all have it"));
 		instructions.Add(new CardInstruction("Attack the enemy for 1d6 damage"));
 

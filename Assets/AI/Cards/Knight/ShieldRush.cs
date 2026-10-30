@@ -77,7 +77,7 @@ public class ShieldRush : Card
             {
                 continue;
             }
-            if (ally.gameObject.GetComponent<Downed>() != null)
+            if (ally.gameObject.GetComponent<Recovering>() != null)
             {
                 continue;
             }
@@ -139,7 +139,7 @@ public class ShieldRush : Card
             {
                 continue;
             }
-            if (hero.gameObject.GetComponent<Downed>() != null)
+            if (hero.gameObject.GetComponent<Recovering>() != null)
             {
                 continue;
             }

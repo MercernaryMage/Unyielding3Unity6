@@ -181,12 +181,12 @@ public class Character : MonoBehaviour
 		armor = maxArmor;
 	}
 
-	public void Downed()
+	public void Recovering()
 	{
 		HeroDownedMessage heroDownedMessage = new HeroDownedMessage();
 		heroDownedMessage.downedCharacter = this;
 		MessagePump.Instance.SendMessage(heroDownedMessage);
-		AddStatusEffect(typeof(Downed), null);
+		AddStatusEffect(typeof(Recovering), null);
 		currentMovement = 0;
 		actionCount = 0;
 	}
@@ -226,7 +226,7 @@ public class Character : MonoBehaviour
 		StatusEffect[] effects = GetComponents<StatusEffect>();
 		foreach (StatusEffect effect in effects)
 		{
-			if (effect.GetType() == typeof(Downed))
+			if (effect.GetType() == typeof(Recovering))
 			{
 				continue;
 			}
@@ -245,7 +245,7 @@ public class Character : MonoBehaviour
 		{
 			CharacterTurnIndicator.SetActive(true);
 		}
-		if (IsDowned())
+		if (IsRecovering())
 		{
 			RemoveStatusEffectsWhileDowned();
 		}
@@ -304,9 +304,9 @@ public class Character : MonoBehaviour
 		token.UnShade();
 	}
 
-	public bool IsDowned()
+	public bool IsRecovering()
 	{
-		return GetComponent<Downed>() != null;
+		return GetComponent<Recovering>() != null;
 	}
 
 	public void EndTurn()

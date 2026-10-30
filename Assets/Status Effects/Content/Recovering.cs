@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Downed : StatusEffect
+public class Recovering : StatusEffect
 {
 	bool readyToClear = false;
 	public override void CharacterStartTurn(CharacterStartTurnMessage characterStartTurnMessage)
@@ -26,7 +26,7 @@ public class Downed : StatusEffect
 
 	public override string GetStatusEffectKey()
 	{
-		return "Downed";
+		return "Recovering";
 	}
 
 }

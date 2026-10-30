@@ -22,7 +22,7 @@ public class AttackOfOpportunityTrait : Trait
 		{
 			return false;
 		}
-		if (mover.IsDowned() || character.IsDowned())
+		if (mover.IsRecovering() || character.IsRecovering())
 		{
 			return false;
 		}
@@ -77,7 +77,7 @@ public class AttackOfOpportunityTrait : Trait
 		{
 			return;
 		}
-		if (message.movingCharacter.IsDowned())
+		if (message.movingCharacter.IsRecovering())
 		{
 			return;
 		}

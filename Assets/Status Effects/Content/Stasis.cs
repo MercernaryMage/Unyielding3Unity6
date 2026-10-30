@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stasis : Downed
+public class Stasis : Recovering
 {
 	public override void CharacterEndTurn(CharacterEndTurnMessage characterEndTurnMessage)
 	{

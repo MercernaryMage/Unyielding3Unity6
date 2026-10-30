@@ -19,7 +19,7 @@ public class FightItOut : Card
 
         foreach (Character hero in BattleController.Instance.heroes)
         {
-            if (!hero.alive || hero.GetComponent<Downed>() != null)
+            if (!hero.alive || hero.GetComponent<Recovering>() != null)
             {
                 continue;
             }
@@ -97,7 +97,7 @@ public class FightItOut : Card
         followUpTarget = null;
         foreach (Tile t in TileGrid.Instance.GetAllAdjacentTilesToCharacter(owningCharacter))
         {
-            if (t.character == null || !t.character.hero || t.character.IsDowned())
+            if (t.character == null || !t.character.hero || t.character.IsRecovering())
             {
                 continue;
             }

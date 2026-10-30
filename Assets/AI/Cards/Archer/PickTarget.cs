@@ -37,7 +37,7 @@ public class PickTarget : Card
         List<Character> enemies = new List<Character>();
         foreach (Character hero in BattleController.Instance.heroes)
         {
-            if (!hero.alive || hero.GetComponent<Downed>() != null)
+            if (!hero.alive || hero.GetComponent<Recovering>() != null)
             {
                 continue;
             }

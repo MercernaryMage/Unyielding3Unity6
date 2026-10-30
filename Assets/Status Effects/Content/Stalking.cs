@@ -25,7 +25,7 @@ public class Stalking : StatusEffect
 		{
 			return;
 		}
-		if (stalkCard == null || target == null || !target.alive || target.IsDowned())
+		if (stalkCard == null || target == null || !target.alive || target.IsRecovering())
 		{
 			Cleanup();
 			return;

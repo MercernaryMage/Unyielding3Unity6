@@ -46,7 +46,7 @@ public class ChainWhirl : Card
 			{
 				continue;
 			}
-			if (hero.gameObject.GetComponent<Downed>() != null)
+			if (hero.gameObject.GetComponent<Recovering>() != null)
 			{
 				continue;
 			}

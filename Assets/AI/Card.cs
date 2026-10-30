@@ -107,7 +107,7 @@ public class Card : IMessageReceiver
 				continue;
 			}
 
-			if (target.gameObject.GetComponent<Downed>() != null)
+			if (target.gameObject.GetComponent<Recovering>() != null)
 			{
 				continue;
 			}
@@ -199,7 +199,7 @@ public class Card : IMessageReceiver
 			{
 				continue;
 			}
-			if (ally.gameObject.GetComponent<Downed>() != null)
+			if (ally.gameObject.GetComponent<Recovering>() != null)
 			{
 				continue;
 			}
@@ -255,7 +255,7 @@ public class Card : IMessageReceiver
 		bool foundAny = false;
 		foreach (Character hero in BattleController.Instance.heroes)
 		{
-			if (!hero.alive || hero.GetComponent<Downed>() != null)
+			if (!hero.alive || hero.GetComponent<Recovering>() != null)
 			{
 				continue;
 			}

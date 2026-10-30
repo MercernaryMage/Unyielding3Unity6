@@ -651,7 +651,7 @@ public class ActionController : SceneSingleton<ActionController>
 			profile.preDamageAction();
 		}
 
-		if (defender.GetComponent<Downed>() != null)
+		if (defender.GetComponent<Recovering>() != null)
 		{
 			damage = 0;
 		}
@@ -751,9 +751,9 @@ public class ActionController : SceneSingleton<ActionController>
 			
 			if (defender.storageCharacter != null && defender.storageCharacter.currentDetermination > 0)
 			{
-				CombatLogControl.Instance.AddEntry($"{defender.displayName} is Downed!");
+				CombatLogControl.Instance.AddEntry($"{defender.displayName} is Recovering!");
 				--defender.storageCharacter.currentDetermination;
-				defender.Downed();
+				defender.Recovering();
 				return;
 			}
 			else
