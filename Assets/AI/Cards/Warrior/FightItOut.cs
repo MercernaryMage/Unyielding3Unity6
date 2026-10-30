@@ -71,13 +71,12 @@ public class FightItOut : Card
         Dictionary<Character, Tuple<List<Tile>, Tile>> routes = RouteToAllClosestCharacters(true);
         moveRoute = Util.FindSmallestRoute(routes, null);
 
-        if (moveRoute == null)
+        if (moveRoute == null || !Util.ShortenPathToMaxRange(moveRoute, owningCharacter.characterDefinition.movement + 1))
         {
             Finish();
             return;
         }
 
-        Util.ShortenPathToMaxRange(moveRoute, owningCharacter.characterDefinition.movement + 1);
         litRouteTiles = Util.ExpandPathTiles(moveRoute.Item1, owningCharacter);
         AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, ReturnFromShowingMoveTiles, ReturnFromMove);
     }

@@ -30,7 +30,12 @@ public class Poke : Card
 
 		//The route heads for contact, so cut it as soon as it reaches poking distance.
 		Util.ShortenPathToDesiredRange(route, owningCharacter, targetHero, pokeRange);
-		Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
+		if (!Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1))
+		{
+			Debug.Log("No possible route");
+			Finish();
+			return;
+		}
 
 		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
 		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, Route, ReturnFromRoute);

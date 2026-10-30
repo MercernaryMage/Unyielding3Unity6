@@ -38,7 +38,12 @@ public class HookAndPull : Card
 		}
 
 		Util.ShortenPathToDesiredRange(route, owningCharacter, targetHero, 3);
-		Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
+		if (!Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1))
+		{
+			Debug.Log("No possible route");
+			Finish();
+			return;
+		}
 
 		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
 		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, Route, ReturnFromRoute);

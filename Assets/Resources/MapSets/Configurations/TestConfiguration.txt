@@ -1,1 +1,1 @@
-{"player":[{"x":1,"y":5,"direction":1},{"x":1,"y":6,"direction":0},{"x":1,"y":7,"direction":0},{"x":3,"y":2,"direction":1}],"enemies":[{"location":{"x":1,"y":1,"direction":0},"name":"BigTestEnemy"}],"mapMessageTitle":null,"mapMessageBody":null}
+{"player":[{"x":1,"y":5,"direction":1},{"x":1,"y":6,"direction":0},{"x":1,"y":7,"direction":0},{"x":3,"y":2,"direction":1},{"x":1,"y":4,"direction":0}],"enemies":[{"location":{"x":1,"y":1,"direction":0},"name":"BigTestEnemy"}],"mapMessageTitle":null,"mapMessageBody":null,"preFightFunc":null}

@@ -15,13 +15,12 @@ public class FightingDirty : Card
 		Dictionary<Character, Tuple<List<Tile>, Tile>> routes = RouteToAllClosestCharacters(true);
 
 		route = Util.FindSmallestRoute(routes, null);
-		if (route == null)
+		if (route == null || !Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1))
 		{
 			Finish();
 			return;
 		}
 
-		Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
 		moved = route.Item1.Count > 1;
 
 		if (!moved)

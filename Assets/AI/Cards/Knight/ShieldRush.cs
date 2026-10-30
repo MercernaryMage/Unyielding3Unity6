@@ -49,13 +49,12 @@ public class ShieldRush : Card
             route = Util.FindSmallestRoute(enemyRoutes, null);
         }
 
-        if (route == null)
+        if (route == null || !Util.ShortenPathToMaxRange(route, maxRange))
         {
             Finish();
             return;
         }
 
-        Util.ShortenPathToMaxRange(route, maxRange);
 
         litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
         AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, ReturnFromRoute);

@@ -104,12 +104,17 @@ public static class Util
 		return shortest;
 	}
 
-	public static void ShortenPathToMaxRange(Tuple<List<Tile>, Tile> data, int range)
+	public static bool ShortenPathToMaxRange(Tuple<List<Tile>, Tile> data, int range)
 	{
+		if (data.Item1.Count > range * 2)
+		{
+			return false;
+		}
 		while (data.Item1.Count > range)
 		{
 			data.Item1.RemoveAt(data.Item1.Count - 1);
 		}
+		return true;
 	}
 
 	public static int FindStoppableIndex(List<Tile> route, Character character, int range)

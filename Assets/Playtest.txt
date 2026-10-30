@@ -15,7 +15,7 @@ Other
 	wrapping on name in inspector
 	Action buttons should cancel each other
 	Show ghost when placing a character
+		dither 2
+		alpha .4
 	Right click is totally unexplained when deploying
-	big bite mystic journey problem
-		If you can't get there in two moves, don't do it
 	Can we display items on players

@@ -28,7 +28,11 @@ public class Intimidate : ReactionBase
 
 		currentTarget = target;
 		route = routes[target];
-		Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
+		if (!Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1))
+		{
+			ContinueOrFinish();
+			return;
+		}
 		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
 		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, ReturnFromRoute);
 	}

@@ -33,12 +33,11 @@ public class CrimsonClaw : Card
 			KeyValuePair<Character, Tuple<List<Tile>, Tile>> closest = Util.FindSmallestRoutePair(routes, null);
 			target = closest.Key;
 			route = closest.Value;
-			if (route == null)
+			if (route == null || !Util.ShortenPathToMaxRange(route, maxRange))
 			{
 				Finish();
 				return;
 			}
-			Util.ShortenPathToMaxRange(route, maxRange);
 		}
 
 		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);

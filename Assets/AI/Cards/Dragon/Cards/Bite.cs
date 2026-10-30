@@ -14,13 +14,12 @@ public class Bite : Card
 
 		route = Util.FindSmallestRoute(routes, null);
 
-		if (route == null)
+		if (route == null || !Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1))
 		{
 			Finish();
 			return;
 		}
 
-		Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
 		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
 		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, ReturnFromRoute);
 	}

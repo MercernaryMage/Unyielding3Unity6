@@ -35,14 +35,13 @@ public class Taste : Card
 		Dictionary<Character, Tuple<List<Tile>, Tile>> routes = RouteToAllClosestCharacters(true);
 
 		route = Util.FindSmallestRoute(routes, IsSlobbered);
-		if (route == null)
+		if (route == null || !Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1))
 		{
 			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(owningCharacter, "no target");
 			Finish();
 			return;
 		}
 
-		Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
 
 		startTile = TileGrid.Instance.FindCharacter(owningCharacter)[0];
 

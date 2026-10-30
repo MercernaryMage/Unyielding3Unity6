@@ -36,14 +36,13 @@ public class Hunt : Card
 			maxRange = closestMovement + 1;
 		}
 
-		if (route == null)
+		if (route == null || !Util.ShortenPathToMaxRange(route, maxRange))
 		{
 			Debug.Log("No possible route");
 			Finish();
 			return;
 		}
 
-		Util.ShortenPathToMaxRange(route, maxRange);
 
 		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
 		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, Route, ReturnFromRoute);

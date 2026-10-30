@@ -131,7 +131,10 @@ public class Stalk : Card
 				}
 
 				Tuple<List<Tile>, Tile> candidate = new Tuple<List<Tile>, Tile>(path, trueTile);
-				Util.ShortenPathToMaxRange(candidate, stoppableIndex + 1);
+				if (!Util.ShortenPathToMaxRange(candidate, stoppableIndex + 1))
+				{
+					continue;
+				}
 
 				bestDistance = distance;
 				bestSteps = stoppableIndex;

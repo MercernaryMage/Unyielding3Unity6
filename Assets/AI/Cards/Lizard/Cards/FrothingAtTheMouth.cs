@@ -58,7 +58,12 @@ public class FrothingAtTheMouth : Card
 		}
 
 		route = routes[target];
-		Util.ShortenPathToMaxRange(route, maxRange);
+		if (!Util.ShortenPathToMaxRange(route, maxRange))
+		{
+			Debug.Log("No possible route");
+			Finish();
+			return;
+		}
 
 		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
 		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, ReturnFromRoute);

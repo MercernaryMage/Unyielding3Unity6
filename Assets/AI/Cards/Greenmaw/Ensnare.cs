@@ -78,13 +78,12 @@ public class Ensnare : Card
 		Dictionary<Character, Tuple<List<Tile>, Tile>> routes = RouteToAllClosestCharacters(true);
 		route = Util.FindSmallestRoute(routes, IsNotParalyzed);
 
-		if (route == null)
+		if (route == null || !Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1))
 		{
 			Finish();
 			return;
 		}
 
-		Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
 
 		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
 		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, ReturnFromMove);

@@ -19,14 +19,13 @@ public class Chop : Card
 		Dictionary<Character, Tuple<List<Tile>, Tile>> routes = RouteToAllClosestCharacters(true);
 
 		route = Util.FindSmallestRoute(routes, null);
-		if (route == null)
+		if (route == null || !Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1))
 		{
 			Debug.Log("No possible route");
 			Finish();
 			return;
 		}
 
-		Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
 
 		startTile = TileGrid.Instance.FindCharacter(owningCharacter)[0];
 

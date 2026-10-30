@@ -65,7 +65,10 @@ public class CasterApplyStatusEffect : Card
         }
 
         Util.ShortenPathToDesiredRange(route, owningCharacter, targetHero, 3);
-        Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1);
+        if (!Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1))
+        {
+            return;
+        }
 
         litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
         AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, ReturnFromShowingTiles, ReturnFromMove);

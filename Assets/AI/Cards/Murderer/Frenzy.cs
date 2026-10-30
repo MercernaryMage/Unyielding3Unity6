@@ -29,13 +29,12 @@ public class Frenzy : Card
 
 		target = closest.Key;
 		route = closest.Value;
-		if (route == null)
+		if (route == null || !Util.ShortenPathToMaxRange(route, maxRange))
 		{
 			Finish();
 			return;
 		}
 
-		Util.ShortenPathToMaxRange(route, maxRange);
 
 		litRouteTiles = Util.ExpandPathTiles(route.Item1, owningCharacter);
 		AnimationController.Instance.ShowTiles(litRouteTiles, Tile.OverlayType.PossibleMovement, Route, ReturnFromRoute);
