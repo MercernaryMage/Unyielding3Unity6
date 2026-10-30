@@ -7,7 +7,6 @@ Art
 	Trigger UI isn't finished
 
 Other
-	enforce weight limits
 	Movement on chop showed that it would move onto a unit and then didn't
 	Hide end turn?
 		make it skip animations?
@@ -21,6 +20,3 @@ Other
 	big bite mystic journey problem
 		Show a journey?
 	Can we display items on players
-
-	When you click in the town to remove an advantage, it shuts the window
-		AdvantageSelectionPane.Instance.Set();

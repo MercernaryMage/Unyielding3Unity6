@@ -35,6 +35,8 @@ public class CharacterEditor : SceneSingleton<CharacterEditor>
 
 	public GameObject addButton;
 
+	int inventoryDeleteFrame = -1;
+
 	private void Start()
 	{
 		for (int i = 0; i < PersistenceManager.Instance.currentTeam.Count; i++)
@@ -143,9 +145,16 @@ public class CharacterEditor : SceneSingleton<CharacterEditor>
 
 	public void RemoveItemFromInventory(ItemScriptableObject itemScriptableObject)
 	{
+		bool paneWasShowing = AdvantageSelectionPane.Instance.IsShowing();
+		inventoryDeleteFrame = Time.frameCount;
+
 		currentCharacter.advantages.Remove(itemScriptableObject);
-		AdvantageSelectionPane.Instance.HandleItemReturn(itemScriptableObject);
 		ResetToBase();
+
+		if (paneWasShowing)
+		{
+			AdvantageSelectionPane.Instance.Set();
+		}
 	}
 
 	public void ShuffleItemDisplay()
@@ -161,6 +170,11 @@ public class CharacterEditor : SceneSingleton<CharacterEditor>
 	{
 		if (Input.GetMouseButtonUp(0))
 		{
+			if (inventoryDeleteFrame == Time.frameCount)
+			{
+				return;
+			}
+
 			PointerEventData pointerData = new PointerEventData(EventSystem.current);
 			pointerData.position = Input.mousePosition;
 

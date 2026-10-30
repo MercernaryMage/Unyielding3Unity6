@@ -56,5 +56,6 @@ public class InventoryItemDisplay : MonoBehaviour, IPointerClickHandler
 		}
 		CharacterEditor.Instance.AddItemToInventory(item);
 		AdvantageSelectionPane.Instance.Set();
+		GenericTooltip.Instance.Hide();
 	}
 }

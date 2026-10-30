@@ -118,6 +118,11 @@ public class AdvantageSelectionPane : SceneSingleton<AdvantageSelectionPane>
 		content.SetActive(false);
 	}
 
+	public bool IsShowing()
+	{
+		return content.activeSelf;
+	}
+
 	public void WeaponDisplayClicked(ItemScriptableObject itemScriptableObject, Item item)
 	{
 		Item newItem = new Item();
