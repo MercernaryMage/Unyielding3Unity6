@@ -50,7 +50,7 @@ public class CardDisplay : MonoBehaviour
 		content.SetActive(true);
 	}
 
-	public void ShowCard(CardScriptableObject cardScriptableObject, bool showDismiss, CardType cardType)
+	public void ShowCard(CardScriptableObject cardScriptableObject, bool showDismiss, CardType cardType, Character character = null)
 	{
 		aggravatedBackground.SetActive(cardType == CardType.AggravatedReaction);
 		reactionBackground.SetActive(cardType == CardType.Reaction);
@@ -62,7 +62,7 @@ public class CardDisplay : MonoBehaviour
 		DisplayGrid.Instance.Hide();
 		List<CardInstruction> instructions = (List<CardInstruction>)System.Type.GetType(cardScriptableObject.className)
 			.GetMethod("GetCardInstructions", BindingFlags.Public | BindingFlags.Static)
-			.Invoke(null, new object[] { cardScriptableObject });
+			.Invoke(null, new object[] { cardScriptableObject, character });
 		int index = 0;
 		foreach (CardInstruction cardInstruction in instructions)
 		{

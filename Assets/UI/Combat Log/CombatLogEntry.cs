@@ -12,8 +12,9 @@ public class CombatLogEntry : MonoBehaviour, IPointerEnterHandler , IPointerExit
 	CardScriptableObject cardScriptableObject;
 	bool card;
 	string totalText = "";
+	Character owningCharacter;
 
-	public void Set(string t, List<string> e, bool c, CardScriptableObject s)
+	public void Set(string t, List<string> e, bool c, CardScriptableObject s, Character character)
 	{
 		text.text = t;
 		entries = e;
@@ -23,13 +24,14 @@ public class CombatLogEntry : MonoBehaviour, IPointerEnterHandler , IPointerExit
 		{
 			totalText = string.Join("\n", e);
 		}
+		owningCharacter = character;
 	}
 
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		if (card)
 		{
-			AICardDisplay.Instance.ShowCard(cardScriptableObject, CardDisplay.CardType.Card);
+			AICardDisplay.Instance.ShowCard(cardScriptableObject, CardDisplay.CardType.Card, owningCharacter);
 		}
 		else
 		{

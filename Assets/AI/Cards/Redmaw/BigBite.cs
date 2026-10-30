@@ -92,7 +92,7 @@ public class BigBite : Card
 		});
 	}
 
-	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
+	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject, Character character )
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
@@ -101,11 +101,28 @@ public class BigBite : Card
 		instructions.Add(new CardInstruction("Bite a square as wide as this character"));
 		instructions.Add(new CardInstruction("Deal 1d6 damage to each enemy in it"));
 
-		DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.Size1Enemy, DisplayGrid.DisplayGridDirection.South, 5, 4);
-		DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.EffectedTile, new List<Tuple<int, int>>()
+		if (character == null || character.characterDefinition.size == 1)
 		{
-			new Tuple<int, int>(5, 3),
-		});
+			DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.Size1Enemy, DisplayGrid.DisplayGridDirection.South, 5, 4);
+			DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.EffectedTile, new List<Tuple<int, int>>()
+			{
+				new Tuple<int, int>(5, 3),
+			});
+		}
+		else
+		{
+			DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.Size2Enemy, DisplayGrid.DisplayGridDirection.South, 5, 4);
+			DisplayGrid.Instance.Add(DisplayGrid.DisplayGridObject.EffectedTile, new List<Tuple<int, int>>()
+			{
+				new Tuple<int, int>(5, 3),
+				new Tuple<int, int>(6, 3),
+				new Tuple<int, int>(5, 2),
+				new Tuple<int, int>(6, 2),
+			});
+		}
+
+
+
 		DisplayGrid.Instance.Show();
 
 		return instructions;

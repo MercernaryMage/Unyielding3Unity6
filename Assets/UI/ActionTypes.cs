@@ -142,7 +142,7 @@ public class ActionTypes : MonoBehaviour
 	static public void Scry(Character c1, Character c2, ActionPattern pattern)
 	{
 		
-		AICardDisplay.Instance.ShowCard(c2.cards[0].cardScriptableObject, CardDisplay.CardType.Card);
+		AICardDisplay.Instance.ShowCard(c2.cards[0].cardScriptableObject, CardDisplay.CardType.Card, c2.cards[0].owningCharacter);
 		c2.cards[0].isRevealed = true;
 		ActionController.Instance.EndAction();
 	}

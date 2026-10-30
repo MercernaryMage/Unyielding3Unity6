@@ -74,7 +74,7 @@ public class Stalk : Card
 		litRouteTiles = new List<Tile>();
 
 		AICardDisplay.Instance.Dismiss(true);
-		AICardDisplay.Instance.ShowCard(cardScriptableObject, CardDisplay.CardType.Card);
+		AICardDisplay.Instance.ShowCard(cardScriptableObject, CardDisplay.CardType.Card, owningCharacter);
 		CombatLogControl.Instance.AddCard($"{owningCharacter} pursues {target}", this);
 
 		route = FindChaseRoute(target);
@@ -201,7 +201,7 @@ public class Stalk : Card
 		}
 	}
 
-	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
+	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject, Character character )
 	{
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();

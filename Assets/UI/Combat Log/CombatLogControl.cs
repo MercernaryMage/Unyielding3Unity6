@@ -32,7 +32,7 @@ public class CombatLogControl : SceneSingleton<CombatLogControl>
 		GameObject obj = Instantiate(entryPrefab);
 
 		CombatLogEntry log = obj.GetComponent<CombatLogEntry>();
-		log.Set(s, lines, false, null);
+		log.Set(s, lines, false, null, null);
 
 		obj.transform.SetParent(targetTransform);
 		Canvas.ForceUpdateCanvases();
@@ -50,7 +50,7 @@ public class CombatLogControl : SceneSingleton<CombatLogControl>
 		GameObject obj = Instantiate(entryPrefab);
 
 		CombatLogEntry log = obj.GetComponent<CombatLogEntry>();
-		log.Set(s, null, true, c.cardScriptableObject);
+		log.Set(s, null, true, c.cardScriptableObject, c.owningCharacter);
 
 		obj.transform.SetParent(targetTransform);
 		Canvas.ForceUpdateCanvases();

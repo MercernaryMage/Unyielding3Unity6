@@ -6834,10 +6834,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
+  - enemy
   - Cotton
   - Dane
   - David
-  - enemy
   - Lenette
   - enemy
   - enemy

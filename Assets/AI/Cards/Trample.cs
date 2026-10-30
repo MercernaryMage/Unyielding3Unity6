@@ -190,7 +190,7 @@ public class Trample : Card
 		tryFinish();
 	}
 
-	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
+	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject, Character character )
 	{
 		DisplayGrid.Instance.Clear(10, 10); 
 		List<CardInstruction> instructions = new List<CardInstruction>();

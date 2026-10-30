@@ -45,7 +45,7 @@ public class RetreatA : ReactionBase
 		BattleController.ReturnControlToPlayer();
 	}
 
-	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
+	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject, Character character )
 	{
 		DisplayGrid.Instance.Clear(12, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();

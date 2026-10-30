@@ -31,7 +31,7 @@ public class Phalanx : Card
         }
     }
 
-    public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
+    public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject, Character character )
     {
         DisplayGrid.Instance.Clear(11, 8);
         List<CardInstruction> instructions = new List<CardInstruction>();

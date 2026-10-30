@@ -16,7 +16,6 @@ Other
 	Action buttons should cancel each other
 	Show ghost when placing a character
 	Right click is totally unexplained when deploying
-	big bite should show it's version
 	big bite mystic journey problem
-		Show a journey?
+		If you can't get there in two moves, don't do it
 	Can we display items on players

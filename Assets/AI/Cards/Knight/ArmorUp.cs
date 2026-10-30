@@ -18,7 +18,7 @@ public class ArmorUp : Card
         Finish();
     }
 
-    public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
+    public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject, Character character )
     {
         int amount = scriptableObject.GetTagIntValue("Amount");
         DisplayGrid.Instance.Clear(11, 8);

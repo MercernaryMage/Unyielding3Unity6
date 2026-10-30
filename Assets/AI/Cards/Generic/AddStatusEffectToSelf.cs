@@ -24,7 +24,7 @@ public class AddStatusEffectToSelf : Card
 		}
 	}
 
-	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject)
+	public static List<CardInstruction> GetCardInstructions(CardScriptableObject scriptableObject, Character character )
 	{
 		string className = scriptableObject.GetTagStringValue("Param");
 		object o = Type.GetType(className).GetMethod("GetCardInstructions").Invoke(null, null);
