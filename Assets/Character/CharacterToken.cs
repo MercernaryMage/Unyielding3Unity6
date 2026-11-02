@@ -60,30 +60,6 @@ public class CharacterToken : MonoBehaviour
 		}
 	}
 
-	public void Ghost()
-	{
-		foreach (MeshRenderer renderer in meshRenderers)
-		{
-			MaterialPropertyBlock block = new MaterialPropertyBlock();
-			renderer.GetPropertyBlock(block);
-			block.SetFloat("_Alpha", .4f);
-			block.SetFloat("_DitherSize", 2f);
-			renderer.SetPropertyBlock(block);
-		}
-	}
-
-	public void Unghost()
-	{
-		foreach (MeshRenderer renderer in meshRenderers)
-		{
-			MaterialPropertyBlock block = new MaterialPropertyBlock();
-			renderer.GetPropertyBlock(block);
-			block.SetFloat("_Alpha", 1);
-			block.SetFloat("_DitherSize", 1);
-			renderer.SetPropertyBlock(block);
-		}
-	}
-
 	public Vector3 GetHealthBarPosition()
 	{
 		if (healthBar == null)

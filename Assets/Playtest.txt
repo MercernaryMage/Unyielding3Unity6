@@ -1,6 +1,7 @@
 Game Design
 	Lizard should not play does nothing card first
 		Solve this by removing all the do nothing options
+	Right click is totally unexplained when deploying
 
 Art
 	Stronger indicator on a card that disabled
@@ -10,12 +11,8 @@ Other
 	Movement on chop showed that it would move onto a unit and then didn't
 	Hide end turn?
 		make it skip animations?
+	Action buttons should cancel each other
 
 	Prowess and cunning on town page
-	wrapping on name in inspector
-	Action buttons should cancel each other
-	Show ghost when placing a character
-		dither 2
-		alpha .4
-	Right click is totally unexplained when deploying
-	Can we display items on players
+	
+	

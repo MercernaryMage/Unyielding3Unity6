@@ -411,6 +411,8 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 			lastPlacementTile = mousedOverTile;
 		}
 
+		BattleController.Instance.SetPlacementPreviewTile(mousedOverTile);
+
 		if (Input.GetMouseButtonDown(1))
 		{
 			clickVec = Input.mousePosition;

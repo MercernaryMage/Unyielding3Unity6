@@ -29,6 +29,9 @@ public class BattleController : SceneSingleton<BattleController>
 
 	Dictionary<Tile, Character> placedCharacters = new Dictionary<Tile, Character>();
 
+	Tile placementPreviewTile;
+	GameObject placementPreviewModel;
+
 	public GameObject EndTurnButton;
 	public GameObject deployButton;
 
@@ -295,7 +298,57 @@ public class BattleController : SceneSingleton<BattleController>
 
 		placedCharacters[t] = MapBuilder.PlaceHero(t.x, t.y, storageCharacter, GetPlacementFacing(t));
 
+		ClearPlacementPreview();
 		ShowNextCharacterToPlace();
+	}
+
+	public void SetPlacementPreviewTile(Tile t)
+	{
+		if (placementPreviewTile == t && placementPreviewModel != null)
+		{
+			return;
+		}
+
+		ClearPlacementPreview();
+
+		if (!doingPlacement || t == null || t.character != null || placedCharacters.ContainsKey(t))
+		{
+			return;
+		}
+
+		StorageCharacter storageCharacter = GetNextCharacterToPlace();
+
+		CharacterScriptableObject definition = storageCharacter.characterDefintion;
+
+		placementPreviewTile = t;
+		placementPreviewModel = Instantiate(definition.model);
+		placementPreviewModel.transform.SetParent(t.transform.parent);
+		placementPreviewModel.transform.localScale = Vector3.one * definition.size;
+		placementPreviewModel.transform.localPosition = new Vector3(definition.size - 1, 0, definition.size - 1);
+		placementPreviewModel.transform.localRotation = Util.GetFacing(GetPlacementFacing(t));
+		MeshRenderer[] meshRenderers = placementPreviewModel.GetComponentsInChildren<MeshRenderer>();
+		foreach (MeshRenderer renderer in meshRenderers)
+		{
+			MaterialPropertyBlock block = new MaterialPropertyBlock();
+			renderer.GetPropertyBlock(block);
+			block.SetFloat("_Alpha", .6f);
+			block.SetFloat("_DitherSize", 2f);
+			renderer.SetPropertyBlock(block);
+		}
+	}
+
+	void ClearPlacementPreview()
+	{
+		placementPreviewTile = null;
+
+		if (placementPreviewModel == null)
+		{
+			return;
+		}
+
+		placementPreviewModel.transform.SetParent(null);
+		Destroy(placementPreviewModel);
+		placementPreviewModel = null;
 	}
 
 	void ShowNextCharacterToPlace()
@@ -319,6 +372,7 @@ public class BattleController : SceneSingleton<BattleController>
 	public void StartFight()
 	{
 		doingPlacement = false;
+		ClearPlacementPreview();
 
 		Dictionary<StorageCharacter, Tile> placementTiles = new Dictionary<StorageCharacter, Tile>();
 		foreach (KeyValuePair<Tile, Character> pair in placedCharacters)
