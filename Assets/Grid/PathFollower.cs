@@ -18,6 +18,10 @@ public class PathFollower : MonoBehaviour
 	bool finished;
 	bool firstTile = true;
 	bool started;
+	bool resolved;
+
+	Tile destination;
+	Tile facingFromTile;
 
 	public void Set(Character c, List<Tile> p, Action call, bool m)
 	{
@@ -27,10 +31,13 @@ public class PathFollower : MonoBehaviour
 		moveCharacter = m;
 		if (p.Count < 2)
 		{
+			resolved = true;
 			callback();
 			Destroy(this);
 			return;
 		}
+		destination = p[p.Count - 1];
+		facingFromTile = p[p.Count - 2];
 		cameraCatchupTime = SelectionManager.Instance.SnapCameraToCharacter(character);
 	}
 
@@ -74,9 +81,7 @@ public class PathFollower : MonoBehaviour
 
 	void StepToNextTile()
 	{
-		Vector3 offset = new Vector3(character.characterDefinition.size - 1,
-					0,
-					character.characterDefinition.size - 1);
+		Vector3 offset = GetOffset();
 
 		GlobalPositionLerp positionLerp = gameObject.AddComponent<GlobalPositionLerp>();
 		positionLerp.p0 = path[0].transform.position + offset;
@@ -99,6 +104,7 @@ public class PathFollower : MonoBehaviour
 				{
 					TileGrid.Instance.MoveCharacterToTile(character, path[0]);
 				}
+				resolved = true;
 				Destroy(this);
 				callback();
 			};
@@ -106,5 +112,37 @@ public class PathFollower : MonoBehaviour
 		}
 
 		positionLerp.callbackFunction = StepToNextTile;
+	}
+
+	public void ResolveInstantly()
+	{
+		if (resolved)
+		{
+			return;
+		}
+		resolved = true;
+		finished = true;
+
+		GlobalPositionLerp gpl = gameObject.GetComponent<GlobalPositionLerp>();
+		if (gpl)
+		{
+			Destroy(gpl);
+		}
+		CameraFocusCharacter cfc = gameObject.GetComponent<CameraFocusCharacter>();
+		if (cfc)
+		{
+			Destroy(cfc);
+		}
+
+		TileGrid.Instance.TeleportCharacterToTile(character, facingFromTile, destination, moveCharacter);
+
+		Action storedCallback = callback;
+		Destroy(this);
+		storedCallback();
+	}
+
+	Vector3 GetOffset()
+	{
+		return TileGrid.Instance.GetTokenOffset(character);
 	}
 }

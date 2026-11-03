@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +7,26 @@ public class AnimationController : SceneSingleton<AnimationController>
 {
     Action storedAction;
 
-    public void ShowTiles(List<Tile> tiles, Tile.OverlayType overlayType, Action callback, Action noMovementCallback = null, float delay = 1)
+	public bool skipAnimations = false;
+
+	public void SkipAnimationActivated()
 	{
+		skipAnimations = true;
+		foreach (PathFollower pathFollower in FindObjectsByType<PathFollower>(FindObjectsSortMode.None))
+		{
+			pathFollower.ResolveInstantly();
+		}
+		CancelInvoke();
+		storedAction.Invoke();
+	}
+
+	public void ShowTiles(List<Tile> tiles, Tile.OverlayType overlayType, Action callback, Action noMovementCallback = null, float delay = 1)
+	{
+		if (skipAnimations)
+		{
+			callback.Invoke();
+			return;
+		}
 		if (tiles != null)
 		{
 			foreach (Tile t in tiles)
@@ -35,18 +53,35 @@ public class AnimationController : SceneSingleton<AnimationController>
 
 	public void DelayedCallback(float seconds, Action callback)
 	{
+		if (skipAnimations)
+		{
+			callback.Invoke();
+			return;
+		}
 		storedAction = callback;
 		Invoke(nameof(DoCallback), seconds);
 	}
 
 	public void ScrollToCharacter(Character character, Action callback, float delay = 0.5f)
 	{
+		if (skipAnimations)
+		{
+			SelectionManager.Instance.MoveCameraToPosition(character);
+			callback.Invoke();
+			return;
+		}
 		float scrollTime = SelectionManager.Instance.SnapCameraToCharacter(character);
 		DelayedCallback(scrollTime + delay, callback);
 	}
 
 	public void ScrollToTile(Tile tile, Action callback, float delay = 0.5f)
 	{
+		if (skipAnimations)
+		{
+			SelectionManager.Instance.MoveCameraToPosition(tile);
+			callback.Invoke();
+			return;
+		}
 		float scrollTime = SelectionManager.Instance.SnapCameraToTile(tile);
 		DelayedCallback(scrollTime + delay, callback);
 	}

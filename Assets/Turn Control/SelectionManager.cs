@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -360,6 +360,16 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 		Camera.main.transform.position = GetCameraPositionCenteredOnCharacter(targetCharacter);
 	}
 
+	public void MoveCameraToPosition(Character targetCharacter)
+	{
+		Camera.main.transform.position = GetCameraPositionCenteredOnCharacter(targetCharacter);
+	}
+
+	public void MoveCameraToPosition(Tile tile)
+	{
+		Camera.main.transform.position = GetCameraPositionCenteredOnPosition(tile.transform.position);
+	}
+
 	public float SnapCameraToCharacter(Character targetCharacter)
 	{
 		return SnapCameraToFinalPosition(GetCameraPositionCenteredOnCharacter(targetCharacter));
@@ -368,6 +378,16 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 	public float SnapCameraToTile(Tile targetTile)
 	{
 		return SnapCameraToFinalPosition(GetCameraPositionCenteredOnPosition(targetTile.transform.position));
+	}
+
+	public void FinishCameraSnap()
+	{
+		foreach (GlobalPositionLerp positionLerp in Camera.main.GetComponents<GlobalPositionLerp>())
+		{
+			positionLerp.callbackFunction = null;
+			Destroy(positionLerp);
+		}
+		cameraMoving = false;
 	}
 
 	float SnapCameraToFinalPosition(Vector3 finalPos)

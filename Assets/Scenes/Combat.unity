@@ -4269,6 +4269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b05120b415e516444994d5228418e425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skipAnimations: 0
 --- !u!114 &567337322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6834,11 +6835,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
+  - Lenette
   - enemy
   - Cotton
   - Dane
   - David
-  - Lenette
   - enemy
   - enemy
 --- !u!114 &898251913

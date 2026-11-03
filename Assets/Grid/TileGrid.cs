@@ -56,7 +56,6 @@ public class TileGrid : SceneSingleton<TileGrid>
 		Action continueAction = () =>
 		{
 			ActionController.Instance.running = false;
-			PathFollower pathFollower = character.token.gameObject.AddComponent<PathFollower>();
 			Action encasingFunction = () =>
 			{
 				if (isReaction)
@@ -66,7 +65,19 @@ public class TileGrid : SceneSingleton<TileGrid>
 				ImposedControl.Instance.Run();
 				callback();
 			};
-			pathFollower.Set(character, tiles, encasingFunction, moveCharacter);
+			if (AnimationController.Instance.skipAnimations)
+			{
+				if (tiles.Count > 1)
+				{
+					TeleportCharacterToTile(character, tiles[tiles.Count - 2], tiles[tiles.Count - 1], moveCharacter);
+				}
+				encasingFunction();
+			}
+			else
+			{
+				PathFollower pathFollower = character.token.gameObject.AddComponent<PathFollower>();
+				pathFollower.Set(character, tiles, encasingFunction, moveCharacter);
+			}
 		};
 		Action abandonAction = () =>
 		{
@@ -99,6 +110,25 @@ public class TileGrid : SceneSingleton<TileGrid>
 			List<Tile> targetTiles = FindCharacter(character);
 			TriggerDisplay.Instance.ShowTriggerMenu(characterStartMovementMessage.raisedTriggers, continueAction, abandonAction, targetTiles);
 		}
+	}
+
+	public void TeleportCharacterToTile(Character character, Tile facingFromTile, Tile destination, bool moveCharacter)
+	{
+		character.token.transform.position = destination.transform.position + GetTokenOffset(character);
+		character.SetFacing(GetFacingDirection(facingFromTile, destination));
+		if (moveCharacter)
+		{
+			MoveCharacterToTile(character, destination);
+		}
+		SelectionManager.Instance.FinishCameraSnap();
+		SelectionManager.Instance.MoveCameraToPosition(character);
+	}
+
+	public Vector3 GetTokenOffset(Character character)
+	{
+		return new Vector3(character.characterDefinition.size - 1,
+					0,
+					character.characterDefinition.size - 1);
 	}
 
 	public void MoveCharacterToTile(Character character, Tile t)

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -260,6 +260,18 @@ public class ActionController : SceneSingleton<ActionController>
 
 	public void PlayAttackAnimation(GameObject wiggleObject, Action midwayCallback, Action completeCallback)
 	{
+		if (AnimationController.Instance.skipAnimations)
+		{
+			if (midwayCallback != null)
+			{
+				midwayCallback.Invoke();
+			}
+			if (completeCallback != null)
+			{
+				completeCallback.Invoke();
+			}
+			return;
+		}
 		AttackWiggle attackWiggle = wiggleObject.AddComponent<AttackWiggle>();
 		attackWiggle.secondaryAnimationObject = swingAnimationObjectPrefab;
 		attackWiggle.completeCallback = completeCallback;

@@ -196,6 +196,11 @@ public class TurnControl : SceneSingleton<TurnControl>
 
 	public void EndTurnClicked()
 	{
+		if (!BattleController.playerHasControl && !currentCharacter.hero && !AnimationController.Instance.skipAnimations)
+		{
+			AnimationController.Instance.SkipAnimationActivated();
+			return;
+		}
 		if (!BattleController.playerHasControl || processStarted)
 		{
 			return;
@@ -215,6 +220,7 @@ public class TurnControl : SceneSingleton<TurnControl>
 
 	public void Pump()
 	{
+		AnimationController.Instance.skipAnimations = false;
 		processStarted = true;
 		if (lastCharacter != null)
 		{

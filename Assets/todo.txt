@@ -15,10 +15,16 @@ We have two different UI pieces that use the AABB: we should make a unifiying cl
     tilewarning
 
 Duration cards need to not play a card after their duration step
-    IF THE TARGET IS DEAD YOU GET TO PLAY ANOTHER CARD
+    IF THE TARGET IS DEAD YOU GET TO PLAY ANOTHER CARD    
+
+When you mouse over and then off one the problem tiles before the enemy goes, the 
+becomes a possible movement overlay
 
 Gold color: 8E5911
 blonk color: 342B28
+
+The character token can die while the animation is getting skipped
+    This will put the floating combat text somewhere weird
 
 tool tips titles are hard baked :(
 

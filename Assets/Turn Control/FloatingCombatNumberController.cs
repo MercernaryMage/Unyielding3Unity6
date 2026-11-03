@@ -8,6 +8,7 @@ public class FloatingCombatNumberController : SceneSingleton<FloatingCombatNumbe
 {
 	class FloatingCombatData
 	{
+		public CharacterToken token;
 		public Vector3 tokenPosition;
 		public float time;
 		public List<string> messages = new List<string>();
@@ -27,7 +28,7 @@ public class FloatingCombatNumberController : SceneSingleton<FloatingCombatNumbe
 			if (combatData.Value.time <= 0 && combatData.Value.messages.Count > 0)
 			{
 				
-				ShowFloatingCombatNumber(combatData.Value.tokenPosition, combatData.Value.messages[0]);
+				ShowFloatingCombatNumber(GetCurrentSpawnPosition(combatData.Value), combatData.Value.messages[0]);
 				combatData.Value.messages.RemoveAt(0);
 				combatData.Value.time = messageDelay;
 			}
@@ -39,6 +40,15 @@ public class FloatingCombatNumberController : SceneSingleton<FloatingCombatNumbe
 		return c.token.GetHealthBarPosition();
 	}
 
+	Vector3 GetCurrentSpawnPosition(FloatingCombatData floatingCombatData)
+	{
+		if (floatingCombatData.token != null && !AnimationController.Instance.skipAnimations)
+		{
+			return floatingCombatData.token.GetHealthBarPosition();
+		}
+		return floatingCombatData.tokenPosition;
+	}
+
 	public void QueueFloatingCombatNumber(Character c, string message)
 	{
 		if (c.token == null)
@@ -48,12 +58,14 @@ public class FloatingCombatNumberController : SceneSingleton<FloatingCombatNumbe
 		if (data.ContainsKey(c))
 		{
 			data[c].messages.Add(message);
+			data[c].token = c.token;
 			data[c].tokenPosition = GetSpawnPosition(c);
 		}
 		else
 		{
 			FloatingCombatData floatingCombatData = new FloatingCombatData();
 			floatingCombatData.messages.Add(message);
+			floatingCombatData.token = c.token;
 			floatingCombatData.tokenPosition = GetSpawnPosition(c);
 			data[c] = (floatingCombatData);
 		}
