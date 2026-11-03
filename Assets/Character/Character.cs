@@ -309,11 +309,12 @@ public class Character : MonoBehaviour
 		return GetComponent<Recovering>() != null;
 	}
 
-	public void EndTurn()
+	public List<Action> EndTurn()
 	{
 		CharacterTurnIndicator.SetActive(false);
 		CharacterEndTurnMessage characterEndTurnMessage = new CharacterEndTurnMessage();
 		characterEndTurnMessage.character = this;
 		MessagePump.Instance.SendMessage(characterEndTurnMessage);
+		return characterEndTurnMessage.actions;
 	}
 }

@@ -44,6 +44,7 @@ public class Message
 public class CharacterEndTurnMessage : Message
 {
 	public Character character;
+	public List<System.Action> actions = new List<System.Action>();
 	public CharacterEndTurnMessage()
 	{
 		messageType = MessageType.CharcterEndTurn;

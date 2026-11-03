@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class TurnControl : SceneSingleton<TurnControl>
 {
 	List<TurnControlEntry> turnControlEntries = new List<TurnControlEntry>();
 
 	public Character lastCharacter = null;
+	bool pumpingWaitingEndTurnActions = false;
+	List<System.Action> waitingEndTurnActions = new List<System.Action>();
 
 	public void ClearCharacters()
 	{
@@ -224,13 +227,24 @@ public class TurnControl : SceneSingleton<TurnControl>
 		processStarted = true;
 		if (lastCharacter != null)
 		{
-			lastCharacter.EndTurn();
 			TileGrid.Instance.HideAllTiles();
 			if (!lastCharacter.hero)
 			{
 				AIController.Instance.Reshuffle(lastCharacter);
 			}
+			waitingEndTurnActions = lastCharacter.EndTurn();
+			if (waitingEndTurnActions.Count > 0)
+			{
+				pumpingWaitingEndTurnActions = true;
+				PumpWaitingEndTurnActions();
+				return;
+			}
 		}
+		FinishPump();
+	}
+
+	void FinishPump()
+	{
 		for (int i = 0; i < turnControlEntries.Count; ++i)
 		{
 			if (!turnControlEntries[i].hasGone && turnControlEntries[i].character.alive)
@@ -372,6 +386,23 @@ public class TurnControl : SceneSingleton<TurnControl>
 			}
 		}
 		RebuildAlternatingOrder();
+	}
+
+	public void PumpWaitingEndTurnActions()
+	{
+		if (!pumpingWaitingEndTurnActions)
+		{
+			return;
+		}
+		if (waitingEndTurnActions.Count == 0)
+		{
+			pumpingWaitingEndTurnActions = false;
+			FinishPump();
+			return;
+		}
+		System.Action waitingAction = waitingEndTurnActions[0];
+		waitingEndTurnActions.RemoveAt(0);
+		waitingAction.Invoke();
 	}
 }
 

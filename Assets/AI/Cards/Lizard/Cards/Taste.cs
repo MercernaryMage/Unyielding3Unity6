@@ -11,6 +11,7 @@ public class Taste : Card
 	Tuple<List<Tile>, Tile> route;
 	List<Tile> litRouteTiles;
 	Tile startTile;
+	Character randomTarget;
 
 	//Find closest enemy
 
@@ -34,7 +35,18 @@ public class Taste : Card
 
 		Dictionary<Character, Tuple<List<Tile>, Tile>> routes = RouteToAllClosestCharacters(true);
 
+		randomTarget = null;
 		route = Util.FindSmallestRoute(routes, IsSlobbered);
+		if (route == null)
+		{
+			int range = owningCharacter.characterDefinition.movement + 1;
+			List<Character> candidates = routes.Where(pair => pair.Key.alive && pair.Value.Item1.Count <= range * 2).Select(pair => pair.Key).ToList();
+			if (candidates.Count > 0)
+			{
+				randomTarget = candidates[UnityEngine.Random.Range(0, candidates.Count)];
+				route = routes[randomTarget];
+			}
+		}
 		if (route == null || !Util.ShortenPathToMaxRange(route, owningCharacter.characterDefinition.movement + 1))
 		{
 			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(owningCharacter, "no target");
@@ -54,6 +66,11 @@ public class Taste : Card
 		return c.GetComponent<Slobbered>() != null;
 	}
 
+	bool TargetRandom(Character c)
+	{
+		return c == randomTarget;
+	}
+
 	public void Route()
 	{
 		TileGrid.Instance.RouteAICharacterToTile(owningCharacter, new List<Tile>(route.Item1), ReturnFromRoute);
@@ -65,7 +82,7 @@ public class Taste : Card
 		{
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
 		}
-		List<Tile> tiles = TemplateLibrary.GetAdjacentCharacterTarget(owningCharacter, TargetSlobbered);
+		List<Tile> tiles = TemplateLibrary.GetAdjacentCharacterTarget(owningCharacter, randomTarget != null ? (TemplateLibrary.TargetClause)TargetRandom : TargetSlobbered);
 		if (tiles == null)
 		{
 			tiles = TemplateLibrary.GetAdjacentCharacterTarget(owningCharacter, null);
@@ -102,7 +119,7 @@ public class Taste : Card
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();
 		instructions.Add(new CardInstruction("Apply <u>Slobbered</u> to all adjacent enemies to the side"));
-		instructions.Add(new CardInstruction("Move to closest <u>Slobbered</u> enemy"));
+		instructions.Add(new CardInstruction("Move to closest <u>Slobbered</u> enemy. If none, move to a random enemy"));
 		instructions.Add(new CardInstruction());
 		instructions.Add(new CardInstruction("Attack enemy for 1d6 damage"));
 

@@ -34,9 +34,12 @@ public class UseShieldTrait : Trait
 			{
 				if (i.itemDefinition.name == "Shield")
 				{
-					ActionTypes.DoInstantAction(character, i.itemDefinition.actions[0]);
-					UIController.Instance.heroDisplay.UpdateWithLastCharacter();
-					FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, "using shield");
+					message.actions.Add(() =>
+					{
+						ActionTypes.DoInstantAction(character, i.itemDefinition.actions[0]);
+						UIController.Instance.heroDisplay.UpdateWithLastCharacter();
+						FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(character, "using shield");
+					});
 					break;
 				}
 			}
