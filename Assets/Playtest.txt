@@ -1,15 +1,11 @@
-Game Design
-	Right click is totally unexplained when deploying
-
 Art
-	Stronger indicator on a card that disabled
 	Trigger UI isn't finished
+
+If you have placed everyone and move the mouse you get a assert
 
 Other
 	Hide end turn?
-		make it skip animations?
-	Action buttons should cancel each other
-
-	Prowess and cunning on town page
+		More testing
+		Change text
 	
 	

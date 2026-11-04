@@ -8,6 +8,8 @@ using static ActionPattern;
 
 public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+	public Sprite disabledSprite;
+	public Image cardBG;
 	public Image icon;
 
 	public TextMeshProUGUI actionCost;
@@ -17,8 +19,6 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 	public GameObject actionObject;
 	public GameObject energyObject;
 	public GameObject movementObject;
-
-	public GameObject disabledGraphic;
 
 	public List<GameObject> charges;
 
@@ -76,7 +76,7 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 
 		if (!usable)
 		{
-			disabledGraphic.SetActive(true);
+			cardBG.sprite = disabledSprite;
 			reason = unusableReason;
 		}
 	}
