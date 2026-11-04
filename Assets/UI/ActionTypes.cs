@@ -362,10 +362,16 @@ public class ActionTypes : MonoBehaviour
 
 		AnimationController.PlayEffect(c, pattern.effectScriptableObject, 1, () =>
 		{
-			BattleController.playerHasControl = true;
 			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(c, $"+{pattern.intParam} armor");
-			UIController.Instance.heroDisplay.UpdateWithLastCharacter();
-			TurnControl.Instance.PumpWaitingEndTurnActions();
+			if (TurnControl.Instance.NeedsPump())
+			{
+				TurnControl.Instance.PumpWaitingEndTurnActions();
+			}
+			else
+			{
+				BattleController.playerHasControl = true;
+				UIController.Instance.heroDisplay.UpdateWithLastCharacter();
+			}
 		});
 	}
 

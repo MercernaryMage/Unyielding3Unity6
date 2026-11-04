@@ -6835,13 +6835,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
-  - Guard 1
+  - enemy
   - Lenette
   - Cotton
   - Dane
   - David
   - enemy
-  - enemy
+  - Guard 1
 --- !u!114 &898251913
 MonoBehaviour:
   m_ObjectHideFlags: 0

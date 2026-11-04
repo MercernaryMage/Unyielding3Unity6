@@ -19,6 +19,8 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 	bool clickedUI = false;
 	bool cameraMoving = false;
 	bool cancelClicked = false;
+	bool mouseOverUI = false;
+	bool mouseDownRejected = false;
 
 	public GameObject cancelButton;
 
@@ -47,6 +49,8 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 
 	public void Update()
 	{
+		bool mouseOverUILastFrame = mouseOverUI;
+		mouseOverUI = GetUIRaycast().Count > 0;
 		if (cancelClicked)
 		{
 			cancelClicked = false;
@@ -54,9 +58,10 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 		}
 		if (Input.GetMouseButtonDown(0))
 		{
+			mouseDownRejected = mouseOverUILastFrame;
 			clickVec = Input.mousePosition;
 			lastMousePos = Input.mousePosition;
-			panAllowed = GetUIRaycast().Count == 0;
+			panAllowed = !mouseDownRejected && GetUIRaycast().Count == 0;
 		}
 
 		//why 17.14f?  It's just some arbitrary height above the ground plane to make sure we don't clip into th ground.
@@ -213,6 +218,10 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 
 		if (Input.GetMouseButtonUp(0))
 		{
+			if (mouseDownRejected)
+			{
+				return;
+			}
 			if ((clickVec - Input.mousePosition).magnitude > 5)
 			{
 				return;
@@ -439,6 +448,10 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 		}
 
 		if (!Input.GetMouseButtonUp(0) && !Input.GetMouseButtonUp(1))
+		{
+			return;
+		}
+		if (Input.GetMouseButtonUp(0) && mouseDownRejected)
 		{
 			return;
 		}

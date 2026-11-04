@@ -17,9 +17,6 @@ We have two different UI pieces that use the AABB: we should make a unifiying cl
 Duration cards need to not play a card after their duration step
     IF THE TARGET IS DEAD YOU GET TO PLAY ANOTHER CARD    
 
-When you mouse over and then off one the problem tiles before the enemy goes, the 
-becomes a possible movement overlay
-
 Gold color: 8E5911
 blonk color: 342B28
 
@@ -28,9 +25,6 @@ The character token can die while the animation is getting skipped
 
 tool tips titles are hard baked :(
 
-Dismiss is done on mouse down
-    We click the on mouse up
-    Easiest fix is a UYButton
 
 Step should probably show something different?
     Show step range instead?

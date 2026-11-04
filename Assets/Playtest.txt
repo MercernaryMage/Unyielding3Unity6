@@ -1,8 +1,2 @@
 Art
 	Trigger UI isn't finished
-
-Other
-	Hide end turn?
-		Change text
-
-	Mouse over tiles from the last person's movement BEFORE the next person starts shows the old tiles

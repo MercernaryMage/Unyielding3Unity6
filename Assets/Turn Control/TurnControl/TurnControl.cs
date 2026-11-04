@@ -227,6 +227,7 @@ public class TurnControl : SceneSingleton<TurnControl>
 		processStarted = true;
 		if (lastCharacter != null)
 		{
+			MovementController.Instance.HideMovement();
 			TileGrid.Instance.HideAllTiles();
 			if (!lastCharacter.hero)
 			{
@@ -386,6 +387,11 @@ public class TurnControl : SceneSingleton<TurnControl>
 			}
 		}
 		RebuildAlternatingOrder();
+	}
+
+	public bool NeedsPump()
+	{
+		return pumpingWaitingEndTurnActions;
 	}
 
 	public void PumpWaitingEndTurnActions()
