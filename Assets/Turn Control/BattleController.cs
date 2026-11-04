@@ -318,6 +318,11 @@ public class BattleController : SceneSingleton<BattleController>
 
 		StorageCharacter storageCharacter = GetNextCharacterToPlace();
 
+		if (storageCharacter == null)
+		{
+			return;
+		}
+
 		CharacterScriptableObject definition = storageCharacter.characterDefintion;
 
 		placementPreviewTile = t;
