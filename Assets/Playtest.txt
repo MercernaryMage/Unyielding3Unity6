@@ -4,11 +4,5 @@ Art
 Other
 	Hide end turn?
 		Change text
-	
-	During skip we are still seeing the floating combat text appear in the wrong spot
-
-	Trample in the guard fight did nothing
-
-	Cotton didn't reload?
 
 	Mouse over tiles from the last person's movement BEFORE the next person starts shows the old tiles

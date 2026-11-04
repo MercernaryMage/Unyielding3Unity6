@@ -11,6 +11,10 @@ public class AnimationController : SceneSingleton<AnimationController>
 
 	public void SkipAnimationActivated()
 	{
+		if (skipAnimations)
+		{
+			return;
+		}
 		skipAnimations = true;
 		foreach (PathFollower pathFollower in FindObjectsByType<PathFollower>(FindObjectsSortMode.None))
 		{

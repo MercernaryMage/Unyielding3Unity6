@@ -403,10 +403,11 @@ public class TemplateLibrary : SceneSingleton<TemplateLibrary>
 			null
 		};
 
-		
+		Tile startTile = TileGrid.Instance.FindCharacter(originCharacter)[0];
 		for (int i = 0; i < 4; ++i)
 		{
-			tileAndDirectionGroupings[i] = GetTilesInMatchedSizeCardinalDirection(originCharacter, range, i);
+			int reachableRange = Trample.GetTramplePath(originCharacter, startTile, TileGrid.directions[i], range).Count;
+			tileAndDirectionGroupings[i] = GetTilesInMatchedSizeCardinalDirection(originCharacter, reachableRange, i);
 			foreach (Tile t in tileAndDirectionGroupings[i])
 			{
 				if (t.character && t.character.hero && t.character.GetComponent<Recovering>() == null)

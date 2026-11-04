@@ -20,7 +20,12 @@ public class CharacterToken : MonoBehaviour
 
 	private void Update()
 	{
-		if (healthBar == null)
+		UpdateHealthBarTransform();
+	}
+
+	void UpdateHealthBarTransform()
+	{
+		if (healthBar == null || uiPoint == null)
 		{
 			return;
 		}
@@ -73,6 +78,7 @@ public class CharacterToken : MonoBehaviour
 			return transform.position;
 		}
 
+		UpdateHealthBarTransform();
 		return healthBarController.GetWorldPosition();
 	}
 

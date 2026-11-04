@@ -33,7 +33,6 @@ public class DebugCharacterTurnOrder : MonoBehaviour
 
 			if (match == null)
 			{
-				Debug.LogWarning($"DebugCharacterTurnOrder: no character found matching name \"{entry}\".");
 				continue;
 			}
 
