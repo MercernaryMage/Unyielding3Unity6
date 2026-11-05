@@ -416,6 +416,15 @@ public class ActionTypes : MonoBehaviour
 		return new Tuple<bool, string>(true, "");
 	}
 
+	static public Tuple<bool, string> HasAction(Character c, ActionPattern pattern)
+	{
+		if (c.actionCount > 1)
+		{
+			return new Tuple<bool, string>(false, $"{c.displayName} has action points already");
+		}
+		return new Tuple<bool, string>(true, "");
+	}
+
 	static public Tuple<bool, string> HasMovement(Character c, ActionPattern pattern)
 	{
 		if (c.currentMovement > 0)

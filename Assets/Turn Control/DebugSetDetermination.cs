@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DebugSetDetermination : MonoBehaviour
 {
+#if UNITY_EDITOR
 	[Serializable]
 	public class DeterminationEntry
 	{
@@ -64,4 +65,5 @@ public class DebugSetDetermination : MonoBehaviour
 		}
 		return null;
 	}
+#endif
 }

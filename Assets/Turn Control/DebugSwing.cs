@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DebugSwing : MonoBehaviour
 {
+#if UNITY_EDITOR
 	public Character c;
 	public Character d;
 	public EffectScriptableObject effect;
@@ -38,6 +39,6 @@ public class DebugSwing : MonoBehaviour
 			);
 		}
 	}
-	
 
+#endif
 }

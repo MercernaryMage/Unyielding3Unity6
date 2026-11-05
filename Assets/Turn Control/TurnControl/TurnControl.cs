@@ -97,11 +97,26 @@ public class TurnControl : SceneSingleton<TurnControl>
 		turnControlEntry.value = lowestValue - 1;
 
 		turnControlEntries.Add(turnControlEntry);
-		turnControlEntries = turnControlEntries.OrderByDescending(o => o.value).ToList();
-		if (turnControlEntry.value <= 0)
+
+		DebugCharacterTurnOrder debugCharacterTurnOrder = FindFirstObjectByType<DebugCharacterTurnOrder>();
+		if (debugCharacterTurnOrder != null && debugCharacterTurnOrder.enabled)
 		{
-			RenumberEntries();
+			turnControlEntries = turnControlEntries.OrderByDescending(o => o.value).ToList();
+			if (turnControlEntry.value <= 0)
+			{
+				RenumberEntries();
+			}
+			UpdateSystem();
+			return;
 		}
+
+		List<TurnControlEntry> ordered = new List<TurnControlEntry>();
+		ordered.AddRange(turnControlEntries.Where(o => o.hasGone && o.character.alive));
+		ordered.AddRange(BuildAlternatingEntries().Where(o => !o.hasGone));
+		ordered.AddRange(turnControlEntries.Where(o => !o.character.alive));
+
+		turnControlEntries = ordered;
+		RenumberEntries();
 		UpdateSystem();
 	}
 
@@ -113,17 +128,26 @@ public class TurnControl : SceneSingleton<TurnControl>
 			return;
 		}
 
+		List<TurnControlEntry> ordered = BuildAlternatingEntries();
+		ordered.AddRange(turnControlEntries.Where(o => !o.character.alive));
+
+		turnControlEntries = ordered;
+		RenumberEntries();
+		UpdateSystem();
+	}
+
+	List<TurnControlEntry> BuildAlternatingEntries()
+	{
 		List<TurnControlEntry> heroes = new List<TurnControlEntry>();
 		List<TurnControlEntry> enemies = new List<TurnControlEntry>();
-		List<TurnControlEntry> dead = new List<TurnControlEntry>();
 
 		foreach (TurnControlEntry turnControlEntry in turnControlEntries)
 		{
 			if (!turnControlEntry.character.alive)
 			{
-				dead.Add(turnControlEntry);
+				continue;
 			}
-			else if (turnControlEntry.character.hero)
+			if (turnControlEntry.character.hero)
 			{
 				heroes.Add(turnControlEntry);
 			}
@@ -145,11 +169,7 @@ public class TurnControl : SceneSingleton<TurnControl>
 				ordered.Add(enemies[i]);
 			}
 		}
-		ordered.AddRange(dead);
-
-		turnControlEntries = ordered;
-		RenumberEntries();
-		UpdateSystem();
+		return ordered;
 	}
 
 	void RenumberEntries()

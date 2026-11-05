@@ -87,8 +87,11 @@ public class Whirl : Card
 				if (t.character && t.character.hero && !hitCharacters.Contains(t.character))
 				{
 					hitCharacters.Add(t.character);
-					ActionController.Instance.AttackCharacter(t.character, owningCharacter, new ActionController.AttackProfile(1, GetIntValue("Damage"), 0));
-					ActionController.Instance.KnockBack(t.character, TileGrid.Instance.FindCharacter(owningCharacter), 1);
+					ActionController.AttackResults results = ActionController.Instance.AttackCharacter(t.character, owningCharacter, new ActionController.AttackProfile(1, GetIntValue("Damage"), 0));
+					if (results.hit)
+					{
+						ActionController.Instance.KnockBack(t.character, TileGrid.Instance.FindCharacter(owningCharacter), 1);
+					}
 				}
 				t.HideOverlay(Tile.OverlayType.PossibleAttck);
 			}

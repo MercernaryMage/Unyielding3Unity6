@@ -56,6 +56,10 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 			cancelClicked = false;
 			return;
 		}
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			TurnControl.Instance.EndTurnClicked();
+		}
 		if (Input.GetMouseButtonDown(0))
 		{
 			mouseDownRejected = mouseOverUILastFrame;

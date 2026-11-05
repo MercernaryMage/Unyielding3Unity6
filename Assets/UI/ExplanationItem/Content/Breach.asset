@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Breach
   m_EditorClassIdentifier: Assembly-CSharp::ExplanationIemScrptableObject
   explanationName: Breach
-  explanationContent: Ignores Armor and Evasion.
+  explanationContent: Ignores Armor and Toughness.

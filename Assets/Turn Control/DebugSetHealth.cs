@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DebugSetHealth : MonoBehaviour
 {
+#if UNITY_EDITOR
 	[Serializable]
 	public class HealthEntry
 	{
@@ -57,4 +58,5 @@ public class DebugSetHealth : MonoBehaviour
 		}
 		return null;
 	}
+#endif
 }

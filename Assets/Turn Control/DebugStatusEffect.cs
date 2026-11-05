@@ -3,6 +3,7 @@ using static StatusEffect;
 
 public class DebugStatusEffect : MonoBehaviour
 {
+#if UNITY_EDITOR
 	public string statusEffectName;
 	public string characterName;
 
@@ -47,4 +48,5 @@ public class DebugStatusEffect : MonoBehaviour
 		}
 		found.AddStatusEffect(System.Type.GetType(statusEffectName), new StatusEffectInitData());
 	}
+#endif
 }

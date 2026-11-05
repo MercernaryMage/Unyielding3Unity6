@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class DebugSetStat : MonoBehaviour
 {
+#if UNITY_EDITOR
 	public string characterName;
 	public string statName;
 	public int value;
@@ -39,4 +40,5 @@ public class DebugSetStat : MonoBehaviour
 
 		field.SetValue(target, value);
 	}
+#endif
 }

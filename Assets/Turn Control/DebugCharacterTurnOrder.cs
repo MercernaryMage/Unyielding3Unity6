@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DebugCharacterTurnOrder : MonoBehaviour
 {
+#if UNITY_EDITOR
 	public const string EnemyToken = "enemy";
 
 	[Tooltip("Ordered character names. Use a character's name, an enemy's base name to take the next enemy of that type, or \"enemy\" to take the next enemy of any type.")]
@@ -130,4 +131,5 @@ public class DebugCharacterTurnOrder : MonoBehaviour
 		}
 		return null;
 	}
+#endif
 }

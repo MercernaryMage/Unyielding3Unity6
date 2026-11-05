@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class DebugSetCardOrder : MonoBehaviour
 {
+#if UNITY_EDITOR
 	public string characterName;
 	public List<string> cardNames = new List<string>();
 
@@ -76,4 +77,5 @@ public class DebugSetCardOrder : MonoBehaviour
 		}
 		return null;
 	}
+#endif
 }

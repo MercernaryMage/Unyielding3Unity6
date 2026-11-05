@@ -20,6 +20,9 @@ Duration cards need to not play a card after their duration step
 Gold color: 8E5911
 blonk color: 342B28
 
+pounce dealt 0 damage to cotton
+    Even said it the log
+
 The character token can die while the animation is getting skipped
     This will put the floating combat text somewhere weird
 

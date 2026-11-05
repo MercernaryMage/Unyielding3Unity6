@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class DebugKeyboardCommands : MonoBehaviour
 {
-    bool timeReduced = false;
+#if UNITY_EDITOR
+	bool timeReduced = false;
 
     
     void Update()
@@ -20,4 +21,5 @@ public class DebugKeyboardCommands : MonoBehaviour
 			timeReduced = !timeReduced;
 		}
 	}
+#endif
 }

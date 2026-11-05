@@ -1,2 +1,33 @@
 Art
 	Trigger UI isn't finished
+
+Bad resolution
+	3440x1440
+
+Double attack is absoutely real
+
+exe trait should be infinite AoO
+
+snipe ignored LOS
+
+staked doesn't have it's icon??
+
+center on placement tiles
+
+Big bite went after someone who wasn't paralzed
+
+Pulse add on town with advantages
+
+goblin doesn't obey los shader
+
+Show is a charge tile follows
+
+The stalk tile should instantly disappear when you kill the stalker
+
+Does plan double play
+
+murderers missed too much
+
+Control dragon deck?
+
+Dragon is SO hard to follow

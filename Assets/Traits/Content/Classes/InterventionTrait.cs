@@ -2,6 +2,11 @@ public class InterventionTrait : Trait
 {
 	public override void CharacterAttack(CharacterAttackingMessage message)
 	{
+		if (!character.alive)
+		{
+			return;
+		}
+
 		if (message.attacker == character)
 		{
 			return;

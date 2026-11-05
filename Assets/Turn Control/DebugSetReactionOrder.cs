@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class DebugSetReactionOrder : MonoBehaviour
 {
+#if UNITY_EDITOR
 	public string characterName;
 	public List<string> reactionNames = new List<string>();
 
@@ -77,4 +78,5 @@ public class DebugSetReactionOrder : MonoBehaviour
 		}
 		return null;
 	}
+#endif
 }

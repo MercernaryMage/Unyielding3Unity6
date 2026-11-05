@@ -23,15 +23,6 @@ public class Swoop : Card
 	void ReturnFromShowingTiles()
 	{
 		int size = owningCharacter.characterDefinition.size;
-		Tuple<int, int> dir = TileGrid.directions[(int)tilesAndDirection.direction];
-		Tile startTile = TileGrid.Instance.FindCharacter(owningCharacter)[0];
-		List<Tile> trail = Trample.GetTramplePath(owningCharacter, startTile, dir, size);
-		TileGrid.Instance.RouteAICharacterToTile(owningCharacter, trail, ReturnFromRoute, false, false);
-	}
-
-	void ReturnFromRoute()
-	{
-		int size = owningCharacter.characterDefinition.size;
 		Trample.DoTrample(owningCharacter, tilesAndDirection, size, Finish, 6);
 	}
 

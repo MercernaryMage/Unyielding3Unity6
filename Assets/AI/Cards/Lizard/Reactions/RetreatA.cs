@@ -24,19 +24,6 @@ public class RetreatA : ReactionBase
 
 	public void ReturnFromShowingTiles()
 	{
-		Tuple<int, int> dir = TileGrid.directions[(int)tilesAndDirection.direction];
-		List<Tile> characterOrigin = TileGrid.Instance.FindCharacter(owningCharacter);
-		Tile startTile = characterOrigin[0];
-		List<Tile> trail = Trample.GetTramplePath(owningCharacter, startTile, dir, 4);
-		while (trail.Count > 2)
-		{
-			trail.RemoveAt(1);
-		}
-		TileGrid.Instance.RouteAICharacterToTile(owningCharacter, trail, ReturnFromRoute, false, false);
-	}
-
-	public void ReturnFromRoute()
-	{
 		Trample.DoTrample(owningCharacter, tilesAndDirection, 4, ReturnFromTrample, 6);
 	}
 

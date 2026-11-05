@@ -25,6 +25,11 @@ public class Fly : Card
 
 		owningCharacter.SetFacing(TileGrid.Instance.GetFacingDirection(owningCharacter, target));
 
+		AnimationController.Instance.ScrollToCharacter(owningCharacter, ShowAttackTiles);
+	}
+
+	void ShowAttackTiles()
+	{
 		List<Tile> attackTiles = TileGrid.Instance.FindCharacter(target);
 		AnimationController.Instance.ShowTiles(attackTiles, Tile.OverlayType.PossibleAttck, ReturnFromShowingAttackTiles);
 	}

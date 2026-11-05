@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DebugForceCharacterSetup : MonoBehaviour
 {
+#if UNITY_EDITOR
 	[Serializable]
 	public class HeroLoadout
 	{
@@ -79,4 +80,5 @@ public class DebugForceCharacterSetup : MonoBehaviour
 			}
 		}
 	}
+#endif
 }

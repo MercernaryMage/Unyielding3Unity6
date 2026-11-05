@@ -21,7 +21,30 @@ public class TownManager : SceneSingleton<TownManager>
 				return;
 			}
 		}
+		ReadyCharacters();
 		SceneManager.LoadScene("Overland");
+	}
+
+	void ReadyCharacters()
+	{
+		foreach (StorageCharacter storageCharacter in PersistenceManager.Instance.currentTeam)
+		{
+			storageCharacter.currentDetermination = storageCharacter.characterDefintion.maxDetermination;
+			storageCharacter.equipment = new List<Item>();
+			foreach (WeaponSlot weaponSlot in storageCharacter.slots)
+			{
+				if (weaponSlot.weapon != null)
+				{
+					storageCharacter.equipment.Add(weaponSlot.weapon);
+				}
+			}
+			foreach (ItemScriptableObject itemScriptableObject in storageCharacter.advantages)
+			{
+				Item item = new Item();
+				item.Init(itemScriptableObject);
+				storageCharacter.equipment.Add(item);
+			}
+		}
 	}
 
 	public void ForwardClicked()
@@ -31,8 +54,10 @@ public class TownManager : SceneSingleton<TownManager>
 
 	string GetPlayerWarning()
 	{
-		//Empty weapons
-		//not maxed out weight
+		if (PersistenceManager.Instance.GetFlag("WeaponSlotsLocked"))
+		{
+			return "";
+		}
 		string outStr = "";
 		foreach (StorageCharacter storageCharacter in PersistenceManager.Instance.currentTeam)
 		{

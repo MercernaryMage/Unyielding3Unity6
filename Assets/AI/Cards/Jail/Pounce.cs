@@ -49,8 +49,13 @@ public class Pounce
 		{
 			foreach (Character c in hitCharacters)
 			{
+				if (c.GetComponent<Stasis>() != null)
+				{
+					continue;
+				}
 				ActionController.AttackResults results = new ActionController.AttackResults();
-				ActionController.Instance.DamageCharacter(c, owningCharacter, new ActionController.AttackProfile(1, 4, 0), results);
+				results.fakeHit = true;
+				ActionController.Instance.DamageCharacter(c, owningCharacter, new ActionController.AttackProfile(1, 6, 0), results);
 				CombatLogControl.Instance.AddEntry($"Pounce deals {results.damageDealt} to {c.displayName}");
 				c.AddStatusEffect(typeof(Stun), null);
 			}

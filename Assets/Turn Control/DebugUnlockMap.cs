@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DebugUnlockMap : MonoBehaviour
 {
+#if UNITY_EDITOR
 	private void Awake()
 	{
 		if (!DebugStartup.init)
@@ -9,4 +10,5 @@ public class DebugUnlockMap : MonoBehaviour
 			OverlandManager.Instance.overrideUnlockedAll = true;
 		}
 	}
+#endif
 }

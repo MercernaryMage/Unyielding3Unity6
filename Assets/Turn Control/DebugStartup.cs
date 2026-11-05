@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DebugStartup : MonoBehaviour
 {
+#if UNITY_EDITOR
 	public static bool init = false;
 
 	public bool applyOverride;
@@ -31,5 +32,5 @@ public class DebugStartup : MonoBehaviour
 		}
 	}
 
-	
+#endif
 }

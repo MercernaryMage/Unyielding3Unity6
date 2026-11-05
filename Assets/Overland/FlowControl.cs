@@ -35,11 +35,7 @@ public class FlowControl : Singleton<FlowControl>
 		if (currentLevel == 2)
 		{
 			StorageCharacter daneCharacter = PersistenceManager.Instance.GetStorageCharacter("Dane");
-			Item item = new Item();
-			item.Init(ItemRepository.Instance.GetExactItem("Symbol of Courage"));
-			daneCharacter.slots[1].weapon = item;
-
-			daneCharacter.equipment.Add(item);
+			daneCharacter.AddItem(ItemRepository.Instance.GetExactItem("Symbol of Courage"));
 		}
 
 		if (currentLevel == 3)
@@ -97,6 +93,8 @@ public class FlowControl : Singleton<FlowControl>
 		PersistenceManager.Instance.AddUnlockedItem("Longsword");
 		PersistenceManager.Instance.AddUnlockedItem("Dagger");
 		PersistenceManager.Instance.AddUnlockedItem("Crossbow");
+
+		//other
 		PersistenceManager.Instance.AddUnlockedItem("Symbol of Courage");
 		
 

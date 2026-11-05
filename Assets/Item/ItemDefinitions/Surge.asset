@@ -54,7 +54,7 @@ MonoBehaviour:
     targetedAction:
       targetType: 0
       actionName: 
-      disqualiferFunction: 
+      disqualiferFunction: HasAction
     actionDescription: Gain 2 AP costs 1 energy
     actionDescriptionFunction: GetSurgeDescription
     actionMessage: '{0} surges.'
