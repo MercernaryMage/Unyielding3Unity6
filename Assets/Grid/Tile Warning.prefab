@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6363090891274740777, guid: eaa1c984ef92e9b438eb3cd8fffdea48, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eaa1c984ef92e9b438eb3cd8fffdea48, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileWarning
   textDisplay: {fileID: 5069522460873726968}
+  background: {fileID: 0}
 --- !u!1 &8058452826632270895
 GameObject:
   m_ObjectHideFlags: 0

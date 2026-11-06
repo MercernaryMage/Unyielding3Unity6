@@ -1109,7 +1109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc8f34818fe15c48a525f4bd2da05de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disabledSprite: {fileID: -4711079209882255965, guid: c0899fb2217d2d64aad69ceb7c2bcb4d, type: 3}
+  disabledSprite: {fileID: 21300000, guid: c0899fb2217d2d64aad69ceb7c2bcb4d, type: 3}
   cardBG: {fileID: 3315612137606600846}
   icon: {fileID: 5303448151928141982}
   actionCost: {fileID: 3666015485147726392}
@@ -1624,6 +1624,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -193.52
       objectReference: {fileID: 0}
+    - target: {fileID: 541738942156980188, guid: b8a0ab9494073034898453be703a5ac7, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 541738942156980188, guid: b8a0ab9494073034898453be703a5ac7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 30f0054d3a222d249b212e062dea1ca9, type: 3}
     - target: {fileID: 541738942283409721, guid: b8a0ab9494073034898453be703a5ac7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1772,6 +1780,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -49.940002
       objectReference: {fileID: 0}
+    - target: {fileID: 3265683513636043697, guid: b8a0ab9494073034898453be703a5ac7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5dee0f9a769e62b44871efe20c5546f6, type: 3}
     - target: {fileID: 5412073035718384458, guid: b8a0ab9494073034898453be703a5ac7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1788,6 +1800,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -84.61
       objectReference: {fileID: 0}
+    - target: {fileID: 6714089200847339584, guid: b8a0ab9494073034898453be703a5ac7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f3ae9b9fab7b12d47a3f241b54380fe7, type: 3}
     - target: {fileID: 9003083601132049911, guid: b8a0ab9494073034898453be703a5ac7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1

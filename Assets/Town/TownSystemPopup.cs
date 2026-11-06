@@ -9,10 +9,12 @@ public class TownSystemPopup : MonoBehaviour
 	public TextMeshProUGUI systemText;
 	public GameObject questButton;
 	public GameObject weaponSlot;
+	public GameObject addButton;
 
 	static string queuedMessage = "";
 	public static bool pulseQuestButton = false;
 	public static bool pulseWeaponSlot = false;
+	public static bool pulseAddButton = false;
 
 	void Start()
 	{
@@ -27,6 +29,12 @@ public class TownSystemPopup : MonoBehaviour
 			pulse.scale = .1f;
 			pulseQuestButton = false;
 			TownManager.Instance.hasWarnedPlayer = true;
+		}
+		if (pulseAddButton)
+		{
+			Pulse pulse = addButton.AddComponent<Pulse>();
+			pulse.scale = .3f;
+			pulseQuestButton = false;
 		}
 		if (pulseWeaponSlot)
 		{

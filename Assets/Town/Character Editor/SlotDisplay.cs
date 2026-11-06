@@ -64,11 +64,13 @@ public class SlotDisplay : MonoBehaviour
 			rulesTextObject.SetActive(false);
 			normal.rules.gameObject.SetActive(false);
 			normal.itemIcon.sprite = null;
+			normal.itemIcon.enabled = false;
 			((RectTransform)transform).sizeDelta = new Vector2(385, 164);
 		}
 		else
 		{
 			normal.itemIcon.sprite = item.itemImage;
+			normal.itemIcon.enabled = item.itemImage != null;
 			normal.weaponName.text = item.displayName;
 			normal.keywords.text = $"{GetActionKeywords(item, item.actions[0])}";
 			//"Range 5, 1d6 + 2";

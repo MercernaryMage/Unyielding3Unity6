@@ -116,7 +116,8 @@ public class FlowControl : Singleton<FlowControl>
 	{
 		TownSystemPopup.QueueMessage("You've unlocked advantages!  You can now change your characters advantrages in town.");
 		PersistenceManager.Instance.SetFlag("AdvantagesLocked", false);
-		
+		TownSystemPopup.pulseAddButton = true;
+
 		//give advantages
 		PersistenceManager.Instance.AddUnlockedItem("Protect");
 		PersistenceManager.Instance.AddUnlockedItem("Energy Potion");

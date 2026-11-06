@@ -888,7 +888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
+  m_Color: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1410,8 +1410,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8054106929620292135, guid: 30f0054d3a222d249b212e062dea1ca9, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 30f0054d3a222d249b212e062dea1ca9, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4128,8 +4128,8 @@ MonoBehaviour:
   outlinePrefab: {fileID: 1457452664793614734, guid: c98747e70eaff7a489a71695204ccf06, type: 3}
   useDebugMap: 0
   lastMapFunc: 
-  DebugMap: Forest3
-  DebugConfiguration: Forest/Forest3
+  DebugMap: Dragon1
+  DebugConfiguration: Dragon/Dragon Boss
 --- !u!114 &567337313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4306,8 +4306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b88c884796a7c5418f9bf108c235307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overrideRand: 0
-  seed: 712836457
+  overrideRand: 1
+  seed: 753047594
 --- !u!114 &567337325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6835,10 +6835,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
-  - David
-  - enemy
-  - Dane
   - Lenette
+  - enemy
+  - David
+  - Dane
   - Cotton
   - enemy
   - Guard 1
@@ -21505,10 +21505,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 739412351}
     m_Modifications:
+    - target: {fileID: 1806917353285783530, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ae535d1da58e1b1428d51d691b98779e, type: 3}
+    - target: {fileID: 7125460244847133491, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ae535d1da58e1b1428d51d691b98779e, type: 3}
     - target: {fileID: 8233463445692911288, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -151
       objectReference: {fileID: 0}
+    - target: {fileID: 8233463445997489456, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ae535d1da58e1b1428d51d691b98779e, type: 3}
     - target: {fileID: 8233463446612257515, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 6
@@ -21517,6 +21529,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8233463446612257516, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d0bed861cc5b2384d9140616bf31e675, type: 3}
     - target: {fileID: 8233463446739658786, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
       propertyPath: m_Name
       value: CardDisplay

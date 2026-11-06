@@ -4768,6 +4768,7 @@ MonoBehaviour:
   systemText: {fileID: 2094728521}
   questButton: {fileID: 13348061}
   weaponSlot: {fileID: 1814039553}
+  addButton: {fileID: 1526725166}
 --- !u!1 &917067110
 GameObject:
   m_ObjectHideFlags: 0

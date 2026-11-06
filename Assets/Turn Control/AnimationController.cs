@@ -21,7 +21,7 @@ public class AnimationController : SceneSingleton<AnimationController>
 			pathFollower.ResolveInstantly();
 		}
 		CancelInvoke();
-		storedAction.Invoke();
+		DoCallback();
 	}
 
 	public void ShowTiles(List<Tile> tiles, Tile.OverlayType overlayType, Action callback, Action noMovementCallback = null, float delay = 1)
@@ -52,7 +52,9 @@ public class AnimationController : SceneSingleton<AnimationController>
 
 	public void DoCallback()
 	{
-		storedAction.Invoke();
+		Action action = storedAction;
+		storedAction = null;
+		action?.Invoke();
 	}
 
 	public void DelayedCallback(float seconds, Action callback)
