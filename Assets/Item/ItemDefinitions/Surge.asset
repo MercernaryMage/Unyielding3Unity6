@@ -49,12 +49,12 @@ MonoBehaviour:
     useInstantAction: 1
     instantAction:
       actionName: Surge
-      disqualiferFunction: 
+      disqualiferFunction: HasAction
     useTargetedAction: 0
     targetedAction:
       targetType: 0
       actionName: 
-      disqualiferFunction: HasAction
+      disqualiferFunction: 
     actionDescription: Gain 2 AP costs 1 energy
     actionDescriptionFunction: GetSurgeDescription
     actionMessage: '{0} surges.'

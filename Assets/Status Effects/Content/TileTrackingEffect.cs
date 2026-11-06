@@ -11,7 +11,7 @@ public abstract class TileTrackingEffect : StatusEffect
 		ClearWarnings();
 		range = trackRange;
 		warnedTiles = GetTiles();
-		TileGrid.AddWarnings(warnedTiles);
+		TileGrid.AddWarnings(warnedTiles, Tile.OverlayType.TileWarningFollow);
 	}
 
 	public List<Tile> GetTiles()
@@ -47,14 +47,14 @@ public abstract class TileTrackingEffect : StatusEffect
 			return;
 		}
 		List<Tile> newTiles = GetTiles();
-		TileGrid.AddWarnings(newTiles);
+		TileGrid.AddWarnings(newTiles, Tile.OverlayType.TileWarningFollow);
 		ClearWarnings();
 		warnedTiles = newTiles;
 	}
 
 	void ClearWarnings()
 	{
-		TileGrid.RemoveWarnings(warnedTiles);
+		TileGrid.RemoveWarnings(warnedTiles, Tile.OverlayType.TileWarningFollow);
 		warnedTiles.Clear();
 	}
 

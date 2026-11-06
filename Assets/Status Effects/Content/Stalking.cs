@@ -42,6 +42,14 @@ public class Stalking : StatusEffect
 		});
 	}
 
+	public override void OnCharacterDied(CharacterDiedMessage characterDiedMessage)
+	{
+		if (characterDiedMessage.character == character)
+		{
+			Cleanup();
+		}
+	}
+
 	void Cleanup()
 	{
 		if (stalked != null)

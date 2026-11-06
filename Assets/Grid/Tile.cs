@@ -11,7 +11,8 @@ public class Tile : MonoBehaviour
 		PossibleAttck,
 		BlockedLOS,
 		TileWarning,
-		LOSOrigin
+		LOSOrigin,
+		TileWarningFollow
 	}
 
 	public TileScriptableObject tileScriptableObject;
@@ -28,6 +29,7 @@ public class Tile : MonoBehaviour
 	public GameObject outline;
 
 	int warningCount;
+	int followWarningCount;
 
 	public void Init(int x, int y, GameObject m, GameObject o)
 	{
@@ -196,21 +198,39 @@ public class Tile : MonoBehaviour
 		meshRenderer.material.SetColor("_BaseColor", color);
 	}
 
-	public void AddWarning()
+	public void AddWarning(OverlayType type)
 	{
+		if (type == OverlayType.TileWarningFollow)
+		{
+			++followWarningCount;
+			if (followWarningCount == 1)
+			{
+				overlay.Set(type);
+			}
+			return;
+		}
 		++warningCount;
 		if (warningCount == 1)
 		{
-			overlay.Set(OverlayType.TileWarning);
+			overlay.Set(type);
 		}
 	}
 
-	public void RemoveWarning()
+	public void RemoveWarning(OverlayType type)
 	{
+		if (type == OverlayType.TileWarningFollow)
+		{
+			--followWarningCount;
+			if (followWarningCount == 0)
+			{
+				overlay.TurnOffWarning(type);
+			}
+			return;
+		}
 		--warningCount;
 		if (warningCount == 0)
 		{
-			overlay.TurnOffWarning();
+			overlay.TurnOffWarning(type);
 		}
 	}
 }

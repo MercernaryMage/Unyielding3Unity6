@@ -17,7 +17,7 @@ public class Overlay : MonoBehaviour
 			}
 			else
 			{
-				if (i == (int)Tile.OverlayType.TileWarning)
+				if (IsWarning(i))
 				{
 					continue;
 				}
@@ -30,7 +30,7 @@ public class Overlay : MonoBehaviour
 	{
 		for (int i = 0; i < overlays.Count; ++i)
 		{
-			if (i == (int)Tile.OverlayType.TileWarning)
+			if (IsWarning(i))
 			{
 				continue;
 			}
@@ -38,8 +38,13 @@ public class Overlay : MonoBehaviour
 		}
 	}
 
-	public void TurnOffWarning()
+	bool IsWarning(int index)
 	{
-		overlays[(int)Tile.OverlayType.TileWarning].SetActive(false);
+		return index == (int)Tile.OverlayType.TileWarning || index == (int)Tile.OverlayType.TileWarningFollow;
+	}
+
+	public void TurnOffWarning(Tile.OverlayType type)
+	{
+		overlays[(int)type].SetActive(false);
 	}
 }
