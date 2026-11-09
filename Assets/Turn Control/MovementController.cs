@@ -69,7 +69,7 @@ public class MovementController : SceneSingleton<MovementController>
 		movingCharacter = character;
 		List<Tile> tiles = TileGrid.Instance.FindCharacter(character);
 
-		int range = rangeLimit >= 0 ? Mathf.Max(character.currentMovement, rangeLimit) : character.currentMovement;
+		int range = rangeLimit >= 0 ? rangeLimit : character.currentMovement;
 		List<Tile> inRangeTiles = GetAllTilesInRange(character, range);
 
 		foreach (Tile t in inRangeTiles)

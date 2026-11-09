@@ -158,6 +158,10 @@ public class Character : MonoBehaviour
 		if (component == null)
 		{
 			component = gameObject.AddComponent(statusEffectType);
+			if (data != null)
+			{
+				((StatusEffect)component).DoStack(data);
+			}
 			return component;
 		}
 		StatusEffect effect = (StatusEffect)component;

@@ -1,8 +1,68 @@
 Art
 	Trigger UI isn't finished
 
-Bad resolution
-	3440x1440
+Don't let the guard start with stagger
+
+Request reaction card art
+Stump problem again
+
+Can't click len when she is the selected character
+
+LOS tutorial
+	
+use color for energy reference in reload!  Also do icon
+
+Drop protect if everyone is dead?
+
+Keywords need to be viewable from town
+
+Well Discplined should say friendly
+
+step should not break cumbersome
+
+2nd town has a thing about lenette not having her advantages filled
+
+crushing and penetrate don't popup
+	THEY DON'T DO ANYTHING?
+
+Hunt needs to say it moves more, or move it needs to move movement value
+
+Allow rapier to not move
+
+Town thing for energy should mention energy weapons
+
+Fireball says ranged 1
+
+His shield effect is just some weird rectangle
+
+fireball and lighting aren't useable
+
+Dane has an empty weaponslot: it's the slot he can't fill
+
+Kick didn't work on Cotton?
+
+Armor wording is poor:
+	How does it stack
+	Make the text clearer it's why you can't use something
+
+Energy potion can't be used on cotton
+
+Fiery mentions deck
+
+Mention the dragon doesn't AoO?
+
+Pulse stunned
+	Show grayed out buttons
+
+Burn from every hit on the dragon?
+
+Got bubble tool tip stuck
+
+Allied color inspector
+
+Art for chop grid is all messed up on ultra wide
+
+energy potion should restore actions
 
 exe trait should be infinite AoO
 
@@ -19,8 +79,10 @@ murderers missed too much
 Control dragon deck?
 
 Dragon is SO hard to follow
-	Flare up
-		0 burning
-		burning
 
 Can't click status effects in town
+
+Status effect icons:
+	Burn
+	Fleeting courage
+	Imposed

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DebugStartup : MonoBehaviour
 {
-#if UNITY_EDITOR
-	public static bool init = false;
 
+	public static bool init = false;
+#if UNITY_EDITOR
 	public bool applyOverride;
 	public List<CharacterOverrideSetup> overrideSetups;
 	public List<ItemScriptableObject> unlockedItems;

@@ -132,7 +132,7 @@ public class Trample : Card
 		positionLerp.Init();
 	}
 
-	static Vector3 GetTokenPositionForTile(Character character, Tile tile)
+	public static Vector3 GetTokenPositionForTile(Character character, Tile tile)
 	{
 		Vector3 offset = new Vector3(character.characterDefinition.size - 1, 0, character.characterDefinition.size - 1);
 		return tile.transform.parent.TransformPoint(offset);

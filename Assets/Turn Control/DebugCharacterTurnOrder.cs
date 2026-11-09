@@ -131,5 +131,10 @@ public class DebugCharacterTurnOrder : MonoBehaviour
 		}
 		return null;
 	}
+#else
+public List<Character> GetOrderedCharacters()
+{
+return new List<Character>();
+}
 #endif
 }

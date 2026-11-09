@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using static ActionController;
 using static ActionPattern;
 
@@ -170,7 +171,10 @@ public class ActionController : SceneSingleton<ActionController>
 			if (tiles.Count == 0)
 			{
 				FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(attackingCharacter, "No Target");
-				CancelAttack(attackingCharacter);
+				if (!endActionIfNoTargets)
+				{
+					CancelAttack(attackingCharacter);
+				}
 			}
 		}
 	}
@@ -747,10 +751,13 @@ public class ActionController : SceneSingleton<ActionController>
 
 		results.damageDealt = damage;
 		defender.currentHP -= damage;
-		FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, (damage + armorAbsorbed).ToString());
 		if (profile.damageType == DamageType.Burning)
 		{
 			AddBurning(defender, damage);
+		}
+		else
+		{
+			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(defender, (damage + armorAbsorbed).ToString());
 		}
 
 		if (defender.currentHP <= 0)
@@ -978,8 +985,6 @@ public class ActionController : SceneSingleton<ActionController>
 		public Action preDamageAction;
 	}
 
-
-
 	public bool KnockBack(Character c, List<Tile> points, int distance)
 	{
 		bool flip = distance < 0;
@@ -1055,7 +1060,16 @@ public class ActionController : SceneSingleton<ActionController>
 		}
 
 		Tile finalTile = TileGrid.Instance.GetTile(startTile.x + dir.Item1 * finalIndex, startTile.y + dir.Item2 * finalIndex);
-		TileGrid.Instance.MoveCharacterToTile(c, finalTile);
+		
+		GlobalPositionLerp positionLerp = c.token.gameObject.AddComponent<GlobalPositionLerp>();
+		positionLerp.p0 = c.token.transform.position;
+		positionLerp.p1 = Trample.GetTokenPositionForTile(c, finalTile);
+		positionLerp.type = InterpolationType.Simple;
+		positionLerp.runTime = .2f;
+		positionLerp.callbackFunction = () =>
+		{
+			TileGrid.Instance.MoveCharacterToTile(c, finalTile);
+		};
 		
 		CharacterKnockbackFinishMessage characterKnockbackFinishMessage = new CharacterKnockbackFinishMessage();
 		characterKnockbackFinishMessage.knockedBackCharacter = c;
@@ -1474,7 +1488,7 @@ public class ActionController : SceneSingleton<ActionController>
 	{
 		StatusEffect.StatusEffectInitData statusEffectInitData = new StatusEffect.StatusEffectInitData();
 		statusEffectInitData.magnitude = amount;
-		Burning effect = (Burning)c.AddStatusEffect(Type.GetType("Burning"), statusEffectInitData);
-		FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(c, $"{effect.magnitude} burning");
+		c.AddStatusEffect(Type.GetType("Burning"), statusEffectInitData);
+		FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(c, $"{amount} burning");
 	}
 }

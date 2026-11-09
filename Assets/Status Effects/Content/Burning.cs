@@ -48,6 +48,11 @@ public class Burning : StatusEffect
 		magnitude += data.magnitude;
 	}
 
+	public override bool ShowStatusEffectAppliedMessage()
+	{
+		return false;
+	}
+
 	public override string GetStatusEffectKey()
 	{
 		return "Burning";

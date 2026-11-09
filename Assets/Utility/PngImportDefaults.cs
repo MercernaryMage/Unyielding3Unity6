@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using System;
 
+#if UNITY_EDITOR
 public class PngImportDefaults : AssetPostprocessor
 {
 	void OnPreprocessTexture()
@@ -14,3 +15,4 @@ public class PngImportDefaults : AssetPostprocessor
 		}
 	}
 }
+#endif
