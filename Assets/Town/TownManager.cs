@@ -61,13 +61,19 @@ public class TownManager : SceneSingleton<TownManager>
 		string outStr = "";
 		foreach (StorageCharacter storageCharacter in PersistenceManager.Instance.currentTeam)
 		{
+			int slotCount = 0;
 			foreach (WeaponSlot weaponSlot in storageCharacter.slots)
 			{
-				if (weaponSlot.weapon == null)
+				if (slotCount < storageCharacter.characterDefintion.slots.Count && weaponSlot.weapon == null)
 				{
 					outStr += $"{storageCharacter.characterDefintion.displayName} has an empty weapon slot\n";
 					break;
 				}
+				++slotCount;
+			}
+			if (PersistenceManager.Instance.GetFlag("AdvantagesLocked"))
+			{
+				continue;
 			}
 			int curentWeight = 0;
 			foreach (ItemScriptableObject item in storageCharacter.advantages)

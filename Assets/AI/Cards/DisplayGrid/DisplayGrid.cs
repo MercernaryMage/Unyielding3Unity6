@@ -176,6 +176,7 @@ public class DisplayGrid : SceneSingleton<DisplayGrid>
 			{
 				GameObject obj = Instantiate(displayPrefabs[(int)data[x + y * width].displayElement]);
 				obj.transform.SetParent(target.transform);
+				obj.transform.localScale = Vector3.one;
 				obj.transform.localPosition = new Vector3(x * 16, y * 16, 0);
 				if (data[x + y * width].direction == DisplayGridDirection.South)
 				{

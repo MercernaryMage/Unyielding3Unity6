@@ -4139,7 +4139,7 @@ MonoBehaviour:
   props: {fileID: 1652642198}
   foundationPrefab: {fileID: 347164264174509607, guid: 0835aabd35028e249b3dddaf0f644887, type: 3}
   outlinePrefab: {fileID: 1457452664793614734, guid: c98747e70eaff7a489a71695204ccf06, type: 3}
-  useDebugMap: 1
+  useDebugMap: 0
   lastMapFunc: 
   DebugMap: Dragon1
   DebugConfiguration: Dragon/Dragon Boss
@@ -6848,8 +6848,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugCharacterTurnOrder
   turnOrder:
-  - Cotton
   - Lenette
+  - Cotton
   - enemy
   - David
   - Dane

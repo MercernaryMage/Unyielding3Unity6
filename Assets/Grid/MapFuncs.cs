@@ -11,4 +11,13 @@ static public class MapFuncs
 	{
 		TurnControl.Instance.PromoteCharacterToFirst("David");
 	}
+
+	public static void ShowLOSTutorial()
+	{
+		if (!PersistenceManager.Instance.GetFlag("ShowLOSTutorial"))
+		{
+			PersistenceManager.Instance.SetFlag("ShowLOSTutorial", true);
+			CombatSystemMessage.Instance.Show("Line of Sight", "You can view what tiles can be seen from a location by holding 'z'");
+		}
+	}
 }

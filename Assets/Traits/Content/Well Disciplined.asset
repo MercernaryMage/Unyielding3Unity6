@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Well Disciplined
   m_EditorClassIdentifier: 
   displayName: Well Disciplined
-  description: AoE magic attacks automatically miss allies
+  description: Friendly AOE magic attacks automatically miss allies
   className: AutoMissAlliesWithMagicTrait
   intParams: 
   stringParams: []

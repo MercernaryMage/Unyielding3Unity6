@@ -156,7 +156,7 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 		}
 		lastMousedOverTile = mousedOverTile;
 
-		if (Input.GetMouseButton(2))
+		if (Input.GetMouseButton(2) || Input.GetKey(KeyCode.Z))
 		{
 			Tile newLOSTile = GetMousedOverTile();
 			if (LOSTile != newLOSTile)

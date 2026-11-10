@@ -154,6 +154,11 @@ public class ActionController : SceneSingleton<ActionController>
 
 		aoeType = actionPattern.aoeType;
 
+		if (aoeType == AoEType.Burst)
+		{
+			ShowBurstCenters();
+		}
+
 		if (aoeType == ActionPattern.AoEType.None)
 		{
 			List<Tile> startingTiles = TileGrid.Instance.FindCharacter(attackingCharacter);
@@ -179,9 +184,35 @@ public class ActionController : SceneSingleton<ActionController>
 		}
 	}
 
+	bool IsValidBurstCenter(Tile t)
+	{
+		return TileGrid.Instance.GetDistanceBetweenCharacterAndTile(attackingCharacter, t) <= currentAction.range;
+	}
+
+	void ShowBurstCenters()
+	{
+		foreach (Tile markedTile in markedTiles)
+		{
+			markedTile.HideOverlay(Tile.OverlayType.PossibleAttck);
+		}
+		markedTiles = TileGrid.Instance.tiles.Where(IsValidBurstCenter).ToList();
+		foreach (Tile markedTile in markedTiles)
+		{
+			markedTile.ShowOverlay(Tile.OverlayType.PossibleAttck);
+		}
+	}
+
 	public void MouseOverTile(Tile t)
 	{
 		lastMousedOverTile = t;
+		if (aoeType != AoEType.None && aoeType != AoEType.Directions)
+		{
+			if (!internalRunning)
+			{
+				ShowAoETargeting();
+			}
+			return;
+		}
 		foreach (Tile targetedTile in targetedTiles)
 		{
 			targetedTile.HideOverlay(Tile.OverlayType.Selected);
@@ -1277,6 +1308,10 @@ public class ActionController : SceneSingleton<ActionController>
 			foreach (Tile targetedTile in targetedTiles)
 			{
 				targetedTile.HideOverlay(Tile.OverlayType.Selected);
+				if (markedTiles.Contains(targetedTile))
+				{
+					targetedTile.ShowOverlay(Tile.OverlayType.PossibleAttck);
+				}
 			}
 			targetedTiles.Clear();
 
@@ -1284,6 +1319,7 @@ public class ActionController : SceneSingleton<ActionController>
 			markedTilesForGameplay = new List<Tile>(targetedTiles);
 			foreach (Tile t in targetedTiles)
 			{
+				t.HideOverlay(Tile.OverlayType.PossibleAttck);
 				t.ShowOverlay(Tile.OverlayType.Selected);
 			}
 		}
@@ -1349,7 +1385,7 @@ public class ActionController : SceneSingleton<ActionController>
 		}
 		else if (aoeType == ActionPattern.AoEType.Burst)
 		{
-			if (lastMousedOverTile != null)
+			if (lastMousedOverTile != null && IsValidBurstCenter(lastMousedOverTile))
 			{
 				return TileGrid.Instance.GetAllTilesInRange(lastMousedOverTile, aoeRange);
 			}

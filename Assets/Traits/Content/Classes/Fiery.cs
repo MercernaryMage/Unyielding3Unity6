@@ -27,10 +27,11 @@ public class Fiery : Trait
 
 		bool areAdjacent = TileGrid.Instance.CharactersAreAdjacent(message.attacker, character);
 		bool ranged = message.pattern.keywords.Contains("Ranged");
-		if (areAdjacent)
-		{
-			ActionController.AddBurning(message.attacker, 2);
-		}
+		//DRAGON REDESIGN STUFF
+		// 		if (areAdjacent)
+		// 		{
+		// 			ActionController.AddBurning(message.attacker, 2);
+		// 		}
 		if (areAdjacent && !ranged && message.backstab)
 		{
 			for (int i = 0; i < character.cards.Count; ++i)
@@ -70,16 +71,17 @@ public class Fiery : Trait
 
 	public override void OnCharacterTakeBurnDamage(CharacterTakingBurnDamageMessage message)
 	{
-		if (message.character.hero == character.hero)
-		{
-			return;
-		}
-		int dist = TileGrid.Instance.GetDistanceBetweenCharacters(character, message.character);
-		if (dist == 1)
-		{
-			return;
-		}
-		message.autoPass = true;
+		//DRAGON REDESIGN STUFF
+// 		if (message.character.hero == character.hero)
+// 		{
+// 			return;
+// 		}
+// 		int dist = TileGrid.Instance.GetDistanceBetweenCharacters(character, message.character);
+// 		if (dist == 1)
+// 		{
+// 			return;
+// 		}
+// 		message.autoPass = true;
 	}
 
 

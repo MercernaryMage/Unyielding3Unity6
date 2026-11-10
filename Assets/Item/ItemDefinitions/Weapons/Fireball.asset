@@ -30,12 +30,12 @@ MonoBehaviour:
     physical: 0
     ranged: 1
     other: 0
-    range: 1
+    range: 5
     threatRange: 0
     accuracy: 0
     damageString: 2d6M
     aoeType: 2
-    aoeRange: 2
+    aoeRange: 1
     chargesTaken: 0
     disqualifierFunc: 
     intParam: 0
@@ -58,6 +58,8 @@ MonoBehaviour:
       disqualiferFunction: 
     actionDescription: 
     actionDescriptionFunction: 
+    actionMessage: 
+    fakeActionMessage: 
     uniqueName: 
     forcedTarget: {fileID: 0}
     cannotBeUsedOnOthers: 0

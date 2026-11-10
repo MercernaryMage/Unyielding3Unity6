@@ -7,6 +7,10 @@ put an eye icon over the archer when you locked on
 Shield glare debuff should probably be shown visually on the tokens
     Is this universally true?
 
+STEP IS HARD CODED
+    MovementController.Instance.ShowMovement(c, 2);
+    
+
 Tile indication about which unit is clicked
 Knight is colored modded - this is not okay
 

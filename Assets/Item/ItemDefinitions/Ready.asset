@@ -55,7 +55,7 @@ MonoBehaviour:
       targetType: 0
       actionName: 
       disqualiferFunction: 
-    actionDescription: Reloads all weapons and restores all energy.
+    actionDescription: Reloads all weapons and restores all <sprite=1>energy.
     actionDescriptionFunction: 
     actionMessage: '{0} uses Ready.'
     fakeActionMessage: 

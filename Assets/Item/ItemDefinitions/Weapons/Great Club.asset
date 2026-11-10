@@ -29,6 +29,7 @@ MonoBehaviour:
     attack: 1
     physical: 1
     ranged: 0
+    other: 0
     range: 1
     threatRange: 1
     accuracy: 0
@@ -39,9 +40,10 @@ MonoBehaviour:
     disqualifierFunc: 
     intParam: 0
     stringParam: 
+    chargeEffectScriptableObject: {fileID: 0}
     effectScriptableObject: {fileID: 11400000, guid: c9590e6d7be7aca4893587a6cc83aa8c, type: 2}
-    keywords:
-    - Crushing
+    hitEffectScriptableObject: {fileID: 0}
+    keywords: []
     postActionCommands: []
     postDamageFunctionName: 
     useInstantAction: 0
@@ -55,8 +57,10 @@ MonoBehaviour:
       disqualiferFunction: 
     actionDescription: 
     actionDescriptionFunction: 
+    actionMessage: 
+    fakeActionMessage: 
     uniqueName: 
     forcedTarget: {fileID: 0}
     cannotBeUsedOnOthers: 0
-  keywords: penetrate
+  keywords: Breach
   displayable: 1
