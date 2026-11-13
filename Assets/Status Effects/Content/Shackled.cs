@@ -44,4 +44,9 @@ public class Shackled : StatusEffect
 	{
 		return true;
 	}
+
+	public override bool IconShouldPulse()
+	{
+		return true;
+	}
 }

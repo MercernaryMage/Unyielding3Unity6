@@ -62,7 +62,7 @@ public class MovementController : SceneSingleton<MovementController>
 
 	public Action onMoveComplete;
 
-    public void ShowMovement(Character character, int rangeLimit = -1)
+    public void ShowMovement(Character character, int rangeLimit = -1, bool includeOwnTiles = false)
 	{
 		HideMovement();
 		running = true;
@@ -74,7 +74,7 @@ public class MovementController : SceneSingleton<MovementController>
 
 		foreach (Tile t in inRangeTiles)
 		{
-			if (t.character == null)
+			if (t.character == null || (includeOwnTiles && t.character == character))
 			{
 				t.ShowOverlay(Tile.OverlayType.PossibleMovement);
 				currentPossibleTiles.Add(t);

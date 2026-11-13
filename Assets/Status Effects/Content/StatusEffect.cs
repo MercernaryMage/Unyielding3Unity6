@@ -30,7 +30,7 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 		{
 			character.healthBarController.AddEffectIcon(this);
 		}
-		
+
 	}
 
 	public virtual void EffectBeingRemoved()
@@ -185,6 +185,11 @@ public abstract class StatusEffect : MonoBehaviour, IMessageReceiver
 	public virtual string GetStatusEffectKey()
 	{
 		return "";
+	}
+
+	public virtual bool IconShouldPulse()
+	{
+		return false;
 	}
 
 	public string GetExplanationName()

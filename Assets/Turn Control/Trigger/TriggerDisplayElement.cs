@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TriggerDisplayElement : MonoBehaviour
 {
     public TextMeshProUGUI triggerNameText;
+	public Image characterHead;
 
 	Trigger trigger;
 
@@ -13,6 +15,7 @@ public class TriggerDisplayElement : MonoBehaviour
 	{
 		trigger = t;
 		triggerNameText.text = t.GetTitle();
+		characterHead.sprite = t.owningCharacter.characterDefinition.characterSmallHead;
 	}
 
 	public void Click()

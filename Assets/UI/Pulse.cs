@@ -15,6 +15,11 @@ public class Pulse : MonoBehaviour
         time = 0;
 	}
 
+	public void Set(float s)
+	{
+        scale = s;
+	}
+
 	// Update is called once per frame
 	void Update()
     {

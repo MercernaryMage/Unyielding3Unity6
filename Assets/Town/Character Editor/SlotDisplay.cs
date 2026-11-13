@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static CharacterScriptableObject;
@@ -72,7 +73,18 @@ public class SlotDisplay : MonoBehaviour
 			normal.itemIcon.sprite = item.itemImage;
 			normal.itemIcon.enabled = item.itemImage != null;
 			normal.weaponName.text = item.displayName;
-			normal.keywords.text = $"{GetActionKeywords(item, item.actions[0])}";
+			List<string> strings = GetActionKeywordsAsList(item, item.actions[0]);
+			string finalString = "";
+			for (int j = 0; j < strings.Count; ++j)
+			{
+				if (j != 0)
+				{
+					finalString += ", ";
+				}
+				string translated = Util.TranslateKeyword(strings[j]);
+				finalString += $"<u>{translated}</u>";
+			}
+			normal.keywords.text = finalString;
 			//"Range 5, 1d6 + 2";
 			//"Range 20, Blast 1, 2d6"
 			//range, AOE, damage

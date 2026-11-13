@@ -39,7 +39,7 @@ public class ActionToolTip : MonoBehaviour
 
 		if (!string.IsNullOrEmpty(reason))
 		{
-			bodyText.text = $"<b>{reason}</b>\n\n{bodyText.text}";
+			bodyText.text = $"<color=#881111><b>{reason}</b></color>\n\n{bodyText.text}";
 		}
 		Canvas.ForceUpdateCanvases();
 		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)bodyText.transform.parent);

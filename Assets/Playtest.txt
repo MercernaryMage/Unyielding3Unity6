@@ -1,40 +1,34 @@
-Art
-	Trigger UI isn't finished
+1hp bar looks very empty
 
-Don't let the guard start with stagger
+Totally prevent stuff after victory
+
+reaction swap screen is busto
+
+bug with revealing reactions
+	Can't reveal if there is nothing to reveal
+
+killed a crossbowman playing snipe on the AoO
+	Broke game
+
+why not just left click them again for placing
+
+downed character can make AoO?
+
+YOU PUT THE LOS TUTORIAL IN THE WRONG MAP
 
 Stump problem again
 
 Drop protect if everyone is dead?
-
-Keywords need to be viewable from town
-
-step should not break cumbersome
-
-Hunt needs to say it moves more, or move it needs to move movement value
-
-Allow rapier to not move
-
-Town thing for energy should mention energy weapons
+	Do a redraw for Shield rush
+	THAT WON'T WORK!!!
+	This is a generic card, can't do that
 
 Lightning bolt and shield both have broken effect displays:
 	multi image problem
 
-surge currently don't let you use it until AP is 0:
-	You can't reuse stuff easily
-
-Armor wording is poor:
-	How does it stack
-	Make the text clearer it's why you can't use something
-
-Energy potion can't be used on cotton
-
 Fiery mentions deck
 
 Mention the dragon doesn't AoO?
-
-Pulse stunned
-	Show grayed out buttons
 
 Got bubble tool tip stuck
 

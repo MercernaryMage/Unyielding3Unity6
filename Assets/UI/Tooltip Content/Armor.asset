@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Armor
   m_EditorClassIdentifier: 
   text: Protects HP until depleted.  Refills each round, but reduces in maximum amount
-    by half the damage taken.
+    by half the damage taken.  Doesn't stack.

@@ -19,7 +19,7 @@ MonoBehaviour:
   movement: 2
   armor: 0
   toughness: 0
-  maxHP: 10
+  maxHP: 30
   maxEnergy: 0
   maxThreshold: 1
   evasion: 2
@@ -37,11 +37,12 @@ MonoBehaviour:
   cunning: 0
   prowess: 0
   cards:
-  - {fileID: 11400000, guid: d2604117657833246ac241f07c4ee32a, type: 2}
+  - {fileID: 11400000, guid: 8e653e2281ab8964b8231526d1f980dd, type: 2}
   reactions:
-  - {fileID: 11400000, guid: f630f8ebde45b2d4da622925a6afba06, type: 2}
+  - {fileID: 11400000, guid: 04351f384bf60b44b8f6e759b7fc3ffa, type: 2}
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}
+  characterSmallHead: {fileID: 0}
   traits:
   - {fileID: 11400000, guid: 18d98d2bec48b214abcca61c24e83e6a, type: 2}
   subclasses: []

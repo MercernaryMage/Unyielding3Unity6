@@ -103,7 +103,7 @@ public class FlowControl : Singleton<FlowControl>
 
 	public void CompleteMeadow()
 	{
-		TownSystemPopup.QueueMessage("You've unlocked energy!  Use it to surge and use powerful abilities.");
+		TownSystemPopup.QueueMessage("You've unlocked energy!  It is used on new weapons or the Surge ability.");
 		PersistenceManager.Instance.SetFlag("EnergyLocked", false);
 		//give weapons
 		PersistenceManager.Instance.AddUnlockedItem("Fireball");

@@ -1132,8 +1132,8 @@ public class ActionController : SceneSingleton<ActionController>
 			endActionIfNoTargets = true;
 			ShowAttackableTiles(stepCharacter, stepItem, stepAction);
 		};
-		MovementController.Instance.ShowMovement(c, 2);
-		if (MovementController.Instance.currentPossibleTiles.Count == 0)
+		MovementController.Instance.ShowMovement(c, 2, true);
+		if (MovementController.Instance.currentPossibleTiles.All(t => t.character == c))
 		{
 			ExecuteStep();
 		}

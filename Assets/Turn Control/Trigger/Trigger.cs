@@ -42,7 +42,7 @@ public class AttackOfOpportunityTrigger : Trigger
 
 	public override string GetTitle()
 	{
-		return $"{attacker.displayName}: {item.itemDefinition.displayName}";
+		return $"{item.itemDefinition.displayName}";
 	}
 }
 
@@ -72,6 +72,6 @@ public class AttackFairyTrigger : Trigger
 
 	public override string GetTitle()
 	{
-		return $"{attacker.displayName}: Attack Fairy";
+		return $"Attack Fairy";
 	}
 }

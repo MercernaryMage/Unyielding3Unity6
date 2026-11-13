@@ -33,7 +33,7 @@ public class ActionTypes : MonoBehaviour
 		string str = pattern.actionMessage;
 		if (pattern.storedPattern != null)
 		{
-			str = pattern.fakeActionMessage;
+			str = pattern.storedPattern.fakeActionMessage;
 		}
 		string finalString = string.Format(str, c1.name, c2.name);
 		CombatLogControl.Instance.AddEntry(finalString);
@@ -412,15 +412,6 @@ public class ActionTypes : MonoBehaviour
 		if (c.currentHP >= c.maxHP)
 		{
 			return new Tuple<bool, string>(false, $"{c.displayName} is full hp");
-		}
-		return new Tuple<bool, string>(true, "");
-	}
-
-	static public Tuple<bool, string> HasAction(Character c, ActionPattern pattern)
-	{
-		if (c.actionCount > 1)
-		{
-			return new Tuple<bool, string>(false, $"{c.displayName} has action points already");
 		}
 		return new Tuple<bool, string>(true, "");
 	}

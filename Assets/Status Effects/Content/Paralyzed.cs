@@ -39,4 +39,8 @@ public class Paralyzed : StatusEffect
 		return "status_symbol_paralyzed";
 	}
 
+	public override bool IconShouldPulse()
+	{
+		return true;
+	}
 }

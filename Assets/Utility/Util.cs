@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using UnityEngine.Windows;
 using System.Text.RegularExpressions;
 using UnityEngine.Profiling;
+using UnityEngine.Rendering;
 
 
 public static class Util
@@ -608,6 +609,19 @@ public static class Util
 		}
 
 		return outTiles;
+	}
+
+	static public string TranslateKeyword(string s)
+	{
+		if (s.Contains("Guaranteed"))
+		{
+			return "Guaranteed";
+		}
+		if (s.Contains("Wreck"))
+		{
+			return "Wreck";
+		}
+		return s;
 	}
 }
 

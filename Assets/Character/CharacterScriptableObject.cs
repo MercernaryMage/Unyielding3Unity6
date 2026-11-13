@@ -58,6 +58,7 @@ public class CharacterScriptableObject : ScriptableObject
 
     public Sprite bigPortrait;
     public Sprite battlePortrait;
+    public Sprite characterSmallHead;
 
     public List<TraitScriptableObject> traits;
     public List<Subclass> subclasses;

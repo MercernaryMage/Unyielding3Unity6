@@ -26,11 +26,29 @@ public class StatusEffectDisplayGroup : MonoBehaviour
 		createdObjects.Clear();
 	}
 
+	GameObject CreateEffectDisplay()
+	{
+		GameObject obj = Instantiate(displayItemPrefab);
+		createdObjects.Add(obj);
+		obj.transform.SetParent(content);
+		obj.transform.localRotation = Quaternion.identity;
+		obj.transform.localScale = Vector3.one;
+		return obj;
+	}
+
 	public void Set(Character c)
 	{
 		Clear();
 
 		StatusEffect[] effects = c.gameObject.GetComponents<StatusEffect>();
+
+		if (c.characterDefinition.isMinion)
+		{
+			GameObject obj = CreateEffectDisplay();
+			
+			obj.GetComponent<StatusEffectDisplayItem>().Set("Minion", "When all non minions are dead victory is achieved.", rotate);
+		}
+
 		foreach (StatusEffect effect in effects)
 		{
 			if (!effect.enabled)
@@ -38,12 +56,8 @@ public class StatusEffectDisplayGroup : MonoBehaviour
 				continue;
 			}
 
-			GameObject obj = Instantiate(displayItemPrefab);
-			createdObjects.Add(obj);
-			obj.transform.SetParent(content);
+			GameObject obj = CreateEffectDisplay();
 			obj.GetComponent<StatusEffectDisplayItem>().Set(effect, rotate);
-			obj.transform.localRotation = Quaternion.identity;
-			obj.transform.localScale = Vector3.one;
 		}
 
 		for (int i = 0; i < createdObjects.Count; i++)

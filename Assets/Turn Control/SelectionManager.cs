@@ -241,6 +241,12 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 			{
 				if (MovementController.Instance.running)
 				{
+					if (ActionController.Instance.stepRunning && t.character != null &&
+						t.character == MovementController.Instance.movingCharacter)
+					{
+						ActionController.Instance.ExecuteStep();
+						return;
+					}
 					if (MovementController.Instance.HandleClick())
 					{
 						return;

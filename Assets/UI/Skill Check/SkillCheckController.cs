@@ -15,7 +15,7 @@ public class SkillCheckController : SceneSingleton<SkillCheckController>
 
 	public GameObject content;
 
-	public List<CanvasRenderer> canvasRenderers = new List<CanvasRenderer>();
+	public List<CanvasGroup> canvasRenderers = new List<CanvasGroup>();
 
     public TextMeshProUGUI title;
     public TextMeshProUGUI difficulty;
@@ -47,17 +47,17 @@ public class SkillCheckController : SceneSingleton<SkillCheckController>
 
 		if (type == SkillCheckType.Cunning)
 		{
-			title.text = "Cunning Skill Check";
-			bonus.text = $"{c.displayName}'s bonus: {c.characterDefinition.cunning}";
+			title.text = "Cunning Check";
+			bonus.text = GetCombo($"{c.displayName}'s bonus", $"{c.characterDefinition.cunning}");
 		}
 		else
 		{
-			title.text = "Prowess Skill Check";
-			bonus.text = $"{c.displayName}'s bonus: {c.characterDefinition.prowess}";
+			title.text = "Prowess Check";
+			bonus.text = GetCombo($"{c.displayName}'s bonus", $"{c.characterDefinition.prowess}");
 		}
-		this.difficulty.text = $"Difficulty: {difficulty}";
+		this.difficulty.text = GetCombo($"Difficulty", $"{difficulty}");
 		storedRoll = Util.RollDice(1, 20);
-		check.text = $"Skill Check Result: {storedRoll}";
+		check.text = GetCombo($"Dice Result", $"{storedRoll}");
 		storedBonus = type == SkillCheckType.Cunning ? c.characterDefinition.cunning : c.characterDefinition.prowess;
 		storedResult = storedRoll + storedBonus;
 		if (storedResult >= difficulty)
@@ -71,10 +71,15 @@ public class SkillCheckController : SceneSingleton<SkillCheckController>
 			result.text = "FAILURE";
 		}
 
-		foreach (CanvasRenderer renderer in canvasRenderers)
+		foreach (CanvasGroup renderer in canvasRenderers)
 		{
-			renderer.SetAlpha(0);
+			renderer.alpha = 0;
 		}
+	}
+
+	string GetCombo(string s1, string s2)
+	{
+		return $"<b><color=#8E5911>{s1}</color>\n<size=42>{s2}</size></b>";
 	}
 
 	private void Update()
@@ -93,7 +98,12 @@ public class SkillCheckController : SceneSingleton<SkillCheckController>
 				
 				return;
 			}
-			canvasRenderers[step].SetAlpha(1);	
+			CanvasGroupLerper canvasGroupLerper = canvasRenderers[step].gameObject.AddComponent<CanvasGroupLerper>();
+			canvasGroupLerper.a0 = 0;
+			canvasGroupLerper.a1 = 1;
+			canvasGroupLerper.runTime = .1f;
+			canvasGroupLerper.Init();
+
 		}
 	}
 

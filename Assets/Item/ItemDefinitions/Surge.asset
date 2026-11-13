@@ -49,7 +49,7 @@ MonoBehaviour:
     useInstantAction: 1
     instantAction:
       actionName: Surge
-      disqualiferFunction: HasAction
+      disqualiferFunction: 
     useTargetedAction: 0
     targetedAction:
       targetType: 0

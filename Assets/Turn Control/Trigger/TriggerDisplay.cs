@@ -57,6 +57,7 @@ public class TriggerDisplay : SceneSingleton<TriggerDisplay>
 		obj.GetComponent<TriggerDisplayElement>().Set(trigger);
 		obj.transform.SetParent(target);
 		obj.transform.SetAsFirstSibling();
+		obj.transform.localScale = Vector3.one * .75f;
 		createdObjects.Add(new Tuple<GameObject, Trigger>(obj,trigger));
 	}
 

@@ -29,6 +29,7 @@ MonoBehaviour:
     attack: 0
     physical: 1
     ranged: 0
+    other: 0
     range: 0
     threatRange: 0
     accuracy: 0
@@ -56,8 +57,10 @@ MonoBehaviour:
       disqualiferFunction: 
     actionDescription: Gives 2 armor.
     actionDescriptionFunction: 
+    actionMessage: 
+    fakeActionMessage: 
     uniqueName: 
     forcedTarget: {fileID: 0}
     cannotBeUsedOnOthers: 0
-  keywords: shield
+  keywords: Shield
   displayable: 1

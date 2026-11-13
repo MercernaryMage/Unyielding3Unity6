@@ -17,4 +17,8 @@ public class Stun : StatusEffect
 		return "Stunned";
 	}
 
+	public override bool IconShouldPulse()
+	{
+		return true;
+	}
 }

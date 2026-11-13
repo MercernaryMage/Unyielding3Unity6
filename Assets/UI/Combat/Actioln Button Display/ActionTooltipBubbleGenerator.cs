@@ -39,7 +39,7 @@ public class ActionTooltipBubbleGenerator : MonoBehaviour
 		foreach (string str in values)
 		{
 			GameObject obj = Instantiate(bubblePrefab);
-			string keyword = Translate(str);
+			string keyword = Util.TranslateKeyword(str);
 			obj.GetComponent<ActionButtonTooiltipKeyword>().Set(str, keyword);
 			obj.name = str;
 			createdBubbles.Add(obj);
@@ -113,14 +113,5 @@ public class ActionTooltipBubbleGenerator : MonoBehaviour
 			run += tempWidth / 2;
 			run += unitPadding;
 		}
-	}
-
-	string Translate(string str)
-	{
-		if (str.Contains("Guaranteed"))
-		{
-			return "Guaranteed";
-		}
-		return str;
 	}
 }

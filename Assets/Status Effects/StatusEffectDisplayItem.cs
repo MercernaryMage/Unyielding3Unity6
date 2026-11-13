@@ -10,6 +10,7 @@ public class StatusEffectDisplayItem : MonoBehaviour, IPointerEnterHandler, IPoi
 	bool rotate;
     public Image icon;
 
+	public GameObject body;
 	public GameObject explanationObject;
 
 	public TextMeshProUGUI titleText;
@@ -26,6 +27,21 @@ public class StatusEffectDisplayItem : MonoBehaviour, IPointerEnterHandler, IPoi
 		icon.sprite = StatusEffectIconRepository.Instance.GetExactIcon(effect.GetIconName());
 		titleText.text = effect.GetExplanationName();
 		bodyText.text = effect.GetExplanationContent();
+		if (effect.IconShouldPulse())
+		{
+			icon.gameObject.AddComponent<Pulse>().Set(0.25f);
+			body.gameObject.AddComponent<Pulse>().Set(0.25f);
+		}
+
+		this.rotate = rotate;
+	}
+
+	public void Set(string title, string body, bool rotate)
+	{
+		icon.sprite = StatusEffectIconRepository.Instance.GetExactIcon("");
+		titleText.text = title;
+		bodyText.text = body;
+
 		this.rotate = rotate;
 	}
 
