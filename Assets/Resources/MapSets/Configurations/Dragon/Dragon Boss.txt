@@ -32,5 +32,6 @@
     }
   ],
   "mapMessageTitle": "",
-  "mapMessageBody": ""
+  "mapMessageBody": "",
+  "preFightFunc": "RigDragon"
 }

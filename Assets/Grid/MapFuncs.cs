@@ -28,4 +28,21 @@ static public class MapFuncs
 			CombatSystemMessage.Instance.Show("Line of Sight", "You can view what tiles can be seen from a location by holding 'z'");
 		}
 	}
+
+	public static void RigDragon()
+	{
+		Character c = BattleController.Instance.enemies[0];
+		Util.BringCardToTopOfDeck(c, "Bite");
+
+		for (int i = 0; i < c.reactions.Count; ++i)
+		{
+			if (c.reactions[i].normalReaction.GetCardName() == "Wound")
+			{
+				Reaction r = c.reactions[i];
+				c.reactions.RemoveAt(i);
+				c.reactions.Insert(0, r);
+				break;
+			}
+		}
+	}
 }

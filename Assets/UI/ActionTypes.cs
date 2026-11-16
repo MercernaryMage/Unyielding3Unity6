@@ -339,6 +339,7 @@ public class ActionTypes : MonoBehaviour
 			c.actionCount += pattern.intParam;
 			FloatingCombatNumberController.Instance.QueueFloatingCombatNumber(c, $"+{pattern.intParam} actions");
 			PayActionPatternCost(c, pattern);
+			c.ResetActions(false);
 		}
 		
 	}

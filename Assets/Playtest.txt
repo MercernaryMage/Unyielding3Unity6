@@ -1,5 +1,7 @@
 Totally prevent stuff after victory
 
+Can't click status effects in town
+
 reaction swap screen is busto
 
 Drop protect if everyone is dead?
@@ -14,27 +16,13 @@ Fiery mentions deck
 
 Mention the dragon doesn't AoO?
 
-energy potion should restore actions
-
 exe trait should be infinite AoO
 
 snipe ignored LOS
 
-center on placement tiles
+center camera on placement tiles
 
 Big bite went after someone who wasn't paralzed
 
 Does plan double play
 
-murderers missed too much
-
-Control dragon deck?
-
-Dragon is SO hard to follow
-
-Can't click status effects in town
-
-Status effect icons:
-	Burn
-	Fleeting courage
-	Imposed
