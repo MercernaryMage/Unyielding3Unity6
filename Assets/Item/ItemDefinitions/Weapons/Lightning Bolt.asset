@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lightning Bolt
   m_EditorClassIdentifier: 
   displayName: Lightning Bolt
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: dabdcd6eac996fb4b8cfb1af4c03693f, type: 3}
   weight: 0
   weapon: 1
   slotType: 1
@@ -29,6 +29,7 @@ MonoBehaviour:
     attack: 1
     physical: 0
     ranged: 1
+    other: 0
     range: 10
     threatRange: 0
     accuracy: 0
@@ -57,6 +58,8 @@ MonoBehaviour:
       disqualiferFunction: 
     actionDescription: 
     actionDescriptionFunction: 
+    actionMessage: 
+    fakeActionMessage: 
     uniqueName: 
     forcedTarget: {fileID: 0}
     cannotBeUsedOnOthers: 0

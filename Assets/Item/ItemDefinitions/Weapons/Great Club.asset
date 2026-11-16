@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Great Club
   m_EditorClassIdentifier: 
   displayName: Great Club
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: d6bb0098465ba7547ba0a09532ab460c, type: 3}
   weight: 0
   weapon: 1
   slotType: 2

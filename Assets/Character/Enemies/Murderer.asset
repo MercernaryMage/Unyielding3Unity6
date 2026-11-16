@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: 1
   displayName: Murderer
-  model: {fileID: 2370772967260149315, guid: 685ee9dfd6affd442bed7a1fd029d948, type: 3}
+  model: {fileID: 6595289190246238416, guid: 76911a8ce7ad17142858b3a2afa70ea0, type: 3}
   size: 1
   movement: 4
   armor: 6
@@ -45,6 +45,7 @@ MonoBehaviour:
   reactions: []
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}
+  characterSmallHead: {fileID: 0}
   traits:
   - {fileID: 11400000, guid: 3b1323f54aabb3a4fa373d3acd143e47, type: 2}
   subclasses: []

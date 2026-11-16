@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sparks
   m_EditorClassIdentifier: 
   displayName: Sparks
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: 81f9ba96733577d47b150e966351e2b6, type: 3}
   weight: 0
   weapon: 1
   slotType: 1
@@ -58,6 +58,8 @@ MonoBehaviour:
       disqualiferFunction: 
     actionDescription: 
     actionDescriptionFunction: 
+    actionMessage: 
+    fakeActionMessage: 
     uniqueName: 
     forcedTarget: {fileID: 0}
     cannotBeUsedOnOthers: 0

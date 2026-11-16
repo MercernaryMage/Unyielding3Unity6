@@ -56,5 +56,6 @@
     },
   ],
   "mapMessageTitle": "",
-  "mapMessageBody": ""
+  "mapMessageBody": "",
+  "preFightFunc": "ShowLOSTutorial"
 }

@@ -55,4 +55,9 @@ public class Imposed : StatusEffect
 	{
 		return false;
 	}
+
+	public override string GetIconName()
+	{
+		return "status_symbol_imposed";
+	}
 }

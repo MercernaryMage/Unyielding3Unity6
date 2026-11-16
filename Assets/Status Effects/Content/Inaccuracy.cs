@@ -32,4 +32,9 @@ public class Inaccuracy : StatusEffect
 	{
 		++stack;
 	}
+
+	public override string GetIconName()
+	{
+		return "status_symbol_accuracy";
+	}
 }

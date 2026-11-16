@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GenericTooltip : SceneSingleton<GenericTooltip>
 {
@@ -39,6 +40,10 @@ public class GenericTooltip : SceneSingleton<GenericTooltip>
 
 	void Update()
 	{
+		if (!EventSystem.current.IsPointerOverGameObject())
+		{
+			targetAlpha = 0f;
+		}
 		canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, targetAlpha, fadeSpeed * Time.deltaTime);
 	}
 }

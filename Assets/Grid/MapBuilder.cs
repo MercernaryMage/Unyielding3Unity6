@@ -306,7 +306,11 @@ public class MapBuilder : SceneSingleton<MapBuilder>
 
 	bool UsingDebugLevel()
 	{
+#if UNITY_EDITOR
 		return useDebugMap;
+#else
+		return false;
+#endif
 	}
 
 	LevelConfiguration GetLevelConfiguration(int i)

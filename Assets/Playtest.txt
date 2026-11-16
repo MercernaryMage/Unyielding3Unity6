@@ -1,22 +1,6 @@
-1hp bar looks very empty
-
 Totally prevent stuff after victory
 
 reaction swap screen is busto
-
-bug with revealing reactions
-	Can't reveal if there is nothing to reveal
-
-killed a crossbowman playing snipe on the AoO
-	Broke game
-
-why not just left click them again for placing
-
-downed character can make AoO?
-
-YOU PUT THE LOS TUTORIAL IN THE WRONG MAP
-
-Stump problem again
 
 Drop protect if everyone is dead?
 	Do a redraw for Shield rush
@@ -29,8 +13,6 @@ Lightning bolt and shield both have broken effect displays:
 Fiery mentions deck
 
 Mention the dragon doesn't AoO?
-
-Got bubble tool tip stuck
 
 energy potion should restore actions
 

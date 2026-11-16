@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Protect
   m_EditorClassIdentifier: 
   displayName: Protect
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: 424468656b7d2724ca01eb401fd1eaf9, type: 3}
   weight: 1
   weapon: 1
   slotType: 1
@@ -29,6 +29,7 @@ MonoBehaviour:
     attack: 0
     physical: 0
     ranged: 0
+    other: 0
     range: 5
     threatRange: 0
     accuracy: 0
@@ -39,6 +40,9 @@ MonoBehaviour:
     disqualifierFunc: 
     intParam: 3
     stringParam: 
+    chargeEffectScriptableObject: {fileID: 0}
+    effectScriptableObject: {fileID: 0}
+    hitEffectScriptableObject: {fileID: 0}
     keywords: []
     postActionCommands: []
     postDamageFunctionName: 
@@ -53,6 +57,8 @@ MonoBehaviour:
       disqualiferFunction: CanBlockOther
     actionDescription: Gives 3 armor.
     actionDescriptionFunction: 
+    actionMessage: 
+    fakeActionMessage: 
     uniqueName: 
     forcedTarget: {fileID: 0}
     cannotBeUsedOnOthers: 0

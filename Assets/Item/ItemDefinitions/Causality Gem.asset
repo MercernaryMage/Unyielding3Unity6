@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Causality Gem
   m_EditorClassIdentifier: 
   displayName: Causality Gem
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: 6e801d5f9a99e9f40a5c6e0a2d05261d, type: 3}
   weight: 2
   weapon: 0
   slotType: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
     targetedAction:
       targetType: 1
       actionName: Behold
-      disqualiferFunction: IsScanableReactions
+      disqualiferFunction: 
     actionDescription: Reveals the targets next two reaction cards and lets you change
       the order of them.
     actionDescriptionFunction: 

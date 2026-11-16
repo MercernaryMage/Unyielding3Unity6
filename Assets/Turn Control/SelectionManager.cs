@@ -27,6 +27,8 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 	Tile lastMousedOverTile;
 	Tile lastPlacementTile;
 
+	public GameObject terrainDescription;
+
 	List<RaycastResult> GetUIRaycast()
 	{
 		PointerEventData pointerData = new PointerEventData(EventSystem.current);
@@ -68,7 +70,6 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 			panAllowed = !mouseDownRejected && GetUIRaycast().Count == 0;
 		}
 
-		//why 17.14f?  It's just some arbitrary height above the ground plane to make sure we don't clip into th ground.
 		if (Input.GetMouseButton(0) && panAllowed && !cameraMoving)
 		{
 			Vector3 mouseDelta = Input.mousePosition - lastMousePos;
@@ -79,6 +80,7 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 				float scrollScaleY = 10 / Camera.main.orthographicSize * 27;
 				Camera.main.transform.position += Camera.main.transform.right * (-mouseDelta.x / scrollScaleX);
 				Camera.main.transform.position += Camera.main.transform.up * (-mouseDelta.y / scrollScaleY);
+				//why 17.14f?  It's just some arbitrary height above the ground plane to make sure we don't clip into th ground.
 				Camera.main.transform.position = new Vector3(Camera.main.transform.position.x,
 															 17.14f,
 															 Camera.main.transform.position.z);
@@ -330,7 +332,11 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 
 	public void MouseEnterTile(Tile t)
 	{
-		if (t.character != null)
+        if (t.tileScriptableObject.blocksLOS)
+        {
+			terrainDescription.SetActive(true);
+		}
+        if (t.character != null)
 		{
 			TurnControlDisplay.Instance.ChangeHighlightState(t.character, true);
 		}
@@ -347,6 +353,7 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 
 	public void MouseExitTile(Tile t)
 	{
+		terrainDescription.SetActive(false);
 		if (t.character != null)
 		{
 			TurnControlDisplay.Instance.ChangeHighlightState(t.character, false);
@@ -452,16 +459,11 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 
 		BattleController.Instance.SetPlacementPreviewTile(mousedOverTile);
 
-		if (Input.GetMouseButtonDown(1))
-		{
-			clickVec = Input.mousePosition;
-		}
-
-		if (!Input.GetMouseButtonUp(0) && !Input.GetMouseButtonUp(1))
+		if (!Input.GetMouseButtonUp(0))
 		{
 			return;
 		}
-		if (Input.GetMouseButtonUp(0) && mouseDownRejected)
+		if (mouseDownRejected)
 		{
 			return;
 		}
@@ -478,6 +480,6 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 			return;
 		}
 
-		BattleController.Instance.TileClicked(mousedOverTile, Input.GetMouseButtonUp(1));
+		BattleController.Instance.TileClicked(mousedOverTile);
 	}
 }

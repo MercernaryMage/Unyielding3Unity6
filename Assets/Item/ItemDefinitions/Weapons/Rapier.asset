@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rapier
   m_EditorClassIdentifier: 
   displayName: Rapier
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: b2c542182d618e44e93f94fe58d28556, type: 3}
   weight: 0
   weapon: 1
   slotType: 0
@@ -29,6 +29,7 @@ MonoBehaviour:
     attack: 1
     physical: 1
     ranged: 0
+    other: 0
     range: 1
     threatRange: 1
     accuracy: 0
@@ -39,7 +40,9 @@ MonoBehaviour:
     disqualifierFunc: 
     intParam: 0
     stringParam: 
+    chargeEffectScriptableObject: {fileID: 0}
     effectScriptableObject: {fileID: 11400000, guid: c9590e6d7be7aca4893587a6cc83aa8c, type: 2}
+    hitEffectScriptableObject: {fileID: 0}
     keywords: []
     postActionCommands: []
     postDamageFunctionName: 
@@ -54,6 +57,8 @@ MonoBehaviour:
       disqualiferFunction: 
     actionDescription: 
     actionDescriptionFunction: 
+    actionMessage: 
+    fakeActionMessage: 
     uniqueName: 
     forcedTarget: {fileID: 0}
     cannotBeUsedOnOthers: 0

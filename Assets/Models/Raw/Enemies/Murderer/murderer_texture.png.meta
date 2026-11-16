@@ -1,0 +1,1217 @@
+fileFormatVersion: 2
+guid: de497c71ddcb8ba4897dc727c77001f4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2732076863899825934
+    second: murderer_texture_0
+  - first:
+      213: -7487404889480554731
+    second: murderer_texture_1
+  - first:
+      213: -1026976827033612141
+    second: murderer_texture_2
+  - first:
+      213: -8431231789878062164
+    second: murderer_texture_3
+  - first:
+      213: -4555003588006629494
+    second: murderer_texture_4
+  - first:
+      213: 6056727416275684446
+    second: murderer_texture_5
+  - first:
+      213: 949306209487777837
+    second: murderer_texture_6
+  - first:
+      213: 5046508366312571119
+    second: murderer_texture_7
+  - first:
+      213: 865274887135186422
+    second: murderer_texture_8
+  - first:
+      213: -3689840748443566528
+    second: murderer_texture_9
+  - first:
+      213: -754757507810778636
+    second: murderer_texture_10
+  - first:
+      213: -8903947554884576807
+    second: murderer_texture_11
+  - first:
+      213: 2206608940397147978
+    second: murderer_texture_12
+  - first:
+      213: 8251342064310476284
+    second: murderer_texture_13
+  - first:
+      213: -9048884930412149534
+    second: murderer_texture_14
+  - first:
+      213: -930719764887925319
+    second: murderer_texture_15
+  - first:
+      213: -8868834399878357452
+    second: murderer_texture_16
+  - first:
+      213: -5310818708699515684
+    second: murderer_texture_17
+  - first:
+      213: 2508221163342375072
+    second: murderer_texture_18
+  - first:
+      213: -602330153432294273
+    second: murderer_texture_19
+  - first:
+      213: 7700388328187629451
+    second: murderer_texture_20
+  - first:
+      213: 1863078360490435803
+    second: murderer_texture_21
+  - first:
+      213: -5516734885649402944
+    second: murderer_texture_22
+  - first:
+      213: 1893070517476616089
+    second: murderer_texture_23
+  - first:
+      213: 7010544935238831559
+    second: murderer_texture_24
+  - first:
+      213: -1738815455933997535
+    second: murderer_texture_25
+  - first:
+      213: 1328253671825698909
+    second: murderer_texture_26
+  - first:
+      213: -4669695909228520726
+    second: murderer_texture_27
+  - first:
+      213: -1312985691709415230
+    second: murderer_texture_28
+  - first:
+      213: -6250182522622125536
+    second: murderer_texture_29
+  - first:
+      213: 833727936382619144
+    second: murderer_texture_30
+  - first:
+      213: -2374836335461241557
+    second: murderer_texture_31
+  - first:
+      213: -6720321706669529195
+    second: murderer_texture_32
+  - first:
+      213: 7299306258447925853
+    second: murderer_texture_33
+  - first:
+      213: -7900635610215677281
+    second: murderer_texture_34
+  - first:
+      213: -4337287941838354868
+    second: murderer_texture_35
+  - first:
+      213: 8827816496922761872
+    second: murderer_texture_36
+  - first:
+      213: 7243772053835677616
+    second: murderer_texture_37
+  - first:
+      213: -4288195160439815574
+    second: murderer_texture_38
+  - first:
+      213: 1492694528662554207
+    second: murderer_texture_39
+  - first:
+      213: 7243732079414290460
+    second: murderer_texture_40
+  - first:
+      213: -4023064669197410445
+    second: murderer_texture_41
+  - first:
+      213: -4182841565328801105
+    second: murderer_texture_42
+  - first:
+      213: 8662626631824225852
+    second: murderer_texture_43
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: murderer_texture_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1268
+        width: 540
+        height: 755
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e07ffcbbe694ae520800000000000000
+      internalID: 2732076863899825934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_1
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 1294
+        width: 456
+        height: 738
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5171df84ce4671890800000000000000
+      internalID: -7487404889480554731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_2
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 1777
+        width: 204
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3909a1854027fb1f0800000000000000
+      internalID: -1026976827033612141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_3
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 1777
+        width: 204
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca356519b5f3efa80800000000000000
+      internalID: -8431231789878062164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_4
+      rect:
+        serializedVersion: 2
+        x: 1528
+        y: 1677
+        width: 272
+        height: 292
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8f2c32ce5069c0c0800000000000000
+      internalID: -4555003588006629494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_5
+      rect:
+        serializedVersion: 2
+        x: 1769
+        y: 1937
+        width: 82
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5c4b74ce71dd0450800000000000000
+      internalID: 6056727416275684446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_6
+      rect:
+        serializedVersion: 2
+        x: 1868
+        y: 1928
+        width: 68
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d207797c7fc9c2d00800000000000000
+      internalID: 949306209487777837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_7
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 1928
+        width: 68
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe009122f9cc80640800000000000000
+      internalID: 5046508366312571119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_8
+      rect:
+        serializedVersion: 2
+        x: 1789
+        y: 1817
+        width: 91
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fd42c8ece2120c00800000000000000
+      internalID: 865274887135186422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_9
+      rect:
+        serializedVersion: 2
+        x: 1822
+        y: 1246
+        width: 221
+        height: 644
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04e724f836d0bccc0800000000000000
+      internalID: -3689840748443566528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_10
+      rect:
+        serializedVersion: 2
+        x: 1178
+        y: 1360
+        width: 188
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f12167ab009685f0800000000000000
+      internalID: -754757507810778636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_11
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 1517
+        width: 70
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d9956cbfd2de6480800000000000000
+      internalID: -8903947554884576807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_12
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 1357
+        width: 320
+        height: 309
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a47b292e3237f9e10800000000000000
+      internalID: 2206608940397147978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_13
+      rect:
+        serializedVersion: 2
+        x: 1793
+        y: 1521
+        width: 103
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfdd677d3e7a28270800000000000000
+      internalID: 8251342064310476284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_14
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 1031
+        width: 110
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e4066d4917eb6280800000000000000
+      internalID: -9048884930412149534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_15
+      rect:
+        serializedVersion: 2
+        x: 1178
+        y: 1043
+        width: 188
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bd8b641e4b6513f0800000000000000
+      internalID: -930719764887925319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_16
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 1264
+        width: 70
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43e5c773a129be480800000000000000
+      internalID: -8868834399878357452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_17
+      rect:
+        serializedVersion: 2
+        x: 1415
+        y: 724
+        width: 626
+        height: 595
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd47779b58e2c46b0800000000000000
+      internalID: -5310818708699515684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_18
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1046
+        width: 143
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a8a323ebddfec220800000000000000
+      internalID: 2508221163342375072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_19
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 1046
+        width: 143
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7c592faae714a7f0800000000000000
+      internalID: -602330153432294273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_20
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 1129
+        width: 622
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8f0036d2664dda60800000000000000
+      internalID: 7700388328187629451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_21
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 681
+        width: 504
+        height: 347
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd4efb9d5ebfad910800000000000000
+      internalID: 1863078360490435803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_22
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 614
+        width: 344
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c3bcd4b9de9073b0800000000000000
+      internalID: -5516734885649402944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_23
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 759
+        width: 43
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99765f01b99854a10800000000000000
+      internalID: 1893070517476616089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_24
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 759
+        width: 43
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cd03d2a9757a4160800000000000000
+      internalID: 7010544935238831559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_25
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 711
+        width: 110
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12e58133e8c7ed7e0800000000000000
+      internalID: -1738815455933997535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_26
+      rect:
+        serializedVersion: 2
+        x: 1227
+        y: 653
+        width: 127
+        height: 356
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5077c85da7ee6210800000000000000
+      internalID: 1328253671825698909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_27
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 531
+        width: 60
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aead659cf48e13fb0800000000000000
+      internalID: -4669695909228520726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_28
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 404
+        width: 24
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c06d7a487657cde0800000000000000
+      internalID: -1312985691709415230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_29
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 409
+        width: 24
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02ad0cd4c14e249a0800000000000000
+      internalID: -6250182522622125536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_30
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 349
+        width: 240
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80ec76f042ff19b00800000000000000
+      internalID: 833727936382619144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_31
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 349
+        width: 240
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2d64217fe2ea0fd0800000000000000
+      internalID: -2374836335461241557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_32
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 348
+        width: 124
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 597ad99730f9cb2a0800000000000000
+      internalID: -6720321706669529195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_33
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 11
+        width: 594
+        height: 695
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5203916e585c4560800000000000000
+      internalID: 7299306258447925853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_34
+      rect:
+        serializedVersion: 2
+        x: 1393
+        y: 12
+        width: 630
+        height: 688
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f920b4995cd4b5290800000000000000
+      internalID: -7900635610215677281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_35
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 265
+        width: 117
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c46c32ac89bdec3c0800000000000000
+      internalID: -4337287941838354868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_36
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 275
+        width: 61
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09a1a690554b28a70800000000000000
+      internalID: 8827816496922761872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_37
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 264
+        width: 61
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bff6c6cd4c078460800000000000000
+      internalID: 7243772053835677616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_38
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 13
+        width: 286
+        height: 312
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a628f6ea8354d74c0800000000000000
+      internalID: -4288195160439815574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_39
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 6
+        width: 253
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f56c913e3cd17b410800000000000000
+      internalID: 1492694528662554207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_40
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 77
+        width: 42
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c18279182f7e68460800000000000000
+      internalID: 7243732079414290460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_41
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 5
+        width: 94
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37f501c9ff33b28c0800000000000000
+      internalID: -4023064669197410445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_42
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 79
+        width: 42
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa286da02cf83f5c0800000000000000
+      internalID: -4182841565328801105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: murderer_texture_43
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 17
+        width: 86
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c36b8bb6605d73870800000000000000
+      internalID: 8662626631824225852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -58,4 +58,8 @@ public class Burning : StatusEffect
 		return "Burning";
 	}
 
+	public override string GetIconName()
+	{
+		return "status_symbol_burn";
+	}
 }

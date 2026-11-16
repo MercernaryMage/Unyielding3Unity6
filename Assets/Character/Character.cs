@@ -38,7 +38,6 @@ public class Character : MonoBehaviour
 	public List<Card> cards = new List<Card>();
 	public List<Card> cardDiscard = new List<Card>();
 	public List<Reaction> reactions = new List<Reaction>();
-	public List<Reaction> reactionDiscard = new List<Reaction>();
 
 	public HealthBarController healthBarController;
 
@@ -315,7 +314,10 @@ public class Character : MonoBehaviour
 
 	public List<Action> EndTurn()
 	{
-		CharacterTurnIndicator.SetActive(false);
+		if (alive)
+		{
+			CharacterTurnIndicator.SetActive(false);
+		}
 		CharacterEndTurnMessage characterEndTurnMessage = new CharacterEndTurnMessage();
 		characterEndTurnMessage.character = this;
 		MessagePump.Instance.SendMessage(characterEndTurnMessage);

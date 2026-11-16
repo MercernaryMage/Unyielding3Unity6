@@ -77,7 +77,7 @@ public class AttackOfOpportunityTrait : Trait
 		{
 			return;
 		}
-		if (message.movingCharacter.IsRecovering())
+		if (message.movingCharacter.IsRecovering() || character.IsRecovering())
 		{
 			return;
 		}

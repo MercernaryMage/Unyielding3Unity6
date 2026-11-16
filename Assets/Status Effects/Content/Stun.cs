@@ -21,4 +21,9 @@ public class Stun : StatusEffect
 	{
 		return true;
 	}
+
+	public override string GetIconName()
+	{
+		return "status_symbol_stunned";
+	}
 }

@@ -275,15 +275,16 @@ public class BattleController : SceneSingleton<BattleController>
 		deployButton.SetActive(doingPlacement && placedCharacters.Count == 4);
 	}
 
-	public void TileClicked(Tile t, bool rightClicked)
+	public void TileClicked(Tile t)
 	{
-		if (rightClicked)
+		Tile placedTile = GetPlacedTile(t);
+		if (placedTile != null)
 		{
-			RemovePlacedCharacter(t);
+			RemovePlacedCharacter(placedTile);
 			return;
 		}
 
-		if (placedCharacters.ContainsKey(t) || t.character != null)
+		if (t.character != null)
 		{
 			return;
 		}
@@ -441,6 +442,26 @@ public class BattleController : SceneSingleton<BattleController>
 			}
 		}
 		return false;
+	}
+
+	Tile GetPlacedTile(Tile t)
+	{
+		if (placedCharacters.ContainsKey(t))
+		{
+			return t;
+		}
+		if (t.character == null)
+		{
+			return null;
+		}
+		foreach (KeyValuePair<Tile, Character> pair in placedCharacters)
+		{
+			if (pair.Value == t.character)
+			{
+				return pair.Key;
+			}
+		}
+		return null;
 	}
 
 	void RemovePlacedCharacter(Tile t)

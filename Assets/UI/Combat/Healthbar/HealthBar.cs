@@ -13,7 +13,7 @@ public class HealthBar : MonoBehaviour
 
 	public RectTransform statusEffects;
 
-	public float barWidth = 117;
+	public float barWidth = 105;
 
 	Dictionary<StatusEffect, GameObject> createdEffects = new Dictionary<StatusEffect, GameObject>();
 

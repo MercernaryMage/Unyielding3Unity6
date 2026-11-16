@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Healing Spell
   m_EditorClassIdentifier: 
   displayName: Healing Spell
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: 0e49e369a64787945bb894e6082a0594, type: 3}
   weight: 0
   weapon: 1
   slotType: 1
@@ -58,6 +58,8 @@ MonoBehaviour:
       disqualiferFunction: AllowedToHealTarget
     actionDescription: Heals a target for 2 HP
     actionDescriptionFunction: 
+    actionMessage: 
+    fakeActionMessage: 
     uniqueName: 
     forcedTarget: {fileID: 0}
     cannotBeUsedOnOthers: 0

@@ -57,13 +57,6 @@ public class AIController : SceneSingleton<AIController>
 		Util.Shuffle(c.cards);
 	}
 
-	void ReshuffleReactions(Character c)
-	{
-		c.reactions.AddRange(c.reactionDiscard);
-		c.reactionDiscard.Clear();
-		Util.Shuffle(c.reactions);
-	}
-
 	public void DoReaction(Character reactingCharacter, Character attacker)
 	{
 		BattleController.RemoveControlFromPlayer(UIController.Instance.heroDisplay.lastCharacter);
@@ -71,11 +64,7 @@ public class AIController : SceneSingleton<AIController>
 		reactingCharacter.reactions[0].Execute();
 		Reaction reaction = reactingCharacter.reactions[0];
 		reactingCharacter.reactions.RemoveAt(0);
-		reactingCharacter.reactionDiscard.Add(reaction);
-		if (reactingCharacter.reactions.Count == 0)
-		{
-			ReshuffleReactions(reactingCharacter);
-		}
+		reactingCharacter.reactions.Add(reaction);
 		CombatLogControl.Instance.AddCard($"{reactingCharacter} reacts with {reaction.GetCurrentCard()}", reaction.GetCurrentCard());
 		AICardDisplay.Instance.ShowCard(reaction.GetCurrentCard().cardScriptableObject, reaction.isAggravatged? CardDisplay.CardType.AggravatedReaction : CardDisplay.CardType.Reaction, reactingCharacter);
 	}

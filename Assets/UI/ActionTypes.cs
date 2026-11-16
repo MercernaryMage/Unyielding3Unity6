@@ -284,15 +284,6 @@ public class ActionTypes : MonoBehaviour
 		return DoDisqualifierForInstantAction(c2, pattern.storedPattern);
 	}
 
-	static public Tuple<bool, string> IsScanableReactions(Character c1, Character c2, ActionPattern pattern)
-	{
-		if (c2.reactions.Count < 2)
-		{
-			return new Tuple<bool, string>(false, $"{c2.displayName} is not scannable");
-		}
-		return new Tuple<bool, string>(c2.characterDefinition.isScannable, $"{c2.displayName} is not scannable");
-	}
-
 	static public Tuple<bool, string> IsScanableCards(Character c1, Character c2, ActionPattern pattern)
 	{
 		if (c2.cards.Count < 2)
