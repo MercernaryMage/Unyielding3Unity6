@@ -259,7 +259,7 @@ public class Character : MonoBehaviour
 		{
 			actionCount = Mathf.Max(1, actionCount / 2);
 		}
-		triggerCount = 1;
+		triggerCount = GetComponent<NoEscapeTrait>() != null ? NoEscapeTrait.triggerCount : 1;
 		RefillArmor();
 		ResetActions(true);
 	}

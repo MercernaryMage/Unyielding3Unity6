@@ -1,9 +1,5 @@
 Totally prevent stuff after victory
 
-Can't click status effects in town
-
-reaction swap screen is busto
-
 Drop protect if everyone is dead?
 	Do a redraw for Shield rush
 	THAT WON'T WORK!!!
@@ -15,10 +11,6 @@ Lightning bolt and shield both have broken effect displays:
 Fiery mentions deck
 
 Mention the dragon doesn't AoO?
-
-exe trait should be infinite AoO
-
-snipe ignored LOS
 
 center camera on placement tiles
 

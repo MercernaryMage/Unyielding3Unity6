@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be72ee52c7e0e54096110aa45c6f02c, type: 3}
   m_Name: Executioner
   m_EditorClassIdentifier: 
+  enemy: 1
   displayName: Executioner
   model: {fileID: 6257802974378125461, guid: 70906cce53b07b64391c90f8ecc7d050, type: 3}
   size: 2
@@ -44,6 +45,7 @@ MonoBehaviour:
   reactions: []
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}
+  characterSmallHead: {fileID: 0}
   traits:
-  - {fileID: 11400000, guid: 470c8364d302c5e45ad6dccc0fad2f45, type: 2}
+  - {fileID: 11400000, guid: 5b4a1de45362f2d42b3027e1a2a7b904, type: 2}
   subclasses: []

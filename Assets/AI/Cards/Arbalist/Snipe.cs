@@ -22,6 +22,10 @@ public class Snipe : Card
 			{
 				continue;
 			}
+			if (!TileGrid.Instance.DoesCharacterHaveLOSToCharacter(owningCharacter, hero))
+			{
+				continue;
+			}
 
 			allHeroes.Add(hero);
 
