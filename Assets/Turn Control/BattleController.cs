@@ -555,6 +555,16 @@ public class BattleController : SceneSingleton<BattleController>
 		tilesForPlacement = tiles;
 		doingPlacement = true;
 
+		if (tiles.Count > 0)
+		{
+			Vector3 averagePosition = Vector3.zero;
+			foreach (Tile t in tiles.Keys)
+			{
+				averagePosition += t.transform.position;
+			}
+			SelectionManager.Instance.SnapCameraToPosition(averagePosition / tiles.Count);
+		}
+
 		ShowNextCharacterToPlace();
 	}
 

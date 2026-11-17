@@ -406,6 +406,11 @@ public class SelectionManager : SceneSingleton<SelectionManager>
 		return SnapCameraToFinalPosition(GetCameraPositionCenteredOnPosition(targetTile.transform.position));
 	}
 
+	public float SnapCameraToPosition(Vector3 position)
+	{
+		return SnapCameraToFinalPosition(GetCameraPositionCenteredOnPosition(position));
+	}
+
 	public void FinishCameraSnap()
 	{
 		foreach (GlobalPositionLerp positionLerp in Camera.main.GetComponents<GlobalPositionLerp>())
