@@ -1,0 +1,16 @@
+UY Button!!!!!!
+
+Sound effects
+	THIS MEANS WE NEED THE UY button
+	attack
+	hit
+	tick
+	music
+		battle
+		town
+
+Effects:
+	Spear
+	Arrow
+
+Fix text on toughtness evasion
