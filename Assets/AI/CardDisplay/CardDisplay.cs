@@ -24,6 +24,8 @@ public class CardDisplay : MonoBehaviour
 	public GameObject reactionBackground;
 	public GameObject aggravatedBackground;
 
+	public TextMeshProUGUI dismissLabel;
+
 	bool dismissed = false;
 
 	List<GameObject> createdObjects = new List<GameObject>();
@@ -50,8 +52,9 @@ public class CardDisplay : MonoBehaviour
 		content.SetActive(true);
 	}
 
-	public void ShowCard(CardScriptableObject cardScriptableObject, bool showDismiss, CardType cardType, Character character = null)
+	public void ShowCard(CardScriptableObject cardScriptableObject, bool showDismiss, CardType cardType, Character character = null, bool waitingForDismiss = false)
 	{
+		SetDismissLabel(waitingForDismiss ? "Continue" : "Dismiss");
 		aggravatedBackground.SetActive(cardType == CardType.AggravatedReaction);
 		reactionBackground.SetActive(cardType == CardType.Reaction);
 		cardBackground.SetActive(cardType == CardType.Card);
@@ -92,8 +95,17 @@ public class CardDisplay : MonoBehaviour
 		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)target.transform);
 	}
 
+	void SetDismissLabel(string text)
+	{
+		if (dismissLabel != null)
+		{
+			dismissLabel.text = text;
+		}
+	}
+
 	public void ShowFakeCard(string title, string description)
 	{
+		SetDismissLabel("dismiss");
 		foreach (GameObject obj in createdObjects)
 		{
 			obj.transform.SetParent(null);
@@ -146,6 +158,10 @@ public class CardDisplay : MonoBehaviour
 				lerp.BasicFadeOut();
 				lerp.callbackFunction = DismissActual;
 				lerp.Init();
+			}
+			if (AICardDisplay.Instance.cardDisplay == this)
+			{
+				AICardDisplay.Instance.CardDismissed();
 			}
 		}
 	}

@@ -18,14 +18,28 @@ public class AIController : SceneSingleton<AIController>
 		{
 			DiscardSilentFailures(character);
 			AICardDisplay.Instance.Dismiss(true);
-			AICardDisplay.Instance.ShowCard(character.cards[0].cardScriptableObject, CardDisplay.CardType.Card, character);
-			CardStartMessage cardStartMessage = new CardStartMessage();
-			cardStartMessage.character = character;
-			cardStartMessage.card = character.cards[0];
-			MessagePump.Instance.SendMessage(cardStartMessage);
-			CombatLogControl.Instance.AddCard($"{character.displayName} uses {character.cards[0].GetCardName()}", character.cards[0]);
-			character.cards[0].Execute();
+			CardScriptableObject cardScriptableObject = character.cards[0].cardScriptableObject;
+			if (PersistenceManager.Instance.HasCardBeenPlayed(cardScriptableObject))
+			{
+				AICardDisplay.Instance.ShowCard(cardScriptableObject, CardDisplay.CardType.Card, character);
+				ResolveCard(character);
+			}
+			else
+			{
+				AICardDisplay.Instance.ShowCardAndWaitForDismiss(cardScriptableObject, CardDisplay.CardType.Card, character, () => ResolveCard(character));
+			}
 		}
+	}
+
+	void ResolveCard(Character character)
+	{
+		PersistenceManager.Instance.MarkCardPlayed(character.cards[0].cardScriptableObject);
+		CardStartMessage cardStartMessage = new CardStartMessage();
+		cardStartMessage.character = character;
+		cardStartMessage.card = character.cards[0];
+		MessagePump.Instance.SendMessage(cardStartMessage);
+		CombatLogControl.Instance.AddCard($"{character.displayName} uses {character.cards[0].GetCardName()}", character.cards[0]);
+		character.cards[0].Execute();
 	}
 
 	void DiscardSilentFailures(Character character)

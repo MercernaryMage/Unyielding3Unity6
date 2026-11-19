@@ -1,5 +1,3 @@
-show card before action
-
 View a characters inventory
 
 What counts as behind

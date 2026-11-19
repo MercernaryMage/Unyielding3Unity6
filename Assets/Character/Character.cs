@@ -266,6 +266,7 @@ public class Character : MonoBehaviour
 
 	public void Die()
 	{
+		Destroy(selectionVisual);
 		alive = false;
 		Trait[] traits = GetComponents<Trait>();
 		foreach (Trait t in traits)

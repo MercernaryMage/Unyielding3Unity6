@@ -839,6 +839,7 @@ MonoBehaviour:
   cardBackground: {fileID: 8233463445997488846}
   reactionBackground: {fileID: 1155498998217058589}
   aggravatedBackground: {fileID: 5761858906824258086}
+  dismissLabel: {fileID: 8233463445702531927}
 --- !u!114 &8233463446739658789
 MonoBehaviour:
   m_ObjectHideFlags: 0

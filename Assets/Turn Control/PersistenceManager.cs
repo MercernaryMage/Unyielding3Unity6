@@ -7,6 +7,7 @@ public class PersistenceManager : Singleton<PersistenceManager>
     public List<StorageCharacter> currentTeam = new List<StorageCharacter>();
 	public Dictionary<string, bool> looseFlags = new Dictionary<string, bool>();
 	public List<ItemScriptableObject> unlockedItems = new List<ItemScriptableObject>();
+	public HashSet<CardScriptableObject> playedCards = new HashSet<CardScriptableObject>();
 
 	public StorageCharacter GetStorageCharacter(string characterName)
 	{
@@ -32,6 +33,16 @@ public class PersistenceManager : Singleton<PersistenceManager>
 			return false;
 		}
 		return looseFlags[flagName];
+	}
+
+	public void MarkCardPlayed(CardScriptableObject card)
+	{
+		playedCards.Add(card);
+	}
+
+	public bool HasCardBeenPlayed(CardScriptableObject card)
+	{
+		return playedCards.Contains(card);
 	}
 
 	public void AddUnlockedItem(string itemName)

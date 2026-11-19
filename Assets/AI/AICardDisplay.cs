@@ -11,6 +11,7 @@ public class AICardDisplay : SceneSingleton<AICardDisplay>, IPointerEnterHandler
 	public bool isShowing;
 
 	CardScriptableObject lastShownCard;
+	Action pendingResolve;
 
 	public CardScriptableObject cardForDebug;
 
@@ -20,7 +21,34 @@ public class AICardDisplay : SceneSingleton<AICardDisplay>, IPointerEnterHandler
 		cardDisplay.ShowFakeCard(title, body);
 	}
 
+	public void ShowCardAndWaitForDismiss(CardScriptableObject cardScriptableObject, CardDisplay.CardType cardType, Character character, Action onDismissed)
+	{
+		pendingResolve = null;
+		ShowCardActual(cardScriptableObject, cardType, character, true);
+		pendingResolve = onDismissed;
+	}
+
+	public void CardDismissed()
+	{
+		if (pendingResolve == null)
+		{
+			return;
+		}
+		Action resolve = pendingResolve;
+		pendingResolve = null;
+		resolve();
+	}
+
 	public void ShowCard(CardScriptableObject cardScriptableObject, CardDisplay.CardType cardType, Character character = null)
+	{
+		if (pendingResolve != null)
+		{
+			return;
+		}
+		ShowCardActual(cardScriptableObject, cardType, character, false);
+	}
+
+	void ShowCardActual(CardScriptableObject cardScriptableObject, CardDisplay.CardType cardType, Character character, bool waitingForDismiss)
 	{
 		if (time > 0 && cardScriptableObject == lastShownCard && isShowing)
 		{
@@ -30,11 +58,15 @@ public class AICardDisplay : SceneSingleton<AICardDisplay>, IPointerEnterHandler
 		time = -1;
 		lastShownCard = cardScriptableObject;
 		isShowing = true;
-		cardDisplay.ShowCard(cardScriptableObject, true, cardType, character);
+		cardDisplay.ShowCard(cardScriptableObject, true, cardType, character, waitingForDismiss);
 	}
 
 	public void SoftDismiss(float t)
 	{
+		if (pendingResolve != null)
+		{
+			return;
+		}
 		time = t;
 	}
 
