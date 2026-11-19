@@ -1,4 +1,7 @@
 View a characters inventory
+	Hide button if current character is not valid
+	Get button placed reasonably
+	art
 
 What counts as behind
 

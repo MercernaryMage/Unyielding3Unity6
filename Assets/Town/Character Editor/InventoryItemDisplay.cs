@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class InventoryItemDisplay : MonoBehaviour, IPointerClickHandler
 {
-    public Image itemIcon;
-    public TextMeshProUGUI itemName;
+	public Image itemIcon;
+	public TextMeshProUGUI itemName;
 	public TextMeshProUGUI itemDescription;
 	public TextMeshProUGUI itemCost;
 	public GameObject deleteButton;
@@ -50,7 +50,11 @@ public class InventoryItemDisplay : MonoBehaviour, IPointerClickHandler
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
-		if (inInventory) 
+		if (CharacterEditor.Instance == null)
+		{
+			return;
+		}
+		if (inInventory)
 		{
 			return;
 		}

@@ -22,6 +22,10 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 
 	public Character lastCharacter;
 
+	public TownCharacterDisplay townCharacterDisplay;
+	public GameObject townCharacterDisplayContent;
+
+
 	public void Set(Character c)
 	{
 		if (c == null)
@@ -123,6 +127,15 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 		if (content.activeInHierarchy)
 		{
 			Set(lastCharacter);
+		}
+	}
+
+	public void DisplayCharaccterClicked()
+	{
+		if (lastCharacter != null && lastCharacter.storageCharacter != null)
+		{
+			townCharacterDisplayContent.SetActive(true);
+			townCharacterDisplay.SetToCharacter(lastCharacter.storageCharacter, null);
 		}
 	}
 }

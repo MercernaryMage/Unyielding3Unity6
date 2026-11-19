@@ -28,6 +28,8 @@ public class SlotDisplay : MonoBehaviour
 	public SlotElement normal;
 	public GameObject rulesTextObject;
 
+	public bool clickDisabled;
+
 	WeaponSlotType slotType;
 	WeaponSlot slot;
 	ItemScriptableObject item;
@@ -209,6 +211,10 @@ public class SlotDisplay : MonoBehaviour
 
 	public void SlotClicked(int index)
 	{
+		if (clickDisabled)
+		{
+			return;
+		}
 		if (PersistenceManager.Instance.GetFlag("WeaponSlotsLocked"))
 		{
 			return;
