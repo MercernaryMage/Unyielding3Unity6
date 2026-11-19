@@ -81,7 +81,7 @@ public class SlotDisplay : MonoBehaviour
 				{
 					finalString += ", ";
 				}
-				string translated = Util.TranslateKeyword(strings[j]);
+				string translated = strings[j];//Util.TranslateKeyword(strings[j]);
 				finalString += $"<u>{translated}</u>";
 			}
 			normal.keywords.text = finalString;

@@ -14,6 +14,7 @@ public class FollowingBlast : Blast
 		}
 
 		Following following = (Following)target.AddStatusEffectAllowDuplicate(typeof(Following));
+		following.creatingCard = this;
 		following.Track(2);
 
 		int detonationTick = TurnControl.Instance.GetValue(owningCharacter);

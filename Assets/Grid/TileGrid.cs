@@ -601,19 +601,19 @@ public class TileGrid : SceneSingleton<TileGrid>
 		return characters;
 	}
 
-	public static void AddWarnings(List<Tile> tiles, Tile.OverlayType type = Tile.OverlayType.TileWarning)
+	public static void AddWarnings(List<Tile> tiles, Card c, Tile.OverlayType type = Tile.OverlayType.TileWarning)
 	{
 		foreach (Tile t in tiles)
 		{
-			t.AddWarning(type);
+			t.AddWarning(type, c);
 		}
 	}
 
-	public static void RemoveWarnings(List<Tile> tiles, Tile.OverlayType type = Tile.OverlayType.TileWarning)
+	public static void RemoveWarnings(List<Tile> tiles, Card c, Tile.OverlayType type = Tile.OverlayType.TileWarning)
 	{
 		foreach (Tile t in tiles)
 		{
-			t.RemoveWarning(type);
+			t.RemoveWarning(type, c);
 		}
 	}
 

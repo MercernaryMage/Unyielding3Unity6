@@ -27,6 +27,7 @@ public class Tile : MonoBehaviour
 	public List<GameObject> decos = new List<GameObject>();
 	public GameObject foundation;
 	public GameObject outline;
+	List<Card> cardWarnings = new List<Card>();
 
 	int warningCount;
 	int followWarningCount;
@@ -134,11 +135,27 @@ public class Tile : MonoBehaviour
 	public void MouseEnterTile()
 	{
 		SelectionManager.Instance.MouseEnterTile(this);
+		if (character != null)
+		{
+			character.selectionVisual.SetActive(true);
+		}
+		if (cardWarnings.Count > 0)
+		{
+			AICardDisplay.Instance.ShowCard(cardWarnings[0].cardScriptableObject, CardDisplay.CardType.Card, cardWarnings[0].owningCharacter);
+		}
 	}
 
 	public void MouseExitTile()
 	{
 		SelectionManager.Instance.MouseExitTile(this);
+		if (character != null)
+		{
+			character.selectionVisual.SetActive(false);
+		}
+		if (cardWarnings.Count > 0)
+		{
+			AICardDisplay.Instance.SoftDismiss(.3f);
+		}
 	}
 
 	public void PerformDuckCheck()
@@ -198,8 +215,9 @@ public class Tile : MonoBehaviour
 		meshRenderer.material.SetColor("_BaseColor", color);
 	}
 
-	public void AddWarning(OverlayType type)
+	public void AddWarning(OverlayType type, Card c)
 	{
+		cardWarnings.Add(c);
 		if (type == OverlayType.TileWarningFollow)
 		{
 			++followWarningCount;
@@ -216,8 +234,9 @@ public class Tile : MonoBehaviour
 		}
 	}
 
-	public void RemoveWarning(OverlayType type)
+	public void RemoveWarning(OverlayType type, Card c)
 	{
+		cardWarnings.Remove(c);
 		if (type == OverlayType.TileWarningFollow)
 		{
 			--followWarningCount;

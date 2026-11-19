@@ -194,7 +194,10 @@ public class MovementController : SceneSingleton<MovementController>
 	//player moving
 	public void MoveCharacter(Tile t, Action movementCompleteCallback = null)
 	{
-		movingCharacter.canUseCumbersome = false;
+		if (onMoveComplete == null)
+		{
+			movingCharacter.canUseCumbersome = false;
+		}		
 		CharacterStartMovementMessage characterStartMovementMessage = new CharacterStartMovementMessage();
 		characterStartMovementMessage.movingCharacter = movingCharacter;
 		characterStartMovementMessage.provokeTriggers = onMoveComplete == null;

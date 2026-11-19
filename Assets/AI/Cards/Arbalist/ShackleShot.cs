@@ -71,7 +71,7 @@ public class ShackleShot : Card
     {
         DisplayGrid.Instance.Clear(11, 8);
         List<CardInstruction> instructions = new List<CardInstruction>();
-        instructions.Add(new CardInstruction("Move away from near by enemies"));
+        instructions.Add(new CardInstruction("Move away from nearby enemies"));
         instructions.Add(new CardInstruction("Attack a non-adjacent hero in line of sight for 1d6 damage"));
         instructions.Add(new CardInstruction("On hit, apply <u>Paralyzed</u> and <u>Shackled</u>"));
         return instructions;

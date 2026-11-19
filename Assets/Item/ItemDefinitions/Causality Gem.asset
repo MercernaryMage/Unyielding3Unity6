@@ -55,8 +55,8 @@ MonoBehaviour:
       targetType: 1
       actionName: Behold
       disqualiferFunction: 
-    actionDescription: Reveals the targets next two reaction cards and lets you change
-      the order of them.
+    actionDescription: Reveals the target's next two reaction cards and lets you
+      change the order of them.
     actionDescriptionFunction: 
     actionMessage: '{0} views the future of {1}.'
     fakeActionMessage: 

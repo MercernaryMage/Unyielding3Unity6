@@ -1,21 +1,6 @@
-Missing AoO tooltip
-
 show card before action
 
-Inspector can block clicks
-
-Fleeting courage caused dane to face north
-
-Maybe force shield usage
-
-Frothing at the mouth
-	it's unclear who cuases it
-
-Determination is badly worded: it sounds like they will start ready to fight
-
-Weak point wasn't removed??
-
-Pounce would have hit a wall, but failed because their was a tree
+View a characters inventory
 
 What counts as behind
 
@@ -27,19 +12,9 @@ bow -> mark -> enemy click resulted in attack
 
 Lenette took damage from shield rush through her armor
 
-Show enemy bounding
 
-You've unlocked characters <- possesive
 
 spear => threat 2 should be underlined?
-
-Your friendly Aoe magic attack
-
-Verify step doesn't break cumbersome : the step description said it doesn't
-
-Bad pick on the button:
-
-near by is one word on snipe
 
 spear doens't say it's range 2
 
@@ -52,9 +27,3 @@ Trigger screen is very unclear
 step doesn't say how much it moves
 
 wreck doesn't say how much it removes
-
-does slobbered apply on miss
-
-adantrages
-
-possesive targets

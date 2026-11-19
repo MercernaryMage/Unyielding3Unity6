@@ -79,7 +79,7 @@ public class FlowControl : Singleton<FlowControl>
 	public void CompleteForest()
 	{
 		TownSystemPopup.pulseWeaponSlot = true;
-		TownSystemPopup.QueueMessage("You've unlocked characters traits and the ability to change weapons.");
+		TownSystemPopup.QueueMessage("You've unlocked character's traits and the ability to change weapons.");
 		PersistenceManager.Instance.SetFlag("WeaponSlotsLocked", false);
 		//give weapons
 		PersistenceManager.Instance.AddUnlockedItem("Phantasm");
@@ -114,7 +114,7 @@ public class FlowControl : Singleton<FlowControl>
 
 	public void CompleteWoods()
 	{
-		TownSystemPopup.QueueMessage("You've unlocked advantages!  You can now change your characters advantrages in town.");
+		TownSystemPopup.QueueMessage("You've unlocked advantages!  You can now change your character's advantages in town.");
 		PersistenceManager.Instance.SetFlag("AdvantagesLocked", false);
 		TownSystemPopup.pulseAddButton = true;
 

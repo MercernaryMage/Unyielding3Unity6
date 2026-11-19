@@ -53,7 +53,8 @@ public class UnderlinedTextHover : MonoBehaviour
 		hoveredRunStart = runStart;
 
 		string word = GetUnderlinedRun(charIndex);
-		ExplanationIemScrptableObject explanation = ExplanationItemRepository.Instance.GetExplanation(word);
+		string translatedWord = Util.TranslateKeyword(word);
+		ExplanationIemScrptableObject explanation = ExplanationItemRepository.Instance.GetExplanation(translatedWord);
 		if (explanation != null)
 		{
 			ShowTooltip(explanation.explanationName, explanation.explanationContent);

@@ -59,6 +59,7 @@ public class Stalk : Card
 		}
 
 		Stalked stalked = (Stalked)target.AddStatusEffectAllowDuplicate(typeof(Stalked));
+		stalked.creatingCard = this;
 		stalked.Track(0);
 
 		Stalking stalking = (Stalking)owningCharacter.AddStatusEffectAllowDuplicate(typeof(Stalking));

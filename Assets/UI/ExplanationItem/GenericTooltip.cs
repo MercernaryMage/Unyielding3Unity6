@@ -12,6 +12,8 @@ public class GenericTooltip : SceneSingleton<GenericTooltip>
 	CanvasGroup canvasGroup;
 	float targetAlpha = 0f;
 
+	bool block = false;
+
 	void Awake()
 	{
 		canvasGroup = tooltipObject.GetComponent<CanvasGroup>();
@@ -38,12 +40,18 @@ public class GenericTooltip : SceneSingleton<GenericTooltip>
 		targetAlpha = 0f;
 	}
 
+	public void Block()
+	{
+		block = true;
+	}
+
 	void Update()
 	{
-		if (!EventSystem.current.IsPointerOverGameObject())
+		if (!EventSystem.current.IsPointerOverGameObject() && !block)
 		{
 			targetAlpha = 0f;
 		}
+		block = false;
 		canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, targetAlpha, fadeSpeed * Time.deltaTime);
 	}
 }

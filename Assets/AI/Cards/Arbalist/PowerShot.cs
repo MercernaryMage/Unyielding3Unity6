@@ -64,7 +64,7 @@ public class PowerShot : Card
 		warnedTiles = bestLines[UnityEngine.Random.Range(0, bestLines.Count)];
 
 		owningCharacter.SetFacing(TileGrid.Instance.GetFacingDirection(origin, warnedTiles[warnedTiles.Count - 1]));
-		TileGrid.AddWarnings(warnedTiles);
+		TileGrid.AddWarnings(warnedTiles, this);
 
 		running = true;
 
@@ -82,7 +82,7 @@ public class PowerShot : Card
 		}
 
 		running = false;
-		TileGrid.RemoveWarnings(warnedTiles);
+		TileGrid.RemoveWarnings(warnedTiles, this);
 	}
 
 	void FireShot()
@@ -106,7 +106,7 @@ public class PowerShot : Card
 	void FireShotActual()
 	{
 		running = false;
-		TileGrid.RemoveWarnings(warnedTiles);
+		TileGrid.RemoveWarnings(warnedTiles, this);
 
 		List<Character> hitCharacters = GetTargetsOnTiles(warnedTiles);
 

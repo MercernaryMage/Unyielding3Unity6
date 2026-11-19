@@ -377,7 +377,10 @@ public class ActionController : SceneSingleton<ActionController>
 		{
 			Tile tile = TileGrid.Instance.FindCharacter(attackingCharacter)[0];
 			Tile closestDefenderTile = TileGrid.Instance.GetClosestCharacterTile(tile, targetedTiles[0].character);
-			attackingCharacter.SetFacing(TileGrid.Instance.GetFacingDirection(tile, closestDefenderTile));
+			if (tile != closestDefenderTile)
+			{
+				attackingCharacter.SetFacing(TileGrid.Instance.GetFacingDirection(tile, closestDefenderTile));
+			}
 		}
 		TileGrid.Instance.HideAllTiles();
 		////////////////////////// above here, do once
@@ -438,6 +441,7 @@ public class ActionController : SceneSingleton<ActionController>
 		AttackCompleteMessage attackCompleteMessage = new AttackCompleteMessage();
 		attackCompleteMessage.attacker = attackingCharacter;
 		attackCompleteMessage.defender = target;
+		attackCompleteMessage.hit = attackResults.hit;
 
 		MessagePump.Instance.SendMessage(attackCompleteMessage);
 

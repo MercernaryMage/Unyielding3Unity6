@@ -16,7 +16,7 @@ public class Blast : Card
 		}
 
 		List<Tile> warnedTiles = TileGrid.Instance.GetAllTilesInRangeOfCharacter(target, 2);
-		TileGrid.AddWarnings(warnedTiles);
+		TileGrid.AddWarnings(warnedTiles, this);
 
 		Tile centerTile = TileGrid.Instance.FindCharacter(target)[0];
 		int detonationTick = TurnControl.Instance.GetValue(owningCharacter);
@@ -32,7 +32,7 @@ public class Blast : Card
 
 	void DetonateActual(Tile centerTile, List<Tile> warnedTiles)
 	{
-		TileGrid.RemoveWarnings(warnedTiles);
+		TileGrid.RemoveWarnings(warnedTiles, this);
 
 		List<Character> hitCharacters = GetTargetsOnTiles(warnedTiles);
 		if (hitCharacters.Count == 0)

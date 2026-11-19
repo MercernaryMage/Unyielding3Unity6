@@ -59,7 +59,7 @@ public class Snipe : Card
 		CombatLogControl.Instance.AddCard($"{owningCharacter} targets {targetHero} with {this}", this);
 
 		warnedTiles = new List<Tile>(TileGrid.Instance.FindCharacter(targetHero));
-		TileGrid.AddWarnings(warnedTiles);
+		TileGrid.AddWarnings(warnedTiles, this);
 
 		running = true;
 
@@ -77,7 +77,7 @@ public class Snipe : Card
 		}
 
 		running = false;
-		TileGrid.RemoveWarnings(warnedTiles);
+		TileGrid.RemoveWarnings(warnedTiles, this);
 	}
 
 	void FireShot()
@@ -101,7 +101,7 @@ public class Snipe : Card
 	void FireShotActual()
 	{
 		running = false;
-		TileGrid.RemoveWarnings(warnedTiles);
+		TileGrid.RemoveWarnings(warnedTiles, this);
 
 		List<Character> hitCharacters = GetTargetsOnTiles(warnedTiles);
 
@@ -167,7 +167,7 @@ public class Snipe : Card
 		DisplayGrid.Instance.Clear(11, 8);
 		List<CardInstruction> instructions = new List<CardInstruction>();		
 		
-		instructions.Add(new CardInstruction("Move away from near by enemies"));
+		instructions.Add(new CardInstruction("Move away from nearby enemies"));
 		instructions.Add(new CardInstruction("Marks a target and uses <u>Charge</u>"));
 		instructions.Add(new CardInstruction());
 		instructions.Add(new CardInstruction("On <u>Charge</u> completion: deal 10 damage to characters in marked tiles"));

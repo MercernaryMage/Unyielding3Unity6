@@ -252,6 +252,7 @@ public class LevelEditorConfigurationManager : MonoBehaviour
 		placementTile.direction = direction;
 		placementTile.marker = Instantiate(LevelEditorManager.Instance.placementTilePrefab);
 		placementTile.marker.transform.SetParent(emptyTile.transform.parent, false);
+		placementTile.marker.transform.localScale = Vector3.one * 2.2f;
 		placementTile.marker.transform.position = emptyTile.transform.position + new Vector3(0, .01f, 0);
 		placementTile.markerRotation = placementTile.marker.transform.localRotation;
 

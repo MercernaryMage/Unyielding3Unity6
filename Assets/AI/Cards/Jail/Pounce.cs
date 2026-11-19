@@ -38,7 +38,11 @@ public class Pounce
 		foreach (Tile t in tilesAndDirection.tiles)
 		{
 			t.HideOverlay(Tile.OverlayType.PossibleMovement);
+		}
 
+		List<Tile> actualSweptTiles = TemplateLibrary.Instance.GetTilesInMatchedSizeCardinalDirection(owningCharacter, trail.Count, (int)tilesAndDirection.direction);
+		foreach (Tile t in actualSweptTiles)
+		{
 			if (t.character != null && t.character.hero && !hitCharacters.Contains(t.character))
 			{
 				hitCharacters.Add(t.character);

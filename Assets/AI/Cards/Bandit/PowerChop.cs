@@ -49,7 +49,7 @@ public class PowerChop : Card, IMessageReceiver
 
 		owningCharacter.SetFacing(tilesAndDirection.direction);
 		warnedTiles = new List<Tile>(tilesAndDirection.tiles);
-		TileGrid.AddWarnings(warnedTiles);
+		TileGrid.AddWarnings(warnedTiles, this);
 
 		running = true;
 
@@ -67,7 +67,7 @@ public class PowerChop : Card, IMessageReceiver
 		}
 
 		running = false;
-		TileGrid.RemoveWarnings(warnedTiles);
+		TileGrid.RemoveWarnings(warnedTiles, this);
 	}
 
 	void Chop()
@@ -91,7 +91,7 @@ public class PowerChop : Card, IMessageReceiver
 	void ChopActual()
 	{
 		running = false;
-		TileGrid.RemoveWarnings(warnedTiles);
+		TileGrid.RemoveWarnings(warnedTiles, this);
 
 		List<Character> hitCharacters = GetTargetsOnTiles(warnedTiles);
 

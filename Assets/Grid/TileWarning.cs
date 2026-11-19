@@ -48,7 +48,15 @@ public class TileWarning : MonoBehaviour
 		{
 			return false;
 		}
-		return RectTransformUtility.RectangleContainsScreenPoint(background, Input.mousePosition, null);
+
+		bool isMouseOver = RectTransformUtility.RectangleContainsScreenPoint(background, Input.mousePosition, null);
+
+		if (isMouseOver)
+		{
+			GenericTooltip.Instance.Block();
+			return true;
+		}
+		return false;
 	}
 
 	void MouseEntered()
