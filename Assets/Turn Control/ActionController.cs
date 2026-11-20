@@ -928,6 +928,34 @@ public class ActionController : SceneSingleton<ActionController>
 		CancelAttack(attackingCharacter);
 	}
 
+	public bool TryCancelPendingAction()
+	{
+		if (internalRunning)
+		{
+			return false;
+		}
+		if (stepRunning)
+		{
+			if (stepCharacter != null && stepCharacter.token.gameObject.GetComponent<PathFollower>() != null)
+			{
+				return false;
+			}
+			MovementController.Instance.onMoveComplete = null;
+			MovementController.Instance.HideMovement();
+			stepRunning = false;
+			wasStep = false;
+			endActionIfNoTargets = false;
+			return true;
+		}
+		if (running)
+		{
+			wasStep = false;
+			endActionIfNoTargets = false;
+			CancelAttack(attackingCharacter);
+		}
+		return true;
+	}
+
 	public void MoveCharacterFromImpact(Character c, List<Tile> impactTiles, Action onComplete)
 	{
 		List<Tile> possibleTiles = new List<Tile>(TileGrid.Instance.tiles);

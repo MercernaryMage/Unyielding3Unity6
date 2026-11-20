@@ -1,25 +1,4 @@
-What counts as behind
-
-character selection effect is a little subtle
-
 Get rid of natural language?
 
-bow -> mark -> enemy click resulted in attack
-
-Lenette took damage from shield rush through her armor
-
-
-
-spear => threat 2 should be underlined?
-
-spear doens't say it's range 2
-
-Be able to mouse over charge tiles
-
-make sure 3/6 is centered on the hp bar
-
-Trigger screen is very unclear
-
-step doesn't say how much it moves
-
-wreck doesn't say how much it removes
+menu in town
+menu in overland

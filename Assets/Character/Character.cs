@@ -69,7 +69,7 @@ public class Character : MonoBehaviour
 		CharacterTurnIndicator = Instantiate(UIController.Instance.characterTurnIndicatorPrefab);
 		CharacterTurnIndicator.transform.SetParent(token.transform);
 		CharacterTurnIndicator.transform.localScale = Vector3.one * 2;
-		CharacterTurnIndicator.transform.localPosition = new Vector3(0, .5f, 0);
+		CharacterTurnIndicator.transform.localPosition = new Vector3(0, .75f, 0);
 		CharacterTurnIndicator.SetActive(false);
 
 		GameObject healthBar = Instantiate(CharacterRepository.Instance.data.healthBarPrefab);

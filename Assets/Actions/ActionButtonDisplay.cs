@@ -87,7 +87,7 @@ public class ActionButtonDisplay : MonoBehaviour, IPointerEnterHandler, IPointer
 		{
 			return;
 		}
-		if (ActionController.Instance.running)
+		if (!ActionController.Instance.TryCancelPendingAction())
 		{
 			return;
 		}

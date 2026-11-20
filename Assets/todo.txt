@@ -34,9 +34,8 @@ Step should probably show something different?
     Show step range instead?
     
 Questions for J
-    How about the keywords on the action bar pop up
     Where do I put the enemy card? On the left?  On the right?
-    Overlapping with charged tiles isn't great
+    What counts as behind
 
 Tile warnings need to show a piece of information when you mouse over them
 

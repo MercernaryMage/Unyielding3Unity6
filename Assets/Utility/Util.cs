@@ -621,6 +621,10 @@ public static class Util
 		{
 			return "Wreck";
 		}
+		if (s.Contains("Threat"))
+		{
+			return "Threat";
+		}
 		return s;
 	}
 }

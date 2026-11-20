@@ -131,17 +131,17 @@ public class SlotDisplay : MonoBehaviour
 		//range, line, cone, threat
 		if (itemScriptable.actions[0].aoeType == ActionPattern.AoEType.Cone)
 		{
-			return $"cone {itemScriptable.actions[0].aoeRange}";
+			return $"Cone {itemScriptable.actions[0].aoeRange}";
 		}
 		if (itemScriptable.actions[0].aoeType == ActionPattern.AoEType.Line)
 		{
-			return $"line {itemScriptable.actions[0].aoeRange}";
+			return $"Line {itemScriptable.actions[0].aoeRange}";
 		}
 		if (itemScriptable.actions[0].threatRange > 1)
 		{
-			return $"threat {itemScriptable.actions[0].threatRange}";
+			return $"<u>Threat {itemScriptable.actions[0].threatRange}</u>";
 		}
-		return $"range {itemScriptable.actions[0].range}";
+		return $"Range {itemScriptable.actions[0].range}";
 	}
 
 	public static string GetAoEString(ItemScriptableObject itemScriptable)

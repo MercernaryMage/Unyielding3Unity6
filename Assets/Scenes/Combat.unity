@@ -8531,7 +8531,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 400200efbf2304345813bd062e52586e, type: 3}
   m_Name: 
@@ -34468,6 +34468,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 739412351}
     m_Modifications:
+    - target: {fileID: 1806917353285783530, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 30c124ef04977294f9360e6c551dd78b, type: 3}
+    - target: {fileID: 1806917353285783530, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806917353285783530, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806917353285783530, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8233463446739658786, guid: 97242abfba8334444b34c2f9f85f67dd, type: 3}
       propertyPath: m_Name
       value: CardDisplay

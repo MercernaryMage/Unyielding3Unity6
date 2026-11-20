@@ -644,6 +644,7 @@ GameObject:
   - component: {fileID: 1114976349409434375}
   - component: {fileID: 6452586962436666560}
   - component: {fileID: 8425612613416021374}
+  - component: {fileID: 4549034940865578153}
   m_Layer: 5
   m_Name: Stat Text
   m_TagString: Untagged
@@ -784,6 +785,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &4549034940865578153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4510863356019650661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c45fbaf32ebbc47a3dfb7be746d1f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnderlinedTextHover
+  hoverPadding: 6
 --- !u!1 &4943769372935310825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,6 +1163,7 @@ MonoBehaviour:
     cost: {fileID: 3071520801592737676}
     itemIcon: {fileID: 4308751533121929086}
   rulesTextObject: {fileID: 7388568503853885177}
+  clickDisabled: 0
 --- !u!114 &5209808168359933597
 MonoBehaviour:
   m_ObjectHideFlags: 0
