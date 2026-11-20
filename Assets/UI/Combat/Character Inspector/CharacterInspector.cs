@@ -28,6 +28,24 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 	public TownCharacterDisplay townCharacterDisplay;
 	public GameObject townCharacterDisplayContent;
 
+	public Image background;
+
+	public Sprite heroBackground;
+	public Sprite heroConnectLeft;
+	public Sprite heroConnectMiddle;
+	public Sprite heroConnectRight;
+	public Sprite heroTraitBackground;
+	public Sprite heroTraitDivider;
+
+	public Sprite enemyBackground;
+	public Sprite enemyConnectLeft;
+	public Sprite enemyConnectMiddle;
+	public Sprite enemyConnectRight;
+	public Sprite enemyTraitBackground;
+	public Sprite enemyTraitDivider;
+
+	bool showingHero = true;
+
 
 	public void Set(Character c)
 	{
@@ -45,6 +63,8 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 		createdObjects.Clear();
 
 		characterName.text = c.name;
+
+		ApplyArt(c.hero);
 
 		GameObject bottomObj;
 
@@ -124,10 +144,36 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 		return obj;
 	}
 
+	void ApplyArt(bool hero)
+	{
+		showingHero = hero;
+		background.sprite = hero ? heroBackground : enemyBackground;
+		if (hero)
+		{
+			bottomUI.SetSprites(heroTraitBackground, heroTraitDivider);
+			bottomUI.SetTextColors(false, Color.white, Color.white);
+		}
+		else
+		{
+			bottomUI.SetSprites(enemyTraitBackground, enemyTraitDivider);
+			bottomUI.SetTextColors(true, Color.white, Util.HexToColor("9E7D57"));
+		}
+	}
+
 	GameObject CreateEntry(string leftText, string rightText)
 	{
 		GameObject obj = Instantiate(characterEntryPrefab);
-		obj.GetComponent<CharacterInspectorEntry>().Set(leftText, rightText);
+		CharacterInspectorEntry entry = obj.GetComponent<CharacterInspectorEntry>();
+		if (showingHero)
+		{
+			entry.SetSprites(heroConnectLeft, heroConnectMiddle, heroConnectRight);
+		}
+		else
+		{
+			entry.SetSprites(enemyConnectLeft, enemyConnectMiddle, enemyConnectRight);
+			entry.SetTextColor(Color.white);
+		}
+		entry.Set(leftText, rightText);
 		obj.transform.SetParent(target);
 		obj.transform.localScale = Vector3.one;
 		createdObjects.Add(obj);

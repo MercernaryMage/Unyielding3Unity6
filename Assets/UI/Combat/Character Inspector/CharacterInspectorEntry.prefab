@@ -324,6 +324,9 @@ MonoBehaviour:
   leftText: {fileID: 3570510597125072268}
   rightText: {fileID: 7140351399897654577}
   middleObject: {fileID: 8596449886390749778}
+  leftImage: {fileID: 6879686498719849974}
+  middleImage: {fileID: 5805355318113027517}
+  rightImage: {fileID: 5825494578106836126}
 --- !u!1 &4193582350717449252
 GameObject:
   m_ObjectHideFlags: 0

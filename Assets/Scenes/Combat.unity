@@ -2268,6 +2268,19 @@ MonoBehaviour:
   lastCharacter: {fileID: 0}
   townCharacterDisplay: {fileID: 6474582288516060725}
   townCharacterDisplayContent: {fileID: 218785997327152326}
+  background: {fileID: 1451777880}
+  heroBackground: {fileID: 21300000, guid: bfff3110f9896bd41b05d982e82304bc, type: 3}
+  heroConnectLeft: {fileID: 21300000, guid: 79755e76313567747b85d1f97064acbb, type: 3}
+  heroConnectMiddle: {fileID: 21300000, guid: dd2636e95c4ceea4280b71d93c32ffae, type: 3}
+  heroConnectRight: {fileID: 21300000, guid: 2249191244972d04882b86403b33ce86, type: 3}
+  heroTraitBackground: {fileID: 21300000, guid: 9be91f57d2d33144e8510f9f89307b81, type: 3}
+  heroTraitDivider: {fileID: 21300000, guid: 720c8ea11be11b1468b3e4f1d5c6ac36, type: 3}
+  enemyBackground: {fileID: 21300000, guid: 63b83b0de1cb34b49ace97ffa99c55de, type: 3}
+  enemyConnectLeft: {fileID: 21300000, guid: b2b60d945c2f86f4da50c1de71209612, type: 3}
+  enemyConnectMiddle: {fileID: 21300000, guid: 5ccb8d6e364394547abee5d43ecf2f88, type: 3}
+  enemyConnectRight: {fileID: 21300000, guid: 94dfa326c4c308149b961b8b8ba51cf9, type: 3}
+  enemyTraitBackground: {fileID: 21300000, guid: 52bb371fe4f7d0a48a5c82ed2d7a745a, type: 3}
+  enemyTraitDivider: {fileID: 21300000, guid: 07a26745914e8dd47a2627d8917e9be9, type: 3}
 --- !u!1 &290390807
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,22 @@ public class CharacterInspectorEntry : MonoBehaviour
     public TextMeshProUGUI leftText;
 	public TextMeshProUGUI rightText;
 	public RectTransform middleObject;
+	public Image leftImage;
+	public Image middleImage;
+	public Image rightImage;
+
+	public void SetSprites(Sprite left, Sprite middle, Sprite right)
+	{
+		leftImage.sprite = left;
+		middleImage.sprite = middle;
+		rightImage.sprite = right;
+	}
+
+	public void SetTextColor(Color color)
+	{
+		leftText.color = color;
+		rightText.color = color;
+	}
 
 	public void Set(string lt, string rt)
 	{
