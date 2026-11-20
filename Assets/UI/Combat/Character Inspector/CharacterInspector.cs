@@ -8,6 +8,9 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 	public GameObject content;
 	public GameObject characterEntryPrefab;
 	public CharacterInspectorTraitDisplayGroup bottomUI;
+	
+	public GameObject characterContextButton;
+	public TextMeshProUGUI contextButtonText;
 
 	public TextMeshProUGUI characterName;
 
@@ -42,23 +45,35 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 		createdObjects.Clear();
 
 		characterName.text = c.name;
+
+		GameObject bottomObj;
+
 		if (c.hero)
 		{
-			SetHero(c);
+			bottomObj = SetHero(c);
+			characterContextButton.SetActive(true);
+			contextButtonText.text = "View\nCharacter";
 		}
 		else
 		{
-			SetEnemy(c);
+			bottomObj = SetEnemy(c);
+			characterContextButton.SetActive(false);
+			contextButtonText.text = "View Deck";
 		}
 
 		Canvas.ForceUpdateCanvases();
 		LayoutRebuilder.ForceRebuildLayoutImmediate(target);
 		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)target.parent);
 
+		characterContextButton.transform.position = new Vector3(
+													characterContextButton.transform.position.x,
+													bottomObj.transform.position.y - 40,
+													characterContextButton.transform.position.z);
+
 		statusEffectDisplayGroup.Set(c);
 	}
 
-	void SetHero(Character c)
+	GameObject SetHero(Character c)
 	{
 		CreateEntry("Determination", c.storageCharacter.currentDetermination.ToString());
 		CreateEntry("HP", $"{c.currentHP}/{c.maxHP}");
@@ -66,7 +81,7 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 		CreateEntry("Evasion", $"{c.currentEvasion}");
 		CreateEntry("Toughness", $"{c.toughness}");
 		CreateEntry("Energy", $"{c.currentEnergy}/{c.characterDefinition.maxEnergy}");
-		CreateEntry("Movement", $"{c.movementMax}");
+		GameObject obj = CreateEntry("Movement", $"{c.movementMax}");
 
 		cunning.text = $"Cunning\n{c.characterDefinition.cunning}";
 		prowess.text = $"Prowess\n{c.characterDefinition.prowess}";
@@ -77,9 +92,10 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 		{
 			bottomUI.Set(c.characterDefinition.traits);
 		}
+		return obj;
 	}
 
-	void SetEnemy(Character c)
+	GameObject SetEnemy(Character c)
 	{
 		CreateEntry("HP", $"{c.currentHP}/{c.maxHP}");
 		CreateEntry("Armor", $"{c.armor}/{c.maxArmor}");
@@ -93,7 +109,11 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 		{
 			CreateEntry("Reaction", $"{c.threshold}/{c.characterDefinition.maxThreshold}");
 		}
-		CreateEntry("Movement", $"{c.movementMax}");
+		GameObject obj = CreateEntry("Movement", $"{c.movementMax}");
+
+		Canvas.ForceUpdateCanvases();
+		LayoutRebuilder.ForceRebuildLayoutImmediate(target);
+		LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)target.parent);
 
 		cunning.text = $"Cunning\n{c.characterDefinition.cunning}";
 		prowess.text = $"Prowess\n{c.characterDefinition.prowess}";
@@ -101,15 +121,17 @@ public class CharacterInspector : SceneSingleton<CharacterInspector>
 		bottomUI.transform.SetAsLastSibling();
 		bottomUI.ClearTraits();
 		bottomUI.Set(c.characterDefinition.traits);
+		return obj;
 	}
 
-	void CreateEntry(string leftText, string rightText)
+	GameObject CreateEntry(string leftText, string rightText)
 	{
 		GameObject obj = Instantiate(characterEntryPrefab);
 		obj.GetComponent<CharacterInspectorEntry>().Set(leftText, rightText);
 		obj.transform.SetParent(target);
 		obj.transform.localScale = Vector3.one;
 		createdObjects.Add(obj);
+		return obj;
 	}
 
 	public void Show()
