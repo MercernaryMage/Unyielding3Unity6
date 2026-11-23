@@ -8,11 +8,11 @@ public class UYButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 	public bool genericHoverEffect = true;
 	public UnityEvent onClick = new UnityEvent();
 
-	Image image;
+	public Image image;
 
 	void Awake()
 	{
-		if (genericHoverEffect)
+		if (genericHoverEffect && image == null)
 		{
 			image = GetComponent<Image>();
 		}

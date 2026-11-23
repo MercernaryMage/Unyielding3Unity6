@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryItemDisplay : MonoBehaviour, IPointerClickHandler
+public class InventoryItemDisplay : MonoBehaviour
 {
 	public Image itemIcon;
 	public TextMeshProUGUI itemName;
@@ -23,6 +23,14 @@ public class InventoryItemDisplay : MonoBehaviour, IPointerClickHandler
 		{
 			deleteButton.SetActive(false);
 		}
+		else
+		{
+			UYButton uyButton = GetComponent<UYButton>();
+            if (uyButton)
+            {
+				Destroy(uyButton);
+            }
+        }
 		if (PersistenceManager.Instance.GetFlag("AdvantagesLocked") == true)
 		{
 			deleteButton.SetActive(false);
@@ -48,7 +56,7 @@ public class InventoryItemDisplay : MonoBehaviour, IPointerClickHandler
 		CharacterEditor.Instance.RemoveItemFromInventory(item);
 	}
 
-	public void OnPointerClick(PointerEventData eventData)
+	public void Click()
 	{
 		if (CharacterEditor.Instance == null)
 		{
