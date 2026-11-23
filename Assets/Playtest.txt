@@ -1,4 +1,28 @@
+buttons
+	
 Get rid of natural language?
+
+isolated warning
+	Where does it go?
+		Replace tile warning?
+		Above the UI
+
+Action buttons don't scale right anymore
+
+Card view
 
 menu in town
 menu in overland
+
+Sound effects
+
+music
+effects
+Story?
+	What story?
+	5 sets + 4 town trips
+
+End demo
+	Feature list
+Saving and loading
+Launch page

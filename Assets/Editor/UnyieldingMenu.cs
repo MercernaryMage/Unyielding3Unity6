@@ -214,6 +214,10 @@ public class UnyieldingMenu
 		GameObject swatchCollectionObj = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/SwatchCollection.prefab");
 		SwatchCollection swatchCollection = swatchCollectionObj.GetComponent<SwatchCollection>();
 		SwatchCollectionEditor.FilloutData(swatchCollection);
+
+		GameObject soundCollectionObj = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/SoundCollection.prefab");
+		SoundCollection soundCollection = soundCollectionObj.GetComponent<SoundCollection>();
+		SoundCollectionEditor.FilloutData(soundCollection);
 	}
 
 	[MenuItem("Unyielding/Do Random Code")]
