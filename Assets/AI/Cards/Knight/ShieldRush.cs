@@ -198,11 +198,11 @@ public class ShieldRush : Card
     {
         DisplayGrid.Instance.Clear(11, 8);
         List<CardInstruction> instructions = new List<CardInstruction>();
-        instructions.Add(new CardInstruction("Move adjacent to both an ally and an enemy"));
-        instructions.Add(new CardInstruction("or adjacent to an ally, nearest an enemy"));
-		instructions.Add(new CardInstruction("or adjacent to closest enemy if not possible"));
-		instructions.Add(new CardInstruction("If adjacent to enemy after moving,"));
-        instructions.Add(new CardInstruction("attack for 1d6 damage"));
+		instructions.Add(new CardInstruction("<align=left>Move:"));
+		instructions.Add(new CardInstruction("<align=left><indent=1em>-Move adjacent to both an ally and an enemy"));
+		instructions.Add(new CardInstruction("<align=left><indent=1em>-Adjacent to an ally, nearest an enemy"));
+		instructions.Add(new CardInstruction("<align=left><indent=1em>-Adjacent to closest enemy"));
+		instructions.Add(new CardInstruction("<align=left>If adjacent to enemy after moving, attack for 1d6 damage"));
         //DisplayGrid.Instance.Show();
 
         return instructions;

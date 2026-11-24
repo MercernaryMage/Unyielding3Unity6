@@ -1,12 +1,10 @@
-buttons
-	Left side of character editor
-	Dismiss button on cards
-	trigger menu
-
-
-Get rid of natural language?
+Sound effect sucks
 
 Finish recap!!!!
+	//0B4346 player
+	//A03831 enemy
+	//8E5911 card
+	Ready doesn't work
 
 isolated warning
 	Where does it go?
@@ -15,10 +13,12 @@ isolated warning
 
 Action buttons don't scale right anymore
 
-Card view
+Deck view for enemies
 
 menu in town
 menu in overland
+
+Victory and defeat screens
 
 Sound effects
 

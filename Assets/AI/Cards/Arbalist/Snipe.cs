@@ -56,7 +56,7 @@ public class Snipe : Card
 
 		owningCharacter.SetFacing(TileGrid.Instance.GetFacingDirection(owningCharacter, targetHero));
 
-		CombatLogControl.Instance.AddCard($"{owningCharacter} targets {targetHero} with {this}", this);
+		CombatLogControl.Instance.AddCard($"{ActionController.GetColoredName(owningCharacter)} targets {ActionController.GetColoredName(targetHero)} with <b><color=#{AIController.GetCardTextColor()}>{this}</color></b>", this);
 
 		warnedTiles = new List<Tile>(TileGrid.Instance.FindCharacter(targetHero));
 		TileGrid.AddWarnings(warnedTiles, this);

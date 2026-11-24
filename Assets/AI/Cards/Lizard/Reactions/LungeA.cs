@@ -12,7 +12,7 @@ public class LungeA : ReactionBase
 	{
 		owningCharacter.SetFacing(TileGrid.Instance.GetFacingDirection(owningCharacter, attackingCharacter));
 		runningPounce = new Pounce();
-		runningPounce.Execute(owningCharacter, attackingCharacter, ReturnFromPounce);
+		runningPounce.Execute("Lunge", owningCharacter, attackingCharacter, ReturnFromPounce);
 	}
 
 	public void ReturnFromPounce()

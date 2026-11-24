@@ -578,11 +578,11 @@ public class ActionController : SceneSingleton<ActionController>
 			{
 				DamageCharacter(defender, attacker, profile, results);
 				entries.Add(results.outString);
-				blurb = $"{attacker.displayName}({attackValue}) misses {defender.displayName}({defender.characterDefinition.evasion}) for {results.damageDealt} damage";
+				blurb = $"{GetColoredName(attacker)}({attackValue}) misses {GetColoredName(defender)}({defender.characterDefinition.evasion}) for {results.damageDealt} damage";
 			}
 			else
 			{
-				blurb = $"{attacker.displayName}({attackValue}) misses {defender.displayName}({defender.characterDefinition.evasion})";
+				blurb = $"{GetColoredName(attacker)}({attackValue}) misses {GetColoredName(defender)}({defender.characterDefinition.evasion})";
 			}
 		}
 		else
@@ -617,10 +617,22 @@ public class ActionController : SceneSingleton<ActionController>
 			}
 			DamageCharacter(defender, attacker, profile, results);
 			entries.Add(results.outString);
-			blurb = $"{attacker.displayName}({attackValue}) hits {defender.displayName}({defender.characterDefinition.evasion}) for {results.damageDealt} damage";
+			blurb = $"{GetColoredName(attacker)}({attackValue}) hits {GetColoredName(defender)}({defender.characterDefinition.evasion}) for {results.damageDealt} damage";
 		}
 		CombatLogControl.Instance.AddEntry(blurb, entries);
 		return results;
+	}
+
+	public static string GetColoredName(Character c)
+	{
+		if (c.hero)
+		{
+			return $"<b><color=#0b4346>{c.displayName}</color></b>";
+		}
+		else
+		{
+			return $"<b><color=#a03831>{c.displayName}</color></b>";
+		}
 	}
 
 	int GetDamageResult(List<int> entries, int numberOfRolls)

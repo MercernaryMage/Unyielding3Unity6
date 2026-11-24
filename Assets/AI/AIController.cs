@@ -38,8 +38,13 @@ public class AIController : SceneSingleton<AIController>
 		cardStartMessage.character = character;
 		cardStartMessage.card = character.cards[0];
 		MessagePump.Instance.SendMessage(cardStartMessage);
-		CombatLogControl.Instance.AddCard($"{character.displayName} uses {character.cards[0].GetCardName()}", character.cards[0]);
+		CombatLogControl.Instance.AddCard($"{ActionController.GetColoredName(character)} uses <u><b><color=#{GetCardTextColor()}>{character.cards[0].GetCardName()}</color></b></u>", character.cards[0]);
 		character.cards[0].Execute();
+	}
+
+	public static string GetCardTextColor()
+	{
+		return "8e5911";
 	}
 
 	void DiscardSilentFailures(Character character)
@@ -79,7 +84,7 @@ public class AIController : SceneSingleton<AIController>
 		Reaction reaction = reactingCharacter.reactions[0];
 		reactingCharacter.reactions.RemoveAt(0);
 		reactingCharacter.reactions.Add(reaction);
-		CombatLogControl.Instance.AddCard($"{reactingCharacter} reacts with {reaction.GetCurrentCard()}", reaction.GetCurrentCard());
+		CombatLogControl.Instance.AddCard($"{ActionController.GetColoredName(reactingCharacter)} reacts with <color=#{GetCardTextColor()}>{reaction.GetCurrentCard()}</color>", reaction.GetCurrentCard());
 		AICardDisplay.Instance.ShowCard(reaction.GetCurrentCard().cardScriptableObject, reaction.isAggravatged? CardDisplay.CardType.AggravatedReaction : CardDisplay.CardType.Reaction, reactingCharacter);
 	}
 }

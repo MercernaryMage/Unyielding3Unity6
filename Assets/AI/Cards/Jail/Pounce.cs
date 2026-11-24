@@ -11,9 +11,11 @@ public class Pounce
 	List<Character> hitCharacters;
 	Character owningCharacter;
 	Action callback;
+	string cardName;
 
-	public void Execute(Character o, Character targetCharacter, Action actionToStore)
+	public void Execute(string cN, Character o, Character targetCharacter, Action actionToStore)
 	{
+		cardName = cN;
 		callback = actionToStore;
 		owningCharacter = o;
 		tilesAndDirection = TemplateLibrary.Instance.GetPounceTemplate(owningCharacter, targetCharacter, range);
@@ -60,7 +62,7 @@ public class Pounce
 				ActionController.AttackResults results = new ActionController.AttackResults();
 				results.fakeHit = true;
 				ActionController.Instance.DamageCharacter(c, owningCharacter, new ActionController.AttackProfile(1, 6, 0), results);
-				CombatLogControl.Instance.AddEntry($"Pounce deals {results.damageDealt} to {c.displayName}");
+				CombatLogControl.Instance.AddEntry($"<u><color=#{AIController.GetCardTextColor()}>{cardName}</color></u> deals {results.damageDealt} to {ActionController.GetColoredName(c)}");
 				c.AddStatusEffect(typeof(Stun), null);
 			}
 			callback.Invoke();

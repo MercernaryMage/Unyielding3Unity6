@@ -19,7 +19,7 @@ public class LungeN : ReactionBase
 		if (checkResult == false)
 		{
 			runningPounce = new Pounce();
-			runningPounce.Execute(owningCharacter, attackingCharacter, ReturnFromPounce);
+			runningPounce.Execute("Lunge", owningCharacter, attackingCharacter, ReturnFromPounce);
 			return;
 		}
 		BattleController.ReturnControlToPlayer();

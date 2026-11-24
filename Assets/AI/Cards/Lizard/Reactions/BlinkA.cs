@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class BlinkA : ReactionBase
 {
-	Pounce runningPounce;
-
 	public override void Execute()
 	{
 		

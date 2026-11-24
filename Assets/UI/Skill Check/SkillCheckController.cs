@@ -114,7 +114,7 @@ public class SkillCheckController : SceneSingleton<SkillCheckController>
 		string checkName = storedType == SkillCheckType.Cunning ? "cunning" : "prowess";
 		string outcome = resultValue ? "succeeds" : "fails";
 		string rollLine = $"Roll: {storedRoll} (1d20) + {storedBonus} ({checkName}) vs {storedDifficulty}";
-		CombatLogControl.Instance.AddEntry($"{storedCharacter.displayName} {outcome} a {checkName} check ({storedResult} v {storedDifficulty})", new List<string> { rollLine });
+		CombatLogControl.Instance.AddEntry($"{ActionController.GetColoredName(storedCharacter)} {outcome} a {checkName} check ({storedResult} v {storedDifficulty})", new List<string> { rollLine });
 		storedAction.Invoke(resultValue);
 	}
 }
