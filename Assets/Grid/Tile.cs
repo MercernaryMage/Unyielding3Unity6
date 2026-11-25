@@ -228,13 +228,21 @@ public class Tile : MonoBehaviour
 			{
 				overlay.Set(type);
 			}
-			return;
 		}
-		++warningCount;
-		if (warningCount == 1)
+		else
 		{
-			overlay.Set(type);
+			++warningCount;
+			if (warningCount == 1)
+			{
+				overlay.Set(type);
+			}
 		}
+		UpdateFlicker();
+	}
+
+	void UpdateFlicker()
+	{
+		overlay.SetFlicker(warningCount + followWarningCount >= 2);
 	}
 
 	public void RemoveWarning(OverlayType type, Card c)
@@ -247,12 +255,15 @@ public class Tile : MonoBehaviour
 			{
 				overlay.TurnOffWarning(type);
 			}
-			return;
 		}
-		--warningCount;
-		if (warningCount == 0)
+		else
 		{
-			overlay.TurnOffWarning(type);
+			--warningCount;
+			if (warningCount == 0)
+			{
+				overlay.TurnOffWarning(type);
+			}
 		}
+		UpdateFlicker();
 	}
 }

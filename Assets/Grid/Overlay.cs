@@ -47,4 +47,9 @@ public class Overlay : MonoBehaviour
 	{
 		overlays[(int)type].SetActive(false);
 	}
+
+	public void SetFlicker(bool on)
+	{
+		GetComponent<OverlayFlicker>().enabled = on;
+	}
 }

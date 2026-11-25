@@ -4,7 +4,7 @@ public class DealExtraDamageIfIsolated : Trait
 	{
 		if (message.attacker == character)
 		{
-			if (TileGrid.Instance.IsTargetIsolated(message.defender, message.attacker))
+			if (TileGrid.Instance.IsTargetIsolated(message.defender))
 			{
 				message.damage += 5;
 			}

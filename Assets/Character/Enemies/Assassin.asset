@@ -45,6 +45,8 @@ MonoBehaviour:
   reactions: []
   bigPortrait: {fileID: 0}
   battlePortrait: {fileID: 0}
+  characterSmallHead: {fileID: 0}
   traits:
   - {fileID: 11400000, guid: facb4e2e4d177ee4fa93e8acbde4826b, type: 2}
+  - {fileID: 11400000, guid: 46871f6c77d7cb04988d2700528d5d16, type: 2}
   subclasses: []

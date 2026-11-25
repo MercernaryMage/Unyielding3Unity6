@@ -10,4 +10,5 @@ public class TraitScriptableObject : ScriptableObject
 	public string className;
 	public List<int> intParams;
 	public List<string> stringParams;
+	public bool invisible = false;
 }

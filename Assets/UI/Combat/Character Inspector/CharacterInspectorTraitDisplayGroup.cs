@@ -41,6 +41,10 @@ public class CharacterInspectorTraitDisplayGroup : MonoBehaviour
 	{
 		foreach (TraitScriptableObject trait in traits)
 		{
+			if (trait.invisible)
+			{
+				continue;
+			}
 			GameObject obj = Instantiate(elementPrefab);
 			TextSetter textSetter = obj.GetComponent<TextSetter>();
 			textSetter.Set(trait.displayName, trait.description);

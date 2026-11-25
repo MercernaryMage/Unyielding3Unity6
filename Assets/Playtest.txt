@@ -3,17 +3,11 @@ Finish recap!!!!
 	//A03831 enemy
 	//8E5911 card
 
-Stacking warnings :(
-
 isolated warning
-	Where does it go?
-		Replace tile warning?
-		Above the UI
+	Delete effect
+	change art to be excalmation marks
 
 Deck view for enemies
-
-menu in town
-menu in overland
 
 Victory and defeat screens
 

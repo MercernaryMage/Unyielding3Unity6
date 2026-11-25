@@ -5561,6 +5561,7 @@ MonoBehaviour:
   doingPlacement: 0
   EndTurnButton: {fileID: 390215815}
   deployButton: {fileID: 1940763671}
+  isolatedEffect: {fileID: 2320804510472608936, guid: d78928a8c7afb2b49beef2056bfde966, type: 3}
 --- !u!114 &567337320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8551,7 +8552,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898251909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 400200efbf2304345813bd062e52586e, type: 3}
   m_Name: 

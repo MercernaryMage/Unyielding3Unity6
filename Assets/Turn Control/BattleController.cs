@@ -33,6 +33,8 @@ public class BattleController : SceneSingleton<BattleController>
 	public GameObject EndTurnButton;
 	public GameObject deployButton;
 
+	public GameObject isolatedEffect;
+
 	class ActiveWarning
 	{
 		public Tile tile;

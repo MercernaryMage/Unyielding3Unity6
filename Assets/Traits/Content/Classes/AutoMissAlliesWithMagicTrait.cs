@@ -5,7 +5,7 @@ public class AutoMissAlliesWithMagicTrait : Trait
 {
 	public override void CharacterAttack(CharacterAttackingMessage message)
 	{
-		if (message.attacker.hero == message.defender.hero)
+		if (message.attacker.hero == true && message.attacker.hero == message.defender.hero)
 		{
 			if (message.pattern.physical == false)
 			{

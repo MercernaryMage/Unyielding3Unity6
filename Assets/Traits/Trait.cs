@@ -42,6 +42,8 @@ public class Trait : MonoBehaviour, IMessageReceiver
 
 	virtual public void OnPreviewAttackWarning(PreviewAttackWarningMessage message) { }
 
+	virtual public void OnCharacterFinishedMoving(CharacterFinishedMovingMessage characterFinishedMovingMessage) { }
+
 	public void ReceiveMessage(Message message)
 	{
 		if (message.messageType == MessageType.CharacterMovementStarted)
@@ -95,6 +97,10 @@ public class Trait : MonoBehaviour, IMessageReceiver
 		else if (message.messageType == MessageType.PreviewAttackWarning)
 		{
 			OnPreviewAttackWarning((PreviewAttackWarningMessage)message);
+		}
+		else if (message.messageType == MessageType.CharacterFinishedMoving)
+		{
+			OnCharacterFinishedMoving((CharacterFinishedMovingMessage)message);
 		}
 	}
 }

@@ -791,14 +791,14 @@ public class TileGrid : SceneSingleton<TileGrid>
 		return false;
 	}
 
-	public bool IsTargetIsolated(Character target, Character user)
+	public bool IsTargetIsolated(Character target)
 	{
 		List<Tile> adjacentTiles = GetAllAdjacentTilesToCharacter(target);
 		foreach (Tile tile in adjacentTiles)
 		{
 			if (tile.character != null &&
 				tile.character != target &&
-				tile.character != user)
+				tile.character.hero == true)
 			{
 				return false;
 			}

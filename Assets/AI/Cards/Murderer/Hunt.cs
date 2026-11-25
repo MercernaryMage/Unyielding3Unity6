@@ -17,7 +17,7 @@ public class Hunt : Card
 		{
 			return false;
 		}
-		return TileGrid.Instance.IsTargetIsolated(target, owningCharacter);
+		return TileGrid.Instance.IsTargetIsolated(target);
 	}
 
 	public override void Execute()

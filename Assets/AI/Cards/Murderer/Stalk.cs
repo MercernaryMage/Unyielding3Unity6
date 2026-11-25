@@ -10,13 +10,13 @@ public class Stalk : Card
 	List<Tile> attackTiles;
 	Action chaseCompleteCallback;
 
-	bool IsIsolated(Character c)
+	public static bool IsIsolated(Character c)
 	{
 		if (c.GetComponent<Recovering>())
 		{
 			return false;
 		}
-		return TileGrid.Instance.IsTargetIsolated(c, owningCharacter);
+		return TileGrid.Instance.IsTargetIsolated(c);
 	}
 
 	Character FindClosestHero(Dictionary<Character, Tuple<List<Tile>, Tile>> routes, bool isolatedOnly)

@@ -23,7 +23,7 @@ public class OverlayFlicker : MonoBehaviour
 	void Apply()
 	{
 		//_Color
-		float t = Mathf.Cos(value * 4);
+		float t = Mathf.Sin(value * 4);
 
 		Color color1 = Color.white;
 		Color color2 = Color.red;

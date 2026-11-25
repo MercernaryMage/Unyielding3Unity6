@@ -12,7 +12,7 @@ public class Plan : Card
 		{
 			return false;
 		}
-		return TileGrid.Instance.IsTargetIsolated(c, owningCharacter);
+		return TileGrid.Instance.IsTargetIsolated(c);
 	}
 
 	Character FindClosestHero(Dictionary<Character, Tuple<List<Tile>, Tile>> routes, bool isolatedOnly)
