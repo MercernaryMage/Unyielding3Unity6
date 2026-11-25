@@ -100,6 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 480363997433456491}
   - component: {fileID: 1635849068047818025}
+  - component: {fileID: 3535532711111717671}
   m_Layer: 0
   m_Name: Overlay
   m_TagString: Untagged
@@ -148,6 +149,21 @@ MonoBehaviour:
   - {fileID: 3598894346372569485}
   - {fileID: 2054231968002702436}
   - {fileID: 6840380461595265266}
+  - {fileID: 6597775702298298002}
+--- !u!114 &3535532711111717671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2706767436028958591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a49eb9c0c2716cd4bafdf5b5da220ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OverlayFlicker
+  targets:
+  - {fileID: 2054231968002702436}
   - {fileID: 6597775702298298002}
 --- !u!1 &3598894346372569485
 GameObject:

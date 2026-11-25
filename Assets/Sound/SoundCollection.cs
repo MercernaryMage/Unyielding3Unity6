@@ -3,5 +3,5 @@ using UnityEngine;
 
 public class SoundCollection : MonoBehaviour
 {
-    public List<AudioClip> sounds;
+    public List<SoundScriptableObject> sounds;
 }

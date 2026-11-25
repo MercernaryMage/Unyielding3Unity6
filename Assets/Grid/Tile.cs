@@ -31,6 +31,7 @@ public class Tile : MonoBehaviour
 
 	int warningCount;
 	int followWarningCount;
+	bool warningCardShown;
 
 	public void Init(int x, int y, GameObject m, GameObject o)
 	{
@@ -139,8 +140,9 @@ public class Tile : MonoBehaviour
 		{
 			character.selectionVisual.SetActive(true);
 		}
-		if (cardWarnings.Count > 0)
+		if (cardWarnings.Count > 0 && !warningCardShown)
 		{
+			warningCardShown = true;
 			AICardDisplay.Instance.ShowCard(cardWarnings[0].cardScriptableObject, CardDisplay.CardType.Card, cardWarnings[0].owningCharacter);
 		}
 	}
@@ -152,8 +154,9 @@ public class Tile : MonoBehaviour
 		{
 			character.selectionVisual.SetActive(false);
 		}
-		if (cardWarnings.Count > 0)
+		if (warningCardShown)
 		{
+			warningCardShown = false;
 			AICardDisplay.Instance.SoftDismiss(.3f);
 		}
 	}

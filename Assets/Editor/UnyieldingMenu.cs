@@ -224,5 +224,20 @@ public class UnyieldingMenu
 	static void DoRandomCode()
 	{
 		//Fill this out but delete it later
+		string[] guids = AssetDatabase.FindAssets("t:AudioClip");
+
+		foreach (string guid in guids)
+		{
+			string path = AssetDatabase.GUIDToAssetPath(guid);
+			AudioClip clip = AssetDatabase.LoadAssetAtPath<AudioClip>(path);
+
+			SoundScriptableObject sound = new SoundScriptableObject();
+			sound.clip = clip;
+
+			string assetPath = Path.ChangeExtension(path, ".asset");
+			AssetDatabase.CreateAsset(sound, assetPath);
+		}
+
+		AssetDatabase.SaveAssets();
 	}
 }

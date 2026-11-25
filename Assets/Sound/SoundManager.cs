@@ -13,7 +13,9 @@ public class SoundManager : Singleton<SoundManager>
 			return;
 		}
 		AudioSource source = gameObject.AddComponent<AudioSource>();
-		source.clip = SoundRepository.Instance.GetClip(soundName);
+		SoundScriptableObject soundScriptableObject = SoundRepository.Instance.GetClip(soundName);
+		source.clip = soundScriptableObject.clip;
+		source.volume = soundScriptableObject.volume;
 		source.Play();
 		effectSources.Add(soundName, source);
 	}

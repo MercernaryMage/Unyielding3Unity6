@@ -1,17 +1,14 @@
-Sound effect sucks
-
 Finish recap!!!!
 	//0B4346 player
 	//A03831 enemy
 	//8E5911 card
-	Ready doesn't work
+
+Stacking warnings :(
 
 isolated warning
 	Where does it go?
 		Replace tile warning?
 		Above the UI
-
-Action buttons don't scale right anymore
 
 Deck view for enemies
 

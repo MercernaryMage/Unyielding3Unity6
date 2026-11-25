@@ -9,9 +9,9 @@ public class SoundRepository : Singleton<SoundRepository>
 		collection = Resources.Load<SoundCollection>("SoundCollection");
 	}
 
-	public AudioClip GetClip(string clipName)
+	public SoundScriptableObject GetClip(string clipName)
 	{
-		foreach (AudioClip clip in collection.sounds)
+		foreach (SoundScriptableObject clip in collection.sounds)
 		{
 			if (clip.name == clipName)
 			{

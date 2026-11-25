@@ -22,13 +22,13 @@ public class SoundCollectionEditor : Editor
     {
         soundCollection.sounds.Clear();
 
-        string[] guids = AssetDatabase.FindAssets("t:AudioClip");
+        string[] guids = AssetDatabase.FindAssets("t:SoundScriptableObject");
         Dictionary<string, string> pathsByName = new Dictionary<string, string>();
 
         foreach (string guid in guids)
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
-			AudioClip clip = AssetDatabase.LoadAssetAtPath<AudioClip>(path);
+			SoundScriptableObject clip = AssetDatabase.LoadAssetAtPath<SoundScriptableObject>(path);
 
             if (pathsByName.ContainsKey(clip.name))
             {
